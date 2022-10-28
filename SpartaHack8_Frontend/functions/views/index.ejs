@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SpartaHack 8</title>
+
+
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <!-- npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch -->
+        <link rel="stylesheet" href="css/output.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+        <script src="functions.js"></script>
+    </head>
+
+    <body class="bg-sh-black overflow-hidden">
+        <!-- BACKGROUND CONTENT -->
+
+        <img src="background-materials/Vector-1.svg"
+            class="absolute w-[375px] h-[353px] left-[150px] -top-[219px] -z-10 opacity-[.40]"
+            style=" filter: blur(100px);">
+
+        <img src="background-materials/Vector.svg"
+            class="absolute w-[553px] h-[600px] -left-[300px] -top-[250px] -z-10 opacity-[.25]" style="
+        filter: blur(100px);
+        transform: rotate(180deg);">
+
+        <img src="background-materials/Vector-2.svg"
+            class="absolute w-[1240px] h-[555px] left-[250px] top-[300px] -z-10 opacity-[.65]" style="filter: blur(120px);
+        transform: rotate(0deg);">
+
+        <div class="absolute w-screen h-screen top-0 left-0 mix-blend-overlay -z-9"
+            style="background-image: url(background-materials/Texture.png); background-size: 134px;"></div>
+
+        <div class="absolute flex top-24 h-full w-screen -z-5">
+            <div class="bg-repeat mx-8 w-full h-full -z-5 opacity-20 overflow-hidden"
+                style="background-image: url(background-materials/bg-pattern-cell-svg.svg); background-size: 16px">
+            </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <nav class="flex flex-row justify-between items-center py-6 px-8 absolute h-24 top-0 left-0">
+            <div class="flex flex-row items-center p-0 space-x-4 flex-none grow-0">
+                <!-- NAVBAR LOGO -->
+                <div class="flex-none grow-0 cursor-pointer duration-1000">
+                    <svg width="44" height="50" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M39.0007 32.3732C39.0007 31.3538 39.047 30.3461 38.3919 29.5734C38.0284 29.1786 34.2631 27.2055 33.1065 26.5554C32.3824 26.1482 31.3601 26.5408 31.2139 27.539C31.1442 28.0133 31.1442 27.9629 31.0862 28.492C31.0428 28.8882 31.1229 29.453 31.7001 29.8302C32.6783 30.4694 32.8098 30.5599 34.6472 31.753C35.7209 32.4549 36.4333 33.521 36.7513 34.3354C36.9055 34.69 37.1853 35.6101 37.1515 36.5303C37.1148 40.4195 37.175 39.1973 37.1537 44.5649C37.0869 46.5957 37.2308 46.7847 36.6889 47.5603C36.4068 47.9638 35.8142 48.2762 35.2362 48.2703C35.1584 48.2696 34.6913 48.3046 34.139 47.9865C33.0257 47.3451 21.8974 40.9588 21.127 40.4626C20.8098 40.2583 20.3618 40.1466 19.9197 40.1218L15.495 40.108C13.6531 39.9124 12.3613 38.1225 12.3613 36.6237C12.3613 34.8622 12.5376 33.7027 12.5376 26.7327C12.5376 22.2677 15.343 19.2351 17.5109 17.4291C20.3324 15.2925 23.9625 14.6526 26.8201 15.0882C27.0925 15.1276 28.4254 15.3305 30.0573 16.0062C32.5498 17.038 34.3564 17.8348 34.3564 17.8348C35.1128 18.1135 36.1711 17.9107 36.6661 17.2131C38.6254 14.4512 39.2769 13.38 41.8362 9.73372C42.669 8.49981 42.0161 7.47532 40.9674 6.65806C39.6279 5.61387 38.7628 5.10235 37.4893 4.42957C36.4135 3.86114 35.2913 3.37882 34.131 3.00959C26.8546 0.691353 18.1674 1.4028 12.0587 6.11006C5.1782 11.3566 6.27759 14.8678 2.46388 20.1049C1.61786 21.2665 1.96596 22.9003 3.20782 23.63L5.6842 25.0843"
+                            stroke="url(#paint0_linear_130_115)" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <defs>
+                            <linearGradient id="paint0_linear_130_115" x1="37.3241" y1="49.5232" x2="2.31652"
+                                y2="-4.31528" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1E4FFF" />
+                                <stop offset="1" stop-color="#F70063" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <!-- NAVBAR TITLE -->
+                <span class="rubik-font text-sh-white font-medium text-2xl flex-none grow-0 cursor-pointer">
+                    SpartaHack 8
+                </span>
+            </div>
+        </nav>
+
+        <!-- MAIN -->
+        <main class="flex flex-col justify-center items-center">
+            <!-- FIRST SECTION - HERO LANDING -->
+            <section class="absolute flex flex-col justify-center items-center p-0 space-y-12 top-0 h-screen container">
+                <!-- TEXT CONTENT -->
+                <div class="flex flex-col justify-center item-center p-0 space-y-4 w-[1020px] h-min">
+                    <!-- TITLE TEXT -->
+                    <div>
+                        <span
+                            class="flex justify-center items-center text-center block font-medium text-[76px] -mb-4 rubik-font gradient-text">
+                            SpartaHack 8
+                        </span>
+                        <span
+                            class="flex justify-center items-center text-center block font-medium text-[61px] rubik-font text-sh-white">
+                            registrations will open soon.
+                        </span>
+                    </div>
+                    <!-- BODY TEXT -->
+                    <div>
+                        <div class="mx-auto w-[722px] text-center">
+                            <span class="inter-font  font-light text-[20px] leading-8  text-sh-white/70 ">
+                                Take part in the 36-hour annual hackathon held at Michigan State University <br>
+                                tailored for those who see opportunity in a challenge and seek to <br>
+                                widen their horizons.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- FORM CONTENT -->
+                <div
+                    class="flex flex-col justify-center items-center p-[10px] gap-2.5 w-[593px] h-min flex-none order-2 grow-0 z-[2]">
+                    <!-- FORM -->
+                    <form
+                        
+                        id="emailForm"
+                        class="flex flex-row  items-center p-2 pl-4 gap-2.5 w-[573px] h-[73px] box-border bg-sh-black/50 rounded-2xl hover:bg-sh-black/70 focus-within:bg-sh-black/70 duration-100 ease-out backdrop-blur-[1px]"> 
+                        <!-- EMAIL INPUT -->
+                        <input type="email" name="email" id="email"required placeholder="alan.turing@postmail.com" minlength="6"
+                            class="grow bg-transparent outline-0 w-max p-2.5 rubik-font text-[21px] font-light text-sh-white placeholder:text-sh-white/30">
+                        <!-- SUBMIT BUTTON -->
+                        <button
+                            id="submit"
+                            class="flex flex-row justify-center items-center py-3 px-6 gap-2.5 w-fit h-[57px] box-border rounded-lg uppercase rubik-font bg-sh-pink ease-out hover:bg-[#F81973] active:bg-[#FA5295] outline-0 outline-[#FDB3D0] focus:outline-4 duration-100"
+                            >
+                            <div class="text-[21px] p-1 font-normal text-sh-white">
+                                Get Notified
+                            </div>
+                        </button>
+
+                    </form>
+                    <!-- ADDITIONAL INFO -->
+                    <div>
+                        <span class="text-base text-sh-white/50 rubik-font font-light">Get notified when registrations
+                            open</span>
+                    </div>
+                </div>
+
+
+            </section>
+
+
+        </main>
+    </body>
+
+</html>
