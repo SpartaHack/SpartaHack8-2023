@@ -104,7 +104,7 @@
                     class="flex flex-col justify-center items-center p-[10px] gap-2.5 w-[593px] h-min flex-none order-2 grow-0 z-[2]">
                     <!-- FORM -->
                     <form
-                        
+                        onsubmit="return add_email(event)"
                         id="emailForm"
                         class="flex flex-row  items-center p-2 pl-4 gap-2.5 w-[573px] h-[73px] box-border bg-sh-black/50 rounded-2xl hover:bg-sh-black/70 focus-within:bg-sh-black/70 duration-100 ease-out backdrop-blur-[1px]"> 
                         <!-- EMAIL INPUT -->
@@ -119,6 +119,8 @@
                                 Get Notified
                             </div>
                         </button>
+                        <div id="email_sent" class="" style="display: None; color:white">Message sent</div>
+                        <div id="email_loading" class="" style="display: None; color:white">Loading</div>
 
                     </form>
                     <!-- ADDITIONAL INFO -->
