@@ -20,10 +20,16 @@ async function add_email(e){
     console.log(myJson);
     document.getElementById("email_loading").style.display = "None";
     document.getElementById("email_sent").style.display = "block";
-
-    setTimeout(() => {
-        document.getElementById("email_sent").style.display = "None";
-    }, 3000);
+    if (myJson.message == "success") {
+        setTimeout(() => {
+            document.getElementById("email_sent").style.display = "None";
+        }, 3000);
+    } else {
+        document.getElementById("email_sent").style.text = "Error";
+        setTimeout(() => {
+            document.getElementById("email_sent").style.display = "None";
+        }, 3000);
+    }
 
 }
 
