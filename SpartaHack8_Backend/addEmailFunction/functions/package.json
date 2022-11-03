@@ -16,7 +16,8 @@
     "@sendgrid/mail": "^7.7.0",
     "cors": "^2.8.5",
     "firebase-admin": "^10.0.2",
-    "firebase-functions": "^4.0.1",
+    "firebase-functions": "^4.0.2",
+    "node-fetch": "^3.2.10",
     "nodemailer": "^6.8.0"
   },
   "devDependencies": {
