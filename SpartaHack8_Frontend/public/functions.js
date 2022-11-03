@@ -6,30 +6,48 @@ window.document.onload = function(e){
 
 async function add_email(e){
     e.preventDefault()
-    document.getElementById("email_loading").style.display = "block";
+    document.getElementById("email_handling").style.display = "block";
 	const email = document.getElementById("email").value;
     console.log(email);
-    const response = await fetch('https://us-central1-spartahack8.cloudfunctions.net/add_email', {
-    method: 'POST',
-    body:  JSON.stringify({"email": email}),
+    const response_emails = await fetch('https://us-central1-spartahack8.cloudfunctions.net/get_all_emails', {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json'
         }
     });
-    const myJson = await response.json();
-    console.log(myJson);
-    document.getElementById("email_loading").style.display = "None";
-    document.getElementById("email_sent").style.display = "block";
-    if (myJson.message == "success") {
-        setTimeout(() => {
-            document.getElementById("email_sent").style.display = "None";
-        }, 3000);
+    console.log(response_emails)
+    const emails_json = await response_emails.json();
+    const emails = emails_json.data
+    if (!emails.includes(email)) {
+        const response = await fetch('https://us-central1-spartahack8.cloudfunctions.net/add_email', {
+        method: 'POST',
+        body:  JSON.stringify({"email": email}),
+        headers: {
+          'Content-Type': 'application/json'
+            }
+        });
+        const myJson = await response.json();
+        console.log(myJson);
+        document.getElementById("email_handling").innerHTML = "Email Sent";
+        if (myJson.message == "success") {
+            setTimeout(() => {
+                document.getElementById("email_handling").style.display = "None";
+            }, 3000);
+        } else {
+            document.getElementById("email_handling").innerHTML = "An error occurred, try again";
+            setTimeout(() => {
+                document.getElementById("email_handling").style.display = "None";
+            }, 3000);
+        }
     } else {
-        document.getElementById("email_sent").style.text = "Error";
+        console.log("Error! Not added because it is already registered");
+        document.getElementById("email_handling").innerHTML = "Email Already registered";
         setTimeout(() => {
-            document.getElementById("email_sent").style.display = "None";
+            document.getElementById("email_handling").style.display = "None";
         }, 3000);
+
     }
+
 
 }
 
