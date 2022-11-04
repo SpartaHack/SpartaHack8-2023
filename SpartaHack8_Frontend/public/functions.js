@@ -1,22 +1,22 @@
-const lastSection = document.getElementById('lastSection')
-const lastSectionHeight = lastSection.clientHeight
-const lastSectionTop = lastSection.offsetTop
-const pageHeight = lastSectionTop + lastSectionHeight
-const navBarHeight = document.querySelector('nav').offsetHeight
-const bgElementscontainer = document.getElementById('backgroundElementsContainer')
-const bgCells = document.getElementById('backgroundCells')
-const bgTexture = document.getElementById('backgroundTexture')
-const bgBlobs = document.getElementById('backgroundBlobs')
-const heightSetter = () => {
-    bgElementscontainer.style.height = `${pageHeight}px`
-    bgCells.style.height = `${pageHeight}px`
-    bgTexture.style.height = `${pageHeight + navBarHeight}px`
-    bgBlobs.style.height = `${pageHeight + navBarHeight}px`
+// const lastSection = document.getElementById('lastSection')
+// const lastSectionHeight = lastSection.clientHeight
+// const lastSectionTop = lastSection.offsetTop
+// const pageHeight = lastSectionTop + lastSectionHeight
+// const navBarHeight = document.querySelector('nav').offsetHeight
+// const bgElementscontainer = document.getElementById('backgroundElementsContainer')
+// const bgCells = document.getElementById('backgroundCells')
+// const bgTexture = document.getElementById('backgroundTexture')
+// const bgBlobs = document.getElementById('backgroundBlobs')
+// const heightSetter = () => {
+//     bgElementscontainer.style.height = `${pageHeight}px`
+//     bgCells.style.height = `${pageHeight}px`
+//     bgTexture.style.height = `${pageHeight + navBarHeight}px`
+//     bgBlobs.style.height = `${pageHeight + navBarHeight}px`
 
-    console.log(`${pageHeight + navBarHeight}px`)
-}
-heightSetter()
-window.onresize = heightSetter;
+//     console.log(`${pageHeight + navBarHeight}px`)
+// }
+// heightSetter()
+// window.onresize = heightSetter;
 
 window.document.onload = function (e) {
     function handleForm(event) { event.preventDefault(); }
