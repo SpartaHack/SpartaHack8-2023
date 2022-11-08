@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "firebase-functions-test": "^3.0.0"
+  }
+}
