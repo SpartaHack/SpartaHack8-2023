@@ -74,11 +74,6 @@ exports.get_all_emails = functions.https.onRequest(async (request, response) => 
     });
 });
 
-
-// function sendEmail() {
-    
-// }
-
 exports.send_emails = functions.runWith({secrets: ["GMAIL_EMAIL", "GMAIL_PASSWORD", "GRID_API"]}).https.onRequest((request, response) => {
         response.set({ 'Access-Control-Allow-Origin': '*' });
         //Debugging purposes
