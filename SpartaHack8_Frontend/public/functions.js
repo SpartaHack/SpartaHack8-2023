@@ -39,6 +39,9 @@ async function add_email(e){
     e.preventDefault()
     document.getElementById("form_add_info").style.display = "None";
     document.getElementById("email_loading").style.display = "inline";
+    document.getElementById("email_error").style.display = "None";
+    document.getElementById("email_exists").style.display = "None";
+    document.getElementById("email_sent").style.display = "None";
 	const email = document.getElementById("email").value;
     console.log(email);
     const response_emails = await fetch('https://us-central1-spartahack8.cloudfunctions.net/get_all_emails', {
