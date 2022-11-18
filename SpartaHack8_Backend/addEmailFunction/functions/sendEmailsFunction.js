@@ -38,15 +38,6 @@ exports.get_all_emails = functions.https.onRequest(async (request, response) => 
     response.set({ 'Access-Control-Allow-Origin': '*' })
     console.log("Here in get_all emails")
     cors(request, response, () => {
-        // async function getEmails() {
-        //     const emails = await db.collection('email_collection').get()
-        //     console.log(emails)
-        //     all_emails = emails.docs.map((doc) => {
-        //         return doc.data().email;
-        //     })
-        //     // console.log(all_emails);
-        //     return all_emails
-        // }
         if(request.method == "GET"){
             // const emails = await getEmails()
             const emails = db.collection('email_collection').get()
@@ -62,12 +53,6 @@ exports.get_all_emails = functions.https.onRequest(async (request, response) => 
             .catch(() => {
                 response.status(500).send({"message":"Error trying to get all emails"});
             })
-            // console.log(emails);
-            // const emails = await db.collection('email_collection').get()
-            // console.log(emails)
-            // all_emails = emails.docs.map((doc) => {
-            //     return doc.data().email
-            // })
             return emails
         }
         else response.status(500).send({"message":"Please send a post request"});
@@ -82,7 +67,7 @@ exports.send_emails = functions.runWith({secrets: ["GMAIL_EMAIL", "GMAIL_PASSWOR
         // list_of_emails.then(response => console.log(response));
 
         console.log("Got the list of emails which is :");
-        console.log(list_of_emails);
+        // console.log(list_of_emails);
         // Enabling CORS using the "cors" express middleware
         cors(request, response, () => {
             if (request.method == 'POST') {
@@ -90,16 +75,17 @@ exports.send_emails = functions.runWith({secrets: ["GMAIL_EMAIL", "GMAIL_PASSWOR
                 //Get all the information for contacts
                 // const id = request.body.data.id;
                 // const name = request.body.data.name;
-                const email = doc.data().email;
+                // const email = doc.data().email;
                 // const message = request.body.data.message;
                 const snapshot = db.collection('email_collection').get().then( (query) => {
                     const tempDoc= [];
                     query.forEach( (doc) => {
                         if (doc.data().email == "joelnataren9@hotmail.com" && !tempDoc.includes(doc.data().email) ) {
                             console.log("Here with the id:" , doc.id," and the data", doc.data().email);
+                            // to: doc.data().email,
                             const mailOptions = {
                                 from: "natarenm@msu.edu",
-                                to: doc.data().email,
+                                to: "natarenm@msu.edu",
                                 bcc: 'natarenm@msu.edu',
                                 subject: 'SpartaHack Today!',
                                 // html: {path: "../../../SpartaHack8_Frontend/public/404.html"}
@@ -118,7 +104,7 @@ exports.send_emails = functions.runWith({secrets: ["GMAIL_EMAIL", "GMAIL_PASSWOR
                     });
                 });
 
-                return sendgridEmail(mailOptions, process.env.GRID_API);
+                // return sendgridEmail(mailOptions, process.env.GRID_API);
             }
         });
 

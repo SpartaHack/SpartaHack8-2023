@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rubik-font {
+  font-family: 'Rubik',
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.inter-font {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.mono-font {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}

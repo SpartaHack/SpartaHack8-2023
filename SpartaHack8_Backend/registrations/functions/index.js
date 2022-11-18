@@ -4,7 +4,7 @@ require("firebase-functions/logger/compat");
 admin.initializeApp();
 const db = admin.firestore();
 const cors = require('cors')({origin: true});
-
+const storage = admin.storage().bucket("gs://spartahack8.appspot.com");
 // Missing fields
 // Minor with forms
 // Minor with no forms
