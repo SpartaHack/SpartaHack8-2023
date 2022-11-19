@@ -1,14 +1,16 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import React, { Suspense, useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Background from './components/layouts/Background';
 import MainNavbar from "./components/layouts/MainNavbar";
 import HomePage from "./pages/HomePage";
 import RegistrationPage from "./pages/RegistrationPage";
 
 function App() {
+
   return (
     <div>
       <Router>
-      <MainNavbar />
+        <MainNavbar />
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route exact path="/" element={<HomePage />} />

@@ -11,7 +11,7 @@ function DateInput(props) {
         className={commonLabelClasses + props.labelClass}
       >{props.labelText + ((props.required) ? " *" : "")}</label>
       <input type="date"
-        className={commonInputClasses + props.inputClass}
+        className={commonInputClasses + props.inputClass + " cursor-text uppercase "}
         id={props.fieldName}
         name={props.fieldName}
         min={props.min}

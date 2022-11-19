@@ -6,7 +6,6 @@ import useFormContext from '../../Hooks/useFormContext'
 
 const EducationInfo = () => {
   const { userData, handleChange, commonInputSetContainerClasses, commonStepFormContainerClasses, optionsData, showOtherUniversity, isValidGradYear } = useFormContext()
-  console.log(userData.universityName)
   return (
     <div className={commonStepFormContainerClasses}>
       <div className={commonInputSetContainerClasses}>
@@ -19,6 +18,7 @@ const EducationInfo = () => {
           handleChange={handleChange}
           options={optionsData.universityOptions}
           autocomplete="on"
+          required
         />
         <TextInput containerClass=""
           labelClass={((userData.major) ? " text-green-300" : " text-sh-white ")}
@@ -28,6 +28,7 @@ const EducationInfo = () => {
           placeholder="Computer Science"
           fieldValue={userData.major}
           handleChange={handleChange}
+          required
         />
       </div>
       <div className={commonInputSetContainerClasses}>
@@ -39,6 +40,7 @@ const EducationInfo = () => {
           fieldValue={userData.otherUniversity}
           handleChange={handleChange}
           hidden={!showOtherUniversity}
+          required
         />
       </div>
       <div className={commonInputSetContainerClasses}>
@@ -50,6 +52,7 @@ const EducationInfo = () => {
           fieldValue={userData.yearOfUndergrad}
           handleChange={handleChange}
           options={optionsData.yearOptions}
+          required
         />
         <NumberInput containerClass=""
           labelClass={((userData.graduationYear) ? ((isValidGradYear) ? " text-green-300" : " text-red-300") : " text-sh-white ")}
@@ -60,6 +63,7 @@ const EducationInfo = () => {
           placeholder="2023"
           fieldValue={userData.graduationYear}
           handleChange={handleChange}
+          required
         />
       </div>
     </div>

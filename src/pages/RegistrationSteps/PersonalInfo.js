@@ -20,7 +20,7 @@ const PersonalInfo = () => {
         />
         <DateInput containerClass=""
         labelClass={((userData.dateOfBirth) ? " text-green-300" : " text-sh-white ")} 
-          labelText="Date of Birth (MM/DD/YYYY)"
+          labelText="Date of Birth"
           fieldName="dateOfBirth"
           max="2009-12-31"
           fieldValue={userData.dateOfBirth}

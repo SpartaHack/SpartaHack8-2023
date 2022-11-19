@@ -16,3 +16,10 @@
 .mono-font {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+.gradient-text {
+  background: linear-gradient(91.53deg, #F70063 20%, #1E4FFF 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import useFormContext from '../../Hooks/useFormContext'
 
 function Downloader(props) {
-  const { commonContainerClasses, commonLabelClasses, commonAdInfoClasses } = useFormContext()
+  const { commonContainerClasses, commonInputClasses, commonLabelClasses, commonAdInfoClasses } = useFormContext()
 
   return (
     <div hidden={props.hidden} className={commonContainerClasses + props.containerClass}>
@@ -10,7 +10,8 @@ function Downloader(props) {
         htmlFor={props.fieldName}
         className={commonLabelClasses + props.labelClass}
       >{props.labelText + ((props.required) ? " *" : "")}</span>
-      <a href={props.link} target="_blank" rel="noopener noreferrer" download>Download</a>
+      <a className={" text-center uppercase " + commonInputClasses + props.inputClass}
+        href={props.link} target="_blank" rel="noopener noreferrer" download><span className='rubik-font'>Download</span></a>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import unittest
 import requests
 
+LINK = "https://us-central1-spartahack8.cloudfunctions.net/registeUser"
 def call_api(url,data):
     x = requests.post(url, json = data)
     return x.status_code, x.json()
@@ -9,7 +10,7 @@ class TestStringMethods(unittest.TestCase):
 
     def test_standard(self):
         payload = {
-            "email":"leo.s.specht@gmail.com",
+            "email":"soteloju@msu.edu",
             "first_name":"Leonardo",
             "last_name":"Specht",
             "school":"Michigan State",
@@ -26,7 +27,7 @@ class TestStringMethods(unittest.TestCase):
             "date_of_birth":"01/01/2002"}
         expected_status = 200
         expected_response = {
-            "email":"leo.s.specht@gmail.com",
+            "email":"soteloju@msu.edu",
             "first_name":"Leonardo",
             "last_name":"Specht",
             "school":"Michigan State",
@@ -42,18 +43,18 @@ class TestStringMethods(unittest.TestCase):
             "resume":"my_link",
             "date_of_birth":'2002-01-01T00:00:00.000Z',
             "accepted_policy": True,
-            "approved": True,
+            "approved": False,
             "minor": False,
-            "msu_student": False,
-            "net_id": None}
-        response = call_api("http://127.0.0.1:5001/spartahack8/us-central1/registeUser",payload)
+            "msu_student": True,
+            "net_id": "soteloju"}
+        response = call_api(LINK,payload)
 
 
         self.assertEqual((response[0],response[1]["data"]), (expected_status,expected_response))
 
     def test_msu_student(self):
         payload = {
-            "email":"leo.s.specht@msu.edu",
+            "email":"natarenm@msu.edu",
             "first_name":"Leonardo",
             "last_name":"Specht",
             "school":"Michigan State",
@@ -70,7 +71,7 @@ class TestStringMethods(unittest.TestCase):
             "date_of_birth":"01/01/2002"}
         expected_status = 200
         expected_response = {
-            "email":"leo.s.specht@msu.edu",
+            "email":"natarenm@msu.edu",
             "first_name":"Leonardo",
             "last_name":"Specht",
             "school":"Michigan State",
@@ -86,11 +87,11 @@ class TestStringMethods(unittest.TestCase):
             "resume":"my_link",
             "date_of_birth":'2002-01-01T00:00:00.000Z',
             "accepted_policy": True,
-            "approved": True,
+            "approved": False,
             "minor": False,
             "msu_student": True,
-            "net_id": "leo.s.specht"}
-        response = call_api("http://127.0.0.1:5001/spartahack8/us-central1/registeUser",payload)
+            "net_id": "natarenm"}
+        response = call_api(LINK,payload)
 
         self.assertEqual((response[0],response[1]["data"]), (expected_status,expected_response))
 
@@ -135,7 +136,7 @@ class TestStringMethods(unittest.TestCase):
             "minor": True,
             "msu_student": False,
             "net_id": None}
-        response = call_api("http://127.0.0.1:5001/spartahack8/us-central1/registeUser",payload)
+        response = call_api(LINK,payload)
 
 
         self.assertEqual((response[0],response[1]["data"]), (expected_status,expected_response))
@@ -159,7 +160,7 @@ class TestStringMethods(unittest.TestCase):
             "date_of_birth":"01/01/2006"}
         expected_status = 500
         expected_response = 'Missing email parameter'
-        response = call_api("http://127.0.0.1:5001/spartahack8/us-central1/registeUser",payload)
+        response = call_api(LINK,payload)
         self.assertEqual((response[0],response[1]["message"]), (expected_status,expected_response))
 
 if __name__ == '__main__':

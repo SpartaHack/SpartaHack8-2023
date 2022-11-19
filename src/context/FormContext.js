@@ -56,7 +56,7 @@ export const FormProvider = ({ children }) => {
 
   const optionsData = {
     yearOptions: [
-      ["Select", ""], ["Freshman - First Year", "Freshman"], ["Sophomore - Second Year", "Sophomore"], ["Junior - Third Year", "Junior"], ["Junior - Fourth Year", "Junior"]
+      ["Select", ""], ["Freshman - First Year", "Freshman"], ["Sophomore - Second Year", "Sophomore"], ["Junior - Third Year", "Junior"], ["Senior - Fourth Year", "Senior"]
     ],
     sexOptions: [
       ["Select", ""], ["Male", "Male"], ["Female", "Female"], ["Non-binary", "Non-binary"], ["Prefer not to answer", "None"]
@@ -124,7 +124,7 @@ export const FormProvider = ({ children }) => {
   }, [userData.phone])
 
   useEffect(() => {
-    if (userData.universityName === "Other") {
+    if (userData.universityName === "other") {
       setShowOtherUniversity(true)
     } else {
       setShowOtherUniversity(false)
@@ -138,14 +138,16 @@ export const FormProvider = ({ children }) => {
     const type = e.target.type
     const name = e.target.name
 
-    let value = type === "checkbox"
+    var value = type === "checkbox"
       ? e.target.checked
       : e.target.value
-    
-    if (type === "file") {
-      value = e.target
-    }
 
+    if (type === "file") {
+      console.log(e.target.files.length)
+      if (e.target.files.length) {
+        value = e.target.files
+      } else { value = "" }
+    }
 
     setUserData(prevUserData => ({
       ...prevUserData, [name]: value
@@ -165,15 +167,17 @@ export const FormProvider = ({ children }) => {
   const canProceedFromEducation = educationInfoData
     .map(key => userData[key]).every(Boolean)
     && isValidGradYear
-    && (userData.universityName === "Other" ? userData.otherUniversity : true)
+    && (userData.universityName === "other" ? userData.otherUniversity : true)
   const canProceedFromPersonal = personalInfoData.map(key => userData[key]).every(Boolean) && !(userData["dateOfBirth"].slice(0, 4) >= 2010 && userData["dateOfBirth"].slice(0, 4) >= 1990)
   const canProceedFromExperience = experienceInfoData[0].map(key => userData[key]).every(Boolean)
   const canProceedFromAgreements = agreementsInfoData[0]
     .map(key => userData[key]).every(Boolean)
-    && ((userData.isMinor) ? userData.minorForm : true)
+    && ((userData.isMinor) ? (userData.minorForm.length === 3 ? true : false) : true)
 
-  const canSubmit = ([...Object.values(requiredFields)].every(Boolean)) && (step === Object.keys(stepTitle).length) && canProceedFromAgreements
-
+  const canSubmit = ([...Object.values(requiredFields)].every(Boolean))
+    && (step === Object.keys(stepTitle).length)
+  // && canProceedFromAgreements
+  // console.log(canSubmit)
   const disabledPrev = step === 1
   const disabledNext =
     // false
@@ -191,17 +195,20 @@ export const FormProvider = ({ children }) => {
 
   console.log(userData)
 
-  const commonStepFormContainerClasses = "flex flex-col w-full h-[500px] "
-  const commonInputSetContainerClasses = "grid grid-cols-1 sm:grid-cols-2 w-full gap-x-8 "
-  const commonContainerClasses = "col-span-1 mb-4 w-full borderd rounded-mdd "
-  const commonLabelClasses = "block w-full uppercase pt-4 pb-1 text-xs rubik-font "
-  const commonInputClasses = "block w-full h-[56px] p-4 bg-transparent outline-none inter-font text-sh-white border rounded-md "
-  const commonButtonClasses = "w-32 h-14 py-4 px-6 rounded-md uppercase transition-all duration-75 rubik-font "
+  const commonStepFormContainerClasses = "flex flex-col w-full min-h-[470px] h-fit"
+  const commonInputSetContainerClasses = "grid grid-cols-1 sm:grid-cols-2 w-full gap-x-8 items-end "
+
+  const commonContainerClasses = "col-span-1 mb-4 w-full rounded-mdd "
+  const commonLabelClasses = "block w-full uppercase pt-4 pb-1.5 text-xs rubik-font "
+  const commonInputClasses = "block w-full h-[56px] p-4 outline-none ring-[1px] ring-transparent focus:ring-sh-white inter-font text-sh-white rounded-md bg-sh-white/10 backdrop-blur-[3px] "
   const commonAdInfoClasses = " "
-  const commonDisplayInfoSetClasses = "flex flex-row py-2 gap-x-4 "
-  const commonDisplayInfoContainerClasses = "w-full py-4 "
-  const commonDisplayInfoLabelClasses = "uppercase text-xs text-slate-500 rubik-font "
-  const commonDisplayInfoClasses = "text-md mt-1 inter-font "
+
+  const commonButtonClasses = "w-full md:w-32 h-14 py-4 px-6 rounded-md uppercase transition-all duration-75 select-none backdrop-blur-[3px] rubik-font outline-none ring-2 ring-transparent focus:ring-sh-pink/50 "
+
+  const commonDisplayInfoSetClasses = "grid grid-cols-1 md:grid-cols-2 flex-row gap-x-4 "
+  const commonDisplayInfoContainerClasses = " col-span-1 w-full py-4 "
+  const commonDisplayInfoLabelClasses = "uppercase text-xs text-slate-500 rubik-font text-sh-white/70 "
+  const commonDisplayInfoClasses = "text-md mt-1 inter-font text-sh-white "
 
   return (
     <FormContext.Provider value={{

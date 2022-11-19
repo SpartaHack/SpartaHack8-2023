@@ -23,8 +23,8 @@ const ExperienceInfo = () => {
 
   return (
     <div className={commonStepFormContainerClasses}>
-      <div className={commonInputSetContainerClasses + "grid-cols-1"}>
-        <NumberInput containerClass=""
+      <div className={commonInputSetContainerClasses + ""}>
+        <NumberInput containerClass=" col-span-2 "
           labelClass={((userData.hackathonsAttended) ? " text-green-300" : " text-sh-white ")}
           labelText="How Many Hackathons Have You Attended?"
           fieldName="hackathonsAttended"
@@ -55,7 +55,8 @@ const ExperienceInfo = () => {
       </div>
       <div className={commonInputSetContainerClasses + "grid-cols-1"}>
         <FileInput containerClass="col-span-2"
-          inputClass=""
+          labelClass={((userData.resume) ? " text-green-300" : " text-sh-white ")}
+          fileName={((userData.resume) ? userData.resume[0].name : "No file uploaded")}
           labelText="Upload resume"
           fieldName="resume"
           handleChange={handleChange}

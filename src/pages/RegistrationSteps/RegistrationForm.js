@@ -1,12 +1,10 @@
 import React from 'react'
+// import LinearGradient from 'react-native-linear-gradient';
 import FormButton from '../../components/ui/FormButton'
 import useFormContext from '../../Hooks/useFormContext'
-import FormFields from './FormFields'
+import FormFields from './FormFields';
 import storage from "../../firebaseConfig";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
-
-
-
 
 function RegistrationForm() {
   const {
@@ -92,26 +90,30 @@ function RegistrationForm() {
   }
 
   return (
-    <div className='w-screen flex flex-row justify-center'>
+    <div className='w-screen flex flex-row justify-center mt-32 sm:mt-24 mb-10'>
       <form
-        className="w-screen mx-4 sm:w-[80vw] sm:mx-auto max-w-4xl bg-sh-white/20 p-12 rounded rounded-xl"
+        className="w-full min-h-fit h-max mx-4 sm:w-[80vw] sm:mx-auto max-w-4xl sm:bg-shm-white/10 sm:p-12 rounded-2xl"
         onSubmit={handleSubmit}>
 
         <header
-          className='text-3xl mb-6 font-bold rubik-font text-sh-white'>
+          className='text-3xl mb-4 sm:mb-6 font-semibold rubik-font text-sh-white w-fit'
+          style={{background: "linear-gradient(135deg, #F70063 0%, #1E4FFF 150%)",
+          webkitTextFillColor: "transparent",
+          webkitBackgroundClip: "text",
+          backgroundClip: "text",
+          TextFillColor: "transparent"}}>
           {stepTitle[step]}
         </header>
 
         <FormFields />
 
-
-        <div className='flex w-full justify-end gap-x-4'>
-          <FormButton buttonClass="text-slate-700 border border-slate-500 hover:border-transparent hover:bg-slate-200"
+        <div className='flex w-full justify-end mt-12 gap-x-4'>
+          <FormButton buttonClass="text-pink-500 border border-pink-500 hover:border-transparent hover:bg-pink-100"
             type='button' onClick={handlePrev} disabled={disabledPrev} hidden={disabledPrev} buttonText={prevButtonText} />
           <FormButton buttonClass="bg-blue-600 text-white hover:bg-blue-500 disabled:bg-blue-300 disabled:cursor-not-allowed"
             type='button' onClick={handleNext} disabled={disabledNext} hidden={hideNext} buttonText="Next" />
-          <FormButton buttonClass="bg-pink-600 text-white hover:bg-pink-500" id="register" onClick={submit_form}
-            type='submit' disabled={canSubmit} hidden={hideSubmit} buttonText="Register" />
+          <FormButton buttonClass="bg-pink-600 text-white hover:bg-pink-500"
+            type='submit' disabled={!canSubmit} hidden={hideSubmit} buttonText="Register" />
         </div>
 
       </form>

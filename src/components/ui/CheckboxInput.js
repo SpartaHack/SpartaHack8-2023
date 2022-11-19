@@ -6,23 +6,24 @@ function TextInput(props) {
 
   return (
     <div hidden={props.hidden} className={commonContainerClasses + props.containerClass + " flex flex-row"}>
-
+      <div className={props.inputClass + " pt-2 "}>
       <input type="checkbox"
-        className={commonInputClasses + props.inputClass + " h-full"}
+        className={""}
         id={props.fieldName}
         name={props.fieldName}
         checked={props.fieldValue}
         onChange={props.handleChange}
         disabled={props.disabled}
       />
+      </div>
       <label
         htmlFor={props.fieldName}
-        className={commonLabelClasses + props.labelClass + " pl-4 py-4 flex flex-col gap-y-2"}
+        className={commonLabelClasses + props.labelClass + " pl-4 pt-2 pb-2 flex flex-col gap-y-2"}
       >
         <span>
           {props.labelText + ((props.required) ? " *" : "")}
         </span>
-        <span className=' normal-case text-sm text-slate-700 inter-font'>{props.addInfo}</span>
+        <span className=' normal-case text-sm text-sh-white/90 inter-font'>{props.addInfo}</span>
       </label>
     </div>
   )
