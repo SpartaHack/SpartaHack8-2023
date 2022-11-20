@@ -5,8 +5,13 @@ import useFormContext from '../../Hooks/useFormContext'
 import FormFields from './FormFields';
 import storage from "../../firebaseConfig";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+import {useState, useEffect } from "react";
 
 function RegistrationForm() {
+  const [succesful, setSuccesful] = useState(false);
+  useEffect( () => {
+    console.log("was succesful?", succesful)
+  }, [succesful])
   const {
     step,
     setStep,
@@ -20,6 +25,15 @@ function RegistrationForm() {
     console.log("about to print userdata");
     console.log(userData)
     const file_obj = userData.resume
+    const minor_files = userData.minorForm
+    console.log(minor_files);
+    const isMinor = userData.isMinor
+    let minor_forms_links = []
+    if (isMinor) {
+      console.log("this person is a minor");
+      minor_forms_links = await  upload_minor_forms(minor_files, (userData.firstName + " " + userData.lastName));
+    }
+    console.log(isMinor);
     const fileURL = await upload_resume(file_obj);
     let university = userData.universityName === "other"
       ? userData.otherUniversity
@@ -43,7 +57,8 @@ function RegistrationForm() {
       hackatons_attended: userData.hackathonsAttended,
       linkedin: userData.linkedinURL,
       githubURL: userData.githubURL,
-      resume: fileURL
+      resume: fileURL,
+      content_form: minor_forms_links
     }
     const response_submission = await fetch('https://us-central1-spartahack8.cloudfunctions.net/registeUser', {
     method: 'POST',
@@ -54,17 +69,20 @@ function RegistrationForm() {
     });
     // console.log(response_submission.json());
     const myJson = await response_submission.json();
+    const message = myJson.message
+    if (message === "sucess") {
+      setSuccesful(true);
+    }
     console.log(myJson.message);
     // console.log(url)
-
-
+    return myJson.message
   }
   async function upload_resume(file_obj) {
     console.log("Here in the resume part");
-    const obj = file_obj;
+    // const obj = file_obj;
     // console.log(obj);
     // let obj = document.getElementById("resume");
-    const file = obj.files[0];
+    const file = file_obj[0];
     console.log("Here with the file");
     console.log(file);
   
@@ -79,6 +97,31 @@ function RegistrationForm() {
     const url: any = await getDownloadURL(uploadTask.ref)
     // console.log(url);
     return url;
+  }
+
+  async function upload_minor_form(file, name) {
+    const metadata = {
+      contentType: file.type
+    };
+
+    const storageRef = ref(storage, 'minorForms/' + file.name + name);
+    // console.log(storageRef);
+    const uploadTask =  await  uploadBytesResumable(storageRef, file, metadata);
+    // console.log(uploadTask.ref);
+    const url = await getDownloadURL(uploadTask.ref)
+    return url;
+  }
+
+  async function upload_minor_forms(files, name) {
+    console.log("Here in the minors part");
+    let minor_forms_links = []
+    var length = files.length
+    for (var i = 0; i < length; i++) {
+      var url = await upload_minor_form(files[i], name);
+      minor_forms_links.push(url);
+    }
+    console.log(minor_forms_links);
+    return minor_forms_links
   }
 
   const handlePrev = () => setStep(prev => prev - 1)
@@ -113,8 +156,9 @@ function RegistrationForm() {
           <FormButton buttonClass="bg-blue-600 text-white hover:bg-blue-500 disabled:bg-blue-300 disabled:cursor-not-allowed"
             type='button' onClick={handleNext} disabled={disabledNext} hidden={hideNext} buttonText="Next" />
           <FormButton buttonClass="bg-pink-600 text-white hover:bg-pink-500"
-            type='submit' disabled={!canSubmit} hidden={hideSubmit} buttonText="Register" />
+            type='submit' disabled={canSubmit} hidden={hideSubmit} buttonText="Register" onClick={submit_form} />
         </div>
+        {succesful ? <div className="text-white text-center"> Succesfully registered</div> : <div> </div>}
 
       </form>
     </div>
