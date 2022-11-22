@@ -1,4 +1,6 @@
 import React from 'react'
+// import { useHistory } from "react-router-dom";
+import {createBrowserHistory} from "history"
 // import LinearGradient from 'react-native-linear-gradient';
 import FormButton from '../../components/ui/FormButton'
 import useFormContext from '../../Hooks/useFormContext'
@@ -6,6 +8,15 @@ import FormFields from './FormFields';
 import storage from "../../firebaseConfig";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import {useState, useEffect } from "react";
+
+function NavigateHome() {
+  // const history = useHistory();
+  const browserHistory = createBrowserHistory();
+  setTimeout(() => {
+    // window.location.href = "/";
+    browserHistory.push({pathname: '/', state: {message: "Succesfully registered"}});
+  }, 2000);
+}
 
 function RegistrationForm() {
   const [succesful, setSuccesful] = useState(false);
@@ -150,7 +161,7 @@ function RegistrationForm() {
 
         <FormFields />
 
-        <div className='flex w-full justify-end mt-12 gap-x-4'>
+        <div className='flex   w-full justify-end mt-12 gap-x-4'>
           <FormButton buttonClass="text-pink-500 border border-pink-500 hover:border-transparent hover:bg-pink-100"
             type='button' onClick={handlePrev} disabled={disabledPrev} hidden={disabledPrev} buttonText={prevButtonText} />
           <FormButton buttonClass="bg-blue-600 text-white hover:bg-blue-500 disabled:bg-blue-300 disabled:cursor-not-allowed"
@@ -159,7 +170,7 @@ function RegistrationForm() {
             type='submit' disabled={canSubmit} hidden={hideSubmit} buttonText="Register" onClick={submit_form} />
         </div>
         {succesful ? <div className="text-white text-center"> Succesfully registered</div> : <div> </div>}
-
+        {succesful ? NavigateHome() : <div></div>}
       </form>
     </div>
   )
