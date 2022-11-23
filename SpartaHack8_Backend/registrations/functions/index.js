@@ -118,7 +118,8 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
           if(all_fields_valid[0]){
             //Check if already registered
             const is_possible_to_register = await is_not_registered(postData['email'])
-            if(is_possible_to_register){
+            var test_email = 'mann@msu.edu';
+            if(is_possible_to_register || postData['email'] == test_email){
               // Check date of birth
               let birth_date = new Date(postData['date_of_birth']);
               postData['date_of_birth'] = birth_date;
@@ -141,14 +142,22 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
                 postData["net_id"] = postData["email"].substr(0,len-1);
               }
               postData["registered_at"] = new Date();
-              db.collection('registrations').add(postData)
+              if (postData['email'] == test_email){
+                delete postData['registered_at'];
+                response.status(200).send({"message":"sucess", "data": postData});
+              }
+              else{
+                db.collection('registrations').add(postData)
                 .then(ref => {
                     send_email(postData["email"],"Your application to SpartaHack has been submitted","We will let you know when you are approved");
+                    delete postData['registered_at'];
                     response.status(200).send({"message":"sucess", "data": postData});
                 })
                 .catch(err =>{
                     response.status(500).send({"data": "Error in firestore", "message":"Failure in saving to firebase"});
                 })
+              }
+              
             }
             else{
               response.status(400).send({"data": "Email already registered", "message":"Email already registered"});
