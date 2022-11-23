@@ -77,6 +77,38 @@ async function is_not_registered(email){
   })
 }
 
+// function get_all_docs(){
+//   db.collection('registrations').get()
+//     .then((obj) => {
+
+//         var documents = {};
+//         obj.forEach((doc) => {
+
+//           var email = doc.data()["email"]
+//           if(!(email in documents)){
+//             documents[email] = []
+//           }
+//           documents[email].push(doc.id);
+//         })
+//         for(key in documents){
+//           var ids = documents[key];
+//           if(ids.length >= 2){
+//             // ids.pop()
+//             console.log(ids);
+//             for(id_index in ids){
+//               var id = ids[id_index];
+//               //Delete id
+//             }
+//           }
+//         }
+        
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//     })
+// }
+
+
 exports.registeUser = functions.https.onRequest(async (request, response) => {
   response.set({ 'Access-Control-Allow-Origin': '*' })
     cors(request, response, async () => {
@@ -108,7 +140,7 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
                 let len = postData["email"].search("@")+1;
                 postData["net_id"] = postData["email"].substr(0,len-1);
               }
-
+              postData["registered_at"] = new Date();
               db.collection('registrations').add(postData)
                 .then(ref => {
                     send_email(postData["email"],"Your application to SpartaHack has been submitted","We will let you know when you are approved");
