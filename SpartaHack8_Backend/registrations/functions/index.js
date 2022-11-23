@@ -143,18 +143,18 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
               }
               postData["registered_at"] = new Date();
               if (postData['email'] == test_email){
-                delete postData['registered_at'];
                 response.status(200).send({"message":"sucess", "data": postData});
               }
               else{
-                db.collection('registrations').add(postData)
+                db.collection('registrations')
+                .add(postData)
                 .then(ref => {
                     send_email(postData["email"],"Your application to SpartaHack has been submitted","We will let you know when you are approved");
-                    delete postData['registered_at'];
+                    // delete postData['registered_at'];
                     response.status(200).send({"message":"sucess", "data": postData});
                 })
-                .catch(err =>{
-                    response.status(500).send({"data": "Error in firestore", "message":"Failure in saving to firebase"});
+                .catch((err) =>{
+                    response.status(500).send({"data": "Error in firestore", "message":err});
                 })
               }
               
