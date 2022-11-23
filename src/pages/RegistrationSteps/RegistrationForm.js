@@ -162,7 +162,7 @@ function RegistrationForm() {
       setMessageInfo("An error occurred. Please review your form and try again or contact us if there is an issue");
       setShowModal(true);
     }
-    // console.log(myJson.message);
+    console.log(myJson.message);
     // console.log(url)
     return myJson.message
   }
