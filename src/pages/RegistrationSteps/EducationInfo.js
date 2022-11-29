@@ -1,25 +1,27 @@
 import React from 'react'
 import NumberInput from '../../components/ui/NumberInput'
 import SelectInput from '../../components/ui/SelectInput'
+import SmartTextInput from '../../components/ui/SmartTextInput'
 import TextInput from '../../components/ui/TextInput'
 import useFormContext from '../../Hooks/useFormContext'
 
 const EducationInfo = () => {
-  const { userData, handleChange, commonInputSetContainerClasses, commonStepFormContainerClasses, optionsData, showOtherUniversity, isValidGradYear } = useFormContext()
+  const { userData, handleChange, handleSmartInputChange, commonInputSetContainerClasses, commonStepFormContainerClasses, optionsData, showOtherUniversity, isValidGradYear, isValidUniversityName } = useFormContext()
+  // console.log(optionsData.universityOptions)
+
   return (
     <div className={commonStepFormContainerClasses}>
       <div className={commonInputSetContainerClasses}>
-        <SelectInput containerClass=""
-          labelClass={((userData.universityName) ? " text-green-300" : " text-sh-white ")}
+        <SmartTextInput containerClass=""
+          labelClass={((isValidUniversityName) ? " text-green-300" : " text-sh-white ")}
           inputClass=""
           labelText="University/College"
           fieldName="universityName"
           fieldValue={userData.universityName}
-          handleChange={handleChange}
+          handleChange={handleSmartInputChange}
           options={optionsData.universityOptions}
-          autocomplete="on"
-          required
-        />
+          validator={isValidUniversityName}
+          required />
         <TextInput containerClass=""
           labelClass={((userData.major) ? " text-green-300" : " text-sh-white ")}
           inputClass=""
@@ -54,17 +56,17 @@ const EducationInfo = () => {
           options={optionsData.yearOptions}
           required
         />
-        <NumberInput containerClass=""
-          labelClass={((userData.graduationYear) ? ((isValidGradYear) ? " text-green-300" : " text-red-300") : " text-sh-white ")}
+        <SelectInput containerClass=""
+          labelClass={((userData.graduationYear) ? " text-green-300" : " text-sh-white ")}
           inputClass=""
-          labelText="Graduation Year"
+          labelText="Current Level of Study"
           fieldName="graduationYear"
-          min="2023"
-          placeholder="2023"
           fieldValue={userData.graduationYear}
           handleChange={handleChange}
+          options={optionsData.studyLevelOptions}
           required
         />
+
       </div>
     </div>
   )

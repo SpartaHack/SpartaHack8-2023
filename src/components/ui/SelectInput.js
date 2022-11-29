@@ -8,7 +8,8 @@ function SelectInput(props) {
   const options = props.options
 
   const selectOptions = options.map((option) =>
-    <option value={option[1]}>
+    <option key={option[1]}
+      value={option[1]}>
       {option[0]}
     </option>
   )

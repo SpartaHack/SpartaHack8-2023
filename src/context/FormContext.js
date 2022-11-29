@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import UniversityOptions from "./UniversityOptions";
+import UniversityOptions from "./UniversityOptions.json";
 
 const FormContext = createContext({})
 
@@ -16,9 +16,11 @@ export const FormProvider = ({ children }) => {
   const [step, setStep] = useState(1)
 
   const [isStudent, setIsStudent] = useState(false)
+  const [isValidUniversityName, setIsValidUniversityName] = useState(false)
   const [isValidLinkedIn, setIsValidLinkedIn] = useState(false)
   const [isValidGithub, setIsValidGithub] = useState(false)
-  const [isValidGradYear, setIsValidGradYear] = useState(false)
+  const [isValidEssay, setIsValidEssay] = useState(false)
+  const [isValidAge, setIsValidAge] = useState(false)
 
   const [showOtherUniversity, setShowOtherUniversity] = useState(false)
 
@@ -34,11 +36,13 @@ export const FormProvider = ({ children }) => {
     yearOfUndergrad: "",
     graduationYear: "",
     countryOfOrigin: "",
-    dateOfBirth: "",
+    age: "",
     isMinor: false,
     minorForm: "",
     sex: "",
     race: "",
+    stateFrom: "",
+    whyAttend: "",
     hackathonsAttended: "",
     linkedinURL: "",
     githubURL: "",
@@ -50,29 +54,53 @@ export const FormProvider = ({ children }) => {
 
   const basicInfoData = ["firstName", "lastName", "email", "phone"]
   const educationInfoData = ["universityName", "major", "graduationYear", "yearOfUndergrad"]
-  const personalInfoData = ["countryOfOrigin", "dateOfBirth", "sex", "race"]
-  const experienceInfoData = [["hackathonsAttended", "resume"], ["linkedin", "github"]]
+  const personalInfoData = ["countryOfOrigin", "age", "sex", "race", "stateFrom"]
+  const experienceInfoData = [["hackathonsAttended", "resume", "whyAttend"], ["linkedin", "github"]]
   const agreementsInfoData = [["mlhCoCAgree", "mlhTCAgree"], ["mlhEmailAgree"]]
 
   const optionsData = {
     yearOptions: [
-      ["Select", ""], ["Freshman - First Year", "Freshman"], ["Sophomore - Second Year", "Sophomore"], ["Junior - Third Year", "Junior"], ["Senior - Fourth Year", "Senior"]
+      ["Select", ""], ["Freshman - First Year", "Freshman"], ["Sophomore - Second Year", "Sophomore"], ["Junior - Third Year", "Junior"], ["Senior - Fourth Year", "Senior"], ["Fifth Year or Higher", "Fifth Year or Higher"], ["Not an undergraduate", "Not an undergraduate"]
     ],
     sexOptions: [
-      ["Select", ""], ["Male", "Male"], ["Female", "Female"], ["Non-binary", "Non-binary"], ["Prefer not to answer", "None"]
+      ["Select", ""], ["Man", "Man"], ["Woman", "Woman"], ["Non-binary", "Non-binary"], ["Other", "other"], ["Prefer not to answer", "None"]
     ],
     raceOptions: [
-      ["Select", ""], ["White", "White"], ["Black or African American", "Black or African American"], ["Native American (American Indian)", "Native American (American Indian)"], ["Asian", "Asian"], ["Latinx or Hispanic", "Latinx or Hispanic"], ["Native Hawaiian and Other Pacific Islander", "Native Hawaiian and Other Pacific Islander"], ["Other", "Other"]
+      ["Select", ""], ["White", "White"], ["Black or African American", "Black or African American"], ["Native American (American Indian)", "Native American (American Indian)"], ["Asian", "Asian"], ["Latinx or Hispanic", "Latinx or Hispanic"], ["Native Hawaiian and Other Pacific Islander", "Native Hawaiian and Other Pacific Islander"], ["Other", "Other"], ["Prefer not to answer", "None"]
     ],
-    universityOptions: UniversityOptions()
-  }
+    studyLevelOptions: [
+      ["Select", ""], ["Less than Secondary or High School", "Less than Secondary or High School"], ["Secondary or High School", "Secondary or High School"], ["Undergraduate University (2-Year Community College or similar)", "Undergraduate University (2-Year Community College or similar)"], ["Undergraduate University (3+ Year)", "Undergraduate University (3+ Year)"], ["Graduate University (Masters, Doctoral, Professional, etc.)", "Graduate University (Masters, Doctoral, Professional, etc.)"], ["Code School or Bootcamp", "Code School or Bootcamp"], ["Other Vocational or Trade Program or Apprenticeship", "Other Vocational or Trade Program or Apprenticeship"], ["Post Doctorate", "Post Doctorate"], ["Other", "Other"], ["I'm not currently a student", "I'm not currently a student"], ["Prefer not to answer", "None"]
+    ],
+    universityOptions: UniversityOptions,
+    universityNamesList: UniversityOptions.map(array => array.name),
+    stateOptions: [["Select", ""], ["Alabama", "Alabama"], ["Alaska", "Alaska"], ["Arizona", "Arizona"], ["Arkansas", "Arkansas"], ["California", "California"], ["Colorado", "Colorado"], ["Connecticut", "Connecticut"], ["Delaware", "Delaware"], ["Florida", "Florida"], ["Georgia", "Georgia"], ["Hawaii", "Hawaii"], ["Idaho", "Idaho"], ["IllinoisIndiana", "IllinoisIndiana"], ["Iowa", "Iowa"], ["Kansas", "Kansas"], ["Kentucky", "Kentucky"], ["Louisiana", "Louisiana"], ["Maine", "Maine"], ["Maryland", "Maryland"], ["Massachusetts", "Massachusetts"], ["Michigan", "Michigan"], ["Minnesota", "Minnesota"], ["Mississippi", "Mississippi"], ["Missouri", "Missouri"], ["MontanaNebraska", "MontanaNebraska"], ["Nevada", "Nevada"], ["New Hampshire", "New Hampshire"], ["New Jersey", "New Jersey"], ["New Mexico", "New Mexico"], ["New York", "New York"], ["North Carolina", "North Carolina"], ["North Dakota", "North Dakota"], ["Ohio", "Ohio"], ["Oklahoma", "Oklahoma"], ["Oregon", "Oregon"], ["PennsylvaniaRhode Island", "PennsylvaniaRhode Island"], ["South Carolina", "South Carolina"], ["South Dakota", "South Dakota"], ["Tennessee", "Tennessee"], ["Texas", "Texas"], ["Utah", "Utah"], ["Vermont", "Vermont"], ["Virginia", "Virginia"], ["Washington", "Washington"], ["West Virginia", "West Virginia"], ["Wisconsin", "Wisconsin"], ["Wyoming", "Wyoming"],]
 
-  // console.log(optionsData.yearOptions)
+  }
 
   useEffect(() => {
     const bool = userData.email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.edu$/) ? true : false
     setIsStudent(bool);
   }, [userData.email, isStudent])
+
+  const lowerCaseUniNameList = optionsData.universityNamesList.map(value => value.toLowerCase())
+  useEffect(() => {
+    const UniversityName = userData.universityName
+
+    const bool = UniversityName ? (lowerCaseUniNameList.includes(UniversityName.toLowerCase()) ? true : false) : false
+    setIsValidUniversityName(bool)
+  }, [lowerCaseUniNameList, userData.universityName])
+
+  useEffect(() => {
+    var wordsList = userData.whyAttend.split(" ")
+    if (wordsList.includes("")) {
+      wordsList = wordsList.filter(word => word !== "")
+    }
+    // console.log(wordsList)
+    const wordCount = wordsList.length
+    const bool = (((wordCount > 3) && (wordCount <= 50)) ? true : false)
+
+    setIsValidEssay(bool)
+  }, [userData.whyAttend])
 
   useEffect(() => {
     const re = new RegExp(/(^http[s]?:\/{2})?(www\.)?(linkedin\.com\/in\/)(\S{2,64})/)
@@ -87,20 +115,13 @@ export const FormProvider = ({ children }) => {
   }, [userData.githubURL, isValidGithub])
 
   useEffect(() => {
-    var [birthYear, birthMonth, birthDay] = [...userData.dateOfBirth.split("-")]
-    var [thisYear, thisMonth, thisDay] = [...(new Date).toISOString().slice(0, 10).split("-")]
-    var yearsSinceBirth = (thisYear - birthYear) + (thisMonth - birthMonth) / 12 + (thisDay - birthDay) / 365
-    var bool = ((yearsSinceBirth > 18) ? false : true)
+    var bool = ((userData.age >= 18) ? false : true)
+    setIsValidAge(userData.age > 12 ? true : false)
     setUserData(prevUserData => ({
       ...prevUserData, isMinor: bool
     }))
-  }, [userData.dateOfBirth])
-
-  useEffect(() => {
-    var GraduationYear = userData.graduationYear
-    const bool = (GraduationYear.length === 4 && GraduationYear >= 2023 && typeof (GraduationYear) === "string") ? true : false
-    setIsValidGradYear(bool);
-  }, [userData.graduationYear, isValidGradYear])
+  }, [userData.age])
+  // console.log(userData.isMinor)
 
   function formatPhoneNumber(value) {
     if (!value) return value;
@@ -136,14 +157,13 @@ export const FormProvider = ({ children }) => {
 
   const handleChange = e => {
     const type = e.target.type
-    const name = e.target.name
+    var name = e.target.name
 
-    var value = type === "checkbox"
+    var value = (type === "checkbox")
       ? e.target.checked
       : e.target.value
 
     if (type === "file") {
-      console.log(e.target.files.length)
       if (e.target.files.length) {
         value = e.target.files
       } else { value = "" }
@@ -153,6 +173,25 @@ export const FormProvider = ({ children }) => {
       ...prevUserData, [name]: value
     }))
   }
+
+  // console.log(userData.whyAttend)
+
+  const handleSmartInputChange = (e, name, value) => {
+
+    const perfectName = optionsData.universityNamesList.filter(data => (data.toLowerCase() === value.toLowerCase()))[0]
+
+    value = (perfectName ? perfectName : value)
+
+    value = (e.target.innerText
+      ? e.target.innerText
+      : value)
+
+    setUserData(prevUserData => ({
+      ...prevUserData, [name]: value
+    }))
+  }
+
+  // console.log(userData.universityName)
 
   const {
     linkedinURL,
@@ -166,10 +205,12 @@ export const FormProvider = ({ children }) => {
   const canProceedFromBasic = basicInfoData.map(key => userData[key]).every(Boolean) && (isStudent)
   const canProceedFromEducation = educationInfoData
     .map(key => userData[key]).every(Boolean)
-    && isValidGradYear
+    && isValidUniversityName
     && (userData.universityName === "other" ? userData.otherUniversity : true)
-  const canProceedFromPersonal = personalInfoData.map(key => userData[key]).every(Boolean) && !(userData["dateOfBirth"].slice(0, 4) >= 2010 && userData["dateOfBirth"].slice(0, 4) >= 1990)
-  const canProceedFromExperience = experienceInfoData[0].map(key => userData[key]).every(Boolean)
+  const canProceedFromPersonal = personalInfoData.map(key => userData[key]).every(Boolean) && isValidAge
+  const canProceedFromExperience = experienceInfoData[0]
+    .map(key => userData[key]).every(Boolean)
+    && isValidEssay
   const canProceedFromAgreements = agreementsInfoData[0]
     .map(key => userData[key]).every(Boolean)
     && ((userData.isMinor) ? (userData.minorForm.length === 3 ? true : false) : true)
@@ -177,7 +218,7 @@ export const FormProvider = ({ children }) => {
   const canSubmit = ([...Object.values(requiredFields)].every(Boolean))
     && (step === Object.keys(stepTitle).length)
   // && canProceedFromAgreements
-  // console.log(canSubmit)
+  // console.log()
   const disabledPrev = step === 1
   const disabledNext =
     // false
@@ -188,12 +229,14 @@ export const FormProvider = ({ children }) => {
     || (step === 4 && !canProceedFromExperience)
     || (step === 5 && !canProceedFromAgreements)
 
+  // console.log(canProceedFromEducation)
+
   const hideNext = step === Object.keys(stepTitle).length
   const hideSubmit = step !== Object.keys(stepTitle).length
 
   const prevButtonText = (step === Object.keys(stepTitle).length ? "Back" : "Previous")
 
-  console.log(userData)
+  // console.log(userData)
 
   const commonStepFormContainerClasses = "flex flex-col w-full min-h-[470px] h-fit"
   const commonInputSetContainerClasses = "grid grid-cols-1 sm:grid-cols-2 w-full gap-x-8 items-end "
@@ -210,12 +253,14 @@ export const FormProvider = ({ children }) => {
   const commonDisplayInfoLabelClasses = "uppercase text-xs text-slate-500 rubik-font text-sh-white/70 "
   const commonDisplayInfoClasses = "text-md mt-1 inter-font text-sh-white "
 
+  // console.log(userData)
+
   return (
     <FormContext.Provider value={{
-      stepTitle, step, setStep, userData, setUserData, canSubmit, handleChange,
+      stepTitle, step, setStep, userData, setUserData, canSubmit, handleChange, handleSmartInputChange,
       canProceedFromBasic, canProceedFromEducation, canProceedFromPersonal, canProceedFromExperience,
-      disabledNext, disabledPrev, hideNext, hideSubmit, isStudent, isValidGithub, isValidLinkedIn, isValidGradYear, prevButtonText,
-      commonContainerClasses, commonLabelClasses, commonInputClasses, commonAdInfoClasses, commonButtonClasses,
+      disabledNext, disabledPrev, hideNext, hideSubmit, isStudent, isValidGithub, isValidLinkedIn, isValidUniversityName, isValidEssay, isValidAge,
+      prevButtonText, commonContainerClasses, commonLabelClasses, commonInputClasses, commonAdInfoClasses, commonButtonClasses,
       commonInputSetContainerClasses, commonStepFormContainerClasses,
       commonDisplayInfoLabelClasses, commonDisplayInfoClasses, commonDisplayInfoContainerClasses, commonDisplayInfoSetClasses,
       optionsData, showOtherUniversity

@@ -51,7 +51,7 @@ function HomePage(props) {
           <HeroText />
           <Link to="/register" exact className=" w-full mt-8 sm:mt-12">
             <LargeButton buttonClass=" mx-auto border border-sh-pink"
-              buttonText="Register Now" />
+              buttonText="Apply Now" />
           </Link>
           <ScrollDownNudge containerClass={((isVisible) ? " " : " opacity-0 ")} />
         </section>
