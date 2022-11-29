@@ -4,7 +4,31 @@ admin.initializeApp();
 const db = admin.firestore();
 const cors = require('cors')({origin: true});
 
+var handlebars = require('handlebars');
+var fs = require('fs');
+
 const nodemailer = require("nodemailer");
+
+const required_fields = [
+  "email",
+  "first_name",
+  "last_name",
+  "school",
+  "country_of_origin",
+  "graduation_date",
+  "major",
+  "hackatons_attended",
+  "linkedin",
+  "race",
+  "gender",
+  "phone",
+  "education_level",
+  "resume",
+  "date_of_birth"
+];
+  
+
+
 
 async function send_email(destination, subject, content){
   email_sender = 'hello.spartahack@gmail.com'
@@ -22,26 +46,34 @@ async function send_email(destination, subject, content){
     from: email_sender,
     to: destination,
     subject: subject,
-    text: content
+    html: content
   });
 }
 
-const required_fields = [
-"email",
-"first_name",
-"last_name",
-"school",
-"country_of_origin",
-"graduation_date",
-"major",
-"hackatons_attended",
-"linkedin",
-"race",
-"gender",
-"phone",
-"education_level",
-"resume",
-"date_of_birth"];
+async function format_and_send_email(destination, subject, replacements, template_name){
+  var readHTMLFile = function(path, callback) {
+    fs.readFile(path, {encoding: 'utf-8'}, function (err, html) {
+        if (err) {
+           callback(err);                 
+        }
+        else {
+            callback(null, html);
+        }
+    });
+  };
+
+  return readHTMLFile(__dirname + template_name, async function(err, html) {
+    if (err) {
+      console.log('error reading file', err);
+      return 100;
+    }
+    var template = handlebars.compile(html);
+    var htmlToSend = template(replacements);
+
+    await send_email(destination, subject, htmlToSend)
+    return 200;
+  });
+}
 
 function fields_validation(data,required_fields){
   for(field_i in required_fields){
@@ -108,6 +140,14 @@ async function is_not_registered(email){
 //     })
 // }
 
+// exports.test_email = functions.https.onRequest(async (request, response) => {
+//   var replacements = {
+//     username: "Leonardo"
+//   }
+//   format_and_send_email("leo.s.specht@gmail.com","Your application to SpartaHack has been submitted", replacements,"/email_template.html");
+//   response.status(200).send({"message":`Nice job`});
+// });
+
 
 exports.registeUser = functions.https.onRequest(async (request, response) => {
   response.set({ 'Access-Control-Allow-Origin': '*' })
@@ -149,8 +189,11 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
                 db.collection('registrations')
                 .add(postData)
                 .then(ref => {
-                    send_email(postData["email"],"Your application to SpartaHack has been submitted","We will let you know when you are approved");
-                    // delete postData['registered_at'];
+                    var replacements = {
+                      username: postData['first_name']
+                    }
+                    format_and_send_email(postData["email"],"Your application to SpartaHack has been submitted", replacements,"/email_template.html");
+                    delete postData['registered_at'];
                     response.status(200).send({"message":"sucess", "data": postData});
                 })
                 .catch((err) =>{
