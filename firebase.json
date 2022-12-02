@@ -1,14 +1,15 @@
 {
   "functions": [
     {
-      "source": "functions",
+      "source": "SpartaHack8_Backend/registrations/functions",
       "codebase": "default",
       "ignore": [
         "node_modules",
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log"
-      ]
+      ],
+      "runtime": "nodejs16"
     }
   ],
   "hosting": {

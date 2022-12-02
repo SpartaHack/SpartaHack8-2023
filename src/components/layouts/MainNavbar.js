@@ -9,7 +9,8 @@ function MainNavbar() {
       <a id="mlh-trust-badge"
         style={{ display: "block", maxWidth: "100px", minWidth: "60px", position: "absolute", top: "0", left: "24px", width: "10%", zIndex: "10000" }}
         href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=blue"
-        target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-blue.svg"
+        target="_blank" rel="noreferrer">
+        <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2023/mlh-trust-badge-2023-blue.svg"
           alt="Major League Hacking 2023 Hackathon Season" style={{ width: "100%" }} />
       </a>
       <nav className="flex flex-row justify-between items-center py-6 px-6 sm:px-8 absolute h-24 w-full top-0 left-0">
@@ -27,7 +28,7 @@ function MainNavbar() {
         </div>
         <div className="">
           <Link to="/register" exact>
-            <ButtonPrimary buttonText="Register" />
+            <ButtonPrimary buttonText="Apply" />
           </Link>
         </div>
       </nav>

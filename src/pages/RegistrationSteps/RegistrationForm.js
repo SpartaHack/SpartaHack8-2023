@@ -1,56 +1,81 @@
-import React from 'react'
-// import { useHistory } from "react-router-dom";
-import {createBrowserHistory} from "history"
-// import LinearGradient from 'react-native-linear-gradient';
+import React, { useState, useEffect} from 'react'
 import FormButton from '../../components/ui/FormButton'
+import SubmitModal from '../../components/ui/SubmitModal';
 import useFormContext from '../../Hooks/useFormContext'
-import FormFields from './FormFields';
-import storage from "../../firebaseConfig";
+import FormFields from './FormFields'
+//Firebase imports
+import {storage, app} from "../../firebaseConfig";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
-import {useState, useEffect } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore"
 
-function NavigateHome() {
-  // const history = useHistory();
-  const browserHistory = createBrowserHistory();
-  setTimeout(() => {
-    // window.location.href = "/";
-    browserHistory.push({pathname: '/', state: {message: "Succesfully registered"}});
-  }, 2000);
+async function checkIfApplied(userData) {
+  const email = userData.email;
+  const db = getFirestore(app);
+  const querySnap = await getDocs(collection(db, "registrations"));
+  let applied = false;
+  querySnap.forEach( (doc) => {
+    const info = doc.data();
+    if (email.toLowerCase() === info.email.toLowerCase()) {
+      applied = true;
+    }
+  });
+
+  return applied;
 }
 
+
 function RegistrationForm() {
-  const [succesful, setSuccesful] = useState(false);
+
+  
+  const [formStatus, setFormStatus] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  
   useEffect( () => {
-    console.log("was succesful?", succesful)
-  }, [succesful])
+    console.log("useEffect")
+  }, [formStatus, showModal]);
+
   const {
     step,
     setStep,
     userData,
     stepTitle,
     canSubmit,
-    disabledNext, disabledPrev, hideNext, hideSubmit, prevButtonText
+    disabledNext,
+    disabledPrev,
+    hideNext,
+    hideSubmit,
+    prevButtonText
   } = useFormContext()
 
+  //Calling and uploading to database
   async function submit_form() {
-    console.log("about to print userdata");
-    console.log(userData)
+    if (step !== 6) {
+      return;
+    }
+    //Checking if the user already applied
+    // console.log("About to print the users")
+    let applied = await checkIfApplied(userData);
+    if (applied) {
+      setFormStatus("emailError");
+      return;
+    }
+
+    //minor files
     const file_obj = userData.resume
     const minor_files = userData.minorForm
-    console.log(minor_files);
     const isMinor = userData.isMinor
     let minor_forms_links = []
     if (isMinor) {
-      console.log("this person is a minor");
       minor_forms_links = await  upload_minor_forms(minor_files, (userData.firstName + " " + userData.lastName));
     }
-    console.log(isMinor);
-    const fileURL = await upload_resume(file_obj);
+    //Resume uploading
+    const fileURL = await upload_resume(file_obj, userData);
+
     let university = userData.universityName === "other"
       ? userData.otherUniversity
       : userData.universityName
-    const date = ((new Date (userData.dateOfBirth)).toLocaleDateString());
-    console.log(date);
+    // const date = ((new Date (userData.dateOfBirth)).toLocaleDateString());
+    // console.log(date);
     const obj = {
       first_name: userData.firstName,
       last_name: userData.lastName,
@@ -61,7 +86,7 @@ function RegistrationForm() {
       education_level: userData.yearOfUndergrad,
       graduation_date: userData.graduationYear,
       country_of_origin: userData.countryOfOrigin,
-      date_of_birth: date,
+      age: userData.age,
       minorForm: userData.minorForm,
       gender: userData.sex,
       race: userData.race,
@@ -69,8 +94,12 @@ function RegistrationForm() {
       linkedin: userData.linkedinURL,
       githubURL: userData.githubURL,
       resume: fileURL,
-      content_form: minor_forms_links
+      content_form: minor_forms_links,
+      is_minor: isMinor,
+      reason_attending: userData.whyAttend,
+      state_from: userData.stateFrom
     }
+    // const response_submission = await fetch('http://127.0.0.1:5001/spartahack8/us-central1/registeUser', {
     const response_submission = await fetch('https://us-central1-spartahack8.cloudfunctions.net/registeUser', {
     method: 'POST',
     headers: {
@@ -81,30 +110,26 @@ function RegistrationForm() {
     // console.log(response_submission.json());
     const myJson = await response_submission.json();
     const message = myJson.message
-    if (message === "sucess") {
-      setSuccesful(true);
+    console.log(message);
+    console.log(myJson);
+    if (message === "success") {
+      setFormStatus("success")
+    } else if (message === "Email already registered") {
+      setFormStatus("emailError")
+    } else {
+      setFormStatus("error");
     }
-    console.log(myJson.message);
-    // console.log(url)
     return myJson.message
   }
-  async function upload_resume(file_obj) {
-    console.log("Here in the resume part");
-    // const obj = file_obj;
-    // console.log(obj);
-    // let obj = document.getElementById("resume");
+  async function upload_resume(file_obj, userData) {
     const file = file_obj[0];
-    console.log("Here with the file");
-    console.log(file);
-  
     const metadata = {
       contentType: file.type
     };
-  
-    const storageRef: any = ref(storage, 'resumes/' + file.name);
-    console.log(storageRef);
+    const storageRef: any = ref(storage, 'resumes/' + userData.firstName + " " + userData.lastName + " "+file.name );
+    // console.log(storageRef);
     const uploadTask: any = await  uploadBytesResumable(storageRef, file, metadata);
-    console.log(uploadTask.ref);
+    // console.log(uploadTask.ref);
     const url: any = await getDownloadURL(uploadTask.ref)
     // console.log(url);
     return url;
@@ -124,23 +149,33 @@ function RegistrationForm() {
   }
 
   async function upload_minor_forms(files, name) {
-    console.log("Here in the minors part");
+    // console.log("Here in the minors part");
     let minor_forms_links = []
     var length = files.length
     for (var i = 0; i < length; i++) {
       var url = await upload_minor_form(files[i], name);
       minor_forms_links.push(url);
     }
-    console.log(minor_forms_links);
+    // console.log(minor_forms_links);
     return minor_forms_links
   }
 
   const handlePrev = () => setStep(prev => prev - 1)
   const handleNext = () => setStep(prev => prev + 1)
 
+
+  function NavigateHome() {
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 500);
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(JSON.stringify(userData))
+    if (step === 6) {
+      setShowModal(true)
+      setFormStatus("loading")
+    }
   }
 
   return (
@@ -152,8 +187,8 @@ function RegistrationForm() {
         <header
           className='text-3xl mb-4 sm:mb-6 font-semibold rubik-font text-sh-white w-fit'
           style={{background: "linear-gradient(135deg, #F70063 0%, #1E4FFF 150%)",
-          webkitTextFillColor: "transparent",
-          webkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          WebkitBackgroundClip: "text",
           backgroundClip: "text",
           TextFillColor: "transparent"}}>
           {stepTitle[step]}
@@ -161,16 +196,17 @@ function RegistrationForm() {
 
         <FormFields />
 
-        <div className='flex   w-full justify-end mt-12 gap-x-4'>
+        <div className='flex w-full justify-end mt-12 gap-x-4'>
           <FormButton buttonClass="text-pink-500 border border-pink-500 hover:border-transparent hover:bg-pink-100"
             type='button' onClick={handlePrev} disabled={disabledPrev} hidden={disabledPrev} buttonText={prevButtonText} />
           <FormButton buttonClass="bg-blue-600 text-white hover:bg-blue-500 disabled:bg-blue-300 disabled:cursor-not-allowed"
             type='button' onClick={handleNext} disabled={disabledNext} hidden={hideNext} buttonText="Next" />
           <FormButton buttonClass="bg-pink-600 text-white hover:bg-pink-500"
-            type='submit' disabled={canSubmit} hidden={hideSubmit} buttonText="Register" onClick={submit_form} />
+            type='submit' disabled={canSubmit} hidden={hideSubmit} buttonText="Apply" onClick={submit_form}/>
         </div>
-        {succesful ? <div className="text-white text-center"> Succesfully registered</div> : <div> </div>}
-        {succesful ? NavigateHome() : <div></div>}
+
+        {showModal && 
+        <SubmitModal NavigateHome={NavigateHome} formStatus={formStatus} />}
       </form>
     </div>
   )

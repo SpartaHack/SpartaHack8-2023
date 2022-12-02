@@ -11,7 +11,7 @@ function HeroText() {
           </span>
           <span
             className="block text-[39px] md:text-[64px] leading-[45px] md:leading-[70px]">
-            registrations are <span className="whitespace-nowrap">now open.</span>
+            applications are <span className="whitespace-nowrap">now open.</span>
           </span>
         </div>
         <div className='mx-3 sm:mx-auto max-w-lg md:max-w-3xl inter-font font-light leading-8 mt-6 md:mt-4'>

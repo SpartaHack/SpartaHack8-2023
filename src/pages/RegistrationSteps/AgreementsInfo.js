@@ -15,7 +15,7 @@ const AgreementsInfo = () => {
       className='text-sky-400'><span> MLH Code of Conduct</span><LinkIcon width="14" height="14" strokeColor="#38bdf8" className="inline align-middle ml-1" /></a >.
   </span>
   const mlhTCAddInfo = <span className='whitespace-pre-wrap'>
-    <span>I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy. I further agree to the terms of both the </span>
+    <span>I authorize you to share my application information with Michigan State University, sponsoring companies, and Major League Hacking for data analytics, event administration, ranking, and MLH administration in-line with the MLH Privacy Policy. I further agree to the terms of both the </span>
     <a href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md" target="_blank" rel="noopener noreferrer"
       className='text-sky-400'>MLH Contest Terms and Conditions<LinkIcon width="14" height="14" strokeColor="#38bdf8" className="inline align-middle ml-1" /></a ><span> and the </span>
     <a href="https://mlh.io/privacy" target="_blank" rel="noopener noreferrer"

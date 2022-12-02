@@ -7,7 +7,7 @@ function ReviewInfo() {
 
   const DateOfBirth = new Date(userData.dateOfBirth + "T06:00:00.000Z").toDateString()
   const DateOfBirthReadable = `${DateOfBirth.slice(4, -5)}, ${DateOfBirth.slice(-4)}`
-  const UniversityName = optionsData.universityOptions.find(a => a.includes(userData.universityName))[0]
+  const UniversityName = userData.universityName
 
   const headingClasses = " text-2xl rubik-font font-medium text-sh-white "
 
@@ -58,7 +58,7 @@ function ReviewInfo() {
               infoText={userData.yearOfUndergrad}
             />
             <DisplayInfo
-              labelText="Graduation Year"
+              labelText="Current Level of Study"
               infoText={userData.graduationYear}
             />
           </div>
@@ -69,22 +69,28 @@ function ReviewInfo() {
         <div className=" mt-4 border-t-[1px] border-sh-pink/50 ">
           <div className={commonDisplayInfoSetClasses}>
             <DisplayInfo
-              labelText="Country of Origin"
+              labelText="Country of Residence"
               infoText={userData.countryOfOrigin}
             />
             <DisplayInfo
-              labelText="Date of Birth"
-              infoText={DateOfBirthReadable}
+              labelText="Age"
+              infoText={userData.age}
             />
           </div>
           <div className={commonDisplayInfoSetClasses}>
             <DisplayInfo
-              labelText="Sex"
+              labelText="Gender"
               infoText={optionsData.sexOptions.find(a => a.includes(userData.sex))[0]}
             />
             <DisplayInfo
               labelText="Race"
               infoText={optionsData.raceOptions.find(a => a.includes(userData.race))[0]}
+            />
+          </div>
+          <div className={commonDisplayInfoSetClasses}>
+            <DisplayInfo
+              labelText="U.S. State"
+              infoText={userData.stateFrom}
             />
           </div>
         </div>

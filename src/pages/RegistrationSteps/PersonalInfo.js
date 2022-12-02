@@ -5,25 +5,24 @@ import TextInput from '../../components/ui/TextInput'
 import useFormContext from '../../Hooks/useFormContext'
 
 const PersonalInfo = () => {
-  const { userData, handleChange, commonInputSetContainerClasses, commonStepFormContainerClasses, optionsData } = useFormContext()
+  const { userData, handleChange, commonInputSetContainerClasses, commonStepFormContainerClasses, optionsData, isValidAge } = useFormContext()
 
   return (
     <div className={commonStepFormContainerClasses}>
       <div className={commonInputSetContainerClasses}>
         <TextInput containerClass=""
         labelClass={((userData.countryOfOrigin) ? " text-green-300" : " text-sh-white ")} 
-          labelText="Country of Origin"
+          labelText="Country of Residence"
           fieldName="countryOfOrigin"
           fieldValue={userData.countryOfOrigin}
           handleChange={handleChange}
           required
         />
-        <DateInput containerClass=""
-        labelClass={((userData.dateOfBirth) ? " text-green-300" : " text-sh-white ")} 
-          labelText="Date of Birth"
-          fieldName="dateOfBirth"
-          max="2009-12-31"
-          fieldValue={userData.dateOfBirth}
+        <TextInput containerClass=""
+        labelClass={(userData.age ? (isValidAge ? " text-green-300" : " text-red-300") : " text-sh-white ")} 
+          labelText="Age"
+          fieldName="age"
+          fieldValue={userData.age}
           handleChange={handleChange}
           required
         />
@@ -31,7 +30,7 @@ const PersonalInfo = () => {
       <div className={commonInputSetContainerClasses}>
         <SelectInput containerClass={" x-4"}
           labelClass={((userData.sex) ? " text-green-300" : " text-sh-white ") + " p-0"}
-          labelText="Sex"
+          labelText="Gender"
           fieldName="sex"
           fieldValue={userData.sex}
           handleChange={handleChange}
@@ -48,6 +47,18 @@ const PersonalInfo = () => {
           required
         />
       </div>
+      <div className={commonInputSetContainerClasses}>
+        <SelectInput containerClass=" col-span-2"
+          labelClass={((userData.stateFrom) ? " text-green-300" : " text-sh-white ")} 
+          labelText="Which U.S. state are you attending university/college in?"
+          fieldName="stateFrom"
+          fieldValue={userData.stateFrom}
+          handleChange={handleChange}
+          options={optionsData.stateOptions}
+          required
+        />
+      </div>
+      
     </div>
   )
 }

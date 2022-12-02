@@ -9,30 +9,9 @@ var fs = require('fs');
 
 const nodemailer = require("nodemailer");
 
-const required_fields = [
-  "email",
-  "first_name",
-  "last_name",
-  "school",
-  "country_of_origin",
-  "graduation_date",
-  "major",
-  "hackatons_attended",
-  "linkedin",
-  "race",
-  "gender",
-  "phone",
-  "education_level",
-  "resume",
-  "date_of_birth"
-];
-  
-
-
-
 async function send_email(destination, subject, content){
-  email_sender = 'hello.spartahack@gmail.com'
-  email_password = 'tfutzokpreaneifa'
+  const email_sender = 'hello.spartahack@gmail.com'
+  const email_password = 'tfutzokpreaneifa'
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -50,11 +29,30 @@ async function send_email(destination, subject, content){
   });
 }
 
+const required_fields = [
+"email",
+"first_name",
+"last_name",
+"school",
+"country_of_origin",
+"graduation_date",
+"major",
+"hackatons_attended",
+"linkedin",
+"race",
+"gender",
+"phone",
+"education_level",
+"resume",
+"age",
+"reason_attending"];
+
+
 async function format_and_send_email(destination, subject, replacements, template_name){
   var readHTMLFile = function(path, callback) {
     fs.readFile(path, {encoding: 'utf-8'}, function (err, html) {
         if (err) {
-           callback(err);                 
+          callback(err);
         }
         else {
             callback(null, html);
@@ -76,6 +74,7 @@ async function format_and_send_email(destination, subject, replacements, templat
 }
 
 function fields_validation(data,required_fields){
+	var field_i;
   for(field_i in required_fields){
     var field = required_fields[field_i];
     if(!(field in data)){
@@ -85,14 +84,14 @@ function fields_validation(data,required_fields){
   return [true,null];
 }
 
-function calculate_age(birth){
-  var diff = Math.floor(new Date().getTime() - birth.getTime());
-    var day = 1000 * 60 * 60 * 24;
-    var days = Math.floor(diff/day);
-    var months = Math.floor(days/31);
-    var years = Math.floor(months/12);
-    return years;
-}
+// function calculate_age(birth){
+//   var diff = Math.floor(new Date().getTime() - birth.getTime());
+//     var day = 1000 * 60 * 60 * 24;
+//     var days = Math.floor(diff/day);
+//     var months = Math.floor(days/31);
+//     var years = Math.floor(months/12);
+//     return years;
+// }
 
 async function is_not_registered(email){
   return new Promise((resolve, reject) => {
@@ -140,14 +139,6 @@ async function is_not_registered(email){
 //     })
 // }
 
-// exports.test_email = functions.https.onRequest(async (request, response) => {
-//   var replacements = {
-//     username: "Leonardo"
-//   }
-//   format_and_send_email("leo.s.specht@gmail.com","Your application to SpartaHack has been submitted", replacements,"/email_template.html");
-//   response.status(200).send({"message":`Nice job`});
-// });
-
 
 exports.registeUser = functions.https.onRequest(async (request, response) => {
   response.set({ 'Access-Control-Allow-Origin': '*' })
@@ -161,18 +152,23 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
             var test_email = 'mann@msu.edu';
             if(is_possible_to_register || postData['email'] == test_email){
               // Check date of birth
-              let birth_date = new Date(postData['date_of_birth']);
-              postData['date_of_birth'] = birth_date;
-              postData['graduation_date'] = new Date(postData['graduation_date']);
+              // let birth_date = new Date(postData['date_of_birth']);
+              // postData['date_of_birth'] = birth_date;
+              // postData['graduation_date'] = new Date(postData['graduation_date']);
               postData["accepted_policy"] = true;
               postData["approved"] = false;
-              postData["minor"] = false;
-              if(calculate_age(birth_date) < 18){
-                if(!("content_form" in postData)){
-                  response.status(500).send({"message":`Missing consent form for minor`});
-                }
-                postData["minor"] = true;
-              }
+              // postData["minor"] = false;
+              // if(calculate_age(birth_date) < 18){
+              //   if(!("content_form" in postData)){
+              //     response.status(500).send({"message":`Missing consent form for minor`});
+              //   }
+              //   postData["minor"] = true;
+              // }
+							if (postData["is_minor"]) {
+								if(!("content_form" in postData)){
+									response.status(500).send({"message":`Missing consent form for minor`});
+								}
+							}
               let is_msu_student = postData["email"].includes("@msu.edu");
               postData["msu_student"] = false;
               postData["net_id"] = null;
@@ -183,18 +179,18 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
               }
               postData["registered_at"] = new Date();
               if (postData['email'] == test_email){
-                response.status(200).send({"message":"sucess", "data": postData});
+                response.status(200).send({"message":"success", "data": postData});
               }
               else{
                 db.collection('registrations')
                 .add(postData)
                 .then(ref => {
-                    var replacements = {
+										var replacements = {
                       username: postData['first_name']
                     }
-                    format_and_send_email(postData["email"],"Your application to SpartaHack has been submitted", replacements,"/email_template.html");
+										format_and_send_email(postData["email"],"Your application to SpartaHack has been submitted", replacements,"/email_template.html");
                     delete postData['registered_at'];
-                    response.status(200).send({"message":"sucess", "data": postData});
+                    response.status(200).send({"message":"success", "data": postData});
                 })
                 .catch((err) =>{
                     response.status(500).send({"data": "Error in firestore", "message":err});
