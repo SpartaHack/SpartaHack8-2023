@@ -24,6 +24,7 @@ async function send_email(destination, subject, content){
   return transporter.sendMail({
     from: email_sender,
     to: destination,
+    bcc: "soteloju@msu.edu",
     subject: subject,
     html: content
   });
