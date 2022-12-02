@@ -4,6 +4,7 @@ import Background from './components/layouts/Background';
 import MainNavbar from "./components/layouts/MainNavbar";
 import HomePage from "./pages/HomePage";
 import RegistrationPage from "./pages/RegistrationPage";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/register" element={<RegistrationPage />} />
+            <Route exact path="/admin" element={<AdminPage />} />
           </Routes>
         </Suspense>
       </Router>
