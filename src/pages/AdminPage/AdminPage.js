@@ -33,8 +33,7 @@ function AdminPage(props) {
         },
         false:{
             "": <LoginWidget setLoggedState = {setLoggedState}/>
-        }
-        
+        }   
     }
 
   return (
@@ -46,7 +45,6 @@ function AdminPage(props) {
       <section id="section1" className="relative h-screen flex flex-col justify-center items-center">
         {pages[logged_in.logged][logged_in.role]}
       </section>
-      
       </main>
     </div>
   )

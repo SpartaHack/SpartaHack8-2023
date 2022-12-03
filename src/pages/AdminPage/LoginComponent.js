@@ -1,17 +1,8 @@
 import { useEffect, useState } from "react";
 import FormButton from "../../components/ui/FormButton";
 import TextInput from "../../components/ui/TextInput";
-
-const fakeLogin = {
-    "Admin":{
-        "password":"123",
-        "role":"admin"
-    },
-    "S1": {
-        "password":"456",
-        "role":"sponsor"
-    }
-}
+import {storage,app} from "../../firebaseConfig"
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 function LoginWidget(props) {
     const [email, setEmail] = useState("");
@@ -23,6 +14,27 @@ function LoginWidget(props) {
 
     const handlePassword = (e) => {
         setPassword(e.target.value);
+    }
+
+    async function login(){
+
+        // SHOW LOADING PAGE
+        const db = getFirestore(app);
+        const docSnap = await getDoc(doc(db, "users", email));
+        if (docSnap.exists()) {
+            // Correct username
+            const data = docSnap.data();
+            if(password == data.password){
+                const role = data.role;
+                props.setLoggedState({logged: true, role: role});
+            }
+            else{
+                console.log("Wrong password");
+            }
+        } else {
+            // Not logged in
+            console.log("Wrong username");
+        }
     }
 
     return (
@@ -42,16 +54,7 @@ function LoginWidget(props) {
             <FormButton 
             buttonText = "Login"
             onClick = {()=>{
-                // If login is valid
-                if(email in fakeLogin && password == fakeLogin[email].password){
-                    // Logged in
-                    console.log("Logged")
-                    props.setLoggedState({logged: true, role: fakeLogin[email].role});
-                }
-                else{
-                    // Wrong password or email
-                    console.log("Not logged in");
-                }
+                login()
             }}
             />
         </div>
