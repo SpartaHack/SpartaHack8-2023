@@ -64,7 +64,7 @@ function BasicInfoCards() {
   return (
     <div className='flex flex-col lg:flex-row justify-between items-center lg:items-start gap-y-12'>
       <BasicInfoCard cardIcon={cardIcons[0]} cardHeading="All Skill Levels" cardText="Beginner - Advanced" />
-      <BasicInfoCard cardIcon={cardIcons[1]} cardHeading="Michigan State University" cardText="East Lansing, Michigan" />
+      <BasicInfoCard cardIcon={cardIcons[1]} cardHeading="Michigan State University" cardText="STEM Building" />
       <BasicInfoCard cardIcon={cardIcons[2]} cardHeading="Jan 28-29, 2023" cardText="2 Days / 1 Night" />
     </div>
   )

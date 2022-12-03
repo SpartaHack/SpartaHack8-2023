@@ -29,7 +29,14 @@ function AboutSH() {
         </div>
         <div className='max-w-2xl flex flex-col justify-center items-center lg:items-start gap-y-4 text-center lg:text-left'>
           <div className='rubik-font font-medium text-[39px] sm:text-[48px] lg:text-[56px] leading-[48px] md:leading-[64px] text-sh-white'>
-            What's <span className='whitespace-nowrap gradient-text'> SpartaHack 8?</span>
+            What's <span className='whitespace-nowrap'
+              style={{
+                background: "linear-gradient(91.53deg, #F70063 0%, #1E4FFF 120%)",
+                WebkitBackgroundClip:"text",
+                WebkitTextFillColor:"transparent",
+                backgroundClip: "text"
+            }}
+            > SpartaHack 8</span>?
           </div>
           <div className='max-w-xl md:max-w-2xl inter-font font-light text-[16px] sm:text-[20px]  leading-8 text-sh-white/70'>{aboutText}
           </div>

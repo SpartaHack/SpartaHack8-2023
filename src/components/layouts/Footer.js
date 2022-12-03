@@ -13,7 +13,7 @@ function Footer() {
         <div>
         <span className='whitespace-pre-wrap'><a
       href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank" rel="noopener noreferrer"
-      className='text-sh-white/30'>MLH Code of Conduct</a >
+      className='text-sh-white/30'>MLH Code of Conduct <LinkIcon width="14" height="14" strokeColor="#575757" className="inline align-middle ml-1 mb-0.5" /></a >
         </span>
         </div>
         </div>
