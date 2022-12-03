@@ -875,6 +875,14 @@ video {
   max-width: 56rem;
 }
 
+.max-w-\[600px\] {
+  max-width: 600px;
+}
+
+.max-w-\[800px\] {
+  max-width: 800px;
+}
+
 .flex-none {
   flex: none;
 }
@@ -1369,6 +1377,10 @@ video {
 
 .text-sh-white\/30 {
   color: rgb(245 245 245 / 0.3);
+}
+
+.text-sky-500\/50 {
+  color: rgb(14 165 233 / 0.5);
 }
 
 .opacity-0 {
