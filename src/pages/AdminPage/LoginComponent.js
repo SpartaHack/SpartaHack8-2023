@@ -38,20 +38,25 @@ function LoginWidget(props) {
     }
 
     return (
-        <div className='relative'>
+        <div className='relative flex flex-col justify-center items-center'>
             <TextInput 
             labelText = "Email"
             fieldValue = {email}
             handleChange = {handleEmail}
+            containerClass = " text-white"
+            inputClass= " text-black text-center"
             required/>
 
              <TextInput 
             labelText = "Password"
             fieldValue = {password}
             handleChange = {handlePassword}
+            containerClass = " text-white"
+            inputClass= " text-black text-center"
             required/>
 
             <FormButton 
+            buttonClass = " text-white"
             buttonText = "Login"
             onClick = {()=>{
                 login()
