@@ -126,11 +126,11 @@ function RegistrationForm() {
     const metadata = {
       contentType: file.type
     };
-    const storageRef: any = ref(storage, 'resumes/' + userData.firstName + " " + userData.lastName + " "+file.name );
+    const storageRef = ref(storage, 'resumes/' + userData.firstName + " " + userData.lastName + " "+file.name );
     // console.log(storageRef);
-    const uploadTask: any = await  uploadBytesResumable(storageRef, file, metadata);
+    const uploadTask = await  uploadBytesResumable(storageRef, file, metadata);
     // console.log(uploadTask.ref);
-    const url: any = await getDownloadURL(uploadTask.ref)
+    const url = await getDownloadURL(uploadTask.ref)
     // console.log(url);
     return url;
   }

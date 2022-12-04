@@ -1,7 +1,8 @@
 import unittest
 import requests
 
-LINK = "https://us-central1-spartahack8.cloudfunctions.net/registeUser"
+# LINK = "https://us-central1-spartahack8.cloudfunctions.net/registeUser"
+LINK = "http://127.0.0.1:8080/spartahack8/us-central1/registeUser"
 def call_api(url,data):
     x = requests.post(url, json = data)
     return x.status_code, x.json()
@@ -10,7 +11,7 @@ class TestStringMethods(unittest.TestCase):
 
     def test_standard(self):
         payload = {
-            "email":"soteloju@msu.edu",
+            "email":"test3@msu.edu",
             "first_name":"Leonardo",
             "last_name":"Specht",
             "school":"Michigan State",
@@ -27,7 +28,7 @@ class TestStringMethods(unittest.TestCase):
             "date_of_birth":"01/01/2002"}
         expected_status = 200
         expected_response = {
-            "email":"soteloju@msu.edu",
+            "email":"test3@msu.edu",
             "first_name":"Leonardo",
             "last_name":"Specht",
             "school":"Michigan State",
@@ -46,9 +47,8 @@ class TestStringMethods(unittest.TestCase):
             "approved": False,
             "minor": False,
             "msu_student": True,
-            "net_id": "soteloju"}
+            "net_id": "test3"}
         response = call_api(LINK,payload)
-
 
         self.assertEqual((response[0],response[1]["data"]), (expected_status,expected_response))
 
