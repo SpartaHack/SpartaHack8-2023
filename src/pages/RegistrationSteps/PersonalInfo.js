@@ -13,6 +13,7 @@ const PersonalInfo = () => {
         <TextInput containerClass=""
         labelClass={((userData.countryOfOrigin) ? " text-green-300" : " text-sh-white ")} 
           labelText="Country of Residence"
+          infoText="Your country of origin (primary residence)"
           fieldName="countryOfOrigin"
           fieldValue={userData.countryOfOrigin}
           handleChange={handleChange}

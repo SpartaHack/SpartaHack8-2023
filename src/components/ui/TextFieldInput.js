@@ -20,6 +20,11 @@ function TextFieldInput(props) {
       >
         {props.fieldValue ? props.fieldValue : props.placeholder}
       </textarea>
+      {props.infoText &&
+        <div className={commonAdInfoClasses}>
+          {props.infoText}
+        </div>
+      }
     </div>
   )
 }

@@ -7046,5 +7046,9 @@
   {
     "id": "youngstown-state-uni",
     "name": "Youngstown State University"
+  },
+  {
+    "id": "other",
+    "name": "Other"
   }
 ]

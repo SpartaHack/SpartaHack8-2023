@@ -53,7 +53,7 @@ function SubmitModal(props) {
               <div className="mt-4 text-base inter-font leading-relaxed text-gray-500">
                 {statusData[props.formStatus].info}
               </div>
-              {(props.formStatus === "success") &&
+              {(props.formStatus !== "loading") &&
                 <div className="flex justify-center items-center mt-6">
                   <FormButton buttonClass="bg-pink-600 text-white hover:bg-pink-500 min-w-fit"
                     type='button' onClick={props.NavigateHome} buttonText="Back to Home" />

@@ -36,7 +36,11 @@ function SelectInput(props) {
           <Chevron width="12"  strokeColor="#f5f5f5" className=" -mr-4 absolute top-1/2 -mt-0.5 right-8 pointer-events-none " />
         </div>
       </div>
-
+      {props.infoText &&
+      <div className={commonAdInfoClasses}>
+        {props.infoText}
+      </div>
+      }
 
     </div>
   )

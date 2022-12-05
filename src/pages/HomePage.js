@@ -7,6 +7,7 @@ import FaqSection from "../components/home-page-components/FaqSection";
 import HeroText from "../components/home-page-components/HeroText";
 import LargeButton from "../components/home-page-components/LargeButton";
 import ScrollDownNudge from "../components/home-page-components/ScrollDownNudge";
+import SponsorsSection from "../components/home-page-components/SponsorsSection";
 import Background from "../components/layouts/Background";
 
 function HomePage(props) {
@@ -52,6 +53,9 @@ function HomePage(props) {
         </section>
         <section id="section3" className="min-h-screen py-12">
           <FaqSection />
+        </section>
+        <section id="section4" className="min-h-screen py-12">
+          <SponsorsSection />
         </section>
       </main>
     </div>

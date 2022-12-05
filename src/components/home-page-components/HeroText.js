@@ -6,7 +6,7 @@ function HeroText() {
       <div className='text-sh-white text-center'>
         <div className='rubik-font font-medium'>
           <span
-            className="block text-[45px] md:text-[70px] lg:text-[76px] -mb-1 md:-mb-2 gradient-text">
+            className="block w-fit mx-auto text-[45px] md:text-[70px] lg:text-[76px] -mb-1 md:-mb-2 gradient-text">
             SpartaHack 8
           </span>
           <span

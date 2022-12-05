@@ -29,6 +29,7 @@ const ExperienceInfo = () => {
         <URLInput containerClass=""
           labelClass={((userData.githubURL) ? ((isValidGithub) ? " text-green-300" : " text-red-300") : " text-sh-white ")}
           labelText="Github URL"
+          infoText="Not required"
           fieldName="githubURL"
           fieldValue={userData.githubURL}
           placeholder={placeholderText}
@@ -38,6 +39,7 @@ const ExperienceInfo = () => {
         <URLInput containerClass=""
           labelClass={((userData.linkedinURL) ? ((isValidLinkedIn) ? " text-green-300" : " text-red-300") : " text-sh-white ")}
           labelText="LinkedIn URL"
+          infoText="Not required"
           fieldName="linkedinURL"
           fieldValue={userData.linkedinURL}
           placeholder="linkedin.com/in/alan.turing"
@@ -69,7 +71,8 @@ const ExperienceInfo = () => {
       <div className={commonInputSetContainerClasses + "grid-cols-1"}>
         <TextFieldInput containerClass="col-span-2"
           labelClass={(userData.whyAttend ? (isValidEssay ? " text-green-300" : " text-red-300") : " text-sh-white ")}
-          labelText="Why do you want to attend SpartaHack? (Max. 50 words)"
+          labelText="Why do you want to attend SpartaHack?"
+          infoText="Max. 50 words"
           fieldName="whyAttend"
           fieldValue={userData.whyAttend}
           rows="10"

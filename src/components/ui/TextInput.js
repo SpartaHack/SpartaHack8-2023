@@ -20,6 +20,11 @@ function TextInput(props) {
         onChange={props.handleChange}
         disabled={props.disabled}
       />
+      {props.infoText &&
+      <div className={commonAdInfoClasses}>
+        {props.infoText}
+      </div>
+      }
     </div>
   )
 }
