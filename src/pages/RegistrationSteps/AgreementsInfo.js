@@ -89,6 +89,7 @@ const AgreementsInfo = () => {
         <CheckboxInput containerClass=" "
           labelClass={((userData.mlhEmailAgree) ? " text-green-300" : " text-sh-white ") + " cursor-pointer"}
           inputClass=" cursor-pointer"
+          infoText="Optional"
           labelText="MLH Informational Emails"
           addInfo={mlhEmailAddInfo}
           fieldName="mlhEmailAgree"

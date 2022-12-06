@@ -6,6 +6,7 @@ function SmartTextInput(props) {
   const { commonContainerClasses, commonLabelClasses, commonInputClasses, commonAdInfoClasses, userData } = useFormContext()
 
   var optionsData = props.options
+  // console.log(optionsData)
 
   const [filteredData, setFilteredData] = useState([])
   const [inputFocus, setInputFocus] = useState(false)
@@ -30,6 +31,7 @@ function SmartTextInput(props) {
       setFilteredData(newFilter)
     }
   }
+  console.log(props.infoText, inputFocus, filteredData, (props.infoText && inputFocus && (filteredData === [])))
 
   const selectHandler = (event) => {
     props.handleChange(event, props.fieldName, event.target.innerText)
@@ -63,6 +65,11 @@ function SmartTextInput(props) {
         disabled={props.disabled}
         autoComplete="off"
       />
+      {(props.infoText && inputFocus && (filteredData.length === 0)) &&
+        <div className={commonAdInfoClasses}>
+          {props.infoText}
+        </div>
+      }
       {(filteredData.length !== 0 || inputFocus) &&
         <div className='no-scrollbar z-10 absolute max-h-48 min-h-fit w-content min-w-full mt-2 overflow-y-auto overflow-x-hidden rounded-lg bg-sh-white/50 backdrop-blur drop-shadow-xl '>
           {filteredData.map((value) => {

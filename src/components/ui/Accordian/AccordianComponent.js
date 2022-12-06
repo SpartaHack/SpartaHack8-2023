@@ -7,7 +7,7 @@ import AccordianComponentItem from './AccordianComponentItem';
 function AccordianComponent(props) {
 
     return (
-        <Accordion className='px-8 flex flex-col w-full '
+        <Accordion className='px-2 flex flex-col w-full '
             allowZeroExpanded>
             {props.data.map((question) => {
                 return (

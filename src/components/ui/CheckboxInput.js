@@ -24,6 +24,11 @@ function TextInput(props) {
           {props.labelText + ((props.required) ? " *" : "")}
         </span>
         <span className=' normal-case text-sm text-sh-white/90 inter-font'>{props.addInfo}</span>
+      {props.infoText &&
+        <div className={" ml-0 mr-auto mb-auto " + commonAdInfoClasses}>
+          {props.infoText}
+        </div>
+      }
       </label>
     </div>
   )

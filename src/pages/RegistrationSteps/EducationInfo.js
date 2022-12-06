@@ -7,15 +7,14 @@ import useFormContext from '../../Hooks/useFormContext'
 
 const EducationInfo = () => {
   const { userData, handleChange, handleSmartInputChange, commonInputSetContainerClasses, commonStepFormContainerClasses, optionsData, showOtherUniversity, isValidGradYear, isValidUniversityName } = useFormContext()
-  // console.log(optionsData.universityOptions)
 
   return (
     <div className={commonStepFormContainerClasses}>
       <div className={commonInputSetContainerClasses}>
         <SmartTextInput containerClass=""
           labelClass={((isValidUniversityName) ? " text-green-300" : " text-sh-white ")}
-          inputClass=""
           labelText="University/College"
+          infoText='Type or select "Other" only if you cannot find your institution'
           fieldName="universityName"
           fieldValue={userData.universityName}
           handleChange={handleSmartInputChange}
@@ -24,7 +23,6 @@ const EducationInfo = () => {
           required />
         <TextInput containerClass=""
           labelClass={((userData.major) ? " text-green-300" : " text-sh-white ")}
-          inputClass=""
           labelText="Major(s)"
           fieldName="major"
           placeholder="Computer Science"

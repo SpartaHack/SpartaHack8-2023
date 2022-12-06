@@ -31,6 +31,7 @@ const BasicInfo = () => {
         <TextInput containerClass=""
           labelClass={((userData.phone.length === 14) ? " text-green-300" : " text-sh-white ")}
           labelText="Phone Number"
+          infoText="Must be a U.S. phone number (+1)"
           fieldName="phone"
           placeholder="9805171234"
           fieldValue={userData.phone}
@@ -40,6 +41,7 @@ const BasicInfo = () => {
         <EmailInput containerClass=""
           labelClass={((userData.email) ? ((isStudent) ? " text-green-300" : " text-red-300") : " text-sh-white ")}
           labelText="Student email"
+          infoText='Must end with ".edu"'
           fieldName="email"
           placeholder="turing.alan@princeton.edu"
           pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.edu$/"
