@@ -834,26 +834,12 @@ video {
   height: auto;
 }
 
-.max-h-fit {
-  max-height: -webkit-fit-content;
-  max-height: -moz-fit-content;
-  max-height: fit-content;
+.max-h-20 {
+  max-height: 5rem;
 }
 
 .max-h-48 {
   max-height: 12rem;
-}
-
-.max-h-24 {
-  max-height: 6rem;
-}
-
-.max-h-16 {
-  max-height: 4rem;
-}
-
-.max-h-20 {
-  max-height: 5rem;
 }
 
 .min-h-\[470px\] {
@@ -922,8 +908,8 @@ video {
   max-width: 32rem;
 }
 
-.max-w-\[200px\] {
-  max-width: 200px;
+.max-w-\[150px\] {
+  max-width: 150px;
 }
 
 .max-w-\[100px\] {
@@ -932,10 +918,6 @@ video {
 
 .max-w-4xl {
   max-width: 56rem;
-}
-
-.max-w-\[150px\] {
-  max-width: 150px;
 }
 
 .flex-none {
@@ -1041,10 +1023,6 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
-}
-
-.gap-6 {
-  gap: 1.5rem;
 }
 
 .gap-4 {
@@ -1163,6 +1141,10 @@ video {
 .bg-sh-blue {
   --tw-bg-opacity: 1;
   background-color: rgb(30 79 255 / var(--tw-bg-opacity));
+}
+
+.bg-sh-black\/50 {
+  background-color: rgb(18 18 18 / 0.5);
 }
 
 .bg-sh-white\/50 {
@@ -1420,8 +1402,8 @@ video {
   color: rgb(245 245 245 / var(--tw-text-opacity));
 }
 
-.text-sh-white\/40 {
-  color: rgb(245 245 245 / 0.4);
+.text-sh-white\/50 {
+  color: rgb(245 245 245 / 0.5);
 }
 
 .text-slate-500 {
@@ -1436,10 +1418,6 @@ video {
 .text-sh-pink {
   --tw-text-opacity: 1;
   color: rgb(247 0 99 / var(--tw-text-opacity));
-}
-
-.text-sh-white\/50 {
-  color: rgb(245 245 245 / 0.5);
 }
 
 .text-sky-400 {
@@ -1505,6 +1483,10 @@ video {
 
 .text-sh-white\/80 {
   color: rgb(245 245 245 / 0.8);
+}
+
+.text-sh-white\/60 {
+  color: rgb(245 245 245 / 0.6);
 }
 
 .opacity-0 {
@@ -1769,10 +1751,6 @@ video {
     max-width: 200px;
   }
 
-  .sm\:max-w-\[180px\] {
-    max-width: 180px;
-  }
-
   .sm\:scale-100 {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
@@ -1872,10 +1850,6 @@ video {
     margin-top: 1rem;
   }
 
-  .md\:max-h-24 {
-    max-height: 6rem;
-  }
-
   .md\:w-32 {
     width: 8rem;
   }
@@ -1890,10 +1864,6 @@ video {
 
   .md\:max-w-3xl {
     max-width: 48rem;
-  }
-
-  .md\:max-w-\[300px\] {
-    max-width: 300px;
   }
 
   .md\:grid-cols-2 {

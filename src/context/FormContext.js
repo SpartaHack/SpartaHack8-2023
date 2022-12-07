@@ -245,7 +245,7 @@ export const FormProvider = ({ children }) => {
   const commonContainerClasses = "col-span-1 mb-4 w-full rounded-mdd "
   const commonLabelClasses = "block w-full uppercase pt-4 pb-1.5 text-xs rubik-font "
   const commonInputClasses = "block w-full h-[56px] p-4 outline-none ring-[1px] ring-transparent focus:ring-sh-white inter-font text-sh-white rounded-md bg-sh-white/10 backdrop-blur-[3px] "
-  const commonAdInfoClasses = " ml-auto w-fit text-sh-white/40 text-[10px] mt-1 -mb-[19px] uppercase rubik-font"
+  const commonAdInfoClasses = " ml-auto w-fit text-sh-white/70 text-[10px] mt-1 -mb-[19px] uppercase rubik-font"
 
   const commonButtonClasses = "w-full md:w-32 h-14 py-4 px-6 rounded-md uppercase transition-all duration-75 select-none backdrop-blur-[3px] rubik-font outline-none ring-2 ring-transparent focus:ring-sh-pink/50 "
 

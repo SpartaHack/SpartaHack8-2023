@@ -47,10 +47,10 @@ const AgreementsInfo = () => {
           labelText="Download Consent Forms"
           link='https://drive.google.com/drive/folders/1RvlCLQvjv8pvfuRAhclAR78Qfue99dQ1?usp=share_link' />
         <FileInput containerClass=" col-span-2 md:col-span-1 "
-          labelClass={((userData.minorForm) ? " text-green-300" : " text-sh-white ")}
+          labelClass={((userData.minorForm.length === 3) ? " text-green-300 " : ((userData.minorForm.length === 0) ? " text-sh-white " : "text-red-300 "))}
           labelText="Upload Consent Forms"
           fieldName="minorForm"
-          fileName={((userData.minorForm) ? (userData.minorForm.length + " Files uploaded") : "No files uploaded")}
+          fileName={((userData.minorForm) ? (userData.minorForm.length <= 3 ? (userData.minorForm.length + "/3 Files uploaded") : "Too many files uploaded") : "No files uploaded")}
           handleChange={handleChange}
           multiple
           required
