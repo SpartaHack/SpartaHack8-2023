@@ -110,8 +110,8 @@ function RegistrationForm() {
     // console.log(response_submission.json());
     const myJson = await response_submission.json();
     const message = myJson.message
-    console.log(message);
-    console.log(myJson);
+    // console.log(message);
+    // console.log(myJson);
     if (message === "success") {
       setFormStatus("success")
     } else if (message === "Email already registered") {
