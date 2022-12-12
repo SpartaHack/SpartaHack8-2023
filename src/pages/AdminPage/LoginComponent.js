@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import FormButton from "../../components/ui/FormButton";
 import TextInput from "../../components/ui/TextInput";
+import TextPassword from "../../components/ui/TextPassword"
 import {storage,app} from "../../firebaseConfig"
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
@@ -47,7 +48,7 @@ function LoginWidget(props) {
             inputClass= " text-black text-center"
             required/>
 
-             <TextInput 
+             <TextPassword 
             labelText = "Password"
             fieldValue = {password}
             handleChange = {handlePassword}
