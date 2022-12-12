@@ -102,7 +102,14 @@ function SponsorsSection() {
   return (
     <div className='w-full mt-24 flex flex-col items-center'>
       <SectionHeading text="Past Sponsors" />
-      <SponsorsLogos logos={logos}/>
+      <SponsorsLogos logos={logos} />
+      <div className='mx-3 sm:mx-auto max-w-lg md:max-w-3xl inter-font font-light text-sh-white text-center leading-8 mt-8 md:mt-4'>
+        <span className='block text-[16px] md:text-[20px] opacity-70'>
+          Take part in the 24-hour annual hackathon held at Michigan State University
+          tailored for those who see opportunity in a challenge and <span className='hidden lg:inline'><br /></span> seek to
+          widen their horizons.
+        </span>
+      </div>
     </div>
   )
 }

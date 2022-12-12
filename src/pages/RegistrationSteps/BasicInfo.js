@@ -41,10 +41,10 @@ const BasicInfo = () => {
         <EmailInput containerClass=""
           labelClass={((userData.email) ? ((isStudent) ? " text-green-300" : " text-red-300") : " text-sh-white ")}
           labelText="Student email"
-          infoText='Must end with ".edu"'
+          infoText='Must end with ".edu" or ".ca"'
           fieldName="email"
-          placeholder="turing.alan@princeton.edu"
-          pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.edu$/"
+          placeholder="turing.alan@mail.edu"
+          pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.(edu)|(ca)$/"
           minLength="6"
           fieldValue={userData.email}
           handleChange={handleChange}
