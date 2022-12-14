@@ -28,10 +28,10 @@ function PersonModal(props) {
       </button> */}
 
       {/* <!-- Main modal --> */}
-      <div  className="fixed top-0 left-0  z-50  w-full p-4 overflow-x-hidden " >
+      <div  className="fixed top-0 left-0  z-50  w-full p-4 overflow-x-hidden" >
           <div className="relative w-full h-full  ">
               {/* <!-- Modal content --> */}
-              <div className="relative  bg-white rounded-lg shadow dark:bg-gray-700">
+              <div className="relative rounded-lg shadow dark:bg-gray-700 border-gray-600">
                   {/* <!-- Modal header --> */}
                   <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
@@ -43,7 +43,7 @@ function PersonModal(props) {
                       </button>
                   </div>
                   {/* <!-- Modal body --> */}
-                  <div className="p-6 space-y-6 text-white overscroll-auto">
+                  <div className="p-6 space-y-6 text-white overscroll-auto border-gray-600">
                       <div className="flex flex-wrap overscroll-auto">
                         {/* First row */}
                         <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
@@ -317,8 +317,8 @@ function StatsPage() {
       body: JSON.stringify(element.data())
       });
 
-    console.log(email_sent);
-    console.log(email_sent.message);
+    // console.log(email_sent);
+    // console.log(email_sent.message);
   }
   async function try_pushing_data() {
     const db = getFirestore(app);
@@ -330,7 +330,7 @@ function StatsPage() {
     const query = await getDocs(collection(db, "data"));
     query.forEach( (doc) => {
       md.push(doc);
-      console.log(doc);
+      // console.log(doc);
     })
     setMockData(md);
     // await setDoc(doc(db, "data", "three"), docData);
@@ -377,10 +377,10 @@ function StatsPage() {
           }
           function approve_current_student() {
             update_approval(curr_doc, true).then(() => {
-              console.log("updated correctly");
+              {/* console.log("updated correctly"); */}
             }).catch((err) => {
-              console.log("Error on updating");
-              console.log(err);
+              {/* console.log("Error on updating"); */}
+              {/* console.log(err); */}
             });
           }
           function deny_current_student() {
