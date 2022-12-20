@@ -79,7 +79,7 @@ export const FormProvider = ({ children }) => {
 
   // console.log(UniversityOptions)
   useEffect(() => {
-    const bool = userData.email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.(edu)|(ca)$/) ? true : false
+    const bool = userData.email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.(edu)|(ca)|(org)$/) ? true : false
     setIsStudent(bool);
   }, [userData.email, isStudent])
 
