@@ -255,7 +255,39 @@ function PersonModal(props) {
 }
 
 
+function EmailModal(props) {
+  return (
+    <div className='fixed inset-0 z-10 overflow-y-auto'>
+      <div
+        className="fixed inset-0 w-full h-full bg-sh-black/30 backdrop-blur-md">
+      </div>
+      <div className="flex items-center justify-center min-h-screen px-4 py-8">
+        <div className="relative max-w-lg min-h-fit sm:min-h-[250px] flex justify-center items-center px-6 sm:px-8 py-8 sm:py-10 mx-auto bg-slate-50 rounded-xl shadow-lg transition-all duration-1000">
+          <div className="flex">
+            <div className="text-center">
+              <div className="flex justify-center items-center mb-4 h-14">
+                {/* {statusData[props.formStatus].icon} */}
+              </div>
+              <div className={" text-2xl rubik-font font-medium"}>
+                Email Sent!
+              </div>
+              <div className="mt-4 text-base inter-font leading-relaxed text-gray-500">
+                {props.info}
+              </div>
+              {/* {(props.formStatus !== "loading") &'
+                <div className="flex justify-center items-center mt-6">
+                  <FormButton buttonClass="bg-pink-600 text-white hover:bg-pink-500 min-w-fit"
+                    type='button' onClick={props.NavigateHome} buttonText="Back to Home" />
+                </div>
+              } */}
+            </div>
+          </div>
+        </div>
+      </div>
 
+    </div>
+  );
+}
 
 function StatsPage() {
   const [countUsersApplied, setCountUsersApplied] = useState(0);
@@ -264,7 +296,7 @@ function StatsPage() {
   const [mockData, setMockData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [currentStudent, setCurrentStudent] = useState(null);
-
+  const [emailSent, setEmailSent] = useState(false);
   async function get_aggregate_data() {
     const db = getFirestore(app);
     const querySnap = await getDocs(collection(db, "registrations"));
@@ -316,7 +348,7 @@ function StatsPage() {
       },
       body: JSON.stringify(element.data())
       });
-
+    setEmailSent(true);
     // console.log(email_sent);
     // console.log(email_sent.message);
   }
@@ -365,7 +397,15 @@ function StatsPage() {
               <div className="text-white text-center mx-3 see_more_w  "> See more</div>
               <div className="text-white text-center mx-3 w-64"> Approve / Deny</div>
               {/* <div className="text-white text-center mx-3 w-32  "> Deny</div> */}
-          </div>
+        </div>
+        {
+          emailSent ?
+          <EmailModal
+            info = "Email sent succesfully!"
+          />
+          :
+          null
+        }
         {
           userData.map((tuple) => {
           var curr_doc = tuple[0];
@@ -378,6 +418,9 @@ function StatsPage() {
           function approve_current_student() {
             update_approval(curr_doc, true).then(() => {
               {/* console.log("updated correctly"); */}
+              setTimeout(() => {
+                setEmailSent(false);
+              }, 2000);
             }).catch((err) => {
               {/* console.log("Error on updating"); */}
               {/* console.log(err); */}
@@ -386,6 +429,9 @@ function StatsPage() {
           function deny_current_student() {
             update_approval(curr_doc, false).then(() => {
               console.log("updated correctly");
+              setTimeout(() => {
+                setEmailSent(false);
+              }, 2000);
             }).catch((err) => {
               console.log("Error on updating");
               console.log(err);
