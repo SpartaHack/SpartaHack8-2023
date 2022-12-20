@@ -212,3 +212,21 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
         else response.status(500).send({"message":"Please send a post request"});
     });
 });
+
+
+
+exports.sendEmailsOfApproval = functions.https.onRequest(async (request, response) => {
+  response.set({ 'Access-Control-Allow-Origin': '*' })
+  cors(request, response, async () => {
+    if (request.method === "POST") {
+      let data = request.body;
+      var replacements = {
+        username: data['first_name']
+      }
+      format_and_send_email(data["email"],"Your Application to SpartaHack Has Been Approved!", replacements,"/approval_email.html");
+      response.status(200).send({"message":"success", "data": {"message": "Email Sent!"}});
+    } else {
+      response.status(500).send({"message": "Please send a GET request"});
+    }
+  });
+});

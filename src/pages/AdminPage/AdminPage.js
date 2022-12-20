@@ -42,7 +42,7 @@ function AdminPage(props) {
       <div className="absolute top-0 w-full h-full -z-10">
         <Background/>
       </div>
-      <main className="relative mx-4 md:mx-auto md:max-w-xl lg:max-w-4xl xl:max-w-5xl">
+      <main className="relative mt-3">
       <section id="section1" className="relative h-screen flex flex-col justify-center items-center">
         {pages[logged_in.logged][logged_in.role]}
       </section>

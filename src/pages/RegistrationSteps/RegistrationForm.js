@@ -205,7 +205,7 @@ function RegistrationForm() {
             type='submit' disabled={canSubmit} hidden={hideSubmit} buttonText="Apply" onClick={submit_form}/>
         </div>
 
-        {showModal && 
+        {showModal &&
         <SubmitModal NavigateHome={NavigateHome} formStatus={formStatus} />}
       </form>
     </div>
