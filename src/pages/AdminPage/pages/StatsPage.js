@@ -297,6 +297,12 @@ function StatsPage() {
   const [showModal, setShowModal] = useState(false);
   const [currentStudent, setCurrentStudent] = useState(null);
   const [emailSent, setEmailSent] = useState(false);
+
+  useEffect( () => {
+    console.log("Using useeffect in the stats page");
+  }, [emailSent]);
+
+
   async function get_aggregate_data() {
     const db = getFirestore(app);
     const querySnap = await getDocs(collection(db, "registrations"));
@@ -460,7 +466,7 @@ function StatsPage() {
               {
                 student.reviewed ?
                   null :
-                <button onClick={deny_current_student} className="text-white text-center mx-3 bg-red-600 w-32  rounded border-2 border-emerald-700">Denial</button>
+                <button onClick={deny_current_student} className="text-white text-center mx-3 bg-red-600 w-32  rounded border-2 border-emerald-700">Deny</button>
               }
             </div>
           );
