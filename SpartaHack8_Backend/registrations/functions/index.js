@@ -223,8 +223,16 @@ exports.sendEmailsOfApproval = functions.https.onRequest(async (request, respons
       var replacements = {
         username: data['first_name']
       }
-      format_and_send_email(data["email"],"Your Application to SpartaHack Has Been Approved!", replacements,"/approval_email.html");
-      response.status(200).send({"message":"success", "data": {"message": "Email Sent!"}});
+      console.log(data);
+      if (data["action"] === "approve") {
+        await format_and_send_email(data["email"],"Your Application to SpartaHack Has Been Approved!", replacements,"/approval_email.html");
+        response.status(200).send({"message":"success", "data": {"message": "Approval Email Sent!"}});
+      } else if (data["action"] === "deny") {
+        await format_and_send_email(data["email"],"Your Application to SpartaHack Has Been Denied!", replacements,"/denial_email.html");
+        response.status(200).send({"message":"success", "data": {"message": "Denial Email Sent!"}});
+      } else {
+        response.status(400).send({message: "error", "data": "Invalid request"});
+      }
     } else {
       response.status(500).send({"message": "Please send a GET request"});
     }

@@ -347,16 +347,37 @@ function StatsPage() {
     const db = getFirestore(app);
     await updateDoc(doc(db, "registrations", element.id), {approved: approving, reviewed: true});
     //Send email
-    const email_sent = await fetch('https://us-central1-spartahack8.cloudfunctions.net/sendEmailsOfApproval', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(element.data())
+    console.log(approving);
+    console.log("Here is the approval thing above");
+    if (approving) {
+      let data = element.data();
+      data["action"] = "approve";
+      console.log(data);
+      const email_sent = await fetch('https://us-central1-spartahack8.cloudfunctions.net/sendEmailsOfApproval', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
       });
+      console.log("We finished calling and sending emails")
+      console.log(email_sent);
+      console.log(email_sent.message);
+    } else {
+      let data = element.data();
+      data["action"] = "deny"
+      const email_sent = await fetch('https://us-central1-spartahack8.cloudfunctions.net/sendEmailsOfApproval', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      console.log("We finished calling and sending emails")
+      console.log(email_sent);
+      console.log(email_sent.message);
+    }
     setEmailSent(true);
-    // console.log(email_sent);
-    // console.log(email_sent.message);
   }
   async function try_pushing_data() {
     const db = getFirestore(app);
