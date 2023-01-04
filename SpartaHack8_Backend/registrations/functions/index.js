@@ -1,7 +1,12 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
+// const storage = require('fie')
 admin.initializeApp();
+
 const db = admin.firestore();
+const storage = admin.storage();
+// storage.useEmulator("localhost", 9199);
+
 const cors = require('cors')({origin: true});
 
 var handlebars = require('handlebars');
@@ -256,6 +261,60 @@ exports.registeUser = functions.https.onRequest(async (request, response) => {
     });
 });
 
+function get_all_users(only_accepted = false){
+  var db_query = db.collection('registrations');
+  if(only_accepted){
+    db_query = db.collection('registrations').where("approved","==",true);
+  }
+
+  return new Promise((resolve, reject) => {
+    db_query.get()
+      .then((obj) => {
+        var emails = [];
+        obj.forEach((doc) => {
+          var email = doc.data();
+          emails.push(email)
+        });
+        resolve(emails);
+      })
+      .catch((err) => {
+        console.log(err);
+        reject(err);
+      })
+  })
+}
+exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
+  // ARGUMENTS:
+  // template_name: String: Template name stored in firestore
+  // target: String: approved/all | Default = accepted
+  // subject: String
+  response.set({ 'Access-Control-Allow-Origin': '*' })
+  cors(request, response, async () => {
+    if (request.method === "POST") {
+      let data = request.body;
+      let folder_name = "templates/";
+      var target = "approved"
+      if("target" in data){
+        target = data.target;
+      }
+      let users = await get_all_users(target == "approved");
+      let file = await storage.bucket().file(folder_name + data.template_name).download();
+      let template_string = file.toString();
+      var template = handlebars.compile(template_string);
+      // Sending email to each user
+      for(user_index in users){
+        let user_data = users[user_index];
+        var htmlToSend = template(user_data);
+        console.log(user_data.email);
+        send_email(user_data.email, data.subject, htmlToSend);
+      }
+      response.status(200).send("Success");
+    }
+    else{
+      response.status(500).send("Only POST requests allowed");
+    }
+  });
+});
 
 
 exports.sendEmailsOfApproval = functions.https.onRequest(async (request, response) => {
