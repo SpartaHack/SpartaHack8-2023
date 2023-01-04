@@ -109,37 +109,80 @@ async function is_not_registered(email){
   })
 }
 
-// function get_all_docs(){
-//   db.collection('registrations').get()
-//     .then((obj) => {
+function get_ids_to_replace(data, field, iterations){
+  var documents = {};
+  data.forEach((doc) => {
+    var field_value = doc.data()[field].trim().toLowerCase();
+    if(iterations.includes(field_value)){
+      if(!(field_value in documents)){
+        documents[field_value] = []
+      }
+      documents[field_value].push(doc.id);
+    }
+  })
+  return documents;
+}
 
-//         var documents = {};
-//         obj.forEach((doc) => {
+function replace_field_iterations(data, field_name, iterations, replacement){
+  var wrong_iterations_ids = get_ids_to_replace(data, field_name, iterations);
+  var all_ids = [];
+  for(key in wrong_iterations_ids){
+    all_ids.push(...wrong_iterations_ids[key]);
+  }
+  for(id_i in all_ids){
+    const id = all_ids[id_i];
+    // console.log(id);
+    // console.log({[field_name]: replacement})
+    db.collection("registrations").doc(id).update({[field_name]: replacement})
+    .then(() => {
+      console.log(id + " Document successfully updated!");
+    })
+    .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    });
+  }
+}
 
-//           var email = doc.data()["email"]
-//           if(!(email in documents)){
-//             documents[email] = []
-//           }
-//           documents[email].push(doc.id);
-//         })
-//         for(key in documents){
-//           var ids = documents[key];
-//           if(ids.length >= 2){
-//             // ids.pop()
-//             console.log(ids);
-//             for(id_index in ids){
-//               var id = ids[id_index];
-//               //Delete id
-//             }
-//           }
-//         }
-        
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-// }
+function get_possible_iterations(field_name){
+  db.collection('registrations').get()
+  .then((obj) => {
+    var documents = {};
+    obj.forEach((doc) => {
+      var field_value = doc.data()[field_name];
+      if(!(field_value in documents)){
+        documents[field_value] = 0;
+      }
+      documents[field_value] += 1;
+    })
 
+    for(key in documents){
+      console.log(`${key}|${documents[key]}`);
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
+function replace_all_iterations(){
+  db.collection('registrations').get()
+    .then((obj) => {
+        var usa_iterations = ["united states","united states of america", "u.s.", "us",'usa'];
+        var msu_iterations = ["michigan-state-uni"];
+        replace_field_iterations(obj, "country_of_origin",usa_iterations, "USA");
+        replace_field_iterations(obj, "school",msu_iterations, "Michigan State University");
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+
+// exports.testGetAllDocs = functions.https.onRequest(async (request, response) => {
+//   // get_all_docs();
+//   replace_all_iterations();
+//   response.status(200).send({"data": "Sucess"});
+// })
 
 exports.registeUser = functions.https.onRequest(async (request, response) => {
   response.set({ 'Access-Control-Allow-Origin': '*' })
