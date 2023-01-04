@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {storage, app} from "../../../firebaseConfig";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import { getFirestore, collection, getDocs, setDoc, doc, updateDoc} from "firebase/firestore"
 import "./styles/StatsPage.css"
+import ButtonPrimary from "../../../components/ui/ButtonPrimary";
+import {CSVLink} from "react-csv"
 
 
 
@@ -395,6 +397,41 @@ function StatsPage() {
     // await setDoc(doc(db, "data", "three"), docData);
     // await updateDoc(doc(db, "data", "one"), {something: "HAHAHAH"});
   }
+
+  const csvLink = useRef();
+  const user_csv_data = userData.map((obj) => {return obj[0].data()});
+  const fields = [
+    {label: 'is_minor', key: 'is_minor'},
+    {label: 'first_name', key: 'first_name'},
+    {label: 'minorForm', key: 'minorForm'},
+    {label: 'gender', key: 'gender'},
+    {label: 'race', key: 'race'},
+    {label: 'state_from', key: 'state_from'},
+    {label: 'hackatons_attended', key: 'hackatons_attended'},
+    {label: 'school', key: 'school'},
+    {label: 'country_of_origin', key: 'country_of_origin'},
+    {label: 'age', key: 'age'},
+    {label: 'graduation_date', key: 'graduation_date'},
+    {label: 'approved', key: 'approved'},
+    {label: 'phone', key: 'phone'},
+    {label: 'education_level', key: 'education_level'},
+    {label: 'resume', key: 'resume'},
+    {label: 'content_form', key: 'content_form'},
+    {label: 'reason_attending', key: 'reason_attending'},
+    {label: 'accepted_policy', key: 'accepted_policy'},
+    {label: 'linkedin', key: 'linkedin'},
+    {label: 'net_id', key: 'net_id'},
+    {label: 'msu_student', key: 'msu_student'},
+    {label: 'major', key: 'major'},
+    {label: 'githubURL', key: 'githubURL'},
+    {label: 'email', key: 'email'},
+    {label: 'last_name', key: 'last_name'}
+  ];
+
+  const download_csv = () => {
+    csvLink.current.link.click()
+  }
+
   return (
     <div className="container mt-5 flex flex-col h-4/5 scroll-smooth overflow-scroll">
       <div className="text-white">
@@ -403,6 +440,15 @@ function StatsPage() {
       <div className="text-white">
         Total people from MSU: {totalMSU}
       </div>
+      <ButtonPrimary buttonText="Download as CSV" onClick={download_csv}></ButtonPrimary>
+      <CSVLink
+         data={user_csv_data}
+         filename='UsersReport.csv'
+         headers={fields}
+         className='hidden'
+         ref={csvLink}
+         target='_blank'
+      />
       {/* <button className="text-white rounded bg-sky-300" onClick={try_pushing_data}>Click here</button> */}
       <div className="container mt-4 md mx-auto  flex flex-col rounded border-2 border-amber-50">
         {/* {mockData.map((doc) => {
@@ -464,7 +510,7 @@ function StatsPage() {
               console.log(err);
             });
           }
-          console.log(doc.id);
+
           return (
             <div className="flex  my-2 py-1 justify-around rounded border-2 border-orange-400">
               <div className="text-white text-center mx-1 w-4">{count}</div>
