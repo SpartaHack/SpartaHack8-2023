@@ -3,7 +3,7 @@ import SectionHeading from './SectionHeading'
 import SponsorsLogos from './SponsorsLogos'
 
 import techsmithLogo from '../../materials/logos/white-logos/techsmith-white.png'
-import autoownersLogo from '../../materials/logos/white-logos//autoowners-white.png'
+import autoownersLogo from '../../materials/logos/white-logos/autoowners-white.png'
 import msufcuLogo from '../../materials/logos/white-logos/msufcu-white.png'
 import msuitLogo from '../../materials/logos/white-logos/msuit-white.png'
 import techacksLogo from '../../materials/logos/white-logos/techacks-white.png'
@@ -56,7 +56,7 @@ function SponsorsSection() {
         {
       name: "GitHub Logo",
       path: githubLogo,
-      class: "sm:max-h-32 lg:max-h-32"
+      class: "sm:max-h-32 lg:max-h-32 -my-4"
     },
         {
       name: "Kellogg's Logo",
@@ -85,7 +85,7 @@ function SponsorsSection() {
       <SectionHeading text="Our Sponsors" />
       <SponsorsLogos logos={logos} />
       <div className='mx-3 sm:mx-auto max-w-lg md:max-w-3xl inter-font font-light text-sh-white text-center leading-8 mt-16 md:mt-12'>
-        <span className='block text-[16px] md:text-[20px] opacity-70'>
+        <span className='block text-[16px] opacity-70'>
           Our sponsors allow us to host hundreds of students every year and provide them with great learning opportunities and fun experiences.
           If you would like to help us do the same this year, contact us at <span className='select-all cursor-pointer text-sky-500'>sponsor@spartahack.com</span>, today!
           <span className='hidden lg:inline'><br /></span>

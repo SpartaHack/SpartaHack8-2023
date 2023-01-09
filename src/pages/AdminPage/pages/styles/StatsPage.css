@@ -9,3 +9,7 @@
 .bg_blue_modal {
   background-color: #155E75;
 }
+
+.modal_body {
+  max-height: 70vh;
+}
