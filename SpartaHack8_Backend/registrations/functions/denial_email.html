@@ -1,1052 +1,141 @@
-<body>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; line-height: 1.5; -webkit-text-size-adjust: 100%; tab-size: 4; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; -webkit-font-feature-settings: normal; font-feature-settings: normal;">
+
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Email from SpartaHack 8</title>
+    <link href="/dist/output.css" rel="stylesheet">
   <style>
-      *,
-      ::before,
-      ::after {
-          box-sizing: border-box;
-          /* 1 */
-          border-width: 0;
-          /* 2 */
-          border-style: solid;
-          /* 2 */
-          border-color: #e5e7eb;
-          /* 2 */
-          box-sizing: border-box;
-      }
-
-      ::before,
-      ::after {
-          --tw-content: '';
-      }
-
-      /*
-      1. Use a consistent sensible line-height in all browsers.
-      2. Prevent adjustments of font size after orientation changes in iOS.
-      3. Use a more readable tab size.
-      4. Use the user's configured `sans` font-family by default.
-      5. Use the user's configured `sans` font-feature-settings by default.
-      */
-
-      html {
-          line-height: 1.5;
-          /* 1 */
-          -webkit-text-size-adjust: 100%;
-          /* 2 */
-          /* 3 */
-          tab-size: 4;
-          /* 3 */
-          font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-          /* 4 */
-          -webkit-font-feature-settings: normal;
-          font-feature-settings: normal;
-          /* 5 */
-      }
-
-      /*
-      1. Remove the margin in all browsers.
-      2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-      */
-
-      body {
-          margin: 0;
-          /* 1 */
-          line-height: inherit;
-          /* 2 */
-      }
-
-      /*
-      1. Add the correct height in Firefox.
-      2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-      3. Ensure horizontal rules are visible by default.
-      */
-
-      hr {
-          height: 0;
-          /* 1 */
-          color: inherit;
-          /* 2 */
-          border-top-width: 1px;
-          /* 3 */
-      }
-
-      /*
-      Add the correct text decoration in Chrome, Edge, and Safari.
-      */
-
-      abbr:where([title]) {
-          -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
-      }
-
-      /*
-      Remove the default font size and weight for headings.
-      */
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-          font-size: inherit;
-          font-weight: inherit;
-      }
-
-      /*
-      Reset links to optimize for opt-in styling instead of opt-out.
-      */
-
-      a {
-          color: inherit;
-          text-decoration: inherit;
-      }
-
-      /*
-      Add the correct font weight in Edge and Safari.
-      */
-
-      b,
-      strong {
-          font-weight: bolder;
-      }
-
-      /*
-      1. Use the user's configured `mono` font family by default.
-      2. Correct the odd `em` font sizing in all browsers.
-      */
-
-      code,
-      kbd,
-      samp,
-      pre {
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-          /* 1 */
-          font-size: 1em;
-          /* 2 */
-      }
-
-      /*
-      Add the correct font size in all browsers.
-      */
-
-      small {
-          font-size: 80%;
-      }
-
-      /*
-      Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-      */
-
-      sub,
-      sup {
-          font-size: 75%;
-          line-height: 0;
-          position: relative;
-          vertical-align: baseline;
-      }
-
-      sub {
-          bottom: -0.25em;
-      }
-
-      sup {
-          top: -0.5em;
-      }
-
-      /*
-      1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-      2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-      3. Remove gaps between table borders by default.
-      */
-
-      table {
-          text-indent: 0;
-          /* 1 */
-          border-color: inherit;
-          /* 2 */
-          border-collapse: collapse;
-          /* 3 */
-      }
-
-      /*
-      1. Change the font styles in all browsers.
-      2. Remove the margin in Firefox and Safari.
-      3. Remove default padding in all browsers.
-      */
-
-      button,
-      input,
-      optgroup,
-      select,
-      textarea {
-          font-family: inherit;
-          /* 1 */
-          font-size: 100%;
-          /* 1 */
-          font-weight: inherit;
-          /* 1 */
-          line-height: inherit;
-          /* 1 */
-          color: inherit;
-          /* 1 */
-          margin: 0;
-          /* 2 */
-          padding: 0;
-          /* 3 */
-      }
-
-      /*
-      Remove the inheritance of text transform in Edge and Firefox.
-      */
-
-      button,
-      select {
-          text-transform: none;
-      }
-
-      /*
-      1. Correct the inability to style clickable types in iOS and Safari.
-      2. Remove default button styles.
-      */
-
-      button,
-      [type='button'],
-      [type='reset'],
-      [type='submit'] {
-          -webkit-appearance: button;
-          /* 1 */
-          background-color: transparent;
-          /* 2 */
-          background-image: none;
-          /* 2 */
-      }
-
-      /*
-      Use the modern Firefox focus style for all focusable elements.
-      */
-
-      :-moz-focusring {
-          outline: auto;
-      }
-
-      /*
-      Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
-      */
-
-      :-moz-ui-invalid {
-          box-shadow: none;
-      }
-
-      /*
-      Add the correct vertical alignment in Chrome and Firefox.
-      */
-
-      progress {
-          vertical-align: baseline;
-      }
-
-      /*
-      Correct the cursor style of increment and decrement buttons in Safari.
-      */
-
-      ::-webkit-inner-spin-button,
-      ::-webkit-outer-spin-button {
-          height: auto;
-      }
-
-      /*
-      1. Correct the odd appearance in Chrome and Safari.
-      2. Correct the outline style in Safari.
-      */
-
-      [type='search'] {
-          -webkit-appearance: textfield;
-          /* 1 */
-          outline-offset: -2px;
-          /* 2 */
-      }
-
-      /*
-      Remove the inner padding in Chrome and Safari on macOS.
-      */
-
-      ::-webkit-search-decoration {
-          -webkit-appearance: none;
-      }
-
-      /*
-      1. Correct the inability to style clickable types in iOS and Safari.
-      2. Change font properties to `inherit` in Safari.
-      */
-
-      ::-webkit-file-upload-button {
-          -webkit-appearance: button;
-          /* 1 */
-          font: inherit;
-          /* 2 */
-      }
-
-      /*
-      Add the correct display in Chrome and Safari.
-      */
-
-      summary {
-          display: list-item;
-      }
-
-      /*
-      Removes the default spacing and border for appropriate elements.
-      */
-
-      blockquote,
-      dl,
-      dd,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      hr,
-      figure,
-      p,
-      pre {
-          margin: 0;
-      }
-
-      fieldset {
-          margin: 0;
-          padding: 0;
-      }
-
-      legend {
-          padding: 0;
-      }
-
-      ol,
-      ul,
-      menu {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-      }
-
-      /*
-      Prevent resizing textareas horizontally by default.
-      */
-
-      textarea {
-          resize: vertical;
-      }
-
-      /*
-      1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-      2. Set the default placeholder color to the user's configured gray 400 color.
-      */
-
-      input::-webkit-input-placeholder,
-      textarea::-webkit-input-placeholder {
-          opacity: 1;
-          /* 1 */
-          color: #9ca3af;
-          /* 2 */
-      }
-
-      input::placeholder,
-      textarea::placeholder {
-          opacity: 1;
-          /* 1 */
-          color: #9ca3af;
-          /* 2 */
-      }
-
-      /*
-      Set the default cursor for buttons.
-      */
-
-      button,
-      [role="button"] {
-          cursor: pointer;
-      }
-
-      /*
-      Make sure disabled buttons don't get the pointer cursor.
-      */
-
-      :disabled {
-          cursor: default;
-      }
-
-      /*
-      1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
-      2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
-         This can trigger a poorly considered lint error in some tools but is included by design.
-      */
-
-      img,
-      svg,
-      video,
-      canvas,
-      audio,
-      iframe,
-      embed,
-      object {
-          display: block;
-          /* 1 */
-          vertical-align: middle;
-          /* 2 */
-      }
-
-      /*
-      Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-      */
-
-      img,
-      video {
-          max-width: 100%;
-          height: auto;
-      }
-
-      /* Make elements with the HTML hidden attribute stay hidden by default */
-
-      [hidden] {
-          display: none;
-      }
-
-      *,
-      ::before,
-      ::after {
-          --tw-border-spacing-x: 0;
-          --tw-border-spacing-y: 0;
-          --tw-translate-x: 0;
-          --tw-translate-y: 0;
-          --tw-rotate: 0;
-          --tw-skew-x: 0;
-          --tw-skew-y: 0;
-          --tw-scale-x: 1;
-          --tw-scale-y: 1;
-          --tw-pan-x: ;
-          --tw-pan-y: ;
-          --tw-pinch-zoom: ;
-          --tw-scroll-snap-strictness: proximity;
-          --tw-ordinal: ;
-          --tw-slashed-zero: ;
-          --tw-numeric-figure: ;
-          --tw-numeric-spacing: ;
-          --tw-numeric-fraction: ;
-          --tw-ring-inset: ;
-          --tw-ring-offset-width: 0px;
-          --tw-ring-offset-color: #fff;
-          --tw-ring-color: rgb(59 130 246 / 0.5);
-          --tw-ring-offset-shadow: 0 0 #0000;
-          --tw-ring-shadow: 0 0 #0000;
-          --tw-shadow: 0 0 #0000;
-          --tw-shadow-colored: 0 0 #0000;
-          --tw-blur: ;
-          --tw-brightness: ;
-          --tw-contrast: ;
-          --tw-grayscale: ;
-          --tw-hue-rotate: ;
-          --tw-invert: ;
-          --tw-saturate: ;
-          --tw-sepia: ;
-          --tw-drop-shadow: ;
-          --tw-backdrop-blur: ;
-          --tw-backdrop-brightness: ;
-          --tw-backdrop-contrast: ;
-          --tw-backdrop-grayscale: ;
-          --tw-backdrop-hue-rotate: ;
-          --tw-backdrop-invert: ;
-          --tw-backdrop-opacity: ;
-          --tw-backdrop-saturate: ;
-          --tw-backdrop-sepia: ;
-      }
-
-      ::-webkit-backdrop {
-          --tw-border-spacing-x: 0;
-          --tw-border-spacing-y: 0;
-          --tw-translate-x: 0;
-          --tw-translate-y: 0;
-          --tw-rotate: 0;
-          --tw-skew-x: 0;
-          --tw-skew-y: 0;
-          --tw-scale-x: 1;
-          --tw-scale-y: 1;
-          --tw-pan-x: ;
-          --tw-pan-y: ;
-          --tw-pinch-zoom: ;
-          --tw-scroll-snap-strictness: proximity;
-          --tw-ordinal: ;
-          --tw-slashed-zero: ;
-          --tw-numeric-figure: ;
-          --tw-numeric-spacing: ;
-          --tw-numeric-fraction: ;
-          --tw-ring-inset: ;
-          --tw-ring-offset-width: 0px;
-          --tw-ring-offset-color: #fff;
-          --tw-ring-color: rgb(59 130 246 / 0.5);
-          --tw-ring-offset-shadow: 0 0 #0000;
-          --tw-ring-shadow: 0 0 #0000;
-          --tw-shadow: 0 0 #0000;
-          --tw-shadow-colored: 0 0 #0000;
-          --tw-blur: ;
-          --tw-brightness: ;
-          --tw-contrast: ;
-          --tw-grayscale: ;
-          --tw-hue-rotate: ;
-          --tw-invert: ;
-          --tw-saturate: ;
-          --tw-sepia: ;
-          --tw-drop-shadow: ;
-          --tw-backdrop-blur: ;
-          --tw-backdrop-brightness: ;
-          --tw-backdrop-contrast: ;
-          --tw-backdrop-grayscale: ;
-          --tw-backdrop-hue-rotate: ;
-          --tw-backdrop-invert: ;
-          --tw-backdrop-opacity: ;
-          --tw-backdrop-saturate: ;
-          --tw-backdrop-sepia: ;
-      }
-
-      ::backdrop {
-          --tw-border-spacing-x: 0;
-          --tw-border-spacing-y: 0;
-          --tw-translate-x: 0;
-          --tw-translate-y: 0;
-          --tw-rotate: 0;
-          --tw-skew-x: 0;
-          --tw-skew-y: 0;
-          --tw-scale-x: 1;
-          --tw-scale-y: 1;
-          --tw-pan-x: ;
-          --tw-pan-y: ;
-          --tw-pinch-zoom: ;
-          --tw-scroll-snap-strictness: proximity;
-          --tw-ordinal: ;
-          --tw-slashed-zero: ;
-          --tw-numeric-figure: ;
-          --tw-numeric-spacing: ;
-          --tw-numeric-fraction: ;
-          --tw-ring-inset: ;
-          --tw-ring-offset-width: 0px;
-          --tw-ring-offset-color: #fff;
-          --tw-ring-color: rgb(59 130 246 / 0.5);
-          --tw-ring-offset-shadow: 0 0 #0000;
-          --tw-ring-shadow: 0 0 #0000;
-          --tw-shadow: 0 0 #0000;
-          --tw-shadow-colored: 0 0 #0000;
-          --tw-blur: ;
-          --tw-brightness: ;
-          --tw-contrast: ;
-          --tw-grayscale: ;
-          --tw-hue-rotate: ;
-          --tw-invert: ;
-          --tw-saturate: ;
-          --tw-sepia: ;
-          --tw-drop-shadow: ;
-          --tw-backdrop-blur: ;
-          --tw-backdrop-brightness: ;
-          --tw-backdrop-contrast: ;
-          --tw-backdrop-grayscale: ;
-          --tw-backdrop-hue-rotate: ;
-          --tw-backdrop-invert: ;
-          --tw-backdrop-opacity: ;
-          --tw-backdrop-saturate: ;
-          --tw-backdrop-sepia: ;
-      }
-
-      .z-0 {
-          z-index: 0;
-      }
-
-      .mx-2 {
-          margin-left: 0.5rem;
-          margin-right: 0.5rem;
-      }
-
-      .mx-4 {
-          margin-left: 1rem;
-          margin-right: 1rem;
-      }
-
-      .mb-12 {
-          margin-bottom: 3rem;
-      }
-
-      .mb-2 {
-          margin-bottom: 0.5rem;
-      }
-
-      .flex {
-          display: flex;
-      }
-
-      .h-fit {
-          height: -webkit-fit-content;
-          height: -moz-fit-content;
-          height: fit-content;
-      }
-
-      .h-48 {
-          height: 12rem;
-      }
-
-      .h-\[70px\] {
-          height: 70px;
-      }
-
-      .h-full {
-          height: 100%;
-      }
-
-      .h-12 {
-          height: 3rem;
-      }
-
-      .h-16 {
-          height: 4rem;
-      }
-
-      .w-full {
-          width: 100%;
-      }
-
-      .max-w-\[600px\] {
-          max-width: 600px;
-      }
-
-      .flex-row {
-          flex-direction: row;
-      }
-
-      .flex-col {
-          flex-direction: column;
-      }
-
-      .items-center {
-          align-items: center;
-      }
-
-      .justify-center {
-          justify-content: center;
-      }
-
-      .gap-x-2 {
-          -webkit-column-gap: 0.5rem;
-          column-gap: 0.5rem;
-      }
-
-      .gap-x-4 {
-          -webkit-column-gap: 1rem;
-          column-gap: 1rem;
-      }
-
-      .gap-y-4 {
-          row-gap: 1rem;
-      }
-
-      .whitespace-normal {
-          white-space: normal;
-      }
-
-      .whitespace-pre-line {
-          white-space: pre-line;
-      }
-
-      .bg-gray-300 {
-          --tw-bg-opacity: 1;
-          background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-      }
-
-      .bg-sh-white {
-          --tw-bg-opacity: 1;
-          background-color: rgb(245 245 245 / var(--tw-bg-opacity));
-      }
-
-      .bg-sh-black {
-          --tw-bg-opacity: 1;
-          background-color: rgb(18 18 18 / var(--tw-bg-opacity));
-      }
-
-      .bg-sh-black\/50 {
-          background-color: rgb(18 18 18 / 0.5);
-      }
-
-      .bg-sh-black\/80 {
-          background-color: rgb(18 18 18 / 0.8);
-      }
-
-      .bg-sh-black\/90 {
-          background-color: rgb(18 18 18 / 0.9);
-      }
-
-      .bg-sh-black\/95 {
-          background-color: rgb(18 18 18 / 0.95);
-      }
-
-      .bg-sh-black\/10 {
-          background-color: rgb(18 18 18 / 0.1);
-      }
-
-      .bg-sh-black\/5 {
-          background-color: rgb(18 18 18 / 0.05);
-      }
-
-      .bg-sh-black\/\[0\.01\] {
-          background-color: rgb(18 18 18 / 0.01);
-      }
-
-      .bg-sh-black\/\[0\.05\] {
-          background-color: rgb(18 18 18 / 0.05);
-      }
-
-      .px-4 {
-          box-sizing: border-box;
-          padding-left: 1rem;
-          padding-right: 1rem;
-      }
-
-      .px-6 {
-          box-sizing: border-box;
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
-      }
-
-      .py-12 {
-          box-sizing: border-box;
-          padding-top: 3rem;
-          padding-bottom: 3rem;
-      }
-
-      .py-6 {
-          box-sizing: border-box;
-          padding-top: 1.5rem;
-          padding-bottom: 1.5rem;
-      }
-
-      .py-8 {
-          box-sizing: border-box;
-          padding-top: 2rem;
-          padding-bottom: 2rem;
-      }
-
-      .pt-2 {
-          box-sizing: border-box;
-          padding-top: 0.5rem;
-      }
-
-      .pb-12 {
-          box-sizing: border-box;
-          padding-bottom: 3rem;
-      }
-
-      .pt-12 {
-          box-sizing: border-box;
-          padding-top: 3rem;
-      }
-
-      .pb-16 {
-          box-sizing: border-box;
-          padding-bottom: 4rem;
-      }
-
-      .pb-24 {
-          box-sizing: border-box;
-          padding-bottom: 6rem;
-      }
-
-      .text-\[40px\] {
-          font-size: 40px;
-      }
-
-      .text-xl {
-          font-size: 1.25rem;
-          line-height: 1.75rem;
-      }
-
-      .text-2xl {
-          font-size: 1.5rem;
-          line-height: 2rem;
-      }
-
-      .text-lg {
-          font-size: 1.125rem;
-          line-height: 1.75rem;
-      }
-
-      .text-3xl {
-          font-size: 1.875rem;
-          line-height: 2.25rem;
-      }
-
-      .text-4xl {
-          font-size: 2.25rem;
-          line-height: 2.5rem;
-      }
-
-      .font-medium {
-          font-weight: 500;
-      }
-
-      .font-light {
-          font-weight: 300;
-      }
-
-      .font-thin {
-          font-weight: 100;
-      }
-
-      .font-normal {
-          font-weight: 400;
-      }
-
-      .leading-8 {
-          line-height: 2rem;
-      }
-
-      .leading-6 {
-          line-height: 1.5rem;
-      }
-
-      .leading-4 {
-          line-height: 1rem;
-      }
-
-      .leading-7 {
-          line-height: 1.75rem;
-      }
-
-      .text-sh-black {
-          --tw-text-opacity: 1;
-          color: rgb(18 18 18 / var(--tw-text-opacity));
-      }
-
-      .text-sh-white {
-          --tw-text-opacity: 1;
-          color: rgb(245 245 245 / var(--tw-text-opacity));
-      }
-
-      .text-sh-white\/50 {
-          color: rgb(245 245 245 / 0.5);
-      }
-
-      .text-sh-white\/80 {
-          color: rgb(245 245 245 / 0.8);
-      }
-
-      .text-sh-white\/70 {
-          color: rgb(245 245 245 / 0.7);
-      }
-
-      .text-sh-black\/80 {
-          color: rgb(18 18 18 / 0.8);
-      }
-
-      .text-blue-400 {
-          --tw-text-opacity: 1;
-          color: rgb(96 165 250 / var(--tw-text-opacity));
-      }
-
-      .text-blue-300 {
-          --tw-text-opacity: 1;
-          color: rgb(147 197 253 / var(--tw-text-opacity));
-      }
-
-      .text-blue-500 {
-          --tw-text-opacity: 1;
-          color: rgb(59 130 246 / var(--tw-text-opacity));
-      }
-
-      .text-white {
-          --tw-text-opacity: 1;
-          color: rgb(255 255 255 / var(--tw-text-opacity));
-      }
-
-      .text-sh-black\/90 {
-          color: rgb(18 18 18 / 0.9);
-      }
-
-      .text-sh-black\/50 {
-          color: rgb(18 18 18 / 0.5);
-      }
-
-      .text-sh-black\/70 {
-          color: rgb(18 18 18 / 0.7);
-      }
-
-      .text-sh-black\/60 {
-          color: rgb(18 18 18 / 0.6);
-      }
-
-      .drop-shadow-xl {
-          --tw-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
-          -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-      }
-
-      .drop-shadow-lg {
-          --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
-          -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-      }
-
-      .rubik-font {
-          font-family: 'Rubik',
-          Helvetica, Arial, sans-serif;
-      }
-
-      .inter-font {
-          font-family: 'Inter', Helvetica, Arial, sans-serif;
-      }
-
-      .mono-font {
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      }
-
-      @media (prefers-color-scheme: dark) {
-          .dark\:bg-sh-black {
-              --tw-bg-opacity: 1;
-              background-color: rgb(18 18 18 / var(--tw-bg-opacity));
-          }
-
-          .dark\:bg-sh-black\/95 {
-              background-color: rgb(18 18 18 / 0.95);
-          }
-
-          .dark\:text-sh-white {
-              --tw-text-opacity: 1;
-              color: rgb(245 245 245 / var(--tw-text-opacity));
-          }
-
-          .dark\:text-sh-white\/80 {
-              color: rgb(245 245 245 / 0.8);
-          }
-
-          .dark\:text-sh-white\/70 {
-              color: rgb(245 245 245 / 0.7);
-          }
-
-          .dark\:text-sh-white\/60 {
-              color: rgb(245 245 245 / 0.6);
-          }
-
-          .dark\:text-sh-white\/90 {
-              color: rgb(245 245 245 / 0.9);
-          }
-
-          .dark\:text-sh-white\/50 {
-              color: rgb(245 245 245 / 0.5);
-          }
-      }
-
-      @media (min-width: 400px) {
-          .min-\[400px\]\:h-\[80px\] {
-              height: 80px;
-          }
-
-          .min-\[400px\]\:gap-x-4 {
-              -webkit-column-gap: 1rem;
-              column-gap: 1rem;
-          }
-      }
-
-      @media (min-width: 640px) {
-          .sm\:mx-auto {
-              margin-left: auto;
-              margin-right: auto;
-          }
-
-          .sm\:h-\[100px\] {
-              height: 100px;
-          }
-
-          .sm\:text-\[50px\] {
-              font-size: 50px;
-          }
-      }
-  </style>
-  <main class="max-w-[600px] mx-2 sm:mx-auto mb-12 h-fit">
-      <header class="h-48 bg-sh-black/95 dark:bg-sh-black drop-shadow-lg">
-          <a class="w-full h-full flex flex-row justify-center items-center gap-x-2 min-[400px]:gap-x-4"
-              href="https://spartahack.com" target="_blank" rel="noopener noreferrer">
-              <div class="h-[70px] min-[400px]:h-[80px] sm:h-[100px]">
-                  <svg height=inherit viewBox="0 0 293 345" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                          d="M237.698 345C234.085 345 230.62 344.035 227.38 342.122C226.237 341.45 223.577 339.886 219.861 337.697C183.156 316.106 140.484 290.965 136.301 288.207C135.41 287.623 133.564 286.946 131.027 286.779L100.314 286.68C100.104 286.68 99.8883 286.669 99.6782 286.643C83.3066 284.861 72.312 269.118 72.312 255.534C72.312 251.207 72.4555 247.324 72.6349 242.403C72.9937 232.645 73.5422 217.898 73.5422 184.875C73.5422 158.473 85.9618 134.5 110.452 113.618C110.524 113.555 110.601 113.492 110.678 113.435C129.751 98.6518 156.435 91.7815 180.311 95.5034C183.796 96.0194 193.202 97.75 204.34 102.468C220.496 109.312 232.516 114.707 234.269 115.494C237.058 116.464 241.353 115.739 243.075 113.258C249.938 103.359 254.418 96.6189 259.611 88.8206C264.598 81.3247 270.246 72.828 279.109 59.9057C283.281 53.5253 277.679 49.0528 274.327 46.3839C265.449 39.2998 259.718 35.8021 250.958 31.0637C243.536 27.0499 235.986 23.7815 228.528 21.3524C203.51 13.2049 176.733 10.6194 151.084 13.8722C124.061 17.3021 99.5244 27.2063 80.1236 42.5056C50.8814 65.3269 43.4594 82.6696 34.8584 102.754C29.7583 114.665 24.484 126.983 14.3658 141.203C12.5462 143.758 11.8952 146.875 12.5308 149.976C13.1715 153.099 15.0065 155.71 17.7078 157.331L34.9917 167.72C37.9185 169.477 38.8872 173.314 37.1599 176.29C35.4325 179.267 31.66 180.252 28.7332 178.495L11.4493 168.106C5.81612 164.723 1.82319 159.041 0.485375 152.531C-0.842184 146.041 0.582763 139.238 4.40142 133.874C13.7405 120.754 18.7432 109.067 23.5818 97.7605C32.4749 76.9878 40.876 57.3671 72.6093 32.6015C93.7324 15.9416 120.35 5.16691 149.562 1.46067C176.969 -2.01622 205.575 0.741309 232.28 9.44134C240.435 12.0998 248.667 15.6549 256.735 20.018C265.946 24.9961 272.374 28.9213 281.923 36.5423C297.551 49.0111 293.251 60.9274 289.299 66.922C289.278 66.9533 289.258 66.9846 289.237 67.0158C280.406 79.8913 274.772 88.3619 269.806 95.8317C264.577 103.687 260.067 110.474 253.137 120.472C248.288 127.463 238.298 130.345 229.887 127.186C229.753 127.139 229.625 127.082 229.492 127.025C228.974 126.79 216.621 121.223 199.619 114.019C189.768 109.844 181.567 108.332 178.501 107.878C162.273 105.35 137.977 108.082 118.259 123.298C96.4592 141.923 85.8592 162.065 85.8592 184.87C85.8592 218.127 85.3108 233.015 84.9469 242.867C84.7623 247.845 84.6291 251.437 84.6291 255.529C84.6291 263.421 91.4873 272.981 100.714 274.164L131.253 274.263C131.36 274.263 131.463 274.263 131.57 274.274C135.963 274.519 140.023 275.738 143.006 277.704C147.46 280.638 206.601 315.428 226.032 326.859C229.759 329.049 232.419 330.618 233.562 331.29C235.643 332.515 237.314 332.489 237.857 332.479C238.006 332.479 238.119 332.479 238.206 332.479C240.23 332.5 242.429 331.264 243.224 330.097C245.079 327.376 245.115 327.188 245.213 319.916C245.238 317.857 245.274 315.303 245.371 312.154C245.448 293.18 245.382 285.736 245.325 279.752C245.269 273.648 245.228 268.826 245.356 254.809C245.356 254.752 245.356 254.695 245.356 254.637C245.561 248.929 243.726 243.227 243.065 241.673C243.034 241.6 243.003 241.527 242.978 241.454C241.179 236.752 236.996 230.216 230.645 225.967C221.691 220.02 218.497 217.877 215.119 215.615C213.648 214.63 212.131 213.613 210.076 212.237C204.935 208.802 202.372 203.167 203.048 196.776C203.356 193.862 203.448 193.242 203.674 191.746C203.751 191.24 203.843 190.62 203.966 189.744C204.73 184.422 207.779 180.069 212.336 177.797C216.796 175.576 222.014 175.711 226.288 178.172C228.303 179.329 231.512 181.112 235.223 183.171C256.576 195.019 262.635 198.674 264.685 200.957C264.741 201.019 264.798 201.082 264.849 201.15C270.595 208.077 270.569 216.454 270.549 223.84V225.18C270.549 228.636 267.791 231.435 264.398 231.435C261.005 231.435 258.247 228.636 258.247 225.18V223.804C258.268 217.966 258.278 212.899 255.659 209.479C252.824 207.191 237.011 198.413 229.328 194.154C225.571 192.069 222.326 190.271 220.225 189.061C219.497 188.644 218.549 188.629 217.744 189.03C216.847 189.478 216.304 190.323 216.129 191.548C216.001 192.455 215.904 193.101 215.827 193.628C215.622 195.009 215.55 195.478 215.268 198.126C215.007 200.576 216.278 201.426 216.816 201.791C218.877 203.167 220.399 204.189 221.875 205.179C225.243 207.436 228.426 209.568 237.375 215.516C244.813 220.489 251.158 228.449 254.388 236.825C255.741 240.057 257.894 247.386 257.637 255.018C257.509 268.852 257.555 273.617 257.607 279.648C257.658 285.679 257.724 293.18 257.653 312.3C257.653 312.363 257.653 312.42 257.653 312.483C257.555 315.553 257.519 318.071 257.494 320.093C257.391 328.038 257.35 331.327 253.311 337.243C250.108 341.935 243.987 345.031 238.103 345H238.057C237.934 345 237.811 345 237.693 345H237.698Z"
-                          fill="url(#paint0_linear_131_574)" />
-                      <defs>
-                          <linearGradient id="paint0_linear_131_574" x1="281.989" y1="335.87" x2="15.7305"
-                              y2="29.9205" gradientUnits="userSpaceOnUse">
-                              <stop stop-color="#1E4FFF" />
-                              <stop offset="1" stop-color="#F70063" />
-                          </linearGradient>
-                      </defs>
-                  </svg>
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-sh-black\/\[0\.99\] {
+    background-color: rgb(18 18 18 / 0.99);
+  }
+
+  .dark\:bg-sh-black\/\[0\.90\] {
+    background-color: rgb(18 18 18 / 0.90);
+  }
+
+  .dark\:text-sh-white\/80 {
+    color: rgb(245 245 245 / 0.8);
+  }
+
+  .dark\:text-blue-400 {
+    --tw-text-opacity: 1;
+    color: rgb(96 165 250 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-sh-white {
+    --tw-text-opacity: 1;
+    color: rgb(245 245 245 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-sh-white\/90 {
+    color: rgb(245 245 245 / 0.9);
+  }
+
+  .dark\:text-sh-white\/50 {
+    color: rgb(245 245 245 / 0.5);
+  }
+}
+@media (min-width: 640px) {
+  .sm\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style></head>
+
+  <body style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin: 0; line-height: inherit;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="w-full" style="box-sizing: border-box; border-width: 0; border-style: solid; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; text-indent: 0; border-color: inherit; border-collapse: collapse; width: 100%;" width="100%">
+      <tr class="h-2" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; height: 0.5rem;"></tr>
+      <tr class="w-auto" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; width: auto;">
+        <td style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">&nbsp;</td>
+        <td style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">&nbsp;</td>
+        <td class="max-w-[600px] w-[600px] mx-2 sm:mx-auto mb-12 h-fit" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin-left: 0.5rem; margin-right: 0.5rem; margin-bottom: 3rem; height: -webkit-fit-content; height: -moz-fit-content; height: fit-content; width: 600px; max-width: 600px;" width="600">
+          <div class="h-48 bg-sh-black/[0.99] dark:bg-sh-black/[0.99] drop-shadow-lg" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; height: 12rem; background-color: rgb(18 18 18 / 0.99); --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1)); -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow); filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);">
+            <a href="https://spartahack.com" target="_blank" rel="noopener noreferrer" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; color: inherit; text-decoration: inherit;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="w-full h-full" style="box-sizing: border-box; border-width: 0; border-style: solid; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; text-indent: 0; border-color: inherit; border-collapse: collapse; height: 100%; width: 100%;" width="100%" height="100%">
+                <tr style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+                  <td class="w-full h-full" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; height: 100%; width: 100%;" width="100%" height="100%">
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="mx-auto" style="box-sizing: border-box; border-width: 0; border-style: solid; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; text-indent: 0; border-color: inherit; border-collapse: collapse; margin-left: auto; margin-right: auto;">
+                      <tr class="mx-auto" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin-left: auto; margin-right: auto;">
+                        <td class="w-6" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; width: 1.5rem;"></td>
+                        <td class="max-w-[400px]" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; max-width: 400px;">
+                          <img src="
+                            https://firebasestorage.googleapis.com/v0/b/spartahack8.appspot.com/o/img%2FSH-Email-Logo.png?alt=media&token=d5bd6ddd-5a0a-4b3f-9e82-9c5d0f2e793f" alt="SpartaHack 8 Logo" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; display: block; vertical-align: middle; max-width: 100%; height: auto;">
+                        </td>
+                        <td class="w-6" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; width: 1.5rem;"></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </a>
+          </div>
+          <div class="w-full px-6 pt-12 pb-24 bg-sh-black/[0.90] dark:bg-sh-black/[0.90]" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; width: 100%; background-color: rgb(18 18 18 / 0.90); padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 3rem; padding-bottom: 6rem;">
+            <h1 class="rubik-font font-medium text-4xl text-sh-white/[0.99]" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin: 0; font-size: 2.25rem; line-height: 2.5rem; font-weight: 500; color: rgb(245 245 245 / 0.99); font-family: 'Rubik',
+    Helvetica,
+    Arial,
+    sans-serif;">
+              Hello, {{username}}!
+            </h1>
+            <br style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+            <div class=" whitespace-normal text-sh-white/80 dark:text-sh-white/80 font-light leading-7" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; white-space: normal; font-weight: 300; line-height: 1.75rem; color: rgb(245 245 245 / 0.8);">
+              <p class="inter-font font-light mb-3" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin: 0; letter-spacing: 0.025em; margin-bottom: 0.75rem; font-weight: 300; font-family: Helvetica, Arial, sans-serif;">
+                We regret to inform you that we are unable to offer you a place
+                at SpartaHack
+                8 due to conflicts with your application.
+              </p>
+              <p class="inter-font font-light mb-3" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin: 0; letter-spacing: 0.025em; margin-bottom: 0.75rem; font-weight: 300; font-family: Helvetica, Arial, sans-serif;">
+                Thank you for taking the time to apply for SpartaHack 8, we look forward to seeing you in the future.
+              </p>
+              <br style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+              <p class="inter-font font-light mb-3" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin: 0; letter-spacing: 0.025em; margin-bottom: 0.75rem; font-weight: 300; font-family: Helvetica, Arial, sans-serif;">
+                If you have any further questions, please see the website's FAQ section for the minimum requirements for
+                acceptance. If you
+                still believe this is an error, please contact us at <a class="text-blue-400 dark:text-blue-400 visited:text-blue-400" href="mailto:hello@spartahack.com" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; text-decoration: inherit; --tw-text-opacity: 1; color: rgb(96 165 250 / var(--tw-text-opacity));">hello@spartahack.com</a>.
+              </p>
+              <br style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+              <br style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+              <div class="rubik-font font-medium text-xl text-sh-white dark:text-sh-white" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; font-size: 1.25rem; line-height: 1.75rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(245 245 245 / var(--tw-text-opacity)); font-family: 'Rubik',
+    Helvetica,
+    Arial,
+    sans-serif;">
+                - The SpartaHack 8 Team
               </div>
-              <div class="pt-2 font-medium rubik-font text-sh-white text-[40px] sm:text-[50px]">
-                  SpartaHack
-                  8</div>
-          </a>
-      </header>
-      <section class="w-full px-6 pt-12 pb-24 bg-sh-white dark:bg-sh-black/90">
-          <div class="rubik-font font-medium text-4xl text-sh-black/90 dark:text-sh-white">
-              Hi {{username}}! We are sorry to let you know you have been denied!
+            </div>
           </div>
-          <br>
-          <div class=" whitespace-normal text-sh-black/70 dark:text-sh-white/80 leading-7">
-              <p>
-                  Thanks for taking the time to apply to SpartaHack 8: Michigan State’s signature hackathon. Feel free to contact us if you have any questions.
-              </p>
-              <br>
 
-              <h2 class="mb-2 font-rubik font-medium text-xl text-sh-black/90 dark:text-sh-white leading-8">
-                  What do I have to do now?
-              </h2>
-              <p>
-                  Email us if you have any questions!
-              </p>
-              <br>
+          <div class="bg-sh-black/[0.99] dark:bg-sh-black/[0.99]" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; background-color: rgb(18 18 18 / 0.99);">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="w-full text-center" style="box-sizing: border-box; border-width: 0; border-style: solid; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; text-indent: 0; border-color: inherit; border-collapse: collapse; width: 100%; text-align: center; box-shadow: 0 -6px 10px 0 rgb(0 0 0 / 0.05);" width="100%" align="center">
+              <tr class="h-8" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; height: 2rem;"></tr>
+              <tr style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+                <td style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+                  <div class="w-8 mx-auto text-sh-white/90 dark:text-sh-white/90 mx-autoo" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin-left: auto; margin-right: auto; width: 2rem; color: rgb(245 245 245 / 0.9);">
+                    <a href="https://www.instagram.com/msuspartahack" target="_blank" rel="noopener noreferrer" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; color: inherit; text-decoration: inherit;">
+                      <img class="w-6 h-6 drop-shadow " src="https://firebasestorage.googleapis.com/v0/b/spartahack8.appspot.com/o/img%2FSH-Email-Instagram-Icon-White.png?alt=media&token=c6071e73-8382-464e-88ec-d96c8262783f" alt="Instagram Icon" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; display: block; vertical-align: middle; max-width: 100%; height: 1.5rem; width: 1.5rem; --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06)); -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow); filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);">
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="h-4" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; height: 1rem;"></tr>
+              <tr style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+                <td style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">
+                  <div class="text-center text-sh-white/50 dark:text-sh-white/50 inter-font mx-4" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; margin-left: 1rem; margin-right: 1rem; text-align: center; color: rgb(245 245 245 / 0.5); font-family: Helvetica, Arial, sans-serif;">
+                    Questions? Contact us at <a class="text-blue-400 dark:text-blue-400 visited:text-blue-400" href="mailto:hello@spartahack.com" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; text-decoration: inherit; --tw-text-opacity: 1; color: rgb(96 165 250 / var(--tw-text-opacity));">hello@spartahack.com</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="h-8" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; height: 2rem;"></tr>
+            </table>
+          </div>
+        </td>
+        <td style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">&nbsp;</td>
+        <td style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000;">&nbsp;</td>
+      </tr>
+      <tr class="h-16" style="box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-scroll-snap-strictness: proximity; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; height: 4rem;"></tr>
+    </table>
+  </body>
 
-              <h2 class="mb-2 font-rubik font-medium text-xl text-sh-black/90 dark:text-sh-white leading-8">
-                  Help us spread the word!
-              </h2>
-              <p>
-                  A hackathon is much better with friends! Make sure to remind all your friends and classmates to
-                  register for
-                  SpartaHack 8 at
-                  <a class="text-blue-400" href="https://www.spartahack.com" target="_blank"
-                      rel="noopener noreferrer">www.spartahack.com</a>.
-              </p>
-              <br>
-              <br>
-              <h2 class="font-rubik font-medium text-xl text-sh-black/90 dark:text-sh-white">
-                  - The SpartaHack 8 Team
-              </h2>
-          </div>
-      </section>
-      <footer class="w-full flex flex-col justify-center items-center gap-y-4 py-8 bg-sh-white dark:bg-sh-black"
-          style="box-shadow: 0 -6px 10px 0 rgb(0 0 0 / 0.05);">
-          <div class="flex flex-row justify-center items-center gap-x-4 text-sh-black/60 dark:text-sh-white/90">
-              <a href="https://www.instagram.com/msuspartahack" target="_blank" rel="noopener noreferrer">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="feather feather-instagram">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-              </a>
-          </div>
-          <div class="text-sh-black/50 dark:text-sh-white/50 inter-font">
-              Questions? Contact us at <a class="text-blue-400"
-                  href="mailto:hello@spartahack.com">hello@spartahack.com</a>
-          </div>
-      </footer>
-  </main>
-</body>
+</html>
