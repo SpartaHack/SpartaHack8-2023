@@ -306,6 +306,7 @@ function StatsPage() {
 
 
   async function get_aggregate_data() {
+    console.log('hi');
     const db = getFirestore(app);
     const querySnap = await getDocs(collection(db, "registrations"));
     let final_count = 0;
@@ -335,15 +336,13 @@ function StatsPage() {
     setCountUsersApplied(final_count);
     setTotalMSU(final_msu_count);
     setUserData(final_users_list);
-  }
-  get_aggregate_data().then(() => {
-    // console.log("Called correctly");
-  }).catch((err) => {
-    // console.log("Error!!");
-    // console.log(err)
-  });
-  // setTimeout(() => {
-  // }, 2000);
+  };
+
+  useEffect(() => {
+      get_aggregate_data();
+    }
+  , []);
+  
 
   async function update_approval(element, approving) {
     const db = getFirestore(app);

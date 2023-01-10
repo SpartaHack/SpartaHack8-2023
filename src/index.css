@@ -848,6 +848,14 @@ video {
   margin-top: 1.25rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1194,6 +1202,10 @@ video {
   align-items: stretch;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
@@ -1267,12 +1279,22 @@ video {
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
 
+.divide-x > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-x-reverse: 0;
+  border-right-width: calc(1px * var(--tw-divide-x-reverse));
+  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
+}
+
 .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
   border-color: rgb(255 255 255 / 0.1);
 }
 
 .divide-sh-white\/10 > :not([hidden]) ~ :not([hidden]) {
   border-color: rgb(245 245 245 / 0.1);
+}
+
+.divide-sh-white\/50 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(245 245 245 / 0.5);
 }
 
 .overflow-scroll {
@@ -1293,6 +1315,10 @@ video {
 
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+.whitespace-normal {
+  white-space: normal;
 }
 
 .whitespace-nowrap {
@@ -1349,6 +1375,11 @@ video {
   border-width: 2px;
 }
 
+.border-y {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1363,6 +1394,10 @@ video {
 
 .border-t {
   border-top-width: 1px;
+}
+
+.border-l {
+  border-left-width: 1px;
 }
 
 .border-sh-pink {
@@ -1419,6 +1454,26 @@ video {
 .border-emerald-700 {
   --tw-border-opacity: 1;
   border-color: rgb(4 120 87 / var(--tw-border-opacity));
+}
+
+.border-sh-white\/10 {
+  border-color: rgb(245 245 245 / 0.1);
+}
+
+.border-sh-white\/20 {
+  border-color: rgb(245 245 245 / 0.2);
+}
+
+.border-sh-white\/60 {
+  border-color: rgb(245 245 245 / 0.6);
+}
+
+.border-sh-pink\/60 {
+  border-color: rgb(247 0 99 / 0.6);
+}
+
+.border-sh-pink\/40 {
+  border-color: rgb(247 0 99 / 0.4);
 }
 
 .bg-sh-white\/10 {
@@ -1662,6 +1717,10 @@ video {
   padding-bottom: 1rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1894,6 +1953,14 @@ video {
   color: rgb(245 245 245 / 0.4);
 }
 
+.text-white\/80 {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.text-sh-white\/60 {
+  color: rgb(245 245 245 / 0.6);
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -2050,6 +2117,14 @@ video {
 
 .first\:mt-2:first-child {
   margin-top: 0.5rem;
+}
+
+.first\:border-transparent:first-child {
+  border-color: transparent;
+}
+
+.first\:pl-0:first-child {
+  padding-left: 0px;
 }
 
 .last\:mb-2:last-child {
