@@ -6,6 +6,8 @@ import BasicInfoCards from "../components/home-page-components/BasicInfoCards";
 import FaqSection from "../components/home-page-components/FaqSection";
 import HeroText from "../components/home-page-components/HeroText";
 import LargeButton from "../components/home-page-components/LargeButton";
+import PartnersSection from "../components/home-page-components/PartnersSection";
+import ScheduleSection from "../components/home-page-components/ScheduleSection";
 import ScrollDownNudge from "../components/home-page-components/ScrollDownNudge";
 import SponsorsSection from "../components/home-page-components/SponsorsSection";
 import Background from "../components/layouts/Background";
@@ -52,10 +54,16 @@ function HomePage(props) {
           <AboutSH />
         </section>
         <section id="section3" className="min-h-screen py-12">
-          <FaqSection />
+          <ScheduleSection />
         </section>
         <section id="section4" className="min-h-screen py-12">
+          <FaqSection />
+        </section>
+        <section id="section5" className="min-h-screen py-12">
           <SponsorsSection />
+        </section>
+        <section id="section6" className="min-h-screen py-12">
+          <PartnersSection />
         </section>
       </main>
     </div>

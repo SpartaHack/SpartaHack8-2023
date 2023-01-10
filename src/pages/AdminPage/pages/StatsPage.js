@@ -4,7 +4,7 @@ import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import { getFirestore, collection, getDocs, setDoc, doc, updateDoc} from "firebase/firestore"
 import "./styles/StatsPage.css"
 import ButtonPrimary from "../../../components/ui/ButtonPrimary";
-import {CSVLink} from "react-csv"
+import { CSVLink } from "react-csv"
 
 
 
@@ -33,10 +33,10 @@ function PersonModal(props) {
       <div  className="fixed top-0 left-0  z-50  w-full p-4 overflow-x-hidden" >
           <div className="relative w-full h-full  ">
               {/* <!-- Modal content --> */}
-              <div className="relative rounded-lg shadow dark:bg-gray-700 border-gray-600">
+              <div className="relative rounded-lg shadow dark:bg-gray-700 bg-gray-700 border-gray-600">
                   {/* <!-- Modal header --> */}
-                  <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <div className="flex items-start justify-between p-2 border-b rounded-t dark:border-gray-600 bg-gray-700">
+                      <h3 className="text-xs lg:text-xl font-semibold text-gray-900 dark:text-white">
                           Currently viewing: {student.first_name + " " + student.last_name }
                       </h3>
                       <button onClick={closeModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
@@ -45,10 +45,10 @@ function PersonModal(props) {
                       </button>
                   </div>
                   {/* <!-- Modal body --> */}
-                  <div className="p-6 space-y-6 text-white overscroll-auto border-gray-600">
+                  <div className="p-3 space-y-6 text-xs lg:text-xl text-white overflow-scroll modal_body border-gray-600 bg-gray-700">
                       <div className="flex flex-wrap overscroll-auto">
                         {/* First row */}
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Name:
                           </div>
@@ -57,7 +57,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Age:
                           </div>
@@ -66,7 +66,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Country of origin
                           </div>
@@ -75,7 +75,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Education Level
                           </div>
@@ -84,7 +84,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Email
                           </div>
@@ -93,7 +93,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Gender
                           </div>
@@ -102,7 +102,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             GitHub
                           </div>
@@ -117,7 +117,7 @@ function PersonModal(props) {
                           }
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Minor
                           </div>
@@ -135,7 +135,7 @@ function PersonModal(props) {
                           }
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             LinkedIn
                           </div>
@@ -150,7 +150,7 @@ function PersonModal(props) {
                           }
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Race
                           </div>
@@ -159,7 +159,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Major
                           </div>
@@ -168,7 +168,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Phone
                           </div>
@@ -177,7 +177,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             School
                           </div>
@@ -186,7 +186,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Graduation Date
                           </div>
@@ -195,7 +195,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Hackathons Attended
                           </div>
@@ -204,7 +204,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             State From
                           </div>
@@ -214,7 +214,7 @@ function PersonModal(props) {
                         </div>
 
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Resume
                           </div>
@@ -223,7 +223,7 @@ function PersonModal(props) {
                           </a>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Reason Attending
                           </div>
@@ -232,7 +232,7 @@ function PersonModal(props) {
                           </div>
                         </div>
 
-                        <div className="flex flex-col m-3 justify-center align-center w-1/6 h-32">
+                        <div className="flex flex-col m-3 justify-center align-center w-1/3 md:w-1/6 h-16 md:h-32">
                           <div className="bg-slate-900 rounded my-2 border-2 border-sky-500 text-center">
                             Date Registered
                           </div>
@@ -244,7 +244,7 @@ function PersonModal(props) {
 
                   </div>
                   {/* <!-- Modal footer --> */}
-                  <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                  <div className="flex text-xs lg:text-xl items-center p-2 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 bg-gray-700">
                       <button onClick={approveStudent} data-modal-toggle="defaultModal" type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Approve </button>
                       <button onClick={closeModal} type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
                   </div>
