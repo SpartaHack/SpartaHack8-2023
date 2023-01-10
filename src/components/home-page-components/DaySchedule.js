@@ -3,28 +3,21 @@ import React from 'react'
 function DaySchedule(props) {
   return (
     <div className='col-span-1 flex flex-col w-full text-sh-white/80'>
-      <div className='mb-4 text-center rubik-font font-medium text-sh-pink text-2xl uppercase'>
+      <div className='mb text-center rubik-font font-medium text-sh-pink text-2xl uppercase'>
         {props.title}
       </div>
-      <div className='flex flex-row justify-center items-center w-full h-12 border-b border-sh-white/50 rubik-font text-lg'>
-        <div className='w-32 text-center'>Time</div>
-        <div className='mx-auto'>Event(s)</div>
+      <div className='mb-6 text-center font-light text-sh-white/70'>
+        {props.dayInfo}
       </div>
-      <div className='flex flex-col w-full divide-y divide-white/10 h-[400px] overflow-scroll'>
+      <div className='flex flex-col w-full h-[400px] overflow-scroll border-t border-sh-pink/40'>
         {props.data.map((slot) => {
           return (
-            <div className='flex flex-row w-full py-3 gap-x-2'>
-              <div className='w-32 flex-none flex flex-col justify-center items-center border-r border-sh-pink/30 font-mono'>
+            <div className='flex flex-col items-start w-full py-4 gap-x-2 border-t first:border-transparent border-sh-white/20 border-'>
+              <div className='inter-font text-sh-white/60 text-sm'>
                 {slot.time}
               </div>
-              <div className='grow flex flex-col sm:flex-row items-center justify-center divide-y sm:divide-y-0 sm:divide-x divide-sh-white/10'>
-                {slot.events.map((event) => {
-                  return (
-                    <div className={slot.class + ' grow p-2 text-center '}>
-                      {event}
-                    </div>
-                  )
-                })}
+              <div className='flex flex-row flex-wrap divide-x divide-sh-white/50 rubik-font text-xl tracking-wide mt-1'>
+                {slot.eventsName}
               </div>
             </div>
           )

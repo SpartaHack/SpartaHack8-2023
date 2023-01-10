@@ -62,7 +62,7 @@ function HomePage(props) {
         <section id="section5" className="min-h-screen py-12">
           <SponsorsSection />
         </section>
-        <section id="section6" className="min-h-screen py-12">
+        <section id="section6" className="min-h-fit py-12">
           <PartnersSection />
         </section>
       </main>
