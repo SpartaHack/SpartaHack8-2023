@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import AboutSH from "../components/home-page-components/AboutSH";
 import BasicInfoCards from "../components/home-page-components/BasicInfoCards";
@@ -16,23 +16,27 @@ function HomePage(props) {
 
   const [isVisible, setIsVisible] = useState(true);
 
+  // useEffect(() => {
+  //   const listenToScroll = () => {
+  //     let heightToHideFrom = 100;
+  //     const winScroll = document.body.scrollTop ||
+  //       document.documentElement.scrollTop;
+
+  //     if (winScroll > heightToHideFrom) {
+  //       setIsVisible(false);
+  //     } else {
+  //       setIsVisible(true);
+  //     }
+  //   };
+  //   window.addEventListener("scroll", listenToScroll);
+  //   return () =>
+  //     window.removeEventListener("scroll", listenToScroll);
+  // }, [])
+
+  const hi = useParams();
   useEffect(() => {
-    const listenToScroll = () => {
-      let heightToHideFrom = 100;
-      const winScroll = document.body.scrollTop ||
-        document.documentElement.scrollTop;
-
-      if (winScroll > heightToHideFrom) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-    };
-    window.addEventListener("scroll", listenToScroll);
-    return () =>
-      window.removeEventListener("scroll", listenToScroll);
-  }, [])
-
+    console.log(hi)
+  })
   
 
   return (
@@ -41,28 +45,28 @@ function HomePage(props) {
         <Background />
       </div>
       <main className="relative mx-4 md:mx-auto md:max-w-xl lg:max-w-4xl xl:max-w-5xl last:pb-24">
-        <section id="section1" className="relative h-screen flex flex-col justify-center items-center">
+        <section id="Home" className="relative h-screen flex flex-col justify-center items-center">
           <HeroText />
-          <Link to="/register" exact className=" w-full mt-8 sm:mt-12">
+          <Link to="/register" exact className="w-full sm:w-fit mt-8 sm:mt-12">
             <LargeButton buttonClass=" mx-auto border border-sh-pink hover:bg-sh-white/10"
               buttonText="Apply Now" />
           </Link>
           <ScrollDownNudge containerClass={((isVisible) ? " " : " opacity-0 ")} />
         </section>
-        <section id="section2" className="h-fit flex flex-col gap-y-32 md:gap-y-52 pb-32">
+        <section id="About" className="min-h-screen flex flex-col justify-center gap-y-32 md:gap-y-52 py-16">
           <BasicInfoCards />
           <AboutSH />
         </section>
-        <section id="section3" className="min-h-screen py-12">
+        <section id="Schedule" className="min-h-screen flex flex-col justify-center py-12 mb-16">
           <ScheduleSection />
         </section>
-        <section id="section4" className="min-h-screen py-12">
+        <section id="FAQ" className="min-h-screen flex flex-col justify-center py-8 mb-16">
           <FaqSection />
         </section>
-        <section id="section5" className="min-h-screen py-12">
+        <section id="Sponsors" className="min-h-screen flex flex-col justify-center py-8">
           <SponsorsSection />
         </section>
-        <section id="section6" className="min-h-fit py-12">
+        <section id="Partners" className="min-h-fit py-12">
           <PartnersSection />
         </section>
       </main>

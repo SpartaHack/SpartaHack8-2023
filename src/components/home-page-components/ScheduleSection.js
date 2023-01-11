@@ -64,10 +64,6 @@ function ScheduleSection() {
       },
       {
         time: "08:00PM - 09:00PM",
-        eventsName: "Tech Talk by MSU College of Engineering"
-      },
-      {
-        time: "09:00PM - 10:00PM",
         eventsName: "Tech Talk by Digital Ocean"
       },
       {
@@ -117,9 +113,9 @@ function ScheduleSection() {
 
 
   return (
-    <div className='w-full mt-24 flex flex-col'>
+    <div className='w-full flex flex-col mt-4'>
       <SectionHeading text="Event Schedule" />
-      <div className='mt-6 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-12'>
+      <div className='sm:mt-6 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-12'>
         <DaySchedule title="January 28" dayInfo="Day 1 - Saturday" data={scheduleData.day1} />
         <DaySchedule title="January 29" dayInfo="Day 2 - Sunday" data={scheduleData.day2} />
       </div>

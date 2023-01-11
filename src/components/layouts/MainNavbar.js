@@ -1,8 +1,10 @@
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, useLocation } from "react-router-dom";
 import SpartaHackLogoHeader from "../icons/SpartaHackLogoHeader";
 import ButtonPrimary from "../ui/ButtonPrimary";
 
 function MainNavbar() {
+
+  const { pathname }= useLocation();
 
   return (
     <header className="w-full h-24 absolute top-0 z-10">
@@ -26,10 +28,29 @@ function MainNavbar() {
             </span>
           </Link>
         </div>
-        <div className="">
+        <div className="flex flex-row justify-center items-center gap-x-4">
+          {!["/register", "/admin"].includes(pathname) && 
+          <div>
+            <ul className="flex flex-row justify-center items-center gap-x-1 lg:gap-x-2 rubik-font uppercase font-light text-sm text-sh-white/80 transition-all duration-100
+            ">
+                <li className="hidden md:block">
+                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Home">Home</a></li>
+                <li className="hidden md:block">
+                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#About">About</a></li>
+                <li className="hidden md:block">
+                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Schedule">Schedule</a></li>
+                <li className="hidden md:block">
+                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#FAQ">FAQs</a></li>
+                <li className="hidden lg:block">
+                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Sponsors">Sponsors</a></li>
+            </ul>
+          </div>
+          }
+          <div>
           <Link to="/register" exact>
             <ButtonPrimary buttonText="Apply" />
           </Link>
+          </div>
         </div>
       </nav>
     </header >

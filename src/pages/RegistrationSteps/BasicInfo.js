@@ -44,7 +44,7 @@ const BasicInfo = () => {
           infoText='Must end with ".edu", ".org" or ".ca"'
           fieldName="email"
           placeholder="turing.alan@mail.edu"
-          pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.(edu)|(ca)$/"
+          pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.(edu)|(ca)|(org)|(k12\.mi\.us)$/"
           minLength="6"
           fieldValue={userData.email}
           handleChange={handleChange}

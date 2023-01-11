@@ -1,53 +1,36 @@
 import { useEffect, useState } from "react";
 import Background from "../../components/layouts/Background";
+import { FormProvider } from "../../context/FormContext";
 import LoginWidget from "./LoginComponent";
 import StatsPage from "./pages/StatsPage"
 
+
 function AdminPage(props) {
-    const [isVisible, setIsVisible] = useState(true);
+  const [logged_in, setLoggedState] = useState({ logged: false, role: "" });
 
-    useEffect(() => {
-    const listenToScroll = () => {
-        let heightToHideFrom = 100;
-        const winScroll = document.body.scrollTop ||
-        document.documentElement.scrollTop;
-
-        if (winScroll > heightToHideFrom) {
-        setIsVisible(false);
-        } else {
-        setIsVisible(true);
-        }
-    };
-    window.addEventListener("scroll", listenToScroll);
-    return () =>
-        window.removeEventListener("scroll", listenToScroll);
-    }, [])
-
-
-    const [logged_in, setLoggedState] = useState({logged: false, role: ""});
-
-    const pages = {
-        true:{
-            "admin": <StatsPage/>,
-            "sponsor": "SPONSOR"
-        },
-        false:{
-            "": <LoginWidget setLoggedState = {setLoggedState}/>
-        }
-        
+  const pages = {
+    true: {
+      "admin": <StatsPage />,
+      "sponsor": "SPONSOR"
+    },
+    false: {
+      "": <LoginWidget setLoggedState={setLoggedState} />
     }
+
+  }
 
   return (
     <div className='relative'>
       <div className="absolute top-0 w-full h-full -z-10">
-        <Background/>
+        <Background />
       </div>
-      <main className="relative mt-3">
-      <section id="section1" className="relative h-screen flex flex-col justify-center items-center">
-        {pages[logged_in.logged][logged_in.role]}
-      </section>
-      
-      </main>
+      <FormProvider>
+        <main className="relative mt-3">
+          <section id="section1" className="relative h-screen flex flex-col justify-center items-center">
+            {pages[logged_in.logged][logged_in.role]}
+          </section>
+        </main>
+      </FormProvider>
     </div>
   )
 }

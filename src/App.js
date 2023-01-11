@@ -1,6 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Background from './components/layouts/Background';
+import { BrowserRouter as Router, Routes, Route, useLocation, useParams } from 'react-router-dom';
 import Footer from './components/layouts/Footer';
 import MainNavbar from "./components/layouts/MainNavbar";
 import HomePage from "./pages/HomePage";

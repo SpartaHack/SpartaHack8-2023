@@ -81,7 +81,7 @@ function SponsorsSection() {
   ]
 
   return (
-    <div className='w-full mt-24 flex flex-col items-center'>
+    <div className='w-full flex flex-col items-center'>
       <SectionHeading text="Our Sponsors" />
       <SponsorsLogos logos={logos} />
       <div className='mx-3 sm:mx-auto max-w-lg md:max-w-3xl inter-font font-light text-sh-white text-center leading-8 mt-16 md:mt-12'>
