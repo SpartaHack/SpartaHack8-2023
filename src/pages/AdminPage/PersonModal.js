@@ -21,7 +21,7 @@ function PersonModal(props) {
   return (
     <div className="fixed w-screen h-screen top-0 left-0 z-10 flex justify-center items-center bg-black/10 backdrop-blur-sm" onClick={closeModal} id="outsideModal">
       {/* <!-- Main modal --> */}
-      <div className="h-fit z-12 w-full m-4 sm:m-10 rounded" id="outsideModal">
+      <div className="h-fit z-12 w-full max-w-6xl m-4 sm:m-10 rounded" id="outsideModal">
         {/* <!-- Modal content --> */}
         <div className=" shadow dark:bg-zinc-800 bg-gray-700 border-gray-600 rounded-lg p-6 sm:p-8">
           {/* <!-- Modal header --> */}
@@ -100,9 +100,9 @@ function PersonModal(props) {
             {
           student.reviewed ?
             student.approved ?
-              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded  "> Approved </div>
+              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded uppercase "> Approved </div>
               :
-              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded  "> Denied </div>
+              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded uppercase "> Denied </div>
             :
            <button onClick={approveStudent} data-modal-toggle="defaultModal" type="button" className="w-full sm:w-32 h-full bg-teal-500 hover:bg-teal-300 rounded uppercase transition duration-75">
               Approve
