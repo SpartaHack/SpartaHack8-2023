@@ -202,7 +202,7 @@ function RegistrationForm() {
           <FormButton buttonClass="bg-blue-600 text-white hover:bg-blue-500 disabled:bg-blue-300 disabled:cursor-not-allowed"
             type='button' onClick={handleNext} disabled={disabledNext} hidden={hideNext} buttonText="Next" />
           <FormButton buttonClass="bg-pink-600 text-white hover:bg-pink-500"
-            type='submit' disabled={canSubmit} hidden={hideSubmit} buttonText="Apply" onClick={submit_form}/>
+            type='submit' disabled={!canSubmit} hidden={hideSubmit} buttonText="Apply" onClick={submit_form}/>
         </div>
 
         {showModal &&

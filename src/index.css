@@ -1021,6 +1021,11 @@ video {
   width: 12rem;
 }
 
+.w-max {
+  width: -webkit-max-content;
+  width: max-content;
+}
+
 .min-w-\[60px\] {
   min-width: 60px;
 }
@@ -2626,6 +2631,11 @@ html {
     margin-right: auto;
   }
 
+  .md\:mx-8 {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
   .md\:-mb-2 {
     margin-bottom: -0.5rem;
   }
@@ -2702,6 +2712,11 @@ html {
   .md\:px-2 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .md\:text-\[70px\] {

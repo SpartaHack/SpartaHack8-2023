@@ -7,8 +7,10 @@ function PersonModal(props) {
 
   var newDate = new Date(student.registered_at.seconds);
   newDate = newDate.toDateString();
-  function closeModal() {
-    props.setShowModal(false);
+  function closeModal(e) {
+    if (["outsideModal", "closeModal"].includes(e.target.id)) {
+      props.setShowModal(false);
+    }
   }
   function approveStudent() {
     props.update_approval(props.currentStudent, true);
@@ -17,9 +19,9 @@ function PersonModal(props) {
     props.update_approval(props.currentStudent, false);
   }
   return (
-    <div className="fixed w-screen h-screen top-0 left-0 z-10 flex justify-center items-center bg-black/10 backdrop-blur-sm">
+    <div className="fixed w-screen h-screen top-0 left-0 z-10 flex justify-center items-center bg-black/10 backdrop-blur-sm" onClick={closeModal} id="outsideModal">
       {/* <!-- Main modal --> */}
-      <div className="h-fit z-10 w-full m-4 sm:m-10 rounded" >
+      <div className="h-fit z-12 w-full m-4 sm:m-10 rounded" id="outsideModal">
         {/* <!-- Modal content --> */}
         <div className=" shadow dark:bg-zinc-800 bg-gray-700 border-gray-600 rounded-lg p-6 sm:p-8">
           {/* <!-- Modal header --> */}
@@ -29,12 +31,12 @@ function PersonModal(props) {
               <div className='dark:text-pink-500 font-medium text-xl sm:text-2xl'>{student.first_name + " " + student.last_name}
               </div>
             </h3>
-            <button onClick={closeModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-zinc-800 dark:hover:text-white" data-modal-toggle="defaultModal">
-              <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd">
+            <button id="closeModal" onClick={closeModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-zinc-800 dark:hover:text-white" data-modal-toggle="defaultModal">
+              <svg id="closeModal" aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path id="closeModal" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd">
                 </path>
               </svg>
-              <span className="sr-only">Close modal</span>
+              <span id="closeModal" className="sr-only">Close modal</span>
             </button>
           </div>
           {/* <!-- Modal body --> */}

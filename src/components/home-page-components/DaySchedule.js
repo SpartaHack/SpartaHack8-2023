@@ -2,7 +2,7 @@ import React from 'react'
 
 function DaySchedule(props) {
   return (
-    <div className='col-span-1 flex flex-col w-full text-sh-white/80'>
+    <div className='col-span-1 flex flex-col w-full text-sh-white/80 overflow-x-hidden '>
       <div className='mb text-center rubik-font font-medium text-sh-pink text-2xl uppercase'>
         {props.title}
       </div>

@@ -77,12 +77,16 @@ function StatsPage() {
         : e.target.value === "pending"
           ? setStatus("pending")
           : setStatus("")
+    get_aggregate_data()
   }
   const universityHandler = (e) => {
     setUniversity(e.target.value)
+    get_aggregate_data()
   }
   const levelHandler = (e) => {
     setLevel(e.target.value)
+    get_aggregate_data()
+
   }
 
   useEffect(() => {
@@ -133,21 +137,23 @@ function StatsPage() {
     var count = 1;
     querySnap.forEach((doc) => {
       const data = doc.data();
-      final_count = final_count + 1;
-      // Building the list of students applying
-      // if ( data.approved === false) {
-      //   if (data.reviewed) {
-      //   } else{
-      //     final_users_list.push(doc);
-      //   }
-      // }
-      final_users_list.push([doc, count]);
-      count += 1;
-      // if (data.email === "natarenm@msu.edu" && data.approved === false) {
-      //   final_users_list.push(doc);
-      // }
-      if (data.msu_student === true) {
-        final_msu_count += 1;
+      if (!(data.first_name === "Mann" || data.last_name === "Aswal")) {
+        final_count = final_count + 1;
+        // Building the list of students applying
+        // if ( data.approved === false) {
+        //   if (data.reviewed) {
+        //   } else{
+        //     final_users_list.push(doc);
+        //   }
+        // }
+        final_users_list.push([doc, count]);
+        count += 1;
+        // if (data.email === "natarenm@msu.edu" && data.approved === false) {
+        //   final_users_list.push(doc);
+        // }
+        if (data.msu_student === true) {
+          final_msu_count += 1;
+        }
       }
 
     });
@@ -158,6 +164,13 @@ function StatsPage() {
 
   useEffect(() => {
     get_aggregate_data();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      get_aggregate_data();
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
 
 
@@ -196,6 +209,12 @@ function StatsPage() {
       console.log(email_sent.message);
     }
     setEmailSent(true);
+    setTimeout(() => {
+      setEmailSent(false);
+    }, 2000);
+    get_aggregate_data()
+    setApplicantsData(userData)
+
   }
   async function try_pushing_data() {
     const db = getFirestore(app);
@@ -219,7 +238,16 @@ function StatsPage() {
 
   useEffect(() => {
     setApplicantsData(userData)
-  }, [userData])
+    console.log("Set applicants data")
+    try {
+      // console.log(currentStudent.data().email)
+      // console.log(currentStudent)
+      setCurrentStudent(applicantsData.find(applicant => (
+        applicant[0].data().email === currentStudent.data().email
+      ))[0])
+    } catch { }
+
+  }, [userData, applicantsData])
 
   const applicantUniversityList = new Array(...new Set(user_csv_data.map((applicant) => {
     return applicant.school
@@ -264,7 +292,7 @@ function StatsPage() {
   }
 
   return (
-    <div className="w-full max-w-6xl mt-24 px-4 flex flex-col scroll-smooth overflow-hidden">
+    <div className="w-full max-w-6xl mt-24 px-4 md:px-8 flex flex-col scroll-smooth overflow-hidden">
       <div className="flex flex-row justify-end items-center gap-3 sm:gap-6 my-6">
         <StatCard statTitle="Total Applicants" data={countUsersApplied} />
         <StatCard statTitle="Total MSU Applicants" data={totalMSU} />
@@ -291,18 +319,7 @@ function StatsPage() {
       </div>
       {/* <button className="text-white rounded bg-sky-300" onClick={try_pushing_data}>Click here</button> */}
       <div className=" w-full max-w-6xl  mt-12 mb-28 mx-auto  flex flex-col">
-        <div className="h-12 w-full flex flex-row items-center gap-x-2 text-white text-center rubik-font uppercase text-sm lg:text-base">
-          <div className="w-10"></div>
-          <div className="w-44">Name</div>
-          <div className="w-36">School</div>
-          <div className="w-16 min-w-[33px]">Age</div>
-          <div className="w-24 min-w-[50px] break-all">Country</div>
-          <div className="w-24 min-w-[56px]">Level</div>
-          <div className="w-20 min-w-[63px]">Resume</div>
-          <div className="w-20 min-w-[63px]">See more</div>
-          <div className="grow min-w-[90px] ml-2">Status</div>
-        </div>
-        <div className="h-16 w-full flex flex-row items-center justify-start gap-x-2 text-white text-center rubik-font uppercase border-b border-sh-pink">
+        <div className="h-16 w-full flex flex-row items-center justify-center gap-x-2 text-white text-center rubik-font uppercase">
           <div className="w-full max-w-[256px]">
             <select id="admin_filter" className="w-full rounded text-sh-white border border-sh-white/50 p-1 bg-sh-black/50" name="status" onChange={universityHandler}>
               <option className="bg-white" value="" selected>Filter University/College</option>
@@ -332,13 +349,25 @@ function StatsPage() {
             </select>
           </div>
         </div>
+        <div className="h-16 w-full flex flex-row items-center gap-x-2 text-white text-center rubik-font uppercase text-sm lg:text-base border-b border-sh-pink">
+          <div className="w-10"></div>
+          <div className="w-44">Name</div>
+          <div className="w-36">School</div>
+          <div className="w-16 min-w-[33px]">Age</div>
+          <div className="w-24 min-w-[50px] break-all">Country</div>
+          <div className="w-24 min-w-[56px]">Level</div>
+          <div className="w-20 min-w-[63px]">Resume</div>
+          <div className="w-20 min-w-[63px]">See more</div>
+          <div className="grow min-w-[90px] ml-2">Status</div>
+        </div>
+
 
         {
           emailSent &&
-          <EmailModal
+          <EmailModal setEmailSent={setEmailSent}
             info="Email sent successfully!" />
         }
-        <div className="flex flex-col divide-y divide-white/20 h-[85vh] overflow-x-hidden overflow-x-hidden">
+        <div className="flex flex-col divide-y divide-white/20 h-[85vh] overflow-x-hidden">
           {
             filteredData.map((tuple) => {
               // console.log(tuple[0])
@@ -350,12 +379,10 @@ function StatsPage() {
                 setShowModal(true)
                 setCurrentStudent(curr_doc);
               }
+
               function approve_current_student() {
                 update_approval(curr_doc, true).then(() => {
-                  {/* console.log("updated correctly"); */ }
-                  setTimeout(() => {
-                    setEmailSent(false);
-                  }, 2000);
+                  console.log("updated correctly");
                 }).catch((err) => {
                   {/* console.log("Error on updating"); */ }
                   {/* console.log(err); */ }
@@ -364,9 +391,6 @@ function StatsPage() {
               function deny_current_student() {
                 update_approval(curr_doc, false).then(() => {
                   console.log("updated correctly");
-                  setTimeout(() => {
-                    setEmailSent(false);
-                  }, 2000);
                 }).catch((err) => {
                   console.log("Error on updating");
                   console.log(err);
