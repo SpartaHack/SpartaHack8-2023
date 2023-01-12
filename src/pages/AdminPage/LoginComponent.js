@@ -24,8 +24,10 @@ function LoginWidget(props) {
     }
 
     useEffect(() => {
-        setDisabled(email.length >= 0 && password.length >= 0)
+        setDisabled(email.length === 0 && password.length === 0)
     }, [email, password])
+
+    console.log(disabled)
 
     async function login() {
 

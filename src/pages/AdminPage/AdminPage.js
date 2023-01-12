@@ -26,7 +26,7 @@ function AdminPage(props) {
       </div>
       <FormProvider>
         <main className="relative mt-3">
-          <section id="section1" className="relative h-screen flex flex-col justify-center items-center">
+          <section id="section1" className="relative min-h-screen flex flex-col justify-center items-center">
             {pages[logged_in.logged][logged_in.role]}
           </section>
         </main>
