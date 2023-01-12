@@ -122,7 +122,7 @@ function StatsPage() {
     var count = 1;
     querySnap.forEach((doc) => {
       const data = doc.data();
-      // if (!(data.first_name === "Mann" || data.last_name === "Aswal")) {
+      if (!(data.first_name === "Mann" || data.last_name === "Aswal")) {
         final_count = final_count + 1;
         final_users_list.push([doc, count]);
 
@@ -134,7 +134,7 @@ function StatsPage() {
         if (data.reviewed === true) {
           final_reviewed_count += 1
         }
-      // }
+      }
 
     });
     setCountUsersApplied(final_count);
