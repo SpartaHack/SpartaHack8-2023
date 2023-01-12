@@ -3,7 +3,7 @@ import PersonModalItem from './PersonModalItem';
 
 function PersonModal(props) {
   let student = props.currentStudent.data();
-  console.log(student.registered_at);
+  // console.log(student.registered_at);
 
   var newDate = new Date(student.registered_at.seconds);
   newDate = newDate.toDateString();

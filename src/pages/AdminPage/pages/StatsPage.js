@@ -59,15 +59,11 @@ function StatsPage() {
   const [showModal, setShowModal] = useState(false);
   const [currentStudent, setCurrentStudent] = useState(null);
   const [emailSent, setEmailSent] = useState(false);
-  const [filtersList, setFiltersList] = useState({
-    universityFilter: "",
-    levelFilter: "",
-    statusFilter: ""
-  })
 
   const [status, setStatus] = useState("")
   const [university, setUniversity] = useState("")
   const [level, setLevel] = useState("")
+  const [loaded, setLoaded] = useState(false)
 
 
   const statusHandler = (e) => {
@@ -78,29 +74,17 @@ function StatsPage() {
         : e.target.value === "pending"
           ? setStatus("pending")
           : setStatus("")
-    get_aggregate_data()
+    // get_aggregate_data()
   }
   const universityHandler = (e) => {
     setUniversity(e.target.value)
-    get_aggregate_data()
+    // get_aggregate_data()
   }
   const levelHandler = (e) => {
     setLevel(e.target.value)
-    get_aggregate_data()
+    // get_aggregate_data()
 
   }
-
-  useEffect(() => {
-    setFiltersList((prev) => ({
-      ...prev, "statusFilter": status
-    }))
-    setFiltersList((prev) => ({
-      ...prev, "universityFilter": university
-    }))
-    setFiltersList((prev) => ({
-      ...prev, "levelFilter": level
-    }))
-  }, [status, level, university])
 
   useEffect(() => {
     var filteredList = applicantsData
@@ -111,7 +95,6 @@ function StatsPage() {
     if (level !== "") {
       filteredList = filteredList.filter(applicant => (applicant[0].data().education_level === level))
     }
-    console.log(status)
     if (status !== "") {
       if (status === true) {
         filteredList = filteredList.filter(applicant => (applicant[0].data().approved === true))
@@ -123,13 +106,13 @@ function StatsPage() {
         }
       }
     }
-
-    console.log(filteredList.map(obj => obj[0].data()))
     setFilteredData(filteredList)
+    console.log("Filtered data.")
   }, [university, level, status, applicantsData])
 
 
   async function get_aggregate_data() {
+    console.log("GETTING DATA -- CALLING API")
     const db = getFirestore(app);
     const querySnap = await getDocs(collection(db, "registrations"));
     let final_count = 0;
@@ -139,27 +122,19 @@ function StatsPage() {
     var count = 1;
     querySnap.forEach((doc) => {
       const data = doc.data();
-      if (!(data.first_name === "Mann" || data.last_name === "Aswal")) {
+      // if (!(data.first_name === "Mann" || data.last_name === "Aswal")) {
         final_count = final_count + 1;
-        // Building the list of students applying
-        // if ( data.approved === false) {
-        //   if (data.reviewed) {
-        //   } else{
-        //     final_users_list.push(doc);
-        //   }
-        // }
         final_users_list.push([doc, count]);
+
         count += 1;
-        // if (data.email === "natarenm@msu.edu" && data.approved === false) {
-        //   final_users_list.push(doc);
-        // }
+
         if (data.msu_student === true) {
           final_msu_count += 1;
         }
         if (data.reviewed === true) {
           final_reviewed_count += 1
         }
-      }
+      // }
 
     });
     setCountUsersApplied(final_count);
@@ -168,12 +143,18 @@ function StatsPage() {
     setUserData(final_users_list);
   };
 
-  useEffect(() => {
+  if (!loaded) {
+    console.log("Called for data - due to changes")
     get_aggregate_data();
-  }, []);
+    // setApplicantsData(userData)
+    setLoaded(true)
+  }
+
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setApplicantsData(userData)
+    const interval = setInterval(() => {      
+      console.log("Called for data - 10 second update")
       get_aggregate_data();
     }, 10000);
     return () => clearInterval(interval);
@@ -218,8 +199,9 @@ function StatsPage() {
     setTimeout(() => {
       setEmailSent(false);
     }, 2000);
+
+    console.log("User modified data - calling for updated data")
     get_aggregate_data()
-    setApplicantsData(userData)
 
   }
   async function try_pushing_data() {
@@ -244,16 +226,14 @@ function StatsPage() {
 
   useEffect(() => {
     setApplicantsData(userData)
-    console.log("Set applicants data")
+    console.log("Updated data")
     try {
-      // console.log(currentStudent.data().email)
-      // console.log(currentStudent)
       setCurrentStudent(applicantsData.find(applicant => (
         applicant[0].data().email === currentStudent.data().email
       ))[0])
-    } catch { }
+    } catch {}
 
-  }, [userData, applicantsData])
+  }, [userData, applicantsData, currentStudent])
 
   const applicantUniversityList = new Array(...new Set(user_csv_data.map((applicant) => {
     return applicant.school
