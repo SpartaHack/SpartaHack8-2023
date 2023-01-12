@@ -51,6 +51,7 @@ function EmailModal(props) {
 function StatsPage() {
   const [countUsersApplied, setCountUsersApplied] = useState(0);
   const [totalMSU, setTotalMSU] = useState(0);
+  const [totalReviewed, setReviewed] = useState(0);
   const [userData, setUserData] = useState([]);
   const [applicantsData, setApplicantsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -133,6 +134,7 @@ function StatsPage() {
     const querySnap = await getDocs(collection(db, "registrations"));
     let final_count = 0;
     let final_msu_count = 0;
+    let final_reviewed_count = 0;
     let final_users_list = [];
     var count = 1;
     querySnap.forEach((doc) => {
@@ -154,11 +156,15 @@ function StatsPage() {
         if (data.msu_student === true) {
           final_msu_count += 1;
         }
+        if (data.reviewed === true) {
+          final_reviewed_count += 1
+        }
       }
 
     });
     setCountUsersApplied(final_count);
     setTotalMSU(final_msu_count);
+    setReviewed(final_reviewed_count);
     setUserData(final_users_list);
   };
 
@@ -293,10 +299,11 @@ function StatsPage() {
 
   return (
     <div className="w-full max-w-6xl mt-24 px-4 md:px-8 flex flex-col scroll-smooth overflow-hidden">
-      <div className="flex flex-row justify-end items-center gap-3 sm:gap-6 my-6">
+      <div className="grid grid-cols-2 md:w-fit md:grid-cols-4 justify-center items-center gap-3 sm:gap-6 my-6 md:mx-auto">
         <StatCard statTitle="Total Applicants" data={countUsersApplied} />
         <StatCard statTitle="Total MSU Applicants" data={totalMSU} />
         <StatCard statTitle="Total Non-MSU Applicants" data={countUsersApplied - totalMSU} />
+        <StatCard statTitle="Pending review" data={countUsersApplied - totalReviewed} />
       </div>
 
       <CSVLink
@@ -307,8 +314,8 @@ function StatsPage() {
         ref={csvLink}
         target='_blank'
       />
-      <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-12 gap-y-6 sm:gap-y-0">
-        <div className="gradient-text rubik-font text-[36px] sm:text-[48px] font-medium text-center sm:text-left leading-10">
+      <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-20 gap-y-6 gap-x-6 sm:gap-y-0">
+        <div className="h-full py-2 gradient-text rubik-font text-[36px] sm:text-[48px] font-medium text-center sm:text-left leading-10">
           Review Applications
         </div>
         {/* <p>{sortedLevelList}</p> */}

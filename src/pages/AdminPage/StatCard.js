@@ -2,8 +2,8 @@ import React from 'react'
 
 function StatCard(props) {
   return (
-    <div className="h-32 sm:h-40 w-48 border border-sh-pink rounded-xl text-sh-white rubik-font">
-      <div className="h-full flex flex-col justify-between items-start p-3 sm:p-6">
+    <div className="h-32 md:h-40 w-full md:max-w-[196px] border border-sh-pink rounded-xl text-sh-white rubik-font">
+      <div className="h-full flex flex-col justify-between items-start p-5 sm:p-6">
         <div className="uppercase text-xs sm:text-sm tracking-wide opacity-70">
           {props.statTitle}
         </div>
