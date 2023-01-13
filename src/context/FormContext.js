@@ -194,7 +194,8 @@ export const FormProvider = ({ children }) => {
 
   // console.log(userData.universityName)
 
-    const {
+  const {
+      otherUniversity,
       linkedinURL,
       githubURL,
       isMinor,
@@ -202,7 +203,6 @@ export const FormProvider = ({ children }) => {
       mlhEmailAgree,
       ...requiredFields
     } = userData
-
 
   const canProceedFromBasic = basicInfoData.map(key => userData[key]).every(Boolean) && (isStudent)
   const canProceedFromEducation = educationInfoData
@@ -224,8 +224,8 @@ export const FormProvider = ({ children }) => {
   useEffect(() => console.log(([...Object.values(requiredFields)].every(Boolean))
     && (step === Object.keys(stepTitle).length)))
   
-  // && canProceedFromAgreements
-  // console.log()
+  console.log([...Object.values(requiredFields)])
+  
   const disabledPrev = step === 1
   const disabledNext =
     // false
