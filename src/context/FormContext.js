@@ -221,10 +221,10 @@ export const FormProvider = ({ children }) => {
     ([...Object.values(requiredFields)].every(Boolean))
     && (step === Object.keys(stepTitle).length)
   
-  useEffect(() => console.log(([...Object.values(requiredFields)].every(Boolean))
-    && (step === Object.keys(stepTitle).length)))
+  // useEffect(() => console.log(([...Object.values(requiredFields)].every(Boolean))
+  //   && (step === Object.keys(stepTitle).length)))
   
-  console.log([...Object.values(requiredFields)])
+  // console.log([...Object.values(requiredFields)])
   
   const disabledPrev = step === 1
   const disabledNext =

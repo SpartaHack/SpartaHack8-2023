@@ -31,7 +31,7 @@ function RegistrationForm() {
   const [showModal, setShowModal] = useState(false);
   
   useEffect( () => {
-    console.log("useEffect")
+    // console.log("useEffect")
   }, [formStatus, showModal]);
 
   const {
