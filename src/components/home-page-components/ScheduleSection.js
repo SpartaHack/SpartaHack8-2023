@@ -56,7 +56,7 @@ function ScheduleSection() {
       },
       {
         time: "06:30PM - 07:30PM",
-        eventsName: "Tech Talk by Tech Smith"
+        eventsName: "Tech Talk by TechSmith"
       },
       {
         time: "07:30PM - 09:00PM",

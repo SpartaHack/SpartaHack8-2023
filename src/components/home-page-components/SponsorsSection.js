@@ -14,6 +14,7 @@ import gerdauLogo from '../../materials/logos/white-logos/gerdau-white.png'
 import githubLogo from '../../materials/logos/white-logos/github-white.png'
 import mlhLogo from '../../materials/logos/white-logos/mlh-white.png'
 import coeLogo from '../../materials/logos/white-logos/coe-white.png'
+import mantelLogo from '../../materials/logos/white-logos/mantel-logo-white.png'
 
 function SponsorsSection() {
 
@@ -76,6 +77,11 @@ function SponsorsSection() {
     {
       name: "TecHacks Logo",
       path: techacksLogo,
+      class: ""
+    },
+    {
+      name: "Mantel Logo",
+      path: mantelLogo,
       class: ""
     }
   ]
