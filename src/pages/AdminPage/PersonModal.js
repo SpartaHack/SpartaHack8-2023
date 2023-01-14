@@ -2,11 +2,10 @@ import React from 'react'
 import PersonModalItem from './PersonModalItem';
 
 function PersonModal(props) {
-  let student = props.currentStudent.data();
+  let student = props.currentStudent;
   // console.log(student.registered_at);
 
-  var newDate = new Date(student.registered_at.seconds);
-  newDate = newDate.toDateString();
+  var newDate = student.registered_at ? student.registered_at.toDate().toLocaleDateString("en-US") : "No registered date";
   function closeModal(e) {
     if (["outsideModal", "closeModal"].includes(e.target.id)) {
       props.setShowModal(false);
@@ -44,12 +43,12 @@ function PersonModal(props) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-2 mb-6 overscroll-auto">
               {/* First row */}
               <PersonModalItem dataTitle="Name" data={student.first_name + " " + student.last_name} className="col-span-2 " />
-              <PersonModalItem dataTitle="Age" data={student.age} />
+              <PersonModalItem dataTitle="Age" data={student.age ? student.age : "NA" } />
               <PersonModalItem dataTitle="Email" data={student.email} />
               <PersonModalItem dataTitle="School" data={student.school} />
               <PersonModalItem dataTitle="Major" data={student.major} />
               <PersonModalItem dataTitle="Education Level" data={student.education_level} />
-              <PersonModalItem dataTitle="Graduation Date" data={student.graduation_date} />
+              <PersonModalItem dataTitle="Graduation Date" data={student.graduation_date.toDate().toLocaleDateString("en-US")} />
               <PersonModalItem dataTitle="Gender" data={student.gender} />
               <PersonModalItem dataTitle="Race" data={student.race} />
               <PersonModalItem dataTitle="Country of origin" data={student.country_of_origin} />
@@ -63,10 +62,7 @@ function PersonModal(props) {
                 <div>
                   {student.reason_attending}
                 </div>} />
-              {/* <PersonModalItem dataTitle="Date Registered" data={
-                <div>
-                  {newDate}
-                </div>} /> */}
+              <PersonModalItem dataTitle="Date Registered" data={newDate} />
               <div className='col-span-1 grid grid-cols-2 gap-4'>
                 <PersonModalItem dataTitle="GitHub" data={student.githubURL ?
                   <a className=" text-sky-400" href={student.githubURL}>

@@ -14,6 +14,9 @@ import gerdauLogo from '../../materials/logos/white-logos/gerdau-white.png'
 import githubLogo from '../../materials/logos/white-logos/github-white.png'
 import mlhLogo from '../../materials/logos/white-logos/mlh-white.png'
 import coeLogo from '../../materials/logos/white-logos/coe-white.png'
+import deloitteLogo from '../../materials/logos/white-logos/deloitte-white.png'
+import mphiLogo from '../../materials/logos/white-logos/mphi-white.png'
+import dewpointLogo from '../../materials/logos/white-logos/dewpoint-white.png'
 import mantelLogo from '../../materials/logos/white-logos/mantel-logo-white.png'
 
 function SponsorsSection() {
@@ -43,6 +46,11 @@ function SponsorsSection() {
       name: "Gerdau Logo",
       path: gerdauLogo,
       class: "sm:max-h-24"
+    },
+        {
+      name: "Deloitte Logo",
+      path: deloitteLogo,
+      class: "scale-[0.8]"
     },
     {
       name: "TechSmith Logo",
@@ -83,7 +91,18 @@ function SponsorsSection() {
       name: "Mantel Logo",
       path: mantelLogo,
       class: ""
-    }
+    },
+    {
+      name: "Dewpoint Logo",
+      path: dewpointLogo,
+      class: ""
+    },
+    {
+      name: "MPHI Logo",
+      path: mphiLogo,
+      class: "scale-[1.1]"
+    },
+    
   ]
 
   return (

@@ -10,10 +10,6 @@ import PersonModal from "../PersonModal";
 import ApplicationRow from "../ApplicationRow";
 
 
-
-
-
-
 function EmailModal(props) {
   return (
     <div className='fixed inset-0 z-10 overflow-y-auto'>
@@ -52,6 +48,7 @@ function StatsPage() {
   const [countUsersApplied, setCountUsersApplied] = useState(0);
   const [totalMSU, setTotalMSU] = useState(0);
   const [totalReviewed, setReviewed] = useState(0);
+  const [totalApproved, setApproved] = useState(0);
   const [userData, setUserData] = useState([]);
   const [applicantsData, setApplicantsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -90,19 +87,19 @@ function StatsPage() {
     var filteredList = applicantsData
 
     if (university !== "") {
-      filteredList = filteredList.filter(applicant => (applicant[0].data().school === university))
+      filteredList = filteredList.filter(applicant => (applicant[0].school === university))
     }
     if (level !== "") {
-      filteredList = filteredList.filter(applicant => (applicant[0].data().education_level === level))
+      filteredList = filteredList.filter(applicant => (applicant[0].education_level === level))
     }
     if (status !== "") {
       if (status === true) {
-        filteredList = filteredList.filter(applicant => (applicant[0].data().approved === true))
+        filteredList = filteredList.filter(applicant => (applicant[0].approved === true))
       } else {
         if (status === false) {
-          filteredList = filteredList.filter(applicant => (applicant[0].data().reviewed === true && applicant[0].data().approved === false))
+          filteredList = filteredList.filter(applicant => (applicant[0].reviewed === true && applicant[0].data().approved === false))
         } else {
-          filteredList = filteredList.filter(applicant => (applicant[0].data().reviewed === undefined))
+          filteredList = filteredList.filter(applicant => (applicant[0].reviewed === undefined))
         }
       }
     }
@@ -118,13 +115,15 @@ function StatsPage() {
     let final_count = 0;
     let final_msu_count = 0;
     let final_reviewed_count = 0;
+    let final_approved_count = 0;
     let final_users_list = [];
     var count = 1;
     querySnap.forEach((doc) => {
-      const data = doc.data();
+      var data = doc.data();
+      data.id = doc.id;
       if (!(data.first_name === "Mann" || data.last_name === "Aswal")) {
         final_count = final_count + 1;
-        final_users_list.push([doc, count]);
+        final_users_list.push([data, count]);
 
         count += 1;
 
@@ -134,12 +133,18 @@ function StatsPage() {
         if (data.reviewed === true) {
           final_reviewed_count += 1
         }
+        try {
+          if (data.approved === true) {
+          final_approved_count += 1
+        }
+      } catch {}
       }
 
     });
     setCountUsersApplied(final_count);
     setTotalMSU(final_msu_count);
     setReviewed(final_reviewed_count);
+    setApproved(final_approved_count);
     setUserData(final_users_list);
   };
 
@@ -152,25 +157,25 @@ function StatsPage() {
 
 
   useEffect(() => {
-    setApplicantsData(userData)
-    const interval = setInterval(() => {      
-      console.log("Called for data - 10 second update")
-      get_aggregate_data();
-    }, 10000);
-    return () => clearInterval(interval);
+    setApplicantsData(userData);
+    // const interval = setInterval(() => {      
+    //   console.log("Called for data - 10 second update")
+    //   get_aggregate_data();
+    // }, 10000);
+    // return () => clearInterval(interval);
   }, []);
 
 
   async function update_approval(element, approving) {
+    var specific_user = element[0]
     const db = getFirestore(app);
-    await updateDoc(doc(db, "registrations", element.id), { approved: approving, reviewed: true });
+    await updateDoc(doc(db, "registrations", specific_user.id), { approved: approving, reviewed: true });
     //Send email
     console.log(approving);
     console.log("Here is the approval thing above");
     if (approving) {
-      let data = element.data();
+      let data = specific_user;
       data["action"] = "approve";
-      console.log(data);
       const email_sent = await fetch('https://us-central1-spartahack8.cloudfunctions.net/sendEmailsOfApproval', {
         method: 'POST',
         headers: {
@@ -182,7 +187,7 @@ function StatsPage() {
       console.log(email_sent);
       console.log(email_sent.message);
     } else {
-      let data = element.data();
+      let data = specific_user.data();
       data["action"] = "deny"
       const email_sent = await fetch('https://us-central1-spartahack8.cloudfunctions.net/sendEmailsOfApproval', {
         method: 'POST',
@@ -198,11 +203,12 @@ function StatsPage() {
     setEmailSent(true);
     setTimeout(() => {
       setEmailSent(false);
-    }, 2000);
-
-    console.log("User modified data - calling for updated data")
-    get_aggregate_data()
-
+    }, 1);
+    var user_list = [...userData];
+    let index = element[1];
+    user_list[index-1][0].approved = approving;
+    user_list[index-1][0].reviewed = true
+    setUserData(user_list);
   }
   async function try_pushing_data() {
     const db = getFirestore(app);
@@ -222,7 +228,7 @@ function StatsPage() {
   }
 
   const csvLink = useRef();
-  const user_csv_data = userData.map((obj) => { return obj[0].data() });
+  const user_csv_data = userData.map((obj) => { return obj[0] });
 
   useEffect(() => {
     setApplicantsData(userData)
@@ -279,11 +285,12 @@ function StatsPage() {
 
   return (
     <div className="w-full max-w-6xl mt-24 px-4 md:px-8 flex flex-col scroll-smooth overflow-hidden">
-      <div className="grid grid-cols-2 md:w-fit md:grid-cols-4 justify-center items-center gap-3 sm:gap-6 my-6 md:mx-auto">
-        <StatCard statTitle="Total Applicants" data={countUsersApplied} />
+      <div className="grid grid-cols-2 lg:w-fit lg:grid-cols-5 justify-center items-center gap-3 sm:gap-6 my-6 lg:mx-auto">
+        <StatCard statTitle="Total Applicants" data={countUsersApplied} className="col-span-2 md:col-span-1"/>
+        <StatCard statTitle="Total Approved Applicants" data={totalApproved} className="border-teal-500" />
+        <StatCard statTitle="Total Pending Review" data={countUsersApplied - totalReviewed} className="border-blue-400"/>
         <StatCard statTitle="Total MSU Applicants" data={totalMSU} />
         <StatCard statTitle="Total Non-MSU Applicants" data={countUsersApplied - totalMSU} />
-        <StatCard statTitle="Pending review" data={countUsersApplied - totalReviewed} />
       </div>
 
       <CSVLink
@@ -360,7 +367,7 @@ function StatsPage() {
               // console.log(tuple[0])
               var curr_doc = tuple[0];
               var count = tuple[1];
-              var student = curr_doc.data();
+              var student = curr_doc;
               // console.log(tuple)
               function open_modal() {
                 setShowModal(true)
@@ -368,7 +375,7 @@ function StatsPage() {
               }
 
               function approve_current_student() {
-                update_approval(curr_doc, true).then(() => {
+                update_approval(tuple, true).then(() => {
                   console.log("updated correctly");
                 }).catch((err) => {
                   {/* console.log("Error on updating"); */ }

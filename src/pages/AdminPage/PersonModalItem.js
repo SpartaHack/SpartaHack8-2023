@@ -1,6 +1,7 @@
 import React from 'react'
 
 function PersonModalItem(props) {
+  console.log(props.data)
   return (
     <div className={props.className + " col-span-1 flex flex-col justify-start align-center min-h-[82px] lg:min-h-[72px] "}>
       <div className="rubik-font uppercase text-xs text-white/80 pb-1 border-b border-white/30 ">
