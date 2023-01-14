@@ -3,9 +3,18 @@ import PersonModalItem from './PersonModalItem';
 
 function PersonModal(props) {
   let student = props.currentStudent;
-  // console.log(student.registered_at);
 
-  var newDate = student.registered_at ? student.registered_at.toDate().toLocaleDateString("en-US") : "No registered date";
+  var registrationDate = "No registered date";
+  if(student.registered_at){
+    registrationDate = student.registered_at.toDate().toLocaleDateString("en-US");
+  }
+
+
+  var graduationDate = student.graduation_date ? student.graduation_date : "No graduation date";
+  if(typeof(graduationDate) != typeof("any")){
+    graduationDate = student.graduation_date.toDate().toLocaleDateString("en-US");
+  }
+
   function closeModal(e) {
     if (["outsideModal", "closeModal"].includes(e.target.id)) {
       props.setShowModal(false);
@@ -48,7 +57,7 @@ function PersonModal(props) {
               <PersonModalItem dataTitle="School" data={student.school} />
               <PersonModalItem dataTitle="Major" data={student.major} />
               <PersonModalItem dataTitle="Education Level" data={student.education_level} />
-              <PersonModalItem dataTitle="Graduation Date" data={student.graduation_date.toDate().toLocaleDateString("en-US")} />
+              <PersonModalItem dataTitle="Graduation Date" data={graduationDate} />
               <PersonModalItem dataTitle="Gender" data={student.gender} />
               <PersonModalItem dataTitle="Race" data={student.race} />
               <PersonModalItem dataTitle="Country of origin" data={student.country_of_origin} />
@@ -62,7 +71,7 @@ function PersonModal(props) {
                 <div>
                   {student.reason_attending}
                 </div>} />
-              <PersonModalItem dataTitle="Date Registered" data={newDate} />
+              <PersonModalItem dataTitle="Date Registered" data={registrationDate} />
               <div className='col-span-1 grid grid-cols-2 gap-4'>
                 <PersonModalItem dataTitle="GitHub" data={student.githubURL ?
                   <a className=" text-sky-400" href={student.githubURL}>
