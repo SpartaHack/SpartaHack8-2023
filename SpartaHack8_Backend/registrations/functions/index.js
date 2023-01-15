@@ -340,3 +340,24 @@ exports.sendEmailsOfApproval = functions.https.onRequest(async (request, respons
     }
   });
 });
+
+exports.sendEmailsToProfessor = functions.https.onRequest(async (request, response) => {
+  response.set({ 'Access-Control-Allow-Origin': '*' })
+  cors(request, response, async () => {
+    if (request.method === "POST") {
+      let data = request.body;
+      var replacements = {
+        name: data['name']
+      }
+      console.log(data);
+      if (data["name"]) {
+        await format_and_send_email(data["email"],"Invitation to SpartaHack", replacements,"/professor_email_sending.html");
+        response.status(200).send({"message":"success", "data": {"message": "Email sent to professor!"}});
+      } else {
+        response.status(500).send({"message": "Please have the necessary data"});
+      }
+    } else {
+      response.status(500).send({"message": "Please send a GET request"});
+    }
+  });
+});
