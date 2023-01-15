@@ -31,7 +31,7 @@ function MainNavbar() {
           </Link>
         </div>
         <div className="flex flex-row justify-center items-center gap-x-4">
-          {!["/register", "/admin"].includes(pathname) && 
+          {!["/apply", "/admin"].includes(pathname) && 
           <div>
             <ul className="flex flex-row justify-center items-center gap-x-1 lg:gap-x-2 rubik-font uppercase font-light text-sm text-sh-white/80 transition-all duration-100
             ">
@@ -48,9 +48,9 @@ function MainNavbar() {
             </ul>
           </div>
           }
-          {pathname !== "/admin" ?
+          {pathname === "/" ?
           <div>
-          <Link to="/register" exact>
+          <Link to="/apply" exact>
             <ButtonPrimary buttonText="Apply" />
           </Link>
             </div>

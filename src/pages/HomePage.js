@@ -47,8 +47,8 @@ function HomePage(props) {
       <main className="relative mx-4 md:mx-auto md:max-w-xl lg:max-w-4xl xl:max-w-5xl last:pb-24">
         <section id="Home" className="relative h-screen flex flex-col justify-center items-center">
           <HeroText />
-          <Link to="/register" exact className="w-full sm:w-fit mt-8 sm:mt-12">
-            <LargeButton buttonClass=" mx-auto border border-sh-pink hover:bg-sh-white/10"
+          <Link to="/apply" exact className="w-full px-2 sm:w-fit mt-8 sm:mt-12">
+            <LargeButton buttonClass="mx-auto border border-sh-pink hover:bg-sh-white/10"
               buttonText="Apply Now" />
           </Link>
           <ScrollDownNudge containerClass={((isVisible) ? " " : " opacity-0 ")} />
