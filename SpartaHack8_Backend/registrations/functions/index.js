@@ -349,7 +349,6 @@ exports.sendEmailsToProfessor = functions.https.onRequest(async (request, respon
       var replacements = {
         name: data['name']
       }
-      console.log(data);
       if (data["name"]) {
         await format_and_send_email(data["email"],"Invitation to SpartaHack", replacements,"/professor_email_sending.html");
         response.status(200).send({"message":"success", "data": {"message": "Email sent to professor!"}});
