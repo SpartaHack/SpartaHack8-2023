@@ -68,3 +68,7 @@ node_modules/
 
 #Build folder
 build
+
+#Mac tracks
+.DS_Store
+src/.DS_Store

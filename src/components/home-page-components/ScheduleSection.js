@@ -46,10 +46,10 @@ function ScheduleSection() {
         time: "03:30PM - 04:30PM",
         eventsName: "Tech Talk by MSU FCU"
       },
-      {
-        time: "04:30PM - 05:30PM",
-        eventsName: "Cup Stacking | Tech Talk by Auto-Owners Insurance"
-      },
+      // {
+      //   time: "04:30PM - 05:30PM",
+      //   eventsName: "Cup Stacking | Tech Talk by Auto-Owners Insurance"
+      // },
       {
         time: "05:30PM - 06:30PM",
         eventsName: "Tech Talk by Gerdau"
@@ -68,7 +68,7 @@ function ScheduleSection() {
       },
       {
         time: "10:00PM - 11:00PM",
-        eventsName: "Prakhar Srivastav Talk"
+        eventsName: "Keynote Speaker: Prakhar Srivastav"
       },
     ],
     day2: [
@@ -77,16 +77,16 @@ function ScheduleSection() {
         eventsName: "Midnight Snack"
       },
       {
-        time: "00:00AM - 02:00AM",
-        eventsName: "Game Tournament"
-      },
-      {
         time: "02:00AM - 03:00AM",
-        eventsName: "Jay Freeman Talk"
+        eventsName: "Keynote Speaker: Jay Freeman"
       },
       {
         time: "08:00AM - 10:00AM",
         eventsName: "Breakfast"
+      },
+      {
+        time: "11:00AM - 12:00PM",
+        eventsName: "Devpost Workshop"
       },
       {
         time: "12:00PM",
@@ -97,12 +97,16 @@ function ScheduleSection() {
         eventsName: "Presentations"
       },
       {
-        time: "02:00PM - 04:00PM",
-        eventsName: "Lunch"
+        time: "01:00PM - 03:00PM",
+        eventsName: "Game Tournament"
       },
       {
         time: "02:00PM - 03:00PM",
         eventsName: "Judging"
+      },
+      {
+        time: "02:00PM - 04:00PM",
+        eventsName: "Lunch"
       },
       {
         time: "03:00 - 04:00",
