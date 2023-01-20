@@ -15,7 +15,7 @@ function EmailModal(props) {
     props.setEmailSent(false);
   }
   return (
-    <div className='fixed inset-0 z-10 overflow-y-auto' onClick={closeModal}>
+    <div className='fixed inset-0 z-10 overflow-y-auto' >
       <div
         className="fixed inset-0 w-full h-full bg-sh-black/30 backdrop-blur-md">
       </div>
@@ -214,22 +214,7 @@ function StatsPage() {
     user_list[index-1][0].approved = approving;
     user_list[index-1][0].reviewed = true
     setUserData(user_list);
-  }
-  async function try_pushing_data() {
-    const db = getFirestore(app);
-    const docData = {
-      something: "JAJAJA",
-      else: "xdxd"
-    }
-    let md = [];
-    const query = await getDocs(collection(db, "data"));
-    query.forEach((doc) => {
-      md.push(doc);
-      // console.log(doc);
-    })
-    setMockData(md);
-    // await setDoc(doc(db, "data", "three"), docData);
-    // await updateDoc(doc(db, "data", "one"), {something: "HAHAHAH"});
+    setReviewed(totalReviewed + 1);
   }
 
   const csvLink = useRef();
@@ -237,7 +222,6 @@ function StatsPage() {
 
   useEffect(() => {
     setApplicantsData(userData)
-    // console.log("Updated data")
     try {
       setCurrentStudent(applicantsData.find(applicant => (
         applicant[0].data().email === currentStudent.data().email
@@ -316,7 +300,6 @@ function StatsPage() {
             buttonText="Download CSV" onClick={download_csv} />
         </div>
       </div>
-      {/* <button className="text-white rounded bg-sky-300" onClick={try_pushing_data}>Click here</button> */}
       <div className=" w-full max-w-6xl  mt-12 mb-28 mx-auto  flex flex-col">
         <div className="h-16 w-full flex flex-row items-center justify-center gap-x-2 text-white text-center rubik-font uppercase">
           <div className="w-full max-w-[256px]">
