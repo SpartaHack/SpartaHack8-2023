@@ -11,8 +11,11 @@ import ApplicationRow from "../ApplicationRow";
 
 
 function EmailModal(props) {
+  const closeModal = () => {
+    props.setEmailSent(false);
+  }
   return (
-    <div className='fixed inset-0 z-10 overflow-y-auto'>
+    <div className='fixed inset-0 z-10 overflow-y-auto' onClick={closeModal}>
       <div
         className="fixed inset-0 w-full h-full bg-sh-black/30 backdrop-blur-md">
       </div>
@@ -183,9 +186,13 @@ function StatsPage() {
         },
         body: JSON.stringify(data)
       });
-      console.log("We finished calling and sending emails")
+      // console.log("We finished calling and sending emails")
       console.log(email_sent);
       console.log(email_sent.message);
+      setApproved(totalApproved + 1);
+      if (data.msu_student === true) {
+        setTotalMSU(totalMSU + 1);
+      }
     } else {
       let data = specific_user.data();
       data["action"] = "deny"
@@ -196,14 +203,12 @@ function StatsPage() {
         },
         body: JSON.stringify(data)
       });
-      console.log("We finished calling and sending emails")
-      console.log(email_sent);
-      console.log(email_sent.message);
+
     }
     setEmailSent(true);
     setTimeout(() => {
       setEmailSent(false);
-    }, 2000);
+    }, 1000);
     var user_list = [...userData];
     let index = element[1];
     user_list[index-1][0].approved = approving;
