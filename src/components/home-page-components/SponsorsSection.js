@@ -18,6 +18,7 @@ import deloitteLogo from '../../materials/logos/white-logos/deloitte-white.png'
 import mphiLogo from '../../materials/logos/white-logos/mphi-white.png'
 import dewpointLogo from '../../materials/logos/white-logos/dewpoint-white.png'
 import mantelLogo from '../../materials/logos/white-logos/mantel-logo-white.png'
+import fordLogo from '../../materials/logos/white-logos/ford-white.png'
 
 function SponsorsSection() {
 
@@ -81,6 +82,11 @@ function SponsorsSection() {
       name: "Burgess Institute Logo",
       path: burgessLogo,
       class: "max-h-20 lg:max-h-32 max-w-[200px] "
+    },
+    {
+      name: "Ford Logo",
+      path: fordLogo,
+      class: "max-h-20 lg:max-h-32 max-w-[240px] "
     },
     {
       name: "TecHacks Logo",
