@@ -155,7 +155,7 @@ function StatsPage() {
     console.log("Called for data - due to changes")
     get_aggregate_data();
     // setApplicantsData(userData)
-    setLoaded(true)
+    setLoaded(true);
   }
 
 
@@ -370,6 +370,7 @@ function StatsPage() {
                   {/* console.log(err); */ }
                 });
               }
+
               function deny_current_student() {
                 update_approval(tuple, false).then(() => {
                   console.log("updated correctly");
