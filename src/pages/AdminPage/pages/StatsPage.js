@@ -187,7 +187,7 @@ function StatsPage() {
       console.log(email_sent);
       console.log(email_sent.message);
     } else {
-      let data = specific_user.data();
+      let data = specific_user;
       data["action"] = "deny"
       const email_sent = await fetch('https://us-central1-spartahack8.cloudfunctions.net/sendEmailsOfApproval', {
         method: 'POST',
@@ -383,7 +383,7 @@ function StatsPage() {
                 });
               }
               function deny_current_student() {
-                update_approval(curr_doc, false).then(() => {
+                update_approval(tuple, false).then(() => {
                   console.log("updated correctly");
                 }).catch((err) => {
                   console.log("Error on updating");
