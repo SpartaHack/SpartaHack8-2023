@@ -11,8 +11,11 @@ import ApplicationRow from "../ApplicationRow";
 
 
 function EmailModal(props) {
+  const closeModal = () => {
+    props.setEmailSent(false);
+  }
   return (
-    <div className='fixed inset-0 z-10 overflow-y-auto'>
+    <div className='fixed inset-0 z-10 overflow-y-auto' >
       <div
         className="fixed inset-0 w-full h-full bg-sh-black/30 backdrop-blur-md">
       </div>
@@ -20,9 +23,9 @@ function EmailModal(props) {
         <div className="relative max-w-lg min-h-fit sm:min-h-[250px] flex justify-center items-center px-6 sm:px-8 py-8 sm:py-10 mx-auto bg-slate-50 rounded-xl shadow-lg transition-all duration-1000">
           <div className="flex">
             <div className="text-center">
-              <div className="flex justify-center items-center mb-4 h-14">
-                {/* {statusData[props.formStatus].icon} */}
-              </div>
+              {/* <div className="flex justify-center items-center mb-4 h-14">
+                {statusData[props.formStatus].icon}
+              </div> */}
               <div className={" text-2xl rubik-font font-medium"}>
                 Email Sent!
               </div>
@@ -97,7 +100,7 @@ function StatsPage() {
         filteredList = filteredList.filter(applicant => (applicant[0].approved === true))
       } else {
         if (status === false) {
-          filteredList = filteredList.filter(applicant => (applicant[0].reviewed === true && applicant[0].data().approved === false))
+          filteredList = filteredList.filter(applicant => (applicant[0].reviewed === true && applicant[0].approved === false))
         } else {
           filteredList = filteredList.filter(applicant => (applicant[0].reviewed === undefined))
         }
@@ -183,9 +186,13 @@ function StatsPage() {
         },
         body: JSON.stringify(data)
       });
-      console.log("We finished calling and sending emails")
+      // console.log("We finished calling and sending emails")
       console.log(email_sent);
       console.log(email_sent.message);
+      setApproved(totalApproved + 1);
+      if (data.msu_student === true) {
+        setTotalMSU(totalMSU + 1);
+      }
     } else {
       let data = specific_user;
       data["action"] = "deny"
@@ -196,35 +203,18 @@ function StatsPage() {
         },
         body: JSON.stringify(data)
       });
-      console.log("We finished calling and sending emails")
-      console.log(email_sent);
-      console.log(email_sent.message);
+
     }
     setEmailSent(true);
     setTimeout(() => {
       setEmailSent(false);
-    }, 1);
+    }, 1000);
     var user_list = [...userData];
     let index = element[1];
     user_list[index-1][0].approved = approving;
     user_list[index-1][0].reviewed = true
     setUserData(user_list);
-  }
-  async function try_pushing_data() {
-    const db = getFirestore(app);
-    const docData = {
-      something: "JAJAJA",
-      else: "xdxd"
-    }
-    let md = [];
-    const query = await getDocs(collection(db, "data"));
-    query.forEach((doc) => {
-      md.push(doc);
-      // console.log(doc);
-    })
-    setMockData(md);
-    // await setDoc(doc(db, "data", "three"), docData);
-    // await updateDoc(doc(db, "data", "one"), {something: "HAHAHAH"});
+    setReviewed(totalReviewed + 1);
   }
 
   const csvLink = useRef();
@@ -232,7 +222,6 @@ function StatsPage() {
 
   useEffect(() => {
     setApplicantsData(userData)
-    console.log("Updated data")
     try {
       setCurrentStudent(applicantsData.find(applicant => (
         applicant[0].data().email === currentStudent.data().email
@@ -311,11 +300,10 @@ function StatsPage() {
             buttonText="Download CSV" onClick={download_csv} />
         </div>
       </div>
-      {/* <button className="text-white rounded bg-sky-300" onClick={try_pushing_data}>Click here</button> */}
       <div className=" w-full max-w-6xl  mt-12 mb-28 mx-auto  flex flex-col">
         <div className="h-16 w-full flex flex-row items-center justify-center gap-x-2 text-white text-center rubik-font uppercase">
           <div className="w-full max-w-[256px]">
-            <select id="admin_filter" className="w-full rounded text-sh-white border border-sh-white/50 p-1 bg-sh-black/50" name="status" onChange={universityHandler}>
+            <select id="admin_filter" className="w-full rounded text-sh-white border border-sh-white/50 p-1 bg-sh-black/50" name="university" onChange={universityHandler}>
               <option className="bg-white" value="" selected>Filter University/College</option>
               {sortedUniversityList.map((universityName) => {
                 return (
@@ -325,7 +313,7 @@ function StatsPage() {
             </select>
           </div>
           <div className="w-full max-w-[256px]">
-            <select id="admin_filter" className="w-full rounded text-sh-white border border-sh-white/50 p-1 bg-sh-black/50" name="status" onChange={levelHandler}>
+            <select id="admin_filter" className="w-full rounded text-sh-white border border-sh-white/50 p-1 bg-sh-black/50" name="level" onChange={levelHandler}>
               <option className="bg-white" value="" selected>Filter Education Level</option>
               {sortedLevelList.map((level) => {
                 return (
@@ -339,7 +327,7 @@ function StatsPage() {
               <option className="bg-white" value="" selected>Filter Application Status</option>
               <option className="bg-white" value="pending">Pending</option>
               <option className="bg-white" value="approved">Approved</option>
-              <option className="bg-white" value="denied">Denied</option>
+              <option className="bg-white" value="denied">Rejected</option>
             </select>
           </div>
         </div>

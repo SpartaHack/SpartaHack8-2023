@@ -35,6 +35,35 @@ async function send_email(destination, subject, content){
   });
 }
 
+async function send_professors_email(destination, subject, content){
+  const email_sender = 'hello.spartahack@gmail.com'
+  const email_password = 'tfutzokpreaneifa'
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    auth: {
+        user: email_sender,
+        pass: email_password
+    }
+  });
+
+  return transporter.sendMail({
+    from: email_sender,
+    to: destination,
+    bcc: "soteloju@msu.edu",
+    subject: subject,
+    html: content,
+    attachments: [
+      {
+        filename: "SH8_Flyer.png",
+        path: "https://firebasestorage.googleapis.com/v0/b/spartahack8.appspot.com/o/img%2FSH8%20Flyer.png?alt=media&token=83c03746-236f-4960-9f08-f08d8f7712a7"
+      }
+    ]
+  });
+}
+
+
+
 const required_fields = [
 "email",
 "first_name",
@@ -75,6 +104,31 @@ async function format_and_send_email(destination, subject, replacements, templat
     var htmlToSend = template(replacements);
 
     await send_email(destination, subject, htmlToSend)
+    return 200;
+  });
+}
+
+async function format_and_send_professors_email(destination, subject, replacements, template_name){
+  var readHTMLFile = function(path, callback) {
+    fs.readFile(path, {encoding: 'utf-8'}, function (err, html) {
+        if (err) {
+          callback(err);
+        }
+        else {
+            callback(null, html);
+        }
+    });
+  };
+
+  return readHTMLFile(__dirname + template_name, async function(err, html) {
+    if (err) {
+      console.log('error reading file', err);
+      return 100;
+    }
+    var template = handlebars.compile(html);
+    var htmlToSend = template(replacements);
+
+    await send_professors_email(destination, subject, htmlToSend)
     return 200;
   });
 }
@@ -335,6 +389,26 @@ exports.sendEmailsOfApproval = functions.https.onRequest(async (request, respons
         response.status(200).send({"message":"success", "data": {"message": "Denial Email Sent!"}});
       } else {
         response.status(400).send({message: "error", "data": "Invalid request"});
+      }
+    } else {
+      response.status(500).send({"message": "Please send a GET request"});
+    }
+  });
+});
+
+exports.sendEmailsToProfessor = functions.https.onRequest(async (request, response) => {
+  response.set({ 'Access-Control-Allow-Origin': '*' })
+  cors(request, response, async () => {
+    if (request.method === "POST") {
+      let data = request.body;
+      var replacements = {
+        name: data['name']
+      }
+      if (data["name"]) {
+        await format_and_send_professors_email(data["email"],"Invitation to SpartaHack", replacements,"/professor_email_sending.html");
+        response.status(200).send({"message":"success", "data": {"message": "Email sent to professor!"}});
+      } else {
+        response.status(500).send({"message": "Please have the necessary data"});
       }
     } else {
       response.status(500).send({"message": "Please send a GET request"});

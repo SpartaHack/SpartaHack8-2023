@@ -10,11 +10,12 @@ import PartnersSection from "../components/home-page-components/PartnersSection"
 import ScheduleSection from "../components/home-page-components/ScheduleSection";
 import ScrollDownNudge from "../components/home-page-components/ScrollDownNudge";
 import SponsorsSection from "../components/home-page-components/SponsorsSection";
+import TeamSection from "../components/home-page-components/TeamSection";
 import Background from "../components/layouts/Background";
 
 function HomePage(props) {
 
-  const [isVisible, setIsVisible] = useState(true);
+  // const [isVisible, setIsVisible] = useState(true);
 
   // useEffect(() => {
   //   const listenToScroll = () => {
@@ -33,12 +34,6 @@ function HomePage(props) {
   //     window.removeEventListener("scroll", listenToScroll);
   // }, [])
 
-  const hi = useParams();
-  useEffect(() => {
-    console.log(hi)
-  })
-  
-
   return (
     <div className='relative'>
       <div className="absolute top-0 w-full h-full -z-10">
@@ -47,11 +42,11 @@ function HomePage(props) {
       <main className="relative mx-4 md:mx-auto md:max-w-xl lg:max-w-4xl xl:max-w-5xl last:pb-24">
         <section id="Home" className="relative h-screen flex flex-col justify-center items-center">
           <HeroText />
-          <Link to="/register" exact className="w-full sm:w-fit mt-8 sm:mt-12">
-            <LargeButton buttonClass=" mx-auto border border-sh-pink hover:bg-sh-white/10"
+          <Link to="/apply" exact className="w-full px-2 sm:w-fit mt-8 sm:mt-12">
+            <LargeButton buttonClass="mx-auto border border-sh-pink hover:bg-sh-white/10"
               buttonText="Apply Now" />
           </Link>
-          <ScrollDownNudge containerClass={((isVisible) ? " " : " opacity-0 ")} />
+          <ScrollDownNudge />
         </section>
         <section id="About" className="min-h-screen flex flex-col justify-center gap-y-32 md:gap-y-52 py-16">
           <BasicInfoCards />
@@ -66,8 +61,11 @@ function HomePage(props) {
         <section id="Sponsors" className="min-h-screen flex flex-col justify-center py-8">
           <SponsorsSection />
         </section>
-        <section id="Partners" className="min-h-fit py-12">
+        <section id="Partners" className="min-h-[70vh] py-12">
           <PartnersSection />
+        </section>
+        <section id="Team" className="min-h-fit py-12">
+          <TeamSection />
         </section>
       </main>
     </div>

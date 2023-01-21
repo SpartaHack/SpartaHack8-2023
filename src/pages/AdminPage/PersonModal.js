@@ -64,7 +64,7 @@ function PersonModal(props) {
               <PersonModalItem dataTitle="U.S. State from" data={student.state_from} />
               <PersonModalItem dataTitle="Phone" data={student.phone} />
               <PersonModalItem dataTitle="Resume" data={
-                <a href={student.resume} className="  text-sky-400">
+                <a href={student.resume} className="  text-sky-400" target="_blank" rel="noopener noreferrer">
                   Go to Resume
                 </a>} />
               <PersonModalItem className="col-span-2" dataTitle="Reason Attending" data={
@@ -74,7 +74,7 @@ function PersonModal(props) {
               <PersonModalItem dataTitle="Date Registered" data={registrationDate} />
               <div className='col-span-1 grid grid-cols-2 gap-4'>
                 <PersonModalItem dataTitle="GitHub" data={student.githubURL ?
-                  <a className=" text-sky-400" href={student.githubURL}>
+                  <a className=" text-sky-400" href={student.githubURL} target="_blank" rel="noopener noreferrer">
                     Link
                   </a> :
                   <div>
@@ -107,17 +107,17 @@ function PersonModal(props) {
             student.approved ?
               <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded uppercase "> Approved </div>
               :
-              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded uppercase "> Denied </div>
+              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded uppercase "> Rejected </div>
             :
-           <button onClick={approveStudent} data-modal-toggle="defaultModal" type="button" className="w-full sm:w-32 h-full bg-teal-500 hover:bg-teal-300 rounded uppercase transition duration-75">
+           <button onDoubleClick={approveStudent} data-modal-toggle="defaultModal" type="button" className="w-full sm:w-32 h-full bg-teal-500 hover:bg-teal-300 rounded uppercase transition duration-75">
               Approve
             </button>
         }
         {
           student.reviewed ?
             null :
-            <button onClick={denyStudent} type="button" className="w-full sm:w-32 h-full ml-2 bg-rose-500 hover:bg-rose-300 rounded uppercase transition duration-75">
-              Deny
+            <button onDoubleClick={denyStudent} type="button" className="w-full sm:w-32 h-full ml-2 bg-rose-500 hover:bg-rose-300 rounded uppercase transition duration-75">
+              Reject
             </button>
         }
             {/* <button onClick={denyStudent} type="button" className="w-full sm:w-32 h-full ml-2 bg-rose-500 hover:bg-rose-300 rounded uppercase transition duration-75">

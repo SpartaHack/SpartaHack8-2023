@@ -39,3 +39,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+.stroke-text {
+  text-shadow:
+    -1px -1px 0 #F70063,
+    1px -1px 0 #F70063,
+    -1px 1px 0 #F70063,
+    1px 1px 0 #F70063;
+}

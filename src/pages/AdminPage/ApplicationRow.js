@@ -21,14 +21,14 @@ function ApplicationRow(props) {
             props.student.approved ?
               <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded  "> Approved </div>
               :
-              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded  "> Denied </div>
+              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded  "> Rejected </div>
             :
-            <button onClick={props.approve_current_student} className="w-full min-w-[90px] lg:min-w-fit h-full px-2 bg-teal-600 hover:bg-teal-300 rounded uppercase transition duration-75">Approve</button>
+            <button onDoubleClick={props.approve_current_student} className="w-full min-w-[90px] lg:min-w-fit h-full px-2 bg-teal-600 hover:bg-teal-300 rounded uppercase transition duration-75">Approve</button>
         }
         {
           props.student.reviewed ?
             null :
-            <button onClick={props.deny_current_student} className="w-full min-w-[90px] lg:min-w-fit h-full px-2 lg:ml-2 mt-1 lg:mt-0 bg-rose-500 hover:bg-rose-300 rounded uppercase transition duration-75">Deny</button>
+            <button onDoubleClick={props.deny_current_student} className="w-full min-w-[90px] lg:min-w-fit h-full px-2 lg:ml-2 mt-1 lg:mt-0 bg-rose-500 hover:bg-rose-300 rounded uppercase transition duration-75">Reject</button>
         }
       </div>
     </div>
