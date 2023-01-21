@@ -56,7 +56,7 @@ function TeamSection() {
       about: "Jordan is a senior from Highland, Michigan majoring in Mechanical Engineering with a concentration in Aerospace. This is his first time serving on the SpartaHack organizing team.",
       photoPath: jordanPhoto,
       width: 3,
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/arnold-jordan/",
       github: "",
       website: ""
     },
