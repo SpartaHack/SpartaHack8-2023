@@ -4,10 +4,14 @@ function ApplicationRow(props) {
 
   const current_status = () => {
     return (
-      props.student.approved ?
-        <div className="h-full w-full max-w-[250px] min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded  "> Approved </div>
-        :
-        <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded  "> Rejected </div>
+      <div className="h-full flex flex-col lg:flex-row grow ml-2 justify-center items-center uppercase rubik-font font-normal">
+        {
+        props.student.approved ?
+          <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded  "> Approved </div>
+          :
+          <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded  "> Rejected </div>
+        }
+      </div>
     );
   }
 
