@@ -47,7 +47,7 @@ function EmailModal(props) {
   );
 }
 
-function StatsPage() {
+function StatsPage(props) {
   const [countUsersApplied, setCountUsersApplied] = useState(0);
   const [totalMSU, setTotalMSU] = useState(0);
   const [totalReviewed, setReviewed] = useState(0);
@@ -382,7 +382,7 @@ function StatsPage() {
 
               return (
                 <div>
-                  <ApplicationRow count={count} student={student} open_modal={open_modal} approve_current_student={approve_current_student} deny_current_student={deny_current_student} />
+                  <ApplicationRow role={props.user_data.role} count={count} student={student} open_modal={open_modal} approve_current_student={approve_current_student} deny_current_student={deny_current_student} />
                 </div>
 
               );
