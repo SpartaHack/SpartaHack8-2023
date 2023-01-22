@@ -53,7 +53,7 @@ function FaqSection() {
     {
       "id": 9,
       "question": "When do applications close?",
-      "answer": <p>Applications will close January 20<span className='align-top text-xs'>th</span> at 11:59 PM.</p>
+      "answer": <p>Applications will remain open until the day of the event.</p>
     },
     {
       "id": 10,
