@@ -190,9 +190,9 @@ function StatsPage(props) {
       console.log(email_sent);
       console.log(email_sent.message);
       setApproved(totalApproved + 1);
-      if (data.msu_student === true) {
-        setTotalMSU(totalMSU + 1);
-      }
+      // if (data.msu_student) {
+      //   setTotalMSU(totalMSU + 1);
+      // }
     } else {
       let data = specific_user;
       data["action"] = "deny"
