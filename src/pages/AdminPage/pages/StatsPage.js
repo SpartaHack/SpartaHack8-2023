@@ -47,7 +47,7 @@ function EmailModal(props) {
   );
 }
 
-function StatsPage() {
+function StatsPage(props) {
   const [countUsersApplied, setCountUsersApplied] = useState(0);
   const [totalMSU, setTotalMSU] = useState(0);
   const [totalReviewed, setReviewed] = useState(0);
@@ -155,7 +155,7 @@ function StatsPage() {
     console.log("Called for data - due to changes")
     get_aggregate_data();
     // setApplicantsData(userData)
-    setLoaded(true)
+    setLoaded(true);
   }
 
 
@@ -194,7 +194,7 @@ function StatsPage() {
         setTotalMSU(totalMSU + 1);
       }
     } else {
-      let data = specific_user.data();
+      let data = specific_user;
       data["action"] = "deny"
       const email_sent = await fetch('https://us-central1-spartahack8.cloudfunctions.net/sendEmailsOfApproval', {
         method: 'POST',
@@ -370,8 +370,9 @@ function StatsPage() {
                   {/* console.log(err); */ }
                 });
               }
+
               function deny_current_student() {
-                update_approval(curr_doc, false).then(() => {
+                update_approval(tuple, false).then(() => {
                   console.log("updated correctly");
                 }).catch((err) => {
                   console.log("Error on updating");
@@ -381,7 +382,7 @@ function StatsPage() {
 
               return (
                 <div>
-                  <ApplicationRow count={count} student={student} open_modal={open_modal} approve_current_student={approve_current_student} deny_current_student={deny_current_student} />
+                  <ApplicationRow role={props.user_data.role} count={count} student={student} open_modal={open_modal} approve_current_student={approve_current_student} deny_current_student={deny_current_student} />
                 </div>
 
               );

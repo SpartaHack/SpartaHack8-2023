@@ -10,8 +10,8 @@ function AdminPage(props) {
 
   const pages = {
     true: {
-      "admin": <StatsPage />,
-      "sponsor": "SPONSOR"
+      "admin": <StatsPage user_data={logged_in}/>,
+      "sponsor": <StatsPage user_data={logged_in}/>
     },
     false: {
       "": <LoginWidget setLoggedState={setLoggedState} />

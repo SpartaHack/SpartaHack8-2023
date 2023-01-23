@@ -1,6 +1,30 @@
 import React from 'react'
 
 function ApplicationRow(props) {
+
+  const current_status = () => {
+    return (
+      props.student.approved ?
+        <div className="h-full w-full max-w-[250px] min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded  "> Approved </div>
+        :
+        <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded  "> Rejected </div>
+    );
+  }
+
+  const confirm_reject_buttons = () => {
+    return(
+    <div className="h-full flex flex-col lg:flex-row grow ml-2 justify-center items-center uppercase rubik-font font-normal">
+      {
+        props.student.reviewed ? current_status():
+        <div className="h-full flex flex-col lg:flex-row grow ml-2 justify-center items-center uppercase rubik-font font-normal">
+          <button onDoubleClick={props.approve_current_student} className="w-full min-w-[90px] m-1 p-1 lg:min-w-fit h-full px-2 bg-teal-600 hover:bg-teal-300 rounded uppercase transition duration-75">Approve</button>
+          <button onDoubleClick={props.deny_current_student} className="w-full min-w-[90px] m-1 p-1 lg:min-w-fit h-full px-2 bg-rose-500 hover:bg-rose-300 rounded uppercase transition duration-75">Reject</button>
+        </div>
+      }
+        
+      </div>);
+  }
+
   return (
     <div className="h-20 shrink-0 flex flex-row items-center py-3 box-border text-white text-center inter-font font-normal md:font-light text-xs md:text-sm gap-x-2">
       <div className="  w-10">{props.count}</div>
@@ -15,22 +39,7 @@ function ApplicationRow(props) {
       <div className=" w-20 h-full ">
         <button onClick={props.open_modal} className=" w-full min-w-[63px] h-full px-2 rounded bg-gray-700 hover:bg-gray-500 transition duration-75 uppercase rubik-font ">Expand</button>
       </div>
-      <div className="h-full flex flex-col lg:flex-row grow ml-2 justify-center items-center uppercase rubik-font font-normal">
-        {
-          props.student.reviewed ?
-            props.student.approved ?
-              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-teal-500 bg-teal-500/10 rounded  "> Approved </div>
-              :
-              <div className="h-full w-full min-w-[90px] flex flex-col justify-center items-center px-2 text-rose-500 bg-rose-600/10 rounded  "> Rejected </div>
-            :
-            <button onDoubleClick={props.approve_current_student} className="w-full min-w-[90px] lg:min-w-fit h-full px-2 bg-teal-600 hover:bg-teal-300 rounded uppercase transition duration-75">Approve</button>
-        }
-        {
-          props.student.reviewed ?
-            null :
-            <button onDoubleClick={props.deny_current_student} className="w-full min-w-[90px] lg:min-w-fit h-full px-2 lg:ml-2 mt-1 lg:mt-0 bg-rose-500 hover:bg-rose-300 rounded uppercase transition duration-75">Reject</button>
-        }
-      </div>
+      {props.role == "admin" ? confirm_reject_buttons() : current_status()}
     </div>
   )
 }

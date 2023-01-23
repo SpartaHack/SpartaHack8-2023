@@ -243,6 +243,7 @@ function replace_all_iterations(){
 //   response.status(200).send({"data": "Sucess"});
 // })
 
+
 exports.registeUser = functions.https.onRequest(async (request, response) => {
   response.set({ 'Access-Control-Allow-Origin': '*' })
     cors(request, response, async () => {
@@ -351,7 +352,7 @@ exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
       if("target" in data){
         target = data.target;
       }
-      let users = await get_all_users(target == "approved");
+      let users = await get_all_users(target === "approved");
       let file = await storage.bucket().file(folder_name + data.template_name).download();
       let template_string = file.toString();
       var template = handlebars.compile(template_string);
