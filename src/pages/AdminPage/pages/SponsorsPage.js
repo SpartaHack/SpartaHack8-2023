@@ -126,8 +126,9 @@ function StatsPage(props) {
       data.id = doc.id;
       if (!(data.first_name === "Mann" || data.last_name === "Aswal")) {
         final_count = final_count + 1;
-        final_users_list.push([data, count]);
-
+        if (data.approved) {
+          final_users_list.push([data, count]);
+        }
         count += 1;
 
         if (data.msu_student === true) {
@@ -275,9 +276,9 @@ function StatsPage(props) {
   return (
     <div className="w-full max-w-6xl mt-24 px-4 md:px-8 flex flex-col scroll-smooth overflow-hidden">
       <div className="grid grid-cols-2 lg:w-fit lg:grid-cols-5 justify-center items-center gap-3 sm:gap-6 my-6 lg:mx-auto">
-        <StatCard statTitle="Total Applicants" data={countUsersApplied} className="col-span-2 md:col-span-1"/>
-        <StatCard statTitle="Total Approved Applicants" data={totalApproved} className="border-teal-500" />
-        <StatCard statTitle="Total Pending Review" data={countUsersApplied - totalReviewed} className="border-blue-400"/>
+        {/* <StatCard statTitle="Total Applicants" data={countUsersApplied} className="col-span-2 md:col-span-1"/> */}
+        <StatCard statTitle="Total Participants" data={totalApproved} className="border-teal-500" />
+        {/* <StatCard statTitle="Total Pending Review" data={countUsersApplied - totalReviewed} className="border-blue-400"/> */}
         <StatCard statTitle="Total MSU Applicants" data={totalMSU} />
         <StatCard statTitle="Total Non-MSU Applicants" data={countUsersApplied - totalMSU} />
       </div>
@@ -292,7 +293,7 @@ function StatsPage(props) {
       />
       <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-20 gap-y-6 gap-x-6 sm:gap-y-0">
         <div className="h-full py-2 gradient-text rubik-font text-[36px] sm:text-[48px] font-medium text-center sm:text-left leading-10">
-          Review Applications
+          View Participants
         </div>
         {/* <p>{sortedLevelList}</p> */}
         <div>
@@ -322,14 +323,14 @@ function StatsPage(props) {
               })}
             </select>
           </div>
-          <div className="w-full max-w-[256px]">
+          {/* <div className="w-full max-w-[256px]">
             <select id="admin_filter" className="w-full min-w-[90px] rounded text-sh-white border border-sh-white/50 p-1 bg-sh-black/50" name="status" onChange={statusHandler}>
               <option className="bg-white" value="" selected>Filter Application Status</option>
               <option className="bg-white" value="pending">Pending</option>
               <option className="bg-white" value="approved">Approved</option>
               <option className="bg-white" value="denied">Rejected</option>
             </select>
-          </div>
+          </div> */}
         </div>
         <div className="h-16 w-full flex flex-row items-center gap-x-2 text-white text-center rubik-font uppercase text-sm lg:text-base border-b border-sh-pink">
           <div className="w-10"></div>
@@ -340,7 +341,7 @@ function StatsPage(props) {
           <div className="w-24 min-w-[56px]">Level</div>
           <div className="w-20 min-w-[63px]">Resume</div>
           <div className="w-20 min-w-[63px]">See more</div>
-          <div className="grow min-w-[90px] ml-2">Status</div>
+          {/* <div className="grow min-w-[90px] ml-2">Status</div> */}
         </div>
 
 
@@ -380,9 +381,23 @@ function StatsPage(props) {
                 });
               }
 
+              {/* <ApplicationRow role={props.user_data.role} count={count} student={student} open_modal={open_modal} approve_current_student={approve_current_student} deny_current_student={deny_current_student} /> */}
               return (
                 <div>
-                  <ApplicationRow role={props.user_data.role} count={count} student={student} open_modal={open_modal} approve_current_student={approve_current_student} deny_current_student={deny_current_student} />
+                  <div className="h-20 shrink-0 flex flex-row items-center py-3 box-border text-white text-center inter-font font-normal md:font-light text-xs md:text-sm gap-x-2">
+                    <div className="  w-10">{count}</div>
+                    <div className="  w-44 ">{student.first_name} {student.last_name}</div>
+                    <div className={(student.msu_student ? "bg-green-300/20" : "") + "  w-36 h-full flex justify-center items-center rounded"}>{student.school}</div>
+                    <div className={(student.is_minor ? "bg-rose-400/20" : "") + "  w-16 min-w-[33px] h-full flex justify-center items-center rounded "}>{student.age}</div>
+                    <div className="  w-24 min-w-[50px]">{student.country_of_origin}</div>
+                    <div className="  w-24 min-w-[56px] break-all ">{student.education_level}</div>
+                    <div className="  w-20 min-w-[63px] h-full flex justify-center items-center ">
+                      <a className=" w-full  h-full flex justify-center items-center px-2 rounded bg-blue-500 hover:bg-blue-300 transition duration-75 uppercase rubik-font" href={student.resume} target="_blank" rel="noreferrer" >Resume</a>
+                    </div>
+                    <div className=" w-20 h-full ">
+                      <button onClick={open_modal} className=" w-full min-w-[63px] h-full px-2 rounded bg-gray-700 hover:bg-gray-500 transition duration-75 uppercase rubik-font ">Expand</button>
+                    </div>
+                  </div>
                 </div>
 
               );
