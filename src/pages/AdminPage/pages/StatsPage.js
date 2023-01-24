@@ -106,8 +106,12 @@ function StatsPage(props) {
         }
       }
     }
+    if(props.user_data.role == "sponsor"){
+      filteredList = filteredList.filter(applicant => (applicant[0].approved === true));
+    }
+    
     setFilteredData(filteredList)
-    console.log("Filtered data.")
+    
   }, [university, level, status, applicantsData])
 
 
