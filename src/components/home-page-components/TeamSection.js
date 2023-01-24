@@ -5,6 +5,9 @@ import arefPhoto from '../../materials/team/aref.png'
 import khushiPhoto from '../../materials/team/khushi.png'
 import jordanPhoto from '../../materials/team/jordan.png'
 import shreyPhoto from '../../materials/team/shrey.png'
+import joelPhoto from '../../materials/team/joel.png'
+import leoPhoto from '../../materials/team/leo.png'
+import mannPhoto from '../../materials/team/mann.png'
 import TeamMember from './TeamMember'
 import SectionHeading from './SectionHeading'
 
@@ -33,7 +36,7 @@ function TeamSection() {
     {
       name: "Aref Zeitoun",
       position: "Operations Lead",
-      about: "Aref is a senior from Lebanon majoring in Computer Science. This is his first time serving on the SpartaHack organizing team.",
+      about: "Aref is a senior from Lebanon lived most of his life in Gambia, Africa, and is majoring in Computer Science.",
       photoPath: arefPhoto,
       width: 3,
       linkedin: "https://www.linkedin.com/in/aref-zeitoun/",
@@ -43,7 +46,7 @@ function TeamSection() {
     {
       name: "Khushi Vora",
       position: "Marketing Lead",
-      about: "Khushi is a junior from India majoring in Computer Science with minors in Cognitive Science and Information Communication Technology for Development. This is her first time serving on the SpartaHack organizing team.",
+      about: "Khushi is a junior from India majoring in Computer Science with minors in Cognitive Science and Information Communication Technology for Development.",
       photoPath: khushiPhoto,
       width: 3,
       linkedin: "https://www.linkedin.com/in/khushivoraa/",
@@ -53,7 +56,7 @@ function TeamSection() {
     {
       name: "Jordan Arnold",
       position: "Finance Lead",
-      about: "Jordan is a senior from Highland, Michigan majoring in Mechanical Engineering with a concentration in Aerospace. This is his first time serving on the SpartaHack organizing team.",
+      about: "Jordan is a senior from Highland, Michigan majoring in Mechanical Engineering with a concentration in Aerospace.",
       photoPath: jordanPhoto,
       width: 3,
       linkedin: "https://www.linkedin.com/in/arnold-jordan/",
@@ -63,43 +66,44 @@ function TeamSection() {
     {
       name: "Shrey Kohli",
       position: "Logistics Lead",
-      about: "Shrey is a sophomore from Sharjah, UAE majoring in Computer Science. This is his first time serving on the SpartaHack organizing team.",
+      about: "Shrey is a sophomore from Sharjah, UAE majoring in Computer Science.",
       photoPath: shreyPhoto,
       width: 3,
       linkedin: "https://www.linkedin.com/in/shrey-kohli",
       github: "",
       website: ""
     },
-    // {
-    //   name: "Joel Nataren",
-    //   position: "Web Developer - Backend",
-    //   about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque optio voluptatem recusandae reprehenderit debitis odio corrupti.",
-    //   photoPath: gabrielPhoto,
-    //   width: 4,
-    //   linkedin: "",
-    //   github: "",
-    //   website: ""
-    // },
-    // {
-    //   name: "Leonardo Specht",
-    //   position: "Web Developer - Backend",
-    //   about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque optio voluptatem recusandae reprehenderit debitis odio corrupti.",
-    //   photoPath: gabrielPhoto,
-    //   width: 4,
-    //   linkedin: "",
-    //   github: "",
-    //   website: ""
-    // },
-    // {
-    //   name: "Mann Aswal",
-    //   position: "Designer & Web Developer - Frontend",
-    //   about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque optio voluptatem recusandae reprehenderit debitis odio corrupti.",
-    //   photoPath: gabrielPhoto,
-    //   width: 4,
-    //   linkedin: "",
-    //   github: "",
-    //   website: ""
-    // },
+    {
+      name: "Joel Nataren",
+      position: "Web Developer - Backend",
+      about: "Joel is a junior from El Salvador majoring in Computer Science with a minor in Business. He is in charge of backend website development.",
+      photoPath: joelPhoto,
+      width: 4,
+      linkedin: "",
+      github: "",
+      website: ""
+    },
+        {
+      name: "Mann Aswal",
+      position: "Designer & Web Developer - Frontend",
+      about: "Mann is a freshman from Gurgaon, India majoring in Computer Science. He is in charge of brand design, and frontend website development.",
+      photoPath: mannPhoto,
+      width: 4,
+      linkedin: "",
+      github: "",
+      website: ""
+    },
+    {
+      name: "Leonardo Specht",
+      position: "Web Developer - Backend",
+      about: "Leo is a sophomore from Brasil majoring in Computer Science with a minor in Business. He is mainly in charge of backend website development.",
+      photoPath: leoPhoto,
+      width: 4,
+      linkedin: "",
+      github: "",
+      website: ""
+    },
+
   ]
   return (
     <div className=' h-fit'>

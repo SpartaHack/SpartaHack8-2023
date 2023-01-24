@@ -9,15 +9,29 @@ function DaySchedule(props) {
       <div className='mb-6 text-center font-light text-sh-white/70'>
         {props.dayInfo}
       </div>
-      <div className='flex flex-col w-full h-[400px] overflow-scroll border-t border-sh-pink/40'>
+      <div className='flex flex-col w-full h-[450px] overflow-scroll border-t border-sh-pink/40'>
         {props.data.map((slot) => {
           return (
-            <div className='flex flex-col items-start w-full py-4 gap-x-2 border-t first:border-transparent border-sh-white/20 border-'>
-              <div className='inter-font text-sh-white/60 text-sm'>
+            <div className='flex flex-col items-start w-full py-4 gap-x-2 border-b border-sh-white/20 border-'>
+              <div className='inter-font text-sh-white/60 text-sm tracking-wide'>
                 {slot.time}
               </div>
-              <div className='flex flex-row flex-wrap divide-x divide-sh-white/50 rubik-font text-xl tracking-wide mt-1'>
-                {slot.eventsName}
+              <div className='flex flex-col gap-y-3 mt-3'>
+                {slot.events
+                  .map((event) => {
+                    return (
+                      <div className='flex flex-col whitespace-pre-wrap break-words'>
+                        <span className='rubik-font text-xl tracking-wide'>
+                        {event.name}
+                        </span>
+                        {event.location && 
+                        <span className='inter-font text-xs text-sh-pink/90'>{event.location}</span>
+                        }
+                    </div>
+                  )
+                  })
+                }
+                
               </div>
             </div>
           )

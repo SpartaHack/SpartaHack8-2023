@@ -19,7 +19,7 @@ function MainNavbar() {
       <nav className="flex flex-row justify-between items-center py-6 px-6 sm:px-8 absolute h-24 w-full top-0 left-0">
         <div className="flex flex-row justify-center items-start">
           {pathname !== "/admin" &&
-            <div className="block min-w-[60px] max-w-[100px] w-[10vw] mr-4 bg-pink"></div>}
+            <div className="block min-w-[60px] max-w-[100px] w-[10vw] mr-4 sm:mr-1 lg:mr-4 bg-pink"></div>}
           <Link className="h-full flex flex-row justify-between items-center gap-x-2"
             to="/" exact>
             <div className="flex-none cursor-pointer duration-1000">
@@ -30,21 +30,23 @@ function MainNavbar() {
             </span>
           </Link>
         </div>
-        <div className="flex flex-row justify-center items-center gap-x-4">
+        <div className="flex flex-row justify-center items-center gap-x-2 lg:gap-x-4 -mr-1">
           {!["/apply", "/admin"].includes(pathname) && 
           <div>
             <ul className="flex flex-row justify-center items-center gap-x-1 lg:gap-x-2 rubik-font uppercase font-light text-sm text-sh-white/80 transition-all duration-100
             ">
-                <li className="hidden md:block">
-                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Home">Home</a></li>
-                <li className="hidden md:block">
+                {/* <li className="hidden md:block">
+                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Home">Home</a></li> */}
+                <li className="hidden lg:block">
                   <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#About">About</a></li>
                 <li className="hidden md:block">
                   <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Schedule">Schedule</a></li>
                 <li className="hidden md:block">
                   <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#FAQ">FAQs</a></li>
-                <li className="hidden lg:block">
+                <li className="hidden md:block">
                   <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Sponsors">Sponsors</a></li>
+                <li className="hidden md:block">
+                  <a className="p-3 bg-sh-white/0 hover:bg-sh-white/5 hover:backdrop-blur-lg rounded transition-all duration-75" href="#Team">Team</a></li>
             </ul>
           </div>
           }

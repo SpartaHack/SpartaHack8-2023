@@ -3,7 +3,7 @@ import React from 'react'
 function TeamMember(props) {
   return (
     <div className={props.className + ' min-[550px]:col-span-6 col-span-12 relative w-full h-min sm:h-96 flex flex-row justify-center items-end gap-x-4 border-b-2 border-sh-pink'}>
-      <div className=' w-full h-min sm:h-full sm:min-h-[300px] min-h-[200px] flex flex-row justify-center items-end pt-20 bg-white/[0.05] backdrop-blur-sm'>
+      <div className=' w-full h-min sm:h-full sm:min-h-[300px] min-h-[200px] flex flex-row justify-end sm:justify-center items-end pt-12 sm:pt-20 bg-white/[0.05] backdrop-blur-sm'>
         <img className='max-h-[200px] sm:max-h-[300px] h-fit' src={props.photoPath} alt={props.name + "'s Photo"} />
       </div>
       {/* <div className='absolute h-full w-full top-0 '></div> */}
@@ -11,9 +11,9 @@ function TeamMember(props) {
         <div className='h-full w-full flex flex-col justify-start items-start'>
           <div className='flex flex-col items-start'>
             <div className='uppercase text-xl rubik-font font-medium text-sh-pink'>{props.name}</div>
-            <div className='rubik-font text-base font-light text-sh-white/60'>{props.position}</div>
+            <div className=' w-24 sm:w-36 rubik-font sm:text-base text-sm font-light text-sh-white/60'>{props.position}</div>
           </div>
-          <div className='mt-4 min-[450px]:text-base text-sm leading-[1.5] sm:leading-normal text-sh-white/0 group-hover:text-sh-white/90 inter-font font-light transition-all duration-150 ease-in-out'>{props.about}</div>
+          <div className='mt-4 sm:text-base text-sm leading-[1.5] sm:leading-normal text-sh-white/0 group-hover:text-sh-white/90 inter-font font-light transition-all duration-150 ease-in-out'>{props.about}</div>
         </div>
         <div className='flex flex-row justify-start items-center gap-x-4 mb-4 opacity-0 group-hover:opacity-100 transition-all duration-150 ease-in-out'>
           {props.website &&

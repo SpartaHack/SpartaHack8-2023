@@ -47,3 +47,12 @@ html {
     -1px 1px 0 #F70063,
     1px 1px 0 #F70063;
 }
+
+::-moz-selection {
+  background: #F70063;
+}
+
+::selection {
+  background: #F70063;
+  color: black;
+}
