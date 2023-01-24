@@ -39,7 +39,7 @@ function HomePage(props) {
       <div className="absolute top-0 w-full h-full -z-10">
         <Background />
       </div>
-      <main className="relative mx-4 md:mx-auto md:max-w-xl lg:max-w-4xl xl:max-w-5xl last:pb-24">
+      <main className="relative mx-4 md:mx-auto md:max-w-2xl lg:max-w-4xl xl:max-w-5xl last:pb-36">
         <section id="Home" className="relative h-screen flex flex-col justify-center items-center">
           <HeroText />
           <Link to="/apply" exact className="w-full px-2 sm:w-fit mt-8 sm:mt-12">

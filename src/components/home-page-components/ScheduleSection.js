@@ -8,109 +8,117 @@ function ScheduleSection() {
     day1: [
       {
         time: "08:00AM - 09:45AM",
-        eventsName: "Check In | Breakfast"
+        events: [
+          { name: "Participant Check In", location: "STEM 1130" },
+          { name: "Sponsor/Guest Check In", location: "STEM 1202" },
+          { name: "Breakfast", location: "STEM 1001" }]
       },
       {
         time: "10:00AM - 11:00AM",
-        eventsName: "Opening Ceremony"
+        events: [{name: "Opening Ceremony", location: "Wells Hall B115"}]
       },
       {
         time: "11:00AM - 12:00PM",
-        eventsName: "Sponsor Expo"
+        events: [{name: "Sponsor Expo", location: "STEM 1202"}]
       },
       {
         time: "12:00PM",
-        eventsName: "Hacking Begins"
+        events: [{name: "Hacking Begins"}]
       },
       {
         time: "12:00PM - 12:30PM",
-        eventsName: "Team Match-Making"
+        events: [{name: "Team Match-Making", location:"STEM 2130"}]
       },
       {
         time: "12:30PM - 01:00PM",
-        eventsName: "Topic Selection"
+        events: [{name: "Topic Selection", location:"STEM 2130"}]
       },
       {
         time: "01:00PM - 02:00PM",
-        eventsName: "Intro to AI & Intro to Web Dev workshop | Tech Talk by Mantel"
+        events: [{ name: "Intro to AI Workshop", location: "STEM 1201" },
+          {name: "Intro to Entrepreneurship Workshop", location:"STEM 2201"},
+          {name: "Tech Talk by Mantel", location:"STEM 1130"}]
       },
       {
         time: "02:00PM - 03:30PM",
-        eventsName: "Lunch"
+        events: [{name: "Lunch", location: "STEM 1001"}]
       },
       {
         time: "02:30PM - 03:30PM",
-        eventsName: "Capture the Flag & Intro to Game Dev Workshop | Tech Talk by MSU IT"
+        events: [
+          {name: "Snyk Cybersecurity Challenge (CTF)", location: "STEM 1201"},
+          {name: "Intro to Web Dev Workshop", location: "STEM 2201"},
+          {name: "Tech Talk by MSU IT", location: "STEM 1130"}]
       },
       {
         time: "03:30PM - 04:30PM",
-        eventsName: "Tech Talk by MSU FCU"
+        events: [{name: "Tech Talk by MSU FCU", location: "STEM 1130"}]
       },
-      // {
-      //   time: "04:30PM - 05:30PM",
-      //   eventsName: "Cup Stacking | Tech Talk by Auto-Owners Insurance"
-      // },
+      {
+        time: "04:30PM - 05:30PM",
+        events: [{name: "Tech Talk by Auto-Owners Insurance", location: "STEM 1130"}]
+      },
       {
         time: "05:30PM - 06:30PM",
-        eventsName: "Tech Talk by Gerdau"
+        events: [{name: "Tech Talk by Gerdau", location: "STEM 1130"}]
       },
       {
         time: "06:30PM - 07:30PM",
-        eventsName: "Tech Talk by TechSmith"
+        events: [{name: "Tech Talk by TechSmith", location: "STEM 1130"}]
       },
       {
         time: "07:30PM - 09:00PM",
-        eventsName: "Dinner"
+        events: [{name: "Dinner", location: "STEM 1001"}]
       },
       {
         time: "08:00PM - 09:00PM",
-        eventsName: "Tech Talk by Digital Ocean"
+        events: [{name: "Tech Talk by Digital Ocean", location: "STEM 1130"}]
       },
       {
         time: "10:00PM - 11:00PM",
-        eventsName: "Keynote Speaker: Prakhar Srivastav"
+        events: [{name: "Keynote Speaker: Prakhar Srivastav", location: "STEM 1130"}]
       },
     ],
     day2: [
       {
         time: "12:00AM - 03:00AM",
-        eventsName: "Midnight Snack"
+        events: [{name: "Midnight Snack", location: "STEM 1001"}]
       },
       {
         time: "02:00AM - 03:00AM",
-        eventsName: "Keynote Speaker: Jay Freeman"
+        events: [{name: "Keynote Speaker: Jay Freeman", location: "STEM 1130"}]
       },
       {
         time: "08:00AM - 10:00AM",
-        eventsName: "Breakfast"
+        events: [{name: "Breakfast", location: "STEM 1001"}]
       },
       {
         time: "11:00AM - 12:00PM",
-        eventsName: "Devpost Workshop"
+        events: [{name: "Devpost Workshop", location: "STEM 1130"}]
       },
       {
         time: "12:00PM",
-        eventsName: "Hacking Ends"
+        events: [{name: "Hacking Ends"}]
       },
       {
         time: "12:00PM - 02:00PM",
-        eventsName: "Presentations"
+        events: [{name: "Presentations", location: "STEM 1202, 2202"}]
       },
       {
         time: "01:00PM - 03:00PM",
-        eventsName: "Game Tournament"
+        events: [{name: "Game Tournament", location: "STEM 3201, 3202"}]
       },
       {
         time: "02:00PM - 03:00PM",
-        eventsName: "Judging"
+        events: [{name: "Judging", location: "STEM 1201"}]
       },
       {
         time: "02:00PM - 04:00PM",
-        eventsName: "Lunch"
+        events: [{name: "Lunch", location: "STEM 1001"}]
       },
       {
         time: "03:00 - 04:00",
-        eventsName: "Closing Ceremony"
+        events: [{name: "Closing Ceremony", location: "Wells Hall B115"}]
       },
     ]
   }
