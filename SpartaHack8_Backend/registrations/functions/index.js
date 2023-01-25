@@ -36,6 +36,16 @@ async function send_email(destination, subject, content){
   });
 }
 
+async function send_multiple_email(login,destination, subject, content,email_sender = 'hello.spartahack@gmail.com'){
+  return login.sendMail({
+    from: email_sender,
+    to: destination,
+    bcc: "soteloju@msu.edu",
+    subject: subject,
+    html: content
+  });
+}
+
 async function send_professors_email(destination, subject, content){
   const email_sender = 'hello.spartahack@gmail.com'
   const email_password = 'tfutzokpreaneifa'
@@ -145,14 +155,6 @@ function fields_validation(data,required_fields){
   return [true,null];
 }
 
-// function calculate_age(birth){
-//   var diff = Math.floor(new Date().getTime() - birth.getTime());
-//     var day = 1000 * 60 * 60 * 24;
-//     var days = Math.floor(diff/day);
-//     var months = Math.floor(days/31);
-//     var years = Math.floor(months/12);
-//     return years;
-// }
 
 async function is_not_registered(email){
   return new Promise((resolve, reject) => {
@@ -391,15 +393,27 @@ exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
 
       var file = await open_file("SH8-Email-Participants.html");
       var template = handlebars.compile(file);
+      const email_sender = 'hello.spartahack@gmail.com'
+      const email_password = 'tfutzokpreaneifa'
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        auth: {
+            user: email_sender,
+            pass: email_password
+        },
+        maxMessages: 100
+      });
       // Sending email to each user
       var i = 0;
       for(user_index in users){
         let user_data = users[user_index];
-        var htmlToSend = template(user_data);
-        send_email("leo.s.specht@gmail.com", data.subject, htmlToSend);
+        // var htmlToSend = template(user_data);
+        // send_multiple_email(transporter, "leo.s.specht@gmail.com", data.subject, htmlToSend);
         console.log(i);
         i++;
       }
+      transporter.close();
       console.log(i);
       response.status(200).send("Success");
     }
