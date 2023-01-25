@@ -15,9 +15,9 @@
     "functions": {
       "port": 8080
     },
-    "firestore": {
-      "port": 9000
-    },
+    // "firestore": {
+    //   "port": 9000
+    // },
     "storage": {
       "port": 9199
     },
