@@ -52,11 +52,16 @@ function ScheduleSection() {
       },
       {
         time: "03:30PM - 04:30PM",
-        events: [{name: "Tech Talk by MSU FCU", location: "STEM 1130"}]
+        events: [
+          
+          { name: "Tech Talk by MSU FCU", location: "STEM 1130" },
+        ]
       },
       {
         time: "04:30PM - 05:30PM",
-        events: [{name: "Tech Talk by Auto-Owners Insurance", location: "STEM 1130"}]
+        events: [
+        { name: "Cup Stacking", location: "STEM 3202" },
+        { name: "Tech Talk by Auto-Owners Insurance", location: "STEM 1130" }]
       },
       {
         time: "05:30PM - 06:30PM",
@@ -72,7 +77,10 @@ function ScheduleSection() {
       },
       {
         time: "08:00PM - 09:00PM",
-        events: [{name: "Tech Talk by Digital Ocean", location: "STEM 1130"}]
+        events: [
+          { name: "Tech Talk by Deloitte", location: "STEM 1130" },
+          { name: "Tech Talk by Digital Ocean", location: "STEM 1130" }
+        ]
       },
       {
         time: "10:00PM - 11:00PM",
@@ -81,7 +89,7 @@ function ScheduleSection() {
     ],
     day2: [
       {
-        time: "12:00AM - 03:00AM",
+        time: "12:00AM",
         events: [{name: "Midnight Snack", location: "STEM 1001"}]
       },
       {
@@ -91,6 +99,14 @@ function ScheduleSection() {
       {
         time: "08:00AM - 10:00AM",
         events: [{name: "Breakfast", location: "STEM 1001"}]
+      },
+      {
+        time: "09:00AM - 10:00AM",
+        events: [{name: "Keynote Speaker: Steven Kneiser", location: "STEM 1130"}]
+      },
+      {
+        time: "10:00AM - 11:00AM",
+        events: [{name: "Keynote Speaker: David Giard", location: "STEM 1130"}]
       },
       {
         time: "11:00AM - 12:00PM",
@@ -105,12 +121,9 @@ function ScheduleSection() {
         events: [{name: "Presentations", location: "STEM 1202, 2202"}]
       },
       {
-        time: "01:00PM - 03:00PM",
-        events: [{name: "Game Tournament", location: "STEM 3201, 3202"}]
-      },
-      {
         time: "02:00PM - 03:00PM",
-        events: [{name: "Judging", location: "STEM 1201"}]
+        events: [{ name: "Judging", location: "STEM 1201" },
+        {name: "Game Tournament", location: "STEM 3201, 3202"}]
       },
       {
         time: "02:00PM - 04:00PM",
