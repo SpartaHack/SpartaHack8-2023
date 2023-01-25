@@ -325,12 +325,12 @@ function get_all_users(only_accepted = false){
   return new Promise((resolve, reject) => {
     db_query.get()
       .then((obj) => {
-        var emails = [];
+        var all_data = [];
         obj.forEach((doc) => {
-          var email = doc.data();
-          emails.push(email)
+          var data = doc.data();
+          all_data.push(data)
         });
-        resolve(emails);
+        resolve(all_data);
       })
       .catch((err) => {
         console.log(err);
@@ -348,22 +348,44 @@ exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
     if (request.method === "POST") {
       let data = request.body;
       let folder_name = "templates/";
-      var target = "approved"
+      var target = "test"
       if("target" in data){
         target = data.target;
       }
-      let users = await get_all_users(target == "approved");
-      let file = await storage.bucket().file(folder_name + data.template_name).download();
-      let template_string = file.toString();
-      var template = handlebars.compile(template_string);
-      // Sending email to each user
-      for(user_index in users){
-        let user_data = users[user_index];
-        var htmlToSend = template(user_data);
-        console.log(user_data.email);
-        send_email(user_data.email, data.subject, htmlToSend);
+      if(target == "test"){
+        let users = [
+          {email:"aswalman@msu.edu", first_name:"Mann"}, 
+          {email:"aswalman@msu.edu", first_name:"Mann"},
+          {email:"spechtle@msu.edu", first_name:"Leonardo"},
+          {email:"leo.s.specht@gmail.com", first_name:"Leonardo"},
+        ];
+        let file = await storage.bucket().file(folder_name + data.template_name).download();
+        let template_string = file.toString();
+        var template = handlebars.compile(template_string);
+        // Sending email to each user
+        for(user_index in users){
+          let user_data = users[user_index];
+          var htmlToSend = template(user_data);
+          console.log(user_data.email);
+          send_email(user_data.email, data.subject, htmlToSend);
+        }
+        response.status(200).send("Success");
       }
-      response.status(200).send("Success");
+      // else{
+      //   let users = await get_all_users(target == "approved");
+      //   let file = await storage.bucket().file(folder_name + data.template_name).download();
+      //   let template_string = file.toString();
+      //   var template = handlebars.compile(template_string);
+      //   // Sending email to each user
+      //   for(user_index in users){
+      //     let user_data = users[user_index];
+      //     var htmlToSend = template(user_data);
+      //     console.log(user_data.email);
+      //     send_email(user_data.email, data.subject, htmlToSend);
+      //   }
+      //   response.status(200).send("Success");
+      // }
+      
     }
     else{
       response.status(500).send("Only POST requests allowed");
