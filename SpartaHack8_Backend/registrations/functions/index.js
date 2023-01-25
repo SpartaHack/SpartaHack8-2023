@@ -325,12 +325,12 @@ function get_all_users(only_accepted = false){
   return new Promise((resolve, reject) => {
     db_query.get()
       .then((obj) => {
-        var emails = [];
+        var all_data = [];
         obj.forEach((doc) => {
-          var email = doc.data();
-          emails.push(email)
+          var data = doc.data();
+          all_data.push(data)
         });
-        resolve(emails);
+        resolve(all_data);
       })
       .catch((err) => {
         console.log(err);
