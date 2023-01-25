@@ -338,6 +338,16 @@ function get_all_users(only_accepted = false){
       })
   })
 }
+
+async function send_email_with_timeout(user_data) {
+  let replacements = {
+    name: user_data["first_name"]
+  }
+  setTimeout(() => {
+    format_and_send_email("natarenm@msu.edu", "Important", replacements,"/SH8-Email-Participants.html");
+  }, 10000);
+}
+
 exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
   // ARGUMENTS:
   // template_name: String: Template name stored in firestore
@@ -347,23 +357,38 @@ exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
   cors(request, response, async () => {
     if (request.method === "POST") {
       let data = request.body;
-      let folder_name = "templates/";
+      // let folder_name = "templates/";
       var target = "approved"
       if("target" in data){
         target = data.target;
       }
+      console.log(target, "target")
       let users = await get_all_users(target === "approved");
-      let file = await storage.bucket().file(folder_name + data.template_name).download();
-      let template_string = file.toString();
-      var template = handlebars.compile(template_string);
+      // let file = await storage.bucket().file(folder_name + data.template_name).download();
+      // let template_string = file.toString();
+      // var template = handlebars.compile(template_string);
       // Sending email to each user
+      // console.log("Users:")
+      // console.log(users);
+      var user_index = {}
+      var i = 0
+      console.log("Before getting in the for loop");
       for(user_index in users){
         let user_data = users[user_index];
-        var htmlToSend = template(user_data);
+        // var htmlToSend = template(user_data);
+        let replacements = {
+          name: user_data["first_name"]
+        }
         console.log(user_data.email);
-        send_email(user_data.email, data.subject, htmlToSend);
+        // send_email(user_data.email, data.subject, htmlToSend);
+        await send_email_with_timeout(user_data);
+        console.log(i);
+        i++;
       }
-      response.status(200).send("Success");
+      setTimeout(() => {
+        console.log("Waiting a couple of seconds");
+        response.status(200).send("Success");
+      }, 1000000);
     }
     else{
       response.status(500).send("Only POST requests allowed");
