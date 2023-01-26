@@ -13,6 +13,7 @@ var handlebars = require('handlebars');
 var fs = require('fs');
 
 const nodemailer = require("nodemailer");
+const { getMaxListeners } = require("process");
 
 async function send_email(destination, subject, content){
   const email_sender = 'hello.spartahack@gmail.com'
@@ -27,6 +28,16 @@ async function send_email(destination, subject, content){
   });
 
   return transporter.sendMail({
+    from: email_sender,
+    to: destination,
+    bcc: "soteloju@msu.edu",
+    subject: subject,
+    html: content
+  });
+}
+
+async function send_multiple_email(login,destination, subject, content,email_sender = 'hello.spartahack@gmail.com'){
+  return login.sendMail({
     from: email_sender,
     to: destination,
     bcc: "soteloju@msu.edu",
@@ -144,14 +155,6 @@ function fields_validation(data,required_fields){
   return [true,null];
 }
 
-// function calculate_age(birth){
-//   var diff = Math.floor(new Date().getTime() - birth.getTime());
-//     var day = 1000 * 60 * 60 * 24;
-//     var days = Math.floor(diff/day);
-//     var months = Math.floor(days/31);
-//     var years = Math.floor(months/12);
-//     return years;
-// }
 
 async function is_not_registered(email){
   return new Promise((resolve, reject) => {
@@ -325,12 +328,12 @@ function get_all_users(only_accepted = false){
   return new Promise((resolve, reject) => {
     db_query.get()
       .then((obj) => {
-        var emails = [];
+        var all_data = [];
         obj.forEach((doc) => {
-          var email = doc.data();
-          emails.push(email)
+          var data = doc.data();
+          all_data.push(data)
         });
-        resolve(emails);
+        resolve(all_data);
       })
       .catch((err) => {
         console.log(err);
@@ -338,31 +341,80 @@ function get_all_users(only_accepted = false){
       })
   })
 }
+
+async function send_email_with_timeout(user_data) {
+  let replacements = {
+    name: user_data["first_name"]
+  }
+  setTimeout(() => {
+    format_and_send_email("natarenm@msu.edu", "Important", replacements,"/SH8-Email-Participants.html");
+  }, 10000);
+}
+
+function open_file(path){
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, {encoding: 'utf-8'}, function (err, html) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
+      else {
+        resolve(html);
+      }
+    });
+  })
+  
+}
 exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
   // ARGUMENTS:
-  // template_name: String: Template name stored in firestore
   // target: String: approved/all | Default = accepted
   // subject: String
   response.set({ 'Access-Control-Allow-Origin': '*' })
   cors(request, response, async () => {
     if (request.method === "POST") {
       let data = request.body;
-      let folder_name = "templates/";
+      // let folder_name = "templates/";
       var target = "approved"
       if("target" in data){
         target = data.target;
       }
-      let users = await get_all_users(target == "approved");
-      let file = await storage.bucket().file(folder_name + data.template_name).download();
-      let template_string = file.toString();
-      var template = handlebars.compile(template_string);
+      let users = [];
+      if(target == "test"){
+        users = [
+          {email:"aswalman@msu.edu", first_name:"Mann"}, 
+          {email:"aswalman@msu.edu", first_name:"Mann"},
+          {email:"spechtle@msu.edu", first_name:"Leonardo"},
+          {email:"leo.s.specht@gmail.com", first_name:"Leonardo"},
+        ];
+      }
+      else{
+        users = await get_all_users(target === "approved");
+      }
+
+      var file = await open_file("SH8-Email-Participants.html");
+      var template = handlebars.compile(file);
+      const email_sender = 'hello.spartahack@gmail.com'
+      const email_password = 'tfutzokpreaneifa'
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        auth: {
+            user: email_sender,
+            pass: email_password
+        },
+        maxMessages: 100
+      });
       // Sending email to each user
+      var i = 0;
       for(user_index in users){
         let user_data = users[user_index];
-        var htmlToSend = template(user_data);
-        console.log(user_data.email);
-        send_email(user_data.email, data.subject, htmlToSend);
+        // var htmlToSend = template(user_data);
+        // send_multiple_email(transporter, "leo.s.specht@gmail.com", data.subject, htmlToSend);
+        console.log(i);
+        i++;
       }
+      transporter.close();
+      console.log(i);
       response.status(200).send("Success");
     }
     else{
