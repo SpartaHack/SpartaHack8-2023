@@ -402,7 +402,6 @@ exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
             user: email_sender,
             pass: email_password
         },
-        maxMessages: 100
       });
       // Sending email to each user
       var i = 0;
