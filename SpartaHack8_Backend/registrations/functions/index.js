@@ -240,11 +240,11 @@ function replace_all_iterations(){
     })
 }
 
-// exports.testGetAllDocs = functions.https.onRequest(async (request, response) => {
-//   // get_all_docs();
-//   replace_all_iterations();
-//   response.status(200).send({"data": "Sucess"});
-// })
+exports.testGetAllDocs = functions.https.onRequest(async (request, response) => {
+  // get_all_docs();
+  replace_all_iterations();
+  response.status(200).send({"data": "Sucess"});
+})
 
 
 exports.registeUser = functions.https.onRequest(async (request, response) => {
