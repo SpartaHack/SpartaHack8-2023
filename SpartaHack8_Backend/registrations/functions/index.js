@@ -16,10 +16,10 @@ const nodemailer = require("nodemailer");
 const { getMaxListeners } = require("process");
 
 async function send_email(destination, subject, content){
-  const email_sender = 'hello.spartahack@gmail.com'
-  const email_password = 'tfutzokpreaneifa'
+  const email_sender = 'apikey'
+  const email_password = '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'
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'smtp.sendgrid.net',
     port: 465,
     auth: {
         user: email_sender,
@@ -28,7 +28,7 @@ async function send_email(destination, subject, content){
   });
 
   return transporter.sendMail({
-    from: email_sender,
+    from: "hello.spartahack@gmail.com",
     to: destination,
     bcc: "soteloju@msu.edu",
     subject: subject,
@@ -393,25 +393,27 @@ exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
 
       var file = await open_file("SH8-Email-Participants.html");
       var template = handlebars.compile(file);
-      const email_sender = 'hello.spartahack@gmail.com'
-      const email_password = 'tfutzokpreaneifa'
+      const email_sender = 'apikey'
+      const email_password = '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'
       const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
+        host: 'smtp.sendgrid.net',
+        port: 587,
         auth: {
             user: email_sender,
             pass: email_password
-        },
-        maxMessages: 100
+        }
       });
       // Sending email to each user
       var i = 0;
       for(user_index in users){
         let user_data = users[user_index];
-        // var htmlToSend = template(user_data);
-        // send_multiple_email(transporter, "leo.s.specht@gmail.com", data.subject, htmlToSend);
-        console.log(i);
+        var htmlToSend = template(user_data);
+        send_multiple_email(transporter, user_data.email, data.subject, htmlToSend);
+        console.log(user_data.email);
         i++;
+        // if(i >= 100){
+        //   break;
+        // }
       }
       transporter.close();
       console.log(i);
@@ -422,7 +424,6 @@ exports.sendMassEmail = functions.https.onRequest(async (request, response) => {
     }
   });
 });
-
 
 exports.sendEmailsOfApproval = functions.https.onRequest(async (request, response) => {
   response.set({ 'Access-Control-Allow-Origin': '*' })
