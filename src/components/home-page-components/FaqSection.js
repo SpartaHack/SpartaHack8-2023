@@ -63,7 +63,7 @@ function FaqSection() {
     {
       "id": 11,
       "question": "How do I connect to the Wi-Fi",
-      "answer": <p>Search for the SpartaHack network and use the passord: <span className='text-sky-400/80'>SpartansWill</span> </p>
+      "answer": <p>Search for the SpartaHack network and use the password: <span className='text-sky-400/80'>SpartansWill</span> </p>
     },
     {
       "id": 12,
