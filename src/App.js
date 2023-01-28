@@ -7,6 +7,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import NotFound from './pages/NotFound';
 
+
 function App() {
 
   return (
