@@ -72,7 +72,7 @@ function ScheduleSection() {
         events: [{name: "Tech Talk by TechSmith", location: "STEM 1130"}]
       },
       {
-        time: "07:30PM - 09:00PM",
+        time: "08:00PM - 09:30PM",
         events: [{name: "Dinner", location: "STEM 1001"}]
       },
       {
