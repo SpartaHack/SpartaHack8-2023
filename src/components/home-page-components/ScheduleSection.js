@@ -93,7 +93,7 @@ function ScheduleSection() {
         events: [{name: "Midnight Snack", location: "STEM 1001"}]
       },
       {
-        time: "02:00AM - 03:00AM",
+        time: "12:30AM - 02:00AM",
         events: [{name: "Keynote Speaker: Jay Freeman", location: "STEM 1130"}]
       },
       {
