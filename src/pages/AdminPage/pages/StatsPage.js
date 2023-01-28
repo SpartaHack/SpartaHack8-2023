@@ -223,6 +223,12 @@ function StatsPage(props) {
 
   const csvLink = useRef();
   const user_csv_data = userData.map((obj) => { return obj[0] });
+  let user_csv_data_checked_in = []
+  user_csv_data.forEach((user) => {
+    if (user.checkedIn) {
+      user_csv_data_checked_in.push(user);
+    }
+  })
 
   useEffect(() => {
     setApplicantsData(userData)
@@ -269,7 +275,9 @@ function StatsPage(props) {
     { label: 'major', key: 'major' },
     { label: 'githubURL', key: 'githubURL' },
     { label: 'email', key: 'email' },
-    { label: 'last_name', key: 'last_name' }
+    { label: 'last_name', key: 'last_name' },
+    { label: 'checkedIn', key: 'checkedIn' }
+    
   ];
 
   const download_csv = () => {

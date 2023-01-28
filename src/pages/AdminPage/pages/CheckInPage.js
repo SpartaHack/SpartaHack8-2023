@@ -110,7 +110,7 @@ function CheckInPage(props) {
     let final_msu_count = 0;
     let final_users_list = [];
     var count = 1;
-    let totalCheckedIn = 0;
+    let total_checked_in = 0;
     querySnap.forEach((d) => {
       let student = d.data();
       student["id"] = d.id;
@@ -121,14 +121,14 @@ function CheckInPage(props) {
         }
         count += 1;
         if (student.checkedIn) {
-          totalCheckedIn += 1;
+          total_checked_in += 1;
         }
       }
     })
     setTotalParticipants(count);
     setTotalMSU(final_msu_count);
     setUserData(final_users_list);
-    totalCheckedIn(totalCheckedIn);
+    setTotalCheckedIn(total_checked_in);
   }
 
   if (!loaded) {
@@ -138,6 +138,14 @@ function CheckInPage(props) {
     setLoaded(true);
   }
 
+  const csvLink = useRef();
+  const user_csv_data = userData.map((obj) => { return obj[0] });
+  let user_csv_data_checked_in = []
+  user_csv_data.forEach((user) => {
+    if (user.approved) {
+      user_csv_data_checked_in.push(user);
+    }
+  })
 
   useEffect(() => {
     setApplicantsData(userData);
@@ -164,9 +172,6 @@ function CheckInPage(props) {
     setTotalCheckedIn(totalCheckedIn + 1);
   }
 
-  const csvLink = useRef();
-  const user_csv_data = userData.map((obj) => { return obj[0] });
-
   useEffect(() => {
     setApplicantsData(userData)
     try {
@@ -189,6 +194,7 @@ function CheckInPage(props) {
 
   const fields = [
     { label: 'is_minor', key: 'is_minor' },
+    { label: 'checkedIn', key: 'checkedIn' },
     { label: 'first_name', key: 'first_name' },
     { label: 'minorForm', key: 'minorForm' },
     { label: 'gender', key: 'gender' },
@@ -213,7 +219,12 @@ function CheckInPage(props) {
     { label: 'githubURL', key: 'githubURL' },
     { label: 'email', key: 'email' },
     { label: 'last_name', key: 'last_name' }
+
   ];
+
+  const download_csv = () => {
+    csvLink.current.link.click()
+  }
 
   return (
     <div className="w-full max-w-6xl mt-24 px-4 md:px-8 flex flex-col scroll-smooth overflow-hidden">
@@ -227,7 +238,7 @@ function CheckInPage(props) {
       </div>
 
       <CSVLink
-        data={user_csv_data}
+        data={user_csv_data_checked_in}
         filename='UsersReport.csv'
         headers={fields}
         className='hidden'
@@ -239,6 +250,10 @@ function CheckInPage(props) {
           Check-In Participants
         </div>
         {/* <p>{sortedLevelList}</p> */}
+        <div>
+            <ButtonPrimary
+              buttonText="Download CSV" onClick={download_csv} />
+          </div>
       </div>
       <div className=" w-full max-w-6xl  mt-12 mb-28 mx-auto  flex flex-col">
         <div className="h-16 w-full flex flex-row items-center justify-center gap-x-2 text-white text-center rubik-font uppercase">
