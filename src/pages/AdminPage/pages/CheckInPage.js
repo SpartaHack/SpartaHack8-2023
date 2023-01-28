@@ -142,7 +142,7 @@ function CheckInPage(props) {
   const user_csv_data = userData.map((obj) => { return obj[0] });
   let user_csv_data_checked_in = []
   user_csv_data.forEach((user) => {
-    if (user.approved) {
+    if (user.checkedIn) {
       user_csv_data_checked_in.push(user);
     }
   })
