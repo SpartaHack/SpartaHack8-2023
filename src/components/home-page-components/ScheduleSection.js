@@ -117,8 +117,8 @@ function ScheduleSection() {
         events: [{name: "Hacking Ends"}]
       },
       {
-        time: "12:00PM - 02:00PM",
-        events: [{name: "Presentations", location: "STEM 1202, 2202"}]
+        time: "12:30PM - 02:00PM",
+        events: [{name: "Presentations", location: "STEM 2202, 2130"}]
       },
       {
         time: "02:00PM - 03:00PM",
