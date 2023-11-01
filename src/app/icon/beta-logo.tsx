@@ -12,6 +12,7 @@ const BetaLogo = () => {
   
   return (
     <>
+      <div className='hidden lg:block'>
         <CustomButton 
             title="Beta Version" 
             btnType="button"
@@ -21,6 +22,7 @@ const BetaLogo = () => {
             popOverStyling='cursor-pointer'
             clickEvent={betaClick}
         />
+      </div>
     </>
   )
 }
