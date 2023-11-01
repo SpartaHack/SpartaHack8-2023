@@ -11,7 +11,6 @@ const YouLearnLogo = () => {
             alt="YouLearn"
             width={120}
             height={120}
-            className='ml-10'
           />
         </Link>
         <Link href="https://www.youlearn.ai" className="dark:sm:block hidden sm:mr-3">
@@ -20,7 +19,6 @@ const YouLearnLogo = () => {
             alt="YouLearn"
             width={120}
             height={120}
-            className='ml-10'
           />
         </Link>
         <Link href="https://www.youlearn.ai" className="sm:hidden">
@@ -29,7 +27,6 @@ const YouLearnLogo = () => {
             alt="YouLearnMedia"
             width={45}
             height={45}
-            className='ml-5'
           />
         </Link>
     </div>

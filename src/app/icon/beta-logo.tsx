@@ -15,7 +15,7 @@ const BetaLogo = () => {
         <CustomButton 
             title="Beta Version" 
             btnType="button"
-            btnStyling='lg:block hidden text-xs dark:border-[#7DFF97] dark:text-[#7DFF97] border-[#174c22] text-[#174c22] dark:bg-black'
+            btnStyling='text-xs dark:border-[#7DFF97] dark:text-[#7DFF97] border-[#174c22] text-[#174c22] dark:bg-black'
             popOver
             popOverTitle='Give Feedback'
             popOverStyling='cursor-pointer'
