@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.1.13",
+    "firebase": "^10.5.2",
     "framer-motion": "^10.16.4",
     "next": "14.0.1",
     "react": "^18",
