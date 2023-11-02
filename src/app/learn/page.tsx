@@ -6,7 +6,7 @@ const LearnPage = () => {
   return (
     <>
         <Header/>
-        <Content/>
+        <Content type='youtube' contentID=''/>
     </>
   )
 }

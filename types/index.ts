@@ -44,3 +44,8 @@ export type CustomTextInputProps = {
     eventChange?: (e: ChangeEvent<HTMLInputElement>) => void,
     styling?: string | undefined,
 }
+
+export type ContentProps = {
+    type: "youtube" | "pdf",
+    contentID: string,
+}
