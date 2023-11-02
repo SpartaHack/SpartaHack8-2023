@@ -2,6 +2,7 @@
 import CustomModal from '@/helpers/custom-modal'
 import CustomTextInput from '@/helpers/custom-text-input'
 import React, { MouseEventHandler, useState } from 'react'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 const AddFolder = () => {
   const [folderName, setFolderName] = useState('')
@@ -14,12 +15,12 @@ const AddFolder = () => {
   } 
 
   return (
-    <div>
+    <div className='flex flex-row w-full'>
         <CustomModal 
             title={
-                <h1 className='hover:bg-secondary'>
-                    Create
-                </h1>
+              <div className='folder-style flex-none bg-gradient-to-r from-[#00FFF0] to-[#7DFF97]' onClick={addFolder}>
+                <Icon icon="uil:plus" className=' dark:text-neutral-900 h-6 w-6'/>
+              </div>
             }
             contentTitle='Create new Folder'
             contentMain={

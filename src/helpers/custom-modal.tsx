@@ -22,7 +22,7 @@ const CustomModal = ({title, contentTitle, contentMain, actionTitle, actionEvent
                 {contentMain}
               </ModalBody>
               <ModalFooter>
-                <CustomButton title="Close" btnType="button" clickEvent={onClose} btnStyling="hover:bg-red-500"/>
+                <CustomButton title="Close" btnType="button" clickEvent={onClose} btnStyling="hover:bg-danger"/>
                 <CustomButton title={actionTitle} btnType="submit" clickEvent={actionEvent} btnStyling="hover:bg-secondary"/>
               </ModalFooter>
             </>
