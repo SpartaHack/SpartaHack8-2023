@@ -9,11 +9,11 @@ import { useTheme } from 'next-themes';
 
 const Account = ({name, description, picture}: AccountProps) => {
   const { setTheme } = useTheme()
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const [isLightMode, setIsLightMode] = React.useState(true);
 
   const handleThemeChange = () => {
-    setIsDarkMode(!isDarkMode);
-    setTheme(isDarkMode ? 'light' : 'dark');
+    setIsLightMode(!isLightMode);
+    setTheme(isLightMode ? 'dark' : 'light');
   };
 
   return (
@@ -53,7 +53,7 @@ const Account = ({name, description, picture}: AccountProps) => {
                 onClick={handleThemeChange}
                 endContent={
                 <Switch
-                  isSelected={isDarkMode} 
+                  isSelected={isLightMode} 
                   onValueChange={handleThemeChange}
                   size="sm"
                   color="success"
