@@ -5,10 +5,16 @@ import { AccountProps } from '../../../types';
 import { Icon } from '@iconify/react';
 import { SunIcon } from '@/icon/sun-icon';
 import { MoonIcon } from '@/icon/moon-icon';
+import { useTheme } from 'next-themes';
 
 const Account = ({name, description, picture}: AccountProps) => {
-  const [isLightMode, setIsLightMode] = React.useState(true);
-  
+  const { setTheme } = useTheme()
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  const handleThemeChange = () => {
+    setIsDarkMode(!isDarkMode);
+    setTheme(isDarkMode ? 'light' : 'dark');
+  };
 
   return (
     <Tooltip content="Account">
@@ -43,11 +49,12 @@ const Account = ({name, description, picture}: AccountProps) => {
               <DropdownItem
                 isReadOnly
                 key="theme"
-                className="cursor-default"
+                className="cursor-pointer"
+                onClick={handleThemeChange}
                 endContent={
                 <Switch
-                  isSelected={isLightMode} 
-                  onValueChange={setIsLightMode}
+                  isSelected={isDarkMode} 
+                  onValueChange={handleThemeChange}
                   size="sm"
                   color="success"
                   startContent={<SunIcon />}
