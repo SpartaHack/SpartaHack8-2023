@@ -1,6 +1,6 @@
 import React from "react";
-import YouLearnLogo from "@/app/icon/youlearn-logo";
-import BetaLogo from "@/app/icon/beta-logo";
+import YouLearnLogo from "@/icon/youlearn-logo";
+import BetaLogo from "@/icon/beta-logo";
 import HomeLinkBar from "./home-link-bar";
 import { Navbar } from "@nextui-org/react";
 import Account from "./account";

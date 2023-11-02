@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
-import { CustomButtonProps } from '@/types';
+import { CustomButtonProps } from '../../types';
 
 export const CustomButton = ({title, btnStyling, popOver, popOverTitle, popOverStyling, clickEvent, btnType}: CustomButtonProps) => {
     return (

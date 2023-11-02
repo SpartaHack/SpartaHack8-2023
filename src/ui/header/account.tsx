@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, Button, User, Tooltip} from "@nextui-org/react";
-import { AccountProps } from '@/types';
+import { AccountProps } from '../../../types';
 import { Icon } from '@iconify/react';
 
 const Account = ({name, description, picture}: AccountProps) => {

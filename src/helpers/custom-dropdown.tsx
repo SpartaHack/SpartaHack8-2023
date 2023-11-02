@@ -1,6 +1,6 @@
 import React from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, User } from "@nextui-org/react";
-import { CustomDropdownProps } from "@/types";
+import { CustomDropdownProps } from "../../types";
 
 
 export const CustomDropdown = ({title, sections}: CustomDropdownProps) => {
