@@ -27,7 +27,7 @@ const config: Config = {
           colors: {
             'absolute_white': "#ffffff",
             'absolute_black': "#000000",
-            'danger': '',
+            'danger': '#FA6178',
             white: "#f5f5f5",
             black: "#262626",
             primary: "#262626",
@@ -38,7 +38,7 @@ const config: Config = {
           colors: {
             'absolute_white': "#ffffff",
             'absolute_black': "#000000",
-            'danger': '',
+            'danger': '#FA6178',
             white: "#f5f5f5",
             black: "#262626",
             primary: "#f5f5f5",

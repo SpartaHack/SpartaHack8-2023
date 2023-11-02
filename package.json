@@ -15,7 +15,8 @@
     "next": "14.0.1",
     "next-themes": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-youtube": "^10.1.0"
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
