@@ -1,7 +1,9 @@
+import React from "react";
+
 export type CustomButtonProps = {
     title: string,
     btnType: "button" | "submit" | "reset" | undefined;
-    clickEvent?: () => void,
+    clickEvent?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
     btnStyling?: string,
     popOver?: boolean,
     popOverTitle?: string,

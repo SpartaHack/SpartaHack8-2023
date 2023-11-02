@@ -1,10 +1,12 @@
 import SignUp from '@/components/auth/signup'
+import AuthHeader from '@/ui/header/auth-header'
 import React from 'react'
 
 const SignUpPage = () => {
   return (
-    <div>
-        <SignUp/>
+    <div className='flex flex-col w-full'>
+      <AuthHeader/>
+      <SignUp/>
     </div>
   )
 }

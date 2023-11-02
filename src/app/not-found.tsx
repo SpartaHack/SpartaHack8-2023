@@ -1,11 +1,15 @@
+import YouLearnLogo from '@/icon/youlearn-logo'
 import Link from 'next/link'
  
 export default function NotFound() {
   return (
-    <div>
-      <h2>Not Found</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
+    <div className='flex flex-col h-screen text-center justify-center'>
+      <div className='items-center justify-center'>
+        <YouLearnLogo width={200} height={200}/>
+        <h1 className='text-[50px]'>
+          Return
+        </h1>
+      </div>
     </div>
   )
 }

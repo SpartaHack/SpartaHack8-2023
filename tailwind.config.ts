@@ -26,16 +26,19 @@ const config: Config = {
         light: {
           colors: {
             'absolute_white': "#ffffff",
+            'absolute_black': "#000000",
             white: "#f5f5f5",
-            black: "#000000",
-            primary: "#000000",
+            black: "#262626",
+            primary: "#262626",
             secondary: "#7DFF97"
           } as any,
         },
         dark: {
           colors: {
+            'absolute_white': "#ffffff",
+            'absolute_black': "#000000",
             white: "#f5f5f5",
-            black: "#000000",
+            black: "#262626",
             primary: "#f5f5f5",
             secondary: "#7DFF97"
           } as any,
