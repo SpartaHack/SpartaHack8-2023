@@ -3,10 +3,9 @@ import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
 import React, { ChangeEvent, useState } from 'react'
 
-const SignUpForm = () => {
+const SignInForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
   
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
@@ -17,8 +16,6 @@ const SignUpForm = () => {
     const isInvalid = (value: string, type?: string) => {
         if (type === 'email') {
           return !emailRegex.test(value);
-        } else if (type === 'confirmPassword') {
-          return value !== password || value == '';
         }
         return value === '';
       }
@@ -26,7 +23,7 @@ const SignUpForm = () => {
       const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
 
-        if (!isInvalid(email, 'email') && !isInvalid(password) && !isInvalid(confirmPassword, 'confirmPassword')) {
+        if (!isInvalid(email, 'email') && !isInvalid(password)) {
             console.log('Form submitted');
         } else {
             console.log('Form not valid');
@@ -51,14 +48,6 @@ const SignUpForm = () => {
             styling = 'mb-10 bg-transparent'
             eventChange = { (e) => handleChange(e, setPassword) }
         />
-        <CustomTextInput 
-            value = { confirmPassword }
-            type = 'password'
-            label = 'Confirm Password'
-            isInvalid = { isInvalid(confirmPassword, 'confirmPassword') }
-            styling = 'mb-6 bg-transparent'
-            eventChange = { (e) => handleChange(e, setConfirmPassword) }
-        />
         <CustomButton 
             title = 'Create Account'
             btnType = 'submit'
@@ -67,16 +56,16 @@ const SignUpForm = () => {
         />
         <div className="h-full mt-5 flex items-center justify-start font-black">
             <p className="text-sm dark:text-neutral-500 mr-2 ">
-                Already have an account?
+                Don't have an account?
             </p>
             <button
                 className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[15px] text-sm"
             >
-                Login here.
+                Sign up here.
             </button>
         </div>
     </div>
   )
 }
 
-export default SignUpForm
+export default SignInForm

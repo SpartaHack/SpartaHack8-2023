@@ -1,14 +1,14 @@
-import SignUp from '@/components/auth/signup'
+import SignIn from '@/components/auth/signin'
 import AuthHeader from '@/ui/header/auth-header'
 import React from 'react'
 
-const SignUpPage = () => {
+const SignInPage = () => {
   return (
-    <div className='flex flex-col w-full'>
-      <AuthHeader/>
-      <SignUp/>
+    <div>
+        <AuthHeader/>
+        <SignIn/>
     </div>
   )
 }
 
-export default SignUpPage
+export default SignInPage
