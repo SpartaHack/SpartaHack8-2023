@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, Button, User, Tooltip, Switch} from "@nextui-org/react";
 import { AccountProps } from '../../../types';
 import { Icon } from '@iconify/react';
@@ -8,8 +8,8 @@ import { MoonIcon } from '@/icon/moon-icon';
 import { useTheme } from 'next-themes';
 
 const Account = ({name, description, picture}: AccountProps) => {
-  const { setTheme } = useTheme()
-  const [isLightMode, setIsLightMode] = React.useState(true);
+  const { theme, setTheme } = useTheme()
+  const [isLightMode, setIsLightMode] = useState(theme == 'light' ? true : false);
 
   const handleThemeChange = () => {
     setIsLightMode(!isLightMode);
