@@ -7,7 +7,9 @@ import { SunIcon } from '@/icon/sun-icon';
 import { MoonIcon } from '@/icon/moon-icon';
 
 const Account = ({name, description, picture}: AccountProps) => {
-  const [isSelected, setIsSelected] = React.useState(true);
+  const [isLightMode, setIsLightMode] = React.useState(true);
+  
+
   return (
     <Tooltip content="Account">
       <div className='cursor-pointer'>
@@ -44,7 +46,8 @@ const Account = ({name, description, picture}: AccountProps) => {
                 className="cursor-default"
                 endContent={
                 <Switch
-                  defaultSelected
+                  isSelected={isLightMode} 
+                  onValueChange={setIsLightMode}
                   size="sm"
                   color="success"
                   startContent={<SunIcon />}
