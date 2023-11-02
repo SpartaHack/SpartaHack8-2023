@@ -2,21 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: #f5f5f5;
+/* :root {
+  --background: #f5f5f5;
+  --foreground: black;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-rgb: #f5f5f5;
-  }
-}
-
-body {
-  background: #f5f5f5;
-}
+[data-theme='dark'] {
+  --background: black;
+  --foreground: #f5f5f5;
+} */
 
 body {
   color: rgb(var(--foreground-rgb));

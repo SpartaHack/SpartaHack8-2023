@@ -7,7 +7,7 @@ import { CustomDropdown } from '@/helpers/custom-dropdown'
 const Notification = () => {
 
   const data = {
-    title: <Icon icon="mingcute:notification-line" className='header-icons h-6 w-6'/>,
+    title: <Icon icon="mingcute:notification-line" className='h-6 w-6'/>,
     sections: [
       {
         label: 'Section 1', 

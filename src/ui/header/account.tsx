@@ -21,7 +21,7 @@ const Account = ({name, description, picture}: AccountProps) => {
       <div className='cursor-pointer'>
         <Dropdown radius="sm">
           <DropdownTrigger>
-            <Icon icon="line-md:account" className='header-icons h-6 w-6' />
+            <Icon icon="line-md:account" className=' h-6 w-6' />
           </DropdownTrigger>
           <DropdownMenu className="p-3">
             <DropdownSection showDivider>

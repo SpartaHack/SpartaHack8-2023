@@ -20,6 +20,28 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            'absolute_white': "#ffffff",
+            white: "#f5f5f5",
+            black: "#000000",
+            primary: "#000000",
+            secondary: "#7DFF97"
+          } as any,
+        },
+        dark: {
+          colors: {
+            white: "#f5f5f5",
+            black: "#000000",
+            primary: "#f5f5f5",
+            secondary: "#7DFF97"
+          } as any,
+        },
+      },
+    }),
+  ],
 }
 export default config
