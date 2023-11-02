@@ -10,7 +10,7 @@ export type YouLearnLogoProps = {
 const YouLearnLogo = ({height, width}: YouLearnLogoProps) => {
   return (
     <div>
-        <Link href="https://www.youlearn.ai" className="hidden dark:hidden sm:block sm:mr-3">
+        <Link href="/" className="hidden dark:hidden sm:block sm:mr-3">
           <Image
             src="youlearn.svg"
             alt="YouLearn"
@@ -18,7 +18,7 @@ const YouLearnLogo = ({height, width}: YouLearnLogoProps) => {
             height={height ? height : 120}
           />
         </Link>
-        <Link href="https://www.youlearn.ai" className="dark:sm:block hidden sm:mr-3">
+        <Link href="/" className="dark:sm:block hidden sm:mr-3">
           <Image
             src="youlearnDark.svg"
             alt="YouLearn"
@@ -26,7 +26,7 @@ const YouLearnLogo = ({height, width}: YouLearnLogoProps) => {
             height={height ? height : 120}
           />
         </Link>
-        <Link href="https://www.youlearn.ai" className="sm:hidden">
+        <Link href="/" className="sm:hidden">
           <Image
             src="youlearnMedia.svg"
             alt="YouLearnMedia"

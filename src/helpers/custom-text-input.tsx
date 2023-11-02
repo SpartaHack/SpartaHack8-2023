@@ -1,14 +1,6 @@
 import { Input } from '@nextui-org/react'
-import React, { ChangeEvent, ReactNode } from 'react'
-
-export type CustomTextInputProps = {
-    value: string | (readonly string[]) | undefined,
-    type: string,
-    label: string,
-    isInvalid?: boolean,
-    eventChange?: (e: ChangeEvent<HTMLInputElement>) => void,
-    styling?: string | undefined,
-}
+import React from 'react'
+import { CustomTextInputProps } from '../../types'
 
 const CustomTextInput = ({value, type, label, isInvalid, eventChange, styling }: CustomTextInputProps) => {
   

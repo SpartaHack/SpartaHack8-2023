@@ -1,8 +1,11 @@
 import React from 'react'
+import AddFolder from './folder'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div className='flex flex-col h-full'>
+      <AddFolder/>
+    </div>
   )
 }
 
