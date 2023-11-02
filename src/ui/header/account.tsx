@@ -1,10 +1,13 @@
 'use client'
 import React from 'react'
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, Button, User, Tooltip} from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, Button, User, Tooltip, Switch} from "@nextui-org/react";
 import { AccountProps } from '../../../types';
 import { Icon } from '@iconify/react';
+import { SunIcon } from '@/icon/sun-icon';
+import { MoonIcon } from '@/icon/moon-icon';
 
 const Account = ({name, description, picture}: AccountProps) => {
+  const [isSelected, setIsSelected] = React.useState(true);
   return (
     <Tooltip content="Account">
       <div className='cursor-pointer'>
@@ -34,6 +37,22 @@ const Account = ({name, description, picture}: AccountProps) => {
             <DropdownSection aria-label="Preferences" showDivider>
               <DropdownItem key="quick_search">
                 Quick search
+              </DropdownItem>
+              <DropdownItem
+                isReadOnly
+                key="theme"
+                className="cursor-default"
+                endContent={
+                <Switch
+                  defaultSelected
+                  size="sm"
+                  color="success"
+                  startContent={<SunIcon />}
+                  endContent={<MoonIcon />}
+                />
+                }
+              >
+                Theme
               </DropdownItem>
             </DropdownSection>  
 
