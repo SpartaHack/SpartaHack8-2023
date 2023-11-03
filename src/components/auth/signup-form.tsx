@@ -62,7 +62,7 @@ const SignUpForm = () => {
         <CustomButton 
             title = 'Create Account'
             btnType = 'submit'
-            btnStyling = 'mt-12 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[15px] h-[50.5px] w-full'
+            btnStyling = 'mt-12 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
             clickEvent={handleSubmit}
         />
         <div className="h-full mt-5 flex items-center justify-start font-black">
@@ -70,7 +70,7 @@ const SignUpForm = () => {
                 Already have an account?
             </p>
             <button
-                className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[15px] text-sm"
+                className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
             >
                 Login here.
             </button>

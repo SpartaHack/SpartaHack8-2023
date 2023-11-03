@@ -48,3 +48,8 @@ export type CustomTextInputProps = {
 export type ContentProps = {
     type: "youtube" | "pdf",
 }
+
+export interface ChatSubmitProps {
+    onMessageSubmit: (message: string) => void;
+    isLoading: boolean;
+  }

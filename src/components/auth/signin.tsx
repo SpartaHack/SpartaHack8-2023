@@ -16,7 +16,7 @@ const SignIn = () => {
           <CustomButton 
             title='Log in with Google' 
             btnType='button'
-            btnStyling='border dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[15px] h-[50.5px] w-full'
+            btnStyling='border dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
           />
 
           <div className="flex items-center justify-center pt-8">
