@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, Button, User, Tooltip, Switch} from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, Button, User, Tooltip, Switch, Kbd} from "@nextui-org/react";
 import { AccountProps } from '../../../types';
 import { Icon } from '@iconify/react';
 import { SunIcon } from '@/icon/sun-icon';
@@ -43,7 +43,7 @@ const Account = ({name, description, picture}: AccountProps) => {
               </DropdownSection>
 
             <DropdownSection aria-label="Preferences" showDivider>
-              <DropdownItem key="quick_search">
+              <DropdownItem key="quick_search" shortcut="⌘K">
                 Quick search
               </DropdownItem>
               <DropdownItem

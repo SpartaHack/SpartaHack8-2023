@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { ContentProps } from '../../../types';
 import YoutubeVideo from './content/youtube-video';
-import Tabs from './tabs';
 import PDF from './content/pdf';
+import TabComponent from './tabs';
 
 const Content = ({type}: ContentProps) => {
   return (
@@ -15,7 +15,7 @@ const Content = ({type}: ContentProps) => {
             <PDF/>
         }
       <div className="lg:tabs-lg tabs-sm">
-        <Tabs/>
+        <TabComponent/>
       </div>
     </div>
   );
