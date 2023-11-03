@@ -1,29 +1,10 @@
 'use client'
-import React, { useState } from 'react'
+import { useVideoOptions } from '@/providers/use-video-options';
+import React from 'react'
 import YouTube from 'react-youtube'
-const window_width = typeof window !== "undefined" ? window.innerWidth : 0;
 
 const YoutubeVideo = () => {
-  const [windowWidth] = useState(window_width);
-
-  let videoWidth;
-  let videoHeight;
-
-  if (windowWidth <= 1024) {
-    videoWidth = windowWidth * 0.95;
-  } else {
-    videoWidth = windowWidth * 0.675;
-  }
-
-  videoHeight = (videoWidth * 9) / 16;
-
-  const videoOpts = {
-    height: videoHeight.toString(),
-    width: videoWidth.toString(),
-    playerVars: {
-      autoplay: 1,
-    },
-  };
+  const videoOpts = useVideoOptions();
   
   return (
     <div className="rounded-[10px] overflow-hidden">
