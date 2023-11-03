@@ -17,7 +17,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
 
   return (
     <form
-      className="flex w-full items-center align-items:center border border-neutral-300 dark:border-neutral-700 rounded-[10px] pl-3 flex-grow h-[42.5px] bg-white dark:bg-neutral-800"
+      className="flex w-full bg-absolute_white dark:bg-component_black items-center align-items:center border border-neutral-200 dark:border-neutral-800 rounded-[10px] pl-3 flex-grow h-[42.5px]"
       onSubmit={handleSubmit}
     >
       <input

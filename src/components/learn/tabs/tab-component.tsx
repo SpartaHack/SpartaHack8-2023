@@ -11,7 +11,7 @@ const TabComponent = () => {
         {(item) => (
           <Tab key={item.label} title={item.label}>
             <Card>
-              <CardBody>
+              <CardBody className="dark:bg-neutral-900">
                 {item.content}
               </CardBody>
             </Card>  
