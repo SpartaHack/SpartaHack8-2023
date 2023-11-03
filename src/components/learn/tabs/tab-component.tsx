@@ -1,7 +1,6 @@
 import React from "react";
-import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
+import {Tabs, Tab } from "@nextui-org/react";
 import { TabOptions } from "../../../../utils/constants";
-import ChatSubmit from "./chat-submit";
 
 const TabComponent = () => {
 
@@ -10,21 +9,14 @@ const TabComponent = () => {
       <Tabs items={TabOptions} fullWidth>
         {(item) => (
           <Tab key={item.label} title={item.label}>
-            <Card>
-              <CardBody className="dark:bg-neutral-900">
+            <div>
+              <div className="dark:bg-neutral-800">
                 {item.content}
-              </CardBody>
-            </Card>  
+              </div>
+            </div>  
           </Tab>
         )}
       </Tabs>
-      <div className="ml-1 mr-1">
-        <ChatSubmit
-          onMessageSubmit={function (message: string): void {
-          throw new Error('Function not implemented.')
-          } } isLoading={false}
-        />
-      </div>
     </div>  
   );
 }
