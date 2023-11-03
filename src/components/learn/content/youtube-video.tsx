@@ -1,7 +1,6 @@
-'use client'
-import { useVideoOptions } from '@/providers/use-video-options';
 import React from 'react'
 import YouTube from 'react-youtube'
+import { useVideoOptions } from '@/hooks/use-video-options';
 
 const YoutubeVideo = () => {
   const videoOpts = useVideoOptions();

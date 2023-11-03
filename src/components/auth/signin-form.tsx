@@ -56,7 +56,7 @@ const SignInForm = () => {
         />
         <div className="h-full mt-5 flex items-center justify-start font-black">
             <p className="text-sm dark:text-neutral-500 mr-2 ">
-                Don't have an account?
+                Don&apos;t have an account?
             </p>
             <button
                 className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[15px] text-sm"
