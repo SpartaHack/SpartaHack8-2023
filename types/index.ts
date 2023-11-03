@@ -47,5 +47,4 @@ export type CustomTextInputProps = {
 
 export type ContentProps = {
     type: "youtube" | "pdf",
-    contentID: string,
 }

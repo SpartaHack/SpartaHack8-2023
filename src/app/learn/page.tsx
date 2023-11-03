@@ -5,8 +5,8 @@ import Content from '@/components/learn/content'
 const LearnPage = () => {
   return (
     <>
-        <Header/>
-        <Content type='youtube' contentID=''/>
+      <Header/>
+      <Content type='youtube'/>
     </>
   )
 }
