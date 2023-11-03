@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <Navbar maxWidth="full" shouldHideOnScroll isBordered className="sticky top-0 z-10 bg-neutral-100 dark:bg-neutral-900 border-b border-neutral-300 dark:border-neutral-700">
       <div className="flex w-full py-3 items-center justify-between">
-        <div className='sm:mr-6 mr-4 h-8'>
+        <div className='sm:mr-6 mr-5 h-8'>
           <NavbarMenuToggle/>
         </div>
         <YouLearnLogo/>
