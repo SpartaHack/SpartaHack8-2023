@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ContentProps } from '../../../types';
 import YoutubeVideo from './content/youtube-video';
 import PDF from './content/pdf';
-import TabComponent from './tabs';
+import TabComponent from './tabs/tabs';
 
 const Content = ({type}: ContentProps) => {
   return (
