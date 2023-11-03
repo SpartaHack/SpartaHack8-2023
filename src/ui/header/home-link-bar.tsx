@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 
 const HomeLinkBar = () => {
   return (
-    <div className="flex justify-center flex-1 mr-[4%] lg:mr-[10%] sm:ml-[3%]">
+    <div className="flex justify-center flex-1">
       <form
         className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-[10px] bg-absolute_white px-1 py-.5 sm:mr-12 ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
       >
@@ -18,9 +18,9 @@ const HomeLinkBar = () => {
           <div className="absolute right-10 w-px h-full bg-gray-300"/>
           <button type="submit">
             <Icon icon="iconamoon:search-light"
-                className="h-6 w-6 mr-1 fon"
+              className="h-6 w-6 mr-1"
             />
-        </button>
+          </button>
       </form>
     </div>
   );

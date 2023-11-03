@@ -18,7 +18,7 @@ const Account = ({name, description, picture}: AccountProps) => {
 
   return (
     <Tooltip content="Account">
-      <div className='cursor-pointer'>
+      <div className='cursor-pointer mt-0.5'>
         <Dropdown radius="sm">
           <DropdownTrigger>
             <Icon icon="charm:person" className=' h-6 w-6' />

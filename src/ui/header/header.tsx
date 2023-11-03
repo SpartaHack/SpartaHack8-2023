@@ -13,19 +13,19 @@ export default function Header() {
   return (
     <Navbar maxWidth="full" shouldHideOnScroll isBordered className="sticky top-0 z-10 bg-neutral-100 dark:bg-neutral-900 border-b border-neutral-300 dark:border-neutral-700">
       <div className="flex w-full py-3 items-center justify-between">
-        <div className='mr-4 h-8'>
+        <div className='sm:mr-6 mr-4 h-8'>
           <NavbarMenuToggle/>
         </div>
         <YouLearnLogo/>
         <BetaLogo/>
         <HomeLinkBar/>
-        <div className="mr-7 mt-1 hidden lg:block">
+        <div className="hidden lg:flex">
           <Notification/>
+          <Account 
+            name="Achyut Krishna Byanjankar"
+            description='@achyut_benz'
+          />
         </div>
-        <Account 
-          name="Achyut Krishna Byanjankar"
-          description='@achyut_benz'
-        />
       </div>
 
       <NavbarMenu className='w-[50%] lg:w-[18%] bg-white dark:bg-neutral-900 border-t dark:border-neutral-800 ' motionProps={sideBarMotion}>

@@ -20,7 +20,7 @@ const Notification = () => {
 
   return (
     <Tooltip content="Notifications">
-      <div className='cursor-pointer ml-3 mr-2'>
+      <div className='cursor-pointer mt-1 mr-10'>
         <CustomDropdown title={data.title} sections={data.sections}/>
       </div>
     </Tooltip>

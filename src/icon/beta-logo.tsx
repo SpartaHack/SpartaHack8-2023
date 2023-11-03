@@ -12,7 +12,7 @@ const BetaLogo = () => {
   
   return (
     <>
-      <div className='hidden lg:block'>
+      <div className='ml-2 hidden lg:block'>
         <CustomButton 
             title="Beta Version" 
             btnType="button"
