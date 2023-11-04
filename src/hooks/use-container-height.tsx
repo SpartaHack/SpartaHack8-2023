@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
-export const useContainerHeight = () => {
+type useContainerHeightProps = {
+  type: 'pdf' | 'youtube'
+}
+
+export const useContainerHeight = ({type}: useContainerHeightProps) => {
     const [containerWidth, setContainerWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
     const [containerHeight, setContainerHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 0);
 
@@ -24,7 +28,11 @@ export const useContainerHeight = () => {
     elementWidth = containerWidth * 0.675;
   }
 
-  elementHeight = (elementWidth * 9) / 16;
+  if (type === 'youtube') {
+    elementHeight = (elementWidth * 9) / 16;
+  } else {
+    elementHeight = containerHeight;
+  }
 
   return elementHeight;
 };
