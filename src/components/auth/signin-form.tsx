@@ -49,7 +49,7 @@ const SignInForm = () => {
             eventChange = { (e) => handleChange(e, setPassword) }
         />
         <CustomButton 
-            title = 'Create Account'
+            title = 'Sign In'
             btnType = 'submit'
             btnStyling = 'mt-12 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
             clickEvent={handleSubmit}

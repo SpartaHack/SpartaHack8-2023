@@ -20,11 +20,11 @@ const SignIn = () => {
           />
 
           <div className="flex items-center justify-center pt-8">
-            <div className="border-t border-neutral-500 flex-grow dark:text-neutral-500"></div>
+            <div className="border-t border-neutral-500 flex-grow dark:text-neutral-500"/>
             <span className="flex-row mx-2 text-neutral-500 dark:text-neutral-500 font-light text-sm">
               or continue with
             </span>
-            <div className="border-t dark:text-neutral-500 border-neutral-500 flex-grow"></div>
+            <div className="border-t dark:text-neutral-500 border-neutral-500 flex-grow"/>
           </div>
 
           <SignInForm/>
