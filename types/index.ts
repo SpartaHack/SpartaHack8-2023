@@ -52,4 +52,11 @@ export type ContentProps = {
 export interface ChatSubmitProps {
     onMessageSubmit: (message: string) => void;
     isLoading: boolean;
-  }
+}
+
+export type ContentCardProps = {
+    type: string,
+    contentID: string,
+    title: string,
+    thumbnail_url: string
+}

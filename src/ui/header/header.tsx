@@ -28,7 +28,7 @@ export default function Header() {
         </div>
       </div>
 
-      <NavbarMenu className='w-[50%] lg:w-[18%] bg-white dark:bg-neutral-900 border-t dark:border-neutral-800 ' motionProps={sideBarMotion}>
+      <NavbarMenu className='w-[50%] md:w-[25%] lg:w-[18%] bg-white dark:bg-neutral-900 border-t dark:border-neutral-800 ' motionProps={sideBarMotion}>
         <MenuItems/>
       </NavbarMenu>
 
