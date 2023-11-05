@@ -8,10 +8,8 @@ const CustomModal = ({title, contentTitle, contentMain, actionTitle, actionEvent
 
   return (
     <>
-      <div>
-          <div onClick={onOpen}>
-            {title}
-          </div>
+      <div onClick={onOpen}>
+        {title}
       </div>
       <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
         <ModalContent>

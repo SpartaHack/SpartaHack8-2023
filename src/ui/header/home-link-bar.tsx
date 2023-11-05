@@ -7,6 +7,7 @@ const HomeLinkBar = () => {
       <form
         className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-[10px] bg-absolute_white px-1 py-.5 md:mr-12 ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
       >
+        <Icon icon="tabler:plus" className='header-icons'/>
         <div
           className="text-neutral-400 text-[35px] dark:text-neutral-400"
         />
