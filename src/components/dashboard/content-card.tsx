@@ -8,7 +8,7 @@ const ContentCard = ({contentID, type, title, thumbnail_url}: ContentCardProps) 
 
   const clickCard = (contentID: string) => {
     return (event: React.MouseEvent) => {
-        router.push('/learn')
+        router.push(`/learn?c=${contentID}`)
     }
   }
 
