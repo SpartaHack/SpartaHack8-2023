@@ -25,6 +25,12 @@ export const defaultCourseContent = [
     "thumbnail": "https://img.youtube.com/vi/3bKuoH8CkFc/maxresdefault.jpg"
   },
   {
+    "type": "pdf",
+    "contentID": "Attention_Is_All_You_Need",
+    "title": "Attention Is All You Need",
+    "thumbnail": "https://image.thum.io/get/https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf"
+  },
+  {
     "type": "youtube",
     "contentID": "MLU7qcMYKO8", // Stanford's Lecture on Startup Engineering
     "title": "Startup Engineering: Build a Software Startup",
@@ -59,18 +65,6 @@ export const defaultCourseContent = [
     "contentID": "aircAruvnKk", // Introduction to Psychology
     "title": "Introduction to Psychology",
     "thumbnail": "https://img.youtube.com/vi/aircAruvnKk/maxresdefault.jpg"
-  },
-  {
-    "type": "pdf",
-    "contentID": "GPT_4_Technical_Report",
-    "title": "GPT 4 Technical Report",
-    "thumbnail": "https://image.thum.io/get/https://cdn.openai.com/papers/gpt-4.pdfhttps://www.wikipedia.org/"
-  },
-  {
-    "type": "pdf",
-    "contentID": "GPT_4_Technical_Report",
-    "title": "GPT 4 Technical Report",
-    "thumbnail": "https://image.thum.io/get/https://cdn.openai.com/papers/gpt-4.pdfhttps://www.wikipedia.org/"
   },
   {
     "type": "pdf",
