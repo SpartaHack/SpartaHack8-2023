@@ -39,4 +39,7 @@ body {
   .gradient {
     @apply bg-gradient-to-r from-[#00FFF0] to-[#7DFF97];
   }
+  .horizontal-line {
+    @apply border-b border-neutral-300 dark:border-neutral-800 w-full;
+  }
 }

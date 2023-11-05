@@ -8,8 +8,8 @@ const CustomModal = ({title, contentTitle, contentMain, actionTitle, actionEvent
 
   return (
     <>
-      <div className="flex flex-wrap gap-3">
-          <div onClick={onOpen} className="capitalize">
+      <div>
+          <div onClick={onOpen}>
             {title}
           </div>
       </div>
