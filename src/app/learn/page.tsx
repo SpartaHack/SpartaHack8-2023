@@ -7,7 +7,6 @@ import { useSearchParams } from 'next/navigation'
 const LearnPage = () => {
   const parms = useSearchParams()
   const contentID = parms.get('c')
-  console.log(contentID)
   return (
     <>
       <Header/>
