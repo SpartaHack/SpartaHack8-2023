@@ -47,6 +47,9 @@ const Account = ({name, description, picture}: AccountProps) => {
             <DropdownItem onClick={() => router.push('/signin')}>
               Sign In
             </DropdownItem>
+            <DropdownItem onClick={() => router.push('/upgrade')}>
+              Upgrade Account
+            </DropdownItem>
             <DropdownItem
               isReadOnly
               key="theme"

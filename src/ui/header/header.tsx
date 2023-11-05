@@ -3,7 +3,7 @@ import React from "react";
 import YouLearnLogo from "@/icon/youlearn-logo";
 import BetaLogo from "@/icon/beta-logo";
 import HomeLinkBar from "./home-link-bar";
-import { Kbd, Navbar, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
+import { Navbar, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
 import Account from "./account";
 import Notification from "./notification";
 import MenuItems from "./side-menu/menu-items";
