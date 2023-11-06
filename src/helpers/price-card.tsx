@@ -19,7 +19,7 @@ const PriceCard = ({ price, subTitle, planBenefits, buttonText, route }: PriceCa
         </div>
       ))}
       <CustomButton 
-        btnStyling='mt-5 w-full lg:mt-7 hover:bg-secondary hover:text-black'
+        btnStyling='mt-5 w-full hover:bg-secondary hover:text-black'
         title={buttonText} 
         btnType='button'
         clickEvent={() => router.push(`/${route}`)}

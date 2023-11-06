@@ -21,7 +21,7 @@ const Upgrade = () => {
         <span 
           className='text-[50px] mb-[50px] lg:mb-0 font-bold'
         >
-          Choose Your Plan
+          Pricing
         </span>
       </div>
       <div className='flex flex-col lg:mt-20 lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full'>
