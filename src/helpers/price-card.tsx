@@ -14,12 +14,12 @@ const PriceCard = ({ price, subTitle, planBenefits, buttonText, route }: PriceCa
       <h2 className='my-2 lg:text-[15px] text-primary lg:my-6 mb-5 lg:mb-8'>{subTitle}</h2>
       {planBenefits.map((benefit, index) => (
         <div className='flex flex-row w-full justify-between' key={index}>
-          <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-secondary'/>
+          <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>
           <span className='mb-2 lg:mb-5 lg:text-lg text-[12px]'>{benefit}</span>
         </div>
       ))}
       <CustomButton 
-        btnStyling='mt-5 w-full hover:bg-secondary hover:text-black'
+        btnStyling='mt-5 w-full bg-tertiary bg-black font-semibold'
         title={buttonText} 
         btnType='button'
         clickEvent={() => router.push(`/${route}`)}

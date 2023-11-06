@@ -32,7 +32,8 @@ const config: Config = {
             white: "#f5f5f5",
             black: "#262626",
             primary: "#262626",
-            secondary: "#7DFF97"
+            secondary: "#7DFF97",
+            tertiary: "#04E762",
           } as any,
         },
         dark: {
@@ -44,7 +45,8 @@ const config: Config = {
             white: "#f5f5f5",
             black: "#262626",
             primary: "#f5f5f5",
-            secondary: "#7DFF97"
+            secondary: "#7DFF97",
+            tertiary: "#04E762",
           } as any,
         },
       },
