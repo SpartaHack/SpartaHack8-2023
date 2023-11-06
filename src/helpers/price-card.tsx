@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation'
 const PriceCard = ({ price, subTitle, planBenefits, buttonText, route }: PriceCardProps) => {
   const router = useRouter();
   return (
-    <div className='rounded-[10px] w-[75%] h-[350px] px-[60px] lg:w-[40%] shadow-xl border p-3 text-center cursor-pointer hover:scale-105 transition duration-500 mb-[50px] lg:mb-[100px]'>
-      <h1 className='text-3xl mt-5  font-extrabold'>{price}</h1>
+    <div className='rounded-[10px] w-[75%] h-[350px] px-[60px] lg:w-[40%] shadow-xl border p-3 text-center cursor-pointer hover:scale-105 transition duration-500'>
+      <h1 className='text-3xl mt-5 font-extrabold'>{price}</h1>
       <h2 className='my-2 mb-5'>{subTitle}</h2>
       {planBenefits.map((benefit, index) => (
         <div className='flex flex-row w-full justify-between' key={index}>
@@ -17,7 +17,7 @@ const PriceCard = ({ price, subTitle, planBenefits, buttonText, route }: PriceCa
         </div>
       ))}
       <CustomButton 
-        btnStyling='mt-5'
+        btnStyling='mt-5 hover:bg-secondary hover:text-black'
         title={buttonText} 
         btnType='button'
         clickEvent={() => router.push(`/${route}`)}

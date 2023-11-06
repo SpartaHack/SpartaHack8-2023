@@ -3,9 +3,10 @@ import Upgrade from '@/components/upgrade/upgrade'
 import AuthHeader from '@/ui/header/auth-header'
 import React, { useEffect } from 'react'
 import Lenis from '@studio-freight/lenis'
+import Image from 'next/image'
 
 const UpgradePage = () => {
-  
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 0.8,
@@ -19,10 +20,15 @@ const UpgradePage = () => {
   }, [])
 
   return (
-    <>
+    <div className='bg-[#000107]'>
       <AuthHeader/>
-      <Upgrade/>
-    </>
+      <div className="relative h-screen">
+        <img src="/upgrade-bg.jpg" alt="bg" className="absolute z-0 object-contain" />
+        <div className="z-10 relative h-full">
+          <Upgrade/>
+        </div>
+      </div>
+    </div>
   )
 }
 
