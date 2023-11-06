@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import AddFolder from './add-folder'
 import { ScrollShadow } from '@nextui-org/react'
