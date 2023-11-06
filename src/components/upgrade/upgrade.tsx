@@ -4,35 +4,14 @@ import PriceCard from '@/helpers/price-card'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { freePlanBenefits, premiumMonthlyPlanBenefits } from '../../../utils/constants'
+import useTitleResizeOnScroll from '@/hooks/use-title-resize';
 
 gsap.registerPlugin(ScrollTrigger)
 
 const Upgrade = () => {
   const titleRef = useRef(null)
 
-  useEffect(() => {
-    const title = titleRef.current;
-
-    const handleScroll = () => {
-      if (window.innerWidth >= 1024) {
-        const scrollPercent = window.scrollY / document.body.scrollHeight
-        gsap.to(title, {
-          fontSize: `${140 - (scrollPercent * 100)}px`,
-          ease: "power1.out",
-        })
-      } else {
-        const scrollPercent = window.scrollY / document.body.scrollHeight
-        gsap.to(title, {
-          fontSize: `${50 - (scrollPercent * 100)}px`,
-          ease: "power1.out",
-        })
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-    
-  }, [])
+  useTitleResizeOnScroll(titleRef)
 
   return (
     <>
