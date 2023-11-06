@@ -1,6 +1,8 @@
 import Chat from "@/components/learn/tabs/chat";
 import Summary from "@/components/learn/tabs/summary";
 import Quiz from "@/components/learn/tabs/quiz";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { Features } from "../types";
 
 export const TabOptions = [
     {
@@ -74,18 +76,16 @@ export const defaultCourseContent = [
   },
 ]
 
-export const freePlanBenefits = [
-  "Better UI/UX",
-  "Better UI/UX",
-  "Better UI/UX",
-  "Better UI/UX",
-  "Better UI/UX",
+export const freePlanBenefits: Features[] = [
+  {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Chat upto 10 videos"},
+  {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Upto AI 10 responses per video",},
+  {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Upto AI 10 responses per video",},
+  {icon: <Icon icon="mingcute:lock-line" className='w-4 h-4 lg:w-5 lg:h-5 mt-1 text-tertiary dark:text-secondary'/>  , label: "Course Chat Bot",},
 ]
 
-export const premiumMonthlyPlanBenefits = [
-  "Better UI/UX",
-  "Better UI/UX",
-  "Better UI/UX",
-  "Better UI/UX",
-  "Better UI/UX",
+export const premiumMonthlyPlanBenefits: Features[] = [
+  {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Chat with unlimited videos & PDFS"},
+  {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Unlimited AI responses"},
+  {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/> , label:  "Course Chat Bot"},
+  {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Beta Access to New Features"}
 ]

@@ -61,10 +61,15 @@ export type ContentCardProps = {
     thumbnail_url: string
 }
 
+export type Features = {
+    icon: JSX.Element,
+    label: string,
+}
+
 export type PriceCardProps = {
     price: JSX.Element | string;
     subTitle: string;
-    planBenefits: string[];
+    planBenefits: Features[];
     buttonText: string,
     route: string
 }

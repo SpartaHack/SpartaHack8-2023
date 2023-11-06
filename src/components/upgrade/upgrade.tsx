@@ -19,12 +19,12 @@ const Upgrade = () => {
         className='mt-20 w-full flex items-center justify-center text-center'
       >
         <span 
-          className='text-[50px] mb-[50px] lg:mb-0 font-bold'
+          className='text-[50px] mb-[55px] lg:mb-0 font-bold'
         >
           Pricing
         </span>
       </div>
-      <div className='flex flex-col lg:mt-20 lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full'>
+      <div className='flex flex-col lg:mt-20 mb-[50px] lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full'>
         
           <PriceCard 
             price='Free'
