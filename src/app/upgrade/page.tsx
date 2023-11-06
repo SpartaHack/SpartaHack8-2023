@@ -3,9 +3,10 @@ import Upgrade from '@/components/upgrade/upgrade'
 import AuthHeader from '@/ui/header/auth-header'
 import React, { useEffect } from 'react'
 import Lenis from '@studio-freight/lenis'
-import Image from 'next/image'
+import { useTheme } from 'next-themes'
 
 const UpgradePage = () => {
+  const { setTheme } = useTheme();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -17,7 +18,8 @@ const UpgradePage = () => {
       requestAnimationFrame(raf)
     }
     requestAnimationFrame(raf)
-  }, [])
+    setTheme('dark');
+  }, [setTheme])
 
   return (
     <div className='bg-[#000107]'>
