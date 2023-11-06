@@ -18,7 +18,7 @@ const PriceCard = ({ price, subTitle, planBenefits, buttonText, route }: PriceCa
           </div>
         ))}
       <CustomButton 
-        btnStyling='mt-5 w-full bg-tertiary bg-black text-white font-semibold'
+        btnStyling='mt-5 w-full bg-tertiary bg-black dark:bg-white dark:text-black text-white font-semibold'
         title={buttonText} 
         btnType='button'
         clickEvent={() => router.push(`/${route}`)}
