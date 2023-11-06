@@ -62,7 +62,7 @@ export type ContentCardProps = {
 }
 
 export type PriceCardProps = {
-    price: string;
+    price: JSX.Element | string;
     subTitle: string;
     planBenefits: string[];
     buttonText: string,

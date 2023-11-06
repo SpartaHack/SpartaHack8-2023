@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import PriceCard from '@/helpers/price-card'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -36,7 +36,12 @@ const Upgrade = () => {
           />
 
           <PriceCard 
-            price='$7.99'
+            price={
+              <>
+               $7.99 &nbsp;
+               <span className='font-light lg:text-[18px] text-[15px]'>/month</span>
+              </>
+            }
             subTitle='Best for beginners.'
             planBenefits={premiumMonthlyPlanBenefits}
             buttonText='Start your 14-day free trail'
