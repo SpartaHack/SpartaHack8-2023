@@ -16,10 +16,10 @@ const Upgrade = () => {
   return (
     <>
       <div 
-        className='mt-20 w-full flex items-center justify-center text-center'
+        className='mt-[50px] lg:mt-20 w-full flex items-center justify-center text-center'
       >
         <span 
-          className='text-[50px] mb-[55px] lg:mb-0 font-bold'
+          className='text-[40px] lg:mb-[50px] mb-[45px] font-bold'
         >
           Pricing
         </span>
