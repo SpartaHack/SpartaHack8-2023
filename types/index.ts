@@ -60,3 +60,11 @@ export type ContentCardProps = {
     title: string,
     thumbnail_url: string
 }
+
+export type PriceCardProps = {
+    price: string;
+    subTitle: string;
+    planBenefits: string[];
+    buttonText: string,
+    route: string
+}

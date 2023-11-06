@@ -73,3 +73,19 @@ export const defaultCourseContent = [
     "thumbnail": "https://image.thum.io/get/https://cdn.openai.com/papers/gpt-4.pdfhttps://www.wikipedia.org/"
   },
 ]
+
+export const freePlanBenefits = [
+  "Better UI/UX",
+  "Better UI/UX",
+  "Better UI/UX",
+  "Better UI/UX",
+  "Better UI/UX",
+]
+
+export const premiumMonthlyPlanBenefits = [
+  "Better UI/UX",
+  "Better UI/UX",
+  "Better UI/UX",
+  "Better UI/UX",
+  "Better UI/UX",
+]
