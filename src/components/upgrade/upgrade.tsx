@@ -16,16 +16,15 @@ const Upgrade = () => {
   return (
     <>
       <div 
-        className='mt-20 w-full lg:h-screen flex items-center justify-center text-center'
+        className='mt-20 w-full flex items-center justify-center text-center'
       >
         <span 
-          ref={titleRef} 
-          className='text-[50px] lg:text-[140px] font-bold lg:mb-[180px]'
+          className='text-[50px] mb-[50px] lg:mb-0 font-bold'
         >
           Choose Your Plan
         </span>
       </div>
-      <div className='flex flex-col mt-[100px] pb-[50px] lg:pb-[100px] lg:mt-[150px] lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full'>
+      <div className='flex flex-col lg:mt-20 lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full'>
         
           <PriceCard 
             price='Free'
