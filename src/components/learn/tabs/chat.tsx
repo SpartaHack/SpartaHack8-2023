@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import ChatSubmit from './chat-submit'
 import { useContainerHeight } from '@/hooks/use-container-height';
 import { ScrollShadow } from '@nextui-org/react';
-import { chatAboutContent } from '@/app/routes/routes';
 
 const Chat = () => {
   const type = 'youtube'
