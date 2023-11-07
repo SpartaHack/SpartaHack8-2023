@@ -73,3 +73,9 @@ export type PriceCardProps = {
     buttonText: string,
     route: string
 }
+
+export type DashboardProps = {
+    userId: string,
+    courseIds: string[],
+    tier: string,
+}
