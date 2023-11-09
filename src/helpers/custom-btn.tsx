@@ -2,6 +2,7 @@
 import React from 'react'
 import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
 import { CustomButtonProps } from '../../types';
+import { useRouter } from 'next/navigation';
 
 export const CustomButton = ({title, btnStyling, popOver, popOverTitle, popOverClickEvent, popOverStyling, clickEvent, btnType}: CustomButtonProps) => {
     return (

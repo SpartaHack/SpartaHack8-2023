@@ -6,7 +6,7 @@ export type CustomButtonProps = {
     clickEvent?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
     btnStyling?: string,
     popOver?: boolean,
-    popOverClickEvent: () => void,
+    popOverClickEvent?: () => void,
     popOverTitle?: string,
     popOverStyling?: string,
 }
