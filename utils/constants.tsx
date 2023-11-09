@@ -1,23 +1,5 @@
-import Chat from "@/components/learn/tabs/chat";
-import Summary from "@/components/learn/tabs/summary";
-import Quiz from "@/components/learn/tabs/quiz";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Features } from "../types";
-
-export const TabOptions = [
-    {
-      label: "Chat",
-      content: <Chat/>
-    },
-    {
-      label: "Summary",
-      content: <Summary/>
-    },
-    {
-      label: "Quiz",
-      content: <Quiz />
-    }
-];
 
 export const defaultCourseContent = [
   {

@@ -5,10 +5,10 @@ import { CustomButton } from '@/helpers/custom-btn';
 
 const Quiz = () => {
   const type = 'youtube'
-  const height = useContainerHeight({type: type});
+
   return (
-    <div className='h-full flex-col flex' style={{minHeight: `${height-90}px`}}>
-      <ScrollShadow size={5} hideScrollBar className='flex-grow overflow-hidden overflow-y-auto rounded-lg' style={{maxHeight: `${height-140}px`}}>
+    <div className='h-full flex-col flex'>
+      <ScrollShadow size={5} hideScrollBar className='flex-grow overflow-hidden overflow-y-auto rounded-lg'>
         TEXT FOR DUMMIES sadad
         TEXT FOR DUMMIES
         TEXT FOR DUMMIES

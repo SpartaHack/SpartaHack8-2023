@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 type useContainerHeightProps = {
-  type: 'pdf' | 'youtube'
+  type: 'youtube' | 'youtube'
 }
 
 export const useContainerHeight = ({type}: useContainerHeightProps) => {
