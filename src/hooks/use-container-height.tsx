@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
-
-type useContainerHeightProps = {
-  type: 'pdf' | 'youtube'
-}
+import { useContainerHeightProps } from '../../types';
 
 export const useContainerHeight = ({type}: useContainerHeightProps) => {
     const [containerWidth, setContainerWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);

@@ -10,7 +10,7 @@ const LearnPage = () => {
   return (
     <>
       <Header/>
-      <Content type='pdf'/>
+      <Content type='youtube'/>
     </>
   )
 }

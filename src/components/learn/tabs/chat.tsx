@@ -4,7 +4,7 @@ import { useContainerHeight } from '@/hooks/use-container-height';
 import { ScrollShadow } from '@nextui-org/react';
 
 const Chat = () => {
-  const type = 'pdf'
+  const type = 'youtube'
   const height = useContainerHeight({type: type});
 
   const handleChatSubmit = () => {
@@ -12,7 +12,7 @@ const Chat = () => {
   }
 
   return (
-    <div className='lg:h-full h-[70vh] flex-col flex border'  style={{maxHeight: `${height-90}px`}}>
+    <div className='lg:h-full h-[70vh] flex-col flex'  style={{maxHeight: `${height-90}px`}}>
       <ScrollShadow 
         size={5} 
         hideScrollBar 

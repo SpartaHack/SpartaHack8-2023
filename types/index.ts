@@ -79,3 +79,7 @@ export type DashboardProps = {
     courseIds: string[],
     tier: string,
 }
+
+export type useContainerHeightProps = {
+    type: 'pdf' | 'youtube'
+}
