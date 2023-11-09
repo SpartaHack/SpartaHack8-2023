@@ -1,6 +1,5 @@
 'use client'
 import { Icon } from '@iconify/react/dist/iconify.js'
-import { Tooltip } from '@nextui-org/react'
 import React from 'react'
 import { CustomDropdown } from '@/helpers/custom-dropdown'
 
@@ -19,11 +18,9 @@ const Notification = () => {
   }
 
   return (
-    <Tooltip content="Notifications">
-      <div className='cursor-pointer mt-1 mr-10'>
-        <CustomDropdown title={data.title} sections={data.sections}/>
-      </div>
-    </Tooltip>
+    <div className='cursor-pointer mt-1 mr-10'>
+      <CustomDropdown title={data.title} sections={data.sections}/>
+    </div>
   )
 }
 

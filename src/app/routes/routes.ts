@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "sonner";
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // COURSE
@@ -11,6 +12,7 @@ export const getCourseContents = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -28,6 +30,7 @@ export const addCourse = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -47,6 +50,7 @@ export const updateCourse = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -64,6 +68,7 @@ export const deleteCourse = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -73,6 +78,7 @@ export const getCourseData = async (courseId: string) => {
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -98,6 +104,7 @@ export const chatCourse = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -110,6 +117,7 @@ export const getContentInfo = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -128,6 +136,7 @@ export const addContent = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -146,6 +155,7 @@ export const deleteContent = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -157,6 +167,7 @@ export const getContentSummary = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -168,6 +179,7 @@ export const getContentQuestions = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
 
@@ -193,5 +205,6 @@ export const chatContent = async (
     return response;
   } catch (err) {
     console.error(err);
+    toast.error('Internal Server Error')
   }
 }
