@@ -3,6 +3,7 @@ import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
 import { useRouter } from 'next/navigation'
 import React, { ChangeEvent, useState } from 'react'
+import { toast } from 'sonner'
 
 const SignInForm = () => {
     const router = useRouter();
@@ -26,9 +27,9 @@ const SignInForm = () => {
         event.preventDefault();
 
         if (!isInvalid(email, 'email') && !isInvalid(password)) {
-            console.log('Form submitted');
+            toast.success('Sign in successful');
         } else {
-            console.log('Form not valid');
+            toast.error('Something went wrong. Try again')
         }
     }
 
