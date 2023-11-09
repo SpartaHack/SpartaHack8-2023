@@ -5,10 +5,6 @@ import { useRouter } from 'next/navigation'
 
 const BetaLogo = () => {
   const router = useRouter();
-
-  const betaClick = () => {
-    router.push('/')  
-  }
   
   return (
     <>
@@ -19,8 +15,8 @@ const BetaLogo = () => {
           btnStyling='text-xs dark:border-secondary dark:text-secondary border-[#174c22] text-[#174c22] dark:bg-black'
           popOver
           popOverTitle='Give Feedback'
+          popOverClickEvent={() => router.push('https://www.youlearn.ai/feedbackApp')}
           popOverStyling='cursor-pointer'
-          clickEvent={betaClick}
         />
       </div>
     </>
