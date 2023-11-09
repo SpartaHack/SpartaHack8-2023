@@ -10,7 +10,7 @@ const SignIn = () => {
 
           <h1 className="text-3xl text-left font-black">Welcome Back</h1>
           <p className="pb-10 text-md text-left font-thin text-neutral-500 dark:text-neutral-500">
-            Login to continue learning
+            Sign in to continue learning
           </p>
 
           <CustomButton 

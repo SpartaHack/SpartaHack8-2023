@@ -1,9 +1,11 @@
 'use client'
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
+import { useRouter } from 'next/navigation'
 import React, { ChangeEvent, useState } from 'react'
 
 const SignUpForm = () => {
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -71,8 +73,9 @@ const SignUpForm = () => {
             </p>
             <button
                 className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
+                onClick={() => router.push('/signin')}
             >
-                Login here.
+                Sign in here.
             </button>
         </div>
     </div>
