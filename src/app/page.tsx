@@ -4,7 +4,7 @@ import Dashboard from "@/components/dashboard/dashboard"
 
 export default function App() {
   return (
-    <main>
+    <main className="dark:bg-neutral-900">
       <Header/>
       <Dashboard/>
     </main>
