@@ -29,7 +29,7 @@ const Chat = () => {
                 key={index}
                 message={message}
                 copiedState={copiedState}
-                copyToClipboard={copyToClipboard} index={undefined}/>
+                copyToClipboard={copyToClipboard} index={index}/>
             ))}
             <div className='pl-2'>
               {(isChatSubmitting) && <TypingIndicator />}        
