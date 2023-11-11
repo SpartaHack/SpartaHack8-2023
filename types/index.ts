@@ -101,3 +101,7 @@ export type MessageProps = {
     copiedState: any;
     copyToClipboard: (response: string, index: number) => void;
 };
+
+export type SummaryProps  = {
+    summary: string
+  }
