@@ -9,7 +9,7 @@ export const replaceMessage = (() => {
   let counter = 0;
   return (message: string) => {
     return message.replace(/(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g, (match) => {
-      return `nbsp; *${++counter}*`;
+      return `nbsp; *${++counter}* nbsp;`;
     });
   };
 })();

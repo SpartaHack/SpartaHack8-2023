@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react';
-import { ContentProps } from '../../../types';
-import YoutubeVideo from './content/youtube-video';
-import PDF from './content/pdf';
-import TabComponent from './tabs/tab-component';
+import { ContentProps } from '../../../../types';
+import YoutubeVideo from './youtube-video';
+import PDF from './pdf';
+import TabComponent from '../tabs/tab-component';
 
 const Content = ({type}: ContentProps) => {
   return (

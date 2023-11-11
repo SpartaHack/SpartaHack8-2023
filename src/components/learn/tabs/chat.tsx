@@ -5,8 +5,8 @@ import { ScrollShadow } from '@nextui-org/react';
 import useChatSubmit from '@/hooks/use-chat-submit';
 import { contentId, course_id, user_id } from '../../../../utils';
 import useCopyToClipboard from '@/hooks/use-copy-clipboard';
-import Message from '../message';
-import TypingIndicator from '../typing-indicator';
+import Message from './message';
+import TypingIndicator from '../../../helpers/typing-indicator';
 
 const Chat = () => {
   const type = 'youtube'

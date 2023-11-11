@@ -1,6 +1,6 @@
 import React from 'react';
 import Response from './response';
-import { MessageProps } from '../../../types';
+import { MessageProps } from '../../../../types';
 import { Icon } from '@iconify/react/dist/iconify.js';
 
 const Message = ({ message, index, copiedState, copyToClipboard }: MessageProps) => {

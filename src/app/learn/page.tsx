@@ -1,7 +1,7 @@
 'use client'
 import Header from '@/ui/header/header'
 import React, { Suspense } from 'react'
-import Content from '@/components/learn/content'
+import Content from '@/components/learn/content/content'
 import { useSearchParams } from 'next/navigation'
 import Loading from './loading'
 
