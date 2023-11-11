@@ -29,7 +29,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
       />
       <button type="submit" className="border-none bg-transparent pr-1 focus:outline-none">
         {isLoading ? (
-          <Spinner size='sm' className='mt-2 mr-1'/>
+          <Spinner size='sm' color='secondary' className='mt-2 mr-1'/>
         ) : (
           <Icon icon="ph:paper-plane" className="header-icons gradient text-[35px] rounded-[10px] dark:text-neutral-900" />
         )}

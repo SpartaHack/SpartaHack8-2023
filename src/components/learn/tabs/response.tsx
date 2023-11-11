@@ -10,7 +10,7 @@ export type ResponseProps = {
 const Response = ({message}: ResponseProps) => {
   return (
     <Markdown
-    remarkPlugins={[remarkGfm]}
+      remarkPlugins={[remarkGfm]}
       components={{
         em(props) {
         const {className, ...rest} = props

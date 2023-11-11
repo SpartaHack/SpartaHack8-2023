@@ -38,7 +38,7 @@ const Chat = () => {
       </ScrollShadow>
       <div className="mt-3">
         <ChatSubmit
-          onMessageSubmit={handleChatSubmit} isLoading={false}
+          onMessageSubmit={handleChatSubmit} isLoading={isChatSubmitting}
         />
       </div>
     </div>
