@@ -8,8 +8,8 @@ const Message = ({ message, index, copiedState, copyToClipboard }: MessageProps)
         <div key={index}
         className={
             message.type === 'bot'
-              ? "bg-neutral-100 dark:bg-neutral-900 dark:text-white text-black my-2 rounded-[15px] p-4 leading-relaxed drop-shadow-sm mr-auto max-w-full w-fit"
-              : "bg-[#7dff97] text-black my-2 max-w-[50%] w-fit rounded-[15px] p-4 leading-relaxed drop-shadow-sm ml-auto break-words"
+              ? "bg-neutral-100 dark:bg-neutral-900 dark:text-white text-black my-2 rounded-[15px] p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full max-w-[70%] w-fit"
+              : "bg-[#7dff97] text-black my-2 max-w-[70%] w-fit rounded-[15px] p-4 leading-relaxed drop-shadow-sm ml-auto break-words"
           }
         >
 
@@ -18,9 +18,9 @@ const Message = ({ message, index, copiedState, copyToClipboard }: MessageProps)
             {message.type === "bot" &&
                 <div className='flex mt-2 ml-auto space-x-2 w-fit'>
                     {copiedState[`${index}`] ? (
-                        <Icon icon="" className="text-xl" />
+                        <Icon icon="charm:tick" className="text-xl text-secondary" />
                     ) : (
-                        <Icon icon=""
+                        <Icon icon="ci:copy"
                             onClick={() =>
                                 copyToClipboard(message.response, index)
                             }
