@@ -84,3 +84,20 @@ export type DashboardProps = {
 export type useContainerHeightProps = {
     type: 'pdf' | 'youtube'
 }
+
+export type ChatMessageType = {
+    type: string;
+    response: string;
+}
+
+export type MessageType = {
+    type: string;
+    response: string;
+};
+
+export type MessageProps = {
+    message: MessageType;
+    index: any;
+    copiedState: any;
+    copyToClipboard: (response: string, index: number) => void;
+};

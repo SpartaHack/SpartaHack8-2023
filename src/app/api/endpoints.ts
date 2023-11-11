@@ -85,6 +85,7 @@ export const getCourseData = async (courseId: string) => {
 export const chatCourse = async (
   userId: string, 
   courseId: string, 
+  contentId: string,
   query: string, 
   information?: any, 
   getExistingChatHistory?: boolean, 
@@ -93,20 +94,23 @@ export const chatCourse = async (
   const data = {
     user_id: userId,
     course_id: courseId,
+    content_id: contentId,
     query: query,
     information: information,
     get_existing_chat_history: getExistingChatHistory,
     save_chat_history: saveChatHistory
   };
 
-  try {
-    const response = await axios.post(`${API_URL}/generation/chat/course`, data);
-    return response;
-  } catch (err) {
-    console.error(err);
-    toast.error('Internal Server Error')
-  }
-}
+  const response = await fetch(`${API_URL}/generation/chat/course`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  return response;
+};
 
 // CONTENT
 export const getContentInfo = async (
@@ -186,6 +190,7 @@ export const getContentQuestions = async (
 export const chatContent = async (
   userId: string, 
   courseId: string, 
+  contentId: string,
   query: string, 
   information?: any, 
   getExistingChatHistory?: boolean, 
@@ -194,17 +199,20 @@ export const chatContent = async (
   const data = {
     user_id: userId,
     course_id: courseId,
+    content_id: contentId,
     query: query,
     information: information,
     get_existing_chat_history: getExistingChatHistory,
     save_chat_history: saveChatHistory
   };
 
-  try {
-    const response = await axios.post(`${API_URL}/generation/chat/content`, data);
-    return response;
-  } catch (err) {
-    console.error(err);
-    toast.error('Internal Server Error')
-  }
-}
+  const response = await fetch(`${API_URL}/generation/chat/content`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  return response;
+};
