@@ -26,7 +26,7 @@ const CustomAutocomplete = ({datas, isInvalid, label, onValueChange}: CustomAuto
   }, [isInvalid]);
 
   return (
-    <div>
+    <>
       <Autocomplete
         allowsCustomValue
         labelPlacement='outside'
@@ -46,7 +46,7 @@ const CustomAutocomplete = ({datas, isInvalid, label, onValueChange}: CustomAuto
           </AutocompleteItem>
         ))}
       </Autocomplete>
-    </div>
+    </>
   )
 }
 
