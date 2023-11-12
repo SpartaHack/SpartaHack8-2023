@@ -3,6 +3,7 @@ import { CustomButton } from '@/helpers/custom-btn'
 import React from 'react'
 import SignUpForm from './signup-form'
 import { useRouter } from 'next/navigation';
+import { authGoogle } from '../../../utils';
 
 const SignUp = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const SignUp = () => {
             title='Sign up with Google' 
             btnType='button'
             btnStyling='border dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+            clickEvent={authGoogle}
           />
           <div className="flex items-center justify-center pt-8">
             <div className="border-t border-neutral-500 flex-grow dark:text-neutral-500"></div>
