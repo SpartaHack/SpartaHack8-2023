@@ -34,7 +34,7 @@ const SignIn = () => {
                 Don&apos;t have an account?
             </p>
             <button
-                className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
+                className="text-secondary dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
                 onClick={() => router.push('/signup')}
             >
                 Sign up here.

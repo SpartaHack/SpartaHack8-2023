@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import SignUpForm from './signup-form'
-import { useRouter } from 'next/navigation'
 import { CustomButton } from '@/helpers/custom-btn'
 import { authGoogle } from '../../../utils'
 import CustomTextInput from '@/helpers/custom-text-input'
 import { toast } from 'sonner'
 
 const Steps = () => {
-  const router = useRouter()
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [educationLevel, setEducationLevel] = useState("");
@@ -86,18 +84,7 @@ const Steps = () => {
           </div>
           <SignUpForm/>
         </>
-      )}
-      <div className="h-full mt-5 flex items-center justify-start font-black">
-        <p className="text-sm dark:text-neutral-500 mr-2 ">
-            Already have an account?
-        </p>
-        <button
-            className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
-            onClick={() => router.push('/signin')}
-        >
-            Sign in here.
-        </button>
-      </div>    
+      )}  
     </>
   )
 }

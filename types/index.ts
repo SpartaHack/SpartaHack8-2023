@@ -104,4 +104,4 @@ export type MessageProps = {
 
 export type SummaryProps  = {
     summary: string
-  }
+}
