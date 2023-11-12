@@ -63,7 +63,7 @@ const Steps = () => {
             <CustomButton 
               title = 'Continue'
               btnType = 'button'
-              btnStyling = 'mt-10 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+              btnStyling = 'mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
               clickEvent={handleContinue}
             />
           </div>

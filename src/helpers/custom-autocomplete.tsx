@@ -27,24 +27,25 @@ const CustomAutocomplete = ({datas, isInvalid, label, onValueChange}: CustomAuto
 
   return (
     <div>
-        <Autocomplete
-          allowsCustomValue
-          labelPlacement='outside'
-          variant='bordered'
-          isInvalid={ isInvalidState && isFocused }
-          label={label}
-          size='lg'
-          onInputChange={onInputChange}
-          color={(!isFocused && value == '') ? 'danger' : 'success'}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        >
-            {datas.map(({value}) => (
-              <AutocompleteItem key={value} value={value}>
-                {value}
-              </AutocompleteItem>
-            ))}
-        </Autocomplete>
+      <Autocomplete
+        allowsCustomValue
+        labelPlacement='outside'
+        variant='bordered'
+        isInvalid={ isInvalidState && isFocused }
+        label={label}
+        size='lg'
+        className='mb-2'
+        onInputChange={onInputChange}
+        color={(!isFocused && value == '') ? 'danger' : 'success'}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
+        {datas.map(({value}) => (
+          <AutocompleteItem key={value} value={value}>
+            {value}
+          </AutocompleteItem>
+        ))}
+      </Autocomplete>
     </div>
   )
 }
