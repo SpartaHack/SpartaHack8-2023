@@ -18,7 +18,7 @@ export const sideBarMotion = {
 
 export const replaceMessage = (() => {
   let counter = 0;
-  let sources: any = {};
+  let sources: string[] = [];
   return (message: string) => {
     const replacedMessage = message.replace(/(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g, (match) => {
       counter++;

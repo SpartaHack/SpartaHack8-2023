@@ -93,8 +93,8 @@ export type MessageType = {
 
 export type MessageProps = {
     message: MessageType;
-    index: any;
-    copiedState: any;
+    index: number;
+    copiedState: Record<number, boolean>;
     copyToClipboard: (response: string, index: number) => void;
 };
 
