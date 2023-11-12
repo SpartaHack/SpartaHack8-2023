@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ChatMessageType } from "../../types";
+import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { chatContent } from "@/app/api/endpoints";
 
-const useChatSubmit = (initialChatLog: ChatMessageType[], user_id: string, contentId: string, course_id: string) => {
-  const [chatLog, setChatLog] = useState<ChatMessageType[]>(initialChatLog);
+const useChatSubmit = (initialChatLog: MessageType[], user_id: string, contentId: string, course_id: string) => {
+  const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChatSubmit = async (query: string) => {
@@ -37,18 +37,21 @@ const useChatSubmit = (initialChatLog: ChatMessageType[], user_id: string, conte
             }
             const chunk = decoder.decode(value, {stream: true});
             message += chunk;
-            message = replaceMessage(message);
+            const replacedResult = replaceMessage(message);
+            message = replacedResult.replacedMessage;
+            console.log(replacedResult.sources)
             setChatLog((prev) => {
               if (prev.length > 0 && prev[prev.length - 1].type === "bot") {
                 const lastMessage = prev[prev.length - 1];
                 if (!lastMessage.response.endsWith(message)) {
                   lastMessage.response = message;
+                  lastMessage.sources = replacedResult.sources;
                 }
                 return [...prev];
               } else {
                 return [
                   ...prev,
-                  { type: "bot", response: message, sources: [] },
+                  { type: "bot", response: message, sources: replacedResult.sources },
                 ];
               }
             });

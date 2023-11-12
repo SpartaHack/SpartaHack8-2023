@@ -85,12 +85,8 @@ export type useContainerHeightProps = {
     type: 'pdf' | 'youtube'
 }
 
-export type ChatMessageType = {
-    type: string;
-    response: string;
-}
-
 export type MessageType = {
+    sources?: string[] | Record<string, string> | undefined;
     type: string;
     response: string;
 };
@@ -111,4 +107,9 @@ export type CustomAutocompleteProps = {
     isInvalid: boolean,
     label: string,
     onValueChange: (value: string) => void;
+}
+
+export type ResponseProps = {
+    message: string,
+    source?: Record<string, string> | undefined
 }

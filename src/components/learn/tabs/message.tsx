@@ -13,7 +13,7 @@ const Message = ({ message, index, copiedState, copyToClipboard }: MessageProps)
           }
         >
 
-        <Response message={message.response}/>
+        <Response message={message.response} source={message.sources}/>
 
             {message.type === "bot" &&
                 <div className='flex mt-2 ml-auto space-x-2 w-fit'>
