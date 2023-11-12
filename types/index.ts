@@ -86,7 +86,7 @@ export type useContainerHeightProps = {
 }
 
 export type MessageType = {
-    sources?: string[] | Record<string, string> | undefined;
+    sources?: string[] | undefined;
     type: string;
     response: string;
 };
@@ -111,5 +111,5 @@ export type CustomAutocompleteProps = {
 
 export type ResponseProps = {
     message: string,
-    source?: Record<string, string> | undefined
+    source?: undefined | string[]
 }

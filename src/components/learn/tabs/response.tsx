@@ -13,7 +13,7 @@ const Response = ({message, source}: ResponseProps) => {
         const {className, ...rest} = props
         let tooltipContent = 'Source';
         if (source && typeof rest.children === 'string') {
-          const key = rest.children.replace(/\*/g, '');
+          const key = parseInt(rest.children.replace(/\*/g, ''));
           tooltipContent = source[key] || 'Source';
         }
         return (
