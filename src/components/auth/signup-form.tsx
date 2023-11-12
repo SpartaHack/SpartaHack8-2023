@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 
 const SignUpForm = () => {
     const router = useRouter();
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,6 +23,8 @@ const SignUpForm = () => {
           return !emailRegex.test(value);
         } else if (type === 'confirmPassword') {
           return value !== password || value == '';
+        } else if (type === 'name') {
+            return name == '';
         }
         return value === '';
       }
@@ -29,7 +32,7 @@ const SignUpForm = () => {
       const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
 
-        if (!isInvalid(email, 'email') && !isInvalid(password) && !isInvalid(confirmPassword, 'confirmPassword')) {
+        if (!isInvalid(email, 'email') && !isInvalid(password) && !isInvalid(confirmPassword, 'confirmPassword') && !isInvalid(name, 'name')) {
             toast.success('Sign in successful');
         } else {
             toast.error('Something went wrong. Try again')
@@ -37,7 +40,15 @@ const SignUpForm = () => {
     }
 
   return (
-    <div className='mt-8'>
+    <div className='mt-10'>
+        <CustomTextInput 
+            value = { name }
+            type = 'name'
+            label = 'First Name'
+            isInvalid = { isInvalid(name, 'name') }
+            styling = 'mb-10 mt-8 bg-transparent'
+            eventChange = { (e) => handleChange(e, setName) }
+        />       
         <CustomTextInput 
             value = { email }
             type = 'email'
