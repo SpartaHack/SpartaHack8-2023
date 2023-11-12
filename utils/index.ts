@@ -33,6 +33,7 @@ export const replaceMessage = (() => {
 })();
 
 export const authGoogle = async () => {
+  // ask mongoDB
   try {
     initFirebase();
     const auth = getAuth();

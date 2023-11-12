@@ -20,22 +20,12 @@ const SignUpForm = () => {
           return !emailRegex.test(value);
         } else if (type === 'confirmPassword') {
           return value !== password || value == '';
-        } else if (type === 'name') {
-            return name == '';
         }
         return value === '';
       }
 
   return (
-    <div className='mt-10'>
-        <CustomTextInput 
-            value = { name }
-            type = 'name'
-            label = 'Name'
-            isInvalid = { isInvalid(name, 'name') }
-            styling = 'mb-10 mt-8 bg-transparent'
-            eventChange = { (e) => handleChange(e, setName) }
-        />       
+    <div className='mt-10'>    
         <CustomTextInput 
             value = { email }
             type = 'email'
