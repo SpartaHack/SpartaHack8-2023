@@ -1,4 +1,3 @@
-'use client'
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
 import React, { ChangeEvent, useState } from 'react'
