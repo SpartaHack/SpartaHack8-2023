@@ -11,9 +11,10 @@ import {
   User,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
-import { Router } from "next/router";
 import { initFirebase } from "../db/firebase";
+import { toast } from "sonner";
 
 export const sideBarMotion = {
     initial: { x: '-100%' },
@@ -32,20 +33,35 @@ export const replaceMessage = (() => {
 })();
 
 export const authGoogle = async () => {
-  initFirebase();
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
-  const userData = {
-    userId: result.user?.uid,
-    email: result.user?.email,
-    displayName: result.user?.displayName,
-    photoURL: result.user?.photoURL,
-  };
-  localStorage.setItem("userData", JSON.stringify(userData));
+  try {
+    initFirebase();
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    toast.success("Signed up successfully")
+  } catch {
+    toast.error("Try again. Something went wrong")
+  }
 }
 
-export const signUpEmail = () => {
-  initFirebase();
+export const signUpEmail = async (email: string, password: string) => {
+  try {
+    initFirebase();
+    const auth = getAuth();
+    const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
+    toast.success("Signed up successfully")
+  } catch {
+    toast.error("Try again. Something went wrong")
+  }
 }
 
+export const signInEmail = async (email: string, password: string) => {
+  try {
+    initFirebase();
+    const auth = getAuth()
+    const result = await signInWithEmailAndPassword(auth, email, password);
+    toast.success("Signed in successfully")
+  } catch {
+    toast.error("Try again. Something went wrong")
+  }
+}

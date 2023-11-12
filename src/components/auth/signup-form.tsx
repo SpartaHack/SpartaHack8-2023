@@ -1,7 +1,7 @@
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
 import React, { ChangeEvent, useState } from 'react'
-import { toast } from 'sonner'
+import { signUpEmail } from '../../../utils';
 
 const SignUpForm = () => {
     const [name, setName] = useState("");
@@ -25,16 +25,6 @@ const SignUpForm = () => {
         }
         return value === '';
       }
-    
-      const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.preventDefault();
-
-        if (!isInvalid(email, 'email') && !isInvalid(password) && !isInvalid(confirmPassword, 'confirmPassword') && !isInvalid(name, 'name')) {
-            toast.success('Sign in successful');
-        } else {
-            toast.error('Something went wrong. Try again')
-        }
-    }
 
   return (
     <div className='mt-10'>
@@ -74,7 +64,7 @@ const SignUpForm = () => {
             title = 'Create Account'
             btnType = 'submit'
             btnStyling = 'mt-12 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
-            clickEvent={handleSubmit}
+            clickEvent={() => signUpEmail(email, password)}
         />
     </div>
   )

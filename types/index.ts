@@ -3,7 +3,7 @@ import React, { ChangeEvent, MouseEventHandler } from "react";
 export type CustomButtonProps = {
     title: string,
     btnType: "button" | "submit" | "reset" | undefined;
-    clickEvent?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
+    clickEvent?: () => void,
     btnStyling?: string,
     popOver?: boolean,
     popOverClickEvent?: () => void,
