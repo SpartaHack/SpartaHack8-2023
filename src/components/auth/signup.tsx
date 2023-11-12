@@ -1,8 +1,10 @@
 import { CustomButton } from '@/helpers/custom-btn'
 import React from 'react'
 import SignUpForm from './signup-form'
+import { useRouter } from 'next/navigation';
 
 const SignUp = () => {
+  const router = useRouter();
   return (
     <div className='flex flex-col h-screen items-center justify-center'>
       <div className="w-full sm:w-3/5 flex p-8 space-y-4 max-w-md items-center justify-center">
@@ -26,9 +28,18 @@ const SignUp = () => {
             </span>
             <div className="border-t dark:text-neutral-500 border-neutral-500 flex-grow"></div>
           </div>
-
           <SignUpForm/>
-
+          <div className="h-full mt-5 flex items-center justify-start font-black">
+            <p className="text-sm dark:text-neutral-500 mr-2 ">
+                Already have an account?
+            </p>
+            <button
+                className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
+                onClick={() => router.push('/signin')}
+            >
+                Sign in here.
+            </button>
+        </div>
         </div>
       </div>
     </div>

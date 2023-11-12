@@ -1,12 +1,10 @@
 'use client'
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
-import { useRouter } from 'next/navigation'
 import React, { ChangeEvent, useState } from 'react'
 import { toast } from 'sonner'
 
 const SignInForm = () => {
-    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
@@ -57,17 +55,6 @@ const SignInForm = () => {
             btnStyling = 'mt-12 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
             clickEvent={handleSubmit}
         />
-        <div className="h-full mt-5 flex items-center justify-start font-black">
-            <p className="text-sm dark:text-neutral-500 mr-2 ">
-                Don&apos;t have an account?
-            </p>
-            <button
-                className="text-[#3dce5a] dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
-                onClick={() => router.push('/signup')}
-            >
-                Sign up here.
-            </button>
-        </div>
     </div>
   )
 }
