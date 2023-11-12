@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import PriceCard from '@/helpers/price-card'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { freePlanBenefits, premiumMonthlyPlanBenefits } from '../../../utils/constants'
+import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/app/functions/tier-constants';
 import useTitleResizeOnScroll from '@/hooks/use-title-resize';
 
 gsap.registerPlugin(ScrollTrigger)

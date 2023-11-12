@@ -25,7 +25,7 @@ const Steps = () => {
       {step === 1 ? (
         <>
           <p className="pb-5 text-md text-left font-thin text-neutral-500 dark:text-neutral-500">
-            Let's get started with some questions!
+            Let&apos;s get started with some questions!
           </p>
           <div className='h-full'>
             <CustomTextInput 

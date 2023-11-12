@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEventHandler } from "react";
+import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
 
 export type CustomButtonProps = {
     title: string,
@@ -112,4 +112,9 @@ export type CustomAutocompleteProps = {
 export type ResponseProps = {
     message: string,
     source?: undefined | string[]
+}
+
+export type TooltipContentProps = {
+    source: ResponseProps['source'];
+    children?: ReactNode;
 }

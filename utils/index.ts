@@ -1,14 +1,7 @@
-export const user_id = "4KNAN001tZhyNg96DkfkLeF6fvm2";
-export const course_id = "83e6002084934c8781979bc2904e7ced";
-export const content_id = ["kCc8FmEb1nY"]
-export const contentId = "kCc8FmEb1nY"
-export const information = {}
 import {
   getAuth,
   createUserWithEmailAndPassword,
   UserCredential,
-  sendEmailVerification,
-  User,
   GoogleAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -70,3 +63,10 @@ export const signInEmail = async (email: string, password: string) => {
     toast.error("Try again. Something went wrong")
   }
 }
+
+export const user_id = "4KNAN001tZhyNg96DkfkLeF6fvm2";
+export const course_id = "83e6002084934c8781979bc2904e7ced";
+export const content_id = ["kCc8FmEb1nY"]
+export const contentId = "kCc8FmEb1nY"
+export const information = {}
+
