@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js"
-import { Features } from "../../../types"
+import { Features } from "../../types"
 
 export const freePlanBenefits: Features[] = [
     {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Chat upto 10 content"},

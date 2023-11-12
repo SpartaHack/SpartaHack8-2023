@@ -1,5 +1,5 @@
 import { Tooltip } from "@nextui-org/react";
-import { TooltipContentProps } from "../../../types";
+import { TooltipContentProps } from "../../types";
 
 export const TooltipContent = ({source, children}: TooltipContentProps) => {
     let tooltipContent = 'Source';
