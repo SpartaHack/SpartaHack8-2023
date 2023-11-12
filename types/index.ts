@@ -105,3 +105,10 @@ export type MessageProps = {
 export type SummaryProps  = {
     summary: string
 }
+
+export type CustomAutocompleteProps = {
+    datas: {value: string} [],
+    isInvalid: boolean,
+    label: string,
+    onValueChange: (value: string) => void;
+}

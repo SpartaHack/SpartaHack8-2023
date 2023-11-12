@@ -71,3 +71,17 @@ export const premiumMonthlyPlanBenefits: Features[] = [
   {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/>  , label: "Beta Access to New Features"},
   {icon: <Icon icon="mdi:tick-circle-outline" className='w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-tertiary dark:text-secondary'/> , label:  "Folder Chat Bot"},
 ]
+
+export const educationOptions = [
+  { value: 'Secondary or High School' },
+  { value: 'Undergraduate University (2-Year Community College or similar)' },
+  { value: 'Undergraduate University (3+ Year)' },
+  { value: 'Graduate University (Masters, Doctoral, Professional, etc.)' },
+  { value: 'Code School or Bootcamp' },
+  { value: 'Other Vocational or Trade Program or Apprenticeship' },
+  { value: 'Post Doctorate' },
+  { value: 'Certification Programs' },
+  { value: 'Online Courses or MOOCs' },
+  { value: 'Other' },
+  { value: "I'm not currently a student" },
+];

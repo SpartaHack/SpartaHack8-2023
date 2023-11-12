@@ -4,6 +4,8 @@ import { CustomButton } from '@/helpers/custom-btn'
 import { authGoogle } from '../../../utils'
 import CustomTextInput from '@/helpers/custom-text-input'
 import { toast } from 'sonner'
+import CustomAutocomplete from '@/helpers/custom-autocomplete'
+import { educationOptions } from '../../../utils/constants'
 
 const Steps = () => {
   const [step, setStep] = useState(1);
@@ -20,6 +22,7 @@ const Steps = () => {
     } else if (type === 'educationLevel') {
       return educationLevel == '';
     }
+    return false
   }
 
   const handleContinue = () => {
@@ -29,6 +32,10 @@ const Steps = () => {
       toast.error("Try again. Something went wrong")
     }
   }
+
+  const handleEducationLevelChange = (newValue: string) => {
+    setEducationLevel(newValue);
+  };
 
   return (
     <>
@@ -43,22 +50,20 @@ const Steps = () => {
               value = { name }
               type = 'name'
               label = 'Name'
-              isInvalid = { isInvalid( name, 'name') }
-              styling = 'mb-10 mt-8 bg-transparent'
+              isInvalid = { isInvalid(name, 'name') }
+              styling = 'mb-4 mt-8 bg-transparent'
               eventChange = { (e) => handleChange(e, setName) }
             />
-            <CustomTextInput 
-              value = { educationLevel }
-              type = 'educationLevel'
-              label = 'Education Level'
-              isInvalid = { isInvalid( educationLevel, 'educationLevel') }
-              styling = 'mb-10 mt-8 bg-transparent'
-              eventChange = { (e) => handleChange(e, setEducationLevel) }
+            <CustomAutocomplete 
+              datas={educationOptions}
+              isInvalid={ isInvalid(educationLevel, 'educationLevel') } 
+              label='Select education Level' 
+              onValueChange={handleEducationLevelChange}
             />
             <CustomButton 
               title = 'Continue'
               btnType = 'button'
-              btnStyling = 'mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+              btnStyling = 'mt-10 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
               clickEvent={handleContinue}
             />
           </div>

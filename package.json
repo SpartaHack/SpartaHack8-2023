@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.1.13",
+    "@nextui-org/react": "^2.2.9",
     "@studio-freight/lenis": "^1.0.27",
     "axios": "^1.6.0",
     "firebase": "^10.6.0",
