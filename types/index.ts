@@ -125,5 +125,5 @@ export type PlayerProps = YouTubeProps & {
 }
 
 export type YoutubeVideoProps = {
-    seconds: number
+    source: number
 }

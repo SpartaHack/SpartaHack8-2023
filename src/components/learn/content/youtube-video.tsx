@@ -5,11 +5,11 @@ import { contentId } from '../../../../utils';
 import { YoutubeVideoProps } from '../../../../types';
 import useSeekToSource from '@/hooks/use-seek-to-source';
 
-const YoutubeVideo = ({seconds}: YoutubeVideoProps ) => {
+const YoutubeVideo = ({source}: YoutubeVideoProps ) => {
   const videoOpts = useVideoOptions();
   const { onReady, seekToSource } = useSeekToSource('youtube');
 
-  seekToSource(seconds)
+  seekToSource(source)
   
   return (
     <div className="rounded-[10px] overflow-hidden">
