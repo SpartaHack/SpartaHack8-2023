@@ -9,7 +9,7 @@ const Content = ({type}: ContentProps) => {
   return (
     <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
         {type === "youtube" &&
-            <YoutubeVideo/>
+            <YoutubeVideo seconds={5000}/>
         } 
         {type === "pdf" &&
             <PDF/>

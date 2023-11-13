@@ -1,4 +1,5 @@
 import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
+import { YouTubeProps } from "react-youtube";
 
 export type CustomButtonProps = {
     title: string,
@@ -117,4 +118,12 @@ export type ResponseProps = {
 export type TooltipContentProps = {
     source: ResponseProps['source'];
     children?: ReactNode;
+}
+
+export type PlayerProps = YouTubeProps & {
+    seekTo: (seconds: number) => void;
+}
+
+export type YoutubeVideoProps = {
+    seconds: number
 }

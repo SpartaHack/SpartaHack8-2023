@@ -8,8 +8,8 @@ export const TooltipContent = ({source, children}: TooltipContentProps) => {
         tooltipContent = source[key] || 'Source';
     }
     return (
-        <Tooltip content={tooltipContent}>
-            <sup className='text-[10px] px-[4px] py-[2px] rounded-full bg-neutral-300 dark:bg-neutral-700 cursor-pointer'>
+        <Tooltip className="border" content={tooltipContent}>
+            <sup className='text-[10px] px-[4px] py-[2px] rounded-full bg-neutral-300 hover:invert dark:bg-neutral-700 cursor-pointer'>
                 {children}
             </sup>
         </Tooltip>
