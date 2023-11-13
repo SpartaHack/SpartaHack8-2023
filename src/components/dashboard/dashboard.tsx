@@ -2,7 +2,7 @@
 import React from 'react';
 import { defaultCourseContent } from '../../../utils/constants';
 import ContentCard from './content-card';
-import FolderChat from './folder-chat';
+import FolderChatBase from './folder-chat-base';
 
 const Dashboard = () => {
   return (
@@ -13,7 +13,7 @@ const Dashboard = () => {
         ))}
       </div> 
       <div className='fixed z-2 bottom-0 right-0 drop-shadow-lg lg:mr-10 lg:mb-10 mr-5 mb-5'>
-        <FolderChat/>
+        <FolderChatBase/>
       </div> 
     </main>
   );
