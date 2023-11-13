@@ -2,6 +2,7 @@
 import React from 'react';
 import { defaultCourseContent } from '../../../utils/constants';
 import ContentCard from './content-card';
+import FolderChat from './folder-chat';
 
 const Dashboard = () => {
   return (
@@ -10,7 +11,10 @@ const Dashboard = () => {
         {defaultCourseContent.map((content, key) => (
           <ContentCard key={key} type={content.type} contentID={content.contentID} title={content.title} thumbnail_url={content.thumbnail}/>
         ))}
-      </div>  
+      </div> 
+      <div className='fixed z-2 bottom-0 right-0 drop-shadow-lg lg:mr-10 lg:mb-10 mr-5 mb-5'>
+        <FolderChat/>
+      </div> 
     </main>
   );
 };

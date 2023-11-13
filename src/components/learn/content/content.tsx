@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import { ContentProps } from '../../../../types';
 import YoutubeVideo from './youtube-video';
 import PDF from './pdf';
