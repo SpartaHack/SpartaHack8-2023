@@ -31,11 +31,11 @@ const FolderChatMain = () => {
                     </div>
                 </div>
         </ScrollShadow>
-            <div className="mt-3">
+        <div className="mt-3">
             <ChatSubmit
                 onMessageSubmit={handleChatSubmit} isLoading={isChatSubmitting}
             />
-            </div>
+        </div>
     </>
   )
 }
