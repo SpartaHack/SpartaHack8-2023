@@ -12,7 +12,7 @@ const LearnPage = () => {
     <>
       <Suspense fallback={<Loading/>}>
         <Header/>
-        <Content type='youtube'/>
+        <Content type='pdf'/>
       </Suspense>
     </>
   )

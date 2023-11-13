@@ -127,3 +127,7 @@ export type PlayerProps = YouTubeProps & {
 export type YoutubeVideoProps = {
     source: number
 }
+
+export type PDFProps = {
+    sourcePage: number,
+}

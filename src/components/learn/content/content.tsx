@@ -12,7 +12,7 @@ const Content = ({type}: ContentProps) => {
             <YoutubeVideo source={5000}/>
         } 
         {type === "pdf" &&
-            <PDF/>
+            <PDF sourcePage={2}/>
         }
       <div className="lg:tabs-lg tabs-sm">
         <TabComponent/>

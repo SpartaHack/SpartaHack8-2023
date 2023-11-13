@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { SummaryProps } from '../../../../types';
 
 const Summary = ({summary}: SummaryProps) => {
-  const type = 'youtube'
+  const type = 'pdf'
   const height = useContainerHeight({type: type});
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();
