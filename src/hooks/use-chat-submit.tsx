@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
-import { chatContent } from "@/app/api/endpoints";
+import { chatContent, chatCourse } from "@/app/api/endpoints";
 
-const useChatSubmit = (initialChatLog: MessageType[], user_id: string, contentId: string, course_id: string) => {
+const useChatSubmit = (type: string, initialChatLog: MessageType[], user_id: string, contentId: string, course_id: string) => {
   const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,9 +14,14 @@ const useChatSubmit = (initialChatLog: MessageType[], user_id: string, contentId
     ]);
   
     setIsLoading(true);
+    let response;
 
-    const response = await chatContent(user_id, course_id, contentId, query, {}, false, false);
-      
+    if (type === 'content') {
+      response = await chatContent(user_id, course_id, contentId, query, {}, false, false);
+    } else {
+      response = await chatCourse(user_id, course_id, contentId, query, {}, false, false)
+    }
+
     if (!response.body) {
       return;
     }
@@ -37,9 +42,8 @@ const useChatSubmit = (initialChatLog: MessageType[], user_id: string, contentId
             }
             const chunk = decoder.decode(value, {stream: true});
             message += chunk;
-            const replacedResult = replaceMessage(message);
+            const replacedResult = replaceMessage(type, message);
             message = replacedResult.replacedMessage;
-            console.log(replacedResult.sources)
             setChatLog((prev) => {
               if (prev.length > 0 && prev[prev.length - 1].type === "bot") {
                 const lastMessage = prev[prev.length - 1];

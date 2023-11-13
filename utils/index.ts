@@ -19,12 +19,23 @@ export const sideBarMotion = {
 export const replaceMessage = (() => {
   let counter = 0;
   let sources: string[] = [];
-  return (message: string) => {
-    const replacedMessage = message.replace(/(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g, (match) => {
+  return (type: string, message: string) => {
+    let regex: RegExp;
+
+    if (type === 'youtube') {
+      regex = /(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g;
+    } else if (type === 'course') {
+      regex = /(\[[^\]]+\])/g;
+    } else {
+      regex = /(\[[^\]]+\])/g;
+    }
+
+    const replacedMessage = message.replace(regex, (match) => {
       counter++;
       sources[counter] = match;
       return ` *${counter}* `;
     });
+
     return { replacedMessage, sources };
   };
 })();

@@ -11,7 +11,7 @@ import TypingIndicator from '../../../helpers/typing-indicator';
 const Chat = () => {
   const type = 'pdf'
   const height = useContainerHeight({type: type});
-  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( [{type: "bot", response: "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!"}], user_id, contentId, course_id);
+  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'content', [{type: "bot", response: "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!"}], user_id, contentId, course_id);
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   const chatLog = [ ...chatSubmitLog];
