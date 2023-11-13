@@ -6,12 +6,15 @@ import useChatSubmit from '@/hooks/use-chat-submit';
 import Message from '../learn/tabs/message';
 import TypingIndicator from '@/helpers/typing-indicator';
 import { contentId, course_id, user_id } from '../../../utils';
+import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources';
 
 const FolderChatMain = () => {
-  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'course', [{type: "bot", response: "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!"}], user_id, contentId, course_id);
+  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'course', [{type: "bot", response: "Welcome to the course chat! Ask me anything in this folder! Give feedback for improvements!"}], user_id, contentId, course_id);
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();
-  const chatLog = [ ...chatSubmitLog];
+  let chatLog = [ ...chatSubmitLog];
+  chatLog = removeUndefinedFromSources(chatLog)
+
   return (
     <>
         <ScrollShadow         
