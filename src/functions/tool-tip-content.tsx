@@ -3,9 +3,13 @@ import { TooltipContentProps } from "../../types";
 
 export const TooltipContent = ({source, children}: TooltipContentProps) => {
     let tooltipContent = 'Source';
-    if (source && typeof children === 'string') {
+    let newSource = source
+    if (source) {
+        newSource = source.filter(item => item !== undefined);
+    }
+    if (newSource && typeof children === 'string') {
         const key = parseInt(children.replace(/\*/g, ''), 10);
-        tooltipContent = source[key] || 'Source';
+        tooltipContent = newSource[key-1] || 'Source';
     }
     return (
         <Tooltip className="border" content={tooltipContent}>
