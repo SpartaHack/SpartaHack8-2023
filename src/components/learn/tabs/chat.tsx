@@ -7,6 +7,7 @@ import { contentId, course_id, user_id } from '../../../../utils';
 import useCopyToClipboard from '@/hooks/use-copy-clipboard';
 import Message from './message';
 import TypingIndicator from '../../../helpers/typing-indicator';
+import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources';
 
 const Chat = () => {
   const type = 'pdf'
@@ -14,7 +15,8 @@ const Chat = () => {
   const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'content', [{type: "bot", response: "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!"}], user_id, contentId, course_id);
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();
-  const chatLog = [ ...chatSubmitLog];
+  let chatLog = [ ...chatSubmitLog];
+  chatLog = removeUndefinedFromSources(chatLog)
 
   return (
     <div className='lg:h-full h-[70vh] flex-col flex'  style={{maxHeight: `${height-90}px`}}>
