@@ -1,17 +1,21 @@
 'use client'
-import React, { useRef } from 'react'
+import React from 'react'
 import PriceCard from '@/helpers/price-card'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/functions/tier-constants';
-import useTitleResizeOnScroll from '@/hooks/use-title-resize';
+import { getCheckoutUrl } from '@/functions/get-checkout-url';
+import { initFirebase } from '../../../db/firebase';
+import { useRouter } from 'next/navigation';
 
-gsap.registerPlugin(ScrollTrigger)
 
 const Upgrade = () => {
-  const titleRef = useRef(null)
+  const router = useRouter()
 
-  useTitleResizeOnScroll(titleRef)
+  const handlePro = async () => {
+    const app = initFirebase()
+    const priceId = 'price_1OCV32K8Jk6Q3TjG3W5GBmWW';
+    const checkoutURL = await getCheckoutUrl(app, priceId)
+    router.push(checkoutURL)
+  }
 
   return (
     <>
@@ -31,7 +35,7 @@ const Upgrade = () => {
             subTitle='Free Forever.'
             planBenefits={freePlanBenefits}
             buttonText='Start for Free'
-            route=''
+            handleClick={() => router.push('/')}
           />
 
           <PriceCard 
@@ -44,7 +48,7 @@ const Upgrade = () => {
             subTitle='Best for beginners.'
             planBenefits={premiumMonthlyPlanBenefits}
             buttonText='Start your 14-day free trail'
-            route='premium_monthly'
+            handleClick={handlePro}
           />
         
       </div>

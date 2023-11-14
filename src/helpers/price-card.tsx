@@ -3,7 +3,7 @@ import { CustomButton } from '@/helpers/custom-btn'
 import { PriceCardProps } from '../../types'
 import { useRouter } from 'next/navigation'
   
-const PriceCard = ({ price, subTitle, planBenefits, buttonText, route }: PriceCardProps) => {
+const PriceCard = ({ price, subTitle, planBenefits, buttonText, handleClick }: PriceCardProps) => {
   const router = useRouter();
   return (
     <div className='rounded-[10px] justify-between bg-white dark:bg-neutral-900 w-[75%] lg:h-[450px] h-[320px] px-[60px] lg:w-[40%] shadow-xl border dark:border-none p-3 text-center cursor-pointer hover:scale-105 transition duration-500'>
@@ -21,7 +21,7 @@ const PriceCard = ({ price, subTitle, planBenefits, buttonText, route }: PriceCa
         btnStyling='mt-5 w-full bg-tertiary bg-black dark:bg-white dark:text-black text-white font-semibold'
         title={buttonText} 
         btnType='button'
-        clickEvent={() => router.push(`/${route}`)}
+        clickEvent={handleClick}
       />  
     </div>
   )

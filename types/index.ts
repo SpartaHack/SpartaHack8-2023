@@ -73,7 +73,7 @@ export type PriceCardProps = {
     subTitle: string;
     planBenefits: Features[];
     buttonText: string,
-    route: string
+    handleClick: () => void;
 }
 
 export type DashboardProps = {
