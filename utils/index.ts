@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { initFirebase } from "../db/firebase";
 import { toast } from "sonner";
@@ -70,6 +71,17 @@ export const signInEmail = async (email: string, password: string) => {
     const auth = getAuth()
     const result = await signInWithEmailAndPassword(auth, email, password);
     toast.success("Signed in successfully")
+  } catch {
+    toast.error("Try again. Something went wrong")
+  }
+}
+
+export const logOut = async () => {
+  initFirebase();
+  const auth = getAuth();
+  try {
+    signOut(auth)
+    toast.success("Signed out successfully")
   } catch {
     toast.error("Try again. Something went wrong")
   }

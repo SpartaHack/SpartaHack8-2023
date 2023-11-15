@@ -131,3 +131,8 @@ export type YoutubeVideoProps = {
 export type PDFProps = {
     sourcePage: number,
 }
+
+export type YouLearnLogoProps = {
+    height?: number,
+    width?: number
+}

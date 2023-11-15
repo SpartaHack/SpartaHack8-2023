@@ -3,17 +3,14 @@ import React from 'react'
 import PriceCard from '@/helpers/price-card'
 import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/functions/tier-constants';
 import { getCheckoutUrl } from '@/functions/get-checkout-url';
-import { initFirebase } from '../../../db/firebase';
 import { useRouter } from 'next/navigation';
-
 
 const Upgrade = () => {
   const router = useRouter()
 
   const handlePro = async () => {
-    const app = initFirebase()
     const priceId = 'price_1OCV32K8Jk6Q3TjG3W5GBmWW';
-    const checkoutURL = await getCheckoutUrl(app, priceId)
+    const checkoutURL = await getCheckoutUrl(priceId)
     router.push(checkoutURL)
   }
 
@@ -41,7 +38,7 @@ const Upgrade = () => {
           <PriceCard 
             price={
               <>
-               $7.99 &nbsp;
+               $9.99 &nbsp;
                <span className='font-light lg:text-[18px] text-[15px]'>/month</span>
               </>
             }
