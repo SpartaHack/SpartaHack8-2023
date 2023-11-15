@@ -37,6 +37,7 @@ const Steps = () => {
               eventChange = { (e) => setName(e.target.value) }
             />
             <CustomAutocomplete 
+              size='lg'
               datas={educationOptions}
               isInvalid={ educationLevel === '' } 
               label='Select education Level' 

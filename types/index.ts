@@ -107,7 +107,8 @@ export type CustomAutocompleteProps = {
     datas: {value: string} [],
     isInvalid: boolean,
     label: string,
-    onValueChange: (value: string) => void;
+    onValueChange: (value: string) => void,
+    size: "sm" | "md" | "lg" | undefined,
 }
 
 export type ResponseProps = {
@@ -136,3 +137,8 @@ export type YouLearnLogoProps = {
     height?: number,
     width?: number
 }
+
+export type ImageUploadProps = {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    src: string,
+  }

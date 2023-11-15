@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 import {Autocomplete, AutocompleteItem} from "@nextui-org/react";
 import { CustomAutocompleteProps } from '../../types';
 
-const CustomAutocomplete = ({datas, isInvalid, label, onValueChange}: CustomAutocompleteProps) => {
+const CustomAutocomplete = ({datas, isInvalid, label, onValueChange, size}: CustomAutocompleteProps) => {
   const [value, setValue] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
   const [isInvalidState, setIsInvalidState] = useState(false);
@@ -33,7 +33,7 @@ const CustomAutocomplete = ({datas, isInvalid, label, onValueChange}: CustomAuto
         variant='bordered'
         isInvalid={ isInvalidState && isFocused }
         label={label}
-        size='lg'
+        size={size}
         className='mb-2'
         onInputChange={onInputChange}
         color={(!isFocused && value == '') ? 'danger' : 'success'}

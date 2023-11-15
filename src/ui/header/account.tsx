@@ -27,7 +27,7 @@ const Account = ({name, description, picture}: AccountProps) => {
         </DropdownTrigger>
         <DropdownMenu className="p-3">
           <DropdownSection showDivider>
-            <DropdownItem key="profile" className="opacity-100 h-14 gap-2">
+            <DropdownItem key="profile" className="opacity-100 h-14 gap-2" onClick={() => router.push('/profile')}>
               <User
                 name={name}
                 description={description}
@@ -41,7 +41,6 @@ const Account = ({name, description, picture}: AccountProps) => {
                 }}
               />
             </DropdownItem>
-            <DropdownItem key="settings">Settings</DropdownItem>
             </DropdownSection>
 
           <DropdownSection aria-label="Preferences" showDivider>
