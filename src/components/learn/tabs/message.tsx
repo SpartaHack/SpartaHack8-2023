@@ -8,7 +8,7 @@ const Message = ({ message, index, copiedState, copyToClipboard }: MessageProps)
         <div key={index}
         className={
             message.type === 'bot'
-              ? "bg-absolute_white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-[15px] p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full max-w-[70%] w-fit"
+              ? "bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-[15px] p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full max-w-[70%] w-fit"
               : "bg-[#7dff97] text-black my-2 max-w-[70%] w-fit rounded-[15px] p-4 leading-relaxed drop-shadow-sm ml-auto break-words"
           }
         >

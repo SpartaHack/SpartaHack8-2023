@@ -5,7 +5,7 @@ import { getPortalUrl } from '@/functions/get-portal-url';
 import { useRouter } from 'next/navigation';
 import { Link } from '@nextui-org/react';
 import EditAccordion from '@/components/profile/edit-accordion';
-import ContributionGraph from './contribution-graph';
+import Streaks from './streaks';
 
 const UserInformation = () => {
   const router = useRouter()
@@ -42,8 +42,8 @@ const UserInformation = () => {
           </div>
           <EditAccordion title={<h1 className='text-center text-[15px] p-2 rounded-[10px] bg-white dark:bg-black'>Edit Profile</h1>}/>
         </div>
-        <div className='flex flex-col justify-between border rounded-[10px] p-5 w-full h-[220px] lg:h-[230px] mt-5 lg:mt-0 lg:ml-5'>
-          <ContributionGraph/>
+        <div className='flex flex-col justify-between border rounded-[10px] p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5'>
+          <Streaks/>
         </div>
       </div>
       <Link onClick={handleEditPlan} size='sm' className='cursor-pointer mt-4 ml-1' underline="always">Manage Subscriptions</Link>
