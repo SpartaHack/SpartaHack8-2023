@@ -27,7 +27,7 @@ const ContributionGraph = () => {
     <>
         <div className='flex text-sm flex-col lg:flex-row lg:mt-2 justify-between'>
             <h1>6 content generated in the past year</h1>
-            <div className='flex flex-row mt-1 space-x-5 justify-between'>
+            <div className='flex flex-row mt-1 md:mt-0 space-x-5 justify-between'>
                 <span>
                     Total Active Days: 9
                 </span>  
