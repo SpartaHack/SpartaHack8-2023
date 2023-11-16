@@ -2,6 +2,14 @@
 import React from 'react'
 import { CustomButton } from '../helpers/custom-btn'
 import { useRouter } from 'next/navigation'
+import { Icon } from '@iconify/react/dist/iconify.js'
+
+const BetaElement = (
+  <div className='flex flex-row justify-between'>
+    <h1>Beta Version</h1>
+    <Icon icon='heroicons:arrow-top-right-on-square' className='w-3 ml-1 h-3 font-bold mt-0.5'/>
+  </div>
+)
 
 const BetaLogo = () => {
   const router = useRouter();
@@ -10,9 +18,10 @@ const BetaLogo = () => {
     <>
       <div className='ml-2 hidden lg:block'>
         <CustomButton 
-          title="Beta Version" 
+          title={BetaElement} 
+          size='sm'
           btnType="button"
-          btnStyling='text-xs dark:border-secondary dark:text-secondary border-[#174c22] text-[#174c22] dark:bg-black'
+          btnStyling='text-xs bg-transparent border-2 dark:border-secondary border-primary dark:text-secondary text-primary'
           popOver
           popOverTitle='Give Feedback'
           popOverClickEvent={() => router.push('https://www.youlearn.ai/feedbackApp')}

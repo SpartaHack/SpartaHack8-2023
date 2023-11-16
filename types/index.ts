@@ -2,8 +2,9 @@ import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
 import { YouTubeProps } from "react-youtube";
 
 export type CustomButtonProps = {
-    title: string,
-    btnType: "button" | "submit" | "reset" | undefined;
+    title: string | JSX.Element,
+    size?: "sm" | "md" | "lg" | undefined,
+    btnType: "button" | "submit" | "reset" | undefined,
     clickEvent?: () => void,
     btnStyling?: string,
     popOver?: boolean,

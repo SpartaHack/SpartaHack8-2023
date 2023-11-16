@@ -28,7 +28,7 @@ const UserBilling = () => {
               <h2 className='mt-2.5 text-sm'>Plan ends December 10, 2023</h2>
             </div>
           </div>
-          <CustomButton title='Edit Plan' btnType='button' btnStyling='hidden md:block mt-2'/>
+          <CustomButton title='Edit Plan' btnType='button' btnStyling='hidden md:block mt-2' clickEvent={handleEditPlan}/>
         </div>
         <div className='flex mt-8 flex-row justify-between'>
           <div className='flex flex-row'>

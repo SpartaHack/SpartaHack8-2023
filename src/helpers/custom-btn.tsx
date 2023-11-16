@@ -3,12 +3,12 @@ import React from 'react'
 import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
 import { CustomButtonProps } from '../../types';
 
-export const CustomButton = ({title, btnStyling, popOver, popOverTitle, popOverClickEvent, popOverStyling, clickEvent, btnType}: CustomButtonProps) => {
+export const CustomButton = ({title, size, btnStyling, popOver, popOverTitle, popOverClickEvent, popOverStyling, clickEvent, btnType}: CustomButtonProps) => {
     return (
         popOver ? (
             <Popover placement='bottom'>
                 <PopoverTrigger>
-                    <Button disableRipple type={btnType} className={`${btnStyling}`}>
+                    <Button disableRipple size={size} type={btnType} className={`${btnStyling}`}>
                         {title}
                     </Button>
                 </PopoverTrigger>
@@ -19,7 +19,7 @@ export const CustomButton = ({title, btnStyling, popOver, popOverTitle, popOverC
                 </PopoverContent>
             </Popover>
         ) : (
-            <Button disableRipple type={btnType} className={`${btnStyling}`} onClick={clickEvent}>
+            <Button disableRipple type={btnType} size={size} className={`${btnStyling}`} onClick={clickEvent}>
                 {title}
             </Button>
         )

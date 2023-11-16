@@ -11,24 +11,24 @@ const YouLearnLogo = ({height, width}: YouLearnLogoProps) => {
           <Image
             src="youlearn.svg"
             alt="YouLearn"
-            width={width ? width : 120}
-            height={height ? height : 120}
+            width={width ? width : 100}
+            height={height ? height : 100}
           />
         </Link>
         <Link href="/" className="dark:sm:block hidden sm:mr-3">
           <Image
             src="youlearnDark.svg"
             alt="YouLearn"
-            width={width ? width : 120}
-            height={height ? height : 120}
+            width={width ? width : 100}
+            height={height ? height : 100}
           />
         </Link>
         <Link href="/" className="sm:hidden">
           <Image
             src="youlearnMedia.svg"
             alt="YouLearnMedia"
-            width={width ? width : 45}
-            height={height ? height : 45}
+            width={width ? width : 35}
+            height={height ? height : 35}
           />
         </Link>
     </div>

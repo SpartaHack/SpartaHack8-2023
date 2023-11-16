@@ -5,7 +5,7 @@ import Loading from "./loading"
 
 export default function App() {
   return (
-    <main className="dark:bg-neutral-900">
+    <main className="dark:bg-neutral-900 bg-white">
       <Suspense fallback={<Loading/>}>
         <Header/>
         <Dashboard/>

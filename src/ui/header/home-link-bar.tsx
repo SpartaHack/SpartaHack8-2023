@@ -5,7 +5,7 @@ const HomeLinkBar = () => {
   return (
     <div className="flex justify-center flex-1">
       <form
-        className="flex border items-center align-items:center hover:border-secondary drop-shadow-sm rounded-[10px] bg-absolute_white px-1 py-.5 md:mr-12 ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+        className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-[10px] bg-absolute_white px-1 py-.5 md:mr-12 ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
       >
         <Icon icon="tabler:plus" className='header-icons'/>
         <div
@@ -16,7 +16,6 @@ const HomeLinkBar = () => {
             className="w-full outline-none ml-2 bg-absolute_white dark:bg-transparent"
             placeholder="I want to learn..."
           />
-          <div className="absolute right-10 w-px h-full bg-neutral-300 dark"/>
           <button type="submit">
             <Icon icon="iconamoon:search-light"
               className="h-6 w-6 mr-1"
