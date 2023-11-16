@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 const SignUp = () => {
   const router = useRouter()
   return (
-    <div className='flex flex-col h-screen items-center justify-center'>
+    <div className='flex bg-white dark:bg-neutral-900 flex-col h-screen items-center justify-center'>
       <div className="w-full sm:w-3/5 flex p-8 space-y-4 max-w-md items-center justify-center">
         <div className="p-8 space-y-4 max-w-md w-full"> 
           <Steps/>
@@ -15,7 +15,7 @@ const SignUp = () => {
                 Already have an account?
             </p>
             <button
-                className="text-secondary dark:text-[#5ce778] font-thin rounded-[10px] text-sm"
+                className="dark:text-secondary text-[#5ce778] font-thin rounded-[10px] text-sm"
                 onClick={() => router.push('/signin')}
             >
                 Sign in here.

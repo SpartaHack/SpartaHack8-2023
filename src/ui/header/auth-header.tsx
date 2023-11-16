@@ -3,7 +3,7 @@ import React from 'react'
 
 const AuthHeader = () => {
   return (
-    <header className='absolute top-0 left-0 lg:mt-3 lg:ml-3 ml-2 mt-2 '>
+    <header className='absolute top-0 left-0 lg:mt-4 lg:ml-6 ml-4 mt-2 '>
         <YouLearnLogo/>
     </header>
   )
