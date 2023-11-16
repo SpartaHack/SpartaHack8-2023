@@ -41,11 +41,11 @@ const UserInformation = () => {
           </div>
           <EditAccordion title={<h1 className='text-center text-[15px] p-2 rounded-[10px] bg-white dark:bg-black'>Edit Profile</h1>}/>
         </div>
-        <div className='flex flex-col justify-between border rounded-[10px] p-5 w-full mt-5 lg:mt-0 lg:ml-5'>
-
+        <div className='flex flex-col justify-between border rounded-[10px] p-5 w-full h-[200px] mt-5 lg:mt-0 lg:ml-5'>
+          hi
         </div>
       </div>
-      <Link onClick={handleEditPlan} size='sm' className='cursor-pointer mt-4' underline="always">Manage Subscriptions</Link>
+      <Link onClick={handleEditPlan} size='sm' className='cursor-pointer mt-4 ml-1' underline="always">Manage Subscriptions</Link>
     </div>
   )
 }
