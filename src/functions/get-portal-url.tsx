@@ -15,7 +15,7 @@ export const getPortalUrl = async (): Promise<string> => {
       "ext-firestore-stripe-payments-createPortalLink"
     );
     const { data } = await functionRef({
-      customerId: user?.uid,
+      userId: user?.uid,
       returnUrl: window.location.origin,
     });
 
