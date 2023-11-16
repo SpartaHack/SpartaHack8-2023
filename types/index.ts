@@ -104,6 +104,7 @@ export type SummaryProps  = {
 }
 
 export type CustomAutocompleteProps = {
+    style?: string,
     datas: {value: string} [],
     isInvalid: boolean,
     label: string,
