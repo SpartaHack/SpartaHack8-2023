@@ -9,7 +9,7 @@ const Quiz = () => {
 
   return (
     <div className='lg:h-full h-[70vh] flex-col flex'  style={{maxHeight: `${height-90}px`}}>
-      <ScrollShadow size={5} hideScrollBar className='flex-grow overflow-hidden overflow-y-auto rounded-lg'>
+      <ScrollShadow size={5} hideScrollBar className='flex-grow overflow-hidden overflow-y-auto rounded-xl'>
         TEXT FOR DUMMIES sadad
         TEXT FOR DUMMIES
         TEXT FOR DUMMIES

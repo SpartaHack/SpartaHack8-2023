@@ -7,11 +7,11 @@ import MenuFooter from '@/ui/footer/menu-footer'
 const MenuItems = () => {
   return (
     <div className='mt-4 flex flex-col h-screen space-y-4'>
-      <div className='flex flex-row w-full justify-between lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-[10px]'>
+      <div className='flex flex-row w-full justify-between lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
         <Notification/>
         <span className='mt-1'>Notifications</span>
       </div>
-      <div className='flex flex-row w-full justify-between lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-[10px]'>
+      <div className='flex flex-row w-full justify-between lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
         <Account name='Achyut' description='@achyut'/>
         <span>Account</span>
       </div>

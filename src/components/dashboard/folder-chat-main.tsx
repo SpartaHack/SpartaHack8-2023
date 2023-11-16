@@ -20,7 +20,7 @@ const FolderChatMain = () => {
         <ScrollShadow         
             size={5} 
             hideScrollBar 
-            className='flex-grow rounded-lg h-full'>
+            className='flex-grow rounded-xl h-full'>
                 <div id="chat-container" className="flex-grow overflow-hidden overflow-y-auto rounded-xl">
                     {chatLog.map((message, index) => (
                     <Message

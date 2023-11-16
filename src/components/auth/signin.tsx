@@ -18,7 +18,7 @@ const SignIn = () => {
           <CustomButton 
             title='Log in with Google' 
             btnType='button'
-            btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+            btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
             clickEvent={authGoogle}
           />
           <div className="flex items-center justify-center pt-8">
@@ -34,7 +34,7 @@ const SignIn = () => {
                 Don&apos;t have an account?
             </p>
             <button
-                className="dark:text-secondary text-[#5ce778] font-thin rounded-[10px] text-sm"
+                className="dark:text-secondary text-[#5ce778] font-thin rounded-xl text-sm"
                 onClick={() => router.push('/signup')}
             >
                 Sign up here.

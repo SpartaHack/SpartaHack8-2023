@@ -17,7 +17,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
 
   return (
     <form
-      className="flex w-full bg-absolute_white dark:bg-component_black items-center align-items:center border border-neutral-200 dark:border-neutral-800 rounded-[10px] pl-3 flex-grow h-[42.5px]"
+      className="flex w-full bg-absolute_white dark:bg-component_black items-center align-items:center border border-neutral-200 dark:border-neutral-800 rounded-xl pl-3 flex-grow h-[42.5px]"
       onSubmit={handleSubmit}
     >
       <input
@@ -31,7 +31,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         {isLoading ? (
           <Spinner size='sm' color='secondary' className='mt-2 mr-1'/>
         ) : (
-          <Icon icon="ph:paper-plane" className="header-icons gradient text-[35px] rounded-[10px] dark:text-neutral-900" />
+          <Icon icon="ph:paper-plane" className="header-icons gradient text-[35px] rounded-xl dark:text-neutral-900" />
         )}
       </button>
     </form>

@@ -15,7 +15,7 @@ const SignUp = () => {
                 Already have an account?
             </p>
             <button
-                className="dark:text-secondary text-[#5ce778] font-thin rounded-[10px] text-sm"
+                className="dark:text-secondary text-[#5ce778] font-thin rounded-xl text-sm"
                 onClick={() => router.push('/signin')}
             >
                 Sign in here.

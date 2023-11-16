@@ -12,7 +12,7 @@ const YoutubeVideo = ({source}: YoutubeVideoProps ) => {
   seekToSource(source)
   
   return (
-    <div className="rounded-[10px] overflow-hidden">
+    <div className="rounded-xl overflow-hidden">
       <YouTube videoId={contentId} opts={videoOpts} onReady={onReady}/>
     </div>
   )

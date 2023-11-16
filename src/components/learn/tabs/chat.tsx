@@ -23,7 +23,7 @@ const Chat = () => {
       <ScrollShadow 
         size={5} 
         hideScrollBar 
-        className='flex-grow rounded-lg' 
+        className='flex-grow rounded-xl' 
       >
           <div id="chat-container" className="flex-grow overflow-hidden overflow-y-auto rounded-xl">
             {chatLog.map((message, index) => (

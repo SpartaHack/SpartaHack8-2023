@@ -47,7 +47,7 @@ const Steps = () => {
             <CustomButton 
               title = 'Continue'
               btnType = 'button'
-              btnStyling = 'mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+              btnStyling = 'mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
               clickEvent={handleContinue}
             />
           </div>
@@ -60,7 +60,7 @@ const Steps = () => {
           <CustomButton 
             title='Sign in with Google' 
             btnType='button'
-            btnStyling='border-2 bg-transparent dark:border-neutral-600 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+            btnStyling='border-2 bg-transparent dark:border-neutral-600 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
             clickEvent={authGoogle}
           />
           <div className="flex items-center justify-center pt-8">

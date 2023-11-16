@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 const PriceCard = ({ price, subTitle, planBenefits, buttonText, handleClick }: PriceCardProps) => {
   const router = useRouter();
   return (
-    <div className='rounded-[10px] justify-between bg-white dark:bg-neutral-900 w-[75%] lg:h-[450px] h-[320px] px-[60px] lg:w-[40%] shadow-xl border dark:border-none p-3 text-center cursor-pointer hover:scale-105 transition duration-500'>
+    <div className='rounded-xl justify-between bg-white dark:bg-neutral-900 w-[75%] lg:h-[450px] h-[320px] px-[60px] lg:w-[40%] shadow-xl border dark:border-none p-3 text-center cursor-pointer hover:scale-105 transition duration-500'>
         <h1 className='text-3xl mt-5 lg:mt-7 font-extrabold'>
             {price}
           </h1>

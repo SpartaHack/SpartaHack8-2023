@@ -12,7 +12,7 @@ const PDF = ({ sourcePage }: PDFProps) => {
             src={pdfUrl}
             width="100%"
             height="100%"
-            className='rounded-[10px] border-none'
+            className='rounded-xl border-none'
         />
         </div>
     </div>

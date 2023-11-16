@@ -32,7 +32,7 @@ const UserInformation = () => {
   return (
     <div className='md:ml-10 md:mt-6 md:mr-10 lg:ml-20 lg:mt-12 lg:mr-20 ml-5 mr-5 mt-5'>
       <div className='flex flex-col lg:flex-row'>
-        <div className='flex flex-col justify-between border rounded-[10px] px-3 pt-5 pb-1 lg:w-[65%]'>
+        <div className='flex flex-col justify-between border rounded-xl px-3 pt-5 pb-1 lg:w-[65%]'>
           <div className='flex flex-row ml-2 mr-2'>
             <ImageUpload onChange={handleImageChange} src={selectedImage || ''}/>
             <div className='flex flex-col ml-10'>
@@ -40,9 +40,9 @@ const UserInformation = () => {
               <h2 className='text-sm mt-2'>Joined December 31, 2023</h2>
             </div>
           </div>
-          <EditAccordion title={<h1 className='text-center text-[15px] p-2 rounded-[10px] bg-white dark:bg-black'>Edit Profile</h1>}/>
+          <EditAccordion title={<h1 className='text-center text-[15px] p-2 rounded-xl bg-white dark:bg-black'>Edit Profile</h1>}/>
         </div>
-        <div className='flex flex-col justify-between border rounded-[10px] p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5'>
+        <div className='flex flex-col justify-between border rounded-xl p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5'>
           <Streaks/>
         </div>
       </div>
