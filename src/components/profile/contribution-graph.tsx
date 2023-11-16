@@ -1,6 +1,6 @@
 import React from 'react';
-import Calendar from 'react-github-contribution-calendar';
 import { useTheme } from 'next-themes';
+import Calendar from 'react-github-contribution-calendar';
 
 const ContributionGraph = () => {
   const { theme } = useTheme();
@@ -36,7 +36,7 @@ const ContributionGraph = () => {
                 </span>  
             </div>
         </div>
-        <Calendar 
+        <Calendar
             values={values}
             panelColors={panelColors}
             until={until} weekLabelAttributes={undefined} monthLabelAttributes={undefined} panelAttributes={undefined}        
