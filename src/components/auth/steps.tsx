@@ -5,6 +5,7 @@ import CustomTextInput from '@/helpers/custom-text-input'
 import { toast } from 'sonner'
 import CustomAutocomplete from '@/helpers/custom-autocomplete'
 import { educationOptions } from '../../../utils/constants'
+import { authGoogle } from '../../../utils'
 
 const Steps = () => {
   const [step, setStep] = useState(1);
@@ -56,6 +57,19 @@ const Steps = () => {
           <p className="pb-5 text-md text-left font-thin text-neutral-500 dark:text-neutral-500">
             Create your free YouLearn account
           </p>
+          <CustomButton 
+            title='Sign in with Google' 
+            btnType='button'
+            btnStyling='border-2 bg-transparent dark:border-neutral-600 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+            clickEvent={authGoogle}
+          />
+          <div className="flex items-center justify-center pt-8">
+            <div className="border-t border-neutral-500 flex-grow dark:text-neutral-500"/>
+            <span className="flex-row mx-2 text-neutral-500 dark:text-neutral-500 font-light text-sm">
+              or continue with
+            </span>
+            <div className="border-t dark:text-neutral-500 border-neutral-500 flex-grow"/>
+          </div>
           <SignUpForm/>
         </>
       )}  

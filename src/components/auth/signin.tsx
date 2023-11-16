@@ -18,11 +18,11 @@ const SignIn = () => {
           <CustomButton 
             title='Log in with Google' 
             btnType='button'
-            btnStyling='border dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
+            btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-[10px] h-[50.5px] w-full'
             clickEvent={authGoogle}
           />
           <div className="flex items-center justify-center pt-8">
-            <div className="border-t border-neutral-500 flex-grow dark:text-neutral-500"/>
+            <div className="border-t border-neutral-600 flex-grow dark:text-neutral-500"/>
             <span className="flex-row mx-2 text-neutral-500 dark:text-neutral-500 font-light text-sm">
               or continue with
             </span>
