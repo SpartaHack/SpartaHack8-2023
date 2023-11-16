@@ -1,7 +1,18 @@
+'use client'
 import { CustomButton } from '@/helpers/custom-btn';
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import { getPortalUrl } from '@/functions/get-portal-url';
 
 const UserBilling = () => {
+  const router = useRouter();
+
+  const handleEditPlan = async () => {
+    const portalUrl = await getPortalUrl();
+    console.log(portalUrl)
+    router.push(portalUrl)
+  }
+
   return (
     <div className='md:ml-10 md:mt-6 md:mr-10 lg:ml-20 lg:mt-12 lg:mr-20 ml-5 mr-5 mt-5'>
       <h1 className='text-3xl'>
@@ -35,7 +46,7 @@ const UserBilling = () => {
           </div>
         </div>
       </div>
-      <CustomButton title='Edit Plan' btnType='button' btnStyling='w-full w-full md:hidden mt-6'/>
+      <CustomButton title='Edit Plan' btnType='button' btnStyling='w-full w-full md:hidden mt-6' clickEvent={handleEditPlan}/>
     </div>
   )
 }
