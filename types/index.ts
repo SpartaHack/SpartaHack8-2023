@@ -143,4 +143,10 @@ export type YouLearnLogoProps = {
 export type ImageUploadProps = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
     src: string,
-  }
+}
+
+export type EditAccordionProps = {
+    indicator?: JSX.Element,
+    title: JSX.Element | string,
+    style?: string,
+}

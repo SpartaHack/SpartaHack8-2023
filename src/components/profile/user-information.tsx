@@ -4,8 +4,7 @@ import React, { useState } from 'react'
 import { getPortalUrl } from '@/functions/get-portal-url';
 import { useRouter } from 'next/navigation';
 import { Link } from '@nextui-org/react';
-import CustomAccordion from '@/helpers/custom-accordion';
-import { editProfileForm } from '@/functions/edit-profile-form';
+import EditAccordion from '@/components/profile/edit-accordion';
 
 const UserInformation = () => {
   const router = useRouter()
@@ -40,7 +39,7 @@ const UserInformation = () => {
               <h2 className='text-sm mt-2'>Joined December 31, 2023</h2>
             </div>
           </div>
-          <CustomAccordion title={<h1 className='text-center text-[15px] p-2 rounded-[10px] bg-neutral-200'>Edit Profile</h1>} content={editProfileForm}/>
+          <EditAccordion title={<h1 className='text-center text-[15px] p-2 rounded-[10px] bg-white dark:bg-black'>Edit Profile</h1>}/>
         </div>
         <div className='flex flex-col justify-between border rounded-[10px] p-5 w-full mt-5 lg:mt-0 lg:ml-5'>
 

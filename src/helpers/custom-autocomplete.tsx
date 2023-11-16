@@ -34,7 +34,7 @@ const CustomAutocomplete = ({style, datas, isInvalid, label, onValueChange, size
         isInvalid={ isInvalidState && isFocused }
         label={label}
         size={size}
-        className={`mb-2 ${style}`}
+        className={`${style}`}
         onInputChange={onInputChange}
         color={(!isFocused && value == '') ? 'danger' : 'success'}
         onFocus={handleFocus}
