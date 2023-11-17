@@ -9,11 +9,9 @@ const MenuItems = () => {
     <div className='flex flex-col h-full space-y-4'>
       <div className='flex flex-row w-full lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
         <Notification/>
-        <span className='mt-1'>Notifications</span>
       </div>
       <div className='flex flex-row w-full lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
         <Account name='Achyut' description='@achyut'/>
-        <span className='ml-5'>Account</span>
       </div>
       <div className='horizontal-line lg:hidden'/>
       <Folders/>

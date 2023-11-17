@@ -2,7 +2,14 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 import React from 'react'
 
 export const NotificationData = {
-    title: <Icon icon="mingcute:notification-line" className='h-6 w-6'/>,
+    title: (
+        <div className='flex flex-row'>
+            <Icon icon="mingcute:notification-line" className='h-6 w-6'/>
+            <div className='lg:hidden'>
+                <span className='ml-5 mt-1'>Notification</span>
+            </div>
+        </div>
+    ),
     sections: [
       {
         label: 'Section 1', 

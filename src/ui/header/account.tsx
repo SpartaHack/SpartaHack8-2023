@@ -23,7 +23,12 @@ const Account = ({name, description, picture}: AccountProps) => {
     <div className='cursor-pointer mt-0.5'>
       <Dropdown radius="sm">
         <DropdownTrigger>
+          <div className='flex flex-row'>
           <Icon icon="charm:person" className=' h-6 w-6' />
+            <div className='lg:hidden'>
+                <span className='ml-5 mt-1'>Account</span>
+            </div>
+        </div>
         </DropdownTrigger>
         <DropdownMenu className="p-3">
           <DropdownSection showDivider>
