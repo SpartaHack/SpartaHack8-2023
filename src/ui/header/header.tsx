@@ -1,7 +1,5 @@
 'use client'
 import React, { useRef, useState } from "react";
-import YouLearnLogo from "@/icon/youlearn-logo";
-import BetaLogo from "@/icon/beta-logo";
 import HomeLinkBar from "./home-link-bar";
 import { Navbar, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
 import Account from "./account";
@@ -26,8 +24,6 @@ export default function Header() {
         <div className='md:mr-6 mr-5 h-8'>
           <NavbarMenuToggle/>
         </div>
-        <YouLearnLogo/>
-        <BetaLogo/>
         <HomeLinkBar/>
         <div className="hidden lg:flex space-x-5">
           <Notification/>
