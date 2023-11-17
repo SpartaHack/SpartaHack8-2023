@@ -4,7 +4,6 @@ import React, { ChangeEvent, useState } from 'react'
 import { signUpEmail } from '../../../utils';
 
 const SignUpForm = () => {
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -16,13 +15,15 @@ const SignUpForm = () => {
     };
   
     const isInvalid = (value: string, type?: string) => {
-        if (type === 'email') {
-          return !emailRegex.test(value);
-        } else if (type === 'confirmPassword') {
-          return value !== password || value == '';
-        }
-        return value === '';
+      if (type === 'email') {
+        return !emailRegex.test(value);
+      } else if (type === 'confirmPassword') {
+        return value !== password || value == '';
+      } else if (type === 'password') {
+        return value.length < 6;
       }
+      return value === '';
+    }
 
   return (
     <div className='mt-10'>    
@@ -38,7 +39,7 @@ const SignUpForm = () => {
             value = { password }
             type = 'password'
             label = 'Password'
-            isInvalid = { isInvalid(password) }
+            isInvalid = { isInvalid(password, 'password') }
             styling = 'mb-10 bg-transparent'
             eventChange = { (e) => handleChange(e, setPassword) }
         />
