@@ -24,7 +24,7 @@ const MenuFooter = () => {
             </div>
         </div>
         <div className='flex flex-row space-x-4 py-2 text-[12px]'>
-            <span className='font-light'>@2023 YouLearn, Inc</span>
+            <span className='font-light mt-2 md:mt-0'>@2023 YouLearn, Inc</span>
         </div>
     </div>
   )
