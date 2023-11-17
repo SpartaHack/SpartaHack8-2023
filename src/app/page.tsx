@@ -1,4 +1,5 @@
-import React, { Suspense } from "react"
+'use client'
+import React, { useState, useEffect, Suspense } from "react"
 import Header from "../ui/header/header"
 import Dashboard from "@/components/dashboard/dashboard"
 import Loading from "./loading"

@@ -4,11 +4,12 @@ import Help from '../header/help'
 const MenuFooter = () => {
   return (
     <div className='flex-col flex'>
-        <div className='horizontal-line mb-4 lg:mb-5'/>
-            <div className='flex flex-row w-full justify-between cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
-                <Help/>
-            <span className='mt-1'>Help</span>
-        </div>
+                <div className='flex flex-row w-full justify-between cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
+                    <Help/>
+                    <span className='mt-0.5'>
+                        Help
+                    </span>
+                </div>
         <div className='hidden lg:block text-[12px] lg:mt-5'>
             <div className='flex flex-row pt-2 space-x-4'>
                 <span className='font-semibold cursor-pointer'>About</span>

@@ -3,7 +3,7 @@ import Header from '@/ui/header/header'
 import React, { Suspense } from 'react'
 import Content from '@/components/learn/content/content'
 import { useSearchParams } from 'next/navigation'
-import Loading from './loading'
+import Loading from '../loading'
 
 const LearnPage = () => {
   const parms = useSearchParams()
