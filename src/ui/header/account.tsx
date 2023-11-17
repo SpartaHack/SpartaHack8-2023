@@ -71,9 +71,6 @@ const Account = ({name, description, picture}: AccountProps) => {
           </DropdownSection>  
 
           <DropdownSection aria-label="Help & Feedback">
-            <DropdownItem key="help_and_feedback" onClick={() => router.push('https://www.youlearn.ai/feedbackApp')}>
-              Help & Feedback
-            </DropdownItem>
             <DropdownItem key="logout" onClick={logOut}>
               Log Out
             </DropdownItem>
