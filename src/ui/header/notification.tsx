@@ -18,7 +18,7 @@ const Notification = () => {
   }
 
   return (
-    <div className='cursor-pointer mt-1 mr-10'>
+    <div className='cursor-pointer mt-1 mr-5'>
       <CustomDropdown title={data.title} sections={data.sections}/>
     </div>
   )

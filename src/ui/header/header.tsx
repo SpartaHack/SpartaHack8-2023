@@ -29,7 +29,7 @@ export default function Header() {
         <YouLearnLogo/>
         <BetaLogo/>
         <HomeLinkBar/>
-        <div className="hidden lg:flex">
+        <div className="hidden lg:flex space-x-5">
           <Notification/>
           <Account 
             name="Achyut Krishna Byanjankar"
