@@ -38,13 +38,11 @@ export default function Header() {
         </div>
       </div>
 
-      <div onClick={handleClick}>
-        <NavbarMenu className='w-[50%] md:w-[25%] overflow-hidden lg:w-[18%] bg-white dark:bg-neutral-900 border-t dark:border-neutral-800 ' motionProps={sideBarMotion}>
+        <NavbarMenu onClick={handleClick} className='w-[50%] md:w-[25%] overflow-hidden lg:w-[18%] bg-white dark:bg-neutral-900 border-t dark:border-neutral-800 ' motionProps={sideBarMotion}>
           <div ref={ref}>  
             <MenuItems/>
           </div>
         </NavbarMenu>
-      </div>
 
     </Navbar>
   );
