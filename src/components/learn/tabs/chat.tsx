@@ -10,7 +10,7 @@ import TypingIndicator from '../../../helpers/typing-indicator';
 import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources';
 
 const Chat = () => {
-  const type = 'pdf'
+  const type = 'youtube'
   const height = useContainerHeight({type: type});
   const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'content', [{type: "bot", response: "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!"}], user_id, contentId, course_id);
 
@@ -19,7 +19,7 @@ const Chat = () => {
   chatLog = removeUndefinedFromSources(chatLog)
 
   return (
-    <div className='lg:h-full h-[70vh] flex-col flex'  style={{maxHeight: `${height-90}px`}}>
+    <div className='lg:h-full h-[70vh] flex-col flex '  style={{maxHeight: `${height-90}px`}}>
       <ScrollShadow 
         size={5} 
         hideScrollBar 

@@ -7,7 +7,7 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 const BetaElement = (
   <div className='flex flex-row justify-between'>
     <h1>Beta Version</h1>
-    <Icon icon='heroicons:arrow-top-right-on-square' className='w-3 ml-1 h-3 font-bold mt-0.5'/>
+    <Icon icon="heroicons:arrow-top-right-on-square-20-solid" className='w-3 ml-1 h-3 font-bold mt-0.5'/>
   </div>
 )
 

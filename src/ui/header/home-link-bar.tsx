@@ -20,20 +20,20 @@ const SearchBar = () => {
 
   return (
     <>
-      <div className='hidden lg:flex'>
-        <YouLearnLogo/>
-        <BetaLogo/>
-      </div>
-      <div className="hidden lg:flex justify-center lg:mr-[180px] flex-1">
-        <form className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-xl bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary">
-          <Icon icon="tabler:plus" className='header-icons'/>
+    <div className="flex justify-center flex-1">
+      <form
+        className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-xl bg-absolute_white px-1 py-.5 md:mr-12 ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+      >
+        <div
+          className="text-neutral-400 text-[35px] dark:text-neutral-400"
+        />
           <input
             type="text"
             className="w-full outline-none ml-2 bg-absolute_white dark:bg-transparent"
             placeholder="I want to learn..."
           />
           <button type="submit">
-            <Icon icon="iconamoon:search-light"
+            <Icon icon="iconamoon:search"
               className="h-6 w-6 mr-1"
             />
           </button>

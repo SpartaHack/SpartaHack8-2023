@@ -22,7 +22,7 @@ export default function Header() {
     <Navbar maxWidth="full" isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll isBordered className="sticky top-0 z-10 bg-neutral-100 dark:bg-neutral-900 border-b border-neutral-300 dark:border-neutral-700">
       <div className="flex w-full py-3 items-center justify-between">
         <div className='md:mr-6 mr-5 h-8'>
-          <NavbarMenuToggle/>
+          <NavbarMenuToggle className=""/>
         </div>
         <HomeLinkBar/>
         <div className="hidden lg:flex space-x-5">
