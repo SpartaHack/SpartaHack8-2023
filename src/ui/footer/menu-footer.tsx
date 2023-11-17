@@ -1,6 +1,5 @@
 import React from 'react'
 import Help from '../header/help'
-import { Icon } from '@iconify/react/dist/iconify.js'
 
 const MenuFooter = () => {
   return (

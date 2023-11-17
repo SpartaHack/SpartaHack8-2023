@@ -57,15 +57,9 @@ export const defaultCourseContent = [
 
 export const educationOptions = [
   { value: 'Secondary or High School' },
-  { value: 'Undergraduate University (2-Year Community College or similar)' },
-  { value: 'Undergraduate University (3+ Year)' },
+  { value: 'Undergraduate University' },
   { value: 'Graduate University (Masters, Doctoral, Professional, etc.)' },
-  { value: 'Code School or Bootcamp' },
-  { value: 'Other Vocational or Trade Program or Apprenticeship' },
   { value: 'Post Doctorate' },
-  { value: 'Certification Programs' },
-  { value: 'Online Courses or MOOCs' },
-  { value: 'Other' },
   { value: "I'm not currently a student" },
 ];
 

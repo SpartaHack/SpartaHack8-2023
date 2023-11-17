@@ -21,7 +21,6 @@ export const getPortalUrl = async (): Promise<string> => {
 
     // Add a type to the data
     dataWithUrl = data as { url: string };
-    console.log("Reroute to Stripe portal: ", dataWithUrl.url);
   } catch (error) {
     console.error(error);
   }

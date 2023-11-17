@@ -15,7 +15,6 @@ const UserInformation = () => {
   const handleEditPlan = async () => {
     setLoading(true)
     const portalUrl = await getPortalUrl();
-    console.log(portalUrl)
     router.push(portalUrl)
   }
   
