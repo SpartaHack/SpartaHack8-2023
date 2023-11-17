@@ -15,7 +15,6 @@ const MenuItems = () => {
       </div>
       <div className='horizontal-line lg:hidden'/>
       <Folders/>
-      <div className='flex-grow fixed border'/>
       <MenuFooter/>
     </div>
   )
