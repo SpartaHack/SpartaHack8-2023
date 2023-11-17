@@ -3,15 +3,17 @@ import { ImageUpload } from '@/helpers/image-upload';
 import React, { useState } from 'react'
 import { getPortalUrl } from '@/functions/get-portal-url';
 import { useRouter } from 'next/navigation';
-import { Link } from '@nextui-org/react';
+import { Link, Spinner } from '@nextui-org/react';
 import EditAccordion from '@/components/profile/edit-accordion';
 import Streaks from './streaks';
 
 const UserInformation = () => {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false)
 
   const handleEditPlan = async () => {
+    setLoading(true)
     const portalUrl = await getPortalUrl();
     console.log(portalUrl)
     router.push(portalUrl)
@@ -46,7 +48,7 @@ const UserInformation = () => {
           <Streaks/>
         </div>
       </div>
-      <Link onClick={handleEditPlan} size='sm' className='cursor-pointer mt-4 ml-1' underline="always">Manage Subscriptions</Link>
+      <Link onClick={handleEditPlan} size='sm' className='cursor-pointer mt-4 ml-1' underline="always">{loading ? <Spinner color='current' size='sm'/> :'Manage Subscriptions'}</Link>
     </div>
   )
 }

@@ -1,15 +1,18 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import PriceCard from '@/helpers/price-card'
 import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/functions/tier-constants';
 import { getCheckoutUrl } from '@/functions/get-checkout-url';
 import { useRouter } from 'next/navigation';
+import { Spinner } from '@nextui-org/react';
+import { priceId } from '../../../utils/constants';
 
 const Upgrade = () => {
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
   const handlePro = async () => {
-    const priceId = 'price_1OCV32K8Jk6Q3TjG3W5GBmWW';
+    setLoading(true)
     const checkoutURL = await getCheckoutUrl(priceId)
     router.push(checkoutURL)
   }
@@ -44,7 +47,7 @@ const Upgrade = () => {
             }
             subTitle='Best for beginners.'
             planBenefits={premiumMonthlyPlanBenefits}
-            buttonText='Start your 14-day free trail'
+            buttonText={loading ? <Spinner size='sm' color='current'/> : "Start you 14 day free trial"}
             handleClick={handlePro}
           />
         

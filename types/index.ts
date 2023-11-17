@@ -73,7 +73,7 @@ export type PriceCardProps = {
     price: JSX.Element | string;
     subTitle: string;
     planBenefits: Features[];
-    buttonText: string,
+    buttonText: string | JSX.Element,
     handleClick: () => void;
 }
 
