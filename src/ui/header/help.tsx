@@ -1,25 +1,15 @@
 'use client'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import React from 'react'
-import { CustomDropdown } from '@/helpers/custom-dropdown'
 
 const Help = () => {
 
-  const data = {
-    title: <Icon icon="material-symbols:help-outline" className='h-6 w-6'/>,
-    sections: [
-      {
-        label: 'Section 1', 
-        items: [
-          {label: 'Welcome to YouLearn! A Github for your courses.', clickEvent: () => console.log("Clicked on WebDev")}, 
-        ]
-      },
-    ]
-  }
-
   return (
-    <div className='cursor-pointer mt-1 mr-10'>
-      <CustomDropdown title={data.title} sections={data.sections}/>
+    <div className='flex flex-row w-full justify-between cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
+      <Icon icon="material-symbols:help-outline" className='h-6 w-6'/>
+      <span>
+          Help
+      </span>
     </div>
   )
 }

@@ -1,15 +1,11 @@
 import React from 'react'
 import Help from '../header/help'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 const MenuFooter = () => {
   return (
     <div className='flex-col flex'>
-                <div className='flex flex-row w-full justify-between cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
-                    <Help/>
-                    <span className='mt-0.5'>
-                        Help
-                    </span>
-                </div>
+        <Help/>
         <div className='hidden lg:block text-[12px] lg:mt-5'>
             <div className='flex flex-row pt-2 space-x-4'>
                 <span className='font-semibold cursor-pointer'>About</span>
