@@ -1,8 +1,9 @@
 'use client'
-import React, { useState, useEffect, Suspense } from "react"
+import React, { Suspense } from "react"
 import Header from "../ui/header/header"
 import Dashboard from "@/components/dashboard/dashboard"
 import Loading from "./loading"
+import Footer from "@/ui/footer/footer"
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Suspense fallback={<Loading/>}>
         <Header/>
         <Dashboard/>
+        <Footer/>
       </Suspense>
     </main>
   )
