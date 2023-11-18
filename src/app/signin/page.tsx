@@ -1,11 +1,11 @@
 import SignIn from '@/components/auth/signin'
-import AuthHeader from '@/ui/header/auth-header'
+import SecondaryHeader from '@/ui/header/secondary-header'
 import React from 'react'
 
 const SignInPage = () => {
   return (
     <div>
-        <AuthHeader/>
+        <SecondaryHeader/>
         <SignIn/>
     </div>
   )

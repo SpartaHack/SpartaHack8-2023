@@ -1,11 +1,11 @@
 import Upgrade from '@/components/upgrade/upgrade'
-import AuthHeader from '@/ui/header/auth-header'
+import SecondaryHeader from '@/ui/header/secondary-header'
 import React, { useEffect } from 'react'
 
 const UpgradePage = () => {
   return (
     <>
-      <AuthHeader/>
+      <SecondaryHeader/>
         <div className="z-10 relative h-full">
           <Upgrade/>
         </div>
