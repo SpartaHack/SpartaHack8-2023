@@ -10,7 +10,7 @@ const PriceCard = ({ price, subTitle, planBenefits, buttonText, handleClick }: P
         <h1 className='text-3xl mt-5 lg:mt-7 font-extrabold'>
             {price}
           </h1>
-        <h2 className='my-2 lg:text-[15px] text-primary lg:my-6 mb-5 lg:mb-8'>{subTitle}</h2>
+        <h2 className='my-2 lg:text-[15px] lg:my-6 mb-5 lg:mb-8'>{subTitle}</h2>
         {planBenefits.map((benefit, index) => (
           <div className='flex flex-row w-full justify-between' key={index}>
             {benefit.icon}

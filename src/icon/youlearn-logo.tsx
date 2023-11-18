@@ -27,8 +27,8 @@ const YouLearnLogo = ({height, width}: YouLearnLogoProps) => {
           <Image
             src="youlearnMedia.svg"
             alt="YouLearnMedia"
-            width={width ? width : 110}
-            height={height ? height : 110}
+            width={width ? width : 35}
+            height={height ? height : 35}
           />
         </Link>
     </div>
