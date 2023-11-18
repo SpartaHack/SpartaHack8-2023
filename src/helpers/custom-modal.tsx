@@ -12,7 +12,7 @@ const CustomModal = ({title, contentTitle, contentMain, actionTitle, actionEvent
         {title}
       </div>
       <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
-        <ModalContent>
+        <ModalContent className="prevent-close">
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">{contentTitle}</ModalHeader>
