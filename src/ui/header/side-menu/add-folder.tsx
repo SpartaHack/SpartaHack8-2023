@@ -9,9 +9,9 @@ const AddFolder = () => {
     <div className='w-full'>
         <CustomModal 
             title={
-                <div className='flex flex-row w-full justify-between cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
+                <div className='flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl'>
                     <Icon icon='mdi:folder-add-outline' className='h-6 dark:text-neutral-500 text-neutral-400 w-6'/>
-                    <span className='text-neutral-400 dark:text-neutral-500'>
+                    <span className='text-neutral-400 ml-5 dark:text-neutral-500'>
                         Add Folder
                     </span>
                 </div>
