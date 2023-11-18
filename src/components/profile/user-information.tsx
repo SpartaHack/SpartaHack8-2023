@@ -47,7 +47,7 @@ const UserInformation = () => {
           <Streaks/>
         </div>
       </div>
-      <Link onClick={handleEditPlan} size='sm' className='cursor-pointer mt-4 ml-1' underline="always">{loading ? <Spinner color='current' size='sm'/> :'Manage Subscriptions'}</Link>
+      <Link onClick={handleEditPlan} size='sm' className='cursor-pointer text-dark dark:text-white mt-4 ml-1' underline="always">{loading ? <Spinner color='current' size='sm'/> :'Manage Subscriptions'}</Link>
     </div>
   )
 }
