@@ -21,7 +21,7 @@ const SearchBar = () => {
   return (
     <>
       <div className='hidden lg:flex'>
-        <YouLearnLogo/>
+        <YouLearnLogo width={110} height={110}/>
         <BetaLogo/>
       </div>
       <div className="hidden lg:flex justify-center lg:mr-[180px] flex-1">
@@ -46,16 +46,16 @@ const SearchBar = () => {
             <Image
               src="youlearn.svg"
               alt="YouLearn"
-              width={100}
-              height={100}
+              width={110}
+              height={110}
             />
           </Link>
           <Link href="/" className="dark:block hidden">
             <Image
               src="youlearnDark.svg"
               alt="YouLearn"
-              width={100}
-              height={100}
+              width={110}
+              height={110}
             />
           </Link>
       </div>
