@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 
 const UpgradePage = () => {
   return (
-    <main className='bg-white dark:bg-black h-full'>
+    <main className='bg-white dark:bg-neutral-900 h-full'>
       <SecondaryHeader/>
         <div className="z-10 relative h-full pb-6">
           <Upgrade/>
