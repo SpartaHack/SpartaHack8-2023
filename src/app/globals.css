@@ -26,10 +26,6 @@ body {
   .header-icons {
     @apply bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700 text-[40px] p-2 rounded-full cursor-pointer;
   }
-  .folder-style {
-    @apply w-[160px] h-[90px] bg-white dark:bg-neutral-800 drop-shadow-sm flex justify-center items-center rounded-xl
-  hover:scale-105 transition-all duration-300 cursor-pointer;
-  }
   .tabs-sm {
     @apply flex bg-absolute_white w-full rounded-xl lg:ml-4 drop-shadow-sm dark:bg-neutral-800 mt-[20px] lg:mt-0;
   }
