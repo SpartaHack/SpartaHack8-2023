@@ -31,7 +31,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         {isLoading ? (
           <Spinner size='sm' color='secondary' className='mt-2 mr-1'/>
         ) : (
-          <Icon icon="ph:paper-plane-fill" className="header-icons gradient text-[35px] rounded-xl dark:text-neutral-900" />
+          <Icon icon="ph:paper-plane-fill" className="p-2 cursor-pointer gradient text-[35px] rounded-xl dark:text-neutral-900" />
         )}
       </button>
     </form>

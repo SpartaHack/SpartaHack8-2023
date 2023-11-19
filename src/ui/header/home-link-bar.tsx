@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import BetaLogo from '@/icon/beta-logo';
 import YouLearnLogo from '@/icon/youlearn-logo';
 import useClickOutside from '@/hooks/use-click-outside';
+import { Tooltip } from '@nextui-org/react';
 
 const SearchBar = () => {
   const [smallSearch, setSmallSearch] = useState(false);
@@ -30,9 +31,9 @@ const SearchBar = () => {
             placeholder="Upload pdf or youtube link..."
           />
           <button type="submit">
-            <Icon icon="mi:add"
-              className="h-6 w-6 mr-2"
-            />
+            <Tooltip content='Add PDF/ Youtube Video Link'>
+              <Icon icon="mi:add" className="header-icons md:h-9 md:w-9 w-6 h-6"/>
+            </Tooltip>
           </button>
         </form>
       </div>
@@ -42,7 +43,7 @@ const SearchBar = () => {
         <YouLearnLogo size='lg'/>
       </div>
       <div className='lg:hidden flex mr-1 justify-between' onClick={() => setSmallSearch(true)}>
-        <Icon icon="mi:add" className="text-[25px] cursor-pointer mr-1"/>
+        <Icon icon="mi:add" className="header-icons md:h-9 md:w-9 w-6 h-6"/>
       </div>
     </>
     }
@@ -55,7 +56,7 @@ const SearchBar = () => {
             placeholder="Upload pdf or youtube link..."
           />
           <button type="submit">
-            <Icon icon="mi:add" className="text-[25px] mr-1" />
+            <Icon icon="mi:add" className="header-icons md:h-9 md:w-9 w-6 h-6" />
           </button>
         </form>
       </div>
