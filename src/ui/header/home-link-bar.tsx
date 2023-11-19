@@ -66,14 +66,13 @@ const SearchBar = () => {
     {smallSearch && (
       <div ref={searchBarRef} className="lg:hidden w-full">
         <form className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-xl bg-absolute_white px-1 py-.5 flex-grow h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary" onSubmit={searchClick}>
-          <Icon icon="tabler:plus" className='header-icons'/>
           <input
             type="text"
             className="w-full bg-transparent outline-none pl-2"
             placeholder="I want to learn..."
           />
           <button type="submit">
-            <Icon icon="iconamoon:search-light" className="text-[25px]" />
+            <Icon icon="iconamoon:search-light" className="text-[25px] " />
           </button>
         </form>
       </div>

@@ -7,7 +7,7 @@ import Footer from "@/ui/footer/footer"
 
 export default function App() {
   return (
-    <main className="dark:bg-neutral-900 bg-white h-screen">
+    <main className="dark:bg-neutral-900 bg-white h-full">
       <Suspense fallback={<Loading/>}>
         <Header/>
         <Dashboard/>
