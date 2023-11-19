@@ -4,8 +4,6 @@ import { Icon } from '@iconify/react';
 import BetaLogo from '@/icon/beta-logo';
 import YouLearnLogo from '@/icon/youlearn-logo';
 import useClickOutside from '@/hooks/use-click-outside';
-import Link from 'next/link';
-import Image from 'next/image';
 
 const SearchBar = () => {
   const [smallSearch, setSmallSearch] = useState(false);
@@ -21,7 +19,7 @@ const SearchBar = () => {
   return (
     <>
       <div className='hidden lg:flex'>
-        <YouLearnLogo width={110} height={110}/>
+        <YouLearnLogo size='lg'/>
         <BetaLogo/>
       </div>
       <div className="hidden lg:flex justify-center lg:mr-[180px] flex-1">
@@ -40,25 +38,10 @@ const SearchBar = () => {
       </div>
     {!smallSearch &&
     <>
-      <div className='lg:hidden'>
-        <Link href="/" className="dark:hidden">
-            <Image
-              src="youlearn.svg"
-              alt="YouLearn"
-              width={110}
-              height={110}
-            />
-          </Link>
-          <Link href="/" className="dark:block hidden">
-            <Image
-              src="youlearnDark.svg"
-              alt="YouLearn"
-              width={110}
-              height={110}
-            />
-          </Link>
+      <div className='lg:hidden mr-2'>
+        <YouLearnLogo size='lg'/>
       </div>
-      <div className='lg:hidden flex justify-between' onClick={() => setSmallSearch(true)}>
+      <div className='lg:hidden flex mr-1 justify-between' onClick={() => setSmallSearch(true)}>
         <Icon icon="iconamoon:search-light" className="text-[25px] cursor-pointer mr-1"/>
       </div>
     </>
@@ -72,7 +55,7 @@ const SearchBar = () => {
             placeholder="I want to learn..."
           />
           <button type="submit">
-            <Icon icon="iconamoon:search-light" className="text-[25px] " />
+            <Icon icon="iconamoon:search-light" className="text-[25px] mr-1" />
           </button>
         </form>
       </div>

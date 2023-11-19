@@ -4,26 +4,28 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { YouLearnLogoProps } from '../../types'
 
-const YouLearnLogo = ({height, width}: YouLearnLogoProps) => {
+const YouLearnLogo = ({size, tier, height, width}: YouLearnLogoProps) => {
   return (
     <div className='flex flex-row justify-between'>
-        <Link href="/" className="hidden dark:hidden sm:block sm:mr-3">
+       {size === 'lg' &&
+        <>
+          <Link href="/" className="dark:hidden">
           <Image
             src="youlearn.svg"
             alt="YouLearn"
             width={width ? width : 110}
-            height={height ? height : 110}
-          />
-        </Link>
-        <Link href="/" className="dark:sm:block hidden sm:mr-3">
-          <Image
-            src="youlearnDark.svg"
-            alt="YouLearn"
-            width={width ? width : 110}
-            height={height ? height : 110}
-          />
-        </Link>
-        <Link href="/" className="sm:hidden">
+            height={height ? height : 110} />
+          </Link><Link href="/" className="dark:block hidden">
+            <Image
+              src="youlearnDark.svg"
+              alt="YouLearn"
+              width={width ? width : 110}
+              height={height ? height : 110} />
+          </Link>
+        </>
+      }
+      { size === 'sm' &&
+        <Link href="/">
           <Image
             src="youlearnMedia.svg"
             alt="YouLearnMedia"
@@ -31,6 +33,7 @@ const YouLearnLogo = ({height, width}: YouLearnLogoProps) => {
             height={height ? height : 35}
           />
         </Link>
+      }
     </div>
   )
 }

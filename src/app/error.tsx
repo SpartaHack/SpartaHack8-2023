@@ -12,7 +12,7 @@ export default function Error({}: {
   return (
     <div className='h-screen w-full flex flex-col justify-center items-center'>
       <span className='text-2xl mb-10'>An error occured.</span>
-      <YouLearnLogo width={350} height={350}/>
+      <YouLearnLogo size='lg' width={350} height={350}/>
       <CustomButton title="Go Back" btnType='button' btnStyling='mt-10 text-xl' popOverClickEvent={() => router.push('/')}/>
     </div>
   )

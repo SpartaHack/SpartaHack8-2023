@@ -136,6 +136,8 @@ export type PDFProps = {
 }
 
 export type YouLearnLogoProps = {
+    size: 'sm' | 'lg',
+    tier?: string,
     height?: number,
     width?: number
 }

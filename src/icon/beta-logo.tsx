@@ -21,7 +21,7 @@ const BetaLogo = () => {
           title={BetaElement} 
           size='sm'
           btnType="button"
-          btnStyling='text-xs bg-transparent border-2 dark:border-secondary border-primary dark:text-secondary text-primary'
+          btnStyling='text-xs bg-transparent border-2 dark:border-secondary dark:text-secondary border-black'
           popOver
           popOverTitle='Give Feedback'
           popOverClickEvent={() => router.push('https://www.youlearn.ai/feedbackApp')}
