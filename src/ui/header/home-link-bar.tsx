@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react';
 import BetaLogo from '@/icon/beta-logo';
 import YouLearnLogo from '@/icon/youlearn-logo';
 import useClickOutside from '@/hooks/use-click-outside';
-import { Tooltip } from '@nextui-org/react';
 
 const SearchBar = () => {
   const [smallSearch, setSmallSearch] = useState(false);
@@ -31,9 +30,7 @@ const SearchBar = () => {
             placeholder="Upload pdf or youtube link..."
           />
           <button type="submit">
-            <Tooltip content='Add PDF/ Youtube Video Link'>
-              <Icon icon="mi:add" className="header-icons md:h-9 md:w-9 w-6 h-6"/>
-            </Tooltip>
+            <Icon icon="mi:add" className="header-icons md:h-9 md:w-9 w-6 h-6"/>
           </button>
         </form>
       </div>

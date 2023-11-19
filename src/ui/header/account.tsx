@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, User, Switch, Tooltip } from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, User, Switch } from "@nextui-org/react";
 import { AccountProps } from '../../../types';
 import { Icon } from '@iconify/react';
 import { SunIcon } from '@/icon/sun-icon';
@@ -24,9 +24,7 @@ const Account = ({name, description, picture}: AccountProps) => {
       <Dropdown radius="sm">
         <DropdownTrigger>
           <div className='flex flex-row'>
-          <Tooltip content='Account'>
             <Icon icon="bx:user" className='header-icons md:h-10 md:w-10 w-6 h-6' />
-          </Tooltip>  
             <div className='lg:hidden'>
                 <span className='ml-5 mt-1'>Account</span>
             </div>
