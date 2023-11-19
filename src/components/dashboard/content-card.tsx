@@ -14,7 +14,7 @@ const ContentCard = ({contentID, type, title, thumbnail_url}: ContentCardProps) 
 
   return (
     <div className="relative cursor-pointer flex-col bg-absolute_white justify-center items-center gap-20 drop-shadow-sm rounded-xl hover:shadow-xl hover:scale-105 transition duration-300 dark:bg-neutral-800 max-h-[270px] max-w-[360px] min-h-full min-w-[220px]" onClick={clickCard(contentID)}>
-        <div className="rounded-t-[10px] overflow-hidden">
+        <div className="rounded-t-xl overflow-hidden">
           <Image
             width-full="true"
             src={thumbnail_url!}

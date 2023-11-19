@@ -18,7 +18,7 @@ const EditAccordion = ({indicator, title, style}: EditAccordionProps) => {
             label='Select education Level' 
             onValueChange={setEducationLevel}
           />
-          <CustomButton title='Save Changes' btnType='submit' btnStyling='w-full mt-5 bg-white text-[15px] p-[22px] dark:bg-black mb-2'/>
+          <CustomButton title='Save Changes' btnType='submit' btnStyling='w-full mt-5 bg-white text-[15px] p-[22px] dark:bg-black mb-2 bg-secondary'/>
         </AccordionItem>
     </Accordion>
   )

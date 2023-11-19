@@ -8,7 +8,7 @@ const FolderChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Icon icon="fluent:chat-sparkle-16-regular" className="rounded-full text-[50px] p-2 bg-secondary text-black hover:scale-110 backdrop duration-100 cursor-pointer" onClick={() => setIsOpen(!isOpen)}/>
+      <Icon icon="fluent:chat-sparkle-16-regular" className="rounded-full text-[55px] p-2 dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary border-absolute_black dark:border-secondary border-2 hover:scale-110 backdrop duration-100 cursor-pointer" onClick={() => setIsOpen(!isOpen)}/>
       {isOpen && 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="absolute z-10" onClose={() => setIsOpen(false)}>
@@ -23,7 +23,7 @@ const FolderChatBase = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative w-full bg-absolute_white max-w-lg h-[80vh] lg:h-[75vh] overflow-y-auto transform rounded-2xl p-6 text-left transition-all flex flex-col dark:bg-neutral-700">
+                <Dialog.Panel className="relative w-full bg-absolute_white max-w-lg h-[80vh] lg:h-[75vh] overflow-y-auto transform rounded-xl p-6 text-left transition-all flex flex-col dark:bg-neutral-700 drop-shadow">
                   <FolderChatMain/>
                 </Dialog.Panel>
               </Transition.Child>

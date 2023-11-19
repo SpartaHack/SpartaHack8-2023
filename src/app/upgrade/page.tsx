@@ -4,12 +4,12 @@ import React, { useEffect } from 'react'
 
 const UpgradePage = () => {
   return (
-    <>
+    <main className='bg-white dark:bg-black h-screen'>
       <SecondaryHeader/>
         <div className="z-10 relative h-full">
           <Upgrade/>
         </div>
-    </>
+    </main>
   )
 }
 
