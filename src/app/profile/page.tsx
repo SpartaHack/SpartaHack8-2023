@@ -4,7 +4,7 @@ import React from 'react'
 
 const Profile = () => {
   return (
-    <div className='h-screen bg-white dark:bg-neutral-900'>
+    <div>
       <Header/>
       <UserInformation/>
     </div>

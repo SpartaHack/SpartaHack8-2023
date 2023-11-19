@@ -1,14 +1,22 @@
+'use client'
 import FAQ from '@/components/upgrade/faq'
-import Upgrade from '@/components/upgrade/upgrade'
+import PricingPage from '@/components/upgrade/pricing-table'
 import SecondaryHeader from '@/ui/header/secondary-header'
+import { useTheme } from 'next-themes'
 import React, { useEffect } from 'react'
 
 const UpgradePage = () => {
+  const { setTheme } = useTheme()
+  
+  useEffect(() => {
+    setTheme('light')
+  }, [setTheme])
+
   return (
-    <main className='bg-white dark:bg-neutral-900 h-full'>
+    <main>
       <SecondaryHeader/>
-        <div className="z-10 relative h-full pb-6">
-          <Upgrade/>
+        <div className="z-10 mt-[60px] relative h-full pb-6">
+          <PricingPage/>
           <FAQ/>
         </div>
     </main>

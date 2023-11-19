@@ -32,9 +32,9 @@ export const faqData = [
 
 const FAQ = () => {
   return (
-    <div className='flex flex-col md:pt-12'>
+    <div className='flex flex-col pt-12'>
         <h1 className='text-3xl font-bold text-center'>Frequenly Asked Questions</h1>
-        <h1 className='mt-4 lg:mb-12 mb-8 text-center'>Can't find the answer here?
+        <h1 className='mt-8 lg:mb-12 mb-10 text-center'>Can't find the answer here?
             &nbsp; 
             <Link href='https://www.youlearn.ai/feedbackApp' underline='always' color='foreground'>
                 Contact Support

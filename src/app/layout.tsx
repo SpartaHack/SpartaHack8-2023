@@ -21,6 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src="https://js.stripe.com/v3/pricing-table.js">
+        </script>
+      </head>
       <body className={roboto.className}>
         <ThemeProviders>
           <Toaster richColors/>

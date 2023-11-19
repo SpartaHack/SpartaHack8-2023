@@ -9,7 +9,7 @@ const LearnPage = () => {
   const parms = useSearchParams()
   const contentID = parms.get('c')
   return (
-    <main className="dark:bg-neutral-900 bg-white h-screen">
+    <main>
       <Suspense fallback={<Loading/>}>
         <Header/>
         <Content type='youtube'/>
