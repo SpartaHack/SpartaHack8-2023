@@ -5,11 +5,11 @@ import useCopyToClipboard from '@/hooks/use-copy-clipboard';
 import useChatSubmit from '@/hooks/use-chat-submit';
 import Message from '../learn/tabs/message';
 import TypingIndicator from '@/helpers/typing-indicator';
-import { contentId, course_id, user_id } from '../../../utils';
+import { contentId, space_id, user_id } from '../../../utils';
 import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources';
 
-const FolderChatMain = () => {
-  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'course', [{type: "bot", response: "Welcome to the course chat! Ask me anything in this folder! Give feedback for improvements!"}], user_id, contentId, course_id);
+const SpaceChatMain = () => {
+  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'space', [{type: "bot", response: "Welcome to the space chat! Ask me anything in this space! Give feedback for improvements!"}], user_id, contentId, space_id);
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [ ...chatSubmitLog];
@@ -43,4 +43,4 @@ const FolderChatMain = () => {
   )
 }
 
-export default FolderChatMain
+export default SpaceChatMain

@@ -1,4 +1,4 @@
-export const defaultCourseContent = [
+export const defaultSpaceContent = [
   {
     "type": "youtube",
     "contentID": "3bKuoH8CkFc", // The Future of Quantum Computing

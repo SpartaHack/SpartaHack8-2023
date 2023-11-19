@@ -2,13 +2,13 @@ import axios from "axios";
 import { toast } from "sonner";
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-// COURSE
-export const getCourseContents = async (
+// SPACE
+export const getSpaceContents = async (
   userId: string, 
-  courseId: string
+  spaceId: string
 ) => {
   try {
-    const response = await axios.get(`${API_URL}/courses/${userId}/${courseId}`);
+    const response = await axios.get(`${API_URL}/spaces/${userId}/${spaceId}`);
     return response;
   } catch (err) {
     console.error(err);
@@ -16,37 +16,17 @@ export const getCourseContents = async (
   }
 }
 
-export const addCourse = async (
+export const addSpace = async (
   userId: string, 
-  courseId: string
-) => {
-  const data = {
-    user_id: userId,
-    course_id: courseId
-  };
-
-  try {
-    const response = await axios.post(`${API_URL}/courses/add`, data);
-    return response;
-  } catch (err) {
-    console.error(err);
-    toast.error('Internal Server Error')
-  }
-}
-
-export const updateCourse = async (
-  userId: string, 
-  courseId: string, 
-  courseName?: string
+  spaceId: string
 ) => {
   const data = {
     user_id: userId,
-    course_id: courseId,
-    course_name: courseName
+    space_id: spaceId
   };
 
   try {
-    const response = await axios.put(`${API_URL}/courses/update`, data);
+    const response = await axios.post(`${API_URL}/spaces/add`, data);
     return response;
   } catch (err) {
     console.error(err);
@@ -54,17 +34,19 @@ export const updateCourse = async (
   }
 }
 
-export const deleteCourse = async (
+export const updateSpace = async (
   userId: string, 
-  courseId: string
+  spaceId: string, 
+  spaceName?: string
 ) => {
   const data = {
     user_id: userId,
-    course_id: courseId,
+    space_id: spaceId,
+    space_name: spaceName
   };
 
   try {
-    const response = await axios.delete(`${API_URL}/courses/delete`, { data });
+    const response = await axios.put(`${API_URL}/spaces/update`, data);
     return response;
   } catch (err) {
     console.error(err);
@@ -72,19 +54,37 @@ export const deleteCourse = async (
   }
 }
 
-export const getCourseData = async (courseId: string) => {
-  try {
-    const response = await axios.get(`${API_URL}/courses/${courseId}`);
-    return response;
-  } catch (err) {
-    console.error(err);
-    toast.error('Internal Server Error')
-  }
-}
-
-export const chatCourse = async (
+export const deleteSpace = async (
   userId: string, 
-  courseId: string, 
+  spaceId: string
+) => {
+  const data = {
+    user_id: userId,
+    space_id: spaceId,
+  };
+
+  try {
+    const response = await axios.delete(`${API_URL}/spaces/delete`, { data });
+    return response;
+  } catch (err) {
+    console.error(err);
+    toast.error('Internal Server Error')
+  }
+}
+
+export const getSpaceData = async (spaceId: string) => {
+  try {
+    const response = await axios.get(`${API_URL}/spaces/${spaceId}`);
+    return response;
+  } catch (err) {
+    console.error(err);
+    toast.error('Internal Server Error')
+  }
+}
+
+export const chatSpace = async (
+  userId: string, 
+  spaceId: string, 
   contentId: string,
   query: string, 
   information?: any, 
@@ -93,7 +93,7 @@ export const chatCourse = async (
 ) => {
   const data = {
     user_id: userId,
-    course_id: courseId,
+    space_id: spaceId,
     content_id: contentId,
     query: query,
     information: information,
@@ -101,7 +101,7 @@ export const chatCourse = async (
     save_chat_history: saveChatHistory
   };
 
-  const response = await fetch(`${API_URL}/generation/chat/course`, {
+  const response = await fetch(`${API_URL}/generation/chat/space`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -127,12 +127,12 @@ export const getContentInfo = async (
 
 export const addContent = async (
   userId: string, 
-  courseId: string, 
+  spaceId: string, 
   contentURL?: string
 ) => {
   const data = {
     user_id: userId,
-    course_id: courseId,
+    space_id: spaceId,
     content_url: contentURL
   }
   try {
@@ -146,16 +146,16 @@ export const addContent = async (
 
 export const deleteContent = async (
   userId: string, 
-  courseId: string, 
+  spaceId: string, 
   contentId: string,
 ) => {
   const data = {
     user_id: userId,
-    course_id: courseId,
+    space_id: spaceId,
     content_id: contentId
   }
   try {
-    const response = await axios.post(`${API_URL}/content/delete/${userId}/${courseId}/${contentId}`, data);
+    const response = await axios.post(`${API_URL}/content/delete/${userId}/${spaceId}/${contentId}`, data);
     return response;
   } catch (err) {
     console.error(err);
@@ -189,7 +189,7 @@ export const getContentQuestions = async (
 
 export const chatContent = async (
   userId: string, 
-  courseId: string, 
+  spaceId: string, 
   contentId: string,
   query: string, 
   information?: any, 
@@ -198,7 +198,7 @@ export const chatContent = async (
 ) => {
   const data = {
     user_id: userId,
-    course_id: courseId,
+    space_id: spaceId,
     content_id: contentId,
     query: query,
     information: information,

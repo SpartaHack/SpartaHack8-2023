@@ -1,7 +1,7 @@
 import React from 'react'
 import Notification from '../notification'
 import Account from '../account'
-import Folders from './folders'
+import Spaces from './spaces'
 import MenuFooter from '@/ui/footer/menu-footer'
 
 const MenuItems = () => {
@@ -14,7 +14,7 @@ const MenuItems = () => {
         <Account name='Achyut' description='@achyut'/>
       </div>
       <div className='horizontal-line lg:hidden'/>
-      <Folders/>
+      <Spaces/>
       <div className='horizontal-line'/>
         <MenuFooter/>
     </div>

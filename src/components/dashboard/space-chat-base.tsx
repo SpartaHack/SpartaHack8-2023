@@ -1,10 +1,10 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
 import { Icon } from '@iconify/react/dist/iconify.js'
-import FolderChatMain from "./folder-chat-main";
+import SpaceChatMain from "./space-chat-main";
 import { Fragment, useState } from "react";
 
-const FolderChatBase = () => {
+const SpaceChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -24,7 +24,7 @@ const FolderChatBase = () => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="relative w-full bg-absolute_white max-w-lg h-[80vh] lg:h-[75vh] overflow-y-auto transform rounded-xl p-6 text-left transition-all flex flex-col dark:bg-neutral-700 drop-shadow">
-                  <FolderChatMain/>
+                  <SpaceChatMain/>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -36,4 +36,4 @@ const FolderChatBase = () => {
   )
 }
 
-export default FolderChatBase
+export default SpaceChatBase

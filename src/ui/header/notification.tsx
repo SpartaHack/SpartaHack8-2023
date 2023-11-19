@@ -12,7 +12,7 @@ const Notification = () => {
       {
         label: 'Section 1', 
         items: [
-          {label: 'Welcome to YouLearn! A Github for your courses.', clickEvent: () => console.log("Clicked on WebDev")}, 
+          {label: 'Welcome to YouLearn! A Github for your spaces.', clickEvent: () => console.log("Clicked on WebDev")}, 
         ]
       },
     ]

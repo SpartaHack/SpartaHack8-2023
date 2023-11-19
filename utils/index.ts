@@ -25,7 +25,7 @@ export const replaceMessage = (() => {
 
     if (type === 'youtube') {
       regex = /(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g;
-    } else if (type === 'course') {
+    } else if (type === 'space') {
       regex = /(\[[^\]]+\])/g;
     } else {
       regex = /(\[[^\]]+\])/g;
@@ -88,7 +88,7 @@ export const logOut = async () => {
 }
 
 export const user_id = "4KNAN001tZhyNg96DkfkLeF6fvm2";
-export const course_id = "83e6002084934c8781979bc2904e7ced";
+export const space_id = "83e6002084934c8781979bc2904e7ced";
 export const content_id = ["kCc8FmEb1nY"]
 export const contentId = "kCc8FmEb1nY"
 export const information = {}

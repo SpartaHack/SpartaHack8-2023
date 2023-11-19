@@ -79,7 +79,7 @@ export type PriceCardProps = {
 
 export type DashboardProps = {
     userId: string,
-    courseIds: string[],
+    spaceIds: string[],
     tier: string,
 }
 
