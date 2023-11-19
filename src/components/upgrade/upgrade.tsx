@@ -20,7 +20,7 @@ const Upgrade = () => {
   return (
     <>
       <div 
-        className='mt-[45px] dark:bg-neutral-900 lg:mt-12 w-full flex items-center justify-center text-center'
+        className='mt-[50px] dark:bg-neutral-900 lg:mt-12 w-full flex items-center justify-center text-center'
       >
         <span 
           className='text-[40px] lg:mb-[50px] mb-[45px] font-bold'
