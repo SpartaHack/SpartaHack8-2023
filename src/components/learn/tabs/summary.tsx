@@ -20,7 +20,7 @@ const Summary = ({summary}: SummaryProps) => {
         </div>
         <div className="flex justify-end p-2 cursor-pointer">
             {copiedStateTyped[0] ? (
-                <Icon icon="charm:tick" className="text-xl text-secondary" />
+                <Icon icon="charm:tick" className="text-xl text-tertiary dark:text-secondary" />
               ) : (
                 <Icon icon="ci:copy"
                   onClick={() =>

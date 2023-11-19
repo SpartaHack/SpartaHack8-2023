@@ -18,7 +18,7 @@ const Message = ({ message, index, copiedState, copyToClipboard }: MessageProps)
             {message.type === "bot" &&
                 <div className='flex mt-2 ml-auto space-x-2 w-fit'>
                     {copiedState[`${index}`] ? (
-                        <Icon icon="charm:tick" className="text-xl text-secondary" />
+                        <Icon icon="charm:tick" className="text-xl text-tertiary dark:text-secondary" />
                     ) : (
                         <Icon icon="ci:copy"
                             onClick={() =>
