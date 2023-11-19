@@ -152,3 +152,11 @@ export type EditAccordionProps = {
     title: JSX.Element | string,
     style?: string,
 }
+
+export type CustomAccordionProps = {
+    accordionData: {
+        title: JSX.Element | string,
+        content: JSX.Element | string,
+        subtitle: JSX.Element | string,
+    }[];
+}
