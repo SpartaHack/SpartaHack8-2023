@@ -3,7 +3,7 @@ import { ImageUploadProps } from "../../types";
   
 export const ImageUpload = ({ onChange, src }: ImageUploadProps) => (
   <label className="cursor-pointer rounded-full">
-    <div className="relative w-[100px] h-[100px] flex items-center border justify-center overflow-hidden rounded-xl bg-transparent">
+    <div className="relative w-[100px] h-[100px] flex items-center border border-neutral-200 dark:border-neutral-700 justify-center overflow-hidden rounded-xl bg-transparent">
       <img src={src} className="w-auto h-full duration-200 hover:opacity-50" />
       <span className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-200 p-1"><Icon className="w-8 h-8" icon='clarity:edit-line'/></span>
     </div>

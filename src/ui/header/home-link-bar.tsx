@@ -27,10 +27,10 @@ const SearchBar = () => {
           <input
             type="text"
             className="w-full outline-none ml-3 bg-absolute_white dark:bg-transparent"
-            placeholder="I want to learn..."
+            placeholder="Upload pdf or youtube link..."
           />
           <button type="submit">
-            <Icon icon="akar-icons:search" 
+            <Icon icon="mi:add"
               className="h-6 w-6 mr-2"
             />
           </button>
@@ -42,7 +42,7 @@ const SearchBar = () => {
         <YouLearnLogo size='lg'/>
       </div>
       <div className='lg:hidden flex mr-1 justify-between' onClick={() => setSmallSearch(true)}>
-        <Icon icon="iconamoon:search-light" className="text-[25px] cursor-pointer mr-1"/>
+        <Icon icon="mi:add" className="text-[25px] cursor-pointer mr-1"/>
       </div>
     </>
     }
@@ -52,10 +52,10 @@ const SearchBar = () => {
           <input
             type="text"
             className="w-full bg-transparent outline-none pl-2"
-            placeholder="I want to learn..."
+            placeholder="Upload pdf or youtube link..."
           />
           <button type="submit">
-            <Icon icon="iconamoon:search-light" className="text-[25px] mr-1" />
+            <Icon icon="mi:add" className="text-[25px] mr-1" />
           </button>
         </form>
       </div>

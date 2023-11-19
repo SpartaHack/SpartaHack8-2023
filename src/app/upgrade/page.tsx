@@ -1,8 +1,8 @@
 'use client'
 import FAQ from '@/components/upgrade/faq'
 import PricingPage from '@/components/upgrade/pricing-table'
+import Footer from "@/ui/footer/footer"
 import SecondaryHeader from '@/ui/header/secondary-header'
-import React from 'react'
 
 const UpgradePage = () => {
   return (
@@ -12,6 +12,7 @@ const UpgradePage = () => {
           <PricingPage/>
           <FAQ/>
         </div>
+        <Footer/>
     </main>
   )
 }
