@@ -17,7 +17,12 @@ const SignIn = () => {
             Sign in to continue learning
           </p>
           <CustomButton 
-            title='Log in with Google' 
+            title={
+              <div className='flex flex-row'>
+                <Icon icon='flat-color-icons:google' className='h-5 w-5 mr-2'/>
+                Log in with Google
+              </div>
+            }
             btnType='button'
             btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
             clickEvent={authGoogle}

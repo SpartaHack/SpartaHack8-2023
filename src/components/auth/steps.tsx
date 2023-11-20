@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 import CustomAutocomplete from '@/helpers/custom-autocomplete'
 import { educationOptions } from '../../../utils/constants'
 import { authGoogle } from '../../../utils'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 const Steps = () => {
   const [step, setStep] = useState(1);
@@ -58,7 +59,12 @@ const Steps = () => {
             Create your free YouLearn account
           </p>
           <CustomButton 
-            title='Sign in with Google' 
+            title={
+              <div className='flex flex-row'>
+                <Icon icon='flat-color-icons:google' className='h-5 w-5 mr-2'/>
+                Sign in with Google
+              </div>
+            }
             btnType='button'
             btnStyling='border-2 bg-transparent dark:border-neutral-600 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
             clickEvent={authGoogle}
