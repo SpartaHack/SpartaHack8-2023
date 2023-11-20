@@ -160,3 +160,8 @@ export type CustomAccordionProps = {
         subtitle: JSX.Element | string,
     }[];
 }
+
+export type SignUpFormProps = {
+    name: string,
+    educationLevel: string
+}

@@ -20,7 +20,7 @@ const SignIn = () => {
             title={
               <div className='flex flex-row'>
                 <Icon icon='flat-color-icons:google' className='h-5 w-5 mr-2'/>
-                Log in with Google
+                Sign in with Google
               </div>
             }
             btnType='button'

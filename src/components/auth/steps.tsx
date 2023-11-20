@@ -62,12 +62,12 @@ const Steps = () => {
             title={
               <div className='flex flex-row'>
                 <Icon icon='flat-color-icons:google' className='h-5 w-5 mr-2'/>
-                Sign in with Google
+                Sign up with Google
               </div>
             }
             btnType='button'
             btnStyling='border-2 bg-transparent dark:border-neutral-600 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={() => authGoogle('signup', 'Secondary or High School')}
+            clickEvent={() => authGoogle('signup', educationLevel)}
           />
           <div className="flex items-center justify-center pt-8">
             <div className="border-t border-neutral-500 flex-grow dark:text-neutral-500"/>
@@ -76,7 +76,7 @@ const Steps = () => {
             </span>
             <div className="border-t dark:text-neutral-500 border-neutral-500 flex-grow"/>
           </div>
-          <SignUpForm/>
+          <SignUpForm name={name} educationLevel={educationLevel}/>
         </>
       )}  
     </>

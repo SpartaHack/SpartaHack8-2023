@@ -52,24 +52,31 @@ export const authGoogle = async (type: 'signin' | 'signup', educationLevel?: str
     let response;
     if (type === 'signin') {
       response = await userLogIn(userId);
+      if (!response) {
+        toast.error("No account found")
+      } else {
+        toast.success("Signed in successful")        
+      }
     } else {
       const email = result.user?.email
       const fullName = result.user?.displayName
       const photoURL = result.user?.photoURL
       response = await userSignUp(userId, email!, fullName!, photoURL!, educationLevel!);
+      toast.success("Signup successful")
     }
   } catch (err) {
-    toast.error("Internal Server Error")
+    toast.error("Internal server error")
   }
-  toast.success("Authentication Successful")
 }
 
-export const signUpEmail = async (email: string, password: string) => {
+export const signUpEmail = async (email: string, password: string, fullName: string, educationLevel: string) => {
   try {
     initFirebase();
     const auth = getAuth();
     const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
-    toast.success("Signed up successfully")
+    const userId = userCredential.user?.uid;
+    await userSignUp(userId, email, fullName!, '', educationLevel!);
+    toast.success("Signed up successfully");
   } catch {
     toast.error("Try again. Something went wrong")
   }
@@ -80,9 +87,11 @@ export const signInEmail = async (email: string, password: string) => {
     initFirebase();
     const auth = getAuth()
     const result = await signInWithEmailAndPassword(auth, email, password);
+    const userId = result.user?.uid;
+    await userLogIn(userId);
     toast.success("Signed in successfully")
   } catch {
-    toast.error("Try again. Something went wrong")
+    toast.error("Authentication Error")
   }
 }
 
