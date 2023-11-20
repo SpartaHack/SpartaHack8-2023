@@ -106,8 +106,8 @@ export const logOut = async () => {
   }
 }
 
-export const user_id = "4KNAN001tZhyNg96DkfkLeF6fvm2";
-export const space_id = "83e6002084934c8781979bc2904e7ced";
-export const content_id = ["kCc8FmEb1nY"]
-export const contentId = "kCc8FmEb1nY"
+export const user_id = "urmom";
+export const space_id = ["e6d612b8-2d55-491e-adc9-02f3c9c3cc36"];
+export const content_id = ["x7X9w_GIm1s"]
+export const contentId = "x7X9w_GIm1s"
 export const information = {}

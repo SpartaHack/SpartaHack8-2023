@@ -3,7 +3,7 @@ import ChatSubmit from './chat-submit'
 import { useContainerHeight } from '@/hooks/use-container-height';
 import { ScrollShadow } from '@nextui-org/react';
 import useChatSubmit from '@/hooks/use-chat-submit';
-import { contentId, space_id, user_id } from '../../../../utils';
+import { content_id, space_id, user_id } from '../../../../utils';
 import useCopyToClipboard from '@/hooks/use-copy-clipboard';
 import Message from './message';
 import TypingIndicator from '../../../helpers/typing-indicator';
@@ -12,14 +12,14 @@ import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources
 const Chat = () => {
   const type = 'youtube'
   const height = useContainerHeight({type: type});
-  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'content', [{type: "bot", response: "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!"}], user_id, contentId, space_id);
+  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'content', [{type: "bot", response: "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!"}], user_id, content_id, space_id);
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [ ...chatSubmitLog];
   chatLog = removeUndefinedFromSources(chatLog)
 
   return (
-    <div className='lg:h-full h-[70vh] flex-col flex '  style={{maxHeight: `${height-90}px`}}>
+    <div className='lg:h-full h-[70vh] flex-col flex ' style={{maxHeight: `${height-90}px`}}>
       <ScrollShadow 
         size={5} 
         hideScrollBar 
