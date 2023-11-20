@@ -2,6 +2,45 @@ import axios from "axios";
 import { toast } from "sonner";
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+//USER
+export const userLogIn = async (
+  userId: string
+) => {
+  const data = {
+    user_id: userId,
+  };
+
+  try {
+    const response = await axios.post(`${API_URL}/user/login`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const userSignUp = async (
+  userId: string,
+  email: string,
+  fullName: string,
+  photoURL: string,
+  educationLevel: string
+) => {
+  const data = {
+    user_id: userId,
+    email: email,
+    full_name: fullName,
+    photo_url: photoURL,
+    education_level: educationLevel
+  }
+
+  try {
+    const response = await axios.post(`${API_URL}/user/signup`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 // SPACE
 export const getSpaceContents = async (
   userId: string, 
