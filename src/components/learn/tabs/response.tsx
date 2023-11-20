@@ -1,7 +1,7 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { ResponseProps, TooltipContentProps } from '../../../../types'
+import { ResponseProps } from '../../../../types'
 import { TooltipContent } from '@/functions/tool-tip-content'
 
 const Response = ({message, source}: ResponseProps) => {
