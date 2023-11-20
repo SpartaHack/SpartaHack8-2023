@@ -3,8 +3,16 @@ import FAQ from '@/components/upgrade/faq'
 import PricingPage from '@/components/upgrade/pricing-table'
 import Footer from "@/ui/footer/footer"
 import SecondaryHeader from '@/ui/header/secondary-header'
+import { useTheme } from 'next-themes'
+import { useEffect } from 'react'
 
 const UpgradePage = () => {
+  const {theme, setTheme} = useTheme();
+
+  useEffect(() => {
+    setTheme('light')
+  }, [theme, setTheme])
+
   return (
     <main>
       <SecondaryHeader/>
@@ -16,7 +24,5 @@ const UpgradePage = () => {
     </main>
   )
 }
-
-UpgradePage.theme = 'light'
 
 export default UpgradePage
