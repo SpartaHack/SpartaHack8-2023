@@ -63,4 +63,3 @@ export const educationOptions = [
   { value: "I'm not currently a student" },
 ];
 
-export const priceId = 'price_1OCV32K8Jk6Q3TjG3W5GBmWW';

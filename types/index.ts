@@ -70,9 +70,11 @@ export type Features = {
 }
 
 export type PriceCardProps = {
+    plan: string;
     price: JSX.Element | string;
     subTitle: string;
     planBenefits: Features[];
+    buttonStyle?: string,
     buttonText: string | JSX.Element,
     handleClick: () => void;
 }

@@ -1,8 +1,8 @@
 'use client'
 import FAQ from '@/components/upgrade/faq'
-import PricingPage from '@/components/upgrade/pricing-table'
+import Upgrade from '@/components/upgrade/upgrade'
 import Footer from "@/ui/footer/footer"
-import SecondaryHeader from '@/ui/header/secondary-header'
+import Header from '@/ui/header/header'
 import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
 
@@ -14,14 +14,14 @@ const UpgradePage = () => {
   }, [theme, setTheme])
 
   return (
-    <main>
-      <SecondaryHeader/>
+    <div>
+      <Header/>
         <div className="z-10 mt-[60px] relative h-full pb-6">
-          <PricingPage/>
+          <Upgrade/>
           <FAQ/>
         </div>
         <Footer/>
-    </main>
+    </div>
   )
 }
 
