@@ -28,7 +28,6 @@ const CustomAutocomplete = ({style, datas, isInvalid, label, onValueChange, size
   return (
     <>
       <Autocomplete
-        allowsCustomValue
         labelPlacement='outside'
         variant='bordered'
         isInvalid={ isInvalidState && isFocused }

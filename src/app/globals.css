@@ -8,14 +8,13 @@
 }
 
 .dark {
-  --foreground-rgb: 255, 255, 255;
+  --foreground-rgb: 245, 245, 245;
   --background-rgb: 23, 23, 23;
 }
 
 body {
   background-color: rgb(var(--background-rgb));
 }
-
 
 @layer components {
   .header-icons {
