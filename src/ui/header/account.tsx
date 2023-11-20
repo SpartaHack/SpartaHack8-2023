@@ -24,7 +24,7 @@ const Account = ({name, description, picture}: AccountProps) => {
       <Dropdown radius="sm">
         <DropdownTrigger>
           <div className='flex flex-row'>
-            <Icon icon="bx:user" className='header-icons md:h-10 md:w-10 w-6 h-6' />
+            <Icon icon="bx:user" className='md:header-icons md:h-10 md:w-10 w-6 h-6' />
             <div className='lg:hidden'>
                 <span className='ml-5 mt-1'>Account</span>
             </div>

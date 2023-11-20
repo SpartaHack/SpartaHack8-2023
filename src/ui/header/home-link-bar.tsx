@@ -29,7 +29,7 @@ const SearchBar = () => {
             placeholder="Upload pdf or youtube link..."
           />
           <button type="submit">
-            <Icon icon="mi:add" className="header-icons md:h-9 md:w-9 w-6 h-6"/>
+            <Icon icon="mi:add" className="md:header-icons md:h-9 md:w-9 w-6 h-6"/>
           </button>
         </form>
       </div>
@@ -39,7 +39,7 @@ const SearchBar = () => {
         <YouLearnLogo size='lg'/>
       </div>
       <div className='lg:hidden flex mr-1 justify-between' onClick={() => setSmallSearch(true)}>
-        <Icon icon="mi:add" className="w-6 h-6"/>
+        <Icon icon="mi:add" className="w-6 h-6 cursor-pointer"/>
       </div>
     </>
     }
