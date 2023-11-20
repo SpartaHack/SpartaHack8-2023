@@ -1,12 +1,10 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import PriceCard from '@/helpers/price-card'
 import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/functions/tier-constants';
 import { useRouter } from 'next/navigation';
-import { Spinner } from '@nextui-org/react';
 
 const Upgrade = () => {
-  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
   return (
@@ -31,7 +29,7 @@ const Upgrade = () => {
             }
             subTitle='Start your learning journey'
             planBenefits={freePlanBenefits}
-            buttonText={loading ? <Spinner size='sm' color='current'/> : "Get Started"}
+            buttonText={"Get Started"}
             buttonStyle=' bg-white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full border-1 border-black dark:border-white'
             handleClick={() => router.push('https://app.youlearn.ai/')}
           />
@@ -46,7 +44,7 @@ const Upgrade = () => {
             }
             subTitle='Everything in free plan, plus unlimited features'
             planBenefits={premiumMonthlyPlanBenefits}
-            buttonText={loading ? <Spinner size='sm' color='current'/> : "Start 14-day free trial"}
+            buttonText={"Start 14-day free trial"}
             buttonStyle='bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full'
             handleClick={() => router.push('https://buy.stripe.com/test_cN24h48DP03Z9xu3cd')}
           />
