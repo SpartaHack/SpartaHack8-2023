@@ -25,7 +25,7 @@ const SignIn = () => {
             }
             btnType='button'
             btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={authGoogle}
+            clickEvent={() => authGoogle('signin')}
           />
           <div className="flex items-center justify-center pt-8 ">
             <div className="border-t border-neutral-600 flex-grow dark:text-neutral-500 mb-8"/>

@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { initFirebase } from "../db/firebase";
 import { toast } from "sonner";
+import { userLogIn, userSignUp } from "@/app/api/endpoints";
 
 export const sideBarMotion = {
     initial: { x: '-100%' },
@@ -41,17 +42,26 @@ export const replaceMessage = (() => {
   };
 })();
 
-export const authGoogle = async () => {
-  // ask mongoDB
-  try {
+export const authGoogle = async (type: 'signin' | 'signup', educationLevel?: string) => {
+  try{
     initFirebase();
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
-    toast.success("Signed up successfully")
-  } catch {
-    toast.error("Try again. Something went wrong")
+    const userId = result.user?.uid
+    let response;
+    if (type === 'signin') {
+      response = await userLogIn(userId);
+    } else {
+      const email = result.user?.email
+      const fullName = result.user?.displayName
+      const photoURL = result.user?.photoURL
+      response = await userSignUp(userId, email!, fullName!, photoURL!, educationLevel!);
+    }
+  } catch (err) {
+    toast.error("Internal Server Error")
   }
+  toast.success("Authentication Successful")
 }
 
 export const signUpEmail = async (email: string, password: string) => {
