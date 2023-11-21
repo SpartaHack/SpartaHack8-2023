@@ -11,6 +11,6 @@ export const TabContent = ({ price }: TabContentProps) => (
         <span className='font-light lg:text-[18px] text-[15px]'> / month</span>
     </>
     </h1>
-    <h2 className='text-[15px] mb-5 lg:mb-8'>Everything in free plan, plus unlimited features.</h2>
+    <h2 className='text-[15px] mb-5 lg:mb-2'>Everything in free plan, plus unlimited features.</h2>
 </>
 );
