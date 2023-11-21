@@ -4,7 +4,7 @@ import PriceCard from '@/helpers/price-card'
 import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/functions/tier-constants';
 import { useRouter } from 'next/navigation';
 import CustomModal from '@/helpers/custom-modal';
-import upgradeModal from '@/functions/upgrade-modal';
+import UpgradeModal from '@/components/upgrade/upgrade-modal';
 
 const Upgrade = () => {
   const router = useRouter()
@@ -46,7 +46,7 @@ const Upgrade = () => {
             }
             subTitle='Everything in free plan, plus unlimited features'
             planBenefits={premiumMonthlyPlanBenefits}
-            buttonText={<CustomModal placement='center' footer={false} title={<h1 className='h-[50.5px] text-center w-full flex items-center justify-center'>Start your 14 day free trail</h1>} contentMain={upgradeModal}/>}
+            buttonText={<CustomModal placement='center' footer={false} title={<h1 className='h-[50.5px] text-center w-full flex items-center justify-center'>Start your 14 day free trail</h1>} contentMain={<UpgradeModal/>}/>}
             buttonStyle='bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full'
           />
         

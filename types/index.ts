@@ -37,7 +37,7 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
     title: JSX.Element, 
     contentTitle?: string, 
-    contentMain: JSX.Element, 
+    contentMain: JSX.IntrinsicAttributes | JSX.Element, 
     actionTitle?: string
     actionEvent?: MouseEventHandler;
     placement?: "center" | "auto" | "top" | "top-center" | "bottom" | "bottom-center" | undefined,
@@ -171,4 +171,8 @@ export type CustomAccordionProps = {
 export type SignUpFormProps = {
     name: string,
     educationLevel: string
+}
+
+export type TabContentProps = {
+    price: string;
 }
