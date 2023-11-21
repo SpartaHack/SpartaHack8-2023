@@ -30,7 +30,7 @@ const UpgradeModal: FC = () => {
         <CustomButton title='Continue' btnStyling="bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-xl w-full" btnType='button' clickEvent={handleClick}/>
         <div className="border-t-[0.5px] md:hidden md:mt-6 text-primary"/>
       </div>
-      <OrderSummary price={selected === "monthly" ? PROMONTHLYPRICE : PROYEARLYPRICE*12}/>
+      <OrderSummary type={selected}/>
     </div>
   );
 };
