@@ -39,7 +39,7 @@ const Chat = () => {
             </div>
           </div>
       </ScrollShadow>
-      {/* <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]}/> */}
+      <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]} chatQuestionClick={(question) => handleChatSubmit(question)}/>
       <div className="mt-3">
         <ChatSubmit
           onMessageSubmit={handleChatSubmit} isLoading={isChatSubmitting}

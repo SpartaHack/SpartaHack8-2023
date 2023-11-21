@@ -11,10 +11,9 @@ import ChatQuestions from '../learn/tabs/chat-questions';
 
 const SpaceChatMain = () => {
   const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'space', [{type: "bot", response: "Welcome to the space chat! Ask me anything in this space! Give feedback for improvements!"}], user_id, content_id, space_id);
-
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [ ...chatSubmitLog];
-  chatLog = removeUndefinedFromSources(chatLog)
+  chatLog = removeUndefinedFromSources(chatLog);
 
   return (
     <>
@@ -35,7 +34,7 @@ const SpaceChatMain = () => {
                     </div>
                 </div>
         </ScrollShadow>
-        <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]}/>
+        <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]} chatQuestionClick={(question) => handleChatSubmit(question)}/>
         <div className="mt-3">
             <ChatSubmit
                 onMessageSubmit={handleChatSubmit} isLoading={isChatSubmitting}
