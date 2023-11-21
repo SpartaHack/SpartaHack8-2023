@@ -73,15 +73,126 @@ export const getHistory = async (
   }
 }
 
-// CHAT
+// SPACES
+export const getSpace = async (
+  userId: string,
+  spaceId: string
+) => {
+  try {
+    const response = await axios.get(`${API_URL}/spaces/${userId}/${spaceId}`);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const addSpace = async (
+  userId: string,
+  spaceId: string,
+  spaceName: string,
+  visibility: 'private' | 'public'
+) => {
+  const data = {
+    user_id: userId,
+    space_id: spaceId,
+    space_name: spaceName,
+    visibility: visibility
+  };
+
+  try {
+    const response = await axios.post(`${API_URL}/spaces/add`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const updateSpace = async (
+  userId: string,
+  spaceId: string,
+  spaceName: string,
+  visibility: 'private' | 'public'
+) => {
+  const data = {
+    user_id: userId,
+    space_id: spaceId,
+    space_name: spaceName,
+    visibility: visibility
+  };
+
+  try {
+    const response = await axios.put(`${API_URL}/spaces/add`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const deleteSpace = async (
+  userId: string,
+  spaceId: string,
+) => {
+  const data = {
+    user_id: userId,
+    space_id: spaceId,
+  };
+
+  try {
+    const response = await axios.post(`${API_URL}/spaces/delete`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// CONTENT
+export const addContent = async (
+  userId: string,
+  spaceId: string,
+  contentURL: string
+) => {
+  const data = {
+    user_id: userId,
+    space_id: spaceId,
+    content_url: contentURL
+  };
+
+  try {
+    const response = await axios.post(`${API_URL}/content/add`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const deleteContent = async (
+  userId: string,
+  spaceId: string,
+  contentIds: string[]
+) => {
+  const data = {
+    user_id: userId,
+    space_id: spaceId,
+    content_ids: contentIds
+  };
+
+  try {
+    const response = await axios.post(`${API_URL}/content/delete`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// GENERATION
 export const chat = async (
-  userId : string,
-  spaceId : string[],
-  contentId : string[],
-  query : string,
-  chatType : 'content' | 'space',
-  getExistingChatHistory : boolean,
-  saveChatHistory : boolean
+  userId: string,
+  spaceId: string[],
+  contentId: string[],
+  query: string,
+  chatType: 'content' | 'space',
+  getExistingChatHistory: boolean,
+  saveChatHistory: boolean
 ) => {
   const data = {
     user_id: userId,
@@ -103,3 +214,37 @@ export const chat = async (
 
   return response;
 };
+
+export const generateContentSummary = async (
+  userId: string,
+  contentId: string
+) => {
+  const data = {
+    user_id: userId,
+    content_id: contentId
+  }
+
+  try {
+    const response = await axios.post(`${API_URL}/generation/content/summary`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const generateContentQuestions = async (
+  userId: string,
+  contentId: string
+) => {
+  const data = {
+    user_id: userId,
+    content_id: contentId
+  }
+
+  try {
+    const response = await axios.post(`${API_URL}/generation/content/questions`, data);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
