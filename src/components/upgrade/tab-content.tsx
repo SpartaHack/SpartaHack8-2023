@@ -2,7 +2,7 @@ import { TabContentProps } from "../../../types";
 
 export const TabContent = ({ price }: TabContentProps) => (
 <>
-    <h1 className='lg:text-md text-sm mt-5 lg:mt-7 font-semibold font-sans'>
+    <h1 className='lg:text-md text-sm mt-5 font-semibold font-sans'>
     Pro
     </h1>
     <h1 className='text-3xl my-2 font-bold font-sans'>

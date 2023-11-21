@@ -63,3 +63,5 @@ export const educationOptions = [
   { value: "I'm not currently a student" },
 ];
 
+export const PROMONTHLYPRICE = 10;
+export const PROYEARLYPRICE = 8;

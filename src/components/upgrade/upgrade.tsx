@@ -5,6 +5,7 @@ import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/functions/tier-c
 import { useRouter } from 'next/navigation';
 import CustomModal from '@/helpers/custom-modal';
 import UpgradeModal from '@/components/upgrade/upgrade-modal';
+import { PROMONTHLYPRICE } from '../../../utils/constants';
 
 const Upgrade = () => {
   const router = useRouter()
@@ -40,7 +41,7 @@ const Upgrade = () => {
             plan='Pro'
             price={
               <>
-               $10
+               {`$${PROMONTHLYPRICE}`}
                <span className='font-light lg:text-[18px] text-[15px]'> / month</span>
               </>
             }
