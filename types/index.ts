@@ -58,7 +58,7 @@ export type ContentProps = {
     type: "youtube" | "pdf",
 }
 
-export interface ChatSubmitProps {
+export type ChatSubmitProps = {
     onMessageSubmit: (message: string) => void;
     isLoading: boolean;
 }
@@ -176,4 +176,13 @@ export type SignUpFormProps = {
 
 export type TabContentProps = {
     price: string;
+}
+
+export type ChatQuestionProps = {
+    questions: string[],
+    chatQuestionClick: (question: string) => void;
+}
+
+export type OrderSummaryProps = {
+    type: string
 }
