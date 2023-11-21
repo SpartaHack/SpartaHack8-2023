@@ -7,6 +7,7 @@ const CustomTextInput = ({value, type, label, isInvalid, eventChange, styling }:
   return (
     <> 
       <Input 
+        autoFocus
         value={value as string}
         type={type} 
         label={label}
