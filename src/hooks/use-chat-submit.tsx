@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
-import { chatContent, chatSpace } from "@/app/api/endpoints";
+import { chat } from "@/app/api/endpoints";
 
-const useChatSubmit = (type: string, initialChatLog: MessageType[], user_id: string, contentId: string, space_id: string) => {
+const useChatSubmit = (type: 'space' | 'content', initialChatLog: MessageType[], userId: string, contentId: string[], spaceId: string[]) => {
   const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,9 +17,9 @@ const useChatSubmit = (type: string, initialChatLog: MessageType[], user_id: str
     let response;
 
     if (type === 'content') {
-      response = await chatContent(user_id, space_id, contentId, query, {}, false, false);
+      response = await chat(userId, spaceId, contentId, query, type, false, false);
     } else {
-      response = await chatSpace(user_id, space_id, contentId, query, {}, false, false)
+      response = await chat(userId, spaceId, [], query, type, false, false);
     }
 
     if (!response.body) {

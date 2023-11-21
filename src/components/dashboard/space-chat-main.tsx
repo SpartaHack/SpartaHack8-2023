@@ -5,15 +5,17 @@ import useCopyToClipboard from '@/hooks/use-copy-clipboard';
 import useChatSubmit from '@/hooks/use-chat-submit';
 import Message from '../learn/tabs/message';
 import TypingIndicator from '@/helpers/typing-indicator';
-import { contentId, space_id, user_id } from '../../../utils';
+import { content_id, space_id, user_id } from '../../../utils';
 import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources';
+import ChatQuestions from '../learn/tabs/chat-questions';
+import useChatlogLength from '@/hooks/use-chatlog-length';
 
 const SpaceChatMain = () => {
-  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'space', [{type: "bot", response: "Welcome to the space chat! Ask me anything in this space! Give feedback for improvements!"}], user_id, contentId, space_id);
-
+  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'space', [{type: "bot", response: "Welcome to the space chat! Ask me anything in this space! Give feedback for improvements!"}], user_id, content_id, space_id);
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [ ...chatSubmitLog];
-  chatLog = removeUndefinedFromSources(chatLog)
+  chatLog = removeUndefinedFromSources(chatLog);
+  const { removeQuestions } = useChatlogLength(chatLog);
 
   return (
     <>
@@ -34,6 +36,9 @@ const SpaceChatMain = () => {
                     </div>
                 </div>
         </ScrollShadow>
+        {removeQuestions &&
+            <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]} chatQuestionClick={(question) => handleChatSubmit(question)}/>
+        }
         <div className="mt-3">
             <ChatSubmit
                 onMessageSubmit={handleChatSubmit} isLoading={isChatSubmitting}

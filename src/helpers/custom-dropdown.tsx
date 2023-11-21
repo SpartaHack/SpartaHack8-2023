@@ -3,9 +3,10 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem,
 import { CustomDropdownProps } from "../../types";
 
 
-export const CustomDropdown = ({title, sections}: CustomDropdownProps) => {
+export const CustomDropdown = ({title, offset, sections, placement, closeOnSelect}: CustomDropdownProps) => {
+
   return (
-    <Dropdown radius="sm" className="pt-3">
+    <Dropdown offset={offset} closeOnSelect={closeOnSelect} radius="sm" className="pt-3" placement={placement}>
       <DropdownTrigger>
         {title}
       </DropdownTrigger>

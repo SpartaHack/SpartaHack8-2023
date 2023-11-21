@@ -3,15 +3,15 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDis
 import { CustomButton } from "./custom-btn";
 import { CustomModalProps } from "../../types";
 
-const CustomModal = ({title, contentTitle, contentMain, actionTitle, actionEvent}: CustomModalProps) => {
+const CustomModal = ({title, size, contentTitle, contentMain, actionTitle, actionEvent, placement, footer}: CustomModalProps) => {
   const {isOpen, onOpen, onClose} = useDisclosure();
 
   return (
     <>
-      <div onClick={onOpen}>
+      <div className="bg-transparent" onClick={onOpen}>
         {title}
       </div>
-      <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
+      <Modal size={size} backdrop="blur" placement={placement} isOpen={isOpen} onClose={onClose}>
         <ModalContent className="prevent-close">
           {(onClose) => (
             <>
@@ -19,10 +19,12 @@ const CustomModal = ({title, contentTitle, contentMain, actionTitle, actionEvent
               <ModalBody>
                 {contentMain}
               </ModalBody>
+              { footer &&
               <ModalFooter>
                 <CustomButton title="Close" btnType="button" clickEvent={onClose} btnStyling="hover:bg-danger"/>
-                <CustomButton title={actionTitle} btnType="submit" clickEvent={() => actionEvent} btnStyling="hover:bg-secondary"/>
+                <CustomButton title={actionTitle!} btnType="submit" clickEvent={() => actionEvent} btnStyling="hover:bg-secondary"/>
               </ModalFooter>
+              }
             </>
           )}
         </ModalContent>

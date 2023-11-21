@@ -24,19 +24,25 @@ export type CustomDropdownProps = {
     sections: {
         label: string,
         items: {
-        label: string
-        clickEvent: () => void;
+        label: string | JSX.Element,
+        clickEvent?: () => void;
         dropStyling?: string,
         }[]
-    }[]
+    }[],
+    placement?: 'top' | 'bottom' | 'left' | 'right',
+    offset?: number,
+    closeOnSelect?: boolean,
 }
 
 export type CustomModalProps = {
     title: JSX.Element, 
-    contentTitle: string, 
-    contentMain: JSX.Element, 
-    actionTitle: string
-    actionEvent: MouseEventHandler;
+    size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full",
+    contentTitle?: string, 
+    contentMain: ReactNode | JSX.Element, 
+    actionTitle?: string
+    actionEvent?: MouseEventHandler;
+    placement?: "center" | "auto" | "top" | "top-center" | "bottom" | "bottom-center" | undefined,
+    footer: boolean
 }
 
 export type CustomTextInputProps = {
@@ -70,11 +76,13 @@ export type Features = {
 }
 
 export type PriceCardProps = {
+    plan: string;
     price: JSX.Element | string;
     subTitle: string;
     planBenefits: Features[];
+    buttonStyle?: string,
     buttonText: string | JSX.Element,
-    handleClick: () => void;
+    handleClick?: () => void;
 }
 
 export type DashboardProps = {
@@ -164,4 +172,8 @@ export type CustomAccordionProps = {
 export type SignUpFormProps = {
     name: string,
     educationLevel: string
+}
+
+export type TabContentProps = {
+    price: string;
 }
