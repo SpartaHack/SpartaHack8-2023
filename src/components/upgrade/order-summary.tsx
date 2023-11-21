@@ -6,7 +6,7 @@ type OrderSummaryProps = {
 
 const OrderSummary = ({price}: OrderSummaryProps) => {
   return (
-    <div className="flex flex-col mt-6">
+    <div className="flex flex-col mt-6 md:ml-5 md:w-full">
     <h1 className="font-bold text-lg">Order Summary</h1>
     <div className="flex-row font-bold justify-between flex mt-8">
         <span>YouLearn Pro</span>
