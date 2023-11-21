@@ -8,7 +8,7 @@ export const CustomButton = ({title, size, btnStyling, popOver, popOverTitle, po
         popOver ? (
             <Popover placement='bottom'>
                 <PopoverTrigger>
-                    <Button disableRipple size={size} type={btnType} className={`${btnStyling}`}>
+                    <Button fullWidth disableRipple size={size} type={btnType} className={`${btnStyling}`}>
                         {title}
                     </Button>
                 </PopoverTrigger>
@@ -19,7 +19,7 @@ export const CustomButton = ({title, size, btnStyling, popOver, popOverTitle, po
                 </PopoverContent>
             </Popover>
         ) : (
-            <Button disableRipple type={btnType} size={size} className={`${btnStyling}`} onClick={clickEvent}>
+            <Button fullWidth disableRipple type={btnType} size={size} className={`${btnStyling}`} onClick={clickEvent}>
                 {title}
             </Button>
         )
