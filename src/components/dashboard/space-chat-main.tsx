@@ -11,7 +11,7 @@ import ChatQuestions from '../learn/tabs/chat-questions';
 import useChatlogLength from '@/hooks/use-chatlog-length';
 
 const SpaceChatMain = () => {
-  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'space', [{type: "bot", response: "Welcome to the space chat! Ask me anything in this space! Give feedback for improvements!"}], user_id, content_id, space_id);
+  const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'space', [{type: "bot", response: "Welcome to the AI chatbot for your space! Ask me anything in this space! Give feedback for improvements!"}], user_id, content_id, space_id);
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [ ...chatSubmitLog];
   chatLog = removeUndefinedFromSources(chatLog);
@@ -23,7 +23,7 @@ const SpaceChatMain = () => {
             size={5} 
             hideScrollBar 
             className='flex-grow rounded-xl h-full'>
-                <div id="chat-container" className="flex-grow overflow-hidden overflow-y-auto rounded-xl">
+                <div id="chat-container" className="flex-grow overflow-hidden overflow-y-auto rounded-xl ">
                     {chatLog.map((message, index) => (
                     <Message
                         key={index}

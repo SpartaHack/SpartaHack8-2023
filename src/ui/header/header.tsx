@@ -26,7 +26,7 @@ export default function Header() {
             <NavbarMenuToggle className=""/>
           </div>
           <HomeLinkBar/>
-          <div className="hidden lg:flex space-x-5">
+          <div className="hidden lg:flex">
             <Notification/>
             <Account 
               name="Achyut Krishna Byanjankar"
