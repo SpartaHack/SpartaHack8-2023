@@ -24,11 +24,14 @@ export type CustomDropdownProps = {
     sections: {
         label: string,
         items: {
-        label: string
-        clickEvent: () => void;
+        label: string | JSX.Element,
+        clickEvent?: () => void;
         dropStyling?: string,
         }[]
-    }[]
+    }[],
+    placement?: 'top' | 'bottom' | 'left' | 'right',
+    offset?: number,
+    closeOnSelect?: boolean,
 }
 
 export type CustomModalProps = {
