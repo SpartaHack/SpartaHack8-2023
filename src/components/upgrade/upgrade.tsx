@@ -3,6 +3,8 @@ import React from 'react'
 import PriceCard from '@/helpers/price-card'
 import { freePlanBenefits, premiumMonthlyPlanBenefits } from '@/functions/tier-constants';
 import { useRouter } from 'next/navigation';
+import CustomModal from '@/helpers/custom-modal';
+import upgradeModal from '@/functions/upgrade-modal';
 
 const Upgrade = () => {
   const router = useRouter()
@@ -31,7 +33,7 @@ const Upgrade = () => {
             planBenefits={freePlanBenefits}
             buttonText={"Get Started"}
             buttonStyle=' bg-white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full border-1 border-black dark:border-white'
-            handleClick={() => router.push('https://app.youlearn.ai/')}
+            handleClick={() => router.push('/')}
           />
 
           <PriceCard 
@@ -44,9 +46,8 @@ const Upgrade = () => {
             }
             subTitle='Everything in free plan, plus unlimited features'
             planBenefits={premiumMonthlyPlanBenefits}
-            buttonText={"Start 14-day free trial"}
+            buttonText={<CustomModal placement='center' footer={false} title={<h1 className='h-[50.5px] text-center w-full flex items-center justify-center'>Start your 14 day free trail</h1>} contentMain={upgradeModal}/>}
             buttonStyle='bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            handleClick={() => router.push('https://buy.stripe.com/test_cN24h48DP03Z9xu3cd')}
           />
         
       </div>

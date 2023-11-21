@@ -36,10 +36,12 @@ export type CustomDropdownProps = {
 
 export type CustomModalProps = {
     title: JSX.Element, 
-    contentTitle: string, 
+    contentTitle?: string, 
     contentMain: JSX.Element, 
-    actionTitle: string
-    actionEvent: MouseEventHandler;
+    actionTitle?: string
+    actionEvent?: MouseEventHandler;
+    placement?: "center" | "auto" | "top" | "top-center" | "bottom" | "bottom-center" | undefined,
+    footer: boolean
 }
 
 export type CustomTextInputProps = {
@@ -79,7 +81,7 @@ export type PriceCardProps = {
     planBenefits: Features[];
     buttonStyle?: string,
     buttonText: string | JSX.Element,
-    handleClick: () => void;
+    handleClick?: () => void;
 }
 
 export type DashboardProps = {
