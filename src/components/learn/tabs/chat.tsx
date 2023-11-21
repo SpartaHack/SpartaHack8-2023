@@ -8,6 +8,7 @@ import useCopyToClipboard from '@/hooks/use-copy-clipboard';
 import Message from './message';
 import TypingIndicator from '../../../helpers/typing-indicator';
 import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources';
+import ChatQuestions from './chat-questions';
 
 const Chat = () => {
   const type = 'youtube'
@@ -38,6 +39,7 @@ const Chat = () => {
             </div>
           </div>
       </ScrollShadow>
+      {/* <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]}/> */}
       <div className="mt-3">
         <ChatSubmit
           onMessageSubmit={handleChatSubmit} isLoading={isChatSubmitting}

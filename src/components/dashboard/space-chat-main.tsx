@@ -7,6 +7,7 @@ import Message from '../learn/tabs/message';
 import TypingIndicator from '@/helpers/typing-indicator';
 import { content_id, space_id, user_id } from '../../../utils';
 import { removeUndefinedFromSources } from '@/functions/remove-undefined-sources';
+import ChatQuestions from '../learn/tabs/chat-questions';
 
 const SpaceChatMain = () => {
   const { handleChatSubmit, chatLog: chatSubmitLog, isLoading: isChatSubmitting } = useChatSubmit( 'space', [{type: "bot", response: "Welcome to the space chat! Ask me anything in this space! Give feedback for improvements!"}], user_id, content_id, space_id);
@@ -34,6 +35,7 @@ const SpaceChatMain = () => {
                     </div>
                 </div>
         </ScrollShadow>
+        <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]}/>
         <div className="mt-3">
             <ChatSubmit
                 onMessageSubmit={handleChatSubmit} isLoading={isChatSubmitting}
