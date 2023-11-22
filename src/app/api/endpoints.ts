@@ -10,7 +10,7 @@ export const userLogIn = async (
   };
 
   try {
-    const response = await axios.post(`${API_URL}/user/login`, data);
+    const response = await axios.post(`${API_URL}/user/signin`, data);
     return response;
   } catch (err) {
     console.error(err);

@@ -1,10 +1,8 @@
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
 import React, { ChangeEvent, useState } from 'react'
-import { signUpEmail } from '../../../utils';
-import { SignUpFormProps } from '../../../types';
 
-const SignUpForm = ({name, educationLevel}: SignUpFormProps) => {
+const SignUpForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -53,10 +51,10 @@ const SignUpForm = ({name, educationLevel}: SignUpFormProps) => {
             eventChange = { (e) => handleChange(e, setConfirmPassword) }
         />
         <CustomButton 
-            title = 'Create Account'
-            btnType = 'submit'
-            btnStyling = 'mt-12 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={() => signUpEmail(email, password, name, educationLevel)}
+          title = 'Create an account'
+          btnType = 'button'
+          btnStyling = 'mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
+          clickEvent={() => console.log('h')}
         />
     </div>
   )
