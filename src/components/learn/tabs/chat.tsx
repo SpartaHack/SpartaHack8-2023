@@ -42,7 +42,7 @@ const Chat = () => {
           </div>
       </ScrollShadow>
       { removeQuestions &&
-        <ChatQuestions questions={["What is life?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]} chatQuestionClick={(question) => handleChatSubmit(question)}/>
+        <ChatQuestions questions={["What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?", "What is Mona Lisa?"]} chatQuestionClick={(question) => handleChatSubmit(question)}/>
       }
       <div className="mt-3">
         <ChatSubmit
