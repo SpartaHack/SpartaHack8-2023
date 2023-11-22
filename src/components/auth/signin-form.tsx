@@ -1,10 +1,11 @@
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
 import React, { ChangeEvent, useState } from 'react'
-import { toast } from 'sonner'
-import { signInEmail } from '../../../utils'
+import { useRouter } from 'next/navigation'
+import { signInEmail } from '@/functions/auth'
 
 const SignInForm = () => {
+    const router = useRouter()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
@@ -13,6 +14,12 @@ const SignInForm = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
       setState(event.target.value);
     };
+
+    const handleSignIn = async () => {
+      const response = await signInEmail(email, password);
+      console.log(response)
+      if (response) router.push(response)
+    }
   
     const isInvalid = (value: string, type?: string) => {
         if (type === 'email') {
@@ -43,7 +50,7 @@ const SignInForm = () => {
             title = 'Sign In'
             btnType = 'submit'
             btnStyling = 'bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={() => signInEmail(email, password)}
+            clickEvent={handleSignIn}
         />
     </div>
   )

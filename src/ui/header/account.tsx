@@ -7,7 +7,7 @@ import { SunIcon } from '@/icon/sun-icon';
 import { MoonIcon } from '@/icon/moon-icon';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
-import { logOut } from '../../../utils';
+import { logOut } from '@/functions/auth';
 
 const Account = ({name, description, picture}: AccountProps) => {
   const router = useRouter();

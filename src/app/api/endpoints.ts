@@ -2,7 +2,7 @@ import axios from "axios";
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // USER
-export const userLogIn = async (
+export const userSignIn = async (
   userId: string
 ) => {
   const data = {
@@ -13,7 +13,7 @@ export const userLogIn = async (
     const response = await axios.post(`${API_URL}/user/signin`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -36,7 +36,7 @@ export const userSignUp = async (
     const response = await axios.post(`${API_URL}/user/signup`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -47,7 +47,7 @@ export const getUserSpaces = async (
     const response = await axios.get(`${API_URL}/user/${userId}/spaces`);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -58,7 +58,7 @@ export const getUser = async (
     const response = await axios.get(`${API_URL}/user/${userId}/profile`);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -69,7 +69,7 @@ export const getHistory = async (
     const response = await axios.get(`${API_URL}/user/${userId}/history`);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -82,7 +82,7 @@ export const getSpace = async (
     const response = await axios.get(`${API_URL}/spaces/${userId}/${spaceId}`);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -103,7 +103,7 @@ export const addSpace = async (
     const response = await axios.post(`${API_URL}/spaces/add`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -124,7 +124,7 @@ export const updateSpace = async (
     const response = await axios.put(`${API_URL}/spaces/add`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -141,7 +141,7 @@ export const deleteSpace = async (
     const response = await axios.post(`${API_URL}/spaces/delete`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -161,7 +161,7 @@ export const addContent = async (
     const response = await axios.post(`${API_URL}/content/add`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -180,7 +180,7 @@ export const deleteContent = async (
     const response = await axios.post(`${API_URL}/content/delete`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -228,7 +228,7 @@ export const generateContentSummary = async (
     const response = await axios.post(`${API_URL}/generation/content/summary`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -245,6 +245,6 @@ export const generateContentQuestions = async (
     const response = await axios.post(`${API_URL}/generation/content/questions`, data);
     return response;
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }

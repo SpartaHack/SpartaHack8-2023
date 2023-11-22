@@ -1,17 +1,25 @@
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
 import React, { ChangeEvent, useState } from 'react'
+import { useRouter } from 'next/navigation';
+import { signUpEmailContinue } from '@/functions/auth';
 
 const SignUpForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const router = useRouter()
   
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
     const handleChange = (event: ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
       setState(event.target.value);
     };
+
+    const handleSignUp = async () => {
+      const response = await signUpEmailContinue(email, password)
+      if (response) router.push(response)
+    }
   
     const isInvalid = (value: string, type?: string) => {
       if (type === 'email') {
@@ -54,7 +62,7 @@ const SignUpForm = () => {
           title = 'Create an account'
           btnType = 'button'
           btnStyling = 'mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-          clickEvent={() => console.log('h')}
+          clickEvent={handleSignUp}
         />
     </div>
   )

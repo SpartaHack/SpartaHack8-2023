@@ -4,10 +4,15 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 import React from 'react'
 import SignInForm from './signin-form'
 import { useRouter } from 'next/navigation';
-import { authGoogle } from '../../../utils';
+import { authGoogleSignIn } from '@/functions/auth'
 
 const SignIn = () => {
   const router = useRouter();
+  const handleGoogleSignIn = async () => {
+    const response = await authGoogleSignIn()
+    if (response) router.push(response)
+  }
+
   return (
     <div className='flex bg-white dark:bg-neutral-900 flex-col h-screen items-center justify-center'>
       <div className="w-full sm:w-3/5 flex p-8 space-y-4 max-w-lg items-center justify-center">
@@ -25,7 +30,7 @@ const SignIn = () => {
             }
             btnType='button'
             btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={() => authGoogle('signin')}
+            clickEvent={handleGoogleSignIn}
           />
           <div className="flex items-center justify-center pt-8 ">
             <div className="border-t border-neutral-600 flex-grow dark:text-neutral-500 mb-8"/>
