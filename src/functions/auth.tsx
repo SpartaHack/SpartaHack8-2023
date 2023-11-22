@@ -6,9 +6,19 @@ import { initFirebase } from "../../db/firebase";
 import { handleFirebaseError } from "../../utils";
   
 const setUserLocalStorage = (user: User) => {
-    localStorage.setItem("userId", user.uid);
-    localStorage.setItem("fullName", user.displayName!);
-    localStorage.setItem("email", user.email!);
+    try {
+        localStorage.setItem("userId", user.uid ?? '');
+        localStorage.setItem("fullName", user.displayName ?? '');
+        localStorage.setItem("email", user.email ?? '');
+        localStorage.setItem("photoURL", user.photoURL ?? '');
+    } catch (error) {
+        console.error('Error storing data to localStorage', error);
+    }
+}
+
+const getJWT = (userCred: UserCredential) => {
+    const token = userCred.user?.getIdToken();
+    return token;
 }
   
 export const signInEmail = async (email: string, password: string) => {
@@ -16,6 +26,7 @@ export const signInEmail = async (email: string, password: string) => {
         const auth = getAuth();
         const result = await signInWithEmailAndPassword(auth, email, password);
         const user = result.user;
+        console.log(getJWT(result))
         setUserLocalStorage(user);
         const response = await userSignIn(user.uid);
         if (result) {
@@ -40,6 +51,7 @@ export const signUpEmailContinue = async (email: string, password: string) => {
         const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         setUserLocalStorage(user);
+        console.log(await getJWT(userCredential))
         if (userCredential) {
             toast.success("User created, redirecting to form");
         return '/form';
@@ -57,6 +69,7 @@ export const authGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
+        console.log(await getJWT(result))
         setUserLocalStorage(user);
         const response = await userSignIn(user.uid);
         if (response) {
@@ -79,6 +92,7 @@ export const authGoogleSignUp = async () => {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
+        console.log(getJWT(result))
         setUserLocalStorage(user);
         const response = await userSignIn(user.uid);
         if (response) {
@@ -120,9 +134,9 @@ export const logOut = async () => {
     }
 }
 
-export const handleSignUpFinal = async (userId: string, email: string, educationLevel: string, fullName: string) => {
+export const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
     try {
-        const response = await userSignUp(userId, email, fullName, '', educationLevel);
+        const response = await userSignUp(userId, email, fullName, photoURL, educationLevel);
         if (response) {
         toast.success("User signed up successfully");
         return '/';

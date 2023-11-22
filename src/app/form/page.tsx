@@ -17,7 +17,9 @@ const Form = () => {
       if (name !== '' && educationLevel !== '') {
         const userId = localStorage.getItem("userId")
         const email = localStorage.getItem("email")
-        const response = await handleSignUpFinal(userId!, email!, educationLevel, name)
+        const photoURL = localStorage.getItem("photoURL")
+
+        const response = await handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name)
         if (response) router.push(response)
 
       } else {
