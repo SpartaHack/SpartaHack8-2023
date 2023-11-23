@@ -6,9 +6,10 @@ import React, { useState } from 'react'
 import { toast } from 'sonner'
 import { educationOptions } from '../../../utils/constants'
 import { useRouter } from 'next/navigation'
-import { handleSignUpFinal } from '@/functions/auth'
+import { useHandleSignUpFinal } from '@/functions/auth'
 
 const Form = () => {
+    const  { handleSignUpFinal, signUpFinalStatus } = useHandleSignUpFinal();
     const [name, setName] = useState("");
     const [educationLevel, setEducationLevel] = useState("");
     const router = useRouter()
@@ -19,8 +20,10 @@ const Form = () => {
         const email = localStorage.getItem("email")
         const photoURL = localStorage.getItem("photoURL")
 
-        const response = await handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name)
-        if (response) router.push(response)
+        const handleSignUp = async () => {
+            handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name);
+            if (signUpFinalStatus)router.push(signUpFinalStatus);
+          };
 
       } else {
         toast.error("Try again. Something went wrong")

@@ -1,10 +1,11 @@
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
-import { signUpEmailContinue } from '@/functions/auth';
+import { useSignUpEmailContinue } from '@/functions/auth';
 
 const SignUpForm = () => {
+    const { signUpEmailContinue, signUpStatus } = useSignUpEmailContinue();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,11 +16,16 @@ const SignUpForm = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
       setState(event.target.value);
     };
-
+  
     const handleSignUp = async () => {
-      const response = await signUpEmailContinue(email, password)
-      if (response) router.push(response)
-    }
+      await signUpEmailContinue(email, password);
+    };
+  
+    useEffect(() => {
+      if (signUpStatus) {
+        router.push(signUpStatus);
+      }
+    }, [signUpStatus, router]);
   
     const isInvalid = (value: string, type?: string) => {
       if (type === 'email') {

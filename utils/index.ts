@@ -1,4 +1,5 @@
 import { FirebaseError } from "firebase/app";
+import { User, UserCredential } from "firebase/auth";
 import { toast } from "sonner";
 
 export const sideBarMotion = {
@@ -75,4 +76,20 @@ export const handleFirebaseError = (err: FirebaseError) => {
     default:
       toast.error("An unknown error occurred");
   }
+}
+
+export const setUserLocalStorage = (user: User) => {
+  try {
+    localStorage.setItem("userId", user.uid ?? '');
+    localStorage.setItem("fullName", user.displayName ?? '');
+    localStorage.setItem("email", user.email ?? '');
+    localStorage.setItem("photoURL", user.photoURL ?? '');
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const getJWT = (userCred: UserCredential) => {
+  const token = userCred.user?.getIdToken();
+  return token;
 }

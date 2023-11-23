@@ -1,8 +1,8 @@
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signInEmail } from '@/functions/auth'
+import { useSignInEmail } from '@/functions/auth'
 
 const SignInForm = () => {
     const router = useRouter()
@@ -15,11 +15,17 @@ const SignInForm = () => {
       setState(event.target.value);
     };
 
+    const { signInEmail, signInStatus } = useSignInEmail();
+  
     const handleSignIn = async () => {
-      const response = await signInEmail(email, password);
-      console.log(response)
-      if (response) router.push(response)
-    }
+      signInEmail(email, password);
+    };
+  
+    useEffect(() => {
+      if (signInStatus) {
+        router.push(signInStatus);
+      }
+    }, [signInStatus, router]);
   
     const isInvalid = (value: string, type?: string) => {
         if (type === 'email') {

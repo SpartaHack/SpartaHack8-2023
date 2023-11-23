@@ -1,152 +1,172 @@
-import { userSignIn, userSignUp } from "@/app/api/endpoints";
-import { FirebaseError } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, UserCredential, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, User } from "firebase/auth";
-import { toast } from "sonner";
-import { initFirebase } from "../../db/firebase";
-import { handleFirebaseError } from "../../utils";
-  
-const setUserLocalStorage = (user: User) => {
-    try {
-        localStorage.setItem("userId", user.uid ?? '');
-        localStorage.setItem("fullName", user.displayName ?? '');
-        localStorage.setItem("email", user.email ?? '');
-        localStorage.setItem("photoURL", user.photoURL ?? '');
-    } catch (error) {
-        console.error('Error storing data to localStorage', error);
-    }
-}
+import { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut, sendEmailVerification, GoogleAuthProvider } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
+import { toast } from 'sonner';
+import { getJWT, handleFirebaseError, setUserLocalStorage } from '../../utils';
+import { userSignIn, userSignUp } from '@/app/api/endpoints';
+import { initFirebase } from '../../db/firebase';
 
-const getJWT = (userCred: UserCredential) => {
-    const token = userCred.user?.getIdToken();
-    return token;
-}
-  
-export const signInEmail = async (email: string, password: string) => {
-    try {
-        const auth = getAuth();
-        const result = await signInWithEmailAndPassword(auth, email, password);
-        const user = result.user;
-        console.log(getJWT(result))
-        setUserLocalStorage(user);
-        const response = await userSignIn(user.uid);
-        if (result) {
-            if (response) {
-                toast.success("Successfully signed in");
-                return '/';
-            } else {
-                toast.error("User does not have form details, redirecting to form");
-                return '/form';
-            }
-        }
-    } catch (err) {
-        if (err instanceof FirebaseError) {
-            handleFirebaseError(err)
-        }
-    }
-}
+export const useSignInEmail = () => {
+  const [signInStatus, setSignInStatus] = useState<string | null>(null);
 
-export const signUpEmailContinue = async (email: string, password: string) => {
-    try { 
-        const auth = getAuth();
-        const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        setUserLocalStorage(user);
-        console.log(await getJWT(userCredential))
-        if (userCredential) {
-            toast.success("User created, redirecting to form");
-        return '/form';
-        }
-    } catch (err) {
-        if (err instanceof FirebaseError) {
-            handleFirebaseError(err)
-        }
-    }
-}
-
-export const authGoogleSignIn = async () => {
+  const signInEmail = async (email: string, password: string) => {
     try {
-        const auth = getAuth();
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-        console.log(await getJWT(result))
-        setUserLocalStorage(user);
-        const response = await userSignIn(user.uid);
+      const auth = getAuth();
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      const user = result.user;
+      setUserLocalStorage(user);
+      const response = await userSignIn(user.uid);
+      if (result) {
         if (response) {
-            toast.success("Successfully signed in with Google");
-            return '/';
+          toast.success("Successfully signed in");
+          setSignInStatus('/');
         } else {
-            toast.error("User does not have form details, redirecting to form");
-            return '/form';
+          toast.error("User does not have form details, redirecting to form");
+          setSignInStatus('/form');
         }
+      }
     } catch (err) {
-        if (err instanceof FirebaseError) {
-            handleFirebaseError(err)
-        }
+      if (err instanceof FirebaseError) {
+        handleFirebaseError(err);
+      }
     }
-}
+  };
 
-export const authGoogleSignUp = async () => {
+  return { signInEmail, signInStatus };
+};
+
+export const useSignUpEmailContinue = () => {
+  const [signUpStatus, setSignUpStatus] = useState<string | null>(null);
+
+  const signUpEmailContinue = async (email: string, password: string) => {
     try {
-        const auth = getAuth();
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-        console.log(getJWT(result))
-        setUserLocalStorage(user);
-        const response = await userSignIn(user.uid);
-        if (response) {
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      setUserLocalStorage(user);
+      if (userCredential) {
+        toast.success("Redirecting to email verification");
+        sendEmailVerification(user);
+        setSignUpStatus('/verify');
+      }
+    } catch (err) {
+      if (err instanceof FirebaseError) {
+        handleFirebaseError(err);
+      }
+    }
+  };
+
+  return { signUpEmailContinue, signUpStatus };
+};
+
+export const useAuthGoogleSignIn = () => {
+  const [signInStatus, setSignInStatus] = useState<string | null>(null);
+
+  const authGoogleSignIn = async () => {
+    try {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log(await getJWT(result));
+      setUserLocalStorage(user);
+      const response = await userSignIn(user.uid);
+      if (response) {
+        toast.success("Successfully signed in with Google");
+        setSignInStatus('/');
+      } else {
+        toast.error("User does not have form details, redirecting to form");
+        setSignInStatus('/form');
+      }
+    } catch (err) {
+      if (err instanceof FirebaseError) {
+        handleFirebaseError(err);
+      }
+    }
+  };
+
+  return { authGoogleSignIn, signInStatus };
+};
+
+export const useAuthGoogleSignUp = () => {
+  const [signUpStatus, setSignUpStatus] = useState<string | null>(null);
+
+  const authGoogleSignUp = async () => {
+    try {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log(getJWT(result));
+      setUserLocalStorage(user);
+      const response = await userSignIn(user.uid);
+      if (response) {
         toast.error("User already exists!");
-        return '/';
-        } else {
+        setSignUpStatus('/');
+      } else {
         toast.success("User created, redirecting to profile creation");
-        return '/form';
-        }
+        setSignUpStatus('/form');
+      }
     } catch (err) {
-        if (err instanceof FirebaseError) {
-            handleFirebaseError(err)
-        }
+      if (err instanceof FirebaseError) {
+        handleFirebaseError(err);
+      }
     }
-}
+  };
 
-export const logOut = async () => {
+  return { authGoogleSignUp, signUpStatus };
+};
+
+export const useLogOut = () => {
+  const [logOutStatus, setLogOutStatus] = useState<string | null>(null);
+
+  const logOut = async () => {
     initFirebase();
     const auth = getAuth();
     try {
-        await signOut(auth)
-        const userId = localStorage.getItem("userId")
-        if (!userId) {
-        toast.error("User not signed in")
+      await signOut(auth);
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
+        toast.error("User not signed in");
         return;
-        }
-        localStorage.clear();
-        toast.success("Signed out successfully")
+      }
+      localStorage.clear();
+      toast.success("Signed out successfully");;
     } catch (err) {
-        if (err instanceof Error) {
-            switch (err.message) {
-            case 'auth/no-current-user':
-                toast.error("No user currently signed in");
-                return;
-            default:
-                toast.error("An unknown error occurred");
-            }
+      if (err instanceof Error) {
+        switch (err.message) {
+          case 'auth/no-current-user':
+            toast.error("No user currently signed in");
+            break;
+          default:
+            toast.error("An unknown error occurred");
         }
+      }
     }
-}
+  };
 
-export const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
+  return { logOut, logOutStatus };
+};
+
+export const useHandleSignUpFinal = () => {
+  const [signUpFinalStatus, setSignUpFinalStatus] = useState<string | null>(null);
+
+  const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
     try {
-        const response = await userSignUp(userId, email, fullName, photoURL, educationLevel);
-        if (response) {
+      const response = await userSignUp(userId, email, fullName, photoURL, educationLevel);
+      if (response) {
         toast.success("User signed up successfully");
-        return '/';
-        } else {
+        setSignUpFinalStatus('/');
+      } else {
         toast.error("Sign up failed, redirecting to sign up");
-        return '/signup';
-        }
+        setSignUpFinalStatus('/signup');
+      }
     } catch (err) {
-        if (err instanceof FirebaseError) {
-            handleFirebaseError(err)
-        }
+      if (err instanceof FirebaseError) {
+        handleFirebaseError(err);
+      }
     }
-}
+  };
+
+  return { handleSignUpFinal, signUpFinalStatus };
+};
