@@ -79,6 +79,25 @@ export const getHistory = async (
   }
 }
 
+export const updateUser = async (
+  userId: string,
+  educationLevel: string,
+  photoURL: string
+) => {
+  const data = {
+    education_level: educationLevel,
+    photo_url: photoURL
+  }
+
+  try {
+    const response = await axios.put(`${API_URL}/user/${userId}`, data);
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
 // SPACES
 export const getSpace = async (
   userId: string,
