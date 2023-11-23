@@ -1,11 +1,14 @@
+import { useUserStore } from '@/context/user-context'
+import useStore from '@/hooks/use-store'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import React from 'react'
 
 const Streaks = () => {
+  const userData = useStore(useUserStore, (state) => state.userData)
   const data = [
-    { icon: "akar-icons:fire", value: 9, label: "Max Streak" },
-    { icon: "heroicons:sparkles", value: 1, label: "Contents Created" },
-    { icon: "ph:person-simple-run", value: 8, label: "Total Active Days" },
+    { icon: "akar-icons:fire", value: userData?.user_profile.streak, label: "Max Streak" },
+    { icon: "heroicons:sparkles", value: userData?.user_profile.content_added, label: "Contents Created" },
+    { icon: "ph:person-simple-run", value: userData?.user_profile.streak, label: "Total Active Days" },
   ]
 
   return (

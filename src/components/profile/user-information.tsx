@@ -2,15 +2,17 @@
 import { ImageUpload } from '@/helpers/image-upload';
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
-import { Link, Spinner } from '@nextui-org/react';
+import { Link, Spinner, user } from '@nextui-org/react';
 import EditAccordion from '@/components/profile/edit-accordion';
 import Streaks from './streaks';
+import { useUserStore } from '@/context/user-context';
+import useStore from '@/hooks/use-store';
 
 const UserInformation = () => {
+  const userData = useStore(useUserStore, (state) => state.userData)
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false)
-  
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
       let reader = new FileReader();
@@ -28,10 +30,10 @@ const UserInformation = () => {
       <div className='flex flex-col lg:flex-row'>
         <div className='flex flex-col justify-between bg-absolute_white dark:bg-black rounded-xl px-3 pt-5 pb-1 lg:w-[65%]'>
           <div className='flex flex-row ml-2 mr-2'>
-            <ImageUpload onChange={handleImageChange} src={selectedImage || ''}/>
+            <ImageUpload onChange={handleImageChange} src={selectedImage || userData?.user_profile.photo_url!}/>
             <div className='flex flex-col ml-10'>
-              <h1 className='text-xl'>Achyut</h1>
-              <h2 className='text-sm mt-2'>Joined December 31, 2023</h2>
+              <h1 className='text-xl'>{userData?.user.full_name}</h1>
+              <h2 className='text-sm mt-2'>Joined {userData?.user.created_at}</h2>
             </div>
           </div>
           <EditAccordion title={<h1 className='text-center text-[15px] p-2 rounded-xl border border-neutral-200 dark:border-neutral-700'>Edit Profile</h1>}/>

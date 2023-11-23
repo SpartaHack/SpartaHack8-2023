@@ -119,6 +119,7 @@ export type CustomAutocompleteProps = {
     label: string,
     onValueChange: (value: string) => void,
     size: "sm" | "md" | "lg" | undefined,
+    initValue?: string
 }
 
 export type ResponseProps = {
@@ -177,3 +178,45 @@ export type SignUpFormProps = {
 export type TabContentProps = {
     price: string;
 }
+
+
+export type User = {
+    _id: string;
+    email: string;
+    full_name: string;
+    created_at: string;
+  }
+  
+export type UserProfile = {
+    _id: string;
+    user_id: string;
+    education_level: string;
+    last_login: string;
+    streak: number;
+    content_added: number;
+    photo_url: string;
+}
+  
+export type Subscription = {
+    subscriptions: any
+}
+  
+export type APIResponse = {
+    user: User;
+    user_profile: UserProfile;
+    subscription: Subscription;
+}
+  
+export type userProps = {
+    userId: string | undefined;
+    userData: APIResponse | undefined;
+    setUserId: (userId: string | undefined) => void;
+    setUserData: (data: APIResponse | undefined) => void;
+}
+
+export type UserState = {
+    userId: string | undefined;
+    userData: APIResponse | undefined;
+    setUserId: (userId: string | undefined) => void;
+    setUserData: (data: APIResponse | undefined) => void;
+  }

@@ -5,9 +5,11 @@ import { toast } from 'sonner';
 import { getJWT, handleFirebaseError, setUserLocalStorage } from '../../utils';
 import { userSignIn, userSignUp } from '@/app/api/endpoints';
 import { initFirebase } from '../../db/firebase';
+import { useUserStore } from '@/context/user-context';
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
+  const { setUserId, setUserData } = useUserStore();
 
   const signInEmail = async (email: string, password: string) => {
     try {
@@ -24,6 +26,8 @@ export const useSignInEmail = () => {
             return;
         }
         if (response) {
+          setUserId(user.uid);
+          setUserData(response.data);
           toast.success("Successfully signed in");
           setSignInStatus('/');
         } else {
@@ -68,6 +72,7 @@ export const useSignUpEmailContinue = () => {
 
 export const useAuthGoogleSignIn = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
+  const { setUserId, setUserData } = useUserStore();
 
   const authGoogleSignIn = async () => {
     try {
@@ -79,6 +84,8 @@ export const useAuthGoogleSignIn = () => {
       console.log(await getJWT(result));
       const response = await userSignIn(user.uid);
       if (response) {
+        setUserId(user.uid);
+        setUserData(response.data);
         toast.success("Successfully signed in with Google");
         setSignInStatus('/');
       } else {
@@ -150,11 +157,16 @@ export const logOut = async () => {
 
 export const useHandleSignUpFinal = () => {
   const [signUpFinalStatus, setSignUpFinalStatus] = useState<string | null>(null);
+  const { setUserId, setUserData } = useUserStore();
+
   const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
     try {
       const response = await userSignUp(userId, email, fullName, photoURL, educationLevel);
       if (response) {
         toast.success("User signed up successfully");
+        setUserId(userId)
+        const response = await userSignIn(userId)
+        setUserData(response!.data)
         setSignUpFinalStatus('/');
       } else {
         toast.error("Sign up failed, redirecting to sign up");
