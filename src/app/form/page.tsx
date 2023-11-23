@@ -2,7 +2,7 @@
 import CustomAutocomplete from '@/helpers/custom-autocomplete'
 import { CustomButton } from '@/helpers/custom-btn'
 import CustomTextInput from '@/helpers/custom-text-input'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { educationOptions } from '../../../utils/constants'
 import { useRouter } from 'next/navigation'
@@ -20,15 +20,18 @@ const Form = () => {
         const email = localStorage.getItem("email")
         const photoURL = localStorage.getItem("photoURL")
 
-        const handleSignUp = async () => {
-            handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name);
-            if (signUpFinalStatus)router.push(signUpFinalStatus);
-          };
+        handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name);
 
       } else {
         toast.error("Try again. Something went wrong")
       }
     }
+
+    useEffect(() => {
+        if (signUpFinalStatus) {
+            router.push(signUpFinalStatus);
+        }
+    }, [signUpFinalStatus, router]);
 
   return (
     <div className='flex bg-white dark:bg-neutral-900 flex-col h-screen items-center justify-center'>

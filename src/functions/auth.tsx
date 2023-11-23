@@ -15,8 +15,14 @@ export const useSignInEmail = () => {
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
       setUserLocalStorage(user);
+      console.log(await getJWT(result));
       const response = await userSignIn(user.uid);
       if (result) {
+        if (!user.emailVerified) {
+            toast.error("Email not verified")
+            setSignInStatus('/verify')
+            return;
+        }
         if (response) {
           toast.success("Successfully signed in");
           setSignInStatus('/');
@@ -43,7 +49,8 @@ export const useSignUpEmailContinue = () => {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      setUserLocalStorage(user);
+      setUserLocalStorage(user);     
+      console.log(await getJWT(userCredential));
       if (userCredential) {
         toast.success("Redirecting to email verification");
         sendEmailVerification(user);
@@ -68,8 +75,8 @@ export const useAuthGoogleSignIn = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log(await getJWT(result));
       setUserLocalStorage(user);
+      console.log(await getJWT(result));
       const response = await userSignIn(user.uid);
       if (response) {
         toast.success("Successfully signed in with Google");
@@ -97,12 +104,11 @@ export const useAuthGoogleSignUp = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log(getJWT(result));
       setUserLocalStorage(user);
+      console.log(await getJWT(result));
       const response = await userSignIn(user.uid);
       if (response) {
         toast.error("User already exists!");
-        setSignUpStatus('/');
       } else {
         toast.success("User created, redirecting to profile creation");
         setSignUpStatus('/form');
@@ -144,7 +150,6 @@ export const logOut = async () => {
 
 export const useHandleSignUpFinal = () => {
   const [signUpFinalStatus, setSignUpFinalStatus] = useState<string | null>(null);
-
   const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
     try {
       const response = await userSignUp(userId, email, fullName, photoURL, educationLevel);
