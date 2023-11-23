@@ -12,8 +12,8 @@ export const useUserStore = create<UserState, [["zustand/persist", UserState | u
       logout: () => set({ userId: undefined, userData: undefined }),
     }),
     {
-      name: 'userStore', // unique name
-      storage: createJSONStorage(() => sessionStorage), // use sessionStorage
+      name: 'userStore',
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
