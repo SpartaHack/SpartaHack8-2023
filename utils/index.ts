@@ -33,10 +33,10 @@ export const replaceMessage = (() => {
   };
 })();
 
-export const user_id = "urmom";
-export const space_id = ["e90d45f478494448adfd86aab666228c"];
-export const content_id = ["x7X9w_GIm1s"]
-export const contentId = "x7X9w_GIm1s"
+export const user_id = "LHmSA0iPqzTpgDclOrKxSxnyU2I2";
+export const space_id = ["c7fb64fa21274688be3ac6d63c6b8e20"];
+export const content_id = ["0X3TlVklT-A"]
+export const contentId = "0X3TlVklT-A"
 
 export const handleFirebaseError = (err: FirebaseError) => {
   switch (err.code) {
