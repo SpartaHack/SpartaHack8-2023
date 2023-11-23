@@ -3,6 +3,7 @@ import CustomTextInput from '@/helpers/custom-text-input'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { useSignUpEmailContinue } from '@/functions/auth';
+import { toast } from 'sonner';
 
 const SignUpForm = () => {
     const { signUpEmailContinue, signUpStatus } = useSignUpEmailContinue();
@@ -16,10 +17,14 @@ const SignUpForm = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
       setState(event.target.value);
     };
-  
-    const handleSignUp = async () => {
-      await signUpEmailContinue(email, password);
-    };
+
+    const handleCreation = (email: string, password: string) => {
+      if (!isInvalid(email, 'email') && !isInvalid(password, 'password') && !isInvalid(confirmPassword, 'confirmPassword')){
+        signUpEmailContinue(email, password)
+      } else {
+        toast.error("Please check your forms are correct")
+      }
+    }
   
     useEffect(() => {
       if (signUpStatus) {
@@ -68,7 +73,7 @@ const SignUpForm = () => {
           title = 'Create an account'
           btnType = 'button'
           btnStyling = 'mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-          clickEvent={handleSignUp}
+          clickEvent={() => handleCreation(email, password)}
         />
     </div>
   )

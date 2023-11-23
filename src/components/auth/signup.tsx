@@ -1,17 +1,21 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import SignUpForm from './signup-form';
 import { CustomButton } from '@/helpers/custom-btn';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { authGoogleSignUp } from '@/functions/auth';
+import { useAuthGoogleSignUp } from '@/functions/auth';
 
 const SignUp = () => {
   const router = useRouter();
-  const handleSignUp = async () => {
-    const response = await authGoogleSignUp();
-    if (response) router.push(response)
-  }
+  const { authGoogleSignUp, signUpStatus } = useAuthGoogleSignUp();
+
+  useEffect(() => {
+    if (signUpStatus) {
+      router.push(signUpStatus);
+    }
+  }, [signUpStatus, router]);
+
   return (
     <div className='flex bg-white dark:bg-neutral-900 flex-col h-screen items-center justify-center'>
       <div className="w-full sm:w-3/5 flex p-8 space-y-4 max-w-lg items-center justify-center">
@@ -29,7 +33,7 @@ const SignUp = () => {
             }
             btnType='button'
             btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={handleSignUp}
+            clickEvent={() => authGoogleSignUp()}
           />
           <div className="flex items-center justify-center pt-8 ">
             <div className="border-t border-neutral-600 flex-grow dark:text-neutral-500 mb-8"/>

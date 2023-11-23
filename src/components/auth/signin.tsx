@@ -1,17 +1,20 @@
 'use client'
 import { CustomButton } from '@/helpers/custom-btn'
 import { Icon } from '@iconify/react/dist/iconify.js'
-import React from 'react'
+import React, { useEffect } from 'react'
 import SignInForm from './signin-form'
 import { useRouter } from 'next/navigation';
-import { authGoogleSignIn } from '@/functions/auth'
+import { useAuthGoogleSignIn } from '@/functions/auth'
 
 const SignIn = () => {
+  const { authGoogleSignIn, signInStatus } = useAuthGoogleSignIn();
   const router = useRouter();
-  const handleGoogleSignIn = async () => {
-    const response = await authGoogleSignIn()
-    if (response) router.push(response)
-  }
+
+  useEffect(() => {
+    if (signInStatus) {
+      router.push(signInStatus);
+    }
+  }, [signInStatus, router]);
 
   return (
     <div className='flex bg-white dark:bg-neutral-900 flex-col h-screen items-center justify-center'>
@@ -30,7 +33,7 @@ const SignIn = () => {
             }
             btnType='button'
             btnStyling='border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={handleGoogleSignIn}
+            clickEvent={() => authGoogleSignIn()}
           />
           <div className="flex items-center justify-center pt-8 ">
             <div className="border-t border-neutral-600 flex-grow dark:text-neutral-500 mb-8"/>

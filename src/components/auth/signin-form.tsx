@@ -8,6 +8,7 @@ const SignInForm = () => {
     const router = useRouter()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { signInEmail, signInStatus } = useSignInEmail();
   
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
@@ -15,12 +16,6 @@ const SignInForm = () => {
       setState(event.target.value);
     };
 
-    const { signInEmail, signInStatus } = useSignInEmail();
-  
-    const handleSignIn = async () => {
-      signInEmail(email, password);
-    };
-  
     useEffect(() => {
       if (signInStatus) {
         router.push(signInStatus);
@@ -56,7 +51,7 @@ const SignInForm = () => {
             title = 'Sign In'
             btnType = 'submit'
             btnStyling = 'bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full'
-            clickEvent={handleSignIn}
+            clickEvent={() => signInEmail(email, password)}
         />
     </div>
   )

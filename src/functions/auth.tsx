@@ -117,10 +117,7 @@ export const useAuthGoogleSignUp = () => {
   return { authGoogleSignUp, signUpStatus };
 };
 
-export const useLogOut = () => {
-  const [logOutStatus, setLogOutStatus] = useState<string | null>(null);
-
-  const logOut = async () => {
+export const logOut = async () => {
     initFirebase();
     const auth = getAuth();
     try {
@@ -143,9 +140,6 @@ export const useLogOut = () => {
         }
       }
     }
-  };
-
-  return { logOut, logOutStatus };
 };
 
 export const useHandleSignUpFinal = () => {
