@@ -4,15 +4,16 @@ import { UserState } from '../../types';
 
 export const useUserStore = create<UserState, [["zustand/persist", UserState | undefined]]>(
   persist(
-    (set) => ({
+    (set, get) => ({
       userId: undefined,
       userData: undefined,
       setUserId: (userId) => set({ userId }),
       setUserData: (data) => set({ userData: data }),
+      logout: () => set({ userId: undefined, userData: undefined }),
     }),
     {
-      name: 'userStore',
-      storage: createJSONStorage(() => localStorage),
+      name: 'userStore', // unique name
+      storage: createJSONStorage(() => sessionStorage), // use sessionStorage
     }
   )
 );

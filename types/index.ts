@@ -219,4 +219,5 @@ export type UserState = {
     userData: APIResponse | undefined;
     setUserId: (userId: string | undefined) => void;
     setUserData: (data: APIResponse | undefined) => void;
-  }
+    logout: () => void;
+}

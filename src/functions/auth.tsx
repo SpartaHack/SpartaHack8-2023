@@ -131,28 +131,29 @@ export const useAuthGoogleSignUp = () => {
 };
 
 export const logOut = async () => {
-    initFirebase();
-    const auth = getAuth();
-    try {
-      await signOut(auth);
-      const userId = localStorage.getItem("userId");
-      if (!userId) {
-        toast.error("User not signed in");
-        return;
-      }
-      localStorage.clear();
-      toast.success("Signed out successfully");
-    } catch (err) {
-      if (err instanceof Error) {
-        switch (err.message) {
-          case 'auth/no-current-user':
-            toast.error("No user currently signed in");
-            break;
-          default:
-            toast.error("An unknown error occurred");
-        }
+  initFirebase();
+  const auth = getAuth();
+  try {
+    await signOut(auth);
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      toast.error("User not signed in");
+      return;
+    }
+    localStorage.clear();
+    useUserStore.getState().logout()
+    toast.success("Signed out successfully");
+  } catch (err) {
+    if (err instanceof Error) {
+      switch (err.message) {
+        case 'auth/no-current-user':
+          toast.error("No user currently signed in");
+          break;
+        default:
+          toast.error("An unknown error occurred");
       }
     }
+  }
 };
 
 export const useHandleSignUpFinal = () => {
