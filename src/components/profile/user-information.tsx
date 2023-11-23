@@ -1,7 +1,6 @@
 'use client'
 import { ImageUpload } from '@/helpers/image-upload';
 import React, { useState } from 'react'
-import { getPortalUrl } from '@/functions/get-portal-url';
 import { useRouter } from 'next/navigation';
 import { Link, Spinner } from '@nextui-org/react';
 import EditAccordion from '@/components/profile/edit-accordion';
@@ -11,12 +10,6 @@ const UserInformation = () => {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false)
-
-  const handleEditPlan = async () => {
-    setLoading(true)
-    const portalUrl = await getPortalUrl();
-    router.push(portalUrl)
-  }
   
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
@@ -47,7 +40,7 @@ const UserInformation = () => {
           <Streaks/>
         </div>
       </div>
-      <Link onClick={handleEditPlan} size='sm' className='cursor-pointer text-black dark:text-white mt-4 ml-1' underline="always">{loading ? <Spinner color='current' size='sm'/> :'Manage Subscriptions'}</Link>
+      <Link size='sm' className='cursor-pointer text-black dark:text-white mt-4 ml-1' underline="always">Manage Subscriptions</Link>
     </div>
   )
 }
