@@ -15,7 +15,7 @@ export type CustomButtonProps = {
 
 export type AccountProps = {
     name: string,
-    description: string,
+    description?: string,
     picture?: string
 } 
 

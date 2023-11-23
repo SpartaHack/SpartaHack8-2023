@@ -141,7 +141,7 @@ export const logOut = async () => {
         return;
       }
       localStorage.clear();
-      toast.success("Signed out successfully");;
+      toast.success("Signed out successfully");
     } catch (err) {
       if (err instanceof Error) {
         switch (err.message) {

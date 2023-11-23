@@ -7,8 +7,11 @@ import Notification from "./notification";
 import MenuItems from "./side-menu/menu-items";
 import { sideBarMotion } from "../../../utils";
 import useClickOutside from "@/hooks/use-click-outside";
+import useStore from "@/hooks/use-store";
+import { useUserStore } from "@/context/user-context";
 
 export default function Header() {
+  const userData = useStore(useUserStore, (state) => state.userData)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -29,8 +32,8 @@ export default function Header() {
           <div className="hidden lg:flex">
             <Notification/>
             <Account 
-              name="Achyut Krishna Byanjankar"
-              description='@achyut_benz'
+              name={userData?.user.full_name!}
+              picture={userData?.user_profile.photo_url}
             />
           </div>
         </div>
