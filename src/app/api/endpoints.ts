@@ -5,12 +5,15 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const userSignIn = async (
   userId: string
 ) => {
+  const jwtToken = localStorage.getItem('jwtToken');
+  const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
+
   const data = {
     user_id: userId,
   };
 
   try {
-    const response = await axios.post(`${API_URL}/user/signin`, data);
+    const response = await axios.post(`${API_URL}/user/signin`, data, { headers });
     return response;
   } catch (err) {
     console.log(err);
@@ -24,6 +27,9 @@ export const userSignUp = async (
   photoURL: string,
   educationLevel: string
 ) => {
+  const jwtToken = localStorage.getItem('jwtToken');
+  const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
+
   const data = {
     user_id: userId,
     email: email,
@@ -33,7 +39,7 @@ export const userSignUp = async (
   }
 
   try {
-    const response = await axios.post(`${API_URL}/user/signup`, data);
+    const response = await axios.post(`${API_URL}/user/signup`, data, { headers });
     return response;
   } catch (err) {
     console.log(err);
