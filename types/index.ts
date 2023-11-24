@@ -242,7 +242,7 @@ export type SpaceStore = {
     setSpaces: (spaces: getUserSpaceResponse[]) => void;
     addSpaceToState: (space: getUserSpaceResponse) => void;
     deleteSpaceFromState: (id: string) => void;
-    logOut: () => void;
+    logout: () => void;
 };
 
 export type SpaceResponse = {
@@ -293,7 +293,7 @@ export type ContentStore = {
     setContents: (contents: Content[]) => void;
     addContent: (content: Content) => void;
     deleteContent: (id: string) => void;
-    logOut: () => void;
+    logout: () => void;
 };
 
 interface ContentMetadata {
