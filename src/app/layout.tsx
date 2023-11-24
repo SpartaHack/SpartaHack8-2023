@@ -31,7 +31,7 @@ export default function RootLayout({
           src="https://js.stripe.com/v3/pricing-table.js">
         </script>
       </head>
-      <body className={`h-full ${roboto.className}`}>
+      <body className={roboto.className}>
         <ThemeProviders>
           <QueryClientProvider client={queryClient}>
             <Toaster richColors/>

@@ -1,4 +1,5 @@
-import { addSpace } from '@/app/api/endpoints'
+import { addSpace, getSpace } from '@/app/api/endpoints'
+import { useContentStore } from '@/context/content-store'
 import { useSpaceStore } from '@/context/space-context'
 import { useUserStore } from '@/context/user-context'
 import CustomModal from '@/helpers/custom-modal'
@@ -10,12 +11,15 @@ import React, { useState } from 'react'
 const AddSpace = () => {
   const [spaceName, setSpaceName] = useState('');
   const userId = useStore(useUserStore, (state) => state.userId)
-  const { addSpaceToState } = useSpaceStore();
+  const { spaces, addSpaceToState } = useSpaceStore();
+  const { setContents } = useContentStore();
 
   const handleSpaceCreation = async () => {
     const response = await addSpace(userId!, spaceName, 'private')
     if (response?.data) {
       addSpaceToState(response.data);
+      const goToSpace = await getSpace(userId!, response.data._id)
+      setContents(goToSpace?.data.contents)
     }
   }
 

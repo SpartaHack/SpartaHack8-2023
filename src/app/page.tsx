@@ -7,7 +7,7 @@ import Footer from "@/ui/footer/footer"
 
 export default function App() {
   return (
-    <main>
+    <main className="flex flex-col min-h-screen">
       <Suspense fallback={<Loading/>}>
         <Header/>
         <Dashboard/>

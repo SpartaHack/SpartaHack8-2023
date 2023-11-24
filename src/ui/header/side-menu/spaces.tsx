@@ -44,12 +44,14 @@ const Spaces = () => {
       <AddSpace/>
       <ScrollShadow hideScrollBar size={20} className='h-screen space-y-4 flex flex-col'>
           {spaces ? spaces.filter(Boolean).map((space: getUserSpaceResponse) => (
-            <div key={space._id} className='flex flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl' onClick={() => handleContentChange('space', space._id)}>
-              <Icon icon='bxs:cube' className='h-6 w-6'/>
-              <div className='ml-5'>
-                <p>{space.space_name}</p>
+            <div key={space._id} className='flex justify-between flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl' onClick={() => handleContentChange('space', space._id)}>
+              <div className='flex flex-row'>
+                <Icon icon='bxs:cube' className='h-6 w-6'/>
+                <div className='ml-5'>
+                  <p>{space.space_name}</p>
+                </div>
               </div>
-              <CustomModal title={<Icon icon='gg:trash' className='group-hover:opacity-50 p-2 w-12 h-12 opacity-0' />} contentMain={<div className='mb-5'>Are you sure you want to remove this item?</div>} footer actionTitle='Confirm Delete' actionEvent={() => handleDelete(space._id)}/>
+              <CustomModal title={<Icon icon='gg:trash' className='group-hover:opacity-50 ml-7 w-6 h-6 opacity-0' />} contentMain={<div className='mb-5'>Are you sure you want to remove this item?</div>} footer actionTitle='Confirm Delete' actionEvent={() => handleDelete(space._id)}/>
             </div>
           )) : <></>}
           <div className='flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl' onClick={() => handleContentChange('history')}>

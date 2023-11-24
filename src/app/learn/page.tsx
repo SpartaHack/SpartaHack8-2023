@@ -9,7 +9,7 @@ const LearnPage = () => {
   const parms = useSearchParams()
   const contentID = parms.get('c')
   return (
-    <main className='md:h-screen'>
+    <main className='flex flex-col min-h-screen"'>
       <Suspense fallback={<Loading/>}>
         <Header/>
         <Content type='youtube'/>
