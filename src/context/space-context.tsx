@@ -8,6 +8,7 @@ export const useSpaceStore = create<SpaceStore, [["zustand/persist", getUserSpac
       spaces: [],
       setSpaces: (spaces) => set({ spaces }),
       addSpaceToState: (space) => set((state) => ({ spaces: [...state.spaces || [], space] })),
+      deleteSpaceFromState: (id: string) => set((state) => ({ spaces: state.spaces.filter(space => space._id !== id) })),
       logout: () => set({ spaces: []}),
     }),
     {

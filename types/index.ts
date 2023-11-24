@@ -241,6 +241,7 @@ export type SpaceStore = {
     spaces: getUserSpaceResponse[];
     setSpaces: (spaces: getUserSpaceResponse[]) => void;
     addSpaceToState: (space: getUserSpaceResponse) => void;
+    deleteSpaceFromState: (id: string) => void;
     logout: () => void;
 };
 
