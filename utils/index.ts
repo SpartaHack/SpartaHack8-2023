@@ -1,7 +1,6 @@
 import { FirebaseError } from "firebase/app";
 import { User, UserCredential } from "firebase/auth";
 import { toast } from "sonner";
-import { APIResult } from "../types";
 
 export const sideBarMotion = {
     initial: { x: '-100%' },
