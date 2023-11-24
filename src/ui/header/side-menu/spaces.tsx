@@ -10,7 +10,6 @@ import { useUserStore } from '@/context/user-context'
 import { deleteSpace, getHistory, getSpace } from '@/app/api/endpoints'
 import { toast } from 'sonner'
 import { useContentStore } from '@/context/content-store'
-import { getContentList } from '../../../../utils'
 
 const Spaces = () => {
   const spaces = useStore(useSpaceStore, (state) => state.spaces)
@@ -31,11 +30,10 @@ const Spaces = () => {
   const handleContentChange = async (type: 'space' | 'history', spaceId?: string) => {
     if (type === 'space') {
       const contents = await getSpace(userId!, spaceId!)
-      setContents(contents?.data.contents)
+      setContents(contents?.data)
     } else {
       const contents = await getHistory(userId!)
-      const contentList = getContentList(contents?.data);
-      setContents(contentList)
+      setContents(contents!.data)
     }
   }
 

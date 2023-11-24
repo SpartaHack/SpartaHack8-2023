@@ -95,7 +95,3 @@ export const getJWT = async (userCred: UserCredential) => {
   localStorage.setItem('jwtToken', await token)
   return token;
 }
-
-export function getContentList(apiResult: APIResult) {
-  return apiResult.map(item => item.content);
-}

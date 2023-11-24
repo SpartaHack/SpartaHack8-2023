@@ -251,7 +251,12 @@ export type SpaceResponse = {
     visibility: 'public' | 'private';
 };
 
-type Metadata = {
+export type Generations = {
+    summary: string;
+    questions: string;
+  };
+  
+export type Metadata = {
     type: string;
     title: string;
     description: string;
@@ -265,12 +270,7 @@ type Metadata = {
     path: string;
     keywords: string[];
     chunks: number;
-};
-  
-type Generations = {
-    summary: string;
-    questions: string;
-};
+  };
   
 export type Content = {
     _id: string;
@@ -283,53 +283,47 @@ export type Content = {
     generations: Generations;
     keywords: string[];
     author: string;
-    visibility: "public" | "private";
+    visibility: string;
     metadata: Metadata;
     created_at: string;
 };
   
-export type ContentStore = {
+export type Space = {
+    _id: string;
+    space_name: string;
+    visibility: string;
+  };
+  
+export type AccessControl = {
+    _id: string;
+    space_id: string;
+    user_id: string;
+    role: string;
+    created_at: string;
+  };
+  
+export type SpaceContentResponse = {
+    space: Space;
     contents: Content[];
-    setContents: (contents: Content[]) => void;
+    access_control: AccessControl[];
+  };
+  
+export type History = {
+    _id: string;
+    user_id: string;
+    content_id: string;
+    space_id: string;
+    created_at: string;
+    content: Content;
+    space: Space;
+  };
+  
+export type HistoryResponse = History[];
+
+export type ContentStore = {
+    contents: Content[] | SpaceContentResponse | any;
+    setContents: (contents: Content[] | SpaceContentResponse | any) => void;
     addContent: (content: Content) => void;
     deleteContent: (id: string) => void;
     logout: () => void;
 };
-
-interface ContentMetadata {
-    type: string;
-    title: string;
-    description: string;
-    author: string;
-    length: number;
-    content_id: string;
-    publish_date: string;
-    thumbnail_url: string;
-    source: number;
-    text: string;
-    path: string;
-    keywords: string[];
-    chunks: number;
-}
-
-interface HistoryContent {
-    _id: string;
-    user_id: string;
-    type: string;
-    title: string;
-    thumbnail_url: string;
-    content_id: string;
-    searches: number;
-    generations: { summary: string; questions: string };
-    keywords: string[];
-    author: string;
-    visibility: 'public' | 'private';
-    metadata: ContentMetadata;
-    created_at: string; 
-}
-
-type APIData = {
-    content: HistoryContent;
-}
-
-export type APIResult = APIData[];

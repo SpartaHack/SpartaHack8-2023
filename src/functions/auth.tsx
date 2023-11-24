@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut, sendEmailVerification, GoogleAuthProvider } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { toast } from 'sonner';
-import { getContentList, getJWT, handleFirebaseError, setUserLocalStorage } from '../../utils';
+import { handleFirebaseError, setUserLocalStorage } from '../../utils';
 import { getHistory, getUserSpaces, userSignIn, userSignUp } from '@/app/api/endpoints';
 import { initFirebase } from '../../db/firebase';
 import { useUserStore } from '@/context/user-context';
@@ -34,8 +34,7 @@ export const useSignInEmail = () => {
           const spaces = await getUserSpaces(user.uid)
           setSpaces(spaces?.data)
           const contents = await getHistory(user.uid)
-          const contentList = getContentList(contents?.data);
-          setContents(contentList)
+          setContents(contents?.data)
           toast.success("Successfully signed in");
           setSignInStatus('/');
         } else {
@@ -97,8 +96,7 @@ export const useAuthGoogleSignIn = () => {
         const spaces = await getUserSpaces(user.uid)
         setSpaces(spaces?.data)
         const contents = await getHistory(user.uid)
-        const contentList = getContentList(contents?.data);
-        setContents(contentList)
+        setContents(contents?.data)
         toast.success("Successfully signed in with Google");
         setSignInStatus('/');
       } else {
@@ -188,8 +186,7 @@ export const useHandleSignUpFinal = () => {
         const spaces = await getUserSpaces(userId)
         setSpaces(spaces?.data)
         const contents = await getHistory(userId)
-        const contentList = getContentList(contents?.data);
-        setContents(contentList)
+        setContents(contents?.data)
         setSignUpFinalStatus('/');
       } else {
         toast.error("Sign up failed, redirecting to sign up");
