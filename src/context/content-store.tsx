@@ -8,7 +8,13 @@ export const useContentStore = create<ContentStore, [["zustand/persist", Content
       contents: [],
       setContents: (contents) => set({ contents }),
       addContent: (content) => set((state) => ({ contents: [...state.contents || [], content] })),
-      deleteContent: (id) => set((state) => ({ contents: state.contents.filter((content: { _id: string; }) => content._id !== id) })),
+      deleteContentFromState: (contentID) => set((state) => ({ 
+        ...state,
+        contents: {
+          ...state.contents,
+          contents: state.contents.contents.filter((content: { content_id: string; }) => content.content_id !== contentID)
+        }
+      })),
       logout: () => set({ contents: [] }),
     }),
     {

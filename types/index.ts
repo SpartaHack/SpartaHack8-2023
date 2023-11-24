@@ -324,6 +324,6 @@ export type ContentStore = {
     contents: Content[] | SpaceContentResponse | any;
     setContents: (contents: Content[] | SpaceContentResponse | any) => void;
     addContent: (content: Content) => void;
-    deleteContent: (id: string) => void;
+    deleteContentFromState: (id: string) => void;
     logout: () => void;
 };
