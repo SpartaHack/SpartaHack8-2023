@@ -242,7 +242,7 @@ export type SpaceStore = {
     setSpaces: (spaces: getUserSpaceResponse[]) => void;
     addSpaceToState: (space: getUserSpaceResponse) => void;
     deleteSpaceFromState: (id: string) => void;
-    logout: () => void;
+    logOut: () => void;
 };
 
 export type SpaceResponse = {
@@ -250,4 +250,86 @@ export type SpaceResponse = {
     space_name: string;
     visibility: 'public' | 'private';
 };
+
+type Metadata = {
+    type: string;
+    title: string;
+    description: string;
+    author: string;
+    length: number;
+    content_id: string;
+    publish_date: string;
+    thumbnail_url: string;
+    source: number;
+    text: string;
+    path: string;
+    keywords: string[];
+    chunks: number;
+};
   
+type Generations = {
+    summary: string;
+    questions: string;
+};
+  
+export type Content = {
+    _id: string;
+    user_id: string;
+    type: string;
+    title: string;
+    thumbnail_url: string;
+    content_id: string;
+    searches: number;
+    generations: Generations;
+    keywords: string[];
+    author: string;
+    visibility: "public" | "private";
+    metadata: Metadata;
+    created_at: string;
+};
+  
+export type ContentStore = {
+    contents: Content[];
+    setContents: (contents: Content[]) => void;
+    addContent: (content: Content) => void;
+    deleteContent: (id: string) => void;
+    logOut: () => void;
+};
+
+interface ContentMetadata {
+    type: string;
+    title: string;
+    description: string;
+    author: string;
+    length: number;
+    content_id: string;
+    publish_date: string;
+    thumbnail_url: string;
+    source: number;
+    text: string;
+    path: string;
+    keywords: string[];
+    chunks: number;
+}
+
+interface HistoryContent {
+    _id: string;
+    user_id: string;
+    type: string;
+    title: string;
+    thumbnail_url: string;
+    content_id: string;
+    searches: number;
+    generations: { summary: string; questions: string };
+    keywords: string[];
+    author: string;
+    visibility: 'public' | 'private';
+    metadata: ContentMetadata;
+    created_at: string; 
+}
+
+type APIData = {
+    content: HistoryContent;
+}
+
+export type APIResult = APIData[];

@@ -1,6 +1,7 @@
 import { FirebaseError } from "firebase/app";
 import { User, UserCredential } from "firebase/auth";
 import { toast } from "sonner";
+import { APIResult } from "../types";
 
 export const sideBarMotion = {
     initial: { x: '-100%' },
@@ -93,4 +94,8 @@ export const getJWT = async (userCred: UserCredential) => {
   const token = userCred.user?.getIdToken();
   localStorage.setItem('jwtToken', await token)
   return token;
+}
+
+export function getContentList(apiResult: APIResult) {
+  return apiResult.map(item => item.content);
 }

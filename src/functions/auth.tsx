@@ -2,16 +2,18 @@ import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut, sendEmailVerification, GoogleAuthProvider } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { toast } from 'sonner';
-import { getJWT, handleFirebaseError, setUserLocalStorage } from '../../utils';
-import { getUserSpaces, userSignIn, userSignUp } from '@/app/api/endpoints';
+import { getContentList, getJWT, handleFirebaseError, setUserLocalStorage } from '../../utils';
+import { getHistory, getUserSpaces, userSignIn, userSignUp } from '@/app/api/endpoints';
 import { initFirebase } from '../../db/firebase';
 import { useUserStore } from '@/context/user-context';
 import { useSpaceStore } from '@/context/space-context';
+import { useContentStore } from '@/context/content-store';
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
-  const { setSpaces, spaces } = useSpaceStore();
+  const { setSpaces } = useSpaceStore();
+  const { setContents } = useContentStore();
 
   const signInEmail = async (email: string, password: string) => {
     try {
@@ -19,7 +21,6 @@ export const useSignInEmail = () => {
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
       setUserLocalStorage(user);
-      console.log(await getJWT(result));
       const response = await userSignIn(user.uid);
       if (result) {
         if (!user.emailVerified) {
@@ -32,6 +33,9 @@ export const useSignInEmail = () => {
           setUserData(response.data);
           const spaces = await getUserSpaces(user.uid)
           setSpaces(spaces?.data)
+          const contents = await getHistory(user.uid)
+          const contentList = getContentList(contents?.data);
+          setContents(contentList)
           toast.success("Successfully signed in");
           setSignInStatus('/');
         } else {
@@ -58,7 +62,6 @@ export const useSignUpEmailContinue = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       setUserLocalStorage(user);     
-      console.log(await getJWT(userCredential));
       if (userCredential) {
         toast.success("Redirecting to email verification");
         sendEmailVerification(user);
@@ -78,6 +81,7 @@ export const useAuthGoogleSignIn = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
+  const { setContents } = useContentStore();
 
   const authGoogleSignIn = async () => {
     try {
@@ -92,6 +96,9 @@ export const useAuthGoogleSignIn = () => {
         setUserData(response.data);
         const spaces = await getUserSpaces(user.uid)
         setSpaces(spaces?.data)
+        const contents = await getHistory(user.uid)
+        const contentList = getContentList(contents?.data);
+        setContents(contentList)
         toast.success("Successfully signed in with Google");
         setSignInStatus('/');
       } else {
@@ -118,7 +125,6 @@ export const useAuthGoogleSignUp = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       setUserLocalStorage(user);
-      console.log(await getJWT(result));
       const response = await userSignIn(user.uid);
       if (response) {
         toast.error("User already exists!");
@@ -148,7 +154,8 @@ export const logOut = async () => {
     }
     localStorage.clear();
     useUserStore.getState().logout()
-    useSpaceStore.getState().logout()
+    useSpaceStore.getState().logOut()
+    useContentStore.getState().logOut()
     toast.success("Signed out successfully");
   } catch (err) {
     if (err instanceof Error) {
@@ -167,6 +174,7 @@ export const useHandleSignUpFinal = () => {
   const [signUpFinalStatus, setSignUpFinalStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
+  const { setContents } = useContentStore();
 
   const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
     try {
@@ -178,6 +186,9 @@ export const useHandleSignUpFinal = () => {
         setUserData(response!.data)
         const spaces = await getUserSpaces(userId)
         setSpaces(spaces?.data)
+        const contents = await getHistory(userId)
+        const contentList = getContentList(contents?.data);
+        setContents(contentList)
         setSignUpFinalStatus('/');
       } else {
         toast.error("Sign up failed, redirecting to sign up");
