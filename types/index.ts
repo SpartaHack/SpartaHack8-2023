@@ -180,7 +180,6 @@ export type TabContentProps = {
     price: string;
 }
 
-
 export type User = {
     _id: string;
     email: string;
@@ -199,7 +198,15 @@ export type UserProfile = {
 }
   
 export type Subscription = {
-    subscriptions: any
+    _id : string,
+    user_id : string, 
+    customer_id : string, 
+    status : string, 
+    tier : string, 
+    created_at : string, 
+    current_period_end : string, 
+    renewal_date : string, 
+    amount_paid : number
 }
   
 export type APIResponse = {
