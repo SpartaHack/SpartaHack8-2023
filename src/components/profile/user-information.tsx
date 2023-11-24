@@ -36,7 +36,7 @@ const UserInformation = () => {
               <h2 className='text-sm mt-2'>Joined {userData?.user.created_at}</h2>
             </div>
           </div>
-          <EditAccordion title={<h1 className='text-center text-[15px] p-2 rounded-xl border border-neutral-200 dark:border-neutral-700'>Edit Profile</h1>}/>
+          <EditAccordion photo={selectedImage || userData?.user_profile.photo_url!} title={<h1 className='text-center text-[15px] p-2 rounded-xl border border-neutral-200 dark:border-neutral-700'>Edit Profile</h1>}/>
         </div>
         <div className='flex flex-col justify-between bg-absolute_white dark:bg-black rounded-xl p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5'>
           <Streaks/>

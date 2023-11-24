@@ -160,6 +160,7 @@ export type EditAccordionProps = {
     indicator?: JSX.Element,
     title: JSX.Element | string,
     style?: string,
+    photo: string
 }
 
 export type CustomAccordionProps = {
@@ -219,5 +220,6 @@ export type UserState = {
     userData: APIResponse | undefined;
     setUserId: (userId: string | undefined) => void;
     setUserData: (data: APIResponse | undefined) => void;
+    updateUserData: any
     logout: () => void;
 }
