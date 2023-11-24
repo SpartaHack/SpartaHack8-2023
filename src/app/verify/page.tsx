@@ -20,9 +20,9 @@ const Verify = () => {
           }
         }
       }, 3000);
-  
+    
       return () => clearInterval(intervalId);
-    }, []);
+    }, [router]);
   
     const resendEmail = async () => {
       const user = auth.currentUser;
