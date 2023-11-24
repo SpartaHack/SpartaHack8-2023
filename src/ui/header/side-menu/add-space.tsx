@@ -1,10 +1,24 @@
+import { addSpace } from '@/app/api/endpoints'
+import { useSpaceStore } from '@/context/space-context'
+import { useUserStore } from '@/context/user-context'
 import CustomModal from '@/helpers/custom-modal'
 import CustomTextInput from '@/helpers/custom-text-input'
+import useStore from '@/hooks/use-store'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import React, { useState } from 'react'
 
 const AddSpace = () => {
-  const [spaceName, setSpaceName] = useState('')
+  const [spaceName, setSpaceName] = useState('');
+  const userId = useStore(useUserStore, (state) => state.userId)
+  const { addSpaceToState } = useSpaceStore();
+
+  const handleSpaceCreation = async () => {
+    const response = await addSpace(userId!, spaceName, 'private')
+    if (response?.data) {
+      addSpaceToState(response.data);
+    }
+  }
+
   return (
     <div className='w-full'>
         <CustomModal 
@@ -31,7 +45,7 @@ const AddSpace = () => {
                 </>
             } 
             actionTitle='Create New Space' 
-            actionEvent={() => {}}
+            actionEvent={() => handleSpaceCreation()}
         />
     </div>
   )

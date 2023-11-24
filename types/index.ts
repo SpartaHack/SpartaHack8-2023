@@ -5,7 +5,7 @@ export type CustomButtonProps = {
     title: string | JSX.Element,
     size?: "sm" | "md" | "lg" | undefined,
     btnType: "button" | "submit" | "reset" | undefined,
-    clickEvent?: () => void,
+    clickEvent?: MouseEventHandler | (() => void),
     btnStyling?: string,
     popOver?: boolean,
     popOverClickEvent?: () => void,
@@ -229,4 +229,24 @@ export type UserState = {
     setUserData: (data: APIResponse | undefined) => void;
     updateUserData: (updatedData: Partial<UserProfile & Subscription>) => void;
     logout: () => void;
-  }
+}
+
+export type getUserSpaceResponse = {
+    _id: string;
+    space_name: string;
+    visibility: 'public' | 'private';
+};   
+
+export type SpaceStore = {
+    spaces: getUserSpaceResponse[];
+    setSpaces: (spaces: getUserSpaceResponse[]) => void;
+    addSpaceToState: (space: getUserSpaceResponse) => void;
+    logout: () => void;
+};
+
+export type SpaceResponse = {
+    _id: string;
+    space_name: string;
+    visibility: 'public' | 'private';
+};
+  

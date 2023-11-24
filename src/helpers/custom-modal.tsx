@@ -6,6 +6,11 @@ import { CustomModalProps } from "../../types";
 const CustomModal = ({title, size, contentTitle, contentMain, actionTitle, actionEvent, placement, footer}: CustomModalProps) => {
   const {isOpen, onOpen, onClose} = useDisclosure();
 
+  const handleClose = (event: React.MouseEvent) => {
+    actionEvent && actionEvent(event);
+    onClose();
+  }
+
   return (
     <>
       <div className="bg-transparent" onClick={onOpen}>
@@ -22,7 +27,7 @@ const CustomModal = ({title, size, contentTitle, contentMain, actionTitle, actio
               { footer &&
               <ModalFooter>
                 <CustomButton title="Close" btnType="button" clickEvent={onClose} btnStyling="hover:bg-danger"/>
-                <CustomButton title={actionTitle!} btnType="submit" clickEvent={() => actionEvent} btnStyling="hover:bg-secondary"/>
+                <CustomButton title={actionTitle!} btnType="submit" clickEvent={handleClose} btnStyling="hover:bg-secondary"/>
               </ModalFooter>
               }
             </>

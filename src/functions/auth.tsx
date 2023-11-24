@@ -3,13 +3,15 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
 import { FirebaseError } from 'firebase/app';
 import { toast } from 'sonner';
 import { getJWT, handleFirebaseError, setUserLocalStorage } from '../../utils';
-import { userSignIn, userSignUp } from '@/app/api/endpoints';
+import { getUserSpaces, userSignIn, userSignUp } from '@/app/api/endpoints';
 import { initFirebase } from '../../db/firebase';
 import { useUserStore } from '@/context/user-context';
+import { useSpaceStore } from '@/context/space-context';
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
+  const { setSpaces, spaces } = useSpaceStore();
 
   const signInEmail = async (email: string, password: string) => {
     try {
@@ -28,6 +30,8 @@ export const useSignInEmail = () => {
         if (response) {
           setUserId(user.uid);
           setUserData(response.data);
+          const spaces = await getUserSpaces(user.uid)
+          setSpaces(spaces?.data)
           toast.success("Successfully signed in");
           setSignInStatus('/');
         } else {
@@ -73,6 +77,7 @@ export const useSignUpEmailContinue = () => {
 export const useAuthGoogleSignIn = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
+  const { setSpaces } = useSpaceStore();
 
   const authGoogleSignIn = async () => {
     try {
@@ -81,11 +86,12 @@ export const useAuthGoogleSignIn = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       setUserLocalStorage(user);
-      console.log(await getJWT(result));
       const response = await userSignIn(user.uid);
       if (response) {
         setUserId(user.uid);
         setUserData(response.data);
+        const spaces = await getUserSpaces(user.uid)
+        setSpaces(spaces?.data)
         toast.success("Successfully signed in with Google");
         setSignInStatus('/');
       } else {
@@ -142,6 +148,7 @@ export const logOut = async () => {
     }
     localStorage.clear();
     useUserStore.getState().logout()
+    useSpaceStore.getState().logout()
     toast.success("Signed out successfully");
   } catch (err) {
     if (err instanceof Error) {
@@ -159,6 +166,7 @@ export const logOut = async () => {
 export const useHandleSignUpFinal = () => {
   const [signUpFinalStatus, setSignUpFinalStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
+  const { setSpaces } = useSpaceStore();
 
   const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
     try {
@@ -168,6 +176,8 @@ export const useHandleSignUpFinal = () => {
         setUserId(userId)
         const response = await userSignIn(userId)
         setUserData(response!.data)
+        const spaces = await getUserSpaces(userId)
+        setSpaces(spaces?.data)
         setSignUpFinalStatus('/');
       } else {
         toast.error("Sign up failed, redirecting to sign up");

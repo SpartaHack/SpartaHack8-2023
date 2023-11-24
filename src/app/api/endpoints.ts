@@ -113,13 +113,11 @@ export const getSpace = async (
 
 export const addSpace = async (
   userId: string,
-  spaceId: string,
   spaceName: string,
   visibility: 'private' | 'public'
 ) => {
   const data = {
     user_id: userId,
-    space_id: spaceId,
     space_name: spaceName,
     visibility: visibility
   };
