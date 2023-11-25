@@ -156,7 +156,6 @@ export const logOut = async () => {
     useContentStore.getState().logout()
     toast.success("Signed out successfully");
   } catch (err) {
-    console.log(err)
     if (err instanceof Error) {
       switch (err.message) {
         case 'auth/no-current-user':

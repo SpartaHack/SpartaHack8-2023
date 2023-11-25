@@ -19,7 +19,7 @@ const AddSpace = () => {
     if (response?.data) {
       addSpaceToState(response.data);
       const goToSpace = await getSpace(userId!, response.data._id)
-      setContents(goToSpace?.data.contents)
+      setContents(goToSpace?.data)
     }
   }
 
