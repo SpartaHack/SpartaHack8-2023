@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { ChatSubmitProps } from '../../../../types';
-import { Spinner } from '@nextui-org/react';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import React, { useState } from "react";
+import { ChatSubmitProps } from "../../../../types";
+import { Spinner } from "@nextui-org/react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
-  const [message, setMessage] = useState('');
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const [message, setMessage] = useState("");
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const trimmedMessage = message.trim();
-    if (trimmedMessage !== '') {
+    if (trimmedMessage !== "") {
       onMessageSubmit(trimmedMessage);
-      setMessage('');
+      setMessage("");
     } else {
     }
   };
@@ -27,11 +27,17 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button type="submit" className="border-none bg-transparent pr-1 focus:outline-none">
+      <button
+        type="submit"
+        className="border-none bg-transparent pr-1 focus:outline-none"
+      >
         {isLoading ? (
-          <Spinner size='sm' color='secondary' className='mt-2 mr-1'/>
+          <Spinner size="sm" color="secondary" className="mt-2 mr-1" />
         ) : (
-          <Icon icon="ph:paper-plane-fill" className="p-2 cursor-pointer gradient text-[35px] rounded-xl dark:text-neutral-900" />
+          <Icon
+            icon="ph:paper-plane-fill"
+            className="p-2 cursor-pointer gradient text-[35px] rounded-xl dark:text-neutral-900"
+          />
         )}
       </button>
     </form>

@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   collection,
   getFirestore,
   onSnapshot,
   query,
   where,
-} from 'firebase/firestore';
-import { initFirebase } from '../../db/firebase';
+} from "firebase/firestore";
+import { initFirebase } from "../../db/firebase";
 
 export const useGetProStatus = () => {
   const app = initFirebase();
@@ -22,13 +22,13 @@ export const useGetProStatus = () => {
       if (!userId) {
         setLoading(false);
         return;
-      };
+      }
 
       const db = getFirestore(app);
       const subscriptionsRef = collection(db, "users", userId, "subscriptions");
       const q = query(
         subscriptionsRef,
-        where("status", "in", ["trialing", "active"])
+        where("status", "in", ["trialing", "active"]),
       );
 
       const unsubscribe = onSnapshot(
@@ -45,13 +45,13 @@ export const useGetProStatus = () => {
         (error) => {
           console.error(error);
           setLoading(false);
-        }
+        },
       );
     };
 
     const auth = getAuth(app);
 
-    const unsubscribeAuth = onAuthStateChanged(auth, user => {
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
         fetchPremiumStatus();
       } else {

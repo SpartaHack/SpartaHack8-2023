@@ -1,26 +1,30 @@
 import React from "react";
-import {Tabs, Tab } from "@nextui-org/react";
+import { Tabs, Tab } from "@nextui-org/react";
 import Chat from "./chat";
 import Summary from "./summary";
 import Quiz from "./quiz";
 
 const TabComponent = () => {
-
   return (
     <div className="flex flex-col w-full h-full p-3 overflow-hidden">
-      <Tabs variant="light" color="primary" fullWidth className="border rounded-xl dark:border-neutral-700 bg-absolute_white dark:bg-black">
+      <Tabs
+        variant="light"
+        color="primary"
+        fullWidth
+        className="border rounded-xl dark:border-neutral-700 bg-absolute_white dark:bg-black"
+      >
         <Tab title="Chat" className="h-full">
-          <Chat/>
+          <Chat />
         </Tab>
         <Tab title="Summary" className="h-full">
-          <Summary summary={"Getting Summary"}/>
+          <Summary summary={"Getting Summary"} />
         </Tab>
         <Tab title="Quiz" className="h-full">
-          <Quiz/>
+          <Quiz />
         </Tab>
       </Tabs>
-    </div>  
+    </div>
   );
-}
+};
 
 export default TabComponent;

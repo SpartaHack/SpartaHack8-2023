@@ -1,14 +1,14 @@
-import SignIn from '@/components/auth/signin'
-import SecondaryHeader from '@/ui/header/secondary-header'
-import React from 'react'
+import SignIn from "@/components/auth/signin";
+import SecondaryHeader from "@/ui/header/secondary-header";
+import React from "react";
 
 const SignInPage = () => {
   return (
     <div>
-        <SecondaryHeader/>
-        <SignIn/>
+      <SecondaryHeader />
+      <SignIn />
     </div>
-  )
-}
+  );
+};
 
-export default SignInPage
+export default SignInPage;

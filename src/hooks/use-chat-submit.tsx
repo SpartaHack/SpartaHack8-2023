@@ -3,7 +3,13 @@ import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { chat } from "@/app/api/endpoints";
 
-const useChatSubmit = (type: 'space' | 'content', initialChatLog: MessageType[], userId: string, contentId: string[], spaceId: string[]) => {
+const useChatSubmit = (
+  type: "space" | "content",
+  initialChatLog: MessageType[],
+  userId: string,
+  contentId: string[],
+  spaceId: string[],
+) => {
   const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,12 +18,20 @@ const useChatSubmit = (type: 'space' | 'content', initialChatLog: MessageType[],
       ...prev,
       { type: "user", response: query, sources: [] },
     ]);
-  
+
     setIsLoading(true);
     let response;
 
-    if (type === 'content') {
-      response = await chat(userId, spaceId, contentId, query, type, false, false);
+    if (type === "content") {
+      response = await chat(
+        userId,
+        spaceId,
+        contentId,
+        query,
+        type,
+        false,
+        false,
+      );
     } else {
       response = await chat(userId, spaceId, [], query, type, false, false);
     }
@@ -29,7 +43,7 @@ const useChatSubmit = (type: 'space' | 'content', initialChatLog: MessageType[],
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let message = "";
-    setIsLoading(false)
+    setIsLoading(false);
 
     new ReadableStream({
       start(controller) {
@@ -40,7 +54,7 @@ const useChatSubmit = (type: 'space' | 'content', initialChatLog: MessageType[],
               setIsLoading(false);
               return;
             }
-            const chunk = decoder.decode(value, {stream: true});
+            const chunk = decoder.decode(value, { stream: true });
             message += chunk;
             const replacedResult = replaceMessage(type, message);
             message = replacedResult.replacedMessage;
@@ -55,7 +69,11 @@ const useChatSubmit = (type: 'space' | 'content', initialChatLog: MessageType[],
               } else {
                 return [
                   ...prev,
-                  { type: "bot", response: message, sources: replacedResult.sources },
+                  {
+                    type: "bot",
+                    response: message,
+                    sources: replacedResult.sources,
+                  },
                 ];
               }
             });
@@ -67,8 +85,8 @@ const useChatSubmit = (type: 'space' | 'content', initialChatLog: MessageType[],
       },
     });
   };
-  
+
   return { handleChatSubmit, chatLog, isLoading };
-}
+};
 
 export default useChatSubmit;

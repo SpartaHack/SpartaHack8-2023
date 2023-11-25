@@ -3,11 +3,11 @@ import { User, UserCredential } from "firebase/auth";
 import { toast } from "sonner";
 
 export const sideBarMotion = {
-    initial: { x: '-100%' },
-    animate: { x: '0%' },
-    exit: { x: '-100%' },
-    transition: { type: 'cubic'}
-}
+  initial: { x: "-100%" },
+  animate: { x: "0%" },
+  exit: { x: "-100%" },
+  transition: { type: "cubic" },
+};
 
 export const replaceMessage = (() => {
   let counter = 0;
@@ -15,9 +15,9 @@ export const replaceMessage = (() => {
   return (type: string, message: string) => {
     let regex: RegExp;
 
-    if (type === 'youtube') {
+    if (type === "youtube") {
       regex = /(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g;
-    } else if (type === 'space') {
+    } else if (type === "space") {
       regex = /(\[[^\]]+\])/g;
     } else {
       regex = /(\[[^\]]+\])/g;
@@ -35,57 +35,57 @@ export const replaceMessage = (() => {
 
 export const handleFirebaseError = (err: FirebaseError) => {
   switch (err.code) {
-    case 'auth/invalid-email':
+    case "auth/invalid-email":
       toast.error("Invalid email format");
       break;
-    case 'auth/user-disabled':
+    case "auth/user-disabled":
       toast.error("This user has been disabled");
       break;
-    case 'auth/user-not-found':
+    case "auth/user-not-found":
       toast.error("No account found, redirecting to sign up");
       break;
-    case 'auth/wrong-password':
+    case "auth/wrong-password":
       toast.error("Incorrect password");
       break;
-    case 'auth/invalid-login-credentials':
+    case "auth/invalid-login-credentials":
       toast.error("Invalid login credentials");
       break;
-    case 'auth/email-already-in-use':
+    case "auth/email-already-in-use":
       toast.error("Email already in use");
       break;
-    case 'auth/operation-not-allowed':
+    case "auth/operation-not-allowed":
       toast.error("Email/password accounts are not enabled");
       break;
-    case 'auth/weak-password':
+    case "auth/weak-password":
       toast.error("Password is not strong enough");
       break;
-    case 'auth/popup-closed-by-user':
+    case "auth/popup-closed-by-user":
       toast.error("Popup closed by user");
       break;
-    case 'auth/cancelled-popup-request':
+    case "auth/cancelled-popup-request":
       toast.error("Cancelled popup request");
       break;
-    case 'auth/popup-blocked':
+    case "auth/popup-blocked":
       toast.error("Popup blocked by the browser");
       break;
     default:
       toast.error("An unknown error occurred");
   }
-}
+};
 
 export const setUserLocalStorage = (user: User) => {
   try {
-    localStorage.setItem("userId", user.uid ?? '');
-    localStorage.setItem("fullName", user.displayName ?? '');
-    localStorage.setItem("email", user.email ?? '');
-    localStorage.setItem("photoURL", user.photoURL ?? '');
+    localStorage.setItem("userId", user.uid ?? "");
+    localStorage.setItem("fullName", user.displayName ?? "");
+    localStorage.setItem("email", user.email ?? "");
+    localStorage.setItem("photoURL", user.photoURL ?? "");
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-}
+};
 
 export const getJWT = async (userCred: UserCredential) => {
   const token = userCred.user?.getIdToken();
-  localStorage.setItem('jwtToken', await token)
+  localStorage.setItem("jwtToken", await token);
   return token;
-}
+};

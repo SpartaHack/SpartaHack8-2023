@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const TypingIndicator = () => (
   <div className="flex space-x-1 pt-4 pb-8">
@@ -9,4 +9,3 @@ const TypingIndicator = () => (
 );
 
 export default TypingIndicator;
-

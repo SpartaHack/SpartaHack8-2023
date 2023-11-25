@@ -1,13 +1,16 @@
 import { RefObject, useEffect } from "react";
 
-const useClickOutside = (ref: RefObject<HTMLElement>, handler: (event: Event) => void) => {
+const useClickOutside = (
+  ref: RefObject<HTMLElement>,
+  handler: (event: Event) => void,
+) => {
   useEffect(() => {
     const listener = (event: Event) => {
       const clickedElement = event.target as HTMLElement;
 
       let currentElement: HTMLElement | null = clickedElement;
       while (currentElement) {
-        if (currentElement.classList.contains('prevent-close')) {
+        if (currentElement.classList.contains("prevent-close")) {
           return;
         }
         currentElement = currentElement.parentElement;
@@ -20,12 +23,12 @@ const useClickOutside = (ref: RefObject<HTMLElement>, handler: (event: Event) =>
       handler(event);
     };
 
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
 
     return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
     };
   }, [ref, handler]);
 };

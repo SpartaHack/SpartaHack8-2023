@@ -1,13 +1,26 @@
-import { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signOut, sendEmailVerification, GoogleAuthProvider } from 'firebase/auth';
-import { FirebaseError } from 'firebase/app';
-import { toast } from 'sonner';
-import { handleFirebaseError, setUserLocalStorage } from '../../utils';
-import { getHistory, getUserSpaces, userSignIn, userSignUp } from '@/app/api/endpoints';
-import { initFirebase } from '../../db/firebase';
-import { useUserStore } from '@/context/user-context';
-import { useSpaceStore } from '@/context/space-context';
-import { useContentStore } from '@/context/content-store';
+import { useState } from "react";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  sendEmailVerification,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { FirebaseError } from "firebase/app";
+import { toast } from "sonner";
+import { handleFirebaseError, setUserLocalStorage } from "../../utils";
+import {
+  getHistory,
+  getUserSpaces,
+  userSignIn,
+  userSignUp,
+} from "@/app/api/endpoints";
+import { initFirebase } from "../../db/firebase";
+import { useUserStore } from "@/context/user-context";
+import { useSpaceStore } from "@/context/space-context";
+import { useContentStore } from "@/context/content-store";
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
@@ -24,22 +37,22 @@ export const useSignInEmail = () => {
       const response = await userSignIn(user.uid);
       if (result) {
         if (!user.emailVerified) {
-            toast.error("Email not verified")
-            setSignInStatus('/verify')
-            return;
+          toast.error("Email not verified");
+          setSignInStatus("/verify");
+          return;
         }
         if (response) {
           setUserId(user.uid);
           setUserData(response.data);
-          const spaces = await getUserSpaces(user.uid)
-          setSpaces(spaces?.data)
-          const contents = await getHistory(user.uid)
-          setContents(contents?.data)
+          const spaces = await getUserSpaces(user.uid);
+          setSpaces(spaces?.data);
+          const contents = await getHistory(user.uid);
+          setContents(contents?.data);
           toast.success("Successfully signed in");
-          setSignInStatus('/');
+          setSignInStatus("/");
         } else {
           toast.error("User does not have form details, redirecting to form");
-          setSignInStatus('/form');
+          setSignInStatus("/form");
         }
       }
     } catch (err) {
@@ -58,13 +71,17 @@ export const useSignUpEmailContinue = () => {
   const signUpEmailContinue = async (email: string, password: string) => {
     try {
       const auth = getAuth();
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       const user = userCredential.user;
-      setUserLocalStorage(user);     
+      setUserLocalStorage(user);
       if (userCredential) {
         toast.success("Redirecting to email verification");
         sendEmailVerification(user);
-        setSignUpStatus('/verify');
+        setSignUpStatus("/verify");
       }
     } catch (err) {
       if (err instanceof FirebaseError) {
@@ -93,15 +110,15 @@ export const useAuthGoogleSignIn = () => {
       if (response) {
         setUserId(user.uid);
         setUserData(response.data);
-        const spaces = await getUserSpaces(user.uid)
-        setSpaces(spaces?.data)
-        const contents = await getHistory(user.uid)
-        setContents(contents?.data)
+        const spaces = await getUserSpaces(user.uid);
+        setSpaces(spaces?.data);
+        const contents = await getHistory(user.uid);
+        setContents(contents?.data);
         toast.success("Successfully signed in with Google");
-        setSignInStatus('/');
+        setSignInStatus("/");
       } else {
         toast.error("User does not have form details, redirecting to form");
-        setSignInStatus('/form');
+        setSignInStatus("/form");
       }
     } catch (err) {
       if (err instanceof FirebaseError) {
@@ -128,7 +145,7 @@ export const useAuthGoogleSignUp = () => {
         toast.error("User already exists!");
       } else {
         toast.success("User created, redirecting to profile creation");
-        setSignUpStatus('/form');
+        setSignUpStatus("/form");
       }
     } catch (err) {
       if (err instanceof FirebaseError) {
@@ -151,14 +168,14 @@ export const logOut = async () => {
       return;
     }
     localStorage.clear();
-    useUserStore.getState().logout()
-    useSpaceStore.getState().logout()
-    useContentStore.getState().logout()
+    useUserStore.getState().logout();
+    useSpaceStore.getState().logout();
+    useContentStore.getState().logout();
     toast.success("Signed out successfully");
   } catch (err) {
     if (err instanceof Error) {
       switch (err.message) {
-        case 'auth/no-current-user':
+        case "auth/no-current-user":
           toast.error("No user currently signed in");
           break;
         default:
@@ -169,27 +186,41 @@ export const logOut = async () => {
 };
 
 export const useHandleSignUpFinal = () => {
-  const [signUpFinalStatus, setSignUpFinalStatus] = useState<string | null>(null);
+  const [signUpFinalStatus, setSignUpFinalStatus] = useState<string | null>(
+    null,
+  );
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
   const { setContents } = useContentStore();
 
-  const handleSignUpFinal = async (userId: string, email: string, photoURL: string, educationLevel: string, fullName: string) => {
+  const handleSignUpFinal = async (
+    userId: string,
+    email: string,
+    photoURL: string,
+    educationLevel: string,
+    fullName: string,
+  ) => {
     try {
-      const response = await userSignUp(userId, email, fullName, photoURL, educationLevel);
+      const response = await userSignUp(
+        userId,
+        email,
+        fullName,
+        photoURL,
+        educationLevel,
+      );
       if (response) {
         toast.success("User signed up successfully");
-        setUserId(userId)
-        const response = await userSignIn(userId)
-        setUserData(response!.data)
-        const spaces = await getUserSpaces(userId)
-        setSpaces(spaces?.data)
-        const contents = await getHistory(userId)
-        setContents(contents?.data)
-        setSignUpFinalStatus('/');
+        setUserId(userId);
+        const response = await userSignIn(userId);
+        setUserData(response!.data);
+        const spaces = await getUserSpaces(userId);
+        setSpaces(spaces?.data);
+        const contents = await getHistory(userId);
+        setContents(contents?.data);
+        setSignUpFinalStatus("/");
       } else {
         toast.error("Sign up failed, redirecting to sign up");
-        setSignUpFinalStatus('/signup');
+        setSignUpFinalStatus("/signup");
       }
     } catch (err) {
       if (err instanceof FirebaseError) {

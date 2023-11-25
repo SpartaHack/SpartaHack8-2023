@@ -1,25 +1,31 @@
-import { Input } from '@nextui-org/react'
-import React from 'react'
-import { CustomTextInputProps } from '../../types'
+import { Input } from "@nextui-org/react";
+import React from "react";
+import { CustomTextInputProps } from "../../types";
 
-const CustomTextInput = ({value, type, label, isInvalid, eventChange, styling }: CustomTextInputProps) => {
-  
+const CustomTextInput = ({
+  value,
+  type,
+  label,
+  isInvalid,
+  eventChange,
+  styling,
+}: CustomTextInputProps) => {
   return (
-    <> 
-      <Input 
+    <>
+      <Input
         autoFocus
         value={value as string}
-        type={type} 
+        type={type}
         label={label}
         variant="bordered"
-        labelPlacement='outside'
-        color={isInvalid ? 'danger' : 'success'}
+        labelPlacement="outside"
+        color={isInvalid ? "danger" : "success"}
         onChange={eventChange}
-        size='lg'
+        size="lg"
         className={`${styling}` || "max-w-xs"}
       />
     </>
-  )
-}
+  );
+};
 
-export default CustomTextInput
+export default CustomTextInput;
