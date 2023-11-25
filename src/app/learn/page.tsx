@@ -10,7 +10,6 @@ import { auth } from "../../../db/firebase";
 import { getContent } from "../api/endpoints";
 
 const LearnPage = () => {
-  const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const setLearnContent = useStore(
     useLearnStore,
     (state) => state.setLearnContent,
@@ -48,7 +47,7 @@ const LearnPage = () => {
     <main className='flex flex-col min-h-screen"'>
       <Suspense fallback={<Loading />}>
         <Header />
-        <Content type={learnContent?.type!} />
+        <Content />
       </Suspense>
     </main>
   );
