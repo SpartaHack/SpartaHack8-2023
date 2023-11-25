@@ -67,6 +67,7 @@ export type ContentCardProps = {
     type: string,
     contentID: string,
     title: string,
+    spaceId?: string,
     thumbnail_url: string
 }
 
