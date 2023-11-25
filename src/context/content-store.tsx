@@ -10,7 +10,10 @@ export const useContentStore = create<ContentStore, [["zustand/persist", Content
       addContent: (content) => set((state) => ({ contents: [...state.contents || [], content] })),
       deleteContentFromState: (contentID) => set((state) => ({ 
         ...state,
-        contents: state.contents.filter((content: Content) => content.content_id !== contentID)
+        contents: {
+          ...state.contents,
+          contents: state.contents.contents.filter((content: { content_id: string; }) => content.content_id !== contentID)
+        }
       })),
       updateContent: (updatedContent: Partial<Content>) => set((state) => {
         if (state.contents && state.contents.space) {
