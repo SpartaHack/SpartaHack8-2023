@@ -7,13 +7,14 @@ import CustomModal from '@/helpers/custom-modal'
 import CustomTextInput from '@/helpers/custom-text-input'
 import { useSpaceStore } from '@/context/space-context'
 import { getUserSpaceResponse } from '../../../types'
-import { updateSpace } from '@/app/api/endpoints'
+import { addContent, updateSpace } from '@/app/api/endpoints'
 import { auth } from '../../../db/firebase'
 import { toast } from 'sonner'
 
 const SpaceHeader = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [editSpaceName, setEditSpaceName ] = useState('')
+  const [contentURL, setContentURL ] = useState('')
   const [spacePrivacy, setSpacePrivacy ] = useState(true)
 
   if (!contents) {
@@ -28,6 +29,10 @@ const SpaceHeader = () => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>,  setState: React.Dispatch<React.SetStateAction<string>>) => {
     setEditSpaceName(e.target.value);
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>,  setState: React.Dispatch<React.SetStateAction<string>>) => {
+    setContentURL(e.target.value);
   }
 
   const handleSave = async (spacePrivacy: boolean, editSpaceName: string) => {
@@ -51,6 +56,11 @@ const SpaceHeader = () => {
         toast.error("Could not update space.")
     }
     setEditSpaceName('')
+  }
+
+  const handleAdd = async () => {
+    const response = await addContent(auth.currentUser?.uid!, contents.space._id, contentURL)
+    useContentStore.getState().addContent(response?.data.content);
   }
 
   return (
@@ -84,7 +94,9 @@ const SpaceHeader = () => {
                     Add content
                 </span>
             </div>} 
-            contentMain={undefined}
+            actionEvent={handleAdd}
+            contentTitle='Add content' 
+            contentMain={<CustomTextInput value={contentURL} type={'text'} eventChange={(e) => handleChange(e, setContentURL)} isInvalid={contentURL === ''} label={'Add content URL'}/>}
             footer
             actionTitle='Add'
           />

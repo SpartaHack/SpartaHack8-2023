@@ -7,7 +7,12 @@ export const useContentStore = create<ContentStore, [["zustand/persist", Content
     (set) => ({
       contents: [],
       setContents: (contents) => set({ contents }),
-      addContent: (content) => set((state) => ({ contents: [...state.contents || [], content] })),
+      addContent: (content) => set((state) => ({ 
+        contents: {
+          ...state.contents,
+          contents: [...state.contents.contents || [], content]
+        }
+      })),
       deleteContentFromState: (contentID) => set((state) => ({ 
         ...state,
         contents: {
