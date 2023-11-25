@@ -1,18 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ChatSubmit from "./chat-submit";
 import { useContainerHeight } from "@/hooks/use-container-height";
 import { ScrollShadow } from "@nextui-org/react";
 import useChatSubmit from "@/hooks/use-chat-submit";
-import { content_id, space_id, user_id } from "../../../../utils";
 import useCopyToClipboard from "@/hooks/use-copy-clipboard";
 import Message from "./message";
 import TypingIndicator from "../../../helpers/typing-indicator";
 import { removeUndefinedFromSources } from "@/functions/remove-undefined-sources";
 import ChatQuestions from "./chat-questions";
 import useChatlogLength from "@/hooks/use-chatlog-length";
+import { auth } from "../../../../db/firebase";
+import { useStore } from "zustand";
+import { useLearnStore } from "@/context/learn-context";
 
 const Chat = () => {
-  const type = "youtube";
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
+  const type = learnContent?.type!
   const height = useContainerHeight({ type: type });
   const {
     handleChatSubmit,
@@ -27,9 +30,9 @@ const Chat = () => {
           "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!",
       },
     ],
-    user_id,
-    content_id,
-    space_id,
+    auth.currentUser?.uid!,
+    [learnContent?.contentID!],
+    [learnContent?.spaceId!],
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];

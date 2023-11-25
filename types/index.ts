@@ -72,7 +72,7 @@ export type CustomTextInputProps = {
 };
 
 export type ContentProps = {
-  type: "youtube" | "pdf";
+  type: string;
 };
 
 export type ChatSubmitProps = {
@@ -110,7 +110,7 @@ export type DashboardProps = {
 };
 
 export type useContainerHeightProps = {
-  type: "pdf" | "youtube";
+  type: string;
 };
 
 export type MessageType = {
@@ -355,4 +355,16 @@ export type OrderSummaryProps = {
 export type ChatQuestionProps = {
   questions: string[];
   chatQuestionClick: (question: string) => void;
+};
+
+export type LearnContent = {
+  contentID: string,
+  spaceId: string,
+  type: string,
+};
+
+export type LearnStore = {
+  learnContent: LearnContent | undefined;
+  setLearnContent: (content: LearnContent | undefined) => void;
+  clearContent: () => void;
 };

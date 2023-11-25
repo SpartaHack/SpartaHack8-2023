@@ -4,9 +4,12 @@ import { ScrollShadow } from "@nextui-org/react";
 import useCopyToClipboard from "@/hooks/use-copy-clipboard";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { SummaryProps } from "../../../../types";
+import useStore from "@/hooks/use-store";
+import { useLearnStore } from "@/context/learn-context";
 
 const Summary = ({ summary }: SummaryProps) => {
-  const type = "pdf";
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
+  const type = learnContent?.type!
   const height = useContainerHeight({ type: type });
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();

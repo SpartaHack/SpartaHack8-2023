@@ -12,6 +12,7 @@ const Dashboard = () => {
   const [spaceId, setSpaceId] = useState(null);
 
   useEffect(() => {
+    console.log(contents)
     if (contents && contents.space) {
       setSpaceId(contents.space._id);
     }
@@ -37,6 +38,7 @@ const Dashboard = () => {
               : contents.map((content: History, key: number) => (
                   <ContentCard
                     key={key}
+                    spaceId={content.space_id}
                     type={content.content.type}
                     contentID={content.content.content_id}
                     title={content.content.title}

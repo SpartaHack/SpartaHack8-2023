@@ -9,6 +9,7 @@ import { useContentStore } from "@/context/content-store";
 import { deleteContent } from "@/app/api/endpoints";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
+import { useLearnStore } from "@/context/learn-context";
 
 const ContentCard = ({
   contentID,
@@ -19,14 +20,21 @@ const ContentCard = ({
 }: ContentCardProps) => {
   const router = useRouter();
   const { deleteContentFromState, contents } = useContentStore();
+  const { learnContent ,setLearnContent } = useLearnStore();
 
-  console.log(spaceId);
+  const clickCard = () => {
+    const content = {
+      contentID: contentID,
+      spaceId: spaceId!,
+      type: type,
+    };
 
-  const clickCard = (contentID: string) => {
+    setLearnContent(content);
+    
     if (!spaceId) {
-      console.log(`/learn?c=${contentID}`);
+      router.push(`/learn?c=${contentID}`);
     } else {
-      console.log(`/learn?s=${spaceId}/c=${contentID}`);
+      router.push(`/learn?c=${contentID}&s=${spaceId}`);
     }
   };
 
@@ -51,7 +59,7 @@ const ContentCard = ({
   return (
     <div
       className="relative cursor-pointer flex-col bg-absolute_white justify-center items-center gap-20 drop-shadow-sm rounded-xl hover:shadow-xl hover:scale-105 transition duration-300 dark:bg-neutral-800 max-h-[270px] max-w-[360px] min-h-full min-w-[220px] group"
-      onClick={() => clickCard(contentID)}
+      onClick={() => clickCard()}
     >
       <div className="absolute top-2 right-2 p-1 hover:scale-125 duration-200 cursor-pointer rounded-full group-hover:bg-neutral-100 group-hover:dark:bg-neutral-800">
         <CustomDropdown

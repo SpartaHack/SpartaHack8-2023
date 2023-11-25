@@ -2,9 +2,12 @@ import React from "react";
 import { useContainerHeight } from "@/hooks/use-container-height";
 import { ScrollShadow } from "@nextui-org/react";
 import { CustomButton } from "@/helpers/custom-btn";
+import useStore from "@/hooks/use-store";
+import { useLearnStore } from "@/context/learn-context";
 
 const Quiz = () => {
-  const type = "youtube";
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
+  const type = learnContent?.type!
   const height = useContainerHeight({ type: type });
 
   return (
