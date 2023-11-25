@@ -37,28 +37,28 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   contentTitle?: string;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -152,14 +152,6 @@ export type TooltipContentProps = {
 
 export type PlayerProps = YouTubeProps & {
   seekTo: (seconds: number) => void;
-};
-
-export type YoutubeVideoProps = {
-  source: number;
-};
-
-export type PDFProps = {
-  sourcePage: number;
 };
 
 export type YouLearnLogoProps = {
@@ -358,13 +350,12 @@ export type ChatQuestionProps = {
 };
 
 export type LearnContent = {
-  contentID: string;
-  spaceId: string;
-  type: string;
+  space_id?: string,
+  source?: number | string,
 };
 
 export type LearnStore = {
-  learnContent: LearnContent | undefined;
-  setLearnContent: (content: LearnContent | undefined) => void;
+  learnContent: LearnContent & Content | undefined;
+  setLearnContent: (content: LearnContent & Content | undefined) => void;
   clearContent: () => void;
 };

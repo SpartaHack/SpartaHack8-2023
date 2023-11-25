@@ -1,8 +1,7 @@
 import React from "react";
-import { PDFProps } from "../../../../types";
 
-const PDF = ({ sourcePage }: PDFProps) => {
-  const pdfUrl = `https://storage.googleapis.com/youlearn-content-uploads/example.pdf#page=${sourcePage}`;
+const PDF = () => {
+  const pdfUrl = `https://storage.googleapis.com/youlearn-content-uploads/example.pdf`;
 
   return (
     <div className="lg:w-[70%] w-full items-center justify-center">

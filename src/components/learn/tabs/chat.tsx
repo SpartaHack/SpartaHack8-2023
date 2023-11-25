@@ -31,8 +31,8 @@ const Chat = () => {
       },
     ],
     auth.currentUser?.uid!,
-    [learnContent?.contentID!],
-    [learnContent?.spaceId!],
+    [learnContent?.content_id!],
+    [learnContent?.space_id!],
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];

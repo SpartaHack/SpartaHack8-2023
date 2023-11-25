@@ -9,7 +9,6 @@ import { useContentStore } from "@/context/content-store";
 import { deleteContent } from "@/app/api/endpoints";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
-import { useLearnStore } from "@/context/learn-context";
 
 const ContentCard = ({
   contentID,
@@ -20,13 +19,12 @@ const ContentCard = ({
 }: ContentCardProps) => {
   const router = useRouter();
   const { deleteContentFromState, contents } = useContentStore();
-  const { setLearnContent } = useLearnStore();
 
   const clickCard = () => {
     if (!spaceId) {
-      console.log(`/learn?c=${contentID}`);
+      router.push(`/learn?c=${contentID}`);
     } else {
-      console.log(`/learn?c=${contentID}&s=${spaceId}`);
+      router.push(`/learn?c=${contentID}&s=${spaceId}`);
     }
   };
 

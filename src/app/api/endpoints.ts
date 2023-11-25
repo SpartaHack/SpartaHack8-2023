@@ -267,6 +267,37 @@ export const generateContentQuestions = async (
   }
 };
 
+export const getContent = async (
+  userId: string,
+  contentId: string,
+  spaceId?: string,
+) => {
+  let data: { user_id: string; content_id: string; space_id?: string; };
+
+  if (spaceId) {
+    data = {
+      user_id: userId,
+      content_id: contentId,
+      space_id: spaceId,
+    };
+  } else {
+    data = {
+      user_id: userId,
+      content_id: contentId,
+    };
+  }
+
+  try {
+    const response = await axios.post(
+      `${API_URL}/content/get`,
+      data,
+    );
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 //PAYMENT
 export const checkoutSession = async (
   userId: string,
