@@ -37,28 +37,28 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   contentTitle?: string;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -75,7 +75,7 @@ export type ContentProps = {
   type: "youtube" | "pdf";
 };
 
-export interface ChatSubmitProps {
+export type ChatSubmitProps = {
   onMessageSubmit: (message: string) => void;
   isLoading: boolean;
 }
@@ -346,4 +346,13 @@ export type ContentStore = {
   deleteContentFromState: (id: string) => void;
   updateContent: (updatedContent: Partial<Content>) => void;
   logout: () => void;
+};
+
+export type OrderSummaryProps = {
+  type: string;
+};
+
+export type ChatQuestionProps = {
+  questions: string[];
+  chatQuestionClick: (question: string) => void;
 };

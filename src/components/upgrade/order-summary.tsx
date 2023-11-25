@@ -1,9 +1,6 @@
 import React from "react";
 import { PROMONTHLYPRICE, PROYEARLYPRICE } from "../../../utils/constants";
-
-type OrderSummaryProps = {
-  type: string;
-};
+import { OrderSummaryProps } from "../../../types";
 
 const OrderSummary = ({ type }: OrderSummaryProps) => {
   const price = type === "monthly" ? PROMONTHLYPRICE : PROYEARLYPRICE;

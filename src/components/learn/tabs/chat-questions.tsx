@@ -1,10 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
-
-export type ChatQuestionProps = {
-  questions: string[];
-  chatQuestionClick: (question: string) => void;
-};
+import { ChatQuestionProps } from "../../../../types";
 
 const ChatQuestions = ({ questions, chatQuestionClick }: ChatQuestionProps) => {
   return (
