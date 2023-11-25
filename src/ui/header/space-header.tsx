@@ -61,6 +61,7 @@ const SpaceHeader = () => {
   const handleAdd = async () => {
     const response = await addContent(auth.currentUser?.uid!, contents.space._id, contentURL)
     useContentStore.getState().addContent(response?.data.content);
+    setContentURL('')
   }
 
   return (
