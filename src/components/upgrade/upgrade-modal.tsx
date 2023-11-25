@@ -4,16 +4,26 @@ import { Tabs, Tab } from "@nextui-org/react";
 import { TabContent } from "./tab-content";
 import OrderSummary from "./order-summary";
 import { PROMONTHLYPRICE, PROYEARLYPRICE } from "../../../utils/constants";
+import { checkoutSession } from "@/app/api/endpoints";
+import { auth } from "../../../db/firebase";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const UpgradeModal: FC = () => {
+  const router = useRouter();
   const [selected, setSelected] = useState<string>("monthly");
 
   const handleTabChange = (key: string | number) => {
     setSelected(String(key));
   };
 
-  const handleClick = () => {
-    console.log(`Clicked ${selected}`);
+  const handleClick = async () => {
+    if (!auth.currentUser?.uid) {
+      toast.error("User not signed in.")
+    } else {
+      const response = await checkoutSession(auth.currentUser?.uid, selected)
+      router.push(`${response?.data}`)
+    }
   };
 
   return (

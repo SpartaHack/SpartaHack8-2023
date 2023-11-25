@@ -2,11 +2,14 @@
 import { ImageUpload } from "@/helpers/image-upload";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Link, Spinner, user } from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
 import EditAccordion from "@/components/profile/edit-accordion";
 import Streaks from "./streaks";
 import { useUserStore } from "@/context/user-context";
 import useStore from "@/hooks/use-store";
+import { auth } from "../../../db/firebase";
+import { toast } from "sonner";
+import { getPortalLink } from "@/app/api/endpoints";
 
 const UserInformation = () => {
   const userData = useStore(useUserStore, (state) => state.userData);
@@ -24,6 +27,16 @@ const UserInformation = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
+  const handleSubscriptions = async () => {
+    if (!auth.currentUser?.uid) {
+      toast.error("User not signed in.")
+    } else {
+      const response = await getPortalLink(auth.currentUser?.uid)
+      console.log(response)
+      router.push(`${response?.data}`)
+    }
+  }
 
   return (
     <div className="md:ml-10 md:mt-6 md:mr-10 lg:ml-20 lg:mt-12 lg:mr-20 ml-5 mr-5 mt-5">
@@ -58,6 +71,7 @@ const UserInformation = () => {
         size="sm"
         className="cursor-pointer text-black dark:text-white mt-4 ml-1"
         underline="always"
+        onClick={handleSubscriptions}
       >
         Manage Subscriptions
       </Link>

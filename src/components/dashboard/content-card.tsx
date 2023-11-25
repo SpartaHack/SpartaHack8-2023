@@ -23,7 +23,6 @@ const ContentCard = ({
   const { setLearnContent } = useLearnStore();
 
   const clickCard = () => {
-
     if (!spaceId) {
       console.log(`/learn?c=${contentID}`);
     } else {
