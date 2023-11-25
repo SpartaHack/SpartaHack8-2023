@@ -23,18 +23,11 @@ const ContentCard = ({
   const { setLearnContent } = useLearnStore();
 
   const clickCard = () => {
-    const content = {
-      contentID: contentID,
-      spaceId: spaceId!,
-      type: type,
-    };
-
-    setLearnContent(content);
 
     if (!spaceId) {
-      router.push(`/learn?c=${contentID}`);
+      console.log(`/learn?c=${contentID}`);
     } else {
-      router.push(`/learn?c=${contentID}&s=${spaceId}`);
+      console.log(`/learn?c=${contentID}&s=${spaceId}`);
     }
   };
 
