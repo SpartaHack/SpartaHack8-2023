@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [spaceId, setSpaceId] = useState(null);
 
   useEffect(() => {
-    console.log(contents)
+    console.log(contents);
     if (contents && contents.space) {
       setSpaceId(contents.space._id);
     }

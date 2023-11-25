@@ -14,8 +14,8 @@ import { useStore } from "zustand";
 import { useLearnStore } from "@/context/learn-context";
 
 const Chat = () => {
-  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
-  const type = learnContent?.type!
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent);
+  const type = learnContent?.type!;
   const height = useContainerHeight({ type: type });
   const {
     handleChatSubmit,

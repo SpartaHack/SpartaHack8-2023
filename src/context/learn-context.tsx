@@ -8,9 +8,9 @@ export const useLearnStore = create<
 >(
   persist(
     (set) => ({
-        learnContent: undefined,
-        setLearnContent: (content) => set({ learnContent: content }),
-        clearContent: () => set({ learnContent: undefined })
+      learnContent: undefined,
+      setLearnContent: (content) => set({ learnContent: content }),
+      clearContent: () => set({ learnContent: undefined }),
     }),
     {
       name: "contentStore",

@@ -7,7 +7,7 @@ import { useStore } from "zustand";
 import { useLearnStore } from "@/context/learn-context";
 
 const LearnPage = () => {
-  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   return (
     <main className='flex flex-col min-h-screen"'>
       <Suspense fallback={<Loading />}>

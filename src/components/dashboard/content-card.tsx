@@ -20,7 +20,7 @@ const ContentCard = ({
 }: ContentCardProps) => {
   const router = useRouter();
   const { deleteContentFromState, contents } = useContentStore();
-  const { learnContent ,setLearnContent } = useLearnStore();
+  const { learnContent, setLearnContent } = useLearnStore();
 
   const clickCard = () => {
     const content = {
@@ -30,7 +30,7 @@ const ContentCard = ({
     };
 
     setLearnContent(content);
-    
+
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);
     } else {

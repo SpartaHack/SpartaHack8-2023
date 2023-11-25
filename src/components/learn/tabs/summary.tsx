@@ -8,8 +8,8 @@ import useStore from "@/hooks/use-store";
 import { useLearnStore } from "@/context/learn-context";
 
 const Summary = ({ summary }: SummaryProps) => {
-  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
-  const type = learnContent?.type!
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent);
+  const type = learnContent?.type!;
   const height = useContainerHeight({ type: type });
 
   const { copiedState, copyToClipboard } = useCopyToClipboard();
