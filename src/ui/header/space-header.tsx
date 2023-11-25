@@ -50,8 +50,8 @@ const SpaceHeader = () => {
     } else {
         toast.error("Could not update space.")
     }
+    setEditSpaceName('')
   }
-
 
   return (
     <>
@@ -63,16 +63,16 @@ const SpaceHeader = () => {
         <div className='text-3xl  flex flex-row group'>
           {spaceName}
           <CustomModal footer title={<Icon icon='lucide:pen' className='opacity-0 h-5 w-5 mt-2 ml-2 cursor-pointer group-hover:opacity-50' />}
-                actionTitle='Save'
-                actionEvent={() => handleSave(spacePrivacy, editSpaceName)} 
-                contentTitle='Edit your space' 
-                contentMain={
-                <>
-                    <Switch color="success" isSelected={spacePrivacy} onValueChange={setSpacePrivacy}>
-                        Make space private
-                    </Switch>
-                    <CustomTextInput styling='mt-3 pt-1 mb-2' value={editSpaceName} type={'text'} label={'Edit Space Name'} isInvalid={editSpaceName == ''} eventChange={(e) => handleInputChange(e, setEditSpaceName)}/>
-                </>}          
+            actionTitle='Save'
+            actionEvent={() => handleSave(spacePrivacy, editSpaceName)} 
+            contentTitle='Edit your space' 
+            contentMain={
+            <>
+              <Switch color="success" isSelected={spacePrivacy} onValueChange={setSpacePrivacy}>
+                Make space private
+              </Switch>
+              <CustomTextInput styling='mt-3 pt-1 mb-2' value={editSpaceName} type={'text'} label={'Edit Space Name'} isInvalid={editSpaceName == ''} eventChange={(e) => handleInputChange(e, setEditSpaceName)}/>
+            </>}          
           />
         </div>
         <div className='flex flex-row mt-3 md:mt-0 md:w-[10%] w-[30%]'>
