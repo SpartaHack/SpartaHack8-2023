@@ -11,7 +11,10 @@ import { getContent } from "../api/endpoints";
 
 const LearnPage = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
-  const setLearnContent = useStore(useLearnStore, (state) => state.setLearnContent);
+  const setLearnContent = useStore(
+    useLearnStore,
+    (state) => state.setLearnContent,
+  );
   const params = useSearchParams();
   const contentId = params.get("c");
   const spaceId = params.get("s");
@@ -20,9 +23,13 @@ const LearnPage = () => {
     if (contentId && auth.currentUser?.uid) {
       const fetchData = async () => {
         let response;
-  
+
         if (spaceId) {
-          response = await getContent(auth.currentUser?.uid!, contentId, spaceId);
+          response = await getContent(
+            auth.currentUser?.uid!,
+            contentId,
+            spaceId,
+          );
           if (response && response.data) {
             response.data.space_id = spaceId;
           }

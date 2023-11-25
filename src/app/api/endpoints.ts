@@ -272,7 +272,7 @@ export const getContent = async (
   contentId: string,
   spaceId?: string,
 ) => {
-  let data: { user_id: string; content_id: string; space_id?: string; };
+  let data: { user_id: string; content_id: string; space_id?: string };
 
   if (spaceId) {
     data = {
@@ -288,10 +288,7 @@ export const getContent = async (
   }
 
   try {
-    const response = await axios.post(
-      `${API_URL}/content/get`,
-      data,
-    );
+    const response = await axios.post(`${API_URL}/content/get`, data);
     return response;
   } catch (err) {
     console.log(err);
@@ -299,36 +296,25 @@ export const getContent = async (
 };
 
 //PAYMENT
-export const checkoutSession = async (
-  userId: string,
-  frequency: string
-) => {
+export const checkoutSession = async (userId: string, frequency: string) => {
   const data = {
     user_id: userId,
-    frequency: frequency
+    frequency: frequency,
   };
 
   try {
-    const response = await axios.post(
-      `${API_URL}/payment/checkout`,
-      data,
-    );
+    const response = await axios.post(`${API_URL}/payment/checkout`, data);
     return response;
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-export const getPortalLink = async (
-  userId: string,
-) => {
-
+export const getPortalLink = async (userId: string) => {
   try {
-    const response = await axios.get(
-      `${API_URL}/payment/portal/${userId}`,
-    );
+    const response = await axios.get(`${API_URL}/payment/portal/${userId}`);
     return response;
   } catch (err) {
     console.log(err);
   }
-}
+};

@@ -30,13 +30,13 @@ const UserInformation = () => {
 
   const handleSubscriptions = async () => {
     if (!auth.currentUser?.uid) {
-      toast.error("User not signed in.")
+      toast.error("User not signed in.");
     } else {
-      const response = await getPortalLink(auth.currentUser?.uid)
-      console.log(response)
-      router.push(`${response?.data}`)
+      const response = await getPortalLink(auth.currentUser?.uid);
+      console.log(response);
+      router.push(`${response?.data}`);
     }
-  }
+  };
 
   return (
     <div className="md:ml-10 md:mt-6 md:mr-10 lg:ml-20 lg:mt-12 lg:mr-20 ml-5 mr-5 mt-5">
