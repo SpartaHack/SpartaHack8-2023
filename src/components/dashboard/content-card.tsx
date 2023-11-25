@@ -20,7 +20,7 @@ const ContentCard = ({
 }: ContentCardProps) => {
   const router = useRouter();
   const { deleteContentFromState, contents } = useContentStore();
-  const { learnContent, setLearnContent } = useLearnStore();
+  const { setLearnContent } = useLearnStore();
 
   const clickCard = () => {
     const content = {
