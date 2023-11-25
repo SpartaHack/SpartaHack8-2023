@@ -49,22 +49,22 @@ export const spaceList = [{
 }]
 
 export const menuDropDown = (contentID: string, handleDelete: (contentId: string) => void) => [
-    {
-        label: 'Section 1',
-        items: [
-            {label: (
-              <CustomDropdown offset={26} placement="left" title=
-              {            
-                <div className='flex flex-row w-full cursor-pointer items-center'>
-                    <Icon icon="material-symbols:text-select-move-down-rounded" className='h-6 w-6'/>
-                    <span className='ml-6 mt-0.6'>Move to space
-                    </span>
-                </div>
-              } sections={spaceList}/>
-          ),
-        }, 
-        ]
-      },
+    // {
+    //     label: 'Section 1',
+    //     items: [
+    //         {label: (
+    //           <CustomDropdown offset={26} placement="left" title=
+    //           {            
+    //             <div className='flex flex-row w-full cursor-pointer items-center'>
+    //                 <Icon icon="material-symbols:text-select-move-down-rounded" className='h-6 w-6'/>
+    //                 <span className='ml-6 mt-0.6'>Move to space
+    //                 </span>
+    //             </div>
+    //           } sections={spaceList}/>
+    //       ),
+    //     }, 
+    //     ]
+    //   },
     {
       label: 'Section 1', 
       items: [
