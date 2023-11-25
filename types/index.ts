@@ -242,6 +242,7 @@ export type SpaceStore = {
     setSpaces: (spaces: getUserSpaceResponse[]) => void;
     addSpaceToState: (space: getUserSpaceResponse) => void;
     deleteSpaceFromState: (id: string) => void;
+    updateSpaceData: (updatedData: Partial<getUserSpaceResponse>) => void;
     logout: () => void;
 };
 
@@ -325,5 +326,6 @@ export type ContentStore = {
     setContents: (contents: Content[] | SpaceContentResponse | any) => void;
     addContent: (content: Content) => void;
     deleteContentFromState: (id: string) => void;
+    updateContent: (updatedContent: Partial<Content>) => void;
     logout: () => void;
 };

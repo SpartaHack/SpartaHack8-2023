@@ -144,7 +144,7 @@ export const updateSpace = async (
   };
 
   try {
-    const response = await axios.put(`${API_URL}/spaces/add`, data);
+    const response = await axios.put(`${API_URL}/spaces/update`, data);
     return response;
   } catch (err) {
     console.log(err);

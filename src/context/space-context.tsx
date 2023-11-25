@@ -9,6 +9,9 @@ export const useSpaceStore = create<SpaceStore, [["zustand/persist", getUserSpac
       setSpaces: (spaces) => set({ spaces }),
       addSpaceToState: (space) => set((state) => ({ spaces: [...state.spaces || [], space] })),
       deleteSpaceFromState: (id: string) => set((state) => ({ spaces: state.spaces.filter(space => space._id !== id) })),
+      updateSpaceData: (updatedData: Partial<getUserSpaceResponse>) => set((state) => ({
+        spaces: state.spaces ? state.spaces.map(space => space._id === updatedData._id ? { ...space, ...updatedData } : space) : []
+      })),
       logout: () => set({ spaces: []}),
     }),
     {
