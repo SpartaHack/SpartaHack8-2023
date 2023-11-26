@@ -6,17 +6,17 @@ const useAutoScroll = (chatLog: MessageType[]) => {
   const [userHasScrolled, setUserHasScrolled] = useState(false);
 
   useEffect(() => {
+    const currentRef = chatContainerRef.current;
     const handleScroll = () => {
-      if (chatContainerRef.current) {
-        const { scrollTop, clientHeight, scrollHeight } =
-          chatContainerRef.current;
+      if (currentRef) {
+        const { scrollTop, clientHeight, scrollHeight } = currentRef;
         const atBottom = scrollTop + clientHeight >= scrollHeight - 50;
         setUserHasScrolled(!atBottom);
       }
     };
-    chatContainerRef.current?.addEventListener("scroll", handleScroll);
+    currentRef?.addEventListener("scroll", handleScroll);
     return () => {
-      chatContainerRef.current?.removeEventListener("scroll", handleScroll);
+      currentRef?.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
