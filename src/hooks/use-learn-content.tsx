@@ -16,7 +16,11 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
   );
 
   useEffect(() => {
-    const initialLoadingState = typeof window !== 'undefined' && window.localStorage.getItem('loading') === 'false' ? false : true;
+    const initialLoadingState =
+      typeof window !== "undefined" &&
+      window.localStorage.getItem("loading") === "false"
+        ? false
+        : true;
     setLoading(initialLoadingState);
 
     if (contentId && auth.currentUser?.uid) {
@@ -40,8 +44,8 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
           setLearnContent(response.data);
         }
         setLoading(false);
-        if (typeof window !== 'undefined') {
-          window.localStorage.setItem('loading', 'false');
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem("loading", "false");
         }
       };
       fetchData();
