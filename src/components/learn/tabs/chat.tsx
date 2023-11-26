@@ -63,12 +63,7 @@ const Chat = () => {
       </ScrollShadow>
       {removeQuestions && (
         <ChatQuestions
-          questions={[
-            "What is Mona Lisa?",
-            "What is Mona Lisa?",
-            "What is Mona Lisa?",
-            "What is Mona Lisa?",
-          ]}
+          questions={learnContent?.generations.questions!}
           chatQuestionClick={(question) => handleChatSubmit(question)}
         />
       )}

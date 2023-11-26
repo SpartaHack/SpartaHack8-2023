@@ -3,11 +3,10 @@ import { useContainerHeight } from "@/hooks/use-container-height";
 import { ScrollShadow } from "@nextui-org/react";
 import useCopyToClipboard from "@/hooks/use-copy-clipboard";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { SummaryProps } from "../../../../types";
 import useStore from "@/hooks/use-store";
 import { useLearnStore } from "@/context/learn-context";
 
-const Summary = ({ summary }: SummaryProps) => {
+const Summary = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const type = learnContent?.type!;
   const height = useContainerHeight({ type: type });
@@ -25,7 +24,7 @@ const Summary = ({ summary }: SummaryProps) => {
         hideScrollBar
         className="flex-grow overflow-hidden overflow-y-auto rounded-xl"
       >
-        <div className="flex-grow leading-7">{summary}</div>
+        <div className="flex-grow leading-7">{learnContent?.generations.summary}</div>
         <div className="flex justify-end p-2 cursor-pointer">
           {copiedStateTyped[0] ? (
             <Icon
@@ -35,7 +34,7 @@ const Summary = ({ summary }: SummaryProps) => {
           ) : (
             <Icon
               icon="ci:copy"
-              onClick={() => copyToClipboard(summary, 0)}
+              onClick={() => copyToClipboard(learnContent?.generations.summary!, 0)}
               className="text-xl cursor-pointer"
             />
           )}

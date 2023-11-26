@@ -37,28 +37,28 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   contentTitle?: string;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -120,10 +120,6 @@ export type MessageProps = {
   index: number;
   copiedState: Record<number, boolean>;
   copyToClipboard: (response: string, index: number) => void;
-};
-
-export type SummaryProps = {
-  summary: string;
 };
 
 export type CustomAutocompleteProps = {
@@ -260,7 +256,7 @@ export type SpaceResponse = {
 
 export type Generations = {
   summary: string;
-  questions: string;
+  questions: string[];
 };
 
 export type Metadata = {
