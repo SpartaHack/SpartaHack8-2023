@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { chat } from "@/app/api/endpoints";
+import { auth } from "../../db/firebase";
 
 const useChatSubmit = (
   type: "space" | "content",
@@ -21,6 +22,10 @@ const useChatSubmit = (
 
     setIsLoading(true);
     let response;
+
+    if (!userId) {
+      userId = auth.currentUser?.uid!
+    }
 
     if (type === "content") {
       response = await chat(
