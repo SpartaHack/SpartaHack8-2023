@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "zustand";
 import { useLearnStore } from "@/context/learn-context";
 import { auth } from "../../db/firebase";
@@ -9,6 +9,7 @@ import {
 } from "@/app/api/endpoints";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
+  const [loading, setLoading] = useState(true);
   const setLearnContent = useStore(
     useLearnStore,
     (state) => state.setLearnContent,
@@ -35,8 +36,11 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
         if (response?.data) {
           setLearnContent(response.data);
         }
+        setLoading(false);
       };
       fetchData();
     }
   }, [contentId, spaceId, setLearnContent]);
+
+  return { loading };
 };

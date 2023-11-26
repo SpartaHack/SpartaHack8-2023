@@ -10,14 +10,18 @@ const LearnPage = () => {
   const params = useSearchParams();
   const contentId = params.get("c");
   const spaceId = params.get("s");
-  useLearnContent(contentId!, spaceId!);
+  const { loading } = useLearnContent(contentId!, spaceId!);
 
   return (
     <main className='flex flex-col min-h-screen"'>
-      <Suspense fallback={<Loading />}>
-        <Header />
-        <Content />
-      </Suspense>
+      {loading ? (
+        <Loading/>
+      ) : (
+        <Suspense fallback={<Loading />}>
+          <Header />
+          <Content />
+        </Suspense>
+      )}
     </main>
   );
 };
