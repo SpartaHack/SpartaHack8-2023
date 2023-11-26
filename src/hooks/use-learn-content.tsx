@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import { useStore } from "zustand";
 import { useLearnStore } from "@/context/learn-context";
 import { auth } from "../../db/firebase";
-import { generateContentQuestions, generateContentSummary, getContent } from "@/app/api/endpoints";
+import {
+  generateContentQuestions,
+  generateContentSummary,
+  getContent,
+} from "@/app/api/endpoints";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
   const setLearnContent = useStore(
@@ -14,8 +18,8 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
     if (contentId && auth.currentUser?.uid) {
       const fetchData = async () => {
         let response;
-        await generateContentSummary(auth.currentUser?.uid!, contentId!)
-        await generateContentQuestions(auth.currentUser?.uid!, contentId!)
+        await generateContentSummary(auth.currentUser?.uid!, contentId!);
+        await generateContentQuestions(auth.currentUser?.uid!, contentId!);
         if (spaceId) {
           response = await getContent(
             auth.currentUser?.uid!,
