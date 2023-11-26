@@ -215,16 +215,18 @@ export const chat = async (
     get_existing_chat_history: getExistingChatHistory,
     save_chat_history: saveChatHistory,
   };
-
-  const response = await fetch(`${API_URL}/generation/chat`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  return response;
+  try {
+    const response = await fetch(`${API_URL}/generation/chat`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return response;
+  } catch (err) {
+    console.log(err)
+  }
 };
 
 export const generateContentSummary = async (

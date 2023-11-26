@@ -36,11 +36,11 @@ const useChatSubmit = (
       response = await chat(userId, spaceId, [], query, type, false, false);
     }
 
-    if (!response.body) {
+    if (!response!.body) {
       return;
     }
 
-    const reader = response.body.getReader();
+    const reader = response!.body.getReader();
     const decoder = new TextDecoder();
     let message = "";
     setIsLoading(false);
