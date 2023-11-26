@@ -3,7 +3,7 @@ import React from "react";
 import { useStore } from "zustand";
 
 const PDF = () => {
-  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const pdfUrl = learnContent?.metadata.path;
 
   return (

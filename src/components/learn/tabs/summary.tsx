@@ -24,7 +24,9 @@ const Summary = () => {
         hideScrollBar
         className="flex-grow overflow-hidden overflow-y-auto rounded-xl"
       >
-        <div className="flex-grow leading-7">{learnContent?.generations.summary}</div>
+        <div className="flex-grow leading-7">
+          {learnContent?.generations.summary}
+        </div>
         <div className="flex justify-end p-2 cursor-pointer">
           {copiedStateTyped[0] ? (
             <Icon
@@ -34,7 +36,9 @@ const Summary = () => {
           ) : (
             <Icon
               icon="ci:copy"
-              onClick={() => copyToClipboard(learnContent?.generations.summary!, 0)}
+              onClick={() =>
+                copyToClipboard(learnContent?.generations.summary!, 0)
+              }
               className="text-xl cursor-pointer"
             />
           )}

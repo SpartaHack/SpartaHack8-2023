@@ -17,7 +17,7 @@ const TabComponent = () => {
           <Chat />
         </Tab>
         <Tab title="Summary" className="h-full">
-          <Summary summary={"Getting Summary"} />
+          <Summary />
         </Tab>
         <Tab title="Quiz" className="h-full">
           <Quiz />
