@@ -1,7 +1,10 @@
+import { useLearnStore } from "@/context/learn-context";
 import React from "react";
+import { useStore } from "zustand";
 
 const PDF = () => {
-  const pdfUrl = `https://storage.googleapis.com/youlearn-content-uploads/example.pdf`;
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
+  const pdfUrl = learnContent?.metadata.path;
 
   return (
     <div className="lg:w-[70%] w-full items-center justify-center">
