@@ -1,17 +1,13 @@
-"use client";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProviders } from "@/providers/theme-providers";
 import { Toaster } from "sonner";
 import { Roboto } from "next/font/google";
-import { QueryClient, QueryClientProvider } from "react-query";
 
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],
 });
-
-const queryClient = new QueryClient();
 
 const metadata: Metadata = {
   title: "YouLearn - AI companion for learning",
@@ -31,10 +27,8 @@ export default function RootLayout({
       </head>
       <body className={roboto.className}>
         <ThemeProviders>
-          <QueryClientProvider client={queryClient}>
-            <Toaster richColors />
-            {children}
-          </QueryClientProvider>
+          <Toaster richColors />
+          {children}
         </ThemeProviders>
       </body>
     </html>

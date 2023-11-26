@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { MessageType } from '../../types';
+import { useEffect, useRef, useState } from "react";
+import { MessageType } from "../../types";
 
 const useAutoScroll = (chatLog: MessageType[]) => {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
@@ -8,14 +8,15 @@ const useAutoScroll = (chatLog: MessageType[]) => {
   useEffect(() => {
     const handleScroll = () => {
       if (chatContainerRef.current) {
-        const { scrollTop, clientHeight, scrollHeight } = chatContainerRef.current;
+        const { scrollTop, clientHeight, scrollHeight } =
+          chatContainerRef.current;
         const atBottom = scrollTop + clientHeight >= scrollHeight - 50;
         setUserHasScrolled(!atBottom);
       }
     };
-    chatContainerRef.current?.addEventListener('scroll', handleScroll);
+    chatContainerRef.current?.addEventListener("scroll", handleScroll);
     return () => {
-      chatContainerRef.current?.removeEventListener('scroll', handleScroll);
+      chatContainerRef.current?.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -23,7 +24,7 @@ const useAutoScroll = (chatLog: MessageType[]) => {
     if (chatContainerRef.current && !userHasScrolled) {
       chatContainerRef.current.scrollTo({
         top: chatContainerRef.current.scrollHeight,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   }, [chatLog, userHasScrolled]);

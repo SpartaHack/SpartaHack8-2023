@@ -24,7 +24,7 @@ const useChatSubmit = (
     let response;
 
     if (!userId) {
-      userId = auth.currentUser?.uid!
+      userId = auth.currentUser?.uid!;
     }
 
     if (type === "content") {

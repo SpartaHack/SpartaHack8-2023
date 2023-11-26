@@ -225,7 +225,7 @@ export const chat = async (
     });
     return response;
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 
