@@ -15,7 +15,7 @@ const LearnPage = () => {
   return (
     <main className='flex flex-col min-h-screen"'>
       {loading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <Suspense fallback={<Loading />}>
           <Header />
