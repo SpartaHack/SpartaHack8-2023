@@ -15,12 +15,14 @@ const Spaces = () => {
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
   const userId = useStore(useUserStore, (state) => state.userId);
   const { deleteSpaceFromState } = useSpaceStore();
-  const { setContents, contents } = useContentStore();
+  const { setContents } = useContentStore();
 
   const handleDelete = async (spaceId: string) => {
     const response = await deleteSpace(userId!, spaceId);
     if (response) {
       deleteSpaceFromState(spaceId);
+      const contents = await getHistory(userId!);
+      setContents(contents?.data);
       toast.success("Space deleted.");
     } else {
       toast.error("Could not be deleted.");
