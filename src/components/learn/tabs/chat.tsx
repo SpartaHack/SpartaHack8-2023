@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ChatSubmit from "./chat-submit";
 import { useContainerHeight } from "@/hooks/use-container-height";
 import { ScrollShadow } from "@nextui-org/react";
@@ -12,6 +12,7 @@ import useChatlogLength from "@/hooks/use-chatlog-length";
 import { auth } from "../../../../db/firebase";
 import { useStore } from "zustand";
 import { useLearnStore } from "@/context/learn-context";
+import useAutoScroll from "@/hooks/use-auto-scroll";
 
 const Chat = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -38,13 +39,14 @@ const Chat = () => {
   let chatLog = [...chatSubmitLog];
   chatLog = removeUndefinedFromSources(chatLog);
   const { removeQuestions } = useChatlogLength(chatLog);
+  const chatContainerRef = useAutoScroll(chatLog);
 
   return (
     <div
       className="lg:h-full h-[70vh] flex-col flex "
       style={{ maxHeight: `${height - 90}px` }}
     >
-      <ScrollShadow size={5} hideScrollBar className="flex-grow rounded-xl">
+      <ScrollShadow size={5} hideScrollBar ref={chatContainerRef} className="flex-grow rounded-xl">
         <div
           id="chat-container"
           className="flex-grow overflow-hidden overflow-y-auto rounded-xl"
