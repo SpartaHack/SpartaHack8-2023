@@ -8,7 +8,7 @@ import {
 import { useRouter } from "next/navigation";
 import CustomModal from "@/helpers/custom-modal";
 import UpgradeModal from "@/components/upgrade/upgrade-modal";
-import { PROMONTHLYPRICE, PROYEARLYPRICE } from "../../../utils/constants";
+import { PROYEARLYPRICE } from "../../../utils/constants";
 
 const Upgrade = () => {
   const router = useRouter();
