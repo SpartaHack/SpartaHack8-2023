@@ -33,7 +33,7 @@ const Upgrade = () => {
             <>
               $0
               <span className="font-light lg:text-[18px] text-[15px]">
-                {" "}
+                &nbsp;
                 / month
               </span>
             </>
@@ -51,8 +51,11 @@ const Upgrade = () => {
             <>
               {`$${PROYEARLYPRICE}`}
               <span className="font-light lg:text-[18px] text-[15px]">
-                {" "}
+                &nbsp;
                 / month
+              </span>
+              <span className="text-[11px] ml-2 font-light">
+                Billed annually*
               </span>
             </>
           }
@@ -64,7 +67,7 @@ const Upgrade = () => {
               placement="center"
               footer={false}
               title={
-                <h1 className="h-[50.5px] text-center w-full flex items-center justify-center">
+                <h1 className="h-[50.5px] w-full text-center flex items-center justify-center">
                   Start your 14 day free trial
                 </h1>
               }

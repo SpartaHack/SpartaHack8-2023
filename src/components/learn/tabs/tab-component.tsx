@@ -19,9 +19,9 @@ const TabComponent = () => {
         <Tab title="Summary" className="h-full">
           <Summary />
         </Tab>
-        <Tab title="Quiz" className="h-full">
+        {/* <Tab title="Quiz" className="h-full">
           <Quiz />
-        </Tab>
+        </Tab> */}
       </Tabs>
     </div>
   );

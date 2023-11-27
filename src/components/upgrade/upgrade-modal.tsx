@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 const UpgradeModal: FC = () => {
   const router = useRouter();
-  const [selected, setSelected] = useState<string>("monthly");
+  const [selected, setSelected] = useState<string>("yearly");
 
   const handleTabChange = (key: string | number) => {
     setSelected(String(key));
@@ -37,9 +37,6 @@ const UpgradeModal: FC = () => {
           selectedKey={selected}
           onSelectionChange={handleTabChange}
         >
-          <Tab key="monthly" title="Monthly">
-            <TabContent price={`$${PROMONTHLYPRICE}`} />
-          </Tab>
           <Tab
             key="yearly"
             title={
@@ -53,6 +50,9 @@ const UpgradeModal: FC = () => {
             }
           >
             <TabContent price={`$${PROYEARLYPRICE}`} />
+          </Tab>
+          <Tab key="monthly" title="Monthly">
+            <TabContent price={`$${PROMONTHLYPRICE}`} />
           </Tab>
         </Tabs>
         <CustomButton
