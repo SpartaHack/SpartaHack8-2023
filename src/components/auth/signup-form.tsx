@@ -29,7 +29,7 @@ const SignUpForm = () => {
     ) {
       signUpEmailContinue(email, password);
     } else {
-      toast.error("Please check your forms are correct");
+      toast.error("Please check if your forms are correct");
     }
   };
 

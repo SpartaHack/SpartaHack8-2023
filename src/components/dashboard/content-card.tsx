@@ -46,6 +46,21 @@ const ContentCard = ({
     }
   };
 
+  const handleCopy = async (contentID: string, spaceId?: string) => {
+    try {
+      let text;
+      if (!spaceId) {
+        text = `/learn?c=${contentID}`;
+      } else {
+        text = `/learn?c=${contentID}&s=${spaceId}`;
+      }
+      await navigator.clipboard.writeText(text);
+      toast.success("Copied!")
+    } catch (err) {
+      toast.error("Cannot copy.");
+    }
+  }
+
   return (
     <div
       className="relative cursor-pointer flex-col bg-absolute_white justify-center items-center gap-20 drop-shadow-sm rounded-xl hover:shadow-xl hover:scale-105 transition duration-300 dark:bg-neutral-800 max-h-[270px] max-w-[360px] min-h-full min-w-[220px] group"
@@ -61,7 +76,7 @@ const ContentCard = ({
               className="w-4 h-4 opacity-0 group-hover:opacity-100 dark:text-white"
             />
           }
-          sections={menuDropDown(contentID, handleDelete)}
+          sections={menuDropDown(contentID, spaceId!, handleDelete, handleCopy)}
         />
       </div>
       <div className="rounded-t-xl overflow-hidden">

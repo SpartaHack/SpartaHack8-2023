@@ -1,4 +1,3 @@
-import { CustomDropdown } from "@/helpers/custom-dropdown";
 import CustomModal from "@/helpers/custom-modal";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
@@ -55,7 +54,9 @@ export const spaceList = [
 
 export const menuDropDown = (
   contentID: string,
+  spaceId: string,
   handleDelete: (contentId: string) => void,
+  handleCopy: (contentId: string, spaceId?: string) => void,
 ) => [
   // {
   //     label: 'Section 1',
@@ -83,7 +84,7 @@ export const menuDropDown = (
             <span className="ml-6 mt-0.6">Copy link</span>
           </div>
         ),
-        clickEvent: () => console.log("Clicked on WebDev"),
+        clickEvent: () => handleCopy(contentID, spaceId),
       },
     ],
   },
