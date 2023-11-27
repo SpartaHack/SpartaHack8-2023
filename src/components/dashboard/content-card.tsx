@@ -55,11 +55,11 @@ const ContentCard = ({
         text = `/learn?c=${contentID}&s=${spaceId}`;
       }
       await navigator.clipboard.writeText(text);
-      toast.success("Copied!")
+      toast.success("Copied!");
     } catch (err) {
       toast.error("Cannot copy.");
     }
-  }
+  };
 
   return (
     <div

@@ -33,8 +33,7 @@ const Upgrade = () => {
             <>
               $0
               <span className="font-light lg:text-[18px] text-[15px]">
-                &nbsp;
-                / month
+                &nbsp; / month
               </span>
             </>
           }
@@ -51,8 +50,7 @@ const Upgrade = () => {
             <>
               {`$${PROYEARLYPRICE}`}
               <span className="font-light lg:text-[18px] text-[15px]">
-                &nbsp;
-                / month
+                &nbsp; / month
               </span>
               <span className="text-[11px] ml-2 font-light">
                 Billed annually*
