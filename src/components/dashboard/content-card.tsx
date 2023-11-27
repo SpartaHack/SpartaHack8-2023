@@ -21,6 +21,7 @@ const ContentCard = ({
   const { deleteContentFromState, contents } = useContentStore();
 
   const clickCard = () => {
+    localStorage.setItem("loading", 'true')
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);
     } else {
