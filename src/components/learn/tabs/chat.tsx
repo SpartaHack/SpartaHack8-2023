@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import ChatSubmit from "./chat-submit";
 import { useContainerHeight } from "@/hooks/use-container-height";
 import { ScrollShadow } from "@nextui-org/react";

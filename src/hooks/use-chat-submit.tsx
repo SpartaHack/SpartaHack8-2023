@@ -34,11 +34,11 @@ const useChatSubmit = (
         contentId,
         query,
         type,
-        false,
-        false,
+        true,
+        true,
       );
     } else {
-      response = await chat(userId, spaceId, [], query, type, false, false);
+      response = await chat(userId, spaceId, [], query, type, true, true);
     }
 
     if (!response!.body) {

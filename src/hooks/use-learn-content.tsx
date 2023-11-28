@@ -1,56 +1,41 @@
 import { useEffect, useState } from "react";
-import { useStore } from "zustand";
-import { useLearnStore } from "@/context/learn-context";
 import { auth } from "../../db/firebase";
 import {
   generateContentQuestions,
   generateContentSummary,
-  getContent,
 } from "@/app/api/endpoints";
+import useStore from "./use-store";
+import { useLearnStore } from "@/context/learn-context";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
-  const [loading, setLoading] = useState(true);
-  const setLearnContent = useStore(
-    useLearnStore,
-    (state) => state.setLearnContent,
-  );
+  const [loading, setLoading] = useState(true)
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent)
+  const { updateLearnContent } = useLearnStore()
 
   useEffect(() => {
-    const initialLoadingState =
-      typeof window !== "undefined" &&
-      window.localStorage.getItem("loading") === "false"
-        ? false
-        : true;
-    setLoading(initialLoadingState);
+    const fetchData = async () => {
+      if (contentId && auth.currentUser?.uid && (!learnContent?.generations.questions || !learnContent?.generations.summary)) {
+        setLoading(true)
+        const summaryResponse = await generateContentSummary(auth.currentUser?.uid!, contentId);
+        const questionsResponse = await generateContentQuestions(auth.currentUser?.uid!, contentId);
+        
+        const summary = summaryResponse?.data;
+        const questions = questionsResponse?.data;
 
-    if (contentId && auth.currentUser?.uid) {
-      const fetchData = async () => {
-        let response;
-        await generateContentSummary(auth.currentUser?.uid!, contentId!);
-        await generateContentQuestions(auth.currentUser?.uid!, contentId!);
-        if (spaceId) {
-          response = await getContent(
-            auth.currentUser?.uid!,
-            contentId,
-            spaceId,
-          );
-          if (response && response.data) {
-            response.data.space_id = spaceId;
-          }
-        } else {
-          response = await getContent(auth.currentUser?.uid!, contentId);
-        }
-        if (response?.data) {
-          setLearnContent(response.data);
-        }
-        setLoading(false);
-        if (typeof window !== "undefined") {
-          window.localStorage.setItem("loading", "false");
-        }
-      };
-      fetchData();
-    }
-  }, [contentId, spaceId, setLearnContent]);
+        updateLearnContent({
+          generations: {
+            summary,
+            questions,
+          },
+        });
+        
+        setLoading(false)
+      } else {
+        setLoading(false)
+      }
+    };
+    fetchData();
+  }, [contentId, spaceId, learnContent, updateLearnContent]);
 
-  return { loading };
+  return {loading}
 };
