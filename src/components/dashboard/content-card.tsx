@@ -23,27 +23,23 @@ const ContentCard = ({
   const { setLearnContent } = useLearnStore();
 
   const clickCard = async () => {
-    localStorage.setItem("loading", 'true')
-    let response
-    let route
+    localStorage.setItem("loading", "true");
+    let response;
+    let route;
     if (!spaceId) {
       response = await getContent(auth.currentUser?.uid!, contentID);
-      route = (`/learn?c=${contentID}`);
+      route = `/learn?c=${contentID}`;
     } else {
       {
-        response = await getContent(
-          auth.currentUser?.uid!,
-          contentID,
-          spaceId,
-        );
+        response = await getContent(auth.currentUser?.uid!, contentID, spaceId);
         if (response && response.data) {
           response.data.space_id = spaceId;
         }
       }
-      route = (`/learn?c=${contentID}&s=${spaceId}`);
+      route = `/learn?c=${contentID}&s=${spaceId}`;
     }
-    setLearnContent!(response?.data)
-    router.push(route)
+    setLearnContent!(response?.data);
+    router.push(route);
   };
 
   const handleDelete = async (contentID: string) => {
