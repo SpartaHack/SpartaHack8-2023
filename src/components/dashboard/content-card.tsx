@@ -6,10 +6,9 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { CustomDropdown } from "@/helpers/custom-dropdown";
 import { menuDropDown } from "@/functions/content-dropdown-constants";
 import { useContentStore } from "@/context/content-store";
-import { deleteContent, getContent } from "@/app/api/endpoints";
+import { deleteContent } from "@/app/api/endpoints";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
-import { useLearnStore } from "@/context/learn-context";
 
 const ContentCard = ({
   contentID,
@@ -20,26 +19,14 @@ const ContentCard = ({
 }: ContentCardProps) => {
   const router = useRouter();
   const { deleteContentFromState, contents } = useContentStore();
-  const { setLearnContent } = useLearnStore();
 
-  const clickCard = async () => {
-    localStorage.setItem("loading", "true");
-    let response;
-    let route;
+  const clickCard = () => {
+    localStorage.setItem("loading", 'true')
     if (!spaceId) {
-      response = await getContent(auth.currentUser?.uid!, contentID);
-      route = `/learn?c=${contentID}`;
+      router.push(`/learn?c=${contentID}`);
     } else {
-      {
-        response = await getContent(auth.currentUser?.uid!, contentID, spaceId);
-        if (response && response.data) {
-          response.data.space_id = spaceId;
-        }
-      }
-      route = `/learn?c=${contentID}&s=${spaceId}`;
+      router.push(`/learn?c=${contentID}&s=${spaceId}`);
     }
-    setLearnContent!(response?.data);
-    router.push(route);
   };
 
   const handleDelete = async (contentID: string) => {

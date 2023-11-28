@@ -269,6 +269,27 @@ export const generateContentQuestions = async (
   }
 };
 
+export const chatHistory = async (
+  userId: string,
+  chatbotType: string,
+  contentId: string[],
+  spaceId: string[]
+) => {
+  const data = {
+    user_id: userId,
+    chatbot_type: chatbotType,
+    content_id: contentId,
+    space_id: spaceId,
+  }
+
+  try {
+    const response = await axios.post(`${API_URL}/generation/chat/history`, data);
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getContent = async (
   userId: string,
   contentId: string,
