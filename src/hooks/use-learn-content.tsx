@@ -9,7 +9,7 @@ import useStore from "./use-store";
 import { useLearnStore } from "@/context/learn-context";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
-  const [loading, setLoading] = useState(false); // Set initial state to false
+  const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const { updateLearnContent, setLearnContent } = useLearnStore();
@@ -29,8 +29,8 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
         }
         setLearnContent!(response?.data);
         if (
-          (!learnContent?.generations.questions ||
-            !learnContent?.generations.summary)
+          (!response?.data?.generations?.questions ||
+            !response?.data?.generations?.summary)
         ) {
           setLoading(true)
           const summaryResponse = await generateContentSummary(
