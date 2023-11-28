@@ -9,7 +9,7 @@ import useStore from "./use-store";
 import { useLearnStore } from "@/context/learn-context";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Set initial state to false
   const [fetched, setFetched] = useState(false);
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const { updateLearnContent, setLearnContent } = useLearnStore();
@@ -17,25 +17,22 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
   useEffect(() => {
     const fetchData = async () => {
       if (contentId && auth.currentUser?.uid && !fetched) {
+        setLoading(true); 
         let response;
-        setLoading(true)
         if (!spaceId) {
           response = await getContent(auth.currentUser?.uid!, contentId);
         } else {
-          {
-            response = await getContent(auth.currentUser?.uid!, contentId, spaceId);
-            if (response && response.data) {
-              response.data.space_id = spaceId;
-            }
+          response = await getContent(auth.currentUser?.uid!, contentId, spaceId);
+          if (response && response.data) {
+            response.data.space_id = spaceId;
           }
         }
         setLearnContent!(response?.data);
-
         if (
           (!learnContent?.generations.questions ||
             !learnContent?.generations.summary)
         ) {
-          setLoading(true);
+          setLoading(true)
           const summaryResponse = await generateContentSummary(
             auth.currentUser?.uid!,
             contentId,
@@ -54,10 +51,10 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
               questions,
             },
           });
-
-          setLoading(false);
-          setFetched(true); 
+          setLoading(false)
         }
+        setLoading(false);
+        setFetched(true);
       };
     }
     fetchData();
