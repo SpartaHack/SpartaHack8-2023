@@ -37,28 +37,28 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   contentTitle?: string;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -344,11 +344,13 @@ export type ChatQuestionProps = {
 export type LearnContent = {
   space_id?: string;
   source?: number | string;
+  chatLog?: MessageType[]
 };
 
 export type LearnStore = {
+  chatLog: MessageType[];
   learnContent: (LearnContent & Content) | undefined;
   setLearnContent: (content: (LearnContent & Content) | undefined) => void;
-  updateLearnContent: (updatedContent: Partial<LearnContent & Content>) => void;
+  updateLearnContent: (updatedContent: Partial<LearnContent & Content & { chatLog: MessageType[] }>) => void;
   clearContent: () => void;
 };

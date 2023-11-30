@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { auth } from "../../db/firebase";
 import {
+  chatHistory,
   generateContentQuestions,
   generateContentSummary,
   getContent,
 } from "@/app/api/endpoints";
 import { useLearnStore } from "@/context/learn-context";
+import { convertChatHistoryToChatLog } from "@/functions/chat-history-to-logs";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
   const [loading, setLoading] = useState(false);
@@ -40,6 +42,13 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
                 questions,
               },
             });
+          }
+          const historyResponse = await chatHistory(auth.currentUser.uid!, 'content', [contentId], [spaceId!])
+          if (historyResponse) {
+            const chatLog = convertChatHistoryToChatLog(historyResponse.data)
+            updateLearnContent({
+              chatLog: chatLog
+            })
           }
         } catch (error) {
           console.error("An error occurred while fetching data:", error);
