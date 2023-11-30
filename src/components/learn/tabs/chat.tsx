@@ -24,13 +24,7 @@ const Chat = () => {
     isLoading: isChatSubmitting,
   } = useChatSubmit(
     "content",
-    [
-      {
-        type: "bot",
-        response:
-          "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!",
-      },
-    ],
+    learnContent?.chatLog!,
     auth.currentUser?.uid!,
     [learnContent?.content_id!],
     [learnContent?.space_id!],

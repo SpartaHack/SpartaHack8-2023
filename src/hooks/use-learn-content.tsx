@@ -8,11 +8,13 @@ import {
 } from "@/app/api/endpoints";
 import { useLearnStore } from "@/context/learn-context";
 import { convertChatHistoryToChatLog } from "@/functions/chat-history-to-logs";
+import { MessageType } from "../../types";
+import { replaceMessage } from "../../utils";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
-  const { updateLearnContent, setLearnContent } = useLearnStore();
+  const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,9 +45,19 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
               },
             });
           }
+          console.log(learnContent?.chatLog)
           const historyResponse = await chatHistory(auth.currentUser.uid!, 'content', [contentId], [spaceId!])
           if (historyResponse) {
-            const chatLog = convertChatHistoryToChatLog(historyResponse.data)
+            let chatLog: MessageType[] = convertChatHistoryToChatLog(historyResponse.data);
+            
+            chatLog.forEach((message) => {
+              if (message.type === "bot") {
+                const replacedResult = replaceMessage(learnContent?.type!, message.response);
+                message.response = replacedResult.replacedMessage;
+                message.sources = replacedResult.sources;
+              }
+            });
+
             updateLearnContent({
               chatLog: chatLog
             })

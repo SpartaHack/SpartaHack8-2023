@@ -3,6 +3,7 @@ import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { chat } from "@/app/api/endpoints";
 import { auth } from "../../db/firebase";
+import { useLearnStore } from "@/context/learn-context";
 
 const useChatSubmit = (
   type: "space" | "content",
@@ -13,6 +14,7 @@ const useChatSubmit = (
 ) => {
   const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog);
   const [isLoading, setIsLoading] = useState(false);
+  const { updateLearnContent} = useLearnStore();
 
   const handleChatSubmit = async (query: string) => {
     setChatLog((prev) => [
@@ -64,15 +66,16 @@ const useChatSubmit = (
             const replacedResult = replaceMessage(type, message);
             message = replacedResult.replacedMessage;
             setChatLog((prev) => {
+              let result;
               if (prev.length > 0 && prev[prev.length - 1].type === "bot") {
                 const lastMessage = prev[prev.length - 1];
                 if (!lastMessage.response.endsWith(message)) {
                   lastMessage.response = message;
                   lastMessage.sources = replacedResult.sources;
                 }
-                return [...prev];
+                result = [...prev];
               } else {
-                return [
+                result = [
                   ...prev,
                   {
                     type: "bot",
@@ -81,6 +84,8 @@ const useChatSubmit = (
                   },
                 ];
               }
+              updateLearnContent({ chatLog: result });
+              return result;
             });
             controller.enqueue(value);
             push();
