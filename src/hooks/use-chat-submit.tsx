@@ -19,7 +19,7 @@ const useChatSubmit = (
         "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!",
     },
   ]
-  const [chatLog, setChatLog] = useState<MessageType[]>([...welcomeChat , ...initialChatLog]);
+  const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog.length === 0 ? [...welcomeChat , ...initialChatLog] : [...initialChatLog]);
   const [isLoading, setIsLoading] = useState(false);
   const { updateLearnContent} = useLearnStore();
 
