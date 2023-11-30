@@ -3,12 +3,18 @@ import YouTube from "react-youtube";
 import { useVideoOptions } from "@/hooks/use-video-options";
 import useSeekToSource from "@/hooks/use-seek-to-source";
 import { useSearchParams } from "next/navigation";
+import { useLearnStore } from "@/context/learn-context";
 
 const YoutubeVideo = () => {
+  const { learnContent} = useLearnStore();
   const videoOpts = useVideoOptions();
-  const { onReady } = useSeekToSource("youtube");
+  const { onReady, seekToSource } = useSeekToSource("youtube");
   const parms = useSearchParams();
   const contentId = parms.get("c");
+
+  if (learnContent!.source!) {
+    seekToSource(parseFloat(learnContent!.source))
+  }
 
   return (
     <div className="rounded-xl overflow-hidden">

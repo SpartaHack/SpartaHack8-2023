@@ -9,6 +9,7 @@ import { useContentStore } from "@/context/content-store";
 import { deleteContent } from "@/app/api/endpoints";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
+import { useLearnStore } from "@/context/learn-context";
 
 const ContentCard = ({
   contentID,

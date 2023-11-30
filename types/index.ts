@@ -343,7 +343,7 @@ export type ChatQuestionProps = {
 
 export type LearnContent = {
   space_id?: string;
-  source?: number | string;
+  source?: string;
   chatLog?: MessageType[]
 };
 
@@ -351,6 +351,6 @@ export type LearnStore = {
   chatLog: MessageType[];
   learnContent: (LearnContent & Content) | undefined;
   setLearnContent: (content: (LearnContent & Content) | undefined) => void;
-  updateLearnContent: (updatedContent: Partial<LearnContent & Content & { chatLog: MessageType[] }>) => void;
+  updateLearnContent: (updatedContent: Partial<LearnContent & Content & { chatLog: MessageType[]; source?: string }>) => void;
   clearContent: () => void;
 };

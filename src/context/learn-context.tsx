@@ -24,6 +24,7 @@ export const useLearnStore = create<
                   ...state.learnContent.metadata,
                   ...updatedContent.metadata,
                 },
+                source: updatedContent.source ? updatedContent.source : state.learnContent.source,
                 chatLog: updatedContent.chatLog ? [...updatedContent.chatLog] : [...state.chatLog],
               }
             : undefined,
