@@ -11,7 +11,11 @@ export const useLearnStore = create<
       learnContent: undefined,
       chatLog: [],
       setLearnContent: (content) => set({ learnContent: content }),
-      updateLearnContent: (updatedContent: Partial<Content & LearnContent & { chatLog: MessageType[] }>) =>
+      updateLearnContent: (
+        updatedContent: Partial<
+          Content & LearnContent & { chatLog: MessageType[] }
+        >,
+      ) =>
         set((state) => ({
           learnContent: state.learnContent
             ? {
@@ -24,11 +28,17 @@ export const useLearnStore = create<
                   ...state.learnContent.metadata,
                   ...updatedContent.metadata,
                 },
-                source: updatedContent.source ? updatedContent.source : state.learnContent.source,
-                chatLog: updatedContent.chatLog ? [...updatedContent.chatLog] : [...state.chatLog],
+                source: updatedContent.source
+                  ? updatedContent.source
+                  : state.learnContent.source,
+                chatLog: updatedContent.chatLog
+                  ? [...updatedContent.chatLog]
+                  : [...state.chatLog],
               }
             : undefined,
-          chatLog: updatedContent.chatLog ? [...updatedContent.chatLog] : state.chatLog,
+          chatLog: updatedContent.chatLog
+            ? [...updatedContent.chatLog]
+            : state.chatLog,
         })),
       clearContent: () => set({ learnContent: undefined, chatLog: [] }),
     }),

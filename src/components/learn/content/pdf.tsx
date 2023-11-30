@@ -6,9 +6,9 @@ const PDF = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   let source;
   if (learnContent?.source) {
-    source = parseInt(learnContent?.source!)
+    source = parseInt(learnContent?.source!);
   } else {
-    source = 0
+    source = 0;
   }
   const pdfUrl = learnContent?.metadata.content_url + `#page=${source}`;
 

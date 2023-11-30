@@ -21,11 +21,7 @@ const SpaceHeader = () => {
     return <Spinner color="current" size="sm" />;
   }
 
-  const spaceName = contents.space ? contents.space.space_name : "History";
-
-  if (spaceName === "History") {
-    return null;
-  }
+  const spaceName = contents.space ? contents.space.space_name : "My Library";
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -86,63 +82,70 @@ const SpaceHeader = () => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="text-3xl  flex flex-row group">
             {spaceName}
-            <CustomModal
-              footer
-              title={
-                <Icon
-                  icon="lucide:pen"
-                  className="opacity-0 h-5 w-5 mt-2 ml-2 cursor-pointer group-hover:opacity-50"
-                />
-              }
-              actionTitle="Save"
-              actionEvent={() => handleSave(spacePrivacy, editSpaceName)}
-              contentTitle="Edit your space"
-              contentMain={
-                <>
-                  <Switch
-                    color="success"
-                    isSelected={spacePrivacy}
-                    onValueChange={setSpacePrivacy}
-                  >
-                    Make space private
-                  </Switch>
-                  <CustomTextInput
-                    styling="mt-3 pt-1 mb-2"
-                    value={editSpaceName}
-                    type={"text"}
-                    label={"Edit Space Name"}
-                    isInvalid={editSpaceName == ""}
-                    eventChange={(e) => handleInputChange(e, setEditSpaceName)}
+            {spaceName !== "My Library" && (
+              <CustomModal
+                footer
+                title={
+                  <Icon
+                    icon="lucide:pen"
+                    className="opacity-0 h-5 w-5 mt-2 ml-2 cursor-pointer group-hover:opacity-50"
                   />
-                </>
-              }
-            />
+                }
+                actionTitle="Save"
+                actionEvent={() => handleSave(spacePrivacy, editSpaceName)}
+                contentTitle="Edit your space"
+                contentMain={
+                  <>
+                    <Switch
+                      color="success"
+                      isSelected={spacePrivacy}
+                      onValueChange={setSpacePrivacy}
+                    >
+                      Make space private
+                    </Switch>
+                    <CustomTextInput
+                      styling="mt-3 pt-1 mb-2"
+                      value={editSpaceName}
+                      type={"text"}
+                      label={"Edit Space Name"}
+                      isInvalid={editSpaceName == ""}
+                      eventChange={(e) =>
+                        handleInputChange(e, setEditSpaceName)
+                      }
+                    />
+                  </>
+                }
+              />
+            )}
           </div>
-          <div className="flex flex-row mt-3 md:mt-0 md:w-[10%] w-[30%]">
-            <CustomModal
-              title={
-                <div className="rounded-xl p-2 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
-                  <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
-                  <span className="text-sm">Add content</span>
-                </div>
-              }
-              actionEvent={handleAdd}
-              contentTitle="Add content"
-              contentMain={
-                <CustomTextInput
-                  value={contentURL}
-                  type={"text"}
-                  eventChange={(e) => handleChange(e, setContentURL)}
-                  isInvalid={contentURL === ""}
-                  label={"Add content URL"}
-                />
-              }
-              footer
-              actionTitle="Add"
-            />
-          </div>
+          {spaceName !== "My Library" && (
+            <div className="flex flex-row mt-3 md:mt-0 md:w-[10%] w-[30%]">
+              <CustomModal
+                title={
+                  <div className="rounded-xl p-2 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
+                    <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
+                    <span className="text-sm">Add content</span>
+                  </div>
+                }
+                actionEvent={handleAdd}
+                contentTitle="Add content"
+                contentMain={
+                  <CustomTextInput
+                    value={contentURL}
+                    type={"text"}
+                    eventChange={(e) => handleChange(e, setContentURL)}
+                    isInvalid={contentURL === ""}
+                    label={"Add content URL"}
+                  />
+                }
+                footer
+                actionTitle="Add"
+              />
+            </div>
+          )}
         </div>
       </div>
+
       <div className="mt-8 horizontal-line" />
     </>
   );

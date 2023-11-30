@@ -6,14 +6,14 @@ import { useSearchParams } from "next/navigation";
 import { useLearnStore } from "@/context/learn-context";
 
 const YoutubeVideo = () => {
-  const { learnContent} = useLearnStore();
+  const { learnContent } = useLearnStore();
   const videoOpts = useVideoOptions();
   const { onReady, seekToSource } = useSeekToSource("youtube");
   const parms = useSearchParams();
   const contentId = parms.get("c");
 
   if (learnContent!.source!) {
-    seekToSource(parseFloat(learnContent!.source))
+    seekToSource(parseFloat(learnContent!.source));
   }
 
   return (
