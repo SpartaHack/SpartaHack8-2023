@@ -4,7 +4,13 @@ import { useStore } from "zustand";
 
 const PDF = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
-  const pdfUrl = learnContent?.metadata.path;
+  let source;
+  if (learnContent?.source) {
+    source = parseInt(learnContent?.source!)
+  } else {
+    source = 0
+  }
+  const pdfUrl = learnContent?.metadata.content_url + `#page=${source}`;
 
   return (
     <div className="lg:w-[70%] w-full items-center justify-center">
