@@ -45,7 +45,6 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
               },
             });
           }
-          console.log(learnContent?.chatLog)
           const historyResponse = await chatHistory(auth.currentUser.uid!, 'content', [contentId], [spaceId!])
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(historyResponse.data);

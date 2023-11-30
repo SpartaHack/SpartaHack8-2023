@@ -12,7 +12,14 @@ const useChatSubmit = (
   contentId: string[],
   spaceId: string[],
 ) => {
-  const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog);
+  const welcomeChat = [
+    {
+      type: "bot",
+      response:
+        "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!",
+    },
+  ]
+  const [chatLog, setChatLog] = useState<MessageType[]>([...welcomeChat , ...initialChatLog]);
   const [isLoading, setIsLoading] = useState(false);
   const { updateLearnContent} = useLearnStore();
 
