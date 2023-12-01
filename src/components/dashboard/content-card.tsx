@@ -22,6 +22,7 @@ const ContentCard = ({
   const { deleteContentFromState, contents } = useContentStore();
 
   const clickCard = () => {
+    localStorage.setItem('repeating', 'false');
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);
     } else {

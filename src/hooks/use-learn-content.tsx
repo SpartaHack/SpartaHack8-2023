@@ -18,7 +18,9 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (contentId && auth.currentUser?.uid && !fetched) {
+      const repeating = localStorage.getItem('repeating');
+      if (contentId && auth.currentUser?.uid && !fetched && (repeating == 'false') ) {
+        localStorage.setItem('repeating', 'true');
         setLoading(true);
         try {
           let response;
@@ -94,7 +96,7 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
     };
 
     fetchData();
-  }, [contentId, auth.currentUser?.uid]);
+  }, [contentId, auth.currentUser?.uid, spaceId]);
 
   return { loading };
 };
