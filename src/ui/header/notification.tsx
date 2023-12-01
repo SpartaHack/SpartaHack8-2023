@@ -1,41 +1,42 @@
 "use client";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { CustomDropdown } from "@/helpers/custom-dropdown";
-import React, { useState, useEffect } from 'react';
-import Pusher from 'pusher-js';
+import React, { useState, useEffect } from "react";
+import Pusher from "pusher-js";
 import { NotificationProps } from "../../../types";
 
-const pusher = new Pusher('a41d49a2b329a6bb790f', {
-  cluster: 'us2',
+const pusher = new Pusher("a41d49a2b329a6bb790f", {
+  cluster: "us2",
 });
 
 const Notification = () => {
   const [notifications, setNotifications] = useState<NotificationProps[]>([]);
 
   useEffect(() => {
-    const channel = pusher.subscribe('youlearn-ai');
+    const channel = pusher.subscribe("youlearn-ai");
 
-    channel.bind('alerts', (data: NotificationProps) => {
+    channel.bind("alerts", (data: NotificationProps) => {
       setNotifications([...notifications, data]);
     });
 
     return () => {
-      pusher.unsubscribe('youlearn-ai');
+      pusher.unsubscribe("youlearn-ai");
     };
   }, [notifications]);
 
   const data = {
-    title: 
-    <div className="flex flex-row">
-      <Icon
-        icon="ri:notification-line"
-        className="md:header-icons md:h-10 md:w-10 w-6 h-6"
-      />
-      <div className="lg:hidden">
-        <span className="ml-5">Notification</span>
+    title: (
+      <div className="flex flex-row">
+        <Icon
+          icon="ri:notification-line"
+          className="md:header-icons md:h-10 md:w-10 w-6 h-6"
+        />
+        <div className="lg:hidden">
+          <span className="ml-5">Notification</span>
+        </div>
       </div>
-    </div>,
-    sections: notifications.map(notification => ({
+    ),
+    sections: notifications.map((notification) => ({
       label: "Section 1",
       items: [
         {
@@ -47,10 +48,7 @@ const Notification = () => {
 
   return (
     <div className="cursor-pointer mt-1 mr-5">
-      <CustomDropdown
-        title={data.title}
-        sections={data.sections}
-      />
+      <CustomDropdown title={data.title} sections={data.sections} />
     </div>
   );
 };

@@ -29,7 +29,8 @@ const SearchBar = () => {
             placeholder="Search..."
           />
           <button type="submit">
-            <Icon icon="uil:search"
+            <Icon
+              icon="uil:search"
               className="md:header-icons md:h-10 md:w-10 w-6 h-6 text-neutral-400"
             />
           </button>
