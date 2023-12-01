@@ -42,7 +42,7 @@ export const handleFirebaseError = (err: FirebaseError) => {
       toast.error("This user has been disabled");
       break;
     case "auth/user-not-found":
-      toast.error("No account found, redirecting to sign up");
+      toast.error("No account found, please sign up");
       break;
     case "auth/wrong-password":
       toast.error("Incorrect password");

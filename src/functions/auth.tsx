@@ -51,7 +51,7 @@ export const useSignInEmail = () => {
           toast.success("Successfully signed in");
           setSignInStatus("/");
         } else {
-          toast.error("Redirecting to form. Please enter your information in the form.");
+          toast.error("Your account was not found, please sign up.");
           setSignInStatus("/form");
         }
       }
@@ -79,7 +79,7 @@ export const useSignUpEmailContinue = () => {
       const user = userCredential.user;
       setUserLocalStorage(user);
       if (userCredential) {
-        toast.success("Redirecting to email verification");
+        toast.success("Please verify your email");
         sendEmailVerification(user);
         setSignUpStatus("/verify");
       }
@@ -117,7 +117,7 @@ export const useAuthGoogleSignIn = () => {
         toast.success("Successfully signed in with Google");
         setSignInStatus("/");
       } else {
-        toast.error("Redirecting to form. Please enter your information in the form.");
+        toast.error("Your account was not found, please sign up.");
         setSignInStatus("/form");
       }
     } catch (err) {
@@ -219,7 +219,7 @@ export const useHandleSignUpFinal = () => {
         setContents(contents?.data);
         setSignUpFinalStatus("/");
       } else {
-        toast.error("Sign up failed, redirecting to sign up");
+        toast.error("Sign up failed, please sign up");
         setSignUpFinalStatus("/signup");
       }
     } catch (err) {
