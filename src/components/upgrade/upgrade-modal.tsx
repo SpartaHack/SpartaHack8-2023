@@ -19,7 +19,7 @@ const UpgradeModal: FC = () => {
 
   const handleClick = async () => {
     if (!auth.currentUser?.uid) {
-      toast.error("User not signed in.");
+      toast.error("Please sign in to upgrade");
     } else {
       const response = await checkoutSession(auth.currentUser?.uid, selected);
       router.push(`${response?.data.url}`);

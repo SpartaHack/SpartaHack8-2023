@@ -39,12 +39,12 @@ const ContentCard = ({
       );
       if (response) {
         deleteContentFromState(contentID);
-        toast.success("Deleted content.");
+        toast.success("Deleted content successfully.");
       } else {
         toast.error("Unable to delete content.");
       }
     } catch (err) {
-      toast.error("Cannot delete content from history.");
+      toast.error("Cannot delete content from your library.");
     }
   };
 
@@ -59,7 +59,7 @@ const ContentCard = ({
       await navigator.clipboard.writeText(text);
       toast.success("Copied!");
     } catch (err) {
-      toast.error("Cannot copy.");
+      toast.error("Error. Cannot copy.");
     }
   };
 

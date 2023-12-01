@@ -22,7 +22,7 @@ const Form = () => {
 
       handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name);
     } else {
-      toast.error("Try again. Something went wrong");
+      toast.error("Error signing up, please try again.");
     }
   };
 

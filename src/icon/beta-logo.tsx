@@ -19,7 +19,7 @@ const BetaLogo = () => {
 
   return (
     <>
-      <div className="ml-2 hidden lg:block">
+      <div className="ml-5 hidden lg:block">
         <CustomButton
           title={BetaElement}
           size="sm"

@@ -23,9 +23,9 @@ const Spaces = () => {
       deleteSpaceFromState(spaceId);
       const contents = await getHistory(userId!);
       setContents(contents?.data);
-      toast.success("Space deleted.");
+      toast.success("Space deleted successfully.");
     } else {
-      toast.error("Could not be deleted.");
+      toast.error("Could not delete space.");
     }
   };
 

@@ -29,10 +29,10 @@ const Verify = () => {
     try {
       if (user) {
         await sendEmailVerification(user);
-        toast.message("Verification email sent!");
+        toast.message("Verification email sent.");
       }
     } catch (error) {
-      toast.error("Error sending verification email.");
+      toast.error("Error sending verification email. Please try again.");
     }
   };
 

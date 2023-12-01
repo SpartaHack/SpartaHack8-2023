@@ -30,7 +30,7 @@ const UserInformation = () => {
 
   const handleSubscriptions = async () => {
     if (!auth.currentUser?.uid) {
-      toast.error("User not signed in.");
+      toast.error("Please sign in to handle subscriptions");
     } else {
       const response = await getPortalLink(auth.currentUser?.uid);
       console.log(response);

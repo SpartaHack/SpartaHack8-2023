@@ -26,12 +26,11 @@ const SearchBar = () => {
           <input
             type="text"
             className="w-full outline-none ml-3 bg-absolute_white dark:bg-transparent"
-            placeholder="Upload pdf or youtube link..."
+            placeholder="Search..."
           />
           <button type="submit">
-            <Icon
-              icon="mi:add"
-              className="md:header-icons md:h-9 md:w-9 w-6 h-6"
+            <Icon icon="uil:search"
+              className="md:header-icons md:h-10 md:w-10 w-6 h-6 text-neutral-400"
             />
           </button>
         </form>
@@ -45,7 +44,7 @@ const SearchBar = () => {
             className="lg:hidden flex mr-1 justify-between"
             onClick={() => setSmallSearch(true)}
           >
-            <Icon icon="mi:add" className="w-6 h-6 cursor-pointer" />
+            <Icon icon="uil:search" className="w-6 h-6 cursor-pointer" />
           </div>
         </>
       )}
@@ -58,10 +57,10 @@ const SearchBar = () => {
             <input
               type="text"
               className="w-full bg-transparent outline-none pl-2"
-              placeholder="Upload pdf or youtube link..."
+              placeholder="Search..."
             />
             <button type="submit">
-              <Icon icon="mi:add" className="w-6 h-6" />
+              <Icon icon="uil:search" className="w-6 h-6" />
             </button>
           </form>
         </div>

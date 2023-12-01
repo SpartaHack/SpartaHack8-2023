@@ -51,7 +51,7 @@ export const useSignInEmail = () => {
           toast.success("Successfully signed in");
           setSignInStatus("/");
         } else {
-          toast.error("User does not have form details, redirecting to form");
+          toast.error("Redirecting to form. Please enter your information in the form.");
           setSignInStatus("/form");
         }
       }
@@ -117,7 +117,7 @@ export const useAuthGoogleSignIn = () => {
         toast.success("Successfully signed in with Google");
         setSignInStatus("/");
       } else {
-        toast.error("User does not have form details, redirecting to form");
+        toast.error("Redirecting to form. Please enter your information in the form.");
         setSignInStatus("/form");
       }
     } catch (err) {
@@ -164,7 +164,7 @@ export const logOut = async () => {
     await signOut(auth);
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      toast.error("User not signed in");
+      toast.error("Please sign in");
       return;
     }
     localStorage.clear();

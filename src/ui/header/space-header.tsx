@@ -58,7 +58,7 @@ const SpaceHeader = () => {
     if (response) {
       useSpaceStore.getState().updateSpaceData(updatedData);
       useContentStore.getState().updateContent(updatedDataSpace);
-      toast.success("Space updated.");
+      toast.success("Space updated successfully.");
     } else {
       toast.error("Could not update space.");
     }
