@@ -39,7 +39,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
               className="md:header-icons md:h-10 md:w-10 w-6 h-6"
             />
             <div className="lg:hidden">
-              <span className="ml-5 mt-1">Account</span>
+              <span className="ml-5">Account</span>
             </div>
           </div>
         </DropdownTrigger>

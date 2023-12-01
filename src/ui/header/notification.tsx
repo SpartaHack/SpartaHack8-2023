@@ -1,30 +1,55 @@
 "use client";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import React from "react";
 import { CustomDropdown } from "@/helpers/custom-dropdown";
-import { NotificationData } from "@/functions/dropdown-contsants";
+import React, { useState, useEffect } from 'react';
+import Pusher from 'pusher-js';
+import { NotificationProps } from "../../../types";
+
+const pusher = new Pusher('a41d49a2b329a6bb790f', {
+  cluster: 'us2',
+});
 
 const Notification = () => {
+  const [notifications, setNotifications] = useState<NotificationProps[]>([]);
+
+  useEffect(() => {
+    const channel = pusher.subscribe('youlearn-ai');
+
+    channel.bind('alerts', (data: NotificationProps) => {
+      setNotifications([...notifications, data]);
+    });
+
+    return () => {
+      pusher.unsubscribe('youlearn-ai');
+    };
+  }, [notifications]);
+
   const data = {
-    title: <Icon icon="ri:notification-line" className="h-6 w-6" />,
-    sections: [
-      {
-        label: "Section 1",
-        items: [
-          {
-            label: "Welcome to YouLearn! A Github for your spaces.",
-            clickEvent: () => console.log("Clicked on WebDev"),
-          },
-        ],
-      },
-    ],
+    title: 
+    <div className="flex flex-row">
+      <Icon
+        icon="ri:notification-line"
+        className="md:header-icons md:h-10 md:w-10 w-6 h-6"
+      />
+      <div className="lg:hidden">
+        <span className="ml-5">Notification</span>
+      </div>
+    </div>,
+    sections: notifications.map(notification => ({
+      label: "Section 1",
+      items: [
+        {
+          label: notification.message,
+        },
+      ],
+    })),
   };
 
   return (
     <div className="cursor-pointer mt-1 mr-5">
       <CustomDropdown
-        title={NotificationData.title}
-        sections={NotificationData.sections}
+        title={data.title}
+        sections={data.sections}
       />
     </div>
   );
