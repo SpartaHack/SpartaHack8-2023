@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { chat } from "@/app/api/endpoints";
@@ -20,10 +20,15 @@ const useChatSubmit = (
     },
   ];
   const [chatLog, setChatLog] = useState<MessageType[]>(
-    initialChatLog?.length === 0
+    initialChatLog.length === 0
       ? [...welcomeChat, ...initialChatLog]
       : [...initialChatLog],
   );
+  
+  useEffect(() => {
+    setChatLog([...initialChatLog]);
+  }, [initialChatLog]);
+
   const [isLoading, setIsLoading] = useState(false);
   const { updateLearnContent } = useLearnStore();
 
@@ -106,6 +111,8 @@ const useChatSubmit = (
       },
     });
   };
+
+  console.log(chatLog)
 
   return { handleChatSubmit, chatLog, isLoading };
 };

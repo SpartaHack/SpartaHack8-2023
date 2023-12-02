@@ -1,5 +1,5 @@
 import { ScrollShadow } from "@nextui-org/react";
-import React from "react";
+import React, { useEffect } from "react";
 import ChatSubmit from "../learn/tabs/chat-submit";
 import useCopyToClipboard from "@/hooks/use-copy-clipboard";
 import useChatSubmit from "@/hooks/use-chat-submit";
@@ -11,22 +11,19 @@ import useChatlogLength from "@/hooks/use-chatlog-length";
 import { auth } from "../../../db/firebase";
 import useStore from "@/hooks/use-store";
 import { useContentStore } from "@/context/content-store";
+import useFetchChatHistory from "@/hooks/use-chat-history";
+import useAutoScroll from "@/hooks/use-auto-scroll";
 
 const SpaceChatMain = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
+  const historyChat = useFetchChatHistory();
   const {
     handleChatSubmit,
     chatLog: chatSubmitLog,
     isLoading: isChatSubmitting,
   } = useChatSubmit(
     "space",
-    [
-      {
-        type: "bot",
-        response:
-          "Welcome to the AI chatbot for your space! Ask me anything in this space! Give feedback for improvements!",
-      },
-    ],
+    historyChat!,
     auth.currentUser?.uid!,
     [],
     [contents?.space._id],
@@ -35,13 +32,15 @@ const SpaceChatMain = () => {
   let chatLog = [...chatSubmitLog];
   chatLog = removeUndefinedFromSources(chatLog);
   const { removeQuestions } = useChatlogLength(chatLog);
+  const chatContainerRef = useAutoScroll(chatLog);
 
   return (
     <>
       <ScrollShadow
         size={5}
         hideScrollBar
-        className="flex-grow rounded-xl h-full"
+        ref={chatContainerRef}
+        className="flex-grow rounded-xl"
       >
         <div
           id="chat-container"
