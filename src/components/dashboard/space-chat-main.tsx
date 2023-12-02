@@ -61,10 +61,8 @@ const SpaceChatMain = () => {
       {removeQuestions && (
         <ChatQuestions
           questions={[
-            "What is Mona Lisa?",
-            "What is Mona Lisa?",
-            "What is Mona Lisa?",
-            "What is Mona Lisa?",
+            "What topics will be covered in this space?",
+            "What are the learning objectives of this space?",
           ]}
           chatQuestionClick={(question) => handleChatSubmit(question)}
         />
