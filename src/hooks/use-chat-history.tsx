@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { auth } from "../../db/firebase";
 import { chatHistory } from "@/app/api/endpoints";
 import { convertChatHistoryToChatLog } from "@/functions/chat-history-to-logs";
@@ -14,8 +14,15 @@ const useChatHistory = () => {
   useEffect(() => {
     if (contents) {
       const fetchChatHistory = async () => {
-        const response = await chatHistory(auth.currentUser?.uid!, 'space', [], [contents?.space._id!]);
-        let fetchedHistoryChat: MessageType[] = convertChatHistoryToChatLog(response?.data)
+        const response = await chatHistory(
+          auth.currentUser?.uid!,
+          "space",
+          [],
+          [contents?.space._id!],
+        );
+        let fetchedHistoryChat: MessageType[] = convertChatHistoryToChatLog(
+          response?.data,
+        );
 
         fetchedHistoryChat.forEach((message) => {
           if (message.type === "bot") {
@@ -30,12 +37,12 @@ const useChatHistory = () => {
 
         setHistoryChat(fetchedHistoryChat);
       };
-    
+
       fetchChatHistory();
     }
   }, [contents?.space._id]);
 
   return historyChat;
-}
+};
 
 export default useChatHistory;

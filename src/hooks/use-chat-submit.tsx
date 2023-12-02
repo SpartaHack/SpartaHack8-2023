@@ -24,7 +24,7 @@ const useChatSubmit = (
       ? [...welcomeChat, ...initialChatLog]
       : [...initialChatLog],
   );
-  
+
   useEffect(() => {
     setChatLog([...initialChatLog]);
   }, [initialChatLog]);
@@ -112,7 +112,7 @@ const useChatSubmit = (
     });
   };
 
-  console.log(chatLog)
+  console.log(chatLog);
 
   return { handleChatSubmit, chatLog, isLoading };
 };
