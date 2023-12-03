@@ -26,7 +26,11 @@ const useChatSubmit = (
   );
 
   useEffect(() => {
-    setChatLog(initialChatLog.length == 0 ? [...welcomeChat, ...initialChatLog] : [...initialChatLog]);
+    setChatLog(
+      initialChatLog.length == 0
+        ? [...welcomeChat, ...initialChatLog]
+        : [...initialChatLog],
+    );
   }, [initialChatLog]);
 
   const [isLoading, setIsLoading] = useState(false);

@@ -44,7 +44,9 @@ const ContentCard = ({
         toast.error("Unable to delete content.");
       }
     } catch (err) {
-      toast.error("Cannot delete content from your library. Delete from your library");
+      toast.error(
+        "Cannot delete content from your library. Delete from your library",
+      );
     }
   };
 
