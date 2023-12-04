@@ -77,10 +77,10 @@ const SpaceHeader = () => {
 
   return (
     <>
-      <div className="mt-8 ml-5 mr-5">
-        <div className="text-sm font-bold text-neutral-500">/ {spaceName}</div>
+      <div className="sm:mt-16 sm:mx-24 mx-12 mt-8 ">
+        <div className="font-sans font-medium text-neutral-500 mb-4">/ {spaceName}</div>
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="text-3xl  flex flex-row group">
+          <div className="text-4xl flex flex-row group font-sans font-semibold mb-4">
             {spaceName}
             {spaceName !== "My Library" && (
               <CustomModal
@@ -119,10 +119,10 @@ const SpaceHeader = () => {
             )}
           </div>
           {spaceName !== "My Library" && (
-            <div className="flex flex-row mt-3 md:mt-0 md:w-[10%] w-[30%]">
+            <div className="flex flex-row mt-3 md:mt-0 space-between">
               <CustomModal
                 title={
-                  <div className="rounded-xl p-2 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
+                  <div className="shadow-xl rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
                     <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
                     <span className="text-sm">Add content</span>
                   </div>
@@ -146,7 +146,7 @@ const SpaceHeader = () => {
         </div>
       </div>
 
-      <div className="mt-8 horizontal-line" />
+      <div className="border-[.5px] sm:mx-24 mx-10 mt-8" />
     </>
   );
 };
