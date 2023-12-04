@@ -10,6 +10,7 @@ import useStore from "@/hooks/use-store";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { getPortalLink } from "@/app/api/endpoints";
+import formatDate from "@/functions/date-formatter";
 
 const UserInformation = () => {
   const userData = useStore(useUserStore, (state) => state.userData);
@@ -50,7 +51,7 @@ const UserInformation = () => {
             <div className="flex flex-col ml-10">
               <h1 className="text-xl">{userData?.user.full_name}</h1>
               <h2 className="text-sm mt-2">
-                Joined {userData?.user.created_at}
+                Joined {formatDate(userData?.user.created_at!)}
               </h2>
             </div>
           </div>
