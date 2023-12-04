@@ -146,7 +146,7 @@ const SpaceHeader = () => {
         </div>
       </div>
 
-      <div className="border-[.5px] sm:mx-24 mx-10 mt-8" />
+      <div className="border-[.5px] sm:mx-24 mx-10 mt-8 dark:border-neutral-800" />
     </>
   );
 };
