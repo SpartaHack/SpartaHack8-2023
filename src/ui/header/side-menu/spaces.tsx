@@ -7,7 +7,7 @@ import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import CustomModal from "@/helpers/custom-modal";
 import { useUserStore } from "@/context/user-context";
-import { deleteSpace, getHistory, getSpace } from "@/app/api/endpoints";
+import { deleteSpace, getSpace } from "@/app/api/endpoints";
 import { toast } from "sonner";
 import { useContentStore } from "@/context/content-store";
 import { useRouter } from "next/navigation";
@@ -23,8 +23,7 @@ const Spaces = () => {
     const response = await deleteSpace(userId!, spaceId);
     if (response) {
       deleteSpaceFromState(spaceId);
-      const contents = await getHistory(userId!);
-      setContents(contents?.data);
+      router.push('/')
       toast.success("Space deleted successfully.");
     } else {
       toast.error("Could not delete space.");
