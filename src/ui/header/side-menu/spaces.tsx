@@ -23,7 +23,7 @@ const Spaces = () => {
     const response = await deleteSpace(userId!, spaceId);
     if (response) {
       deleteSpaceFromState(spaceId);
-      router.push('/')
+      router.push("/");
       toast.success("Space deleted successfully.");
     } else {
       toast.error("Could not delete space.");
