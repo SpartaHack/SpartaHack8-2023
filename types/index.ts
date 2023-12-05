@@ -374,9 +374,9 @@ export type ResultBoardProps = {
 };
 
 export type SearchType = {
-  contentId: string,
+  content_id: string,
   title: string,
-  contentType: string,
-  thumbnailURL: string,
-  contentURL: string
+  content_type: string,
+  thumbnail_url: string,
+  content_url: string
 }

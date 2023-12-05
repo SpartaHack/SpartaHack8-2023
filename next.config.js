@@ -6,6 +6,7 @@ const nextConfig = {
       "image.thum.io",
       "lh3.googleusercontent.com",
       "i.ytimg.com",
+      "info.arxiv.org",
     ],
   },
 };

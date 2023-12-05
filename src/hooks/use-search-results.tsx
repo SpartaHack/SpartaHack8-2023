@@ -3,7 +3,6 @@ import { searchAll } from "@/app/api/endpoints";
 import { auth } from "../../db/firebase";
 import { SearchType } from "../../types";
 
-
 const useSearchResults = (query: string) => {
   const [searchResults, setSearchResults] = useState<undefined | SearchType[]>(undefined);
   const [isLoading, setIsLoading] = useState(false);

@@ -19,14 +19,14 @@ const useChatSubmit = (
         "Welcome to the chat! Ask me anything. I may not always be right, but your feedback will help me improve!",
     },
   ];
-  const [chatLog, setChatLog] = useState<MessageType[]>(
+  const [chatLog, setChatLog] = useState<MessageType[]>(initialChatLog &&
     initialChatLog.length === 0
       ? [...welcomeChat, ...initialChatLog]
       : [...initialChatLog],
   );
 
   useEffect(() => {
-    setChatLog(
+    setChatLog(initialChatLog &&
       initialChatLog.length == 0
         ? [...welcomeChat, ...initialChatLog]
         : [...initialChatLog],
