@@ -10,16 +10,16 @@ import { auth } from "../../../db/firebase";
 
 const Dashboard = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
-  const {setContents} = useContentStore();
+  const { setContents } = useContentStore();
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const response = await getHistory(auth.currentUser?.uid!)
-      setContents(response?.data)
-    }
-  
-    fetchHistory()
-  }, [])
+      const response = await getHistory(auth.currentUser?.uid!);
+      setContents(response?.data);
+    };
+
+    fetchHistory();
+  }, []);
 
   return (
     <div className="flex-grow">
