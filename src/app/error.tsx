@@ -1,20 +1,14 @@
 "use client";
 import { CustomButton } from "@/helpers/custom-btn";
-import YouLearnLogo from "@/icon/youlearn-logo";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export default function Error({
-  error,
-  reset,
-}: {
+export default function Error({}: {
   error: Error & { digest?: string };
-  reset: () => void;
 }) {
   const router = useRouter();
 
   const handleReset = () => {
-    reset();
     router.push("/");
   };
 
