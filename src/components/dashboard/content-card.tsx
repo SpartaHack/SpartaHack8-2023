@@ -6,12 +6,14 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { CustomDropdown } from "@/helpers/custom-dropdown";
 import { menuDropDown } from "@/functions/content-dropdown-constants";
 import { useContentStore } from "@/context/content-store";
-import { deleteContent } from "@/app/api/endpoints";
+import { addContent, deleteContent } from "@/app/api/endpoints";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 
 const ContentCard = ({
+  contentAdd,
   contentID,
+  contentURL,
   spaceId,
   type,
   title,
@@ -20,8 +22,11 @@ const ContentCard = ({
   const router = useRouter();
   const { deleteContentFromState, contents } = useContentStore();
 
-  const clickCard = () => {
+  const clickCard =  async () => {
     localStorage.setItem("repeating", "false");
+    if (contentAdd) {
+      await addContent(auth.currentUser?.uid!, undefined, contentURL!)
+    }
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);
     } else {

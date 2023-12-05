@@ -20,9 +20,11 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
             searchResults.map((result: SearchType, index: number) => (
               <ContentCard
                 key={index}
+                contentAdd
                 type={result.content_type}
                 contentID={result.content_id}
                 title={result.title}
+                contentURL={result.content_url}
                 thumbnail_url={result.thumbnail_url}
               />
             ))}

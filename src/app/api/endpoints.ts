@@ -160,7 +160,7 @@ export const deleteSpace = async (userId: string, spaceId: string) => {
 // CONTENT
 export const addContent = async (
   userId: string,
-  spaceId: string,
+  spaceId: string | undefined,
   contentURL: string,
 ) => {
   const data = {

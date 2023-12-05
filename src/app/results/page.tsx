@@ -6,7 +6,7 @@ import Header from "@/ui/header/header";
 import Footer from "@/ui/footer/footer";
 import ResultBoard from "@/components/results/result-board";
 
-const SearchPage = () => {
+const ResultPage = () => {
   const params = useSearchParams();
   const query = params.get("search_query");
   return (
@@ -20,4 +20,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+export default ResultPage;
