@@ -6,6 +6,7 @@ import useStore from "@/hooks/use-store";
 import SpaceHeader from "@/ui/header/space-header";
 import ContentCard from "../dashboard/content-card";
 import SpaceChatBase from "../dashboard/space-chat-base";
+import NoSpaceContent from "./no-space-content";
 
 const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
   const contents = useStore(useContentStore, (state) => state.contents);
@@ -13,10 +14,10 @@ const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
   return (
     <div className="flex-grow">
       <SpaceHeader />
+      <NoSpaceContent/>
       <main className="lg:my-10 h-full lg:pb-10 md:my-5 lg:ml-6 md:pt-0 pt-10 pb-10 flex justify-center md:px-20 text-center">
         <div className="grid gap-5 md:gap-10 lg:gap-15 2xl:grid-cols-4 md:grid-cols-3 md:w-full justify-center">
           {contents &&
-            contents.space &&
             contents.contents.map((content: Content, key: number) => (
               <ContentCard
                 spaceId={spaceId!}
