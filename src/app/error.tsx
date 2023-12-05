@@ -3,9 +3,7 @@ import { CustomButton } from "@/helpers/custom-btn";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export default function Error({}: {
-  error: Error & { digest?: string };
-}) {
+export default function Error({}: { error: Error & { digest?: string } }) {
   const router = useRouter();
 
   const handleReset = () => {
