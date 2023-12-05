@@ -1,12 +1,8 @@
-import React from 'react'
-import { ResultBoardProps } from '../../../types'
+import React from "react";
+import { ResultBoardProps } from "../../../types";
 
-const ResultBoard = ({query}: ResultBoardProps) => {
-  return (
-    <div className='flex-grow'>
-        ResultBoard
-    </div>
-  )
-}
+const ResultBoard = ({ query }: ResultBoardProps) => {
+  return <div className="flex-grow">ResultBoard</div>;
+};
 
-export default ResultBoard
+export default ResultBoard;

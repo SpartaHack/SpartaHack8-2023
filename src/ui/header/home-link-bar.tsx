@@ -10,13 +10,13 @@ const SearchBar = () => {
   const router = useRouter();
   const [smallSearch, setSmallSearch] = useState(false);
   const searchBarRef = useRef<HTMLDivElement | null>(null);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
 
   useClickOutside(searchBarRef, () => setSmallSearch(false));
 
   const searchClick = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/results?search_query=${encodeURIComponent(query)}`)
+    router.push(`/results?search_query=${encodeURIComponent(query)}`);
   };
 
   return (
@@ -26,7 +26,10 @@ const SearchBar = () => {
         <BetaLogo />
       </div>
       <div className="hidden lg:flex justify-center lg:mr-[180px] flex-1">
-        <form className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-xl bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary" onSubmit={searchClick}>
+        <form
+          className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-xl bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+          onSubmit={searchClick}
+        >
           <input
             type="text"
             className="w-full outline-none ml-3 bg-absolute_white dark:bg-transparent"
