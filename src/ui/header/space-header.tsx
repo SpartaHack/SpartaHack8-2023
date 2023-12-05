@@ -21,7 +21,7 @@ const SpaceHeader = () => {
     return <Spinner color="current" size="sm" />;
   }
 
-  const spaceName = contents.space ? contents.space.space_name : "My Library";
+  const spaceName = contents.space ? contents.space.space_name : "History";
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -84,7 +84,7 @@ const SpaceHeader = () => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="text-4xl flex flex-row group font-sans font-semibold mb-4">
             {spaceName}
-            {spaceName !== "My Library" && (
+            {spaceName !== "History" && (
               <CustomModal
                 footer
                 title={
@@ -120,7 +120,7 @@ const SpaceHeader = () => {
               />
             )}
           </div>
-          {spaceName !== "My Library" && (
+          {spaceName !== "History" && (
             <div className="flex flex-row mt-3 md:mt-0 space-between">
               <CustomModal
                 title={

@@ -91,7 +91,7 @@ const Spaces = () => {
         >
           <Icon icon="ic:round-history" className="h-6 w-6" />
           <div className="ml-5">
-            <p>My Library</p>
+            <p>History</p>
           </div>
         </div>
       </ScrollShadow>
