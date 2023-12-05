@@ -69,7 +69,7 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
             auth.currentUser.uid!,
             "content",
             [contentId],
-            [spaceId!],
+            spaceId ? [spaceId!] : [],
           );
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(
