@@ -11,11 +11,7 @@ import {
 import { FirebaseError } from "firebase/app";
 import { toast } from "sonner";
 import { handleFirebaseError, setUserLocalStorage } from "../../utils";
-import {
-  getUserSpaces,
-  userSignIn,
-  userSignUp,
-} from "@/app/api/endpoints";
+import { getUserSpaces, userSignIn, userSignUp } from "@/app/api/endpoints";
 import { initFirebase } from "../../db/firebase";
 import { useUserStore } from "@/context/user-context";
 import { useSpaceStore } from "@/context/space-context";
