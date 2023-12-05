@@ -15,18 +15,20 @@ const Dashboard = () => {
       <main className="lg:my-10 h-full lg:pb-10 md:my-5 lg:ml-6 md:pt-0 pt-10 pb-10 flex justify-center md:px-20 text-center">
         <div className="grid gap-5 md:gap-10 lg:gap-15 2xl:grid-cols-4 md:grid-cols-3 md:w-full justify-center">
           {contents &&
-            (contents.space
-              ? <></>
-              : contents.map((content: History, key: number) => (
-                  <ContentCard
-                    key={key}
-                    spaceId={content.space_id}
-                    type={content.content.type}
-                    contentID={content.content.content_id}
-                    title={content.content.title}
-                    thumbnail_url={content.content.thumbnail_url}
-                  />
-                )))}
+            (contents.space ? (
+              <></>
+            ) : (
+              contents.map((content: History, key: number) => (
+                <ContentCard
+                  key={key}
+                  spaceId={content.space_id}
+                  type={content.content.type}
+                  contentID={content.content.content_id}
+                  title={content.content.title}
+                  thumbnail_url={content.content.thumbnail_url}
+                />
+              ))
+            ))}
         </div>
       </main>
     </div>

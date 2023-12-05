@@ -7,13 +7,13 @@ import { useSearchParams } from "next/navigation";
 import SpaceBoard from "@/components/space/space-board";
 
 export default function App() {
-    const params = useSearchParams();
-    const spaceId = params.get("s");
+  const params = useSearchParams();
+  const spaceId = params.get("s");
   return (
     <main className="flex flex-col min-h-screen">
       <Suspense fallback={<Loading />}>
         <Header />
-        <SpaceBoard spaceId={spaceId!}/>
+        <SpaceBoard spaceId={spaceId!} />
         <Footer />
       </Suspense>
     </main>

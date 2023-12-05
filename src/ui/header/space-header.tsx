@@ -78,7 +78,9 @@ const SpaceHeader = () => {
   return (
     <>
       <div className="sm:mt-16 sm:mx-24 mx-12 mt-8 ">
-        <div className="font-sans font-medium text-neutral-500 mb-4">/ {spaceName}</div>
+        <div className="font-sans font-medium text-neutral-500 mb-4">
+          / {spaceName}
+        </div>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="text-4xl flex flex-row group font-sans font-semibold mb-4">
             {spaceName}

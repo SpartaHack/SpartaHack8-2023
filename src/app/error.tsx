@@ -3,7 +3,10 @@ import { CustomButton } from "@/helpers/custom-btn";
 import YouLearnLogo from "@/icon/youlearn-logo";
 import { useRouter } from "next/navigation";
 
-export default function Error({ error, reset }: {
+export default function Error({
+  error,
+  reset,
+}: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
@@ -12,7 +15,7 @@ export default function Error({ error, reset }: {
   const handleReset = () => {
     reset();
     router.push("/");
-  }
+  };
 
   return (
     <div className="h-screen w-full flex flex-col justify-center items-center">

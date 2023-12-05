@@ -38,11 +38,11 @@ const Spaces = () => {
     if (type === "space") {
       const contents = await getSpace(userId!, spaceId!);
       setContents(contents?.data);
-      router.push(`/space?s=${spaceId}`)
+      router.push(`/space?s=${spaceId}`);
     } else {
       const contents = await getHistory(userId!);
       setContents(contents!.data);
-      router.push('/')
+      router.push("/");
     }
   };
 
