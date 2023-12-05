@@ -16,6 +16,7 @@ const SearchBar = () => {
 
   const searchClick = (e: React.FormEvent) => {
     e.preventDefault();
+    localStorage.setItem('searchLoading', 'true')
     router.push(`/results?search_query=${encodeURIComponent(query)}`);
   };
 

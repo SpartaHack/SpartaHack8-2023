@@ -36,8 +36,8 @@ const Spaces = () => {
   ) => {
     if (type === "space") {
       const contents = await getSpace(userId!, spaceId!);
-      setContents(contents?.data);
       router.push(`/space?s=${spaceId}`);
+      setContents(contents?.data);
     } else {
       router.push("/");
     }

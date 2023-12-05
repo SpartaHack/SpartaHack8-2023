@@ -1,8 +1,25 @@
-import React from "react";
-import { ResultBoardProps } from "../../../types";
+'use client'
+import React from 'react';
+import useSearchResults from '@/hooks/use-search-results';
+import Loading from '@/app/loading';
+import { ResultBoardProps, SearchType } from '../../../types';
 
-const ResultBoard = ({ query }: ResultBoardProps) => {
-  return <div className="flex-grow">ResultBoard</div>;
+const ResultsBoard = ({ query }: ResultBoardProps) => {
+  const { searchResults, isLoading } = useSearchResults(query);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  return (
+    <div className="flex-grow">
+      {searchResults && searchResults.map((result: SearchType, index: number) => (
+        <div key={index}>
+          <h2>{result.title}</h2>
+        </div>
+      ))}
+    </div>  
+  )
 };
 
-export default ResultBoard;
+export default ResultsBoard;

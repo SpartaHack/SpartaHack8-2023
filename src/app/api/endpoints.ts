@@ -344,3 +344,25 @@ export const getPortalLink = async (userId: string) => {
     console.log(err);
   }
 };
+
+
+//SEARCH
+export const searchAll = async (
+  page: number,
+  pageSize: number,
+  query: string,
+  userId: string
+) => {
+  const data = {
+    page: page,
+    page_size: pageSize,
+    query: query,
+    user_id: userId
+  }
+  try {
+    const response = await axios.post(`${API_URL}/search`, data);
+    return response;
+  } catch (err) {
+    console.log(err)
+  }
+}
