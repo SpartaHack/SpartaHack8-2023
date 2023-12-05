@@ -10,8 +10,10 @@ import { useUserStore } from "@/context/user-context";
 import { deleteSpace, getHistory, getSpace } from "@/app/api/endpoints";
 import { toast } from "sonner";
 import { useContentStore } from "@/context/content-store";
+import { useRouter } from "next/navigation";
 
 const Spaces = () => {
+  const router = useRouter();
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
   const userId = useStore(useUserStore, (state) => state.userId);
   const { deleteSpaceFromState } = useSpaceStore();
@@ -36,9 +38,11 @@ const Spaces = () => {
     if (type === "space") {
       const contents = await getSpace(userId!, spaceId!);
       setContents(contents?.data);
+      router.push(`/space?s=${spaceId}`)
     } else {
       const contents = await getHistory(userId!);
       setContents(contents!.data);
+      router.push('/')
     }
   };
 

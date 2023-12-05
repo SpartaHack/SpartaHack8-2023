@@ -1,21 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ContentCard from "./content-card";
-import SpaceChatBase from "./space-chat-base";
 import { useContentStore } from "@/context/content-store";
-import { Content, History } from "../../../types";
+import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
 import SpaceHeader from "@/ui/header/space-header";
 
 const Dashboard = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
-  const [spaceId, setSpaceId] = useState(null);
-
-  useEffect(() => {
-    if (contents && contents.space) {
-      setSpaceId(contents.space._id);
-    }
-  }, [contents]);
 
   return (
     <div className="flex-grow">
@@ -24,16 +16,7 @@ const Dashboard = () => {
         <div className="grid gap-5 md:gap-10 lg:gap-15 2xl:grid-cols-4 md:grid-cols-3 md:w-full justify-center">
           {contents &&
             (contents.space
-              ? contents.contents.map((content: Content, key: number) => (
-                  <ContentCard
-                    spaceId={spaceId!}
-                    key={key}
-                    type={content.type}
-                    contentID={content.content_id}
-                    title={content.title}
-                    thumbnail_url={content.thumbnail_url}
-                  />
-                ))
+              ? <></>
               : contents.map((content: History, key: number) => (
                   <ContentCard
                     key={key}
@@ -44,9 +27,6 @@ const Dashboard = () => {
                     thumbnail_url={content.content.thumbnail_url}
                   />
                 )))}
-        </div>
-        <div className="fixed z-2 bottom-0 right-0 drop-shadow-lg lg:mr-10 lg:mb-10 mr-5 mb-5">
-          <SpaceChatBase />
         </div>
       </main>
     </div>

@@ -6,12 +6,14 @@ import CustomModal from "@/helpers/custom-modal";
 import CustomTextInput from "@/helpers/custom-text-input";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const AddSpace = () => {
+  const router = useRouter();
   const [spaceName, setSpaceName] = useState("");
   const userId = useStore(useUserStore, (state) => state.userId);
-  const { spaces, addSpaceToState } = useSpaceStore();
+  const { addSpaceToState } = useSpaceStore();
   const { setContents } = useContentStore();
 
   const handleSpaceCreation = async () => {
@@ -20,6 +22,7 @@ const AddSpace = () => {
       addSpaceToState(response.data);
       const goToSpace = await getSpace(userId!, response.data._id);
       setContents(goToSpace?.data);
+      router.push(`/space?s=${response.data._id}`)
     }
   };
 
