@@ -40,8 +40,6 @@ const Spaces = () => {
       setContents(contents?.data);
       router.push(`/space?s=${spaceId}`);
     } else {
-      const contents = await getHistory(userId!);
-      setContents(contents!.data);
       router.push("/");
     }
   };

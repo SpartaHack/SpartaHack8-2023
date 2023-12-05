@@ -1,13 +1,25 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import ContentCard from "./content-card";
 import { useContentStore } from "@/context/content-store";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
 import SpaceHeader from "@/ui/header/space-header";
+import { getHistory } from "@/app/api/endpoints";
+import { auth } from "../../../db/firebase";
 
 const Dashboard = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
+  const {setContents} = useContentStore();
+
+  useEffect(() => {
+    const fetchHistory = async () => {
+      const response = await getHistory(auth.currentUser?.uid!)
+      setContents(response?.data)
+    }
+  
+    fetchHistory()
+  }, [])
 
   return (
     <div className="flex-grow">

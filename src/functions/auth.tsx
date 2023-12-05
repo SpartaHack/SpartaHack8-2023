@@ -12,7 +12,6 @@ import { FirebaseError } from "firebase/app";
 import { toast } from "sonner";
 import { handleFirebaseError, setUserLocalStorage } from "../../utils";
 import {
-  getHistory,
   getUserSpaces,
   userSignIn,
   userSignUp,
@@ -46,8 +45,6 @@ export const useSignInEmail = () => {
           setUserData(response.data);
           const spaces = await getUserSpaces(user.uid);
           setSpaces(spaces?.data);
-          const contents = await getHistory(user.uid);
-          setContents(contents?.data);
           toast.success("Successfully signed in");
           setSignInStatus("/");
         } else {
@@ -112,8 +109,6 @@ export const useAuthGoogleSignIn = () => {
         setUserData(response.data);
         const spaces = await getUserSpaces(user.uid);
         setSpaces(spaces?.data);
-        const contents = await getHistory(user.uid);
-        setContents(contents?.data);
         toast.success("Successfully signed in with Google");
         setSignInStatus("/");
       } else {
@@ -215,8 +210,6 @@ export const useHandleSignUpFinal = () => {
         setUserData(response!.data);
         const spaces = await getUserSpaces(userId);
         setSpaces(spaces?.data);
-        const contents = await getHistory(userId);
-        setContents(contents?.data);
         setSignUpFinalStatus("/");
       } else {
         toast.error("Sign up failed, please sign up");
