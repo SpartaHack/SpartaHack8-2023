@@ -8,17 +8,17 @@ const Streaks = () => {
   const data = [
     {
       icon: "akar-icons:fire",
-      value: userData?.user_profile.streak,
+      value: userData?.user_profile.streak!,
       label: "Max Streak",
     },
     {
       icon: "heroicons:sparkles",
-      value: userData?.user_profile.content_added,
+      value: userData?.user_profile.content_added!,
       label: "Contents Created",
     },
     {
       icon: "ph:person-simple-run",
-      value: userData?.user_profile.streak,
+      value: userData?.user_profile.streak!,
       label: "Total Active Days",
     },
   ];
