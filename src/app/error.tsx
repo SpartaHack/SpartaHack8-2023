@@ -20,14 +20,11 @@ export default function Error({
 
   return (
     <div className="h-screen w-full flex flex-col justify-center items-center">
-       <Image
-              src="errorIcon.svg"
-              alt="YouLearn"
-              width={300}
-              height={300}
-        />
+      <Image src="errorIcon.svg" alt="YouLearn" width={300} height={300} />
       <span className="text-4xl font-sans font-bold mb-4 ">404 Error</span>
-      <span className="text-xl font-sans font-semibold mb-4 ">Sorry, error has occurred.</span>
+      <span className="text-xl font-sans font-semibold mb-4 ">
+        Sorry, error has occurred.
+      </span>
       <CustomButton
         title="Back to home"
         btnType="button"

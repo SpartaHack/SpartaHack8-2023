@@ -37,28 +37,28 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-  | "xs"
-  | "sm"
-  | "md"
-  | "lg"
-  | "xl"
-  | "2xl"
-  | "3xl"
-  | "4xl"
-  | "5xl"
-  | "full";
+    | "xs"
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl"
+    | "2xl"
+    | "3xl"
+    | "4xl"
+    | "5xl"
+    | "full";
   contentTitle?: string;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-  | "center"
-  | "auto"
-  | "top"
-  | "top-center"
-  | "bottom"
-  | "bottom-center"
-  | undefined;
+    | "center"
+    | "auto"
+    | "top"
+    | "top-center"
+    | "bottom"
+    | "bottom-center"
+    | undefined;
   footer: boolean;
 };
 
@@ -77,10 +77,10 @@ export type ChatSubmitProps = {
 };
 
 export type ContentCardProps = {
-  contentAdd?: boolean,
+  contentAdd?: boolean;
   type: string;
-  contentID: string,
-  contentURL?: string,
+  contentID: string;
+  contentURL?: string;
   title: string;
   spaceId?: string;
   thumbnail_url: string;
