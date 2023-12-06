@@ -28,7 +28,7 @@ const BetaLogo = () => {
           popOver
           popOverTitle="Give Feedback"
           popOverClickEvent={() =>
-            router.push("https://www.youlearn.ai/feedbackApp")
+            router.push("/feedback")
           }
           popOverStyling="cursor-pointer"
         />

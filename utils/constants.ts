@@ -3,7 +3,7 @@ export const educationOptions = [
   { value: "Undergraduate University" },
   { value: "Graduate University (Masters, Doctoral, Professional, etc.)" },
   { value: "Post Doctorate" },
-  { value: "I'm not currently a student" },
+  { value: "I'm currently not a student" },
 ];
 
 export const PROMONTHLYPRICE = 10;
