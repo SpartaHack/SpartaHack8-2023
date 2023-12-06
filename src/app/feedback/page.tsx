@@ -41,10 +41,10 @@ const FeedbackPage = () => {
             </div>
             <div className="mb-4">
                 <CustomTextInput
-                    value={name}
+                    value={message}
                     type="message"
                     label="Message"
-                    isInvalid={name === ""}
+                    isInvalid={message === ""}
                     styling="mb-4 mt-8 bg-transparent w-full mr-1"
                     eventChange={(e) =>setMessage(e.target.value)}
                 />
