@@ -15,14 +15,14 @@ const NoSpaceContent = () => {
             </h1>
             <Icon
               icon="fluent:arrow-sprint-20-filled"
-              className="w-8 h-8 font-black hidden sm:block"
+              className="w-8 h-8 font-black md:hidden block"
               style={{ transform: "rotate(-30deg)" }}
             />
           </div>
-          <h2 className="font-sans mt-4 text-neutral-500 text-center hidden sm:block">
+          <h2 className="font-sans mt-4 text-neutral-500 text-center md:hidden block">
             Learn twice as fast and personalize with YouLearn. <br/> Avoid the tedious convention of just reading and watching.
           </h2>
-          <h2 className="font-sans mt-4 text-neutral-500 text-center text-wrap px-8 block sm:hidden">
+          <h2 className="font-sans mt-4 text-neutral-500 text-center text-wrap px-8 md:block hidden">
             Learn twice as fast and personalize with YouLearn. Avoid the tedious convention of just reading and watching.
           </h2>
         </div>
