@@ -4,7 +4,7 @@ import CustomTextInput from "@/helpers/custom-text-input";
 import { CustomButton } from "@/helpers/custom-btn";
 import { toast } from 'sonner';
 
-const Feedback = () => {
+const Form = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
@@ -29,8 +29,6 @@ const Feedback = () => {
 
   return (
     <>
-            <div className="w-full sm:w-4/5 flex-col p-8 space-y-4 max-w-lg items-center justify-center">
-            <h1 className="text-4xl font-bold mb-6 text-center">Share your feedback</h1>
             <form className="container mx-auto" onSubmit={handleSubmit}>
             <div className="flex flex-row">
                 <CustomTextInput
@@ -66,12 +64,8 @@ const Feedback = () => {
                 btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mb-8"
             />
             </form>
-            <h1 className="text-center">
-                We greatly appreciate your feedback!
-            </h1>
-        </div>
     </>
   )
 }
 
-export default Feedback
+export default Form
