@@ -11,9 +11,7 @@ const Footer = () => {
 
       <div className="flex flex-grow justify-center md:justify-end">
         <div className="text-sm flex items-center space-x-3">
-          <Link href="/feedback">
-            Give Feedback
-          </Link>
+          <Link href="/feedback">Give Feedback</Link>
           <Link href="/contact" className="hidden sm:block">
             Contact Us
           </Link>

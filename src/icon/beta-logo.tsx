@@ -27,9 +27,7 @@ const BetaLogo = () => {
           btnStyling="text-xs bg-transparent border-2 dark:border-secondary dark:text-secondary border-black"
           popOver
           popOverTitle="Give Feedback"
-          popOverClickEvent={() =>
-            router.push("/feedback")
-          }
+          popOverClickEvent={() => router.push("/feedback")}
           popOverStyling="cursor-pointer"
         />
       </div>

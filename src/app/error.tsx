@@ -12,8 +12,20 @@ export default function Error({}: { error: Error & { digest?: string } }) {
 
   return (
     <div className="h-screen w-full flex flex-col justify-center items-center">
-      <Image className="dark:hidden" src="errorIcon.svg" alt="errorIcon" width={300} height={300} />
-      <Image className="hidden dark:block" src="errorIconDark.svg" alt="errorIconDark" width={300} height={300} />
+      <Image
+        className="dark:hidden"
+        src="errorIcon.svg"
+        alt="errorIcon"
+        width={300}
+        height={300}
+      />
+      <Image
+        className="hidden dark:block"
+        src="errorIconDark.svg"
+        alt="errorIconDark"
+        width={300}
+        height={300}
+      />
       <span className="text-4xl font-sans font-bold mb-4 ">404 Error</span>
       <span className="text-xl font-sans font-semibold mb-4 ">
         Sorry, error has occurred.
