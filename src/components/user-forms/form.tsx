@@ -3,6 +3,7 @@ import React, { FormEvent, useState } from "react";
 import CustomTextInput from "@/helpers/custom-text-input";
 import { CustomButton } from "@/helpers/custom-btn";
 import { toast } from "sonner";
+import CustomTextArea from "@/helpers/custom-text-area";
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -48,24 +49,22 @@ const Form = () => {
             type="email"
             label="Email"
             isInvalid={isInvalid(email, "email")}
-            styling="mb-2 mt-8 bg-transparent w-1/2 ml-2"
+            styling="mt-8 bg-transparent w-1/2 ml-2"
             eventChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className="mb-4">
-          <CustomTextInput
+          <CustomTextArea
             value={message}
             type="message"
             label="Message"
             isInvalid={isInvalid(message, "message")}
-            styling="mb-4 mt-8 bg-transparent w-full mr-1"
+            styling="mb-4 bg-transparent w-full mr-1"
             eventChange={(e) => setMessage(e.target.value)}
           />
-        </div>
         <CustomButton
           title="Send"
           btnType="submit"
-          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mb-8"
+          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mb-4"
         />
       </form>
     </>
