@@ -15,7 +15,7 @@ const NoSpaceContent = () => {
             </h1>
             <Icon
               icon="fluent:arrow-sprint-20-filled"
-              className="w-8 h-8 font-black md:hidden block"
+              className="w-8 h-8 font-black hidden md:block"
               style={{ transform: "rotate(-30deg)" }}
             />
           </div>
