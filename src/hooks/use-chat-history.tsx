@@ -40,7 +40,7 @@ const useChatHistory = () => {
 
       fetchChatHistory();
     }
-  }, [contents?.space._id]);
+  }, [contents]);
 
   return historyChat;
 };

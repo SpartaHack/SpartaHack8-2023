@@ -19,7 +19,7 @@ const Dashboard = () => {
     };
 
     fetchHistory();
-  }, []);
+  }, [setContents]);
 
   return (
     <div className="flex-grow">

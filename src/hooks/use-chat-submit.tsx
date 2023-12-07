@@ -31,7 +31,7 @@ const useChatSubmit = (
         ? [...welcomeChat, ...initialChatLog]
         : [...initialChatLog],
     );
-  }, [initialChatLog]);
+  }, [initialChatLog, welcomeChat]);
 
   const [isLoading, setIsLoading] = useState(false);
   const { updateLearnContent } = useLearnStore();
