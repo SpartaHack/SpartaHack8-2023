@@ -359,7 +359,7 @@ export const searchAll = async (
     user_id: userId,
   };
   try {
-    const response = await axios.post(`${API_URL}/search`, data);
+    const response = await axios.post(`${API_URL}/search/`, data);
     return response;
   } catch (err) {
     console.log(err);
