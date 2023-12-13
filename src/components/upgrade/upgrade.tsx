@@ -13,6 +13,11 @@ import { PROYEARLYPRICE } from "../../../utils/constants";
 const Upgrade = () => {
   const router = useRouter();
 
+  const handleHomeClick = () => {
+    localStorage.setItem('historyLoading', 'true')
+    router.push("/")
+  }
+
   return (
     <>
       <div className="mt-[50px] dark:bg-neutral-900 lg:mt-12 w-full flex items-center justify-center text-center">
@@ -41,7 +46,7 @@ const Upgrade = () => {
           planBenefits={freePlanBenefits}
           buttonText={"Get Started"}
           buttonStyle=" bg-white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full border-1 border-black dark:border-white"
-          handleClick={() => router.push("/")}
+          handleClick={handleHomeClick}
         />
 
         <PriceCard

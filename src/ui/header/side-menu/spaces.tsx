@@ -24,6 +24,7 @@ const Spaces = () => {
     if (response) {
       deleteSpaceFromState(spaceId);
       router.push("/");
+      localStorage.setItem('historyLoading', 'true')
       toast.success("Space deleted successfully.");
     } else {
       toast.error("Could not delete space.");
@@ -39,6 +40,7 @@ const Spaces = () => {
       router.push(`/space?s=${spaceId}`);
       setContents(contents?.data);
     } else {
+      localStorage.setItem('historyLoading', 'true')
       router.push("/");
     }
   };
