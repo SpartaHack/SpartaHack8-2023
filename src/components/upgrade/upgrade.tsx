@@ -14,9 +14,9 @@ const Upgrade = () => {
   const router = useRouter();
 
   const handleHomeClick = () => {
-    localStorage.setItem('historyLoading', 'true')
-    router.push("/")
-  }
+    localStorage.setItem("historyLoading", "true");
+    router.push("/");
+  };
 
   return (
     <>

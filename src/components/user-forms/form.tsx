@@ -53,14 +53,14 @@ const Form = () => {
             eventChange={(e) => setEmail(e.target.value)}
           />
         </div>
-          <CustomTextArea
-            value={message}
-            type="message"
-            label="Message"
-            isInvalid={isInvalid(message, "message")}
-            styling="mb-4 bg-transparent w-full mr-1"
-            eventChange={(e) => setMessage(e.target.value)}
-          />
+        <CustomTextArea
+          value={message}
+          type="message"
+          label="Message"
+          isInvalid={isInvalid(message, "message")}
+          styling="mb-4 bg-transparent w-full mr-1"
+          eventChange={(e) => setMessage(e.target.value)}
+        />
         <CustomButton
           title="Send"
           btnType="submit"

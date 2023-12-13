@@ -1,29 +1,29 @@
-import React from 'react'
-import { CustomTextInputProps } from '../../types'
-import { Textarea } from '@nextui-org/react'
+import React from "react";
+import { CustomTextInputProps } from "../../types";
+import { Textarea } from "@nextui-org/react";
 
 const CustomTextArea = ({
-    value,
-    type,
-    label,
-    isInvalid,
-    eventChange,
-    styling,
-  }: CustomTextInputProps) => {
+  value,
+  type,
+  label,
+  isInvalid,
+  eventChange,
+  styling,
+}: CustomTextInputProps) => {
   return (
     <Textarea
-        autoFocus
-        minRows={10}
-        size='lg'
-        value={value as string}
-        type={type}
-        label={label}
-        variant="bordered"
-        color={isInvalid ? "danger" : "success"}
-        onChange={eventChange}
-        className={`${styling}` || "max-w-xs"}
+      autoFocus
+      minRows={10}
+      size="lg"
+      value={value as string}
+      type={type}
+      label={label}
+      variant="bordered"
+      color={isInvalid ? "danger" : "success"}
+      onChange={eventChange}
+      className={`${styling}` || "max-w-xs"}
     />
-  )
-}
+  );
+};
 
-export default CustomTextArea
+export default CustomTextArea;

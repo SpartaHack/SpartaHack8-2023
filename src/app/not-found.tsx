@@ -10,7 +10,7 @@ export default function NotFound({}: {
   const router = useRouter();
 
   const handleReset = () => {
-    localStorage.setItem('historyLoading', 'true')
+    localStorage.setItem("historyLoading", "true");
     router.push("/");
   };
 

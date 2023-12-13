@@ -7,7 +7,7 @@ export default function Error({}: { error: Error & { digest?: string } }) {
   const router = useRouter();
 
   const handleReset = () => {
-    localStorage.setItem('historyLoading', 'true')
+    localStorage.setItem("historyLoading", "true");
     router.push("/");
   };
 
