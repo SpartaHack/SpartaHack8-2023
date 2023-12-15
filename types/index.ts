@@ -391,4 +391,15 @@ export type SearchType = {
   content_type: string;
   thumbnail_url: string;
   content_url: string;
-};
+}
+    price: string;
+}
+
+export type ChatQuestionProps = {
+    questions: string[],
+    chatQuestionClick: (question: string) => void;
+}
+
+export type OrderSummaryProps = {
+    type: string
+}
