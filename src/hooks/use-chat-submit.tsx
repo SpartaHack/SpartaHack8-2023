@@ -20,18 +20,10 @@ const useChatSubmit = (
     },
   ];
   const [chatLog, setChatLog] = useState<MessageType[]>(
-    initialChatLog && initialChatLog.length === 0
+    initialChatLog && initialChatLog.length == 0
       ? [...welcomeChat, ...initialChatLog]
       : [...initialChatLog],
   );
-
-  useEffect(() => {
-    setChatLog(
-      initialChatLog && initialChatLog.length == 0
-        ? [...welcomeChat, ...initialChatLog]
-        : [...initialChatLog],
-    );
-  }, [initialChatLog, welcomeChat]);
 
   const [isLoading, setIsLoading] = useState(false);
   const { updateLearnContent } = useLearnStore();
@@ -115,8 +107,6 @@ const useChatSubmit = (
       },
     });
   };
-
-  console.log(chatLog);
 
   return { handleChatSubmit, chatLog, isLoading };
 };
