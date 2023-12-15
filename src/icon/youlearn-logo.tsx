@@ -1,41 +1,46 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { YouLearnLogoProps } from "../../types";
+import { useRouter } from "next/navigation";
 
 const YouLearnLogo = ({ size, tier, height, width }: YouLearnLogoProps) => {
+  const router = useRouter();
+  const returnHome = () => {
+    localStorage.setItem("historyLoading", "true");
+    router.push('/')
+  }
   return (
     <div className="flex flex-row justify-between">
       {size === "lg" && (
         <>
-          <Link href="/" className="dark:hidden">
             <Image
               src="youlearn.svg"
               alt="YouLearn"
+              className="dark:hidden cursor-pointer"
               width={width ? width : 110}
               height={height ? height : 110}
+              onClick={returnHome}
             />
-          </Link>
-          <Link href="/" className="dark:block hidden">
             <Image
               src="youlearnDark.svg"
               alt="YouLearn"
+              className="dark:block cursor-pointer hidden"
               width={width ? width : 110}
               height={height ? height : 110}
+              onClick={returnHome}
             />
-          </Link>
         </>
       )}
       {size === "sm" && (
-        <Link href="/">
           <Image
             src="youlearnMedia.svg"
             alt="YouLearnMedia"
+            className="cursor-pointer"
             width={width ? width : 35}
             height={height ? height : 35}
+            onClick={returnHome}
           />
-        </Link>
       )}
     </div>
   );
