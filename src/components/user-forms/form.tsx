@@ -58,8 +58,9 @@ const Form = () => {
           type="message"
           label="Message"
           isInvalid={isInvalid(message, "message")}
-          styling="mb-4 bg-transparent w-full mr-1"
+          styling="mb-2 bg-transparent w-full mr-1"
           eventChange={(e) => setMessage(e.target.value)}
+          description={message.length.toString() + "/255"}
         />
         <CustomButton
           title="Send"
