@@ -37,28 +37,28 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   contentTitle?: string;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -345,10 +345,6 @@ export type ContentStore = {
   logout: () => void;
 };
 
-export type OrderSummaryProps = {
-  type: string;
-};
-
 export type ChatQuestionProps = {
   questions: string[];
   chatQuestionClick: (question: string) => void;
@@ -392,14 +388,7 @@ export type SearchType = {
   thumbnail_url: string;
   content_url: string;
 }
-    price: string;
-}
-
-export type ChatQuestionProps = {
-    questions: string[],
-    chatQuestionClick: (question: string) => void;
-}
 
 export type OrderSummaryProps = {
-    type: string
+  type: string
 }
