@@ -2,15 +2,19 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import SpaceChatMain from "./space-chat-main";
+import Image from "next/image";
 import { Fragment, useState } from "react";
 
 const SpaceChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Icon
-        icon="fluent:chat-sparkle-16-regular"
-        className="rounded-full text-[55px] p-2 dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary border-absolute_black dark:border-secondary border-2 hover:scale-110 backdrop duration-100 cursor-pointer"
+      <Image
+        src="/spaceIcon.png"
+        alt="spaceIcon"
+        width={55}
+        height={55}
+        className="rounded-full text-[55px] dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary hover:scale-110 backdrop duration-100 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (
