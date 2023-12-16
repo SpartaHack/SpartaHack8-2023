@@ -24,24 +24,26 @@ const Summary = () => {
         hideScrollBar
         className="flex-grow overflow-hidden overflow-y-auto rounded-xl"
       >
-        <div className="flex-grow leading-7">
-          {learnContent?.generations.summary}
-        </div>
-        <div className="flex justify-end p-2 cursor-pointer">
-          {copiedStateTyped[0] ? (
-            <Icon
-              icon="charm:tick"
-              className="text-xl text-tertiary dark:text-secondary"
-            />
-          ) : (
-            <Icon
-              icon="ci:copy"
-              onClick={() =>
-                copyToClipboard(learnContent?.generations.summary!, 0)
-              }
-              className="text-xl cursor-pointer"
-            />
-          )}
+        <div className="bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-xl p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full w-fit">
+          <div className="flex-grow leading-7">
+            {learnContent?.generations.summary}
+          </div>
+          <div className="flex justify-end p-2 cursor-pointer">
+            {copiedStateTyped[0] ? (
+              <Icon
+                icon="charm:tick"
+                className="text-xl text-tertiary dark:text-secondary"
+              />
+            ) : (
+              <Icon
+                icon="ci:copy"
+                onClick={() =>
+                  copyToClipboard(learnContent?.generations.summary!, 0)
+                }
+                className="text-xl cursor-pointer"
+              />
+            )}
+          </div>
         </div>
       </ScrollShadow>
     </div>
