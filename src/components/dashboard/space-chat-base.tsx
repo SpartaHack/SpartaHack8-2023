@@ -1,12 +1,15 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import SpaceChatMain from "./space-chat-main";
 import Image from "next/image";
 import { Fragment, useState } from "react";
 
 const SpaceChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => {
+    localStorage.setItem('chatHistoryLoading', 'true') 
+    setIsOpen(!isOpen)
+  }
   return (
     <>
       <Image
@@ -15,7 +18,7 @@ const SpaceChatBase = () => {
         width={55}
         height={55}
         className="rounded-full text-[55px] dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary hover:scale-110 backdrop duration-100 cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleOpen}
       />
       {isOpen && (
         <Transition appear show={isOpen} as={Fragment}>

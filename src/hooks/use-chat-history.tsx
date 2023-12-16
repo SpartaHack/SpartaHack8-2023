@@ -12,7 +12,8 @@ const useChatHistory = () => {
   const [historyChat, setHistoryChat] = useState<MessageType[]>([]);
 
   useEffect(() => {
-    if (contents) {
+    const chatHistoryLoading = localStorage.getItem('chatHistoryLoading')
+    if (contents && chatHistoryLoading === 'true') {
       const fetchChatHistory = async () => {
         const response = await chatHistory(
           auth.currentUser?.uid!,
@@ -20,6 +21,7 @@ const useChatHistory = () => {
           [],
           [contents?.space._id!],
         );
+        localStorage.setItem('chatHistoryLoading', 'false') 
         let fetchedHistoryChat: MessageType[] = convertChatHistoryToChatLog(
           response?.data,
         );
