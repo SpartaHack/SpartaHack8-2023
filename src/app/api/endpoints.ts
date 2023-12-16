@@ -260,7 +260,7 @@ export const generateContentQuestions = async (
 
   try {
     const response = await axios.post(
-      `${API_URL}/generation/content/questions`,
+      `${API_URL}/generation/content/chat_prompts`,
       data,
     );
     return response;
