@@ -17,8 +17,16 @@ const SpaceChatBase = () => {
         alt="spaceIcon"
         width={55}
         height={55}
-        className="rounded-full text-[55px] dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary hover:scale-110 backdrop duration-100 cursor-pointer"
-        onClick={handleOpen}
+        className="dark:hidden block rounded-full text-[55px] dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary hover:scale-110 backdrop duration-100 cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+      <Image
+        src="/spaceIconDark.png"
+        alt="spaceIconDark"
+        width={55}
+        height={55}
+        className="dark:block hidden rounded-full text-[55px] dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary hover:scale-110 backdrop duration-100 cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (
         <Transition appear show={isOpen} as={Fragment}>
