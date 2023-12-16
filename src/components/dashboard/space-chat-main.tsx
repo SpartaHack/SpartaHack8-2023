@@ -27,7 +27,6 @@ const SpaceChatMain = () => {
     auth.currentUser?.uid!,
     [],
     [contents?.space._id],
-    true,
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];
