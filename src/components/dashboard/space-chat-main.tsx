@@ -13,6 +13,7 @@ import useStore from "@/hooks/use-store";
 import { useContentStore } from "@/context/content-store";
 import useFetchChatHistory from "@/hooks/use-chat-history";
 import useAutoScroll from "@/hooks/use-auto-scroll";
+import { space } from "postcss/lib/list";
 
 const SpaceChatMain = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
@@ -27,6 +28,7 @@ const SpaceChatMain = () => {
     auth.currentUser?.uid!,
     [],
     [contents?.space._id],
+    true,
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];

@@ -11,6 +11,7 @@ const useChatSubmit = (
   userId: string,
   contentId: string[],
   spaceId: string[],
+  space?: boolean,
 ) => {
   const welcomeChat = [
     {
@@ -24,6 +25,17 @@ const useChatSubmit = (
       ? [...welcomeChat, ...initialChatLog]
       : [...initialChatLog],
   );
+
+  {
+    space &&
+      useEffect(() => {
+        setChatLog(
+          initialChatLog && initialChatLog.length == 0
+            ? [...welcomeChat, ...initialChatLog]
+            : [...initialChatLog],
+        );
+      }, [initialChatLog, welcomeChat]);
+  }
 
   const [isLoading, setIsLoading] = useState(false);
   const { updateLearnContent } = useLearnStore();
