@@ -100,9 +100,11 @@ export const menuDropDown = (
                 <span className="ml-6 mt-0.6">Delete</span>
               </div>
             }
+            btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
+            btnStyling2="bg-danger text-white border dark:border-danger dark:bg-danger dark:text-white"
             contentMain={
               <div className="mb-5">
-                Are you sure you want to delete this item?
+                Are you sure you want to delete this content?
               </div>
             }
             actionTitle="Delete"

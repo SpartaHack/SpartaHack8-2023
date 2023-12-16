@@ -73,13 +73,15 @@ const Spaces = () => {
                     className="group-hover:opacity-50 ml-7 w-6 h-6 opacity-0"
                   />
                 }
+                btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
+                btnStyling2="bg-danger text-white border dark:border-danger dark:bg-danger dark:text-white"
                 contentMain={
                   <div className="mb-5">
-                    Are you sure you want to remove this item?
+                    Are you sure you want to remove this space?
                   </div>
                 }
                 footer
-                actionTitle="Confirm Delete"
+                actionTitle="Delete"
                 actionEvent={() => handleDelete(space._id)}
               />
             </div>

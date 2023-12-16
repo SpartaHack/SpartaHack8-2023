@@ -41,7 +41,9 @@ const AddSpace = () => {
             </span>
           </div>
         }
-        contentTitle="Create a space"
+        contentTitle="Add space"
+        btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
+        btnStyling2="bg-black text-white border dark:bg-white dark:text-black"
         contentMain={
           <>
             <CustomTextInput
@@ -56,7 +58,7 @@ const AddSpace = () => {
             />
           </>
         }
-        actionTitle="Create New Space"
+        actionTitle="Add Space"
         actionEvent={() => handleSpaceCreation()}
       />
     </div>

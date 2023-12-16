@@ -14,6 +14,8 @@ import { CustomModalProps } from "../../types";
 const CustomModal = ({
   title,
   size,
+  btnStyling1,
+  btnStyling2,
   contentTitle,
   contentMain,
   actionTitle,
@@ -53,13 +55,13 @@ const CustomModal = ({
                     title="Close"
                     btnType="button"
                     clickEvent={onClose}
-                    btnStyling="hover:bg-danger"
+                    btnStyling={btnStyling1}
                   />
                   <CustomButton
                     title={actionTitle!}
                     btnType="submit"
                     clickEvent={handleClose}
-                    btnStyling="hover:bg-secondary"
+                    btnStyling={btnStyling2}
                   />
                 </ModalFooter>
               )}

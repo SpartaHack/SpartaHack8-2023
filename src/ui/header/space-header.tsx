@@ -132,6 +132,8 @@ const SpaceHeader = () => {
                     <span className="text-sm">Add content</span>
                   </div>
                 }
+                btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
+                btnStyling2="bg-black text-white border dark:bg-white dark:text-black"
                 actionEvent={handleAdd}
                 contentTitle="Add content"
                 contentMain={
@@ -144,7 +146,7 @@ const SpaceHeader = () => {
                   />
                 }
                 footer
-                actionTitle="Add"
+                actionTitle="Add Content"
               />
             </div>
           )}

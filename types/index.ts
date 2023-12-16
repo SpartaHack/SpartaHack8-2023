@@ -47,6 +47,8 @@ export type CustomModalProps = {
     | "4xl"
     | "5xl"
     | "full";
+  btnStyling1?: string;
+  btnStyling2?: string;
   contentTitle?: string;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
