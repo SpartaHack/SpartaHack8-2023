@@ -1,5 +1,5 @@
 import { ScrollShadow } from "@nextui-org/react";
-import React, { useEffect } from "react";
+import React from "react";
 import ChatSubmit from "../learn/tabs/chat-submit";
 import useCopyToClipboard from "@/hooks/use-copy-clipboard";
 import useChatSubmit from "@/hooks/use-chat-submit";
@@ -13,7 +13,6 @@ import useStore from "@/hooks/use-store";
 import { useContentStore } from "@/context/content-store";
 import useFetchChatHistory from "@/hooks/use-chat-history";
 import useAutoScroll from "@/hooks/use-auto-scroll";
-import { space } from "postcss/lib/list";
 
 const SpaceChatMain = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
