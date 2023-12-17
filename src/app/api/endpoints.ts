@@ -170,12 +170,32 @@ export const addContent = async (
   };
 
   try {
-    const response = await axios.post(`${API_URL}/content/add`, data);
-    return response;
+    const response = await fetch(`${API_URL}/content/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.body) {
+      throw new Error("No response body");
+    }
+
+    const reader = response.body.getReader();
+    return (async function* () {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        let str = new TextDecoder("utf-8").decode(value);
+        yield JSON.parse(str);
+      }
+    })();
   } catch (err) {
     console.log(err);
   }
 };
+
 
 export const deleteContent = async (
   userId: string,
