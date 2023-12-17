@@ -25,14 +25,14 @@ const SpaceHeader = () => {
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
-    setState: React.Dispatch<React.SetStateAction<string>>
+    setState: React.Dispatch<React.SetStateAction<string>>,
   ) => {
     setEditSpaceName(e.target.value);
   };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
-    setState: React.Dispatch<React.SetStateAction<string>>
+    setState: React.Dispatch<React.SetStateAction<string>>,
   ) => {
     setContentURL(e.target.value);
   };
@@ -53,7 +53,7 @@ const SpaceHeader = () => {
       auth.currentUser?.uid!,
       contents.space._id,
       editSpaceName,
-      spacePrivacy ? "private" : "public"
+      spacePrivacy ? "private" : "public",
     );
     if (response) {
       useSpaceStore.getState().updateSpaceData(updatedData);
@@ -69,7 +69,7 @@ const SpaceHeader = () => {
     const contentStream = await addContent(
       auth.currentUser?.uid!,
       contents.space._id,
-      contentURL
+      contentURL,
     );
 
     if (contentStream) {

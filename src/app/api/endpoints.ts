@@ -196,7 +196,6 @@ export const addContent = async (
   }
 };
 
-
 export const deleteContent = async (
   userId: string,
   spaceId: string,
