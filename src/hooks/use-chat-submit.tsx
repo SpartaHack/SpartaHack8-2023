@@ -26,8 +26,8 @@ const useChatSubmit = (
   );
 
   useEffect(() => {
-    setChatLog(initialChatLog &&
-      initialChatLog.length == 0
+    setChatLog(
+      initialChatLog && initialChatLog.length == 0
         ? [...welcomeChat, ...initialChatLog]
         : [...initialChatLog],
     );

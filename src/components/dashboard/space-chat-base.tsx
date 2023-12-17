@@ -7,12 +7,12 @@ import SpaceIcon from "@/icon/space-icon";
 const SpaceChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
-    localStorage.setItem('chatHistoryLoading', 'true') 
-    setIsOpen(!isOpen)
-  }
+    localStorage.setItem("chatHistoryLoading", "true");
+    setIsOpen(!isOpen);
+  };
   return (
     <>
-    <SpaceIcon clickEvent={handleOpen}/>
+      <SpaceIcon clickEvent={handleOpen} />
       {isOpen && (
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog
