@@ -25,6 +25,14 @@ const useChatSubmit = (
       : [...initialChatLog],
   );
 
+  useEffect(() => {
+    setChatLog(initialChatLog &&
+      initialChatLog.length == 0
+        ? [...welcomeChat, ...initialChatLog]
+        : [...initialChatLog],
+    );
+  }, [initialChatLog]);
+
   const [isLoading, setIsLoading] = useState(false);
   const { updateLearnContent } = useLearnStore();
 
