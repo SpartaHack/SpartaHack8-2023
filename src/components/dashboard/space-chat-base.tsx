@@ -1,8 +1,8 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
 import SpaceChatMain from "./space-chat-main";
-import Image from "next/image";
 import { Fragment, useState } from "react";
+import SpaceIcon from "@/icon/space-icon";
 
 const SpaceChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,22 +12,7 @@ const SpaceChatBase = () => {
   }
   return (
     <>
-      <Image
-        src="/spaceIcon.png"
-        alt="spaceIcon"
-        width={55}
-        height={55}
-        className="dark:hidden block rounded-full text-[55px] dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary hover:scale-110 backdrop duration-100 cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
-      />
-      <Image
-        src="/spaceIconDark.png"
-        alt="spaceIconDark"
-        width={55}
-        height={55}
-        className="dark:block hidden rounded-full text-[55px] dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary hover:scale-110 backdrop duration-100 cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
-      />
+    <SpaceIcon clickEvent={handleOpen}/>
       {isOpen && (
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog

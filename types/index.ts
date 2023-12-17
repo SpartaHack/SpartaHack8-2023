@@ -37,16 +37,16 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   btnStyling1?: string;
   btnStyling2?: string;
   contentTitle?: string;
@@ -54,13 +54,13 @@ export type CustomModalProps = {
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -394,3 +394,9 @@ export type SearchType = {
 export type OrderSummaryProps = {
   type: string;
 };
+
+export type SpaceIconProps = {
+  height?: number,
+  width?: number
+  clickEvent: () => void;
+}
