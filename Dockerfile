@@ -1,23 +1,22 @@
-# Use an official Node.js runtime as the base image
-FROM node:14
+FROM node:lts-alpine
 
-# Set the working directory in the container to /app
-WORKDIR /app
+ENV NODE_ENV production
+ENV NPM_CONFIG_LOGLEVEL warn
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+RUN mkdir /home/node/app/ && chown -R node:node /home/node/app
 
-# Install dependencies
-RUN npm install
+WORKDIR /home/node/app
 
-# Copy the rest of the application code to the container
-COPY . .
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 
-# Build the Next.js application
-RUN npm run build
+USER node
 
-# Expose port 3000
+RUN npm install --production
+
+COPY --chown=node:node .next .next
+COPY --chown=node:node public public
+
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+CMD npm start
