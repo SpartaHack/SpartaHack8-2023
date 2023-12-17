@@ -34,7 +34,11 @@ const SpaceChatMain = () => {
   chatLog = removeUndefinedFromSources(chatLog);
   const { removeQuestions } = useChatlogLength(chatLog);
   const chatContainerRef = useAutoScroll(chatLog);
-  const questions = useFetchQuestions(chatLog, auth.currentUser?.uid!, contents?.space._id);
+  const questions = useFetchQuestions(
+    chatLog,
+    auth.currentUser?.uid!,
+    contents?.space._id,
+  );
 
   return (
     <>
