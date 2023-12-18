@@ -70,4 +70,16 @@ jobs:
           --region $REGION \
           --image gcr.io/$PROJECT_ID/$REPO_NAME_BRANCH:$GITHUB_SHA \
           --platform "managed" \
+          --allow-unauthenticated \
           --quiet
+
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL_DEV }}
+          status: ${{ job.status }}
+          content: "${{ github.ref_name }} server status: ${{ job.status }}"
+          title: "YouLearn Frontend ${{ github.ref_name }} Server"
+          description: "Build and deploy to GitHub Pages"
+          url: "https://dev.youlearn.ai"
+          username: YouLearn Frontend
