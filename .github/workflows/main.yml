@@ -1,63 +1,59 @@
-name: Build & Publish
+name: youlearn-frontend build and deploy
 
 on:
   push:
     branches:
-      - "**" # all branches
-      - "!dependabot/**" # exclude dependbot branches
-  workflow_dispatch: # Manually run the workflow
+      - main
+
+env:
+  PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
+  REGION: us-east1
+  REPO_NAME: youlearn-frontend
+  NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
+  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}
+  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}
+  NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
+  NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+  NEXT_PUBLIC_AMPLITUDE_API_KEY: ${{ secrets.NEXT_PUBLIC_AMPLITUDE_API_KEY }}
+  NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
+  NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
 
 jobs:
-  next-build:
-    if: ${{ github.event_name == 'workflow_dispatch' }} # Run only if triggered manually
-    runs-on: ubuntu-latest
-    container: node:lts # Use node LTS container version, same as Dockerfile base image
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2 # Checkout the code
-      - run: npm ci # Install dependencies
-      - run: npm run build
-        env:
-          NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
-          NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
-          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
-          NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
-          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-          NEXT_PUBLIC_AMPLITUDE_API_KEY: ${{ secrets.NEXT_PUBLIC_AMPLITUDE_API_KEY }}
-          NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
-          NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
-      - name: Upload Next build # Upload the artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: |
-            .next
-            public
-          retention-days: 7 # artifact retention duration, can be up to 30 days
-  docker-push:
-    needs: next-build # Job depends on next-build(above) job
+  build-and-deploy:
+    name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Download next build # Download the above uploaded artifact
-        uses: actions/download-artifact@v2
+        uses: actions/checkout@v3
+
+      # Authenticate with Google Cloud
+      - id: "auth"
+        uses: "google-github-actions/auth@v0"
         with:
-          name: build
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
-      - name: Build and Push Docker Images
-        run: |
-          export CURRENT_BRANCH=${GITHUB_REF#refs/heads/}
-          export TAG=$([[ $CURRENT_BRANCH == "main" ]] && echo "latest" || echo $CURRENT_BRANCH)
-          export GITHUB_REF_IMAGE=ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA
-          export GITHUB_BRANCH_IMAGE=ghcr.io/$GITHUB_REPOSITORY:$TAG
-          docker build -t $GITHUB_REF_IMAGE -t $GITHUB_BRANCH_IMAGE .
-          echo "Pushing Image to GitHub Container Registry"
-          docker push $GITHUB_REF_IMAGE
-          docker push $GITHUB_BRANCH_IMAGE
+          credentials_json: "${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT }}"
+
+      # Setup gcloud CLI/SDK
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker
+
+      - name: Build and tag the docker image
+        run: |-
+          docker build . --tag gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA
+
+      - name: Push the image to the Google Container Registry (GCR)
+        run: |-
+          docker push gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA
+
+      - name: Deploy
+        run: |-
+          gcloud run deploy $REPO_NAME \
+          --region $REGION \
+          --image gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA \
+          --platform "managed" \
+          --quiet
