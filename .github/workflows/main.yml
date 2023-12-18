@@ -31,31 +31,13 @@ jobs:
 
       # Authenticate with Google Cloud
       - id: "auth"
-        uses: "google-github-actions/auth@v0"
+        uses: "google-github-actions/auth@v2"
         with:
           credentials_json: "${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT }}"
 
-      # Echo the value of each environment variable
-      - name: Echo Environment Variables
-        run: |
-          echo "PROJECT_ID: $PROJECT_ID"
-          echo "REGION: $REGION"
-          echo "REPO_NAME: $REPO_NAME"
-          echo "NEXT_PUBLIC_FIREBASE_API_KEY: $NEXT_PUBLIC_FIREBASE_API_KEY"
-          echo "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: $NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"
-          echo "NEXT_PUBLIC_FIREBASE_PROJECT_ID: $NEXT_PUBLIC_FIREBASE_PROJECT_ID"
-          echo "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: $NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET"
-          echo "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: $NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID"
-          echo "NEXT_PUBLIC_FIREBASE_APP_ID: $NEXT_PUBLIC_FIREBASE_APP_ID"
-          echo "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: $NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID"
-          echo "NEXT_PUBLIC_API_URL: $NEXT_PUBLIC_API_URL"
-          echo "NEXT_PUBLIC_AMPLITUDE_API_KEY: $NEXT_PUBLIC_AMPLITUDE_API_KEY"
-          echo "NEXT_PUBLIC_POSTHOG_HOST: $NEXT_PUBLIC_POSTHOG_HOST"
-          echo "NEXT_PUBLIC_POSTHOG_KEY: $NEXT_PUBLIC_POSTHOG_KEY"
-
       # Setup gcloud CLI/SDK
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0
+        uses: google-github-actions/setup-gcloud@v2
 
       - name: Authorize Docker push
         run: gcloud auth configure-docker
