@@ -19,7 +19,13 @@ jobs:
       # Environment variables
       - name: "Create env file"
         run: |
-          echo "${{ secrets.ENV_FILE }}" > .env.local
+          echo "${{ secrets.ENV_FILE }}" > .env
+
+      - uses: actions/upload-artifact@v3
+        name: Upload Artifact
+        with:
+          name: SecretsVariables
+          path: ".env"
 
       # Checkout the repo
       - name: Checkout
