@@ -26,6 +26,9 @@ jobs:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Display ENV
+        run: echo '${{ toJSON(github) }}'
+
       - name: Checkout
         uses: actions/checkout@v3
 
