@@ -27,7 +27,7 @@ const Upgrade = () => {
           </h1>
           <h1 className="mt-6 lg:mb-12 mb-10 text-center lg:text-base text-[12px] font-sans px-4">
             Saves hours a day watching videos and reading articles, just a
-            little investment to 10X your productivity.
+            little investment can 10x your productivity.
           </h1>
         </div>
       </div>
@@ -42,7 +42,7 @@ const Upgrade = () => {
               </span>
             </>
           }
-          subTitle="Start your learning journey"
+          subTitle="Start your learning journey here."
           planBenefits={freePlanBenefits}
           buttonText={"Get Started"}
           buttonStyle=" bg-white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full border-1 border-black dark:border-white"
@@ -57,12 +57,12 @@ const Upgrade = () => {
               <span className="font-light lg:text-[18px] text-[15px]">
                 &nbsp; / month
               </span>
-              <span className="text-[11px] ml-2 font-light">
+              <span className="text-[11px] ml-2 font-light font-sans">
                 Billed annually*
               </span>
             </>
           }
-          subTitle="Everything in free plan, plus unlimited features"
+          subTitle="Elevate your learning journey to the highest level."
           planBenefits={premiumMonthlyPlanBenefits}
           buttonText={
             <CustomModal

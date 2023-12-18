@@ -10,7 +10,7 @@ export const TabContent = ({ price }: TabContentProps) => (
       </>
     </h1>
     <h2 className="text-[15px] mb-5 lg:mb-2">
-      Everything in free plan, plus unlimited features.
+      Elevate your learning journey to the highest level.
     </h2>
   </>
 );
