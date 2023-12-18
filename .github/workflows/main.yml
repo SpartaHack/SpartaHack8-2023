@@ -9,7 +9,9 @@ on:
 env:
   PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
   REGION: us-east1
-  REPO_NAME: youlearn-frontend
+  REPO_NAME_BRANCH: youlearn-frontend
+  REPO_NAME_BRANCH_BRANCH: youlearn-frontend-${{ github.ref_slug }}
+
   NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
   NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
@@ -56,15 +58,9 @@ jobs:
       - name: Authorize Docker push
         run: gcloud auth configure-docker
 
-      - name: Prepare environment variables
-        run: |
-          BRANCH_NAME=$(echo ${GITHUB_REF##*/} | sed 's/[^a-zA-Z0-9]/-/g') # Extract branch name and replace special characters
-          echo "REPO_NAME_BRANCH=${{ env.REPO_NAME }}-$BRANCH_NAME" >> $GITHUB_ENV # Append branch name to REPO_NAME
-
       - name: Build and tag the docker image
         run: |
-          IMAGE_TAG="gcr.io/$PROJECT_ID/$REPO_NAME_BRANCH:$GITHUB_SHA"
-          docker build . --tag $IMAGE_TAG \
+          docker build . --tag gcr.io/$PROJECT_ID/$REPO_NAME_BRANCH:$GITHUB_SHA \
           --build-arg NEXT_PUBLIC_FIREBASE_API_KEY="${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}" \
           --build-arg NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}" \
           --build-arg NEXT_PUBLIC_FIREBASE_PROJECT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}" \
@@ -79,12 +75,12 @@ jobs:
 
       - name: Push the image to the Google Container Registry (GCR)
         run: |
-          docker push $IMAGE_TAG
+          docker push gcr.io/$PROJECT_ID/$REPO_NAME_BRANCH:$GITHUB_SHA
 
       - name: Deploy
         run: |
-          gcloud run deploy $REPO_NAME \
+          gcloud run deploy $REPO_NAME_BRANCH \
           --region $REGION \
-          --image $IMAGE_TAG \
+          --image gcr.io/$PROJECT_ID/$REPO_NAME_BRANCH:$GITHUB_SHA \
           --platform "managed" \
           --quiet
