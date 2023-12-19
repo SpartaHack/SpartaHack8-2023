@@ -11,12 +11,7 @@ const useSearchResults = (query: string, userId: string) => {
       if (userId) {
         setIsLoading(true);
         try {
-          const response = await searchAll(
-            1,
-            10,
-            query,
-            userId,
-          );
+          const response = await searchAll(1, 10, query, userId);
           setSearchResults(response?.data);
         } catch (error) {
           console.error(error);

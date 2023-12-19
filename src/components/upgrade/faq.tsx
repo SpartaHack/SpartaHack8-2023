@@ -40,8 +40,8 @@ export const faqData = [
       <h1>
         The Pro plan on YouLearn offers unlimited access to videos, PDFs, and AI
         responses, along with the ability to create multiple personal spaces for
-        organized learning. Additionally, it includes an AI-space chatbot to ask about
-        anything and everything in each space.
+        organized learning. Additionally, it includes an AI-space chatbot to ask
+        about anything and everything in each space.
       </h1>
     ),
     subtitle: <h3>Features</h3>,
