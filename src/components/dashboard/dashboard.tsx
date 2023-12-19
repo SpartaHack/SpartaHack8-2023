@@ -5,7 +5,7 @@ import { useContentStore } from "@/context/content-store";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
 import SpaceHeader from "@/ui/header/space-header";
-import { getHistory } from "@/app/api/endpoints";
+import { getHistory } from "@/app/api/user";
 import { auth } from "../../../db/firebase";
 
 const Dashboard = () => {

@@ -7,9 +7,10 @@ import CustomModal from "@/helpers/custom-modal";
 import CustomTextInput from "@/helpers/custom-text-input";
 import { useSpaceStore } from "@/context/space-context";
 import { getUserSpaceResponse } from "../../../types";
-import { addContent, updateSpace } from "@/app/api/endpoints";
+import { updateSpace } from "@/app/api/space";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
+import { addContent } from "@/app/api/content";
 
 const SpaceHeader = () => {
   const contents = useStore(useContentStore, (state) => state.contents);

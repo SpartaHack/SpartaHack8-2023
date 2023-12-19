@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { searchAll } from "@/app/api/endpoints";
+import { searchAll } from "@/app/api/search";
 import { SearchType } from "../../types";
 
 const useSearchResults = (query: string, userId: string) => {

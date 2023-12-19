@@ -9,7 +9,7 @@ import { useUserStore } from "@/context/user-context";
 import useStore from "@/hooks/use-store";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
-import { getPortalLink } from "@/app/api/endpoints";
+import { getPortalLink } from "@/app/api/payment";
 import formatDate from "@/functions/date-formatter";
 
 const UserInformation = () => {

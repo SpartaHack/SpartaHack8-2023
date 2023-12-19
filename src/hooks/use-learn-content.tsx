@@ -5,7 +5,7 @@ import {
   generateContentQuestions,
   generateContentSummary,
   getContent,
-} from "@/app/api/endpoints";
+} from "@/app/api/generation";
 import { useLearnStore } from "@/context/learn-context";
 import { convertChatHistoryToChatLog } from "@/functions/chat-history-to-logs";
 import { MessageType } from "../../types";

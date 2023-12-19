@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
-import { chat } from "@/app/api/endpoints";
+import { chat } from "@/app/api/generation";
 import { auth } from "../../db/firebase";
 import { useLearnStore } from "@/context/learn-context";
 

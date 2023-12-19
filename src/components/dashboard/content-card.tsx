@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { CustomDropdown } from "@/helpers/custom-dropdown";
 import { menuDropDown } from "@/functions/content-dropdown-constants";
 import { useContentStore } from "@/context/content-store";
-import { addContent, deleteContent } from "@/app/api/endpoints";
+import { addContent, deleteContent } from "@/app/api/content";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 

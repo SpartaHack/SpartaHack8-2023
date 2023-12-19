@@ -1,4 +1,4 @@
-import { addSpace, getSpace } from "@/app/api/endpoints";
+import { addSpace, getSpace } from "@/app/api/space";
 import { useContentStore } from "@/context/content-store";
 import { useSpaceStore } from "@/context/space-context";
 import { useUserStore } from "@/context/user-context";

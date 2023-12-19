@@ -6,7 +6,7 @@ import { educationOptions } from "../../../utils/constants";
 import { EditAccordionProps } from "../../../types";
 import { CustomButton } from "@/helpers/custom-btn";
 import { useUserStore } from "@/context/user-context";
-import { updateUser } from "@/app/api/endpoints";
+import { updateUser } from "@/app/api/user";
 
 const EditAccordion = ({
   indicator,

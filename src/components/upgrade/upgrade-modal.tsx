@@ -4,7 +4,7 @@ import { Tabs, Tab } from "@nextui-org/react";
 import { TabContent } from "./tab-content";
 import OrderSummary from "./order-summary";
 import { PROMONTHLYPRICE, PROYEARLYPRICE } from "../../../utils/constants";
-import { checkoutSession } from "@/app/api/endpoints";
+import { checkoutSession } from "@/app/api/payment";
 import { auth } from "../../../db/firebase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";

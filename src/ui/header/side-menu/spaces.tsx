@@ -7,7 +7,7 @@ import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import CustomModal from "@/helpers/custom-modal";
 import { useUserStore } from "@/context/user-context";
-import { deleteSpace, getSpace } from "@/app/api/endpoints";
+import { deleteSpace, getSpace } from "@/app/api/space";
 import { toast } from "sonner";
 import { useContentStore } from "@/context/content-store";
 import { useRouter } from "next/navigation";

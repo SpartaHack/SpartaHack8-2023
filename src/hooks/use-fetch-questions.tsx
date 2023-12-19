@@ -1,4 +1,4 @@
-import { generateSpaceQuestions } from "@/app/api/endpoints";
+import { generateSpaceQuestions } from "@/app/api/generation";
 import { useEffect, useState } from "react";
 import { MessageType } from "../../types";
 
