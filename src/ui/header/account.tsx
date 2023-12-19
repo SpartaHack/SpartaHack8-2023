@@ -16,6 +16,7 @@ import { MoonIcon } from "@/icon/moon-icon";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/functions/auth";
+import { auth } from "../../../db/firebase";
 
 const Account = ({ name, description, picture }: AccountProps) => {
   const router = useRouter();
@@ -65,10 +66,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
             </DropdownItem>
           </DropdownSection>
 
-          <DropdownSection aria-label="Preferences" showDivider>
-            <DropdownItem onClick={() => router.push("/signin")}>
-              Sign In
-            </DropdownItem>
+          <DropdownSection aria-label="Settings" showDivider>
             <DropdownItem onClick={() => router.push("/upgrade")}>
               Upgrade
             </DropdownItem>
@@ -92,10 +90,18 @@ const Account = ({ name, description, picture }: AccountProps) => {
             </DropdownItem>
           </DropdownSection>
 
-          <DropdownSection aria-label="Help & Feedback">
-            <DropdownItem key="logout" onClick={logOut}>
-              Log Out
+          <DropdownSection aria-label="Auth">
+            {auth.currentUser?.uid ?
+            (
+                        <DropdownItem key="logout" onClick={logOut}>
+                        Log Out
+                      </DropdownItem>
+            ) : (
+<DropdownItem onClick={() => router.push("/signin")}>
+              Sign In
             </DropdownItem>
+            )
+}
           </DropdownSection>
         </DropdownMenu>
       </Dropdown>
