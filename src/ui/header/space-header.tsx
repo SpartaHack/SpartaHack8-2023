@@ -103,13 +103,13 @@ const SpaceHeader = () => {
                 contentTitle="Edit your space"
                 contentMain={
                   <>
-                    <Switch
+                    {/* <Switch
                       color="success"
                       isSelected={spacePrivacy}
                       onValueChange={setSpacePrivacy}
                     >
                       Make space private
-                    </Switch>
+                    </Switch> */}
                     <CustomTextInput
                       styling="mt-3 pt-1 mb-2"
                       value={editSpaceName}
