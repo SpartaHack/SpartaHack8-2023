@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import CustomModal from "@/helpers/custom-modal";
 import UpgradeModal from "@/components/upgrade/upgrade-modal";
 import { PROYEARLYPRICE } from "../../../utils/constants";
+import TrustedBy from "./trusted-by";
 
 const Upgrade = () => {
   const router = useRouter();
@@ -21,16 +22,22 @@ const Upgrade = () => {
   return (
     <>
       <div className="mt-[50px] dark:bg-neutral-900 lg:mt-12 w-full flex items-center justify-center text-center">
-        <div className="flex flex-col lg:pt-8 px-12">
+        <div className="lg:block hidden flex-col lg:pt-8 px-12">
           <h1 className="text-3xl lg:text-5xl font-bold text-center font-sans">
-            Find a plan to enhance your learning
+            Save hours, learn better, and do more.
           </h1>
-          <h1 className="mt-6 lg:mb-12 mb-10 text-center lg:text-base text-[12px] font-sans px-4">
+          {/* <h1 className="mt-6 lg:mb-12 mb-10 text-center lg:text-base text-[12px] font-sans px-4">
             Saves hours a day watching videos and reading articles, just a
             little investment can 10x your productivity.
-          </h1>
+          </h1> */}
+          <TrustedBy />
         </div>
       </div>
+      <div className="lg:hidden block mb-10 text-5xl font-sans font-semibold text-center">
+          <h1>
+            Pricing
+          </h1>
+        </div>
       <div className="flex flex-col lg:mt-10 mb-[50px] lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full">
         <PriceCard
           plan="Free"
