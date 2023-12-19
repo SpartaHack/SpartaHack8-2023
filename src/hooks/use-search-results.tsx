@@ -1,27 +1,22 @@
 import { useEffect, useState } from "react";
 import { searchAll } from "@/app/api/endpoints";
-import { auth } from "../../db/firebase";
 import { SearchType } from "../../types";
 
-const useSearchResults = (query: string) => {
-  const [searchResults, setSearchResults] = useState<undefined | SearchType[]>(
-    undefined,
-  );
+const useSearchResults = (query: string, userId: string) => {
+  const [searchResults, setSearchResults] = useState<SearchType[]>();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const repeat = localStorage.getItem("searchLoading");
     const fetchData = async () => {
-      if (repeat == "true" && auth.currentUser?.uid) {
+      if (userId) {
         setIsLoading(true);
         try {
           const response = await searchAll(
             1,
             10,
             query,
-            auth.currentUser?.uid!,
+            userId,
           );
-          localStorage.setItem("searchLoading", "false");
           setSearchResults(response?.data);
         } catch (error) {
           console.error(error);
@@ -30,7 +25,7 @@ const useSearchResults = (query: string) => {
       }
     };
     fetchData();
-  }, [query]);
+  }, [userId, query]);
 
   return { searchResults, isLoading };
 };
