@@ -65,7 +65,7 @@ const Form = () => {
         <CustomButton
           title="Send"
           btnType="submit"
-          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mb-12"
+          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
         />
       </form>
     </>

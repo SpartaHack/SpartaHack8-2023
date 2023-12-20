@@ -17,7 +17,7 @@ const SignUp = () => {
   }, [signUpStatus, router]);
 
   return (
-    <div className="flex bg-white dark:bg-neutral-900 flex-col h-screen items-center justify-center">
+    <div className="flex bg-absolute_white dark:bg-black flex-col h-screen items-center justify-center">
       <div className="w-full sm:w-3/5 flex p-8 space-y-4 max-w-lg items-center justify-center">
         <div className="p-8 space-y-4 max-w-md w-full">
           <h1 className="text-3xl text-left font-black">Create an account</h1>

@@ -33,7 +33,7 @@ const UpgradeModal: FC = () => {
           variant="light"
           color="primary"
           fullWidth
-          className="rounded-xl dark:border-neutral-700 dark:bg-black border "
+          className="rounded-xl dark:border-neutral-700 dark:bg-black border"
           selectedKey={selected}
           onSelectionChange={handleTabChange}
         >

@@ -21,10 +21,10 @@ const Upgrade = () => {
 
   return (
     <>
-      <div className="mt-[50px] dark:bg-neutral-900 lg:mt-12 w-full flex items-center justify-center text-center">
+      <div className="mt-[50px]  lg:mt-12 w-full flex items-center justify-center text-center">
         <div className="lg:block hidden flex-col lg:pt-8 px-12">
           <h1 className="text-3xl lg:text-5xl font-bold text-center font-sans">
-            Save hours, learn better, and do more.
+            Save hours, learn better, and share more.
           </h1>
           {/* <h1 className="mt-6 lg:mb-12 mb-10 text-center lg:text-base text-[12px] font-sans px-4">
             Saves hours a day watching videos and reading articles, just a
@@ -52,7 +52,7 @@ const Upgrade = () => {
           subTitle="Start your learning journey here."
           planBenefits={freePlanBenefits}
           buttonText={"Get Started"}
-          buttonStyle=" bg-white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full border-1 border-black dark:border-white"
+          buttonStyle=" bg-absolute_white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full border-1 border-black dark:border-white"
           handleClick={handleHomeClick}
         />
 

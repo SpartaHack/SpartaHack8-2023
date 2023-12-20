@@ -13,7 +13,7 @@ const logos = [
 const TrustedBy = () => {
     return (
         <div className="container mx-auto text-center my-8">
-          <h2 className="text-xs font-sans mb-8 text-neutral-500">
+          <h2 className="text-xs font-sans mb-8 text-neutral-500 dark:text-neutral-400">
             TRUSTED BY 10,000+ TOP STUDENTS AT
           </h2>
           <div className="flex overflow-hidden justify-center">

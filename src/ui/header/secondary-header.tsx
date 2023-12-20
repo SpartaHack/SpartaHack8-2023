@@ -6,7 +6,7 @@ const SecondaryHeader = () => {
   return (
     <Navbar
       maxWidth="full"
-      className="left-0 absolute top-0 z-10 bg-neutral-100 dark:bg-neutral-900"
+      className="left-0 absolute top-0 z-10 bg-absolute_white dark:bg-black"
     >
       <YouLearnLogo size="lg" />
     </Navbar>
