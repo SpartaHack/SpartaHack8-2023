@@ -26,17 +26,15 @@ const Upgrade = () => {
           <h1 className="text-3xl lg:text-5xl font-bold text-center font-sans">
             Save hours, learn better, and share more.
           </h1>
-          {/* <h1 className="mt-6 lg:mb-12 mb-10 text-center lg:text-base text-[12px] font-sans px-4">
-            Saves hours a day watching videos and reading articles, just a
-            little investment can 10x your productivity.
-          </h1> */}
           <TrustedBy />
         </div>
       </div>
       <div className="lg:hidden block mb-10 text-5xl font-sans font-semibold text-center">
-        <h1>Pricing</h1>
-      </div>
-      <div className="flex flex-col lg:mt-10 mb-[50px] lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full">
+          <h1>
+            Pricing
+          </h1>
+        </div>
+      <div className="flex flex-col lg:mt-10 mb-[50px] lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full ">
         <PriceCard
           plan="Free"
           price={

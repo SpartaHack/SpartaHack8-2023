@@ -37,7 +37,7 @@ const Chat = () => {
 
   return (
     <div
-      className="lg:h-full h-[70vh] flex-col flex "
+      className="lg:h-full h-[70vh] flex-col flex"
       style={{ maxHeight: `${height - 90}px` }}
     >
       <ScrollShadow
