@@ -48,9 +48,7 @@ const ContentCard = ({
         toast.error("Unable to delete content.");
       }
     } catch (err) {
-      toast.error(
-        "Cannot delete content. Delete from your space instead.",
-      );
+      toast.error("Cannot delete content. Delete from your space instead.");
     }
   };
 

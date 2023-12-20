@@ -67,7 +67,7 @@ const SpaceHeader = () => {
   };
 
   const handleAdd = async () => {
-    toast.loading("Adding")
+    toast.loading("Adding");
     const contentStream = await addContent(
       auth.currentUser?.uid!,
       contents.space._id,
@@ -80,7 +80,7 @@ const SpaceHeader = () => {
       }
     }
     setContentURL("");
-    toast.success("Added")
+    toast.success("Added");
   };
 
   return (
