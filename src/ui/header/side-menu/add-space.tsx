@@ -1,11 +1,13 @@
 import { addSpace, getSpace } from "@/app/api/space";
 import { useContentStore } from "@/context/content-store";
+import { useErrorStore } from "@/context/error-context";
 import { useSpaceStore } from "@/context/space-context";
 import { useUserStore } from "@/context/user-context";
 import CustomModal from "@/helpers/custom-modal";
 import CustomTextInput from "@/helpers/custom-text-input";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -15,14 +17,21 @@ const AddSpace = () => {
   const userId = useStore(useUserStore, (state) => state.userId);
   const { addSpaceToState } = useSpaceStore();
   const { setContents } = useContentStore();
+  const setError = useErrorStore((state) => state.setError);
 
   const handleSpaceCreation = async () => {
-    const response = await addSpace(userId!, spaceName, "private");
-    if (response?.data) {
-      addSpaceToState(response.data);
-      const goToSpace = await getSpace(userId!, response.data._id);
-      setContents(goToSpace?.data);
-      router.push(`/space?s=${response.data._id}`);
+    try {
+      const response = await addSpace(userId!, spaceName, "private");
+      if (response?.data) {
+        addSpaceToState(response.data);
+        const goToSpace = await getSpace(userId!, response.data._id);
+        setContents(goToSpace?.data);
+        router.push(`/space?s=${response.data._id}`);
+      }
+    } catch (err) {
+      if (isAxiosError(err)) {
+        setError(err);
+      }
     }
   };
 

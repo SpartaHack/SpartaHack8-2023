@@ -1,8 +1,10 @@
+"use client";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProviders } from "@/providers/theme-providers";
 import { Toaster } from "sonner";
 import { Roboto } from "next/font/google";
+import ErrorModal from "@/helpers/error-modal";
 
 const roboto = Roboto({
   weight: "400",
@@ -28,6 +30,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <ThemeProviders>
           <Toaster richColors />
+          <ErrorModal />
           {children}
         </ThemeProviders>
       </body>

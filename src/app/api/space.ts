@@ -21,13 +21,8 @@ export const addSpace = async (
     space_name: spaceName,
     visibility: visibility,
   };
-
-  try {
-    const response = await axios.post(`${API_URL}/spaces/add`, data);
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await axios.post(`${API_URL}/spaces/add`, data);
+  return response;
 };
 
 export const updateSpace = async (

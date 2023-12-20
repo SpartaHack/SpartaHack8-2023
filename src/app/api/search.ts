@@ -14,10 +14,6 @@ export const searchAll = async (
     query: query,
     user_id: userId,
   };
-  try {
-    const response = await axios.post(`${API_URL}/search/`, data);
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await axios.post(`${API_URL}/search/`, data);
+  return response;
 };

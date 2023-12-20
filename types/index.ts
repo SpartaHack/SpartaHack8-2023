@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
 import { YouTubeProps } from "react-youtube";
 
@@ -37,16 +38,16 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   btnStyling1?: string;
   btnStyling2?: string;
   contentTitle?: string;
@@ -54,13 +55,13 @@ export type CustomModalProps = {
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -405,4 +406,9 @@ export type SpaceIconProps = {
 export type LoadingProps = {
   styling?: string;
   size?: "sm" | "md" | "lg" | undefined;
+};
+
+export type ErrorStoreProps = {
+  error: AxiosError | undefined;
+  setError: (error: AxiosError | undefined) => void;
 };
