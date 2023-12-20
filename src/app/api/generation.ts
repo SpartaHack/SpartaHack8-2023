@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.withCredentials = true;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const chat = async (
@@ -26,6 +27,7 @@ export const chat = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
+      credentials: 'include'
     });
     return response;
   } catch (err) {

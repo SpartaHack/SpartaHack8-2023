@@ -85,7 +85,7 @@ export const setUserLocalStorage = (user: User) => {
 };
 
 export const getJWT = async (userCred: UserCredential) => {
-  const token = userCred.user?.getIdToken();
+  const token = await userCred.user?.getIdToken();
   localStorage.setItem("jwtToken", await token);
   return token;
 };

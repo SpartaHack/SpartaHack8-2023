@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.withCredentials = true;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const addContent = async (
@@ -19,6 +20,7 @@ export const addContent = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
+      credentials: 'include'
     });
 
     if (!response.body) {

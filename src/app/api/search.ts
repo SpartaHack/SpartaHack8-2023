@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.withCredentials = true;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const searchAll = async (

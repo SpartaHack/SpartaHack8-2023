@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { toast } from "sonner";
-import { handleFirebaseError, setUserLocalStorage } from "../../utils";
+import { handleFirebaseError, setUserLocalStorage, getJWT } from "../../utils";
 import { getUserSpaces, userSignIn, userSignUp } from "@/app/api/user";
 import { initFirebase } from "../../db/firebase";
 import { useUserStore } from "@/context/user-context";
@@ -28,6 +28,7 @@ export const useSignInEmail = () => {
       const auth = getAuth();
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
+      await getJWT(result);
       setUserLocalStorage(user);
       const response = await userSignIn(user.uid);
       if (result) {
@@ -71,6 +72,7 @@ export const useSignUpEmailContinue = () => {
         password,
       );
       const user = userCredential.user;
+      await getJWT(userCredential);
       setUserLocalStorage(user);
       if (userCredential) {
         toast.success("Please verify your email");
@@ -99,6 +101,7 @@ export const useAuthGoogleSignIn = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      await getJWT(result);
       setUserLocalStorage(user);
       const response = await userSignIn(user.uid);
       if (response) {
@@ -132,6 +135,7 @@ export const useAuthGoogleSignUp = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      await getJWT(result);
       setUserLocalStorage(user);
       const response = await userSignIn(user.uid);
       if (response) {
