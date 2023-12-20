@@ -13,7 +13,7 @@ const LearnPage = () => {
   const { loading } = useLearnContent(contentId!, spaceId!);
 
   return (
-    <main className='flex flex-col min-h-screen bg-neutral-50 dark:bg-black'>
+    <main className="flex flex-col min-h-screen bg-neutral-50 dark:bg-black">
       {loading ? (
         <Loading />
       ) : (

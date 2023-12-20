@@ -34,10 +34,8 @@ const Upgrade = () => {
         </div>
       </div>
       <div className="lg:hidden block mb-10 text-5xl font-sans font-semibold text-center">
-          <h1>
-            Pricing
-          </h1>
-        </div>
+        <h1>Pricing</h1>
+      </div>
       <div className="flex flex-col lg:mt-10 mb-[50px] lg:flex-row lg:justify-center lg:space-x-[100px] lg:space-y-0 space-y-[100px] items-center w-full">
         <PriceCard
           plan="Free"
