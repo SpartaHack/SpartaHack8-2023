@@ -26,7 +26,7 @@ const CustomPopUp = ({
           <Icon
             onClick={closeModal}
             icon="basil:cross-solid"
-            className="text-2xl text-black dark:text-white absolute top-4 right-6"
+            className="header-icons absolute top-2 right-2"
           />
           <div className="ml-4 text-left">
             <h3
@@ -35,7 +35,7 @@ const CustomPopUp = ({
               {title} Error
             </h3>
             <div className="mt-2">
-              <p className="text-sm leading-5 text-gray-500 dark:text-gray-500">{description}</p>
+              <p className="text-sm leading-5 text-neutral-500 dark:text-neutral-500">{description}</p>
             </div>
           </div>
           <div className="py-3 px-2 flex flex-row-reverse">
@@ -45,7 +45,7 @@ const CustomPopUp = ({
                   title={buttonTitle}
                   btnType="button"
                   clickEvent={buttonClick}
-                  btnStyling="text-white dark:text-black inline-flex justify-center w-full rounded-xl px-4 py-2 bg-black dark:bg-secondary text-base leading-6 font-medium shadow-sm transition ease-in-out duration-150 text-sm"
+                  btnStyling="text-white outline-none  dark:text-black inline-flex justify-center w-full rounded-xl px-4 py-2 bg-black dark:bg-secondary text-base leading-6 font-medium shadow-sm transition ease-in-out duration-150 text-sm"
                 />
               </span>
             )}

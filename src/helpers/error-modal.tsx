@@ -25,7 +25,7 @@ const ErrorModal = () => {
           description={error?.response?.statusText!}
           isOpen={showPopUp}
           closeModal={() => setShowPopUp(false)}
-          buttonTitle="Log In"
+          buttonTitle="Sign In"
           buttonClick={buttonClick}
         />
       )}
