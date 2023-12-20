@@ -1,18 +1,9 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { CustomButton } from "./custom-btn";
-
-export type PopUpProps = {
-  title: string | number;
-  description: string;
-  isOpen: boolean;
-  closeModal: () => void;
-  titleStyles?: string;
-  buttonTitle?: string;
-  buttonClick?: MouseEventHandler<HTMLButtonElement>;
-};
+import { PopUpProps } from "../../types";
 
 const CustomPopUp = ({
   title,
@@ -30,16 +21,9 @@ const CustomPopUp = ({
         className="fixed inset-0 z-50 flex items-center justify-center"
         onClose={closeModal}
       >
-        <div className="fixed inset-0 blur opacity-75 z-40"></div>
+<div className="fixed inset-0 backdrop-blur-sm"/>
         <Dialog.Panel className="bg-white rounded-lg px-4 pt-5 pb-4 overflow-auto shadow-xl transform transition-all sm:max-w-lg sm:w-full sm:p-6 sm:pb-4 z-50">
-          <CustomButton
-            btnType="button"
-            clickEvent={closeModal}
-            btnStyling="absolute top-2 right-2 z-10 w-fit p-2 outline-none"
-            title={
-              <Icon icon="basil:cross-solid" className="text-2xl font-black" />
-            }
-          />
+              <Icon onClick={closeModal} icon="basil:cross-solid" className="text-2xl text-black absolute top-2 right-2" />
           <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
             <h3
               className={`text-lg leading-6 font-medium text-gray-900 ${titleStyles}`}

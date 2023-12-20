@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 const ErrorModal = () => {
   const error = useErrorStore((state) => state.error);
   const router = useRouter();
-  const [showPopUp, setShowPopUp] = useState(true);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   useEffect(() => {
     setShowPopUp(true);
@@ -21,7 +21,7 @@ const ErrorModal = () => {
           isOpen={showPopUp}
           closeModal={() => setShowPopUp(false)}
           buttonTitle="Log In"
-          buttonClick={() => router.push("/login")}
+          buttonClick={() => router.push("/signin")}
         />
       )}
     </>
