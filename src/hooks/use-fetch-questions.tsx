@@ -20,11 +20,6 @@ const useFetchQuestions = (
         const response = await generateSpaceQuestions(userId, spaceId);
         if (response) {
           setQuestions(response?.data);
-        } else {
-          setQuestions([
-            "What topics will be covered in this space?",
-            "What are the learning objectives of this space?",
-          ]);
         }
         setLoading(false);
       }
@@ -32,6 +27,15 @@ const useFetchQuestions = (
 
     fetchQuestions();
   }, [userId, spaceId]);
+
+  useEffect(() => {
+    if (!questions || questions.join() === "," || questions.join() === "") {
+      setQuestions([
+        "What topics will be covered in this space?",
+        "What are the learning objectives of this space?",
+      ]);
+    }
+  }, [questions]);
 
   return { loading, questions };
 };
