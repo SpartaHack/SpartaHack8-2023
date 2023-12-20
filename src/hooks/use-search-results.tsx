@@ -11,16 +11,16 @@ const useSearchResults = (query: string, userId: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
-        setIsLoading(true);
-        try {
-          const response = await searchAll(1, 10, query, userId);
-          setSearchResults(response?.data);
-        } catch (error) {
-          if (isAxiosError(error)) {
-            setError(error);
-          }
+      setIsLoading(true);
+      try {
+        const response = await searchAll(1, 10, query, userId);
+        setSearchResults(response?.data);
+      } catch (error) {
+        if (isAxiosError(error)) {
+          setError(error);
         }
-        setIsLoading(false);
+      }
+      setIsLoading(false);
     };
     fetchData();
   }, [userId, query]);

@@ -6,27 +6,26 @@ import { useRouter } from "next/navigation";
 const ErrorModal = () => {
   const error = useErrorStore((state) => state.error);
   const router = useRouter();
-  const [showPopUp, setShowPopUp] = useState(true)
+  const [showPopUp, setShowPopUp] = useState(true);
 
   useEffect(() => {
-    setShowPopUp(true)
-
-  }, [error])
+    setShowPopUp(true);
+  }, [error]);
 
   return (
     <>
-    {error &&
-      <PopUp
-        title={error?.response?.status!}
-        description={error?.response?.statusText!}
-        isOpen={showPopUp}
-        closeModal={() => setShowPopUp(false)}
-        buttonTitle="Log In"
-        buttonClick={() => router.push('/login')}
-      />
-    }
+      {error && (
+        <PopUp
+          title={error?.response?.status!}
+          description={error?.response?.statusText!}
+          isOpen={showPopUp}
+          closeModal={() => setShowPopUp(false)}
+          buttonTitle="Log In"
+          buttonClick={() => router.push("/login")}
+        />
+      )}
     </>
-  )
+  );
 };
 
 export default ErrorModal;
