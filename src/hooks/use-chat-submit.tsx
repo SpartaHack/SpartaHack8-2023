@@ -4,6 +4,8 @@ import { replaceMessage } from "../../utils";
 import { chat } from "@/app/api/generation";
 import { auth } from "../../db/firebase";
 import { useLearnStore } from "@/context/learn-context";
+import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
 
 const useChatSubmit = (
   type: "space" | "content",
@@ -12,6 +14,7 @@ const useChatSubmit = (
   contentId: string[],
   spaceId: string[],
 ) => {
+  const setError = useErrorStore((state) => state.setError);
   const welcomeChat = [
     {
       type: "bot",
@@ -49,18 +52,24 @@ const useChatSubmit = (
       userId = auth.currentUser?.uid!;
     }
 
-    if (type === "content") {
-      response = await chat(
-        userId,
-        spaceId,
-        contentId,
-        query,
-        type,
-        true,
-        true,
-      );
-    } else {
-      response = await chat(userId, spaceId, [], query, type, true, true);
+    try {
+      if (type === "content") {
+        response = await chat(
+          userId,
+          spaceId,
+          contentId,
+          query,
+          type,
+          true,
+          true,
+        );
+      } else {
+        response = await chat(userId, spaceId, [], query, type, true, true);
+      }
+    } catch (err) {
+      if (isAxiosError(err)) {
+        setError(err);
+      }
     }
 
     if (!response!.body) {

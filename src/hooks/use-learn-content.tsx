@@ -10,10 +10,13 @@ import { useLearnStore } from "@/context/learn-context";
 import { convertChatHistoryToChatLog } from "@/functions/chat-history-to-logs";
 import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
+import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
 
 export const useLearnContent = (contentId: string, spaceId?: string) => {
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
+  const setError = useErrorStore((state) => state.setError);
   const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
 
   useEffect(() => {
@@ -46,6 +49,7 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
             !response?.data?.generations?.questions ||
             !response?.data?.generations?.summary
           ) {
+            try {
             const summaryResponse = await generateContentSummary(
               auth.currentUser?.uid!,
               contentId,
@@ -54,7 +58,6 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
               auth.currentUser?.uid!,
               contentId,
             );
-
             const summary = summaryResponse?.data;
             const questions = questionsResponse?.data;
 
@@ -64,6 +67,12 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
                 questions,
               },
             });
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setError(err);
+              }
+            }
+
           }
           const historyResponse = await chatHistory(
             auth.currentUser.uid!,

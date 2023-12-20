@@ -20,19 +20,15 @@ export const chat = async (
     get_existing_chat_history: getExistingChatHistory,
     save_chat_history: saveChatHistory,
   };
-  try {
-    const response = await fetch(`${API_URL}/generation/chat`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-      credentials: "include",
-    });
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await fetch(`${API_URL}/generation/chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+    credentials: "include",
+  });
+  return response;
 };
 
 export const generateContentSummary = async (
@@ -44,15 +40,11 @@ export const generateContentSummary = async (
     content_id: contentId,
   };
 
-  try {
-    const response = await axios.post(
-      `${API_URL}/generation/content/summary`,
-      data,
-    );
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await axios.post(
+    `${API_URL}/generation/content/summary`,
+    data,
+  );
+  return response;
 };
 
 export const generateContentQuestions = async (
@@ -64,15 +56,11 @@ export const generateContentQuestions = async (
     content_id: contentId,
   };
 
-  try {
-    const response = await axios.post(
-      `${API_URL}/generation/content/chat_prompts`,
-      data,
-    );
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await axios.post(
+    `${API_URL}/generation/content/chat_prompts`,
+    data,
+  );
+  return response;
 };
 
 export const generateSpaceQuestions = async (
