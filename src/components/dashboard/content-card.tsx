@@ -49,7 +49,7 @@ const ContentCard = ({
       }
     } catch (err) {
       toast.error(
-        "Cannot delete content from your library. Delete from your library",
+        "Cannot delete content. Delete from your space instead.",
       );
     }
   };
