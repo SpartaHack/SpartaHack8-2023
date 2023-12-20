@@ -22,30 +22,30 @@ const CustomPopUp = ({
         onClose={closeModal}
       >
         <div className="fixed inset-0 backdrop-blur-sm" />
-        <Dialog.Panel className="bg-white rounded-lg px-4 pt-5 pb-4 overflow-auto shadow-xl transform transition-all sm:max-w-lg sm:w-full sm:p-6 sm:pb-4 z-50">
+        <Dialog.Panel className="bg-white dark:bg-neutral-900 rounded-xl px-4 pt-5 pb-4 overflow-auto shadow-xl transform transition-all max-w-sm md:max-w-lg w-full p-6 z-50">
           <Icon
             onClick={closeModal}
             icon="basil:cross-solid"
-            className="text-2xl text-black absolute top-2 right-2"
+            className="text-2xl text-black dark:text-white absolute top-4 right-6"
           />
-          <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+          <div className="ml-4 text-left">
             <h3
-              className={`text-lg leading-6 font-medium text-gray-900 ${titleStyles}`}
+              className={`text-lg leading-6 font-medium text-black dark:text-white ${titleStyles}`}
             >
-              {title}
+              {title} Error
             </h3>
             <div className="mt-2">
-              <p className="text-sm leading-5 text-gray-500">{description}</p>
+              <p className="text-sm leading-5 text-gray-500 dark:text-gray-500">{description}</p>
             </div>
           </div>
-          <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <div className="py-3 px-2 flex flex-row-reverse">
             {buttonTitle && (
-              <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+              <span className="flex rounded-xl shadow-sm ml-3 w-auto ">
                 <CustomButton
                   title={buttonTitle}
                   btnType="button"
                   clickEvent={buttonClick}
-                  btnStyling="inline-flex justify-center w-full rounded-md px-4 py-2 bg-[#7DFF97] text-base leading-6 font-medium text-black shadow-sm transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                  btnStyling="text-white dark:text-black inline-flex justify-center w-full rounded-xl px-4 py-2 bg-black dark:bg-secondary text-base leading-6 font-medium shadow-sm transition ease-in-out duration-150 text-sm"
                 />
               </span>
             )}
