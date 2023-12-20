@@ -12,6 +12,11 @@ const ErrorModal = () => {
     setShowPopUp(true);
   }, [error]);
 
+  const buttonClick = () => {
+    setShowPopUp(false);
+    router.push('/signin')
+  }
+
   return (
     <>
       {error && (
@@ -21,7 +26,7 @@ const ErrorModal = () => {
           isOpen={showPopUp}
           closeModal={() => setShowPopUp(false)}
           buttonTitle="Log In"
-          buttonClick={() => router.push("/signin")}
+          buttonClick={buttonClick}
         />
       )}
     </>
