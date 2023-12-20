@@ -68,17 +68,21 @@ const SpaceHeader = () => {
 
   const handleAdd = async () => {
     toast.loading("Adding");
-    const contentStream = await addContent(
-      auth.currentUser?.uid!,
-      contents.space._id,
-      contentURL,
-    );
-
-    for await (const content of contentStream!) {
-      useContentStore.getState().addContent(content);
+    try {
+      const contentStream = await addContent(
+        auth.currentUser?.uid!,
+        contents.space._id,
+        contentURL,
+      );
+      for await (const content of contentStream!) {
+        useContentStore.getState().addContent(content);
+      }
+      toast.success("Added successfully");
+    } catch (err) {
+      toast.error("Could not add content");
     }
+
     setContentURL("");
-    toast.success("Added successfully");
   };
 
   return (

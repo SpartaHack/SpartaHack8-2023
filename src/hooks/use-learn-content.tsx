@@ -50,29 +50,28 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
             !response?.data?.generations?.summary
           ) {
             try {
-            const summaryResponse = await generateContentSummary(
-              auth.currentUser?.uid!,
-              contentId,
-            );
-            const questionsResponse = await generateContentQuestions(
-              auth.currentUser?.uid!,
-              contentId,
-            );
-            const summary = summaryResponse?.data;
-            const questions = questionsResponse?.data;
+              const summaryResponse = await generateContentSummary(
+                auth.currentUser?.uid!,
+                contentId,
+              );
+              const questionsResponse = await generateContentQuestions(
+                auth.currentUser?.uid!,
+                contentId,
+              );
+              const summary = summaryResponse?.data;
+              const questions = questionsResponse?.data;
 
-            updateLearnContent({
-              generations: {
-                summary,
-                questions,
-              },
-            });
+              updateLearnContent({
+                generations: {
+                  summary,
+                  questions,
+                },
+              });
             } catch (err) {
               if (isAxiosError(err)) {
                 setError(err);
               }
             }
-
           }
           const historyResponse = await chatHistory(
             auth.currentUser.uid!,

@@ -14,8 +14,8 @@ const ErrorModal = () => {
 
   const buttonClick = () => {
     setShowPopUp(false);
-    router.push('/signin')
-  }
+    router.push("/signin");
+  };
 
   return (
     <>

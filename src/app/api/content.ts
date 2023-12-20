@@ -13,32 +13,24 @@ export const addContent = async (
     content: contentURL,
   };
 
-  try {
-    const response = await fetch(`${API_URL}/content/add`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-      credentials: "include",
-    });
+  const response = await fetch(`${API_URL}/content/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+    credentials: "include",
+  });
 
-    if (!response.body) {
-      throw new Error("No response body");
+  const reader = response.body!.getReader();
+  return (async function* () {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      let str = new TextDecoder("utf-8").decode(value);
+      yield JSON.parse(str);
     }
-
-    const reader = response.body.getReader();
-    return (async function* () {
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        let str = new TextDecoder("utf-8").decode(value);
-        yield JSON.parse(str);
-      }
-    })();
-  } catch (err) {
-    console.log(err);
-  }
+  })();
 };
 
 export const deleteContent = async (
