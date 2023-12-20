@@ -74,13 +74,11 @@ const SpaceHeader = () => {
       contentURL,
     );
 
-    if (contentStream) {
-      for await (const content of contentStream) {
-        useContentStore.getState().addContent(content);
-      }
+    for await (const content of contentStream!) {
+      useContentStore.getState().addContent(content);
     }
     setContentURL("");
-    toast.success("Added");
+    toast.success("Added successfully");
   };
 
   return (

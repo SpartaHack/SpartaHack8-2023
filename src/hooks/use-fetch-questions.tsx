@@ -7,6 +7,7 @@ const useFetchQuestions = (
   userId: string,
   spaceId: string,
 ) => {
+  const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState<string[]>([
     "What topics will be covered in this space?",
     "What are the learning objectives of this space?",
@@ -15,15 +16,24 @@ const useFetchQuestions = (
   useEffect(() => {
     const fetchQuestions = async () => {
       if (chatLog.length !== 0 && userId && spaceId) {
+        setLoading(true);
         const response = await generateSpaceQuestions(userId, spaceId);
-        setQuestions(response?.data);
+        if (response) {
+          setQuestions(response?.data);
+        } else {
+          setQuestions([
+            "What topics will be covered in this space?",
+            "What are the learning objectives of this space?",
+          ]);
+        }
+        setLoading(false);
       }
     };
 
     fetchQuestions();
   }, [userId, spaceId]);
 
-  return questions;
+  return { loading, questions };
 };
 
 export default useFetchQuestions;

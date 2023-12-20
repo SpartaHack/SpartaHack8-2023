@@ -66,6 +66,7 @@ const Chat = () => {
         <ChatQuestions
           questions={learnContent?.generations.questions!}
           chatQuestionClick={(question) => handleChatSubmit(question)}
+          loading={false}
         />
       )}
       <div className="mt-3">

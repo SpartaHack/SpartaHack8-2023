@@ -27,7 +27,7 @@ export const chat = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-      credentials: 'include'
+      credentials: "include",
     });
     return response;
   } catch (err) {

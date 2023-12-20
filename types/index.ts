@@ -350,6 +350,7 @@ export type ContentStore = {
 export type ChatQuestionProps = {
   questions: string[];
   chatQuestionClick: (question: string) => void;
+  loading: boolean;
 };
 
 export type LearnContent = {
@@ -399,4 +400,9 @@ export type SpaceIconProps = {
   height?: number;
   width?: number;
   clickEvent: () => void;
+};
+
+export type LoadingProps = {
+  styling?: string;
+  size?: "sm" | "md" | "lg" | undefined;
 };
