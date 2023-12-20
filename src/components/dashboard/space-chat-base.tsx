@@ -31,7 +31,7 @@ const SpaceChatBase = () => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="relative w-full bg-absolute_white max-w-lg h-[80vh] lg:h-[75vh] overflow-y-auto transform rounded-xl p-6 text-left transition-all flex flex-col dark:bg-black drop-shadow">
+                  <Dialog.Panel className="relative w-full bg-absolute_white max-w-lg h-[80vh] lg:h-[75vh] overflow-y-auto transform rounded-xl p-6 text-left transition-all flex flex-col dark:bg-black dark:border dark:border-neutral-800 drop-shadow">
                     <SpaceChatMain />
                   </Dialog.Panel>
                 </Transition.Child>
