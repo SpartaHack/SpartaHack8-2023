@@ -11,7 +11,7 @@ const TabComponent = () => {
         variant="light"
         color="primary"
         fullWidth
-        className="border rounded-xl dark:border-neutral-700 bg-absolute_white dark:bg-black"
+        className="border rounded-xl dark:border-neutral-700 bg-absolute_white dark:bg-neutral-800"
       >
         <Tab title="Chat" className="h-full">
           <Chat />
