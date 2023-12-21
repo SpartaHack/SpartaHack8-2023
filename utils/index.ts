@@ -80,7 +80,7 @@ export const setUserLocalStorage = (user: User) => {
     localStorage.setItem("email", user.email ?? "");
     localStorage.setItem("photoURL", user.photoURL ?? "");
   } catch (err) {
-    console.log(err);
+    toast.error("Something went wrong")
   }
 };
 
