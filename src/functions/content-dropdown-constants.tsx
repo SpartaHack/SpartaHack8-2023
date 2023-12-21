@@ -6,27 +6,35 @@ import { convertSpace } from "./convert-space";
 
 export const menuDropDown = (
   contentID: string,
+  contentURL: string,
   spaceId: string,
   handleDelete: (contentId: string) => void,
   handleCopy: (contentId: string, spaceId?: string) => void,
-  spaces: getUserSpaceResponse[]
+  spaces: getUserSpaceResponse[],
 ) => [
   {
-      label: 'Section 1',
-      items: [
-          {label: (
-            <CustomDropdown offset={26} placement="left" title=
-            {
-              <div className='flex flex-row w-full cursor-pointer items-center'>
-                  <Icon icon="material-symbols:text-select-move-down-rounded" className='h-6 w-6'/>
-                  <span className='ml-6 mt-0.6'>Move to space
-                  </span>
+    label: "Section 1",
+    items: [
+      {
+        label: (
+          <CustomDropdown
+            offset={26}
+            placement="left"
+            title={
+              <div className="flex flex-row w-full cursor-pointer items-center">
+                <Icon
+                  icon="material-symbols:text-select-move-down-rounded"
+                  className="h-6 w-6"
+                />
+                <span className="ml-6 mt-0.6">Move to space</span>
               </div>
-            } sections={convertSpace(spaces)}/>
+            }
+            sections={convertSpace(spaces, contentURL)}
+          />
         ),
       },
-      ]
-    },
+    ],
+  },
   {
     label: "Section 1",
     items: [

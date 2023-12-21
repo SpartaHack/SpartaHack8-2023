@@ -13,7 +13,6 @@ const CustomPopUp: React.FC<PopUpProps> = ({
   buttonClick,
   titleStyles,
 }) => {
-
   const dialogHeaderStyles = `text-lg leading-6 font-medium text-black dark:text-white ${titleStyles}`;
 
   return (
@@ -30,10 +29,8 @@ const CustomPopUp: React.FC<PopUpProps> = ({
             icon="basil:cross-solid"
             className="header-icons absolute top-2 right-2"
           />
-         <div className="ml-4 text-left">
-            <h3 className={dialogHeaderStyles}>
-              {title} Error
-            </h3>
+          <div className="ml-4 text-left">
+            <h3 className={dialogHeaderStyles}>{title} Error</h3>
             <div className="mt-2">
               <p className="text-sm leading-5 text-neutral-500 dark:text-neutral-500">
                 {description}

@@ -25,8 +25,6 @@ const ContentCard = ({
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
   const { deleteContentFromState, contents } = useContentStore();
 
-  console.log(spaces)
-
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
     if (contentAdd) {
@@ -87,7 +85,14 @@ const ContentCard = ({
               className="w-4 h-4 opacity-0 group-hover:opacity-100 dark:text-white"
             />
           }
-          sections={menuDropDown(contentID, spaceId!, handleDelete, handleCopy, spaces)}
+          sections={menuDropDown(
+            contentID,
+            contentURL!,
+            spaceId!,
+            handleDelete,
+            handleCopy,
+            spaces,
+          )}
         />
       </div>
       <div className="rounded-t-xl overflow-hidden">

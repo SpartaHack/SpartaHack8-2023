@@ -23,6 +23,7 @@ const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
                 spaceId={spaceId!}
                 key={key}
                 type={content.type}
+                contentURL={content.content_url}
                 contentID={content.content_id}
                 title={content.title}
                 thumbnail_url={content.thumbnail_url}
