@@ -20,11 +20,11 @@ const SpaceHeader = () => {
     return <Spinner color="current" size="sm" />;
   }
 
-  const spaceName = contents.space ? contents.space.space_name : "History";
+  const spaceName = contents.space ? contents.space.name : "History";
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
-    setState: React.Dispatch<React.SetStateAction<string>>,
+    setState: React.Dispatch<React.SetStateAction<string>>
   ) => {
     setEditSpaceName(e.target.value);
   };
@@ -32,19 +32,19 @@ const SpaceHeader = () => {
   const handleSave = async (editSpaceName: string) => {
     const updatedDataSpace = {
       _id: contents.space._id,
-      space_name: editSpaceName,
+      name: editSpaceName,
     } as Partial<getUserSpaceResponse>;
 
     const updatedData = {
       _id: contents.space._id,
-      space_name: editSpaceName,
+      name: editSpaceName,
     };
 
     const response = await updateSpace(
       auth.currentUser?.uid!,
       contents.space._id,
       editSpaceName,
-      "private",
+      "private"
     );
     if (response) {
       useSpaceStore.getState().updateSpaceData(updatedData);

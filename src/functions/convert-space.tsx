@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 export function convertSpace(
   spaces: getUserSpaceResponse[],
-  contentURL: string,
+  contentURL: string
 ) {
   const handleMove = async (spaceId: string) => {
     toast.loading("Moving");
@@ -29,7 +29,7 @@ export function convertSpace(
             onClick={() => handleMove(space._id)}
           >
             <Icon icon="bxs:cube" className="h-6 w-6" />
-            <span className="ml-6">{space.space_name}</span>
+            <span className="ml-6">{space.name}</span>
           </div>
         ),
       },

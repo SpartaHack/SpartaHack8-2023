@@ -102,7 +102,7 @@ export type ContentCardProps = {
   contentAdd?: boolean;
   type: string;
   contentID: string;
-  contentURL?: string;
+  contentURLS?: string[];
   title: string;
   spaceId?: string;
   thumbnail_url: string;
@@ -259,7 +259,7 @@ export type UserState = {
 
 export type getUserSpaceResponse = {
   _id: string;
-  space_name: string;
+  name: string;
   visibility: "public" | "private";
 };
 
@@ -274,7 +274,7 @@ export type SpaceStore = {
 
 export type SpaceResponse = {
   _id: string;
-  space_name: string;
+  name: string;
   visibility: "public" | "private";
 };
 
@@ -319,7 +319,7 @@ export type Content = {
 
 export type Space = {
   _id: string;
-  space_name: string;
+  name: string;
   visibility: string;
 };
 

@@ -66,9 +66,9 @@ export const getUser = async (userId: string) => {
   }
 };
 
-export const getHistory = async (userId: string) => {
+export const getContentHistory = async (userId: string) => {
   try {
-    const response = await axios.get(`${API_URL}/user/${userId}/history`);
+    const response = await axios.get(`${API_URL}/user/${userId}/content/history`);
     return response;
   } catch (err) {
     console.log(err);
