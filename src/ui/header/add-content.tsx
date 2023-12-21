@@ -20,13 +20,15 @@ const AddContent = () => {
   };
 
   const handleAdd = async () => {
-    for (let link of links) {
+    const newLinks = [...links, contentURL]
+    setLinks(newLinks);
+    for (let link of newLinks) {
       toast.loading("Adding");
       try {
         const contentStream = await addContent(
           auth.currentUser?.uid!,
           contents.space._id,
-          link,
+          [link],
         );
         for await (const content of contentStream!) {
           useContentStore.getState().addContent(content);
