@@ -107,6 +107,7 @@ const AddContent = () => {
             {links &&
               links.map((link, index) => (
                 <LinkCard
+                  key={index}
                   link={link}
                   handleDelete={() => handleDelete(index)}
                 />
