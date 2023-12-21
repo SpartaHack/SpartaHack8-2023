@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 const ErrorModal = () => {
   const error = useErrorStore((state) => state.error);
+  const setError = useErrorStore((state) => state.setError);
   const router = useRouter();
   const [showPopUp, setShowPopUp] = useState(false);
 
@@ -14,6 +15,7 @@ const ErrorModal = () => {
 
   const buttonClick = () => {
     setShowPopUp(false);
+    setError(undefined);
     router.push("/signin");
   };
 
