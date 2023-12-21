@@ -1,5 +1,10 @@
 import { AxiosError } from "axios";
-import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
+import React, {
+  ChangeEvent,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactNode,
+} from "react";
 import { YouTubeProps } from "react-youtube";
 
 export type CustomButtonProps = {
@@ -51,7 +56,7 @@ export type CustomModalProps = {
     | "full";
   btnStyling1?: string;
   btnStyling2?: string;
-  contentTitle?: string;
+  contentTitle?: string | JSX.Element;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
@@ -69,10 +74,13 @@ export type CustomModalProps = {
 export type CustomTextInputProps = {
   value: string | readonly string[] | undefined;
   type: string;
-  label: string;
+  label?: string;
+  placeholder?: string;
   isInvalid?: boolean;
   eventChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   styling?: string | undefined;
+  endContent?: JSX.Element;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 export type CustomTextAreaProps = {

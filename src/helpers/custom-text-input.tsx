@@ -8,21 +8,27 @@ const CustomTextInput = ({
   label,
   isInvalid,
   eventChange,
+  placeholder,
   styling,
+  onKeyDown,
+  endContent,
 }: CustomTextInputProps) => {
   return (
     <>
       <Input
         autoFocus
+        placeholder={placeholder}
         value={value as string}
         type={type}
         label={label}
         variant="bordered"
+        onKeyDown={onKeyDown}
         labelPlacement="outside"
         color={isInvalid ? "danger" : "success"}
         onChange={eventChange}
         size="lg"
         className={`${styling}` || "max-w-xs"}
+        endContent={endContent}
       />
     </>
   );

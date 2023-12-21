@@ -7,7 +7,10 @@ import ContentCard from "../dashboard/content-card";
 import { auth } from "../../../db/firebase";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
-  const { searchResults, isLoading } = useSearchResults(query, auth.currentUser!.uid);
+  const { searchResults, isLoading } = useSearchResults(
+    query,
+    auth.currentUser!.uid,
+  );
 
   if (isLoading) {
     return <Loading />;
