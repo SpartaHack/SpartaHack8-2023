@@ -1,11 +1,10 @@
-import React from "react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { CustomButton } from "./custom-btn";
 import { PopUpProps } from "../../types";
 
-const CustomPopUp = ({
+const CustomPopUp: React.FC<PopUpProps> = ({
   title,
   description,
   isOpen,
@@ -13,7 +12,10 @@ const CustomPopUp = ({
   buttonTitle,
   buttonClick,
   titleStyles,
-}: PopUpProps) => {
+}) => {
+
+  const dialogHeaderStyles = `text-lg leading-6 font-medium text-black dark:text-white ${titleStyles}`;
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -28,28 +30,29 @@ const CustomPopUp = ({
             icon="basil:cross-solid"
             className="header-icons absolute top-2 right-2"
           />
-          <div className="ml-4 text-left">
-            <h3
-              className={`text-lg leading-6 font-medium text-black dark:text-white ${titleStyles}`}
-            >
+         <div className="ml-4 text-left">
+            <h3 className={dialogHeaderStyles}>
               {title} Error
             </h3>
             <div className="mt-2">
-              <p className="text-sm leading-5 text-neutral-500 dark:text-neutral-500">{description}</p>
+              <p className="text-sm leading-5 text-neutral-500 dark:text-neutral-500">
+                {description}
+              </p>
             </div>
           </div>
-          <div className="py-3 px-2 flex flex-row-reverse">
-            {buttonTitle && (
-              <span className="flex rounded-xl shadow-sm ml-3 w-auto ">
+          {buttonTitle && (
+            <div className="py-3 px-2 flex flex-row-reverse">
+              <span className="flex rounded-xl shadow-sm ml-3">
                 <CustomButton
                   title={buttonTitle}
                   btnType="button"
                   clickEvent={buttonClick}
-                  btnStyling="text-white outline-none  dark:text-black inline-flex justify-center w-full rounded-xl px-4 py-2 bg-black dark:bg-secondary text-base leading-6 font-medium shadow-sm transition ease-in-out duration-150 text-sm"
+                  autoFocus={false}
+                  btnStyling="text-white outline-none dark:text-black rounded-xl bg-black dark:bg-secondary shadow-sm"
                 />
               </span>
-            )}
-          </div>
+            </div>
+          )}
         </Dialog.Panel>
       </Dialog>
     </Transition>
