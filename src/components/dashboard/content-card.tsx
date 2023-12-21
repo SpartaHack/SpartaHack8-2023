@@ -9,6 +9,8 @@ import { useContentStore } from "@/context/content-store";
 import { addContent, deleteContent } from "@/app/api/content";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
+import { useStore } from "zustand";
+import { useSpaceStore } from "@/context/space-context";
 
 const ContentCard = ({
   contentAdd,
@@ -20,7 +22,10 @@ const ContentCard = ({
   thumbnail_url,
 }: ContentCardProps) => {
   const router = useRouter();
+  const spaces = useStore(useSpaceStore, (state) => state.spaces);
   const { deleteContentFromState, contents } = useContentStore();
+
+  console.log(spaces)
 
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
@@ -82,7 +87,7 @@ const ContentCard = ({
               className="w-4 h-4 opacity-0 group-hover:opacity-100 dark:text-white"
             />
           }
-          sections={menuDropDown(contentID, spaceId!, handleDelete, handleCopy)}
+          sections={menuDropDown(contentID, spaceId!, handleDelete, handleCopy, spaces)}
         />
       </div>
       <div className="rounded-t-xl overflow-hidden">
