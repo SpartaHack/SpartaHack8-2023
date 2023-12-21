@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { getUserSpaceResponse } from "../../types";
 import { addContent } from "@/app/api/content";
 import { auth } from "../../db/firebase";
-import { useContentStore } from "@/context/content-store";
 import { toast } from "sonner";
 
 export function convertSpace(
@@ -13,14 +12,11 @@ export function convertSpace(
   const handleMove = async (spaceId: string) => {
     toast.loading("Moving");
     try {
-      const contentStream = await addContent(
+      await addContent(
         auth.currentUser?.uid!,
         spaceId,
         contentURL,
       );
-      for await (const content of contentStream!) {
-        useContentStore.getState().addContent(content);
-      }
       toast.success("Moved successfully");
     } catch (err) {
       toast.error("Could not move content");

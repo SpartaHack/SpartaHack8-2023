@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useCallback, useState } from "react";
 import { useContentStore } from "@/context/content-store";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -8,45 +8,48 @@ import CustomTextInput from "@/helpers/custom-text-input";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { addContent } from "@/app/api/content";
+import LinkCard from "./link-card";
 
 const AddContent = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [contentURL, setContentURL] = useState("");
   const [links, setLinks] = useState<string[]>([]);
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    setState: React.Dispatch<React.SetStateAction<string>>,
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setContentURL(e.target.value);
   };
 
   const handleAdd = async () => {
-    toast.loading("Adding");
-    try {
-      const contentStream = await addContent(
-        auth.currentUser?.uid!,
-        contents.space._id,
-        contentURL,
-      );
-      for await (const content of contentStream!) {
-        useContentStore.getState().addContent(content);
+    for (let link of links) {
+      toast.loading("Adding");
+      try {
+        const contentStream = await addContent(
+          auth.currentUser?.uid!,
+          contents.space._id,
+          link,
+        );
+        for await (const content of contentStream!) {
+          useContentStore.getState().addContent(content);
+        }
+        toast.success("Added successfully");
+      } catch (err) {
+        toast.error("Could not add content");
       }
-      toast.success("Added successfully");
-    } catch (err) {
-      toast.error("Could not add content");
+      setContentURL("");
     }
-
-    setContentURL("");
+    setLinks([]);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && contentURL) {
       setLinks((prevLinks) => [...prevLinks, contentURL]);
       setContentURL("");
-      console.log("hi");
     }
   };
+
+  const handleDelete = useCallback((indexToRemove: number) => {
+    setLinks((prevLinks) => prevLinks.filter((_, index) => index !== indexToRemove));
+  }, []);
 
   return (
     <>
@@ -84,7 +87,7 @@ const AddContent = () => {
               value={contentURL}
               placeholder="https://www.youtube.com/watch?v=xETr0cr1VNk"
               type={"text"}
-              eventChange={(e) => handleChange(e, setContentURL)}
+              eventChange={(e) => handleChange(e)}
               isInvalid={contentURL === ""}
               endContent={
                 <Chip radius="sm" variant="bordered">
@@ -92,7 +95,7 @@ const AddContent = () => {
                 </Chip>
               }
             />
-            {links && links.map((link, index) => <div key={index}>{link}</div>)}
+            {links && links.map((link, index) => <LinkCard link={link} handleDelete={() => handleDelete(index)} />)}
           </>
         }
         footer
