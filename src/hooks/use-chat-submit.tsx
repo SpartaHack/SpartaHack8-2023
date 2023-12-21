@@ -11,8 +11,8 @@ const useChatSubmit = (
   type: "space" | "content",
   initialChatLog: MessageType[],
   userId: string,
-  contentId: string[],
-  spaceId: string[],
+  contentId: string,
+  spaceId: string
 ) => {
   const setError = useErrorStore((state) => state.setError);
   const welcomeChat = [
@@ -25,14 +25,14 @@ const useChatSubmit = (
   const [chatLog, setChatLog] = useState<MessageType[]>(
     initialChatLog && initialChatLog.length == 0
       ? [...welcomeChat, ...initialChatLog]
-      : [...initialChatLog],
+      : [...initialChatLog]
   );
 
   useEffect(() => {
     setChatLog(
       initialChatLog && initialChatLog.length == 0
         ? [...welcomeChat, ...initialChatLog]
-        : [...initialChatLog],
+        : [...initialChatLog]
     );
   }, [initialChatLog]);
 
@@ -54,17 +54,9 @@ const useChatSubmit = (
 
     try {
       if (type === "content") {
-        response = await chat(
-          userId,
-          spaceId,
-          contentId,
-          query,
-          type,
-          true,
-          true,
-        );
+        response = await chat(userId, spaceId, contentId, query, true, true);
       } else {
-        response = await chat(userId, spaceId, [], query, type, true, true);
+        response = await chat(userId, spaceId, "", query, true, true);
       }
     } catch (err) {
       if (isAxiosError(err)) {

@@ -38,7 +38,7 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
             response = await getContent(
               auth.currentUser?.uid!,
               contentId,
-              spaceId,
+              spaceId
             );
             if (response && response.data) {
               response.data.space_id = spaceId;
@@ -52,11 +52,11 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
             try {
               const summaryResponse = await generateContentSummary(
                 auth.currentUser?.uid!,
-                contentId,
+                contentId
               );
               const questionsResponse = await generateContentQuestions(
                 auth.currentUser?.uid!,
-                contentId,
+                contentId
               );
               const summary = summaryResponse?.data;
               const questions = questionsResponse?.data;
@@ -76,19 +76,19 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
           const historyResponse = await chatHistory(
             auth.currentUser.uid!,
             "content",
-            [contentId],
-            spaceId ? [spaceId!] : [],
+            contentId,
+            spaceId ? spaceId! : ""
           );
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(
-              historyResponse.data,
+              historyResponse.data
             );
 
             chatLog.forEach((message) => {
               if (message.type === "bot") {
                 const replacedResult = replaceMessage(
                   learnContent?.type!,
-                  message.response,
+                  message.response
                 );
                 message.response = replacedResult.replacedMessage;
                 message.sources = replacedResult.sources;

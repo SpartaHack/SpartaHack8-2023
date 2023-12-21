@@ -18,19 +18,19 @@ const useChatHistory = () => {
         const response = await chatHistory(
           auth.currentUser?.uid!,
           "space",
-          [],
-          [contents?.space._id!],
+          "",
+          contents?.space._id!
         );
         localStorage.setItem("chatHistoryLoading", "false");
         let fetchedHistoryChat: MessageType[] = convertChatHistoryToChatLog(
-          response?.data,
+          response?.data
         );
 
         fetchedHistoryChat.forEach((message) => {
           if (message.type === "bot") {
             const replacedResult = replaceMessage(
               contents.contents.type!,
-              message.response,
+              message.response
             );
             message.response = replacedResult.replacedMessage;
             message.sources = replacedResult.sources;
