@@ -20,7 +20,9 @@ const AddContent = () => {
   };
 
   const handleAdd = async () => {
-    for (let link of links) {
+    const newLinks = [...links, contentURL]
+    setLinks(newLinks);
+    for (let link of newLinks) {
       toast.loading("Adding");
       try {
         const contentStream = await addContent(
@@ -38,7 +40,7 @@ const AddContent = () => {
       setContentURL("");
     }
     setLinks([]);
-  };
+    };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && contentURL) {
@@ -52,9 +54,6 @@ const AddContent = () => {
       prevLinks.filter((_, index) => index !== indexToRemove),
     );
   }, []);
-
-  console.log(contentURL);
-  console.log(links);
 
   return (
     <>
