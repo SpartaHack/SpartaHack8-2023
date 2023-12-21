@@ -12,6 +12,7 @@ import { addContent } from "@/app/api/content";
 const AddContent = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [contentURL, setContentURL] = useState("");
+  const [links, setLinks] = useState<string[]>([]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -40,7 +41,9 @@ const AddContent = () => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && contentURL) {
+      setLinks((prevLinks) => [...prevLinks, contentURL]);
+      setContentURL("");
       console.log("hi");
     }
   };
@@ -75,19 +78,22 @@ const AddContent = () => {
           </div>
         }
         contentMain={
-          <CustomTextInput
-            onKeyDown={handleKeyDown}
-            value={contentURL}
-            placeholder="https://www.youtube.com/watch?v=xETr0cr1VNk"
-            type={"text"}
-            eventChange={(e) => handleChange(e, setContentURL)}
-            isInvalid={contentURL === ""}
-            endContent={
-              <Chip radius="sm" variant="bordered">
-                Press Enter to add more
-              </Chip>
-            }
-          />
+          <>
+            <CustomTextInput
+              onKeyDown={handleKeyDown}
+              value={contentURL}
+              placeholder="https://www.youtube.com/watch?v=xETr0cr1VNk"
+              type={"text"}
+              eventChange={(e) => handleChange(e, setContentURL)}
+              isInvalid={contentURL === ""}
+              endContent={
+                <Chip radius="sm" variant="bordered">
+                  Press Enter to add more
+                </Chip>
+              }
+            />
+            {links && links.map((link, index) => <div key={index}>{link}</div>)}
+          </>
         }
         footer
         actionTitle="Add Content"
