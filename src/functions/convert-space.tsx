@@ -12,11 +12,7 @@ export function convertSpace(
   const handleMove = async (spaceId: string) => {
     toast.loading("Moving");
     try {
-      await addContent(
-        auth.currentUser?.uid!,
-        spaceId,
-        contentURL,
-      );
+      await addContent(auth.currentUser?.uid!, spaceId, contentURL);
       toast.success("Moved successfully");
     } catch (err) {
       toast.error("Could not move content");

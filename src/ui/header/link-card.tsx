@@ -22,7 +22,11 @@ const LinkCard = ({ link, handleDelete }: LinkCardProps) => {
         <Icon icon={iconType} className="ml-1 mt-0.5 text-xl mr-5" />
         {link}
       </div>
-      <Icon icon="basil:cross-solid" className="text-2xl hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full cursor-pointer mt-0.5 mr-1" onClick={handleDelete}/>
+      <Icon
+        icon="basil:cross-solid"
+        className="text-2xl hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-full cursor-pointer mt-0.5 mr-1"
+        onClick={handleDelete}
+      />
     </div>
   );
 };

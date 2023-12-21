@@ -48,8 +48,13 @@ const AddContent = () => {
   };
 
   const handleDelete = useCallback((indexToRemove: number) => {
-    setLinks((prevLinks) => prevLinks.filter((_, index) => index !== indexToRemove));
+    setLinks((prevLinks) =>
+      prevLinks.filter((_, index) => index !== indexToRemove),
+    );
   }, []);
+
+  console.log(contentURL);
+  console.log(links);
 
   return (
     <>
@@ -90,12 +95,22 @@ const AddContent = () => {
               eventChange={(e) => handleChange(e)}
               isInvalid={contentURL === ""}
               endContent={
-                <Chip radius="sm" variant="bordered">
-                  Press Enter to add more
-                </Chip>
+                contentURL !== "" || links.length !== 0 ? (
+                  <Chip radius="sm" variant="bordered">
+                    Press Enter to add more
+                  </Chip>
+                ) : (
+                  <></>
+                )
               }
             />
-            {links && links.map((link, index) => <LinkCard link={link} handleDelete={() => handleDelete(index)} />)}
+            {links &&
+              links.map((link, index) => (
+                <LinkCard
+                  link={link}
+                  handleDelete={() => handleDelete(index)}
+                />
+              ))}
           </>
         }
         footer
