@@ -32,28 +32,30 @@ const SpaceHeader = () => {
 
   const handleInputBlur = async () => {
     setEditSpaceName(false);
-    const updatedDataSpace = {
-      _id: contents.space._id,
-      space_name: spaceNameInput,
-    } as Partial<getUserSpaceResponse>;
+    if (spaceNameInput !== spaceName) {
+      const updatedDataSpace = {
+        _id: contents.space._id,
+        space_name: spaceNameInput,
+      } as Partial<getUserSpaceResponse>;
 
-    const updatedData = {
-      _id: contents.space._id,
-      space_name: spaceNameInput,
-    };
+      const updatedData = {
+        _id: contents.space._id,
+        space_name: spaceNameInput,
+      };
 
-    const response = await updateSpace(
-      auth.currentUser?.uid!,
-      contents.space._id,
-      spaceNameInput,
-      "private",
-    );
-    if (response) {
-      useSpaceStore.getState().updateSpaceData(updatedData);
-      useContentStore.getState().updateContent(updatedDataSpace);
-      toast.success("Space updated successfully.");
-    } else {
-      toast.error("Could not update space.");
+      const response = await updateSpace(
+        auth.currentUser?.uid!,
+        contents.space._id,
+        spaceNameInput,
+        "private",
+      );
+      if (response) {
+        useSpaceStore.getState().updateSpaceData(updatedData);
+        useContentStore.getState().updateContent(updatedDataSpace);
+        toast.success("Space updated successfully.");
+      } else {
+        toast.error("Could not update space.");
+      }
     }
   };
 
