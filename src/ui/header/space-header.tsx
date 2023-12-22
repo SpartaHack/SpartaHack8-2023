@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useContentStore } from "@/context/content-store";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -59,6 +59,12 @@ const SpaceHeader = () => {
     }
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleInputBlur();
+    }
+  };
+
   return (
     <>
       <div className="sm:mt-16 sm:mx-24 mx-12 mt-8 ">
@@ -71,6 +77,7 @@ const SpaceHeader = () => {
                 value={spaceNameInput}
                 onChange={handleInputChange}
                 onBlur={handleInputBlur}
+                onKeyDown={handleKeyDown}
                 autoFocus
               />
             ) : (
