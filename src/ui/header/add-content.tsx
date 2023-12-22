@@ -46,8 +46,14 @@ const AddContent = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && contentURL) {
-      setLinks((prevLinks) => [...prevLinks, contentURL]);
-      setContentURL("");
+      if (links.length < 5 && !links.includes(contentURL)) {
+        setLinks((prevLinks) => [...prevLinks, contentURL]);
+        setContentURL("");
+      } else if (links.includes(contentURL)) {
+        toast.warning("Duplicate content detected");
+      } else if (links.length >= 5) {
+        toast.warning("Only 5 contents can be added at once");
+      }
     }
   };
 
