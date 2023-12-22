@@ -8,6 +8,7 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "i.ytimg.com",
       "info.arxiv.org",
+      "static1.makeuseofimages.com",
     ],
   },
 };
