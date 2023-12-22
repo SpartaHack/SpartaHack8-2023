@@ -59,7 +59,7 @@ const AddContent = () => {
   return (
     <>
       <CustomModal
-        size="4xl"
+        size="2xl"
         title={
           <div className="shadow-xl rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
