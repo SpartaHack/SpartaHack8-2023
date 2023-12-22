@@ -36,6 +36,7 @@ const AddContent = () => {
         toast.dismiss(addingToast);
         toast.success("Added successfully");
       } catch (err) {
+        toast.dismiss(addingToast);
         toast.error("Could not add content");
       }
       setContentURL("");
