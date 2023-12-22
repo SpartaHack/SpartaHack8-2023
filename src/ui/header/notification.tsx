@@ -47,10 +47,12 @@ const Notification = () => {
   };
 
   if (notifications.length == 0) {
-    setNotifications([{
-      id: "-1",
-      message: "No new notifications"
-  }])
+    setNotifications([
+      {
+        id: "-1",
+        message: "No new notifications",
+      },
+    ]);
   }
 
   return (

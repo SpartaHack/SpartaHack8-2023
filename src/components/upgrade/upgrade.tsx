@@ -21,7 +21,7 @@ const Upgrade = () => {
 
   return (
     <>
-      <div className="mt-[50px]  lg:mt-12 w-full flex items-center justify-center text-center">
+      <div className="mt-[50px] lg:mt-12 w-full flex items-center justify-center text-center">
         <div className="lg:block hidden flex-col lg:pt-8 px-12">
           <h1 className="text-3xl lg:text-5xl font-bold text-center font-sans">
             Save hours, learn better, and share more.

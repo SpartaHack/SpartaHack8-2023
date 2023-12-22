@@ -34,7 +34,10 @@ const AddSpace = () => {
 
   return (
     <div className="w-full">
-      <div className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl" onClick={() => handleSpaceCreation()}>
+      <div
+        className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl"
+        onClick={() => handleSpaceCreation()}
+      >
         <Icon
           icon="mdi:folder-add-outline"
           className="h-6 dark:text-neutral-500 text-neutral-400 w-6"
