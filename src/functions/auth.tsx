@@ -11,7 +11,7 @@ import {
 import { FirebaseError } from "firebase/app";
 import { toast } from "sonner";
 import { handleFirebaseError, setUserLocalStorage, getJWT } from "../../utils";
-import { getUserSpaces, userSignIn, userSignUp } from "@/app/api/user";
+import { getUserSpaces, userLogOut, userSignIn, userSignUp } from "@/app/api/user";
 import { initFirebase } from "../../db/firebase";
 import { useUserStore } from "@/context/user-context";
 import { useSpaceStore } from "@/context/space-context";
@@ -164,6 +164,7 @@ export const logOut = async () => {
       toast.error("Please sign in");
       return;
     }
+    await userLogOut(userId);
     localStorage.clear();
     useUserStore.getState().logout();
     useSpaceStore.getState().logout();
