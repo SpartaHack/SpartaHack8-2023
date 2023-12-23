@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { addContent } from "@/app/api/content";
 import LinkCard from "./link-card";
 
+// million-ignore
 const AddContent = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [contentURL, setContentURL] = useState("");

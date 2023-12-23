@@ -8,6 +8,7 @@ import { educationOptions } from "../../../utils/constants";
 import { useRouter } from "next/navigation";
 import { useHandleSignUpFinal } from "@/functions/auth";
 
+// million-ignore
 const Form = () => {
   const { handleSignUpFinal, signUpFinalStatus } = useHandleSignUpFinal();
   const [name, setName] = useState("");
