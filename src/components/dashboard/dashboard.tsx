@@ -40,6 +40,7 @@ const Dashboard = () => {
                   spaceId={content.space_id}
                   type={content.content.type}
                   contentID={content.content.content_id}
+                  contentURL={content.content.content_url}
                   title={content.content.title}
                   thumbnail_url={content.content.thumbnail_url}
                 />
