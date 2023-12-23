@@ -28,7 +28,7 @@ const ContentCard = ({
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
     if (contentAdd) {
-      await addContent(auth.currentUser?.uid!, undefined, contentURL!);
+      await addContent(auth.currentUser?.uid!, undefined, [contentURL!]);
     }
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);

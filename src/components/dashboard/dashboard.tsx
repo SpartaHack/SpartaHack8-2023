@@ -5,7 +5,7 @@ import { useContentStore } from "@/context/content-store";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
 import SpaceHeader from "@/ui/header/space-header";
-import { getHistory } from "@/app/api/user";
+import { getContentHistory } from "@/app/api/user";
 import { auth } from "../../../db/firebase";
 
 const Dashboard = () => {
@@ -17,7 +17,7 @@ const Dashboard = () => {
       const historyLoading = localStorage.getItem("historyLoading");
       if (auth.currentUser?.uid && historyLoading === "true") {
         localStorage.setItem("historyLoading", "false");
-        const response = await getHistory(auth.currentUser?.uid!);
+        const response = await getContentHistory(auth.currentUser?.uid!);
         setContents(response?.data);
       }
     };
@@ -34,14 +34,14 @@ const Dashboard = () => {
             (contents.space ? (
               <></>
             ) : (
-              contents.map((content: History, key: number) => (
+              contents.map((history: History, key: number) => (
                 <ContentCard
                   key={key}
-                  spaceId={content.space_id}
-                  type={content.content.type}
-                  contentID={content.content.content_id}
-                  title={content.content.title}
-                  thumbnail_url={content.content.thumbnail_url}
+                  spaceId={history.space_id}
+                  type={history.content.type}
+                  contentID={history.content.content_id}
+                  title={history.content.title}
+                  thumbnail_url={history.content.thumbnail_url}
                 />
               ))
             ))}

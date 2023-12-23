@@ -33,7 +33,7 @@ const Spaces = () => {
 
   const handleContentChange = async (
     type: "space" | "history",
-    spaceId?: string,
+    spaceId?: string
   ) => {
     if (type === "space") {
       const contents = await getSpace(userId!, spaceId!);
@@ -63,7 +63,7 @@ const Spaces = () => {
               <div className="flex flex-row">
                 <Icon icon="bxs:cube" className="h-6 w-6" />
                 <div className="ml-5">
-                  <p>{space.space_name}</p>
+                  <p>{space.name}</p>
                 </div>
               </div>
               <CustomModal

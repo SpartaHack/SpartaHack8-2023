@@ -5,12 +5,12 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const addContent = async (
   userId: string,
   spaceId: string | undefined,
-  contentURL: string,
+  contentURLs: string[],
 ) => {
   const data = {
     user_id: userId,
     space_id: spaceId,
-    content: contentURL,
+    content_urls: contentURLs,
   };
 
   const response = await fetch(`${API_URL}/content/add`, {

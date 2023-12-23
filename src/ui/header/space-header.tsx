@@ -24,49 +24,38 @@ const SpaceHeader = () => {
     return <Loading/>;
   }
 
-  const spaceName = contents.space ? contents.space.space_name : "History";
-
-  const handleIconClick = () => {
-    setSpaceNameInput(spaceName);
-    setEditSpaceName(true);
+  const spaceName = contents.space ? contents.space.name : "History";
+  
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    setState: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    setEditSpaceName(e.target.value);
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSpaceNameInput(e.target.value);
-  };
+  const handleSave = async (editSpaceName: string) => {
+    const updatedDataSpace = {
+      _id: contents.space._id,
+      name: editSpaceName,
+    } as Partial<getUserSpaceResponse>;
 
-  const handleInputBlur = async () => {
-    setEditSpaceName(false);
-    if (spaceNameInput !== spaceName) {
-      const updatedDataSpace = {
-        _id: contents.space._id,
-        space_name: spaceNameInput,
-      } as Partial<getUserSpaceResponse>;
+    const updatedData = {
+      _id: contents.space._id,
+      name: editSpaceName,
+    };
 
-      const updatedData = {
-        _id: contents.space._id,
-        space_name: spaceNameInput,
-      };
-
-      const response = await updateSpace(
-        auth.currentUser?.uid!,
-        contents.space._id,
-        spaceNameInput,
-        "private",
-      );
-      if (response) {
-        useSpaceStore.getState().updateSpaceData(updatedData);
-        useContentStore.getState().updateContent(updatedDataSpace);
-        toast.success("Space updated successfully.");
-      } else {
-        toast.error("Could not update space.");
-      }
-    }
-  };
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleInputBlur();
+    const response = await updateSpace(
+      auth.currentUser?.uid!,
+      contents.space._id,
+      editSpaceName,
+      "private"
+    );
+    if (response) {
+      useSpaceStore.getState().updateSpaceData(updatedData);
+      useContentStore.getState().updateContent(updatedDataSpace);
+      toast.success("Space updated successfully.");
+    } else {
+      toast.error("Could not update space.");
     }
   };
 

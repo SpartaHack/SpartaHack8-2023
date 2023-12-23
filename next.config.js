@@ -9,6 +9,7 @@ const nextConfig = {
       "i.ytimg.com",
       "info.arxiv.org",
       "static1.makeuseofimages.com",
+      "logowik.com",
     ],
   },
 };

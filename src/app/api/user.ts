@@ -48,6 +48,20 @@ export const userSignUp = async (
   }
 };
 
+export const userLogOut = async (
+  userId: string
+) => {
+  const data = {
+    user_id: userId
+  }
+  try {
+    const response = await axios.post(`${API_URL}/user/logout`, data);
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export const getUserSpaces = async (userId: string) => {
   try {
     const response = await axios.get(`${API_URL}/user/${userId}/spaces`);
@@ -66,9 +80,9 @@ export const getUser = async (userId: string) => {
   }
 };
 
-export const getHistory = async (userId: string) => {
+export const getContentHistory = async (userId: string) => {
   try {
-    const response = await axios.get(`${API_URL}/user/${userId}/history`);
+    const response = await axios.get(`${API_URL}/user/${userId}/content/history`);
     return response;
   } catch (err) {
     console.log(err);

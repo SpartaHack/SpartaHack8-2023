@@ -7,13 +7,12 @@ import { toast } from "sonner";
 
 export function convertSpace(
   spaces: getUserSpaceResponse[],
-  contentURL: string,
+  contentURL: string
 ) {
   const handleMove = async (spaceId: string) => {
     const movingToast = toast.loading("Moving");
     try {
-      await addContent(auth.currentUser?.uid!, spaceId, contentURL);
-      toast.dismiss(movingToast);
+      await addContent(auth.currentUser?.uid!, spaceId, [contentURL]);
       toast.success("Moved successfully");
     } catch (err) {
       toast.error("Could not move content");
@@ -30,7 +29,7 @@ export function convertSpace(
             onClick={() => handleMove(space._id)}
           >
             <Icon icon="bxs:cube" className="h-6 w-6" />
-            <span className="ml-6">{space.space_name}</span>
+            <span className="ml-6">{space.name}</span>
           </div>
         ),
       },
