@@ -33,10 +33,10 @@ const AddContent = () => {
         for await (const content of contentStream!) {
           useContentStore.getState().addContent(content);
         }
-        toast.dismiss(addingToast);
+        // toast.dismiss(addingToast);
         toast.success("Added successfully");
       } catch (err) {
-        toast.dismiss(addingToast);
+        // toast.dismiss(addingToast);
         toast.error("Could not add content");
       }
       setContentURL("");
