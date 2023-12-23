@@ -4,12 +4,10 @@ import useSearchResults from "@/hooks/use-search-results";
 import Loading from "@/app/loading";
 import { ResultBoardProps, SearchType } from "../../../types";
 import ContentCard from "../dashboard/content-card";
-import { auth } from "../../../db/firebase";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
   const { searchResults, isLoading } = useSearchResults(
     query,
-    auth.currentUser!.uid,
   );
 
   if (isLoading) {
