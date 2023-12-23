@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import { useContentStore } from "@/context/content-store";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -8,15 +8,20 @@ import { updateSpace } from "@/app/api/space";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import AddContent from "./add-content";
-import { Spinner } from "@nextui-org/react";
+import Loading from "@/app/loading";
 
 const SpaceHeader = () => {
-  const contents = useStore(useContentStore, (state) => state.contents);
+  const contentsFromStore = useStore(useContentStore, (state) => state.contents);
+  const [contents, setContents] = useState(contentsFromStore);
   const [editSpaceName, setEditSpaceName] = useState(false);
   const [spaceNameInput, setSpaceNameInput] = useState("");
 
+  useEffect(() => {
+    setContents(contentsFromStore);
+  }, [contentsFromStore]);
+
   if (!contents) {
-    return <Spinner color="current" size="sm" />;
+    return <Loading/>;
   }
 
   const spaceName = contents.space ? contents.space.space_name : "History";
@@ -98,7 +103,6 @@ const SpaceHeader = () => {
           )}
         </div>
       </div>
-
       <div className="border-[.5px] sm:mx-24 mx-10 mt-8 dark:border-neutral-800" />
     </>
   );
