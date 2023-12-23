@@ -13,7 +13,7 @@ import { replaceMessage } from "../../utils";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
 
-export const useLearnContent = (contentId: string, spaceId?: string) => {
+export const useLearnContent = (contentId: string, contentURL: string, spaceId?: string) => {
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
   const setError = useErrorStore((state) => state.setError);
@@ -22,42 +22,25 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
   useEffect(() => {
     const fetchData = async () => {
       const repeating = localStorage.getItem("repeating");
-      if (
-        contentId &&
-        auth.currentUser?.uid &&
-        !fetched &&
-        repeating == "false"
-      ) {
+      if (contentId && auth.currentUser?.uid && !fetched && repeating == "false") {
         localStorage.setItem("repeating", "true");
         setLoading(true);
         try {
           let response;
           if (!spaceId) {
-            response = await getContent(auth.currentUser?.uid!, contentId);
+            response = await getContent(auth.currentUser?.uid!, contentId, contentURL);
           } else {
-            response = await getContent(
-              auth.currentUser?.uid!,
-              contentId,
-              spaceId,
-            );
+            response = await getContent(auth.currentUser?.uid!, contentId, contentURL, spaceId);
             if (response && response.data) {
               response.data.space_id = spaceId;
             }
           }
+          console.log(response)
           setLearnContent!(response?.data);
-          if (
-            !response?.data?.generations?.questions ||
-            !response?.data?.generations?.summary
-          ) {
+          if (!response?.data?.generations?.questions || !response?.data?.generations?.summary) {
             try {
-              const summaryResponse = await generateContentSummary(
-                auth.currentUser?.uid!,
-                contentId,
-              );
-              const questionsResponse = await generateContentQuestions(
-                auth.currentUser?.uid!,
-                contentId,
-              );
+              const summaryResponse = await generateContentSummary(auth.currentUser?.uid!, contentId);
+              const questionsResponse = await generateContentQuestions(auth.currentUser?.uid!, contentId);
               const summary = summaryResponse?.data;
               const questions = questionsResponse?.data;
 
@@ -73,23 +56,13 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
               }
             }
           }
-          const historyResponse = await chatHistory(
-            auth.currentUser.uid!,
-            "content",
-            contentId,
-            spaceId ? spaceId! : ""
-          );
+          const historyResponse = await chatHistory(auth.currentUser.uid!, "content", contentId, spaceId ? spaceId! : "");
           if (historyResponse) {
-            let chatLog: MessageType[] = convertChatHistoryToChatLog(
-              historyResponse.data,
-            );
+            let chatLog: MessageType[] = convertChatHistoryToChatLog(historyResponse.data);
 
             chatLog.forEach((message) => {
               if (message.type === "bot") {
-                const replacedResult = replaceMessage(
-                  learnContent?.type!,
-                  message.response,
-                );
+                const replacedResult = replaceMessage(learnContent?.type!, message.response);
                 message.response = replacedResult.replacedMessage;
                 message.sources = replacedResult.sources;
               }
