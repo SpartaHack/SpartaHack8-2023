@@ -29,7 +29,7 @@ const AddContent = () => {
         const contentStream = await addContent(
           auth.currentUser?.uid!,
           contents.space._id,
-          link,
+          [link],
         );
         for await (const content of contentStream!) {
           useContentStore.getState().addContent(content);

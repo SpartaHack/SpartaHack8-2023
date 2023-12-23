@@ -11,8 +11,8 @@ const useChatSubmit = (
   type: "space" | "content",
   initialChatLog: MessageType[],
   userId: string,
-  contentId: string[],
-  spaceId: string[],
+  contentId: string,
+  spaceId: string,
 ) => {
   const setError = useErrorStore((state) => state.setError);
   const welcomeChat = [
@@ -59,12 +59,11 @@ const useChatSubmit = (
           spaceId,
           contentId,
           query,
-          type,
           true,
           true,
         );
       } else {
-        response = await chat(userId, spaceId, [], query, type, true, true);
+        response = await chat(userId, spaceId, "", query, true, true);
       }
     } catch (err) {
       if (isAxiosError(err)) {

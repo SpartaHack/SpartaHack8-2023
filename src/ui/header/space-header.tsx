@@ -24,7 +24,7 @@ const SpaceHeader = () => {
     return <Loading/>;
   }
 
-  const spaceName = contents.space ? contents.space.space_name : "History";
+  const spaceName = contents.space ? contents.space.name : "History";
 
   const handleIconClick = () => {
     setSpaceNameInput(spaceName);
@@ -40,12 +40,12 @@ const SpaceHeader = () => {
     if (spaceNameInput !== spaceName) {
       const updatedDataSpace = {
         _id: contents.space._id,
-        space_name: spaceNameInput,
+        name: spaceNameInput,
       } as Partial<getUserSpaceResponse>;
 
       const updatedData = {
         _id: contents.space._id,
-        space_name: spaceNameInput,
+        name: spaceNameInput,
       };
 
       const response = await updateSpace(

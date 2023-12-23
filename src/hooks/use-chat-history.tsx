@@ -18,8 +18,8 @@ const useChatHistory = () => {
         const response = await chatHistory(
           auth.currentUser?.uid!,
           "space",
-          [],
-          [contents?.space._id!],
+          "",
+          contents?.space._id!,
         );
         localStorage.setItem("chatHistoryLoading", "false");
         let fetchedHistoryChat: MessageType[] = convertChatHistoryToChatLog(

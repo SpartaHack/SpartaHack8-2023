@@ -4,10 +4,9 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const chat = async (
   userId: string,
-  spaceId: string[],
-  contentId: string[],
+  spaceId: string,
+  contentId: string,
   query: string,
-  chatType: "content" | "space",
   getExistingChatHistory: boolean,
   saveChatHistory: boolean,
 ) => {
@@ -16,7 +15,6 @@ export const chat = async (
     space_id: spaceId,
     content_id: contentId,
     query: query,
-    chatbot_type: chatType,
     get_existing_chat_history: getExistingChatHistory,
     save_chat_history: saveChatHistory,
   };
@@ -86,8 +84,8 @@ export const generateSpaceQuestions = async (
 export const chatHistory = async (
   userId: string,
   chatbotType: string,
-  contentId: string[],
-  spaceId: string[],
+  contentId: string,
+  spaceId: string,
 ) => {
   const data = {
     user_id: userId,

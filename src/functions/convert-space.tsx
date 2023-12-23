@@ -12,7 +12,7 @@ export function convertSpace(
   const handleMove = async (spaceId: string) => {
     const movingToast = toast.loading("Moving");
     try {
-      await addContent(auth.currentUser?.uid!, spaceId, contentURL);
+      await addContent(auth.currentUser?.uid!, spaceId, [contentURL]);
       toast.dismiss(movingToast);
       toast.success("Moved successfully");
     } catch (err) {
@@ -30,7 +30,7 @@ export function convertSpace(
             onClick={() => handleMove(space._id)}
           >
             <Icon icon="bxs:cube" className="h-6 w-6" />
-            <span className="ml-6">{space.space_name}</span>
+            <span className="ml-6">{space.name}</span>
           </div>
         ),
       },
