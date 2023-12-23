@@ -33,8 +33,10 @@ const AddContent = () => {
         for await (const content of contentStream!) {
           useContentStore.getState().addContent(content);
         }
+        toast.dismiss(addingToast);
         toast.success("Added successfully");
       } catch (err) {
+        toast.dismiss(addingToast);
         toast.error("Could not add content");
       }
       setContentURL("");
@@ -44,8 +46,14 @@ const AddContent = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && contentURL) {
-      setLinks((prevLinks) => [...prevLinks, contentURL]);
-      setContentURL("");
+      if (links.length < 5 && !links.includes(contentURL)) {
+        setLinks((prevLinks) => [...prevLinks, contentURL]);
+        setContentURL("");
+      } else if (links.includes(contentURL)) {
+        toast.warning("Duplicate content detected");
+      } else if (links.length >= 5) {
+        toast.warning("Only 5 contents can be added at once");
+      }
     }
   };
 
@@ -55,13 +63,10 @@ const AddContent = () => {
     );
   }, []);
 
-  console.log(contentURL);
-  console.log(links);
-
   return (
     <>
       <CustomModal
-        size="4xl"
+        size="2xl"
         title={
           <div className="shadow-xl rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />

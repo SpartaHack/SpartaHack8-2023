@@ -14,7 +14,6 @@ import { useContentStore } from "@/context/content-store";
 import useFetchChatHistory from "@/hooks/use-chat-history";
 import useAutoScroll from "@/hooks/use-auto-scroll";
 import useFetchQuestions from "@/hooks/use-fetch-questions";
-import Loading from "@/app/loading";
 
 const SpaceChatMain = () => {
   const contents = useStore(useContentStore, (state) => state.contents);

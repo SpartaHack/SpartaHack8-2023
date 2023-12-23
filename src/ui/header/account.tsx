@@ -30,6 +30,11 @@ const Account = ({ name, description, picture }: AccountProps) => {
     setTheme(isLightMode ? "dark" : "light");
   };
 
+  const handleLogOut = () => {
+    router.push("/");
+    logOut();
+  };
+
   return (
     <div className="cursor-pointer mt-1">
       <Dropdown radius="sm">
@@ -92,7 +97,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
 
           <DropdownSection aria-label="Auth">
             {auth.currentUser?.uid ? (
-              <DropdownItem key="logout" onClick={logOut}>
+              <DropdownItem key="logout" onClick={handleLogOut}>
                 Log Out
               </DropdownItem>
             ) : (
