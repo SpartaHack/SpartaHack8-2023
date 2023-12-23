@@ -54,14 +54,7 @@ const useChatSubmit = (
 
     try {
       if (type === "content") {
-        response = await chat(
-          userId,
-          spaceId,
-          contentId,
-          query,
-          true,
-          true,
-        );
+        response = await chat(userId, spaceId, contentId, query, true, true);
       } else {
         response = await chat(userId, spaceId, "", query, true, true);
       }

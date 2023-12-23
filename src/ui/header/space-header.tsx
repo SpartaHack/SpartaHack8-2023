@@ -11,7 +11,10 @@ import AddContent from "./add-content";
 import Loading from "@/app/loading";
 
 const SpaceHeader = () => {
-  const contentsFromStore = useStore(useContentStore, (state) => state.contents);
+  const contentsFromStore = useStore(
+    useContentStore,
+    (state) => state.contents,
+  );
   const [contents, setContents] = useState(contentsFromStore);
   const [editSpaceName, setEditSpaceName] = useState(false);
   const [spaceNameInput, setSpaceNameInput] = useState("");
@@ -21,7 +24,7 @@ const SpaceHeader = () => {
   }, [contentsFromStore]);
 
   if (!contents) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   const spaceName = contents.space ? contents.space.name : "History";
