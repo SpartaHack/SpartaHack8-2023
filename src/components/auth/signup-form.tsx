@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useSignUpEmailContinue } from "@/functions/auth";
 import { toast } from "sonner";
 
+// million-ignore
 const SignUpForm = () => {
   const { signUpEmailContinue, signUpStatus } = useSignUpEmailContinue();
   const [email, setEmail] = useState("");
