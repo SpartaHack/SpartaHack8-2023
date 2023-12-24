@@ -61,26 +61,6 @@ export const generateContentQuestions = async (
   return response;
 };
 
-export const generateSpaceQuestions = async (
-  userId: string,
-  spaceId: string,
-) => {
-  const data = {
-    user_id: userId,
-    space_id: spaceId,
-  };
-
-  try {
-    const response = await axios.post(
-      `${API_URL}/generation/space/chat_prompts`,
-      data,
-    );
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const chatHistory = async (
   userId: string,
   chatbotType: string,
