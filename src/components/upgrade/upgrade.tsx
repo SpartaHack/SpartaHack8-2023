@@ -11,6 +11,7 @@ import UpgradeModal from "@/components/upgrade/upgrade-modal";
 import { PROYEARLYPRICE } from "../../../utils/constants";
 import TrustedBy from "./trusted-by";
 
+// million-ignore
 const Upgrade = () => {
   const router = useRouter();
 
