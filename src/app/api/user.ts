@@ -2,6 +2,8 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+console.log(API_URL);
+
 export const userSignIn = async (userId: string) => {
   const jwtToken = localStorage.getItem("jwtToken");
   const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
