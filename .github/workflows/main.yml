@@ -62,6 +62,14 @@ jobs:
             echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL_DEV }}" >> $GITHUB_ENV
           fi
 
+      # Set the branch names in both lowercase and uppercase
+      - name: Set Branch Names
+        run: |
+          BRANCH_NAME_LOWER=$(echo ${{ github.ref_name }} | tr '[:upper:]' '[:lower:]')
+          BRANCH_NAME_UPPER=$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')
+          echo "BRANCH_NAME_LOWER=$BRANCH_NAME_LOWER" >> $GITHUB_ENV
+          echo "BRANCH_NAME_UPPER=$BRANCH_NAME_UPPER" >> $GITHUB_ENV
+
       - name: Authorize Docker push
         run: gcloud auth configure-docker
 
@@ -92,17 +100,17 @@ jobs:
           --platform "managed" \
           --allow-unauthenticated \
           --update-secrets=\
-          NEXT_PUBLIC_FIREBASE_API_KEY=NEXT_PUBLIC_FIREBASE_API_KEY_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_FIREBASE_PROJECT_ID=NEXT_PUBLIC_FIREBASE_PROJECT_ID_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_FIREBASE_APP_ID=NEXT_PUBLIC_FIREBASE_APP_ID_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_AMPLITUDE_API_KEY=NEXT_PUBLIC_AMPLITUDE_API_KEY_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_POSTHOG_HOST=NEXT_PUBLIC_POSTHOG_HOST_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_POSTHOG_KEY=NEXT_PUBLIC_POSTHOG_KEY_${{ github.ref_name }}:latest,\
-          NEXT_PUBLIC_API_URL=NEXT_PUBLIC_API_URL_${{ github.ref_name }}:latest \
+          NEXT_PUBLIC_FIREBASE_API_KEY=NEXT_PUBLIC_FIREBASE_API_KEY_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID=NEXT_PUBLIC_FIREBASE_PROJECT_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_APP_ID=NEXT_PUBLIC_FIREBASE_APP_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_AMPLITUDE_API_KEY=NEXT_PUBLIC_AMPLITUDE_API_KEY_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_POSTHOG_HOST=NEXT_PUBLIC_POSTHOG_HOST_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_POSTHOG_KEY=NEXT_PUBLIC_POSTHOG_KEY_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_API_URL=NEXT_PUBLIC_API_URL_$BRANCH_NAME_UPPER:latest \
           --quiet
 
       - uses: sarisia/actions-status-discord@v1
