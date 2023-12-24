@@ -13,14 +13,28 @@ import AddContent from "./add-content";
 import { Spinner } from "@nextui-org/react";
 
 const SpaceHeader = () => {
-  const contents = useStore(useContentStore, (state) => state.contents);
-  const [editSpaceName, setEditSpaceName] = useState("");
+  const contentsFromStore = useStore(
+    useContentStore,
+    (state) => state.contents,
+  );
+  const [contents, setContents] = useState(contentsFromStore);
+  const [editSpaceName, setEditSpaceName] = useState(false);
+  const [spaceNameInput, setSpaceNameInput] = useState("");
+
+  useEffect(() => {
+    setContents(contentsFromStore);
+  }, [contentsFromStore]);
 
   if (!contents) {
-    return <Spinner color="current" size="sm" />;
+    return <Loading />;
   }
 
   const spaceName = contents.space ? contents.space.name : "History";
+
+  const handleIconClick = () => {
+    setSpaceNameInput(spaceName);
+    setEditSpaceName(true);
+  };
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -29,16 +43,34 @@ const SpaceHeader = () => {
     setEditSpaceName(e.target.value);
   };
 
-  const handleSave = async (editSpaceName: string) => {
-    const updatedDataSpace = {
-      _id: contents.space._id,
-      name: editSpaceName,
-    } as Partial<getUserSpaceResponse>;
+  const handleInputBlur = async () => {
+    setEditSpaceName(false);
+    if (spaceNameInput !== spaceName) {
+      const updatedDataSpace = {
+        _id: contents.space._id,
+        name: spaceNameInput,
+      } as Partial<getUserSpaceResponse>;
 
-    const updatedData = {
-      _id: contents.space._id,
-      name: editSpaceName,
-    };
+      const updatedData = {
+        _id: contents.space._id,
+        name: spaceNameInput,
+      };
+
+      const response = await updateSpace(
+        auth.currentUser?.uid!,
+        contents.space._id,
+        spaceNameInput,
+        "private",
+      );
+      if (response) {
+        useSpaceStore.getState().updateSpaceData(updatedData);
+        useContentStore.getState().updateContent(updatedDataSpace);
+        toast.success("Space updated successfully.");
+      } else {
+        toast.error("Could not update space.");
+      }
+    }
+  };
 
     const response = await updateSpace(
       auth.currentUser?.uid!,

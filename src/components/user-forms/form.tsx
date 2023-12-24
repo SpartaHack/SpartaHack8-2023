@@ -5,6 +5,7 @@ import { CustomButton } from "@/helpers/custom-btn";
 import { toast } from "sonner";
 import CustomTextArea from "@/helpers/custom-text-area";
 
+// million-ignore
 const Form = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");

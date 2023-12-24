@@ -13,7 +13,11 @@ import { replaceMessage } from "../../utils";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
 
-export const useLearnContent = (contentId: string, spaceId?: string) => {
+export const useLearnContent = (
+  contentId: string,
+  contentURL: string,
+  spaceId?: string,
+) => {
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
   const setError = useErrorStore((state) => state.setError);
@@ -33,12 +37,17 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
         try {
           let response;
           if (!spaceId) {
-            response = await getContent(auth.currentUser?.uid!, contentId);
+            response = await getContent(
+              auth.currentUser?.uid!,
+              contentId,
+              contentURL,
+            );
           } else {
             response = await getContent(
               auth.currentUser?.uid!,
               contentId,
-              spaceId
+              contentURL,
+              spaceId,
             );
             if (response && response.data) {
               response.data.space_id = spaceId;
@@ -77,7 +86,7 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
             auth.currentUser.uid!,
             "content",
             contentId,
-            spaceId ? spaceId! : ""
+            spaceId ? spaceId! : "",
           );
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(

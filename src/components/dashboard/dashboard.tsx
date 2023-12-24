@@ -37,11 +37,12 @@ const Dashboard = () => {
               contents.map((history: History, key: number) => (
                 <ContentCard
                   key={key}
-                  spaceId={history.space_id}
-                  type={history.content.type}
-                  contentID={history.content.content_id}
-                  title={history.content.title}
-                  thumbnail_url={history.content.thumbnail_url}
+                  spaceId={content.space_id}
+                  type={content.content.type}
+                  contentID={content.content.content_id}
+                  contentURL={content.content.content_url}
+                  title={content.content.title}
+                  thumbnail_url={content.content.thumbnail_url}
                 />
               ))
             ))}

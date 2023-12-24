@@ -2,6 +2,7 @@ import { Input } from "@nextui-org/react";
 import React from "react";
 import { CustomTextInputProps } from "../../types";
 
+// million-ignore
 const CustomTextInput = ({
   value,
   type,

@@ -6,9 +6,7 @@ import { ResultBoardProps, SearchType } from "../../../types";
 import ContentCard from "../dashboard/content-card";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
-  const { searchResults, isLoading } = useSearchResults(
-    query,
-  );
+  const { searchResults, isLoading } = useSearchResults(query);
 
   if (isLoading) {
     return <Loading />;

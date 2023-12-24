@@ -11,7 +11,12 @@ import {
 import { FirebaseError } from "firebase/app";
 import { toast } from "sonner";
 import { handleFirebaseError, setUserLocalStorage, getJWT } from "../../utils";
-import { getUserSpaces, userLogOut, userSignIn, userSignUp } from "@/app/api/user";
+import {
+  getUserSpaces,
+  userLogOut,
+  userSignIn,
+  userSignUp,
+} from "@/app/api/user";
 import { initFirebase } from "../../db/firebase";
 import { useUserStore } from "@/context/user-context";
 import { useSpaceStore } from "@/context/space-context";
@@ -21,7 +26,6 @@ export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const signInEmail = async (email: string, password: string) => {
     try {
@@ -93,7 +97,6 @@ export const useAuthGoogleSignIn = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const authGoogleSignIn = async () => {
     try {
@@ -189,7 +192,6 @@ export const useHandleSignUpFinal = () => {
   );
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const handleSignUpFinal = async (
     userId: string,

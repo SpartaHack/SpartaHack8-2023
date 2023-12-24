@@ -82,7 +82,9 @@ export const getUser = async (userId: string) => {
 
 export const getContentHistory = async (userId: string) => {
   try {
-    const response = await axios.get(`${API_URL}/user/${userId}/content/history`);
+    const response = await axios.get(
+      `${API_URL}/user/${userId}/content/history`,
+    );
     return response;
   } catch (err) {
     console.log(err);
@@ -101,6 +103,18 @@ export const updateUser = async (
 
   try {
     const response = await axios.put(`${API_URL}/user/${userId}`, data);
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const userLogOut = async (userId: string) => {
+  const data = {
+    user_id: userId,
+  };
+  try {
+    const response = await axios.post(`${API_URL}/user/logout`, data);
     return response;
   } catch (err) {
     console.log(err);

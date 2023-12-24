@@ -12,7 +12,7 @@ const useChatSubmit = (
   initialChatLog: MessageType[],
   userId: string,
   contentId: string,
-  spaceId: string
+  spaceId: string,
 ) => {
   const setError = useErrorStore((state) => state.setError);
   const welcomeChat = [

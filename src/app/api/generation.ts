@@ -108,20 +108,28 @@ export const chatHistory = async (
 export const getContent = async (
   userId: string,
   contentId: string,
+  contentURL: string,
   spaceId?: string,
 ) => {
-  let data: { user_id: string; content_id: string; space_id?: string };
+  let data: {
+    user_id: string;
+    content_id: string;
+    space_id?: string;
+    content_url: string;
+  };
 
   if (spaceId) {
     data = {
       user_id: userId,
       content_id: contentId,
       space_id: spaceId,
+      content_url: contentURL,
     };
   } else {
     data = {
       user_id: userId,
       content_id: contentId,
+      content_url: contentURL,
     };
   }
 
