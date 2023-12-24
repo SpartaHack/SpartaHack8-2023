@@ -63,7 +63,7 @@ const ContentCard = ({
       } else {
         text = `/learn?c=${contentID}&s=${spaceId}`;
       }
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         const domainName = window.location.origin;
         await navigator.clipboard.writeText(domainName + text);
         toast.success("Copied!");

@@ -5,8 +5,8 @@ const useCopyToClipboard = () => {
 
   const copyToClipboard = (text: string, index: number) => {
     const key = `${index}`;
-  
-    if (typeof window !== 'undefined') {
+
+    if (typeof window !== "undefined") {
       const domainName = window.location.origin;
       navigator.clipboard.writeText(domainName + text).then(() => {
         setCopiedState({ ...copiedState, [key]: true });
