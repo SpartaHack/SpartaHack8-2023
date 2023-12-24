@@ -21,10 +21,10 @@ const AddContent = () => {
   };
 
   const handleAdd = async () => {
-    const newLinks = [...links, contentURL];
+    const newLinks = [...links, contentURL]
     setLinks(newLinks);
     for (let link of newLinks) {
-      const addingToast = toast.loading("Adding");
+      toast.loading("Adding");
       try {
         const contentStream = await addContent(
           auth.currentUser?.uid!,
@@ -34,10 +34,10 @@ const AddContent = () => {
         for await (const content of contentStream!) {
           useContentStore.getState().addContent(content);
         }
-        toast.dismiss(addingToast);
+        // toast.dismiss(addingToast);
         toast.success("Added successfully");
       } catch (err) {
-        toast.dismiss(addingToast);
+        // toast.dismiss(addingToast);
         toast.error("Could not add content");
       }
       setContentURL("");

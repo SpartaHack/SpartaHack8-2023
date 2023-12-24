@@ -44,16 +44,16 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   btnStyling1?: string;
   btnStyling2?: string;
   contentTitle?: string | JSX.Element;
@@ -61,13 +61,13 @@ export type CustomModalProps = {
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 

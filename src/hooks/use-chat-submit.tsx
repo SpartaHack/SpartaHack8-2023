@@ -25,14 +25,14 @@ const useChatSubmit = (
   const [chatLog, setChatLog] = useState<MessageType[]>(
     initialChatLog && initialChatLog.length == 0
       ? [...welcomeChat, ...initialChatLog]
-      : [...initialChatLog],
+      : [...initialChatLog]
   );
 
   useEffect(() => {
     setChatLog(
       initialChatLog && initialChatLog.length == 0
         ? [...welcomeChat, ...initialChatLog]
-        : [...initialChatLog],
+        : [...initialChatLog]
     );
   }, [initialChatLog]);
 
