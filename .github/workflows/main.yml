@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - dev
-  pull_request:
-    branches:
       - main
 
 env:
@@ -54,7 +52,7 @@ jobs:
           --build-arg NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}" \
           --build-arg NEXT_PUBLIC_AMPLITUDE_API_KEY="${{ secrets.NEXT_PUBLIC_AMPLITUDE_API_KEY }}" \
           --build-arg NEXT_PUBLIC_POSTHOG_HOST="${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}" \
-          --build-arg NEXT_PUBLIC_POSTHOG_KEY="${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}"
+          --build-arg NEXT_PUBLIC_POSTHOG_KEY="${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}" \
           --build-arg NEXT_PUBLIC_API_URL="${{ secrets.NEXT_PUBLIC_API_URL }}" \
 
       - name: Push the image to the Google Container Registry (GCR)
@@ -78,7 +76,7 @@ jobs:
           NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID:latest,\
           NEXT_PUBLIC_AMPLITUDE_API_KEY=NEXT_PUBLIC_AMPLITUDE_API_KEY:latest,\
           NEXT_PUBLIC_POSTHOG_HOST=NEXT_PUBLIC_POSTHOG_HOST:latest,\
-          NEXT_PUBLIC_POSTHOG_KEY=NEXT_PUBLIC_POSTHOG_KEY:latest \
+          NEXT_PUBLIC_POSTHOG_KEY=NEXT_PUBLIC_POSTHOG_KEY:latest,\
           NEXT_PUBLIC_API_URL=NEXT_PUBLIC_API_URL:latest \
           --quiet
 
