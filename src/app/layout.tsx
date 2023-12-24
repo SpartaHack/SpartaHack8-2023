@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>
         <ThemeProviders>
-          <Toaster richColors />
+          <Toaster richColors theme="system"/>
           <ErrorModal />
           {children}
         </ThemeProviders>

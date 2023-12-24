@@ -23,9 +23,9 @@ const AddContent = () => {
   const handleAdd = async () => {
     const newLinks = [...links, contentURL];
     setLinks(newLinks);
-    if (links.length !== 0) {
+    if (newLinks.length !== 0) {
       for (let link of newLinks) {
-        const addingToast = toast.loading("Adding");
+        const addingToast = toast.loading("Adding", {duration: 90000});
         try {
           const contentStream = await addContent(
             auth.currentUser?.uid!,
