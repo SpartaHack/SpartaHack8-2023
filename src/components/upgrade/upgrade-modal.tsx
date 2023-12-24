@@ -22,7 +22,8 @@ const UpgradeModal: FC = () => {
       toast.error("Please sign in to upgrade");
     } else {
       const response = await checkoutSession(auth.currentUser?.uid, selected);
-      router.push(`${response?.data.url}`);
+      //router.push(`${response?.data.url}`);
+      window.open(response?.data.url, "_blank");
     }
   };
 
