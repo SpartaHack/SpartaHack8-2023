@@ -108,15 +108,3 @@ export const updateUser = async (
     console.log(err);
   }
 };
-
-export const userLogOut = async (userId: string) => {
-  const data = {
-    user_id: userId,
-  };
-  try {
-    const response = await axios.post(`${API_URL}/user/logout`, data);
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
-};
