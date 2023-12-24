@@ -63,8 +63,13 @@ const ContentCard = ({
       } else {
         text = `/learn?c=${contentID}&s=${spaceId}`;
       }
-      await navigator.clipboard.writeText(text);
-      toast.success("Copied!");
+      if (typeof window !== 'undefined') {
+        const domainName = window.location.origin;
+        await navigator.clipboard.writeText(domainName + text);
+        toast.success("Copied!");
+      } else {
+        throw new Error("Cannot access window object");
+      }
     } catch (err) {
       toast.error("Error. Cannot copy.");
     }
