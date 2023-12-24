@@ -12,7 +12,7 @@ export const checkoutSession = async (userId: string, frequency: string) => {
     const response = await axios.post(`${API_URL}/payment/checkout`, data);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -21,6 +21,6 @@ export const getPortalLink = async (userId: string) => {
     const response = await axios.get(`${API_URL}/payment/portal/${userId}`);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };

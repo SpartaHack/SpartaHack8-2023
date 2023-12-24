@@ -18,7 +18,7 @@ export const userSignIn = async (userId: string) => {
     });
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -46,7 +46,7 @@ export const userSignUp = async (
     });
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -58,7 +58,7 @@ export const userLogOut = async (userId: string) => {
     const response = await axios.post(`${API_URL}/user/logout`, data);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -67,7 +67,7 @@ export const getUserSpaces = async (userId: string) => {
     const response = await axios.get(`${API_URL}/user/${userId}/spaces`);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -76,7 +76,7 @@ export const getUser = async (userId: string) => {
     const response = await axios.get(`${API_URL}/user/${userId}/profile`);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -87,7 +87,7 @@ export const getContentHistory = async (userId: string) => {
     );
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -105,6 +105,6 @@ export const updateUser = async (
     const response = await axios.put(`${API_URL}/user/${userId}`, data);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };

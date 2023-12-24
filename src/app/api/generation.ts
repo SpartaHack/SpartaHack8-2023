@@ -81,7 +81,7 @@ export const chatHistory = async (
     );
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -117,6 +117,6 @@ export const getContent = async (
     const response = await axios.post(`${API_URL}/content/get`, data);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };

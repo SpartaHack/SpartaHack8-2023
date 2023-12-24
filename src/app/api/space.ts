@@ -7,7 +7,7 @@ export const getSpace = async (userId: string, spaceId: string) => {
     const response = await axios.get(`${API_URL}/spaces/${userId}/${spaceId}`);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -42,7 +42,7 @@ export const updateSpace = async (
     const response = await axios.put(`${API_URL}/spaces/update`, data);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -56,6 +56,6 @@ export const deleteSpace = async (userId: string, spaceId: string) => {
     const response = await axios.post(`${API_URL}/spaces/delete`, data);
     return response;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
