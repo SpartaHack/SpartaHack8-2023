@@ -23,26 +23,30 @@ const AddContent = () => {
   const handleAdd = async () => {
     const newLinks = [...links, contentURL];
     setLinks(newLinks);
-    for (let link of newLinks) {
-      toast.loading("Adding");
-      try {
-        const contentStream = await addContent(
-          auth.currentUser?.uid!,
-          contents.space._id,
-          [link],
-        );
-        for await (const content of contentStream!) {
-          useContentStore.getState().addContent(content);
+    if (links.length !== 0) {
+      for (let link of newLinks) {
+        toast.loading("Adding");
+        try {
+          const contentStream = await addContent(
+            auth.currentUser?.uid!,
+            contents.space._id,
+            [link],
+          );
+          for await (const content of contentStream!) {
+            useContentStore.getState().addContent(content);
+          }
+          // toast.dismiss(addingToast);
+          toast.success("Added successfully");
+        } catch (err) {
+          // toast.dismiss(addingToast);
+          toast.error("Could not add content");
         }
-        // toast.dismiss(addingToast);
-        toast.success("Added successfully");
-      } catch (err) {
-        // toast.dismiss(addingToast);
-        toast.error("Could not add content");
+        setContentURL("");
       }
-      setContentURL("");
+      setLinks([]);
+    } else {
+      toast.error("Content link cannot be empty.");
     }
-    setLinks([]);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
