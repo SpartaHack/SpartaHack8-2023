@@ -21,7 +21,7 @@ const AddContent = () => {
   };
 
   const handleAdd = async () => {
-    const newLinks = [...links, contentURL]
+    const newLinks = [...links, contentURL];
     setLinks(newLinks);
     for (let link of newLinks) {
       toast.loading("Adding");

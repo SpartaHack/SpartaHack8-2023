@@ -33,7 +33,7 @@ const Spaces = () => {
 
   const handleContentChange = async (
     type: "space" | "history",
-    spaceId?: string
+    spaceId?: string,
   ) => {
     if (type === "space") {
       const contents = await getSpace(userId!, spaceId!);

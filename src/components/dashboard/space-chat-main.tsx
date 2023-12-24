@@ -37,7 +37,7 @@ const SpaceChatMain = () => {
   const { loading, questions } = useFetchQuestions(
     chatLog,
     auth.currentUser?.uid!,
-    contents?.space._id
+    contents?.space._id,
   );
 
   return (

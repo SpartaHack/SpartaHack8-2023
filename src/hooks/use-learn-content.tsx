@@ -61,11 +61,11 @@ export const useLearnContent = (
             try {
               const summaryResponse = await generateContentSummary(
                 auth.currentUser?.uid!,
-                contentId
+                contentId,
               );
               const questionsResponse = await generateContentQuestions(
                 auth.currentUser?.uid!,
-                contentId
+                contentId,
               );
               const summary = summaryResponse?.data;
               const questions = questionsResponse?.data;
@@ -90,14 +90,14 @@ export const useLearnContent = (
           );
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(
-              historyResponse.data
+              historyResponse.data,
             );
 
             chatLog.forEach((message) => {
               if (message.type === "bot") {
                 const replacedResult = replaceMessage(
                   learnContent?.type!,
-                  message.response
+                  message.response,
                 );
                 message.response = replacedResult.replacedMessage;
                 message.sources = replacedResult.sources;

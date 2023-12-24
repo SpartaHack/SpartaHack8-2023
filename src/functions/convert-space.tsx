@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 export function convertSpace(
   spaces: getUserSpaceResponse[],
-  contentURL: string
+  contentURL: string,
 ) {
   const handleMove = async (spaceId: string) => {
     const movingToast = toast.loading("Moving");
