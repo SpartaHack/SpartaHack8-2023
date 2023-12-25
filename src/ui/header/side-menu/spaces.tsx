@@ -60,17 +60,17 @@ const Spaces = () => {
               className="flex justify-between flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl"
               onClick={() => handleContentChange("space", space._id)}
             >
-              <div className="flex flex-row">
-                <Icon icon="bxs:cube" className="h-6 w-6" />
-                <div className="ml-5">
-                  <p>{space.name}</p>
-                </div>
+              <div className="flex flex-row w-full">
+                <Icon icon="bxs:cube" className="h-6 w-6 " />
+                <span className="ml-5">
+                  {space.name}
+                </span>
               </div>
               <CustomModal
                 title={
                   <Icon
                     icon="gg:trash"
-                    className="group-hover:opacity-50 ml-7 w-6 h-6 opacity-0"
+                    className="group-hover:opacity-50 ml-7 w-6 h-6 opacity-0 sm:block hidden"
                   />
                 }
                 btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
