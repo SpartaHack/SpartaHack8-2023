@@ -25,7 +25,7 @@ const AddContent = () => {
     setLinks(newLinks);
     if (newLinks.length !== 0) {
       for (let link of newLinks) {
-        const addingToast = toast.loading("Adding", {duration: 90000});
+        const addingToast = toast.loading("Adding", { duration: 90000 });
         try {
           const contentStream = await addContent(
             auth.currentUser?.uid!,

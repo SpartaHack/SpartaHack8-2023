@@ -62,9 +62,7 @@ const Spaces = () => {
             >
               <div className="flex flex-row w-full">
                 <Icon icon="bxs:cube" className="h-6 w-6 " />
-                <span className="ml-5">
-                  {space.name}
-                </span>
+                <span className="ml-5">{space.name}</span>
               </div>
               <CustomModal
                 title={
