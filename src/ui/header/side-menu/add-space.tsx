@@ -8,6 +8,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "sonner";
 
 const AddSpace = () => {
   const router = useRouter();
@@ -17,6 +18,7 @@ const AddSpace = () => {
   const setError = useErrorStore((state) => state.setError);
 
   const handleSpaceCreation = async () => {
+    const addingSpace = toast.loading("Adding");
     try {
       const response = await addSpace(userId!, "Untitled Space", "private");
       if (response?.data) {
@@ -25,6 +27,8 @@ const AddSpace = () => {
         setContents(goToSpace?.data);
         router.push(`/space?s=${response.data._id}`);
       }
+      toast.dismiss(addingSpace);
+      toast.success("Added space successfully")
     } catch (err) {
       if (isAxiosError(err)) {
         setError(err);
