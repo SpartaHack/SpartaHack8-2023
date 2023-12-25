@@ -30,6 +30,7 @@ const AddSpace = () => {
       toast.dismiss(addingSpace);
       toast.success("Added space successfully")
     } catch (err) {
+      toast.dismiss(addingSpace);
       if (isAxiosError(err)) {
         setError(err);
       }
