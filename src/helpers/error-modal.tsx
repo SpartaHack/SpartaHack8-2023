@@ -1,34 +1,37 @@
 import { useErrorStore } from "@/context/error-context";
 import { useEffect, useState } from "react";
 import PopUp from "./custom-pop-up";
-import { useRouter } from "next/navigation";
 
 const ErrorModal = () => {
   const error = useErrorStore((state) => state.error);
-  const setError = useErrorStore((state) => state.setError);
-  const router = useRouter();
   const [showPopUp, setShowPopUp] = useState(false);
+
+  let response = '';
+
+  if (error?.response?.statusText) {
+      response = error.response.statusText;
+  } else if (error?.request?.response) {
+      const parsedResponse = JSON.parse(error.request.response);
+      
+      if (parsedResponse.detail) {
+          response = parsedResponse.detail;
+      } else if (parsedResponse.message) {
+          response = parsedResponse.message;
+      }
+  }
 
   useEffect(() => {
     setShowPopUp(true);
   }, [error]);
-
-  const buttonClick = () => {
-    setShowPopUp(false);
-    setError(undefined);
-    router.push("/signin");
-  };
 
   return (
     <>
       {error && (
         <PopUp
           title={error?.response?.status!}
-          description={error?.response?.statusText!}
+          description={response}
           isOpen={showPopUp}
           closeModal={() => setShowPopUp(false)}
-          buttonTitle="Sign In"
-          buttonClick={buttonClick}
         />
       )}
     </>
