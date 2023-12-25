@@ -44,16 +44,16 @@ export type CustomDropdownProps = {
 export type CustomModalProps = {
   title: JSX.Element;
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "full";
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full";
   btnStyling1?: string;
   btnStyling2?: string;
   contentTitle?: string | JSX.Element;
@@ -61,13 +61,13 @@ export type CustomModalProps = {
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
   placement?:
-    | "center"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom"
-    | "bottom-center"
-    | undefined;
+  | "center"
+  | "auto"
+  | "top"
+  | "top-center"
+  | "bottom"
+  | "bottom-center"
+  | undefined;
   footer: boolean;
 };
 
@@ -172,7 +172,6 @@ export type PlayerProps = YouTubeProps & {
 
 export type YouLearnLogoProps = {
   size: "sm" | "lg";
-  tier?: string;
   height?: number;
   width?: number;
 };
@@ -224,6 +223,13 @@ export type UserProfile = {
 };
 
 export type Subscription = {
+  _id: number,
+  created_at: string,
+  status: string,
+  tier: string
+}
+
+export type Customer = {
   _id: string;
   user_id: string;
   customer_id: string;
@@ -233,12 +239,13 @@ export type Subscription = {
   current_period_end: string;
   renewal_date: string;
   amount_paid: number;
+  subscription: Subscription
 };
 
 export type APIResponse = {
   user: User;
   user_profile: UserProfile;
-  subscription: Subscription;
+  customer: Customer;
 };
 
 export type userProps = {
@@ -253,7 +260,7 @@ export type UserState = {
   userData: APIResponse | undefined;
   setUserId: (userId: string | undefined) => void;
   setUserData: (data: APIResponse | undefined) => void;
-  updateUserData: (updatedData: Partial<UserProfile & Subscription>) => void;
+  updateUserData: (updatedData: Partial<UserProfile & Customer>) => void;
   logout: () => void;
 };
 

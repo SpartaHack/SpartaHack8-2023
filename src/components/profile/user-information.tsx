@@ -34,7 +34,7 @@ const UserInformation = () => {
       toast.error("Please sign in to handle subscriptions");
     } else {
       const response = await getPortalLink(auth.currentUser?.uid);
-      router.push(`${response?.data}`);
+      router.push(`${response?.data.url}`);
     }
   };
 
