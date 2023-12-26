@@ -12,7 +12,7 @@ const NoSpaceContent = () => {
           <></>
         ) : (
           contents.contents.length == 0 && (
-            <div className="flex w-full mt-24 flex-col items-center justify-center">
+            <div className="flex w-full mt-24 px-10 flex-col items-center justify-center">
               <div className="flex flex-row">
                 <h1 className="text-2xl font-sans font-semibold mr-1">
                   Add a content to this space
