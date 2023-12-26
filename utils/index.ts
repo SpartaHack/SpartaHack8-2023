@@ -1,5 +1,6 @@
 import { FirebaseError } from "firebase/app";
 import { User, UserCredential } from "firebase/auth";
+import { Metadata } from "next";
 import { toast } from "sonner";
 
 export const sideBarMotion = {
