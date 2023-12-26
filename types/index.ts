@@ -444,3 +444,7 @@ export type LinkCardProps = {
   link: string;
   handleDelete: () => void;
 };
+
+export type MarkdownElementProps = {
+  children?: ReactNode;
+};
