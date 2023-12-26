@@ -19,7 +19,7 @@ const PDF = () => {
           key={pdfUrl}
           src={pdfUrl}
           width="100%"
-          height="100%"
+          height="85%"
           className="rounded-xl border-none"
         />
       </div>

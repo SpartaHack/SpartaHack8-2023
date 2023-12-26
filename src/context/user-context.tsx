@@ -21,7 +21,7 @@ export const useUserStore = create<
                 user_profile: {
                   ...state.userData.user_profile,
                   ...updatedData,
-                }
+                },
               }
             : undefined,
         })),

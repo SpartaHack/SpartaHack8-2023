@@ -8,6 +8,7 @@ import { useLearnStore } from "@/context/learn-context";
 import { useSearchParams } from "next/navigation";
 import { useLearnContent } from "@/hooks/use-learn-content";
 import Loading from "@/app/loading";
+import { useContainerHeight } from "@/hooks/use-container-height";
 
 const Content = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -20,6 +21,7 @@ const Content = () => {
     spaceId!,
   );
   const type = learnContent?.type!;
+  const height = useContainerHeight({ type: type });
 
   return (
     <main className="flex-grow min-h-screen">
@@ -29,7 +31,10 @@ const Content = () => {
         <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
           {type === "youtube" && <YoutubeVideo />}
           {(type === "pdf" || type === "arxiv") && <PDF />}
-          <div className="lg:tabs-lg tabs-sm">
+          <div
+            className="lg:tabs-lg tabs-sm"
+            style={type == "youtube" ? {} : { height: `${height - 25}px` }}
+          >
             <TabComponent />
           </div>
         </div>

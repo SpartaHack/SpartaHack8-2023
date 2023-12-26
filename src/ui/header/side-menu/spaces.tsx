@@ -20,13 +20,13 @@ const Spaces = () => {
   const { setContents } = useContentStore();
 
   const handleDelete = async (spaceId: string) => {
-    const deletingSpace = toast.loading("Deleting space")
+    const deletingSpace = toast.loading("Deleting space");
     const response = await deleteSpace(userId!, spaceId);
     if (response) {
       deleteSpaceFromState(spaceId);
       localStorage.setItem("historyLoading", "true");
       router.push("/");
-      toast.dismiss(deletingSpace)
+      toast.dismiss(deletingSpace);
       toast.success("Space deleted successfully.");
     } else {
       toast.error("Could not delete space.");

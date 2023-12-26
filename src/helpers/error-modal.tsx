@@ -6,18 +6,18 @@ const ErrorModal = () => {
   const error = useErrorStore((state) => state.error);
   const [showPopUp, setShowPopUp] = useState(false);
 
-  let response = '';
+  let response = "";
 
   if (error?.response?.statusText) {
-      response = error.response.statusText;
+    response = error.response.statusText;
   } else if (error?.request?.response) {
-      const parsedResponse = JSON.parse(error.request.response);
-      
-      if (parsedResponse.detail) {
-          response = parsedResponse.detail;
-      } else if (parsedResponse.message) {
-          response = parsedResponse.message;
-      }
+    const parsedResponse = JSON.parse(error.request.response);
+
+    if (parsedResponse.detail) {
+      response = parsedResponse.detail;
+    } else if (parsedResponse.message) {
+      response = parsedResponse.message;
+    }
   }
 
   useEffect(() => {

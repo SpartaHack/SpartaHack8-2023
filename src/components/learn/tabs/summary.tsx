@@ -19,7 +19,11 @@ const Summary = () => {
   return (
     <div
       className="lg:h-full h-[70vh] flex-col flex"
-      style={{ maxHeight: `${height - 90}px` }}
+      style={
+        type === "youtube"
+          ? { maxHeight: `${height - 90}px` }
+          : { maxHeight: `${height - 100}px` }
+      }
     >
       <ScrollShadow
         size={5}
@@ -27,7 +31,10 @@ const Summary = () => {
         className="flex-grow overflow-hidden overflow-y-auto rounded-xl"
       >
         <div className="bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-xl p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full w-fit">
-          <Markdown components={markdownComponents} className="flex-grow leading-7">
+          <Markdown
+            components={markdownComponents}
+            className="flex-grow leading-7"
+          >
             {learnContent?.generations.summary}
           </Markdown>
           <div className="flex justify-end p-2 cursor-pointer">

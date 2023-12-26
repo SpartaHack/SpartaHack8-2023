@@ -9,8 +9,10 @@ import { useUserStore } from "@/context/user-context";
 const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
   const router = useRouter();
   const userData = useStore(useUserStore, (state) => state.userData);
-  const isPro = (userData?.customer.subscription.status && userData.customer.subscription.tier === 'pro')
-  
+  const isPro =
+    userData?.customer.subscription.status &&
+    userData.customer.subscription.tier === "pro";
+
   const returnHome = () => {
     localStorage.setItem("historyLoading", "true");
     router.push("/");
