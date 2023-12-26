@@ -15,13 +15,7 @@ export const replaceMessage = (() => {
   return (type: string, message: string) => {
     let regex: RegExp;
 
-    if (type === "youtube") {
-      regex = /(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g;
-    } else if (type === "space") {
-      regex = /(\[[^\]]+\])/g;
-    } else {
-      regex = /(\[[^\]]+\])/g;
-    }
+    regex = /(\[[^\],]+\])/g;
 
     const replacedMessage = message.replace(regex, (match) => {
       counter++;
