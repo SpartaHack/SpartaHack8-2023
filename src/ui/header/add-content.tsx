@@ -21,7 +21,7 @@ const AddContent = () => {
   };
 
   const handleAdd = async () => {
-    const newLinks = [...links, contentURL];
+    const newLinks = contentURL === '' ? [...links] : [...links, contentURL];
     setLinks(newLinks);
     if (newLinks.length !== 0) {
       for (let link of newLinks) {
@@ -41,12 +41,12 @@ const AddContent = () => {
           toast.dismiss(addingToast);
           toast.error("Could not add content");
         }
-        setContentURL("");
       }
-      setLinks([]);
     } else {
       toast.error("Content link cannot be empty.");
     }
+    setContentURL("");
+    setLinks([]);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
