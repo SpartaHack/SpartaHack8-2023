@@ -1,9 +1,7 @@
-"use client";
 import "./globals.css";
 import { ThemeProviders } from "@/providers/theme-providers";
 import { Toaster } from "sonner";
 import { Roboto } from "next/font/google";
-import ErrorModal from "@/helpers/error-modal";
 import { Metadata } from "next";
 
 const roboto = Roboto({
@@ -11,7 +9,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: {
     default: "YouLearn - AI companion for learning",
     template: "%s - Learn, Share, Collaborate.",
@@ -20,7 +18,10 @@ const metadata: Metadata = {
     "YouLearn is reimagining the future of learning by building AI software for students, teachers, and communities to democratize quality education worldwide.",
   twitter: {
     card: "summary_large_image"
-  }
+  },
+  openGraph: {
+    images: '/opengraph-image.png',
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +34,6 @@ export default function RootLayout({
       <body className={roboto.className}>
         <ThemeProviders>
           <Toaster richColors />
-          <ErrorModal />
           {children}
         </ThemeProviders>
       </body>
