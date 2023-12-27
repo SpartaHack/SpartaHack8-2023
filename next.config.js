@@ -3,13 +3,10 @@ const million = require("million/compiler");
 const nextConfig = {
   images: {
     domains: [
-      "img.youtube.com",
-      "image.thum.io",
-      "lh3.googleusercontent.com",
       "i.ytimg.com",
+      "youlearn-assets.s3.us-east-2.amazonaws.com",
       "info.arxiv.org",
-      "static1.makeuseofimages.com",
-      "logowik.com",
+      "logowik.com"
     ],
   },
 };
