@@ -30,8 +30,8 @@ const Dashboard = () => {
     <div className="flex-grow">
       <SpaceHeader />
       <NoHistoryContents />
-      <main className="lg:my-10 h-full lg:pb-10 md:my-5 lg:ml-6 md:pt-0 pt-10 pb-10 flex justify-center md:px-20 text-center">
-        <div className="grid gap-5 md:gap-10 lg:gap-15 2xl:grid-cols-4 md:grid-cols-3 md:w-full justify-center">
+      <main className="flex my-12 pb-2 justify-center w-full px-10">
+        <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
           {contents &&
             (contents.space ? (
               <></>

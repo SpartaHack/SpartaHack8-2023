@@ -107,9 +107,6 @@ const ContentCard = ({
           width={360}
           height={240}
           alt="thumbnail"
-          className={
-            type === "youtube" ? "" : "object-fill h-[200px] w-[360px]"
-          }
         />
       </div>
       <div className="w-full my-4">
