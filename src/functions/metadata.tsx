@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export function constructMetadata({
     title = "YouLearn - AI companion for learning",
     description = "YouLearn is reimagining the future of learning by building AI software for students, teachers, and communities to democratize quality education worldwide.",
-    image = "/youlearnProLight.svg",
+    image = "/spaceIcon.png",
     icons = "/icon.ico",
     noIndex = false
   }: {
