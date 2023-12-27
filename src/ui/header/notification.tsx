@@ -9,6 +9,7 @@ const pusher = new Pusher("a41d49a2b329a6bb790f", {
   cluster: "us2",
 });
 
+//million-ignore
 const Notification = () => {
   const [notifications, setNotifications] = useState<NotificationProps[]>([]);
 
