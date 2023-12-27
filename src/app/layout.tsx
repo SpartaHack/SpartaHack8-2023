@@ -11,7 +11,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-const metadata = constructMetadata()
+const metadata = constructMetadata();
 
 export default function RootLayout({
   children,

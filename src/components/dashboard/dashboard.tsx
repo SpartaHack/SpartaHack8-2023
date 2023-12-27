@@ -26,7 +26,6 @@ const Dashboard = () => {
     fetchHistory();
   }, [setHistory]);
 
-
   return (
     <div className="flex-grow">
       <HistoryHeader />
@@ -34,19 +33,17 @@ const Dashboard = () => {
       <main className="flex my-12 pb-2 justify-center w-full px-10">
         <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
           {history &&
-            (
-              history.map((history: History, key: number) => (
-                <ContentCard
-                  key={key}
-                  spaceId={history.space_id}
-                  type={history.content.type}
-                  contentID={history.content.content_id}
-                  contentURL={history.content.content_url}
-                  title={history.content.title}
-                  thumbnail_url={history.content.thumbnail_url}
-                />
-              ))
-            )}
+            history.map((history: History, key: number) => (
+              <ContentCard
+                key={key}
+                spaceId={history.space_id}
+                type={history.content.type}
+                contentID={history.content.content_id}
+                contentURL={history.content.content_url}
+                title={history.content.title}
+                thumbnail_url={history.content.thumbnail_url}
+              />
+            ))}
         </div>
       </main>
     </div>

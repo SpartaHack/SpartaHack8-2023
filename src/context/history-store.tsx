@@ -5,15 +5,15 @@ import { HistoryStore } from "../../types";
 export const useHistoryStore = create<
   HistoryStore,
   [["zustand/persist", HistoryStore | undefined]]
-  >(
-    persist(
-      (set) => ({
-        history: [],
-        setHistory: (history) => set({ history }),
-      }),
-      {
-        name: "contentStore",
-        storage: createJSONStorage(() => localStorage),
-      },
-    ),
+>(
+  persist(
+    (set) => ({
+      history: [],
+      setHistory: (history) => set({ history }),
+    }),
+    {
+      name: "contentStore",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
 );

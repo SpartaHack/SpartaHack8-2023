@@ -21,7 +21,7 @@ const AddContent = () => {
   };
 
   const handleAdd = async () => {
-    const newLinks = contentURL === '' ? [...links] : [...links, contentURL];
+    const newLinks = contentURL === "" ? [...links] : [...links, contentURL];
     setLinks(newLinks);
     if (newLinks.length !== 0) {
       for (let link of newLinks) {

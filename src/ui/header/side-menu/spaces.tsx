@@ -66,7 +66,7 @@ const Spaces = () => {
                 <div className="flex flex-row">
                   <Icon icon="bxs:cube" className="h-6 w-6" />
                 </div>
-              <span className="ml-5 truncate">{space.name}</span>
+                <span className="ml-5 truncate">{space.name}</span>
               </div>
               <CustomModal
                 title={
