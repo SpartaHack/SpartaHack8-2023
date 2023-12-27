@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image"
   },
+  openGraph: {
+    images: "https://dev.youlearn.ai/opengraph-image.png"
+  },
 };
 
 export default function RootLayout({
