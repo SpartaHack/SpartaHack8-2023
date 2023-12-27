@@ -1,10 +1,10 @@
 import React from "react";
-import { useContentStore } from "@/context/content-store";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useHistoryStore } from "@/context/history-store";
 
 const NoHistoryContents = () => {
-  const contents = useStore(useContentStore, (state) => state.contents);
+  const contents = useStore(useHistoryStore, (state) => state.history);
   return (
     <>
       {contents && contents.length == 0 && (

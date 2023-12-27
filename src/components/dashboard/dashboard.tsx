@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect } from "react";
 import ContentCard from "./content-card";
-import { useContentStore } from "@/context/content-store";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
-import SpaceHeader from "@/ui/header/space-header";
 import { getContentHistory } from "@/app/api/user";
 import { auth } from "../../../db/firebase";
 import NoHistoryContents from "./no-history-contents";
+import { useHistoryStore } from "@/context/history-store";
+import HistoryHeader from "./history-header";
 
 const Dashboard = () => {
-  const contents = useStore(useContentStore, (state) => state.contents);
-  const { setContents } = useContentStore();
+  const history = useStore(useHistoryStore, (state) => state.history);
+  const { setHistory } = useHistoryStore();
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -19,24 +19,23 @@ const Dashboard = () => {
       if (auth.currentUser?.uid && historyLoading === "true") {
         localStorage.setItem("historyLoading", "false");
         const response = await getContentHistory(auth.currentUser?.uid!);
-        setContents(response?.data);
+        setHistory(response?.data);
       }
     };
 
     fetchHistory();
-  }, [setContents]);
+  }, [setHistory]);
+
 
   return (
     <div className="flex-grow">
-      <SpaceHeader />
+      <HistoryHeader />
       <NoHistoryContents />
       <main className="flex my-12 pb-2 justify-center w-full px-10">
         <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-          {contents &&
-            (contents.space ? (
-              <></>
-            ) : (
-              contents.map((history: History, key: number) => (
+          {history &&
+            (
+              history.map((history: History, key: number) => (
                 <ContentCard
                   key={key}
                   spaceId={history.space_id}
@@ -47,7 +46,7 @@ const Dashboard = () => {
                   thumbnail_url={history.content.thumbnail_url}
                 />
               ))
-            ))}
+            )}
         </div>
       </main>
     </div>
