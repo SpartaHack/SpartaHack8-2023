@@ -10,6 +10,7 @@ export const useHistoryStore = create<
     (set) => ({
       history: [],
       setHistory: (history) => set({ history }),
+      logOut: () => set({ history: [] }),
     }),
     {
       name: "contentStore",

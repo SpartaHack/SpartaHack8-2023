@@ -21,6 +21,7 @@ import { initFirebase } from "../../db/firebase";
 import { useUserStore } from "@/context/user-context";
 import { useSpaceStore } from "@/context/space-context";
 import { useContentStore } from "@/context/content-store";
+import { useHistoryStore } from "@/context/history-store";
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
@@ -172,6 +173,7 @@ export const logOut = async () => {
     useUserStore.getState().logout();
     useSpaceStore.getState().logout();
     useContentStore.getState().logout();
+    useHistoryStore.getState().logOut();
     toast.success("Signed out successfully");
   } catch (err) {
     if (err instanceof Error) {

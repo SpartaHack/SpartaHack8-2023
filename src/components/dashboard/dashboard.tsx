@@ -24,7 +24,7 @@ const Dashboard = () => {
     };
 
     fetchHistory();
-  }, [setHistory]);
+  }, [setHistory, auth.currentUser?.uid]);
 
   return (
     <div className="flex-grow">
