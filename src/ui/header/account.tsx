@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { logOut } from "@/functions/auth";
 import { auth } from "../../../db/firebase";
 
+//million-ignore
 const Account = ({ name, description, picture }: AccountProps) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
