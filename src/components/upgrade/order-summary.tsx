@@ -29,7 +29,7 @@ const OrderSummary = ({ type }: OrderSummaryProps) => {
         </div>
       </div>
       <div className="flex-row flex font-semibold text-lg mt-5 justify-between">
-        <span className="font-sans">Total for today</span>
+        <span className="font-sans">Total after 14 days</span>
         <span className="dark:text-white font-semibold text-black">
           ${type === "monthly" ? price : price * 12}
         </span>
