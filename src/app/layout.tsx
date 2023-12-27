@@ -4,14 +4,24 @@ import { ThemeProviders } from "@/providers/theme-providers";
 import { Toaster } from "sonner";
 import { Roboto } from "next/font/google";
 import ErrorModal from "@/helpers/error-modal";
-import { constructMetadata } from "@/functions/metadata";
+import { Metadata } from "next";
 
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],
 });
 
-const metadata = constructMetadata();
+const metadata: Metadata = {
+  title: {
+    default: "YouLearn - AI companion for learning",
+    template: "%s - Learn, Share, Collaborate.",
+  },
+  description:
+    "YouLearn is reimagining the future of learning by building AI software for students, teachers, and communities to democratize quality education worldwide.",
+  twitter: {
+    card: "summary_large_image"
+  }
+};
 
 export default function RootLayout({
   children,
