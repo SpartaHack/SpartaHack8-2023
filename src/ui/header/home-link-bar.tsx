@@ -19,8 +19,6 @@ const SearchBar = () => {
     e.preventDefault();
     if (query) {
       router.push(`/results?search_query=${encodeURIComponent(query)}`);
-    } else {
-      toast.error("Query cannot be empty");
     }
   };
 
