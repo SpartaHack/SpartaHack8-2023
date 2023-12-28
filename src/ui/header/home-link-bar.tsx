@@ -73,6 +73,7 @@ const SearchBar = () => {
               className="w-full bg-transparent outline-none pl-2"
               placeholder="Search..."
               onChange={(e) => setQuery(e.target.value)}
+              autoFocus
             />
             <button type="submit">
               <Icon icon="uil:search" className="w-6 h-6" />

@@ -59,6 +59,7 @@ const Form = () => {
               isInvalid={name === ""}
               styling="bg-transparent"
               eventChange={(e) => setName(e.target.value)}
+              autoFocus
             />
             <CustomTextInput
               value={username}

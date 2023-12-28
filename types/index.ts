@@ -81,6 +81,7 @@ export type CustomTextInputProps = {
   styling?: string | undefined;
   endContent?: JSX.Element;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  autoFocus?: boolean;
 };
 
 export type CustomTextAreaProps = {
