@@ -7,6 +7,7 @@ import { EditAccordionProps } from "../../../types";
 import { CustomButton } from "@/helpers/custom-btn";
 import { useUserStore } from "@/context/user-context";
 import { updateUser } from "@/app/api/user";
+import { toast } from "sonner";
 
 const EditAccordion = ({
   indicator,
@@ -33,6 +34,8 @@ const EditAccordion = ({
     if (response) {
       updateUserData({ education_level: education, photo_url: photo });
       setSelectedKeys(new Set());
+    } else {
+      toast.error("Could not update your data");
     }
   };
 
