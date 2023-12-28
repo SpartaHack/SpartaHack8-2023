@@ -25,9 +25,7 @@ const OrderSummary = ({ type }: OrderSummaryProps) => {
       <div className="text-neutral-400 flex-col flex space-y-1 text-sm">
         <div className="flex-row flex justify-between">
           <span>Subtotal</span>
-          <span className="dark:text-white font-bold text-black">
-            $0
-          </span>
+          <span className="dark:text-white font-bold text-black">$0</span>
         </div>
         <div className="flex-row flex justify-between">
           <span>Tax (if applicable)</span>
@@ -36,9 +34,7 @@ const OrderSummary = ({ type }: OrderSummaryProps) => {
       </div>
       <div className="flex-row flex font-semibold text-lg mt-5 justify-between">
         <span className="font-sans">Total for today</span>
-        <span className="dark:text-white font-semibold text-black">
-          $0
-        </span>
+        <span className="dark:text-white font-semibold text-black">$0</span>
       </div>
     </div>
   );

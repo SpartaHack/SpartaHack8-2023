@@ -5,6 +5,7 @@ import BetaLogo from "@/icon/beta-logo";
 import YouLearnLogo from "@/icon/youlearn-logo";
 import useClickOutside from "@/hooks/use-click-outside";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const SearchBar = () => {
   const router = useRouter();
@@ -16,7 +17,11 @@ const SearchBar = () => {
 
   const searchClick = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/results?search_query=${encodeURIComponent(query)}`);
+    if (query) {
+      router.push(`/results?search_query=${encodeURIComponent(query)}`);
+    } else {
+      toast.error("Query cannot be empty");
+    }
   };
 
   return (

@@ -38,7 +38,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
 
   return (
     <div className="cursor-pointer mt-1">
-      <Dropdown radius="sm">
+      <Dropdown radius="sm" closeOnSelect={false}>
         <DropdownTrigger>
           <div className="flex flex-row">
             <Icon

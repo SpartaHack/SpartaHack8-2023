@@ -6,7 +6,7 @@ const nextConfig = {
       "i.ytimg.com",
       "youlearn-assets.s3.us-east-2.amazonaws.com",
       "info.arxiv.org",
-      "logowik.com"
+      "logowik.com",
     ],
   },
 };
