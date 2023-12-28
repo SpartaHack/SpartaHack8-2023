@@ -1,9 +1,9 @@
 export const educationOptions = [
   { value: "Secondary or High School" },
   { value: "Undergraduate University" },
-  { value: "Graduate University (Masters, Doctoral, Professional, etc.)" },
+  { value: "Graduate University" },
   { value: "Post Doctorate" },
-  { value: "I'm currently not a student" },
+  { value: "Other" },
 ];
 
 export const languageOptions = [

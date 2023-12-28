@@ -13,6 +13,7 @@ const Form = () => {
   const { handleSignUpFinal, signUpFinalStatus } = useHandleSignUpFinal();
   const [name, setName] = useState("");
   const [educationLevel, setEducationLevel] = useState("");
+  const [customEducation, setCustomEducation] = useState("");
   const [username, setUsername] = useState("");
   const router = useRouter();
 
@@ -21,8 +22,16 @@ const Form = () => {
       const userId = localStorage.getItem("userId");
       const email = localStorage.getItem("email");
       const photoURL = localStorage.getItem("photoURL");
-
-      handleSignUpFinal(userId!, username!, email!, photoURL!, educationLevel, name);
+      const finalEducationLevel =
+        educationLevel === "Other" ? customEducation : educationLevel;
+      handleSignUpFinal(
+        userId!,
+        username!,
+        email!,
+        photoURL!,
+        finalEducationLevel,
+        name
+      );
     } else {
       toast.error("Error signing up, please try again.");
     }
@@ -64,10 +73,22 @@ const Form = () => {
               size="lg"
               datas={educationOptions}
               isInvalid={educationLevel === ""}
-              label="Select education Level"
+              label="Select education level"
               onValueChange={setEducationLevel}
-              style="pt-4 pb-6"
+              style={`pt-4 ${
+                educationLevel === "Other" ? "bg-transparent" : "pb-6"
+              }`}
             />
+            {educationLevel === "Other" && ( // Conditionally rendering the custom input field
+              <CustomTextInput
+                value={customEducation}
+                type="customEducation"
+                label="Please specify"
+                isInvalid={customEducation === ""}
+                styling="pt-4 pb-6"
+                eventChange={(e) => setCustomEducation(e.target.value)}
+              />
+            )}
             <CustomButton
               title="Continue"
               btnType="button"

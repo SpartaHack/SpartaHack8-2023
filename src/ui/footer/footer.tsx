@@ -12,9 +12,14 @@ const Footer = () => {
       <div className="flex flex-grow justify-center md:justify-end">
         <div className="text-sm flex items-center space-x-3">
           <Link href="/feedback">Give Feedback</Link>
-          <Link href="/contact" className="hidden sm:block">
-            Contact Us
-          </Link>
+          <div
+            onClick={() => {
+              navigator.clipboard.writeText("hello@youlearn.ai");
+            }}
+            className="hidden sm:block cursor-pointer"
+          >
+            hello@youlearn.ai
+          </div>
           <Link href="https://discord.gg/meXu3tZD4q">
             <Icon
               icon="ic:baseline-discord"
@@ -22,7 +27,7 @@ const Footer = () => {
             />
           </Link>
           <Link href="/contact" className="block sm:hidden">
-            Contact Us
+            hello@youlearn.ai
           </Link>
         </div>
       </div>

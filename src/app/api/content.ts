@@ -37,11 +37,13 @@ export const deleteContent = async (
   userId: string,
   spaceId: string,
   contentIds: string[],
+  deleteFromHistory: boolean
 ) => {
   const data = {
     user_id: userId,
     space_id: spaceId,
     content_ids: contentIds,
+    delete_from_history: deleteFromHistory
   };
 
   try {
@@ -51,3 +53,4 @@ export const deleteContent = async (
     //console.log(err);
   }
 };
+
