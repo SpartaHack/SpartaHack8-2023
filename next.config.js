@@ -5,8 +5,7 @@ const nextConfig = {
     domains: [
       "i.ytimg.com",
       "youlearn-assets.s3.us-east-2.amazonaws.com",
-      "info.arxiv.org",
-      "logowik.com",
+      "lh3.googleusercontent.com"
     ],
   },
 };
