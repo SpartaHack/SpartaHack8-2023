@@ -4,6 +4,7 @@ import PopUp from "./custom-pop-up";
 
 const ErrorModal = () => {
   const error = useErrorStore((state) => state.error);
+  const setError = useErrorStore((state) => state.setError);
   const [showPopUp, setShowPopUp] = useState(false);
 
   let response = "";
@@ -20,6 +21,11 @@ const ErrorModal = () => {
     }
   }
 
+  const closeClick = () => {
+    setShowPopUp(false);
+    setError(undefined);
+  };
+
   useEffect(() => {
     setShowPopUp(true);
   }, [error]);
@@ -31,7 +37,7 @@ const ErrorModal = () => {
           title={error?.response?.status!}
           description={response}
           isOpen={showPopUp}
-          closeModal={() => setShowPopUp(false)}
+          closeModal={closeClick}
         />
       )}
     </>

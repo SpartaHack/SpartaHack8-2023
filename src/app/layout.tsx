@@ -16,11 +16,12 @@ export const metadata: Metadata = {
   },
   description:
     "YouLearn is reimagining the future of learning by building AI software for students, teachers, and communities to democratize quality education worldwide.",
+  metadataBase: new URL("https://dev.youlearn.ai"),
   twitter: {
     card: "summary_large_image",
   },
   openGraph: {
-    images: [{ url: "https://dev.youlearn.ai/opengraph-image.png" }],
+    images: "/opengraph-image.png",
   },
 };
 
