@@ -94,13 +94,13 @@ const SpaceHeader = () => {
             {spaceName !== "History" && !editSpaceName && (
               <Icon
                 icon="lucide:pen"
-                className="opacity-0 h-5 w-5 mt-2 ml-2 cursor-pointer group-hover:opacity-50"
+                className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
                 onClick={handleIconClick}
               />
             )}
           </div>
           {spaceName !== "History" && (
-            <div className="flex flex-row mt-3 md:mt-0 space-between">
+            <div className="flex flex-row my-6  md:my-0 space-between">
               <AddContent />
             </div>
           )}

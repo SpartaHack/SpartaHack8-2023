@@ -50,7 +50,7 @@ const EditAccordion = ({
           size="lg"
           datas={educationOptions}
           isInvalid={educationLevel === ""}
-          label="Select education Level"
+          label="Select education level"
           onValueChange={setEducationLevel}
           initValue={userData?.user_profile.education_level}
         />

@@ -220,7 +220,7 @@ export const useHandleSignUpFinal = () => {
         localStorage.setItem("historyLoading", "true");
         setSignUpFinalStatus("/");
       } else {
-        toast.error("Sign up failed, please sign up");
+        toast.error("Sign up failed, please try again");
         setSignUpFinalStatus("/signup");
       }
     } catch (err) {
