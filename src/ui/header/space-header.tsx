@@ -77,7 +77,7 @@ const SpaceHeader = () => {
     <>
       <div className="sm:mx-24 md:mt-12 mt-8 mx-12">
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="text-4xl flex flex-row group font-sans w-[80%] font-semibold md:mb-4">
+          <div className="text-4xl flex flex-row group font-sans w-full md:w-[80%] font-semibold md:mb-4">
             {editSpaceName ? (
               <input
                 className="outline-none font-sans text-neutral-400 w-full bg-transparent"
