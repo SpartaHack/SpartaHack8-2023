@@ -34,8 +34,12 @@ const ErrorModal = () => {
     <>
       {error && (
         <PopUp
-          title={error?.response?.status!}
-          description={response}
+          title={error?.response?.status ? error?.response?.status : 500}
+          description={
+            response
+              ? response
+              : "Internal Server Error. Please try again later."
+          }
           isOpen={showPopUp}
           closeModal={closeClick}
         />

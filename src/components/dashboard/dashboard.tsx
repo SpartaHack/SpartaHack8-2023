@@ -30,8 +30,8 @@ const Dashboard = () => {
     <div className="flex-grow">
       <HistoryHeader />
       <NoHistoryContents />
-      <main className="flex my-12 pb-2 justify-center w-full px-10">
-        <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+      <main className="flex my-12 pb-2 justify-center w-full">
+        <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 sm:px-24 px-12 sm:grid-cols-2">
           {history &&
             history.map((history: History, key: number) => (
               <ContentCard

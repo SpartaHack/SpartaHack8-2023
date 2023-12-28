@@ -6,6 +6,8 @@ const nextConfig = {
       "i.ytimg.com",
       "youlearn-assets.s3.us-east-2.amazonaws.com",
       "lh3.googleusercontent.com",
+      "info.arxiv.org",
+      "static1.makeuseofimages.com",
     ],
   },
 };
