@@ -28,6 +28,7 @@ export const userSignUp = async (
   fullName: string,
   photoURL: string,
   educationLevel: string,
+  username: string
 ) => {
   const jwtToken = localStorage.getItem("jwtToken");
   const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
@@ -38,6 +39,7 @@ export const userSignUp = async (
     full_name: fullName,
     photo_url: photoURL,
     education_level: educationLevel,
+    username: username,
   };
 
   try {
@@ -46,7 +48,7 @@ export const userSignUp = async (
     });
     return response;
   } catch (err) {
-    //console.log(err);
+    return err;
   }
 };
 

@@ -13,6 +13,7 @@ const Form = () => {
   const { handleSignUpFinal, signUpFinalStatus } = useHandleSignUpFinal();
   const [name, setName] = useState("");
   const [educationLevel, setEducationLevel] = useState("");
+  const [username, setUsername] = useState("");
   const router = useRouter();
 
   const handleContinue = async () => {
@@ -21,7 +22,7 @@ const Form = () => {
       const email = localStorage.getItem("email");
       const photoURL = localStorage.getItem("photoURL");
 
-      handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name);
+      handleSignUpFinal(userId!, username!, email!, photoURL!, educationLevel, name);
     } else {
       toast.error("Error signing up, please try again.");
     }
@@ -47,20 +48,30 @@ const Form = () => {
               type="name"
               label="Name"
               isInvalid={name === ""}
-              styling="mb-4 mt-8 bg-transparent"
+              styling="bg-transparent"
               eventChange={(e) => setName(e.target.value)}
             />
+            <CustomTextInput
+              value={username}
+              type="username"
+              label="Username"
+              isInvalid={username === ""}
+              styling="pt-4 bg-transparent"
+              eventChange={(e) => setUsername(e.target.value)}
+            />
             <CustomAutocomplete
+              allowsCustomValue
               size="lg"
               datas={educationOptions}
               isInvalid={educationLevel === ""}
               label="Select education Level"
               onValueChange={setEducationLevel}
+              style="pt-4 pb-6"
             />
             <CustomButton
               title="Continue"
               btnType="button"
-              btnStyling="mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
+              btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
               clickEvent={handleContinue}
             />
           </div>

@@ -6,6 +6,20 @@ export const educationOptions = [
   { value: "I'm currently not a student" },
 ];
 
+export const languageOptions = [
+  { value: "English" },
+  { value: "Spanish" },
+  { value: "French" },
+  { value: "German" },
+  { value: "Italian" },
+  { value: "Dutch" },
+  { value: "Russian" },
+  { value: "Chinese" },
+  { value: "Japanese" },
+  { value: "Korean" },
+  { value: "Arabic" },
+];
+
 export const logos = [
   { src: "/universities/stanford.svg", alt: "stanford" },
   { src: "/universities/msu.svg", alt: "msu" },

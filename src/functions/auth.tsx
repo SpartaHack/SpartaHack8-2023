@@ -197,6 +197,7 @@ export const useHandleSignUpFinal = () => {
 
   const handleSignUpFinal = async (
     userId: string,
+    username: string,
     email: string,
     photoURL: string,
     educationLevel: string,
@@ -209,6 +210,7 @@ export const useHandleSignUpFinal = () => {
         fullName,
         photoURL,
         educationLevel,
+        username
       );
       if (response) {
         toast.success("User signed up successfully");
@@ -220,8 +222,8 @@ export const useHandleSignUpFinal = () => {
         localStorage.setItem("historyLoading", "true");
         setSignUpFinalStatus("/");
       } else {
-        toast.error("Sign up failed, please sign up");
-        setSignUpFinalStatus("/signup");
+        toast.error("Sign up failed, please try again");
+        // setSignUpFinalStatus("/signup");
       }
     } catch (err) {
       if (err instanceof FirebaseError) {
