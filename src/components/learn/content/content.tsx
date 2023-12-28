@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation";
 import { useLearnContent } from "@/hooks/use-learn-content";
 import Loading from "@/app/loading";
 import { useContainerHeight } from "@/hooks/use-container-height";
+import ErrorModal from "@/helpers/error-modal";
 
 const Content = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -25,6 +26,7 @@ const Content = () => {
 
   return (
     <main className="flex-grow min-h-screen">
+      <ErrorModal />
       {loading ? (
         <Loading />
       ) : (
