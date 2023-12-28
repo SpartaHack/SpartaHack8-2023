@@ -12,17 +12,11 @@ const Footer = () => {
       <div className="flex flex-grow justify-center md:justify-end">
         <div className="text-sm flex items-center space-x-3">
           <Link href="/feedback">Give Feedback</Link>
-          <Link href="/contact" className="hidden sm:block">
-            Contact Us
-          </Link>
           <Link href="https://discord.gg/meXu3tZD4q">
             <Icon
               icon="ic:baseline-discord"
               className="dark:text-secondary text-black text-xl"
             />
-          </Link>
-          <Link href="/contact" className="block sm:hidden">
-            Contact Us
           </Link>
         </div>
       </div>

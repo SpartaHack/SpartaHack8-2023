@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, FC } from "react";
 import { CustomButton } from "@/helpers/custom-btn";
 import { Tabs, Tab } from "@nextui-org/react";
@@ -19,7 +20,8 @@ const UpgradeModal: FC = () => {
 
   const handleClick = async () => {
     if (!auth.currentUser?.uid) {
-      toast.error("Please sign in to upgrade");
+      toast.error("Please sign in to upgrade.");
+      router.push('/signin');
     } else {
       const response = await checkoutSession(auth.currentUser?.uid, selected);
       router.replace(`${response?.data.url}`);

@@ -39,6 +39,7 @@ const CustomAutocomplete = ({
   return (
     <>
       <Autocomplete
+        allowsCustomValue
         labelPlacement="outside"
         defaultSelectedKey={initValue}
         variant="bordered"

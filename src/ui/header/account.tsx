@@ -97,13 +97,16 @@ const Account = ({ name, description, picture }: AccountProps) => {
           </DropdownSection>
 
           <DropdownSection aria-label="Auth">
+              <DropdownItem key="Contact us" onClick={() => router.push('/feedback')}>
+                Contact us
+              </DropdownItem>
             {auth.currentUser?.uid ? (
               <DropdownItem key="logout" onClick={handleLogOut}>
-                Sign Out
+                Sign out
               </DropdownItem>
             ) : (
               <DropdownItem onClick={() => router.push("/signin")}>
-                Sign In
+                Sign in
               </DropdownItem>
             )}
           </DropdownSection>

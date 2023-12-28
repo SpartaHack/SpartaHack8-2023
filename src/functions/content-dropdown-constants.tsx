@@ -26,7 +26,7 @@ export const menuDropDown = (
                   icon="material-symbols:text-select-move-down-rounded"
                   className="h-6 w-6"
                 />
-                <span className="ml-6 mt-0.6">Move to space</span>
+                <span className="ml-6 mt-0.6">Add to space</span>
               </div>
             }
             sections={convertSpace(spaces, contentURL)}
