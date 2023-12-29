@@ -12,9 +12,7 @@ const Footer = () => {
       <div className="flex flex-grow justify-center md:justify-end">
         <div className="text-sm flex items-center space-x-3">
           <Link href="/feedback">Give Feedback</Link>
-          <div
-            className="hidden sm:block cursor-pointer"
-          >
+          <div className="hidden sm:block cursor-pointer">
             hello@youlearn.ai
           </div>
           <Link href="https://discord.gg/meXu3tZD4q">

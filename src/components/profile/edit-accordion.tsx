@@ -31,7 +31,12 @@ const EditAccordion = ({
   };
 
   const handleSave = async (photo: string, education: string) => {
-    const response = await updateUser(userId!, education, photo, userData?.user_profile.username!);
+    const response = await updateUser(
+      userId!,
+      education,
+      photo,
+      userData?.user_profile.username!,
+    );
     if (response) {
       updateUserData({ education_level: education, photo_url: photo });
       setSelectedKeys(new Set());
@@ -56,7 +61,14 @@ const EditAccordion = ({
           isInvalid={educationLevel === ""}
           label="Select education Level"
           onValueChange={setEducationLevel}
-          initValue={(educationOptions.find(option => option.value === userData?.user_profile.education_level) || { value: "Other" }).value}
+          initValue={
+            (
+              educationOptions.find(
+                (option) =>
+                  option.value === userData?.user_profile.education_level,
+              ) || { value: "Other" }
+            ).value
+          }
         />
         <CustomButton
           title="Save Changes"

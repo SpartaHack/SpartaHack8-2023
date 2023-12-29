@@ -32,7 +32,7 @@ export default function Header() {
       >
         <div className="flex w-full py-3 items-center justify-between">
           <div className="md:mr-6 mr-5 h-8">
-            <NavbarMenuToggle className="prevent-close"/>
+            <NavbarMenuToggle className="prevent-close" />
           </div>
           <HomeLinkBar />
           <div className="hidden lg:flex">
