@@ -58,7 +58,7 @@ export const uploadContent = async (file: Blob) => {
   const formData = new FormData();
   formData.append('file', file);
   try {
-    const response = await fetch("http://127.0.0.1:8000/content/upload", {
+    const response = await fetch(`${API_URL}/content/upload`, {
       method: "POST",
       body: formData,
     });
