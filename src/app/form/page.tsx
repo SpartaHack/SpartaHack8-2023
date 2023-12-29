@@ -30,7 +30,7 @@ const Form = () => {
         email!,
         photoURL!,
         finalEducationLevel,
-        name
+        name,
       );
     } else {
       toast.error("Error signing up, please try again.");
@@ -80,7 +80,7 @@ const Form = () => {
                 educationLevel === "Other" ? "bg-transparent" : "pb-6"
               }`}
             />
-            {educationLevel === "Other" && ( // Conditionally rendering the custom input field
+            {educationLevel === "Other" && (
               <CustomTextInput
                 value={customEducation}
                 type="customEducation"

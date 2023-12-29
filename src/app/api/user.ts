@@ -28,7 +28,7 @@ export const userSignUp = async (
   fullName: string,
   photoURL: string,
   educationLevel: string,
-  username: string
+  username: string,
 ) => {
   const jwtToken = localStorage.getItem("jwtToken");
   const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};

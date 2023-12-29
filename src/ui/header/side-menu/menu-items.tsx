@@ -16,7 +16,7 @@ const MenuItems = () => {
       </div>
       <div className="flex flex-row w-full lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl">
         <Account
-          name={userData?.user.full_name!}
+          name={userData?.user_profile.full_name!}
           picture={userData?.user_profile.photo_url}
           description={userData?.user_profile.username}
         />

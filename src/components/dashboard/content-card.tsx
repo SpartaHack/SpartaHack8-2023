@@ -40,14 +40,14 @@ const ContentCard = ({
   //added deleteFromHistory, space id is optional if it is in history pls test
   const handleDelete = async (
     contentID: string,
-    deleteFromHistory: boolean = false
+    deleteFromHistory: boolean = false,
   ) => {
     try {
       const response = await deleteContent(
         auth.currentUser?.uid!,
         contents.space._id,
         [contentID],
-        deleteFromHistory
+        deleteFromHistory,
       );
       if (response) {
         deleteContentFromState(contentID);
@@ -101,7 +101,7 @@ const ContentCard = ({
             spaceId!,
             handleDelete,
             handleCopy,
-            spaces
+            spaces,
           )}
         />
       </div>

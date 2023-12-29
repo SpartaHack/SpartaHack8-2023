@@ -22,6 +22,7 @@ import { useUserStore } from "@/context/user-context";
 import { useSpaceStore } from "@/context/space-context";
 import { useContentStore } from "@/context/content-store";
 import { useHistoryStore } from "@/context/history-store";
+import { isAxiosError } from "axios";
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
@@ -210,20 +211,22 @@ export const useHandleSignUpFinal = () => {
         fullName,
         photoURL,
         educationLevel,
-        username
+        username,
       );
-      if (response) {
+
+      if (isAxiosError(response) && response.request.status === 404) {
+        toast.error("Username is not unique");
+      } else if (response) {
         toast.success("User signed up successfully");
         setUserId(userId);
-        const response = await userSignIn(userId);
-        setUserData(response!.data);
+        const signInResponse = await userSignIn(userId);
+        setUserData(signInResponse!.data);
         const spaces = await getUserSpaces(userId);
         setSpaces(spaces?.data);
         localStorage.setItem("historyLoading", "true");
         setSignUpFinalStatus("/");
       } else {
         toast.error("Sign up failed, please try again");
-        // setSignUpFinalStatus("/signup");
       }
     } catch (err) {
       if (err instanceof FirebaseError) {
@@ -231,6 +234,5 @@ export const useHandleSignUpFinal = () => {
       }
     }
   };
-
   return { handleSignUpFinal, signUpFinalStatus };
 };

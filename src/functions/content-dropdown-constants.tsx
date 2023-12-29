@@ -10,7 +10,7 @@ export const menuDropDown = (
   spaceId: string,
   handleDelete: (contentId: string) => void,
   handleCopy: (contentId: string, spaceId?: string) => void,
-  spaces: getUserSpaceResponse[]
+  spaces: getUserSpaceResponse[],
 ) => [
   {
     label: "Section 1",

@@ -14,6 +14,7 @@ export default function Header() {
   const userData = useStore(useUserStore, (state) => state.userData);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  console.log(userData?.user_profile!);
 
   useClickOutside(ref, () => setIsMenuOpen(false));
 
@@ -38,7 +39,7 @@ export default function Header() {
           <div className="hidden lg:flex">
             <Notification />
             <Account
-              name={userData?.user.full_name!}
+              name={userData?.user_profile.full_name!}
               picture={userData?.user_profile.photo_url}
               description={userData?.user_profile.username}
             />
