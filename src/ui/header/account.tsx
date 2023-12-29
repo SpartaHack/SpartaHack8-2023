@@ -16,9 +16,7 @@ import { MoonIcon } from "@/icon/moon-icon";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/functions/auth";
-import { auth } from "../../../db/firebase";
-import { useStore } from "zustand";
-import { useUserStore } from "@/context/user-context";
+import useAuth from "@/hooks/use-auth";
 
 //million-ignore
 const Account = ({ name, description, picture }: AccountProps) => {
@@ -27,7 +25,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
   const [isLightMode, setIsLightMode] = useState(
     theme == "light" ? true : false,
   );
-  const userId = useStore(useUserStore, (state) => state.userId);
+  const userId = useAuth();
 
   const handleThemeChange = () => {
     setIsLightMode(!isLightMode);
@@ -100,7 +98,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
           </DropdownSection>
 
           <DropdownSection aria-label="Auth">
-            {(auth.currentUser?.uid && userId) ? (
+            {userId ? (
               <DropdownItem key="logout" onClick={handleLogOut}>
                 Sign Out
               </DropdownItem>
