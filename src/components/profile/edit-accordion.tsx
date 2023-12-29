@@ -19,6 +19,7 @@ const EditAccordion = ({
   const [educationLevel, setEducationLevel] = useState("");
   const { userData, userId, updateUserData } = useUserStore();
   const [selectedKeys, setSelectedKeys] = useState(new Set([title.toString()]));
+  console.log(userData?.user_profile.education_level)
 
   const handleSelectionChange = (keys: Selection) => {
     if (typeof keys === "string") {
@@ -56,7 +57,7 @@ const EditAccordion = ({
           isInvalid={educationLevel === ""}
           label="Select education Level"
           onValueChange={setEducationLevel}
-          initValue={userData?.user_profile.education_level}
+          initValue={(educationOptions.find(option => option.value === userData?.user_profile.education_level) || { value: "Other" }).value}
         />
         <CustomButton
           title="Save Changes"
