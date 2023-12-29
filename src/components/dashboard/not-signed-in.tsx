@@ -1,16 +1,14 @@
 import React from "react";
-import { auth } from "../../../db/firebase";
 import { CustomButton } from "@/helpers/custom-btn";
 import { useRouter } from "next/navigation";
-import useStore from "@/hooks/use-store";
-import { useUserStore } from "@/context/user-context";
+import useAuth from "@/hooks/use-auth";
 
 const NotSignedIn = () => {
   const router = useRouter();
-  const userId = useStore(useUserStore, (state) => state.userId);
+  const userId = useAuth();
   return (
     <>
-      {!(auth.currentUser?.uid || userId) && (
+      {!userId && (
         <div className="flex w-full mt-8 px-10 flex-col items-center justify-center">
           <div className="flex space-y-4 w-[12rem] items-center justify-center">
             <CustomButton
