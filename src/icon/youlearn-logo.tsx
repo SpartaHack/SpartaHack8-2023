@@ -3,15 +3,11 @@ import React from "react";
 import Image from "next/image";
 import { YouLearnLogoProps } from "../../types";
 import { useRouter } from "next/navigation";
-import { useStore } from "zustand";
-import { useUserStore } from "@/context/user-context";
+import useCheckPro from "@/hooks/use-check-pro";
 
 const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
   const router = useRouter();
-  const userData = useStore(useUserStore, (state) => state.userData);
-  const isPro =
-    userData?.customer.subscription.status &&
-    userData.customer.subscription.tier === "pro";
+  const isPro = useCheckPro();
 
   const returnHome = () => {
     localStorage.setItem("historyLoading", "true");
