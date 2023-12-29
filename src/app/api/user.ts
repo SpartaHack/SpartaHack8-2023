@@ -95,16 +95,18 @@ export const updateUser = async (
   userId: string,
   educationLevel: string,
   photoURL: string,
+  username: string
 ) => {
   const data = {
     education_level: educationLevel,
     photo_url: photoURL,
+    username: username
   };
 
   try {
     const response = await axios.put(`${API_URL}/user/${userId}`, data);
     return response;
   } catch (err) {
-    //console.log(err);
+    // console.log(err);
   }
 };

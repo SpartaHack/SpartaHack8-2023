@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Accordion, AccordionItem, Link, Selection } from "@nextui-org/react";
+import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
 import CustomAutocomplete from "../../helpers/custom-autocomplete";
 import { educationOptions } from "../../../utils/constants";
 import { EditAccordionProps } from "../../../types";
@@ -19,7 +19,6 @@ const EditAccordion = ({
   const [educationLevel, setEducationLevel] = useState("");
   const { userData, userId, updateUserData } = useUserStore();
   const [selectedKeys, setSelectedKeys] = useState(new Set([title.toString()]));
-  console.log(userData?.user_profile.education_level)
 
   const handleSelectionChange = (keys: Selection) => {
     if (typeof keys === "string") {
@@ -32,7 +31,7 @@ const EditAccordion = ({
   };
 
   const handleSave = async (photo: string, education: string) => {
-    const response = await updateUser(userId!, education, photo);
+    const response = await updateUser(userId!, education, photo, userData?.user_profile.username!);
     if (response) {
       updateUserData({ education_level: education, photo_url: photo });
       setSelectedKeys(new Set());
