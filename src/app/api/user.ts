@@ -2,8 +2,6 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-console.log(API_URL);
-
 export const userSignIn = async (userId: string) => {
   const jwtToken = localStorage.getItem("jwtToken");
   const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
@@ -28,6 +26,7 @@ export const userSignUp = async (
   fullName: string,
   photoURL: string,
   educationLevel: string,
+  username: string,
 ) => {
   const jwtToken = localStorage.getItem("jwtToken");
   const headers = jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {};
@@ -38,6 +37,7 @@ export const userSignUp = async (
     full_name: fullName,
     photo_url: photoURL,
     education_level: educationLevel,
+    username: username,
   };
 
   try {
@@ -46,7 +46,7 @@ export const userSignUp = async (
     });
     return response;
   } catch (err) {
-    //console.log(err);
+    return err;
   }
 };
 
@@ -95,16 +95,18 @@ export const updateUser = async (
   userId: string,
   educationLevel: string,
   photoURL: string,
+  username: string,
 ) => {
   const data = {
     education_level: educationLevel,
     photo_url: photoURL,
+    username: username,
   };
 
   try {
     const response = await axios.put(`${API_URL}/user/${userId}`, data);
     return response;
   } catch (err) {
-    //console.log(err);
+    // console.log(err);
   }
 };

@@ -37,17 +37,37 @@ export const deleteContent = async (
   userId: string,
   spaceId: string,
   contentIds: string[],
+  deleteFromHistory: boolean,
 ) => {
   const data = {
     user_id: userId,
     space_id: spaceId,
     content_ids: contentIds,
+    delete_from_history: deleteFromHistory,
   };
 
   try {
     const response = await axios.post(`${API_URL}/content/delete`, data);
     return response;
   } catch (err) {
-    //console.log(err);
+    // console.log(err);
   }
 };
+
+// export const uploadContent = async (file: Blob) => {
+//   const formData = new FormData();
+//   formData.append('file', file);
+//   try {
+//     const response = await fetch("http://127.0.0.1:8000/content/upload", {
+//       method: "POST",
+//       body: formData,
+//     });
+
+//     if (response.ok) {
+//       const data = await response.json();
+//       return data;
+//     }
+//   } catch (err) {
+// console.log(err)
+//   }
+// };

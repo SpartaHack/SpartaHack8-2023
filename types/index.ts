@@ -81,6 +81,7 @@ export type CustomTextInputProps = {
   styling?: string | undefined;
   endContent?: JSX.Element;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  autoFocus?: boolean;
 };
 
 export type CustomTextAreaProps = {
@@ -106,6 +107,7 @@ export type ContentCardProps = {
   title: string;
   spaceId?: string;
   thumbnail_url: string;
+  deleteFromHistory?: boolean;
 };
 
 export type Features = {
@@ -151,6 +153,7 @@ export type CustomAutocompleteProps = {
   datas: { value: string }[];
   isInvalid: boolean;
   label: string;
+  allowsCustomValue?: boolean;
   onValueChange: (value: string) => void;
   size: "sm" | "md" | "lg" | undefined;
   initValue?: string;
@@ -214,6 +217,8 @@ export type User = {
 
 export type UserProfile = {
   _id: string;
+  full_name: string;
+  username: string;
   user_id: string;
   education_level: string;
   last_login: string;
@@ -433,6 +438,7 @@ export type ErrorStoreProps = {
 export type HistoryStore = {
   history: HistoryResponse;
   setHistory: (history: HistoryResponse) => void;
+  deleteContentFromHistoryState: (id: string) => void;
   logOut: () => void;
 };
 

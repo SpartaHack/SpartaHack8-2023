@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Accordion, AccordionItem, Link, Selection } from "@nextui-org/react";
+import { Accordion, AccordionItem, Selection } from "@nextui-org/react";
 import CustomAutocomplete from "../../helpers/custom-autocomplete";
 import { educationOptions } from "../../../utils/constants";
 import { EditAccordionProps } from "../../../types";
@@ -9,6 +9,7 @@ import { useUserStore } from "@/context/user-context";
 import { updateUser } from "@/app/api/user";
 import { toast } from "sonner";
 
+//million-ignore
 const EditAccordion = ({
   indicator,
   title,
@@ -30,7 +31,12 @@ const EditAccordion = ({
   };
 
   const handleSave = async (photo: string, education: string) => {
-    const response = await updateUser(userId!, education, photo);
+    const response = await updateUser(
+      userId!,
+      education,
+      photo,
+      userData?.user_profile.username!,
+    );
     if (response) {
       updateUserData({ education_level: education, photo_url: photo });
       setSelectedKeys(new Set());
@@ -55,7 +61,14 @@ const EditAccordion = ({
           isInvalid={educationLevel === ""}
           label="Select education level"
           onValueChange={setEducationLevel}
-          initValue={userData?.user_profile.education_level}
+          initValue={
+            (
+              educationOptions.find(
+                (option) =>
+                  option.value === userData?.user_profile.education_level,
+              ) || { value: "Other" }
+            ).value
+          }
         />
         <CustomButton
           title="Save Changes"

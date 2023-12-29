@@ -7,6 +7,7 @@ const SpaceIcon = ({ clickEvent, height, width }: SpaceIconProps) => {
     <>
       <Image
         src="/spaceIcon.png"
+        priority
         alt="spaceIcon"
         height={height ? height : 55}
         width={width ? width : 55}
@@ -14,6 +15,7 @@ const SpaceIcon = ({ clickEvent, height, width }: SpaceIconProps) => {
         onClick={clickEvent}
       />
       <Image
+        priority
         src="/spaceIconDark.png"
         alt="spaceIconDark"
         height={height ? height : 55}

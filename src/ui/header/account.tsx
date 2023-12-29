@@ -16,7 +16,7 @@ import { MoonIcon } from "@/icon/moon-icon";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/functions/auth";
-import { auth } from "../../../db/firebase";
+import useAuth from "@/hooks/use-auth";
 
 //million-ignore
 const Account = ({ name, description, picture }: AccountProps) => {
@@ -25,6 +25,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
   const [isLightMode, setIsLightMode] = useState(
     theme == "light" ? true : false,
   );
+  const userId = useAuth();
 
   const handleThemeChange = () => {
     setIsLightMode(!isLightMode);
@@ -100,7 +101,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
               <DropdownItem key="Contact us" onClick={() => router.push('/feedback')}>
                 Contact us
               </DropdownItem>
-            {auth.currentUser?.uid ? (
+            {userId ? (
               <DropdownItem key="logout" onClick={handleLogOut}>
                 Sign out
               </DropdownItem>

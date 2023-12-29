@@ -28,18 +28,19 @@ export default function Header() {
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         shouldHideOnScroll
-        className="sticky top-0 z-10 dark:bg-black "
+        className="sticky top-0 z-10 dark:bg-black"
       >
         <div className="flex w-full py-3 items-center justify-between">
           <div className="md:mr-6 mr-5 h-8">
-            <NavbarMenuToggle className="" />
+            <NavbarMenuToggle className="prevent-close" />
           </div>
           <HomeLinkBar />
           <div className="hidden lg:flex">
             <Notification />
             <Account
-              name={userData?.user.full_name!}
+              name={userData?.user_profile.full_name!}
               picture={userData?.user_profile.photo_url}
+              description={userData?.user_profile.username}
             />
           </div>
         </div>

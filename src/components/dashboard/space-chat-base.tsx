@@ -1,25 +1,45 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
 import SpaceChatMain from "./space-chat-main";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useRef } from "react";
 import SpaceIcon from "@/icon/space-icon";
 
 const SpaceChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cancelNextClick, setCancelNextClick] = useState(false);
+  const cancelNextClickTimeoutId = useRef<number | null>(null);
+
   const handleOpen = () => {
+    if (cancelNextClick) {
+      setCancelNextClick(false);
+      return;
+    }
+
     localStorage.setItem("chatHistoryLoading", "true");
-    setIsOpen(!isOpen);
+    setIsOpen(true);
   };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setCancelNextClick(true);
+
+    if (cancelNextClickTimeoutId.current !== null) {
+      clearTimeout(cancelNextClickTimeoutId.current);
+      cancelNextClickTimeoutId.current = null;
+    }
+
+    cancelNextClickTimeoutId.current = window.setTimeout(
+      () => setCancelNextClick(false),
+      500,
+    );
+  };
+
   return (
     <>
       <SpaceIcon clickEvent={handleOpen} />
       {isOpen && (
         <Transition appear show={isOpen} as={Fragment}>
-          <Dialog
-            as="div"
-            className="absolute z-10"
-            onClose={() => setIsOpen(false)}
-          >
+          <Dialog as="div" className="absolute z-10" onClose={handleClose}>
             <div className="fixed inset-0 overflow-y-auto">
               <div className="flex min-h-full items-end lg:pb-[115px] pb-[90px] lg:mr-5 justify-end p-4 text-center">
                 <Transition.Child

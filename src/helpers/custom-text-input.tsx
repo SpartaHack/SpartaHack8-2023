@@ -13,11 +13,12 @@ const CustomTextInput = ({
   styling,
   onKeyDown,
   endContent,
+  autoFocus,
 }: CustomTextInputProps) => {
   return (
     <>
       <Input
-        autoFocus
+        autoFocus={autoFocus}
         placeholder={placeholder}
         value={value as string}
         type={type}
