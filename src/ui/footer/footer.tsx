@@ -13,9 +13,6 @@ const Footer = () => {
         <div className="text-sm flex items-center space-x-3">
           <Link href="/feedback">Give Feedback</Link>
           <div
-            onClick={() => {
-              navigator.clipboard.writeText("hello@youlearn.ai");
-            }}
             className="hidden sm:block cursor-pointer"
           >
             hello@youlearn.ai
