@@ -24,8 +24,7 @@ const NoSpaceContent = () => {
                 />
               </div>
               <h2 className="font-sans mt-4 text-neutral-500 text-center md:hidden block">
-                Learn twice as fast and personalize with YouLearn. <br /> Avoid
-                the tedious convention of just reading and watching.
+                Learn twice as fast and personalize with YouLearn.
               </h2>
               <h2 className="font-sans mt-4 text-neutral-500 text-center text-wrap px-8 md:block hidden">
                 Learn twice as fast and personalize with YouLearn. Avoid the

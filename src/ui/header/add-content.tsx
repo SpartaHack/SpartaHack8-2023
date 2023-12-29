@@ -92,7 +92,7 @@ const AddContent = () => {
                 Upload videos or PDFs
               </span>
               <span className="text-[12px] text-neutral-400">
-                Paste link(PDF & YouTube)
+                Paste link (PDF & YouTube)
               </span>
             </div>
           </div>

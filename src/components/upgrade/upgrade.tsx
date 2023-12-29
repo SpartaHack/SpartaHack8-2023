@@ -10,6 +10,8 @@ import CustomModal from "@/helpers/custom-modal";
 import UpgradeModal from "@/components/upgrade/upgrade-modal";
 import { PROYEARLYPRICE } from "../../../utils/constants";
 import TrustedBy from "./trusted-by";
+import { auth } from "../../../db/firebase";
+import { toast } from "sonner";
 
 // million-ignore
 const Upgrade = () => {
@@ -17,7 +19,12 @@ const Upgrade = () => {
 
   const handleHomeClick = () => {
     localStorage.setItem("historyLoading", "true");
-    router.push("/");
+    if (auth.currentUser?.uid) {
+      router.push("/");
+    } else {
+      toast.error("Please sign in to continue.");
+      router.push('/signin');
+    }
   };
 
   return (

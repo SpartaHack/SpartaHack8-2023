@@ -227,6 +227,7 @@ export const useHandleSignUpFinal = () => {
         setSignUpFinalStatus("/");
       } else {
         toast.error("Sign up failed, please try again");
+        setSignUpFinalStatus("/signup");
       }
     } catch (err) {
       if (err instanceof FirebaseError) {
