@@ -50,6 +50,6 @@ export const deleteContent = async (
     const response = await axios.post(`${API_URL}/content/delete`, data);
     return response;
   } catch (err) {
-    //console.log(err);
+    // console.log(err);
   }
 };

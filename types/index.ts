@@ -107,6 +107,7 @@ export type ContentCardProps = {
   title: string;
   spaceId?: string;
   thumbnail_url: string;
+  deleteFromHistory?: boolean;
 };
 
 export type Features = {
@@ -437,6 +438,7 @@ export type ErrorStoreProps = {
 export type HistoryStore = {
   history: HistoryResponse;
   setHistory: (history: HistoryResponse) => void;
+  deleteContentFromHistoryState: (id: string) => void;
   logOut: () => void;
 };
 

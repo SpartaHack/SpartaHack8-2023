@@ -10,6 +10,13 @@ export const useHistoryStore = create<
     (set) => ({
       history: [],
       setHistory: (history) => set({ history }),
+      deleteContentFromHistoryState: (contentId) =>
+        set((state) => ({
+          history: state.history.filter(
+            (content: { content: { content_id: string } }) =>
+              content.content.content_id !== contentId,
+          ),
+        })),
       logOut: () => set({ history: [] }),
     }),
     {

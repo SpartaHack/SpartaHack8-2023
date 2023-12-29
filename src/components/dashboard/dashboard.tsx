@@ -38,6 +38,7 @@ const Dashboard = () => {
             history.map((history: History, key: number) => (
               <ContentCard
                 key={key}
+                deleteFromHistory
                 spaceId={history.space_id}
                 type={history.content.type}
                 contentID={history.content.content_id}

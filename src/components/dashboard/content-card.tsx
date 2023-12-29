@@ -11,19 +11,21 @@ import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { useStore } from "zustand";
 import { useSpaceStore } from "@/context/space-context";
+import { useHistoryStore } from "@/context/history-store";
 
 const ContentCard = ({
   contentAdd,
   contentID,
   contentURL,
   spaceId,
-  type,
   title,
   thumbnail_url,
+  deleteFromHistory,
 }: ContentCardProps) => {
   const router = useRouter();
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
   const { deleteContentFromState, contents } = useContentStore();
+  const { deleteContentFromHistoryState, history } = useHistoryStore();
 
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
@@ -37,26 +39,24 @@ const ContentCard = ({
     }
   };
 
-  //added deleteFromHistory, space id is optional if it is in history pls test
   const handleDelete = async (
     contentID: string,
-    deleteFromHistory: boolean = false,
+    deleteContentFromHistory: boolean = deleteFromHistory!,
   ) => {
-    try {
-      const response = await deleteContent(
-        auth.currentUser?.uid!,
-        contents.space._id,
-        [contentID],
-        deleteFromHistory,
-      );
-      if (response) {
-        deleteContentFromState(contentID);
-        toast.success("Deleted content successfully.");
-      } else {
-        toast.error("Unable to delete content.");
+    const response = await deleteContent(
+      auth.currentUser?.uid!,
+      contents.space._id ? contents.space._id : "",
+      [contentID],
+      deleteContentFromHistory,
+    );
+    if (response) {
+      if (deleteContentFromHistory) {
+        deleteContentFromHistoryState(contentID);
       }
-    } catch (err) {
-      toast.error("Cannot delete content. Delete from your space instead.");
+      deleteContentFromState(contentID);
+      toast.success("Deleted content successfully.");
+    } else {
+      toast.error("Unable to delete content.");
     }
   };
 
