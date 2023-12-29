@@ -16,12 +16,10 @@ import { MoonIcon } from "@/icon/moon-icon";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/functions/auth";
-import useStore from "@/hooks/use-store";
-import { useUserStore } from "@/context/user-context";
+import { auth } from "../../../db/firebase";
 
 //million-ignore
 const Account = ({ name, description, picture }: AccountProps) => {
-  const userId = useStore(useUserStore, (state) => state.userId);
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [isLightMode, setIsLightMode] = useState(
@@ -99,7 +97,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
           </DropdownSection>
 
           <DropdownSection aria-label="Auth">
-            {userId ? (
+            {auth.currentUser?.uid ? (
               <DropdownItem key="logout" onClick={handleLogOut}>
                 Sign Out
               </DropdownItem>
