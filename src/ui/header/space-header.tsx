@@ -80,6 +80,7 @@ const SpaceHeader = () => {
           <div className="text-4xl flex flex-row group font-sans w-full md:w-[80%] font-semibold md:mb-4">
             {editSpaceName ? (
               <input
+                maxLength={150}
                 className="outline-none font-sans text-neutral-400 w-full bg-transparent"
                 type="text"
                 value={spaceNameInput}
