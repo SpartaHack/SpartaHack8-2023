@@ -11,7 +11,7 @@ const Help = () => {
       onClick={() => router.push("/feedback")}
     >
       <Icon icon="material-symbols:help-outline" className="h-6 w-6" />
-      <span className="ml-5">Help & Feedback</span>
+      <span className="ml-5">Help</span>
     </div>
   );
 };

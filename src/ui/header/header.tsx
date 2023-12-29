@@ -14,7 +14,6 @@ export default function Header() {
   const userData = useStore(useUserStore, (state) => state.userData);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  console.log(userData?.user_profile!);
 
   useClickOutside(ref, () => setIsMenuOpen(false));
 
@@ -29,11 +28,11 @@ export default function Header() {
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         shouldHideOnScroll
-        className="sticky top-0 z-10 dark:bg-black "
+        className="sticky top-0 z-10 dark:bg-black"
       >
         <div className="flex w-full py-3 items-center justify-between">
           <div className="md:mr-6 mr-5 h-8">
-            <NavbarMenuToggle className="" />
+            <NavbarMenuToggle className="prevent-close"/>
           </div>
           <HomeLinkBar />
           <div className="hidden lg:flex">
