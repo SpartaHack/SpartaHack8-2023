@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation"; // Correct this import if necessary
-import SecondaryHeader from "@/ui/header/secondary-header"; // Ensure this is the correct path
+import { useRouter } from "next/navigation";
+import SecondaryHeader from "@/ui/header/secondary-header";
 import { CustomButton } from "@/helpers/custom-btn";
-import { auth } from "../../../db/firebase"; // Adjust path as necessary
+import { auth } from "../../../db/firebase";
 import { sendEmailVerification } from "firebase/auth";
-import { toast } from "sonner"; // Ensure toast is correctly implemented
+import { toast } from "sonner";
 
 const Verify = () => {
   const router = useRouter();
@@ -49,9 +49,9 @@ const Verify = () => {
               Check your mailbox to verify your email.
             </p>
             <CustomButton
-              title="Resend Email"
+              title={<h1 className="font-bold">Resend Email</h1>}
               btnType="button"
-              btnStyling="bg-secondary py-2 text-black font-bold flex items-center justify-center rounded-xl h-[50px] w-full mt-4"
+              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-bold flex items-center justify-center rounded-xl h-[50px] w-full mt-4"
               clickEvent={resendEmail}
             />
           </div>
