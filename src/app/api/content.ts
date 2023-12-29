@@ -54,20 +54,20 @@ export const deleteContent = async (
   }
 };
 
-export const uploadContent = async (file: Blob) => {
-  const formData = new FormData();
-  formData.append('file', file);
-  try {
-    const response = await fetch("http://127.0.0.1:8000/content/upload", {
-      method: "POST",
-      body: formData,
-    });
+// export const uploadContent = async (file: Blob) => {
+//   const formData = new FormData();
+//   formData.append('file', file);
+//   try {
+//     const response = await fetch("http://127.0.0.1:8000/content/upload", {
+//       method: "POST",
+//       body: formData,
+//     });
 
-    if (response.ok) {
-      const data = await response.json();
-      return data;
-    }
-  } catch (error) {
-    
-  }
-};
+//     if (response.ok) {
+//       const data = await response.json();
+//       return data;
+//     }
+//   } catch (err) {
+// console.log(err)
+//   }
+// };

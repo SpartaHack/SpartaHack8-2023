@@ -25,7 +25,7 @@ const ContentCard = ({
   const router = useRouter();
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
   const { deleteContentFromState, contents } = useContentStore();
-  const { deleteContentFromHistoryState, history } = useHistoryStore();
+  const { deleteContentFromHistoryState } = useHistoryStore();
 
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
@@ -45,7 +45,7 @@ const ContentCard = ({
   ) => {
     const response = await deleteContent(
       auth.currentUser?.uid!,
-      contents.space._id ? contents.space._id : "",
+      contents.space._id,
       [contentID],
       deleteContentFromHistory,
     );
