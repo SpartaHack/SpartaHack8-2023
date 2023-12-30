@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { uploadContent } from "@/app/api/content";
 import { toast } from "sonner";
+import { ContentUploaderProps } from "../../../types";
 
-const ContentUploader = () => {
+const ContentUploader = ({ handleLinkUpload } : ContentUploaderProps) => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +19,7 @@ const ContentUploader = () => {
     if (file) {
       try {
         const response = await uploadContent(file);
-        console.log(response.content_url)
+        handleLinkUpload(response.content_url);
       } catch (error) {
         toast.error("Error uploading file");
       }

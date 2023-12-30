@@ -21,6 +21,11 @@ const AddContent = () => {
     setContentURL(e.target.value);
   };
 
+  const handleLinkUpload = (link: string) => {
+    const newLinks = [...links, link];
+    setLinks(newLinks);
+  }
+
   const handleAdd = async () => {
     const newLinks = contentURL === "" ? [...links] : [...links, contentURL];
     setLinks(newLinks);
@@ -117,7 +122,7 @@ const AddContent = () => {
                 )
               }
             />
-            <ContentUploader />
+            <ContentUploader handleLinkUpload={handleLinkUpload}/>
             {links &&
               links.map((link, index) => (
                 <LinkCard
