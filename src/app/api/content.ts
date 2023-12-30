@@ -56,7 +56,7 @@ export const deleteContent = async (
 
 export const uploadContent = async (file: Blob) => {
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append("file", file);
   try {
     const response = await fetch(`${API_URL}/content/upload`, {
       method: "POST",
@@ -68,6 +68,6 @@ export const uploadContent = async (file: Blob) => {
       return data;
     }
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };

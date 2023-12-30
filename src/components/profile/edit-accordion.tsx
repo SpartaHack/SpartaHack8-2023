@@ -8,6 +8,7 @@ import { CustomButton } from "@/helpers/custom-btn";
 import { useUserStore } from "@/context/user-context";
 import { updateUser } from "@/app/api/user";
 import { toast } from "sonner";
+import CustomTextInput from "@/helpers/custom-text-input";
 
 //million-ignore
 const EditAccordion = ({
@@ -16,9 +17,15 @@ const EditAccordion = ({
   style,
   photo,
 }: EditAccordionProps) => {
-  const [educationLevel, setEducationLevel] = useState("");
   const { userData, userId, updateUserData } = useUserStore();
+  const [other, setOther] = useState(userData?.user_profile.education_level);
   const [selectedKeys, setSelectedKeys] = useState(new Set([title.toString()]));
+  const otherValue = (
+    educationOptions.find(
+      (option) => option.value === userData?.user_profile.education_level,
+    ) || { value: "Other" }
+  ).value;
+  const [educationLevel, setEducationLevel] = useState(otherValue);
 
   const handleSelectionChange = (keys: Selection) => {
     if (typeof keys === "string") {
@@ -31,6 +38,9 @@ const EditAccordion = ({
   };
 
   const handleSave = async (photo: string, education: string) => {
+    if (education === "Other" && other) {
+      education = other;
+    }
     const response = await updateUser(
       userId!,
       education,
@@ -57,19 +67,23 @@ const EditAccordion = ({
       >
         <CustomAutocomplete
           size="lg"
+          allowsCustomValue
           datas={educationOptions}
           isInvalid={educationLevel === ""}
           label="Select education level"
           onValueChange={setEducationLevel}
-          initValue={
-            (
-              educationOptions.find(
-                (option) =>
-                  option.value === userData?.user_profile.education_level,
-              ) || { value: "Other" }
-            ).value
-          }
+          initValue={otherValue}
         />
+        {(educationLevel || other) === "Other" && (
+          <CustomTextInput
+            value={other}
+            type="other"
+            label="Please specify"
+            isInvalid={other === ""}
+            styling="pt-4 pb-6"
+            eventChange={(e) => setOther(e.target.value)}
+          />
+        )}
         <CustomButton
           title="Save Changes"
           btnType="submit"

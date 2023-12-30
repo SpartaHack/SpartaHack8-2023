@@ -92,11 +92,11 @@ const SpaceHeader = () => {
             ) : (
               spaceName
             )}
-              <Icon
-                icon="lucide:pen"
-                className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
-                onClick={handleIconClick}
-              />
+            <Icon
+              icon="lucide:pen"
+              className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
+              onClick={handleIconClick}
+            />
           </div>
           <div className="flex flex-row my-6  md:my-0 space-between">
             <AddContent />

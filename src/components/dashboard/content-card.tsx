@@ -110,12 +110,13 @@ const ContentCard = ({
           width-full="true"
           src={thumbnail_url!}
           width={360}
-          height={240}
+          height={200}
+          className="object-fill w-[360px] h-[200px]"
           alt="thumbnail"
         />
       </div>
-      <div className="w-full my-4">
-        <h5 className="text-center font-semibold px-4 line-clamp-1">{title}</h5>
+      <div className="w-full my-2">
+        <h5 className="font-semibold px-4 line-clamp-2">{title}</h5>
       </div>
     </div>
   );
