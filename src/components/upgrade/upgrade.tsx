@@ -23,7 +23,7 @@ const Upgrade = () => {
       router.push("/");
     } else {
       toast.error("Please sign in to continue.");
-      router.push('/signin');
+      router.push("/signin");
     }
   };
 

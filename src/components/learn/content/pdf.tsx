@@ -16,12 +16,12 @@ const PDF = () => {
   return (
     <div className="lg:w-[70%] w-full items-center justify-center">
       <div className="h-[75vh] lg:h-screen">
-      <iframe
-        key={pdfUrl}
-        src={pdfUrl}
-        width="100%"
-        className="rounded-xl border-none h-full lg:h-[85%]"
-      />
+        <iframe
+          key={pdfUrl}
+          src={pdfUrl}
+          width="100%"
+          className="rounded-xl border-none h-full lg:h-[85%]"
+        />
       </div>
     </div>
   );

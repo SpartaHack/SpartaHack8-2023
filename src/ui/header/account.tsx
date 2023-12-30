@@ -17,6 +17,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/functions/auth";
 import useAuth from "@/hooks/use-auth";
+import useCheckPro from "@/hooks/use-check-pro";
 
 //million-ignore
 const Account = ({ name, description, picture }: AccountProps) => {
@@ -31,6 +32,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
     setIsLightMode(!isLightMode);
     setTheme(isLightMode ? "dark" : "light");
   };
+  const isPro = useCheckPro();
 
   const handleLogOut = () => {
     router.push("/");
@@ -75,7 +77,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
 
           <DropdownSection aria-label="Settings" showDivider>
             <DropdownItem onClick={() => router.push("/upgrade")}>
-              Upgrade
+              {isPro ? "Pro User" : "Upgrade"}
             </DropdownItem>
             <DropdownItem
               isReadOnly
@@ -98,9 +100,12 @@ const Account = ({ name, description, picture }: AccountProps) => {
           </DropdownSection>
 
           <DropdownSection aria-label="Auth">
-              <DropdownItem key="Contact us" onClick={() => router.push('/feedback')}>
-                Contact us
-              </DropdownItem>
+            <DropdownItem
+              key="Contact us"
+              onClick={() => router.push("/feedback")}
+            >
+              Contact us
+            </DropdownItem>
             {userId ? (
               <DropdownItem key="logout" onClick={handleLogOut}>
                 Sign out
