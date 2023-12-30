@@ -54,9 +54,10 @@ export const deleteContent = async (
   }
 };
 
-export const uploadContent = async (file: Blob) => {
+export const uploadContent = async (file: Blob, userId: string) => {
   const formData = new FormData();
   formData.append("file", file);
+  formData.append("user_id", userId);
   try {
     const response = await fetch(`${API_URL}/content/upload`, {
       method: "POST",

@@ -463,4 +463,5 @@ export type MarkdownElementProps = {
 
 export type ContentUploaderProps = {
   handleLinkUpload: (link: string) => void;
+  userId: string;
 }

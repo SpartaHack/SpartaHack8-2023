@@ -24,7 +24,7 @@ const AddContent = () => {
   const handleLinkUpload = (link: string) => {
     const newLinks = [...links, link];
     setLinks(newLinks);
-  }
+  };
 
   const handleAdd = async () => {
     const newLinks = contentURL === "" ? [...links] : [...links, contentURL];
@@ -36,7 +36,7 @@ const AddContent = () => {
           const contentStream = await addContent(
             auth.currentUser?.uid!,
             contents.space._id,
-            [link],
+            [link]
           );
           for await (const content of contentStream!) {
             useContentStore.getState().addContent(content);
@@ -70,7 +70,7 @@ const AddContent = () => {
 
   const handleDelete = useCallback((indexToRemove: number) => {
     setLinks((prevLinks) =>
-      prevLinks.filter((_, index) => index !== indexToRemove),
+      prevLinks.filter((_, index) => index !== indexToRemove)
     );
   }, []);
 
@@ -122,7 +122,10 @@ const AddContent = () => {
                 )
               }
             />
-            <ContentUploader handleLinkUpload={handleLinkUpload}/>
+            <ContentUploader
+              handleLinkUpload={handleLinkUpload}
+              userId={auth.currentUser?.uid!}
+            />
             {links &&
               links.map((link, index) => (
                 <LinkCard
