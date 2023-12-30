@@ -29,7 +29,7 @@ const ContentUploader = ({ handleLinkUpload } : ContentUploaderProps) => {
   };
 
   return (
-    <label htmlFor="file-upload" className="flex flex-col h-40 cursor-pointer rounded-xl border-[2px] border-[#3F3F45] items-center justify-center">
+    <label htmlFor="file-upload" className="flex flex-col h-40 cursor-pointer rounded-xl border-[2px] border-[#E4E4E7] dark:border-[#3F3F45] items-center justify-center">
       <Icon icon="ph:plus" className="h-10 w-10 pb-2" />
       <span>Upload file</span>
       <input 
