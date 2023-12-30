@@ -9,6 +9,7 @@ import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { addContent } from "@/app/api/content";
 import LinkCard from "./link-card";
+import FileUploader from "./uploader";
 
 // million-ignore
 const AddContent = () => {
@@ -116,6 +117,7 @@ const AddContent = () => {
                 )
               }
             />
+            <FileUploader />
             {links &&
               links.map((link, index) => (
                 <LinkCard
