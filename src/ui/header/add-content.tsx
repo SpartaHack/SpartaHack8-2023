@@ -9,6 +9,7 @@ import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { addContent } from "@/app/api/content";
 import LinkCard from "./link-card";
+import ContentUploader from "./uploader";
 
 // million-ignore
 const AddContent = () => {
@@ -19,6 +20,11 @@ const AddContent = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setContentURL(e.target.value);
   };
+
+  const handleLinkUpload = (link: string) => {
+    const newLinks = [...links, link];
+    setLinks(newLinks);
+  }
 
   const handleAdd = async () => {
     const newLinks = contentURL === "" ? [...links] : [...links, contentURL];
@@ -116,6 +122,7 @@ const AddContent = () => {
                 )
               }
             />
+            <ContentUploader handleLinkUpload={handleLinkUpload}/>
             {links &&
               links.map((link, index) => (
                 <LinkCard
