@@ -9,7 +9,7 @@ import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { addContent } from "@/app/api/content";
 import LinkCard from "./link-card";
-import ContentUploader from "./uploader";
+import ContentUploader from "./content-uploader";
 
 // million-ignore
 const AddContent = () => {
@@ -36,7 +36,7 @@ const AddContent = () => {
           const contentStream = await addContent(
             auth.currentUser?.uid!,
             contents.space._id,
-            [link]
+            [link],
           );
           for await (const content of contentStream!) {
             useContentStore.getState().addContent(content);
@@ -70,7 +70,7 @@ const AddContent = () => {
 
   const handleDelete = useCallback((indexToRemove: number) => {
     setLinks((prevLinks) =>
-      prevLinks.filter((_, index) => index !== indexToRemove)
+      prevLinks.filter((_, index) => index !== indexToRemove),
     );
   }, []);
 
@@ -122,10 +122,7 @@ const AddContent = () => {
                 )
               }
             />
-            <ContentUploader
-              handleLinkUpload={handleLinkUpload}
-              userId={auth.currentUser?.uid!}
-            />
+            <ContentUploader handleLinkUpload={handleLinkUpload} />
             {links &&
               links.map((link, index) => (
                 <LinkCard
