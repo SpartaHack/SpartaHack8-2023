@@ -76,6 +76,7 @@ export const uploadContent = async (file: Blob, userId: string) => {
     const response = await fetch(`${API_URL}/content/upload`, {
       method: "POST",
       body: formData,
+      credentials: "include",
     });
 
     if (response.ok) {

@@ -11,7 +11,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
   const userId = useAuth();
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     if (event.target.files) {
       const selectedFile = event.target.files[0];
@@ -42,8 +42,13 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
       htmlFor="file-upload"
       className="flex flex-col h-40 cursor-pointer rounded-xl border-[2px] border-[#E4E4E7] dark:border-[#3F3F45] items-center justify-center"
     >
-      <Icon icon="ph:plus" className=" text-neutral-600 dark:text-neutral-400 h-10 w-10 pb-2" />
-      <span className="text-sm text-neutral-600 dark:text-neutral-400">Upload PDFs</span>
+      <Icon
+        icon="ph:plus"
+        className=" text-neutral-600 dark:text-neutral-400 h-10 w-10 pb-2"
+      />
+      <span className="text-sm text-neutral-600 dark:text-neutral-400">
+        Upload PDFs
+      </span>
       <input
         accept="application/pdf"
         type="file"
