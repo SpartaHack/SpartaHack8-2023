@@ -5,15 +5,7 @@ import { CustomButton } from "@/helpers/custom-btn";
 import { toast } from "sonner";
 import CustomTextArea from "@/helpers/custom-text-area";
 import CustomAutocomplete from "@/helpers/custom-autocomplete";
-
-const feedbackOptions = [
-  { value: "😫 I'm struggling with this in YouLearn..." },
-  { value: "😍 I love this about YouLearn..." },
-  { value: "😇 I wish YouLearn had this feature..." },
-  { value: "😵‍💫 I found a bug in YouLearn..." },
-  { value: "🤔 My overall thoughts on YouLearn..." },
-  { value: "💬 Something else..." },
-];
+import { feedbackOptions } from "../../../utils/constants";
 
 // million-ignore
 const Form = () => {

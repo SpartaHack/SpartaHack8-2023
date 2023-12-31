@@ -31,3 +31,12 @@ export const logos = [
 
 export const PROMONTHLYPRICE = 10;
 export const PROYEARLYPRICE = 8;
+
+export const feedbackOptions = [
+  { value: "😫 I'm struggling with this in YouLearn..." },
+  { value: "😍 I love this about YouLearn..." },
+  { value: "😇 I wish YouLearn had this feature..." },
+  { value: "😵‍💫 I found a bug in YouLearn..." },
+  { value: "🤔 My overall thoughts on YouLearn..." },
+  { value: "💬 Something else..." },
+];
