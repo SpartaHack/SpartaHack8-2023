@@ -32,7 +32,9 @@ const AddSpace = () => {
     } catch (err) {
       toast.dismiss(addingSpace);
       if (isAxiosError(err)) {
-        setError(err);
+        const errorMessage = err.response?.data?.message;
+        toast.error(errorMessage);
+        //setError(err);
       }
     }
   };

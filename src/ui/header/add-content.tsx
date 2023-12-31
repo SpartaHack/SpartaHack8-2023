@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { addContent } from "@/app/api/content";
 import LinkCard from "./link-card";
 import ContentUploader from "./content-uploader";
+import { isAxiosError } from "axios";
 
 // million-ignore
 const AddContent = () => {
@@ -36,16 +37,24 @@ const AddContent = () => {
           const contentStream = await addContent(
             auth.currentUser?.uid!,
             contents.space._id,
-            [link],
+            [link]
           );
+          toast.dismiss(addingToast);
           for await (const content of contentStream!) {
-            useContentStore.getState().addContent(content);
+            if ("error" in content) {
+              toast.error(content.error);
+            } else {
+              useContentStore.getState().addContent(content);
+              toast.success("Content added");
+            }
           }
-          toast.dismiss(addingToast);
-          toast.success("Added successfully");
         } catch (err) {
+          console.log(err);
           toast.dismiss(addingToast);
-          toast.error("Could not add content");
+          if (isAxiosError(err)) {
+            const errorMessage = err.response?.data?.message;
+            toast.error(errorMessage);
+          }
         }
       }
     } else {
@@ -70,7 +79,7 @@ const AddContent = () => {
 
   const handleDelete = useCallback((indexToRemove: number) => {
     setLinks((prevLinks) =>
-      prevLinks.filter((_, index) => index !== indexToRemove),
+      prevLinks.filter((_, index) => index !== indexToRemove)
     );
   }, []);
 

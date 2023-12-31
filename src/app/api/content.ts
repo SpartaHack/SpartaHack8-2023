@@ -7,31 +7,48 @@ export const addContent = async (
   spaceId: string | undefined,
   contentURLs: string[],
 ) => {
-  const data = {
-    user_id: userId,
-    space_id: spaceId,
-    content_urls: contentURLs,
-  };
+  try {
+    const data = {
+      user_id: userId,
+      space_id: spaceId,
+      content_urls: contentURLs,
+    };
 
-  const response = await fetch(`${API_URL}/content/add`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-    credentials: "include",
-  });
+    const response = await fetch(`${API_URL}/content/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: "include",
+    });
 
-  const reader = response.body!.getReader();
-  return (async function* () {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      let str = new TextDecoder("utf-8").decode(value);
-      yield JSON.parse(str);
-    }
-  })();
+    if (!response.body) throw new Error("No response body");
+
+    const reader = response.body.getReader();
+    return (async function* () {
+      let partialData = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        partialData += new TextDecoder("utf-8").decode(value, {stream: true});
+        try {
+          console.log(partialData);
+          yield JSON.parse(partialData);
+          partialData = ""; // Reset partial data after successful parse
+        } catch (error) {
+          // Handle JSON parse error or incomplete chunk. 
+          // Don't reset partialData, wait for more chunks to complete the JSON
+          console.error("Error parsing JSON:", error);
+        }
+      }
+    })();
+  } catch (error) {
+    console.error("Error fetching or streaming data:", error);
+    throw error; // Rethrow error to be handled by caller
+  }
 };
+
 
 export const deleteContent = async (
   userId: string,
