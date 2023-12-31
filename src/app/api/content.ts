@@ -31,21 +31,19 @@ export const addContent = async (
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-        partialData += new TextDecoder("utf-8").decode(value, {stream: true});
+        partialData += new TextDecoder("utf-8").decode(value, { stream: true });
         try {
           console.log(partialData);
           yield JSON.parse(partialData);
-          partialData = ""; // Reset partial data after successful parse
+          partialData = "";
         } catch (error) {
-          // Handle JSON parse error or incomplete chunk. 
-          // Don't reset partialData, wait for more chunks to complete the JSON
           console.error("Error parsing JSON:", error);
         }
       }
     })();
   } catch (error) {
     console.error("Error fetching or streaming data:", error);
-    throw error; // Rethrow error to be handled by caller
+    throw error;
   }
 };
 

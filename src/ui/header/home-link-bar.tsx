@@ -37,7 +37,6 @@ const SearchBar = () => {
             type="text"
             className="w-full outline-none ml-3 bg-absolute_white dark:bg-transparent"
             placeholder="Search..."
-            autoFocus
             onChange={(e) => setQuery(e.target.value)}
           />
           <button type="submit">
