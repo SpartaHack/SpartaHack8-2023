@@ -18,7 +18,7 @@ const MenuItems = () => {
         <Account
           name={userData?.user_profile.full_name!}
           picture={userData?.user_profile.photo_url}
-          description={userData?.user_profile.username}
+          description={'@' + userData?.user_profile.username}
         />
       </div>
       <div className="horizontal-line lg:hidden" />

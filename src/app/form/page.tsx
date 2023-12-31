@@ -62,6 +62,7 @@ const Form = () => {
               autoFocus
             />
             <CustomTextInput
+              startContent={<span className="text-neutral-400">@</span>}
               value={username}
               type="username"
               label="Username"
