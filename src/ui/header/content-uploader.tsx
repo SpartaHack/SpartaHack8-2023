@@ -11,11 +11,16 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
   const userId = useAuth();
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     if (event.target.files) {
-      setFile(event.target.files[0]);
-      await handleUpload(event.target.files[0]);
+      const selectedFile = event.target.files[0];
+      if (selectedFile.size > 10000000) {
+        toast.error("File size exceeds 10MB");
+        return;
+      }
+      setFile(selectedFile);
+      await handleUpload(selectedFile);
     }
   };
 
@@ -38,7 +43,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
       className="flex flex-col h-40 cursor-pointer rounded-xl border-[2px] border-[#E4E4E7] dark:border-[#3F3F45] items-center justify-center"
     >
       <Icon icon="ph:plus" className="h-10 w-10 pb-2" />
-      <span>Upload file</span>
+      <span>Upload PDFs</span>
       <input
         accept="application/pdf"
         type="file"
@@ -46,7 +51,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      <span className="text-sm">(PDFs)</span>
+      <span className="text-sm">(max size 10MB)</span>
     </label>
   );
 };
