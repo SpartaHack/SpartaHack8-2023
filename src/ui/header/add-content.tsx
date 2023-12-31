@@ -37,7 +37,7 @@ const AddContent = () => {
           const contentStream = await addContent(
             auth.currentUser?.uid!,
             contents.space._id,
-            [link]
+            [link],
           );
           toast.dismiss(addingToast);
           for await (const content of contentStream!) {
@@ -79,7 +79,7 @@ const AddContent = () => {
 
   const handleDelete = useCallback((indexToRemove: number) => {
     setLinks((prevLinks) =>
-      prevLinks.filter((_, index) => index !== indexToRemove)
+      prevLinks.filter((_, index) => index !== indexToRemove),
     );
   }, []);
 

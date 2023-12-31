@@ -11,7 +11,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
   const userId = useAuth();
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     if (event.target.files) {
       const selectedFile = event.target.files[0];
