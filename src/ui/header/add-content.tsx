@@ -88,7 +88,7 @@ const AddContent = () => {
       <CustomModal
         size="2xl"
         title={
-          <div className="shadow-xl rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
+          <div className="rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
             <span className="text-sm truncate">Add content</span>
           </div>
@@ -98,16 +98,16 @@ const AddContent = () => {
         actionEvent={handleAdd}
         contentTitle={
           <div className="flex flex-col">
-            <div className="mt-2 font-semibold flex flex-row">
-              <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
+            <div className="mt-0.5 font-semibold flex flex-row">
+              <Icon icon="mi:add" className="w-4 h-4 mr-1" />
               <span className="text-sm">Add content</span>
             </div>
-            <div className="flex flex-row justify-between items-baseline">
-              <span className="mt-4 text-2xl font-sans">
+            <div className="flex flex-row items-baseline">
+              <span className="mt-4 text-3xl font-sans">
                 Upload videos or PDFs
               </span>
-              <span className="text-[12px] text-neutral-400">
-                Paste link (PDF & YouTube)
+              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400">
+                Paste link and / or upload file (PDF & YouTube)
               </span>
             </div>
           </div>
@@ -117,7 +117,7 @@ const AddContent = () => {
             <CustomTextInput
               onKeyDown={handleKeyDown}
               value={contentURL}
-              placeholder="https://www.youtube.com/watch?v=xETr0cr1VNk"
+              placeholder="https://youtu.be/kqtD5dpn9C8"
               type={"text"}
               eventChange={(e) => handleChange(e)}
               isInvalid={contentURL === ""}
