@@ -59,7 +59,7 @@ const Form = () => {
             type="name"
             label="Name"
             isInvalid={isInvalid(name, "name")}
-            styling="mb-4 mt-8 bg-transparent w-1/2 mr-2"
+            styling="mt-8 bg-transparent w-1/2 mr-2"
             eventChange={(e) => setName(e.target.value)}
           />
           <CustomTextInput
@@ -78,7 +78,7 @@ const Form = () => {
           isInvalid={selectedFeedback === ""}
           label="Select Feedback Type"
           onValueChange={(value) => setSelectedFeedback(value)}
-          style="pb-4"
+          style="pb-6 pt-4"
         />
         <CustomTextArea
           value={message}

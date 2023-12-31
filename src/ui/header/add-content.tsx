@@ -37,9 +37,8 @@ const AddContent = () => {
           const contentStream = await addContent(
             auth.currentUser?.uid!,
             contents.space._id,
-            [link],
+            [link]
           );
-          toast.dismiss(addingToast);
           for await (const content of contentStream!) {
             if ("error" in content) {
               toast.error(content.error);
@@ -48,12 +47,18 @@ const AddContent = () => {
               toast.success("Content added");
             }
           }
+          toast.dismiss(addingToast);
         } catch (err) {
           console.log(err);
           toast.dismiss(addingToast);
           if (isAxiosError(err)) {
-            const errorMessage = err.response?.data?.message;
-            toast.error(errorMessage);
+            if (err.response?.status === 401) {
+              toast.error("Sign in to add a content");
+            } else if (err.response?.status === 402) {
+              toast.error(
+                "You have reached the maximum number of contents. Upgrade to add more."
+              );
+            }
           }
         }
       }
@@ -70,7 +75,7 @@ const AddContent = () => {
         setLinks((prevLinks) => [...prevLinks, contentURL]);
         setContentURL("");
       } else if (links.includes(contentURL)) {
-        toast.warning("Duplicate content detected");
+        toast.warning("You have already added this content");
       } else if (links.length >= 5) {
         toast.warning("Only 5 contents can be added at once");
       }
@@ -79,7 +84,7 @@ const AddContent = () => {
 
   const handleDelete = useCallback((indexToRemove: number) => {
     setLinks((prevLinks) =>
-      prevLinks.filter((_, index) => index !== indexToRemove),
+      prevLinks.filter((_, index) => index !== indexToRemove)
     );
   }, []);
 

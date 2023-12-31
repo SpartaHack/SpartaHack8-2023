@@ -30,7 +30,7 @@ const Form = () => {
         email!,
         photoURL!,
         finalEducationLevel,
-        name,
+        name
       );
     } else {
       toast.error("Error signing up, please try again.");
@@ -70,7 +70,6 @@ const Form = () => {
               eventChange={(e) => setUsername(e.target.value)}
             />
             <CustomAutocomplete
-              allowsCustomValue
               size="lg"
               datas={educationOptions}
               isInvalid={educationLevel === ""}

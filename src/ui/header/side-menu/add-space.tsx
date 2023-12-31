@@ -32,8 +32,13 @@ const AddSpace = () => {
     } catch (err) {
       toast.dismiss(addingSpace);
       if (isAxiosError(err)) {
-        const errorMessage = err.response?.data?.message;
-        toast.error(errorMessage);
+        if (err.response?.status === 401) {
+          toast.error("Sign in to add a space");
+        } else if (err.response?.status === 402) {
+          toast.error(
+            "You have reached the maximum number of spaces. Upgrade to add more."
+          );
+        }
         //setError(err);
       }
     }

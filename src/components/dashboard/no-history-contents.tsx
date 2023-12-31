@@ -21,12 +21,11 @@ const NoHistoryContents = () => {
           </div>
           <h2 className="font-sans mt-4 text-neutral-500 text-center md:hidden block">
             Learn at your own pace and track your progress. <br /> Your history
-            will be a collection of all the content you&apos;ve learned or
-            watched.
+            is be a collection of all the content you&apos;ve learned.
           </h2>
           <h2 className="font-sans mt-4 text-neutral-500 text-center text-wrap px-8 md:block hidden">
-            Learn at your own pace and track your progress. Your history will be
-            a collection of all the content you&apos;ve learned or watched.
+            Learn at your own pace and track your progress. Your history is be a
+            collection of all the content you&apos;ve learned.
           </h2>
         </div>
       )}
