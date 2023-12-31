@@ -4,9 +4,20 @@ import CustomTextInput from "@/helpers/custom-text-input";
 import { CustomButton } from "@/helpers/custom-btn";
 import { toast } from "sonner";
 import CustomTextArea from "@/helpers/custom-text-area";
+import CustomAutocomplete from "@/helpers/custom-autocomplete";
+
+const feedbackOptions = [
+  { value: "😫 I'm struggling with this in YouLearn..." },
+  { value: "😍 I love this about YouLearn..." },
+  { value: "😇 I wish YouLearn had this feature..." },
+  { value: "😵‍💫 I found a bug in YouLearn..." },
+  { value: "🤔 My overall thoughts on YouLearn..." },
+  { value: "💬 Something else..." },
+];
 
 // million-ignore
 const Form = () => {
+  const [selectedFeedback, setSelectedFeedback] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -33,6 +44,13 @@ const Form = () => {
     }
   };
 
+  const handleScheduleClick = () => {
+    window.open(
+      "https://app.cal.com/advait-paliwal-personal/youlearn",
+      "_blank"
+    );
+  };
+
   return (
     <>
       <form className="container mx-auto" onSubmit={handleSubmit}>
@@ -54,6 +72,15 @@ const Form = () => {
             eventChange={(e) => setEmail(e.target.value)}
           />
         </div>
+        <CustomAutocomplete
+          allowsCustomValue
+          size="lg"
+          datas={feedbackOptions}
+          isInvalid={selectedFeedback === ""}
+          label="Select Feedback Type"
+          onValueChange={(value) => setSelectedFeedback(value)}
+          style="pb-4"
+        />
         <CustomTextArea
           value={message}
           type="message"
@@ -61,12 +88,19 @@ const Form = () => {
           isInvalid={isInvalid(message, "message")}
           styling="mb-2 bg-transparent w-full mr-1"
           eventChange={(e) => setMessage(e.target.value)}
-          description={message.length.toString() + "/255"}
+          description={message.length.toString() + "/500"}
+          maxLength={500}
         />
         <CustomButton
           title="Send"
           btnType="submit"
-          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
+          btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
+        />
+        <CustomButton
+          title="👋 Schedule a 20 min meeting with the founders"
+          btnType="button"
+          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mt-4"
+          clickEvent={handleScheduleClick}
         />
       </form>
     </>

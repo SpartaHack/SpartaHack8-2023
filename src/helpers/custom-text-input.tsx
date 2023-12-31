@@ -1,8 +1,21 @@
 import { Input } from "@nextui-org/react";
 import React from "react";
-import { CustomTextInputProps } from "../../types";
 
-// million-ignore
+// Update your CustomTextInputProps to include maxLength
+interface CustomTextInputProps {
+  value: unknown;
+  type?: string;
+  label?: string;
+  isInvalid?: boolean;
+  eventChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  styling?: string;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  endContent?: React.ReactNode;
+  autoFocus?: boolean;
+  maxLength?: number; // Add this line for character limit
+}
+
 const CustomTextInput = ({
   value,
   type,
@@ -14,6 +27,7 @@ const CustomTextInput = ({
   onKeyDown,
   endContent,
   autoFocus,
+  maxLength,
 }: CustomTextInputProps) => {
   return (
     <>
@@ -31,6 +45,7 @@ const CustomTextInput = ({
         size="lg"
         className={`${styling}` || "max-w-xs"}
         endContent={endContent}
+        maxLength={maxLength}
       />
     </>
   );

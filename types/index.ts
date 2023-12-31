@@ -92,6 +92,7 @@ export type CustomTextAreaProps = {
   eventChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   styling?: string | undefined;
   description: string;
+  maxLength?: number;
 };
 
 export type ChatSubmitProps = {

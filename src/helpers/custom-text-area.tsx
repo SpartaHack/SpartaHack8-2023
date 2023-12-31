@@ -10,6 +10,7 @@ const CustomTextArea = ({
   eventChange,
   styling,
   description,
+  maxLength,
 }: CustomTextAreaProps) => {
   return (
     <div className="mb-2">
@@ -19,7 +20,7 @@ const CustomTextArea = ({
         size="lg"
         value={value as string}
         type={type}
-        maxLength={255}
+        maxLength={maxLength}
         label={label}
         variant="bordered"
         color={isInvalid ? "danger" : "success"}

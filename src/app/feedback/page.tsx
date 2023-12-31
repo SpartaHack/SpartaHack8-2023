@@ -12,7 +12,9 @@ const FeedbackPage = () => {
         </h1>
         <Form />
       </div>
-      <h1 className="text-center">We greatly appreciate your feedback!</h1>
+      <h1 className="text-center">
+        We truly appreciate you reaching out to us!
+      </h1>
     </div>
   );
 };
