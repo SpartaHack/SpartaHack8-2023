@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import CustomTextArea from "@/helpers/custom-text-area";
 import CustomAutocomplete from "@/helpers/custom-autocomplete";
 import { feedbackOptions } from "../../../utils/constants";
+import { formSubmit } from "@/app/api/form";
 
 // million-ignore
 const Form = () => {
@@ -23,14 +24,20 @@ const Form = () => {
     return value === "";
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (
       !isInvalid(name, "name") &&
       !isInvalid(email, "email") &&
       !isInvalid(message, "message")
     ) {
-      toast.success("Submitted");
+      const response = await formSubmit(name, email, message);
+      console.log(response)
+      if (response) {
+        toast.success("Form submitted!");
+      } else {
+        toast.error("Error submitting the form")
+      }
     } else {
       toast.error("Check form");
     }
@@ -45,7 +52,7 @@ const Form = () => {
 
   return (
     <>
-      <form className="container mx-auto" onSubmit={handleSubmit}>
+      <form className="container mx-auto">
         <div className="flex flex-row">
           <CustomTextInput
             value={name}
@@ -86,6 +93,7 @@ const Form = () => {
         <CustomButton
           title="Send"
           btnType="submit"
+          clickEvent={handleSubmit}
           btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
         />
         <CustomButton
