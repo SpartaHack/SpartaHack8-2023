@@ -37,7 +37,7 @@ const AddContent = () => {
           const contentStream = await addContent(
             auth.currentUser?.uid!,
             contents.space._id,
-            [link]
+            [link],
           );
           for await (const content of contentStream!) {
             if ("error" in content) {
@@ -56,7 +56,7 @@ const AddContent = () => {
               toast.error("Sign in to add a content");
             } else if (err.response?.status === 402) {
               toast.error(
-                "You have reached the maximum number of contents. Upgrade to add more."
+                "You have reached the maximum number of contents. Upgrade to add more.",
               );
             }
           }
@@ -84,7 +84,7 @@ const AddContent = () => {
 
   const handleDelete = useCallback((indexToRemove: number) => {
     setLinks((prevLinks) =>
-      prevLinks.filter((_, index) => index !== indexToRemove)
+      prevLinks.filter((_, index) => index !== indexToRemove),
     );
   }, []);
 
@@ -120,6 +120,7 @@ const AddContent = () => {
         contentMain={
           <>
             <CustomTextInput
+              autoFocus
               onKeyDown={handleKeyDown}
               value={contentURL}
               placeholder="https://youtu.be/kqtD5dpn9C8"

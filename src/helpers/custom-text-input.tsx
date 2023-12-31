@@ -13,7 +13,7 @@ interface CustomTextInputProps {
   endContent?: React.ReactNode;
   autoFocus?: boolean;
   maxLength?: number;
-  startContent?: JSX.Element
+  startContent?: JSX.Element;
 }
 
 const CustomTextInput = ({
@@ -28,7 +28,7 @@ const CustomTextInput = ({
   endContent,
   autoFocus,
   maxLength,
-  startContent
+  startContent,
 }: CustomTextInputProps) => {
   return (
     <>

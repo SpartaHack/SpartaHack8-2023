@@ -36,7 +36,7 @@ const AddSpace = () => {
           toast.error("Sign in to add a space");
         } else if (err.response?.status === 402) {
           toast.error(
-            "You have reached the maximum number of spaces. Upgrade to add more."
+            "You have reached the maximum number of spaces. Upgrade to add more.",
           );
         }
         //setError(err);
