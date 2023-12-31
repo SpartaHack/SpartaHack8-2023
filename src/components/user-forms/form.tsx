@@ -31,12 +31,12 @@ const Form = () => {
       !isInvalid(email, "email") &&
       !isInvalid(message, "message")
     ) {
-      const response = await formSubmit(name, email, message);
-      console.log(response)
+      const response = await formSubmit(name, email, message, selectedFeedback);
+      console.log(response);
       if (response) {
         toast.success("Form submitted!");
       } else {
-        toast.error("Error submitting the form")
+        toast.error("Error submitting the form");
       }
     } else {
       toast.error("Check form");
@@ -46,7 +46,7 @@ const Form = () => {
   const handleScheduleClick = () => {
     window.open(
       "https://app.cal.com/advait-paliwal-personal/youlearn",
-      "_blank",
+      "_blank"
     );
   };
 

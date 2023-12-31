@@ -5,8 +5,8 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const formSubmit = async (
     name: string,
     email: string,
-    // formType: string,
-    message: string
+    message: string,
+    feedback_type: string,
 ) => {
     const data = {
         name: name,
