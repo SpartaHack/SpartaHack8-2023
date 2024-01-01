@@ -4,6 +4,7 @@ import useSearchResults from "@/hooks/use-search-results";
 import Loading from "@/app/loading";
 import { ResultBoardProps, SearchType } from "../../../types";
 import ContentCard from "../dashboard/content-card";
+import NoResultsFound from "./no-results-found";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
   const { searchResults, isLoading } = useSearchResults(query);
@@ -13,11 +14,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
   }
   if (!searchResults || searchResults.length === 0) {
     return (
-      <div className="flex-grow">
-        <div className="flex my-12 pb-2 justify-center w-full px-10">
-          <p>No results found.</p>
-        </div>
-      </div>
+      <NoResultsFound/>
     );
   }
   return (
