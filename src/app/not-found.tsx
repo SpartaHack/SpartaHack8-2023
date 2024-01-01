@@ -2,6 +2,7 @@
 import { CustomButton } from "@/helpers/custom-btn";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NotFound({}: {
   error: Error & { digest?: string };
@@ -12,10 +13,6 @@ export default function NotFound({}: {
   const handleReset = () => {
     localStorage.setItem("historyLoading", "true");
     router.push("/");
-  };
-
-  const handleContact = () => {
-    router.push("/contact");
   };
 
   return (
@@ -41,15 +38,14 @@ export default function NotFound({}: {
       <CustomButton
         title="Back to home"
         btnType="button"
-        btnStyling="font-sans mt-10 h-[50.5px] dark:bg-secondary text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black"
+        btnStyling="font-sans mt-10 h-[50.5px] dark:bg-secondary text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black mb-4"
         clickEvent={handleReset}
       />
-      <CustomButton
-        title="Contact Us"
-        btnType="button"
-        btnStyling="font-sans h-[50.5px] dark:bg-white text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black mb-24 mt-4"
-        clickEvent={handleContact}
-      />
+      <Link href="/contact">
+        <span className="text-black dark:text-white text-sm font-sans font-semibold mb-4 underline cursor-pointer">
+          Contact Us
+        </span>
+      </Link>
     </div>
   );
 }
