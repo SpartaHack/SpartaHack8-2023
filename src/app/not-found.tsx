@@ -38,7 +38,7 @@ export default function NotFound({}: {
       <CustomButton
         title="Back to home"
         btnType="button"
-        btnStyling="font-sans mt-10 h-[50.5px] dark:bg-secondary text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black mb-4"
+        btnStyling="font-sans mt-10 h-[50.5px] dark:bg-white text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black mb-4"
         clickEvent={handleReset}
       />
       <Link href="/contact">
