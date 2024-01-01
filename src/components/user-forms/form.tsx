@@ -35,6 +35,11 @@ const Form = () => {
       console.log(response);
       if (response) {
         toast.success("Form submitted!");
+        //reset form
+        setName("");
+        setEmail("");
+        setMessage("");
+        setSelectedFeedback("");
       } else {
         toast.error("Error submitting the form");
       }
@@ -46,7 +51,7 @@ const Form = () => {
   const handleScheduleClick = () => {
     window.open(
       "https://app.cal.com/advait-paliwal-personal/youlearn",
-      "_blank",
+      "_blank"
     );
   };
 
