@@ -25,7 +25,7 @@ const BetaLogo = () => {
           size="sm"
           btnType="button"
           btnStyling="text-xs bg-transparent border-2 dark:border-secondary dark:text-secondary border-black"
-          clickEvent={() => router.push("/feedback")}
+          clickEvent={() => router.push("/contact")}
         />
       </div>
     </>

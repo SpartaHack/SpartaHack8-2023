@@ -24,7 +24,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [isLightMode, setIsLightMode] = useState(
-    theme == "light" ? true : false,
+    theme == "light" ? true : false
   );
   const userId = useAuth();
 
@@ -102,7 +102,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
           <DropdownSection aria-label="Auth">
             <DropdownItem
               key="Contact us"
-              onClick={() => router.push("/feedback")}
+              onClick={() => router.push("/contact")}
             >
               Contact us
             </DropdownItem>

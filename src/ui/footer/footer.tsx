@@ -11,7 +11,7 @@ const Footer = () => {
 
       <div className="flex flex-grow justify-center md:justify-end">
         <div className="text-sm flex items-center space-x-3">
-          <Link href="/feedback">Give Feedback</Link>
+          <Link href="/contact">Give Feedback</Link>
           <div className="hidden sm:block cursor-pointer">
             hello@youlearn.ai
           </div>
