@@ -32,7 +32,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdnapisec.kaltura.com",
+        hostname: "*.kaltura.com",
       },
     ],
   },
