@@ -40,7 +40,11 @@ export default function Header() {
             <Account
               name={userData?.user_profile.full_name!}
               picture={userData?.user_profile.photo_url}
-              description={userData?.user_profile.username ? "@" + userData?.user_profile.username : ''}
+              description={
+                userData?.user_profile.username
+                  ? "@" + userData?.user_profile.username
+                  : ""
+              }
             />
           </div>
         </div>
