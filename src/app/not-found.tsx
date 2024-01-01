@@ -14,6 +14,10 @@ export default function NotFound({}: {
     router.push("/");
   };
 
+  const handleContact = () => {
+    router.push("/contact");
+  };
+
   return (
     <div className="h-screen w-full flex flex-col justify-center items-center">
       <Image
@@ -37,8 +41,14 @@ export default function NotFound({}: {
       <CustomButton
         title="Back to home"
         btnType="button"
-        btnStyling="font-sans mt-10 h-[50.5px] dark:bg-white text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black mb-24"
+        btnStyling="font-sans mt-10 h-[50.5px] dark:bg-secondary text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black"
         clickEvent={handleReset}
+      />
+      <CustomButton
+        title="Contact Us"
+        btnType="button"
+        btnStyling="font-sans h-[50.5px] dark:bg-white text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black mb-24 mt-4"
+        clickEvent={handleContact}
       />
     </div>
   );
