@@ -13,9 +13,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
     return <Loading />;
   }
   if (!searchResults || searchResults.length === 0) {
-    return (
-      <NoResultsFound/>
-    );
+    return <NoResultsFound />;
   }
   return (
     <div className="flex-grow">

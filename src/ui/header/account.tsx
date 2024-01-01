@@ -24,7 +24,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [isLightMode, setIsLightMode] = useState(
-    theme == "light" ? true : false
+    theme == "light" ? true : false,
   );
   const userId = useAuth();
 
