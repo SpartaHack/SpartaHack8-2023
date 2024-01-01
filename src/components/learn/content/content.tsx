@@ -20,7 +20,7 @@ const Content = () => {
   const { loading } = useLearnContent(
     contentId!,
     learnContent?.content_url!,
-    spaceId!
+    spaceId!,
   );
   const type = learnContent?.type!;
   const height = useContainerHeight({ type: type });
