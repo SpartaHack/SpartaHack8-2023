@@ -10,6 +10,7 @@ import { useLearnContent } from "@/hooks/use-learn-content";
 import Loading from "@/app/loading";
 import { useContainerHeight } from "@/hooks/use-container-height";
 import ErrorModal from "@/helpers/error-modal";
+import Video from "./video";
 
 const Content = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -19,7 +20,7 @@ const Content = () => {
   const { loading } = useLearnContent(
     contentId!,
     learnContent?.content_url!,
-    spaceId!,
+    spaceId!
   );
   const type = learnContent?.type!;
   const height = useContainerHeight({ type: type });
@@ -33,6 +34,7 @@ const Content = () => {
         <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
           {type === "youtube" && <YoutubeVideo />}
           {(type === "pdf" || type === "arxiv") && <PDF />}
+          {type === "mediaspace" && <Video />}
           <div
             className="lg:tabs-lg tabs-sm"
             style={type == "youtube" ? {} : { height: `${height - 25}px` }}

@@ -3,10 +3,10 @@ import { useContainerHeightProps } from "../../types";
 
 export const useContainerHeight = ({ type }: useContainerHeightProps) => {
   const [containerWidth, setContainerWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0,
+    typeof window !== "undefined" ? window.innerWidth : 0
   );
   const [containerHeight, setContainerHeight] = useState(
-    typeof window !== "undefined" ? window.innerHeight : 0,
+    typeof window !== "undefined" ? window.innerHeight : 0
   );
 
   useEffect(() => {

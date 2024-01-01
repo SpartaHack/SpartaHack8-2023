@@ -30,6 +30,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "static1.makeuseofimages.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdnapisec.kaltura.com",
+      },
     ],
   },
 };

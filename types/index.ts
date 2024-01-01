@@ -304,6 +304,7 @@ export type Metadata = {
   length: number;
   content_id: string;
   content_url: string;
+  iframe_url: string;
   publish_date: string;
   thumbnail_url: string;
   source: number;
