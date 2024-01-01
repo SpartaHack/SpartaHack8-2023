@@ -25,6 +25,11 @@ const CustomModal = ({
 }: CustomModalProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const handleIconClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onOpen();
+  };
+
   const handleClose = (event: React.MouseEvent) => {
     actionEvent && actionEvent(event);
     onClose();
@@ -32,7 +37,7 @@ const CustomModal = ({
 
   return (
     <>
-      <div className="bg-transparent" onClick={onOpen}>
+      <div className="bg-transparent" onClick={handleIconClick}>
         {title}
       </div>
       <Modal

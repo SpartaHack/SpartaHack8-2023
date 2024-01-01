@@ -5,6 +5,7 @@ import Loading from "../loading";
 import Header from "@/ui/header/header";
 import Footer from "@/ui/footer/footer";
 import ResultBoard from "@/components/results/result-board";
+import ErrorModal from "@/helpers/error-modal";
 
 const ResultPage = () => {
   const params = useSearchParams();
@@ -13,6 +14,7 @@ const ResultPage = () => {
     <main className="flex flex-col min-h-screen">
       <Suspense fallback={<Loading />}>
         <Header />
+        <ErrorModal />
         <ResultBoard query={query!} />
         <Footer />
       </Suspense>

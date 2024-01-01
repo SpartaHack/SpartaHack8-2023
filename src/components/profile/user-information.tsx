@@ -9,7 +9,7 @@ import { useUserStore } from "@/context/user-context";
 import useStore from "@/hooks/use-store";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
-import { getPortalLink } from "@/app/api/endpoints";
+import { getPortalLink } from "@/app/api/payment";
 import formatDate from "@/functions/date-formatter";
 
 const UserInformation = () => {
@@ -34,14 +34,14 @@ const UserInformation = () => {
       toast.error("Please sign in to handle subscriptions");
     } else {
       const response = await getPortalLink(auth.currentUser?.uid);
-      router.push(`${response?.data}`);
+      router.push(`${response?.data.url}`);
     }
   };
 
   return (
     <div className="md:ml-10 md:mt-6 md:mr-10 lg:ml-20 lg:mt-12 lg:mr-20 ml-5 mr-5 mt-5">
       <div className="flex flex-col lg:flex-row">
-        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black rounded-xl px-3 pt-5 pb-1 lg:w-[65%]">
+        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-xl px-3 pt-5 pb-1 lg:w-[65%]">
           <div className="flex flex-row ml-2 mr-2">
             <ImageUpload
               onChange={handleImageChange}
@@ -63,7 +63,7 @@ const UserInformation = () => {
             }
           />
         </div>
-        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black rounded-xl p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5">
+        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-xl p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5">
           <Streaks />
         </div>
       </div>

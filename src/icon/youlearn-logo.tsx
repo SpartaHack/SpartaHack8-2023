@@ -3,19 +3,23 @@ import React from "react";
 import Image from "next/image";
 import { YouLearnLogoProps } from "../../types";
 import { useRouter } from "next/navigation";
+import useCheckPro from "@/hooks/use-check-pro";
 
-const YouLearnLogo = ({ size, tier, height, width }: YouLearnLogoProps) => {
+const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
   const router = useRouter();
+  const isPro = useCheckPro();
+
   const returnHome = () => {
     localStorage.setItem("historyLoading", "true");
     router.push("/");
   };
+
   return (
     <div className="flex flex-row justify-between">
       {size === "lg" && (
         <>
           <Image
-            src="youlearn.svg"
+            src={isPro ? "youlearnProLight.svg" : "youlearn.svg"}
             alt="YouLearn"
             className="dark:hidden cursor-pointer"
             width={width ? width : 110}
@@ -23,7 +27,7 @@ const YouLearnLogo = ({ size, tier, height, width }: YouLearnLogoProps) => {
             onClick={returnHome}
           />
           <Image
-            src="youlearnDark.svg"
+            src={isPro ? "youlearnProDark.svg" : "youlearnDark.svg"}
             alt="YouLearn"
             className="dark:block cursor-pointer hidden"
             width={width ? width : 110}

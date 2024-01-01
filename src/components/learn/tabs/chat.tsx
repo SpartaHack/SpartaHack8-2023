@@ -26,8 +26,8 @@ const Chat = () => {
     "content",
     learnContent?.chatLog!,
     auth.currentUser?.uid!,
-    [learnContent?.content_id!],
-    learnContent?.space_id ? [learnContent?.space_id!] : [],
+    learnContent?.content_id!,
+    learnContent?.space_id ? learnContent?.space_id! : "",
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];
@@ -37,8 +37,12 @@ const Chat = () => {
 
   return (
     <div
-      className="lg:h-full h-[70vh] flex-col flex "
-      style={{ maxHeight: `${height - 90}px` }}
+      className="lg:h-full h-[70vh] flex-col flex"
+      style={
+        type === "youtube"
+          ? { maxHeight: `${height - 90}px` }
+          : { maxHeight: `${height - 100}px` }
+      }
     >
       <ScrollShadow
         size={5}
@@ -66,6 +70,7 @@ const Chat = () => {
         <ChatQuestions
           questions={learnContent?.generations.questions!}
           chatQuestionClick={(question) => handleChatSubmit(question)}
+          loading={false}
         />
       )}
       <div className="mt-3">

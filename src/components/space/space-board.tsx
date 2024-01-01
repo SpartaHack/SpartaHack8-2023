@@ -15,18 +15,23 @@ const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
     <div className="flex-grow">
       <SpaceHeader />
       <NoSpaceContent />
-      <main className="lg:my-10 h-full lg:pb-10 md:my-5 lg:ml-6 md:pt-0 pt-10 pb-10 flex justify-center md:px-20 text-center">
-        <div className="grid gap-5 md:gap-10 lg:gap-15 2xl:grid-cols-4 md:grid-cols-3 md:w-full justify-center">
+      <main className="flex my-12 pb-2 justify-center w-full">
+        <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 sm:px-24 px-12 sm:grid-cols-2">
           {contents &&
-            contents.contents.map((content: Content, key: number) => (
-              <ContentCard
-                spaceId={spaceId!}
-                key={key}
-                type={content.type}
-                contentID={content.content_id}
-                title={content.title}
-                thumbnail_url={content.thumbnail_url}
-              />
+            (contents.length == 0 ? (
+              <></>
+            ) : (
+              contents.contents.map((content: Content, key: number) => (
+                <ContentCard
+                  spaceId={spaceId!}
+                  key={key}
+                  type={content.type}
+                  contentURL={content.content_url}
+                  contentID={content.content_id}
+                  title={content.title}
+                  thumbnail_url={content.thumbnail_url}
+                />
+              ))
             ))}
         </div>
         <div className="fixed z-2 bottom-0 right-0 drop-shadow-lg lg:mr-10 lg:mb-10 mr-5 mb-5">

@@ -7,7 +7,7 @@ import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import CustomModal from "@/helpers/custom-modal";
 import { useUserStore } from "@/context/user-context";
-import { deleteSpace, getSpace } from "@/app/api/endpoints";
+import { deleteSpace, getSpace } from "@/app/api/space";
 import { toast } from "sonner";
 import { useContentStore } from "@/context/content-store";
 import { useRouter } from "next/navigation";
@@ -20,11 +20,13 @@ const Spaces = () => {
   const { setContents } = useContentStore();
 
   const handleDelete = async (spaceId: string) => {
+    const deletingSpace = toast.loading("Deleting space");
     const response = await deleteSpace(userId!, spaceId);
     if (response) {
       deleteSpaceFromState(spaceId);
       localStorage.setItem("historyLoading", "true");
       router.push("/");
+      toast.dismiss(deletingSpace);
       toast.success("Space deleted successfully.");
     } else {
       toast.error("Could not delete space.");
@@ -60,17 +62,17 @@ const Spaces = () => {
               className="flex justify-between flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl"
               onClick={() => handleContentChange("space", space._id)}
             >
-              <div className="flex flex-row">
-                <Icon icon="bxs:cube" className="h-6 w-6" />
-                <div className="ml-5">
-                  <p>{space.space_name}</p>
+              <div className="flex flex-row w-[70%]">
+                <div className="flex flex-row">
+                  <Icon icon="bxs:cube" className="h-6 w-6" />
                 </div>
+                <span className="ml-5 truncate">{space.name}</span>
               </div>
               <CustomModal
                 title={
                   <Icon
                     icon="gg:trash"
-                    className="group-hover:opacity-50 ml-7 w-6 h-6 opacity-0"
+                    className="md:group-hover:opacity-50 ml-7 w-6 h-6 md:opacity-0 opacity-50"
                   />
                 }
                 btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"

@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - dev
-  pull_request:
-    branches:
       - main
 
 env:
@@ -25,19 +23,52 @@ jobs:
           name: SecretsVariables
           path: ".env"
 
-      # Checkout the repo
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Authenticate with Google Cloud
       - id: "auth"
         uses: "google-github-actions/auth@v2"
         with:
           credentials_json: "${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT }}"
 
-      # Setup gcloud CLI/SDK
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
+
+      - name: Set Environment Variables
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "NEXT_PUBLIC_FIREBASE_API_KEY=${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${{ secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_APP_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_AMPLITUDE_API_KEY=${{ secrets.NEXT_PUBLIC_AMPLITUDE_API_KEY_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.NEXT_PUBLIC_POSTHOG_HOST_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.NEXT_PUBLIC_POSTHOG_KEY_MAIN }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL_MAIN }}" >> $GITHUB_ENV
+          else
+            echo "NEXT_PUBLIC_FIREBASE_API_KEY=${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${{ secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_APP_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_AMPLITUDE_API_KEY=${{ secrets.NEXT_PUBLIC_AMPLITUDE_API_KEY_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.NEXT_PUBLIC_POSTHOG_HOST_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.NEXT_PUBLIC_POSTHOG_KEY_DEV }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL_DEV }}" >> $GITHUB_ENV
+          fi
+
+      # Set the branch names in both lowercase and uppercase
+      - name: Set Branch Names
+        run: |
+          BRANCH_NAME_LOWER=$(echo ${{ github.ref_name }} | tr '[:upper:]' '[:lower:]')
+          BRANCH_NAME_UPPER=$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')
+          echo "BRANCH_NAME_LOWER=$BRANCH_NAME_LOWER" >> $GITHUB_ENV
+          echo "BRANCH_NAME_UPPER=$BRANCH_NAME_UPPER" >> $GITHUB_ENV
 
       - name: Authorize Docker push
         run: gcloud auth configure-docker
@@ -45,13 +76,17 @@ jobs:
       - name: Build and tag the docker image
         run: |
           docker build . --tag gcr.io/$PROJECT_ID/$REPO_NAME_BRANCH:$GITHUB_SHA \
-          --build-arg NEXT_PUBLIC_FIREBASE_API_KEY="${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}" \
-          --build-arg NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}" \
-          --build-arg NEXT_PUBLIC_FIREBASE_PROJECT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}" \
-          --build-arg NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="${{ secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}" \
-          --build-arg NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}" \
-          --build-arg NEXT_PUBLIC_FIREBASE_APP_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}" \
-          --build-arg NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}" \
+          --build-arg NEXT_PUBLIC_FIREBASE_API_KEY="$NEXT_PUBLIC_FIREBASE_API_KEY" \
+          --build-arg NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="$NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN" \
+          --build-arg NEXT_PUBLIC_FIREBASE_PROJECT_ID="$NEXT_PUBLIC_FIREBASE_PROJECT_ID" \
+          --build-arg NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="$NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET" \
+          --build-arg NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="$NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID" \
+          --build-arg NEXT_PUBLIC_FIREBASE_APP_ID="$NEXT_PUBLIC_FIREBASE_APP_ID" \
+          --build-arg NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID="$NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID" \
+          --build-arg NEXT_PUBLIC_AMPLITUDE_API_KEY="$NEXT_PUBLIC_AMPLITUDE_API_KEY" \
+          --build-arg NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST" \
+          --build-arg NEXT_PUBLIC_POSTHOG_KEY="$NEXT_PUBLIC_POSTHOG_KEY" \
+          --build-arg NEXT_PUBLIC_API_URL="$NEXT_PUBLIC_API_URL"
 
       - name: Push the image to the Google Container Registry (GCR)
         run: |
@@ -65,16 +100,17 @@ jobs:
           --platform "managed" \
           --allow-unauthenticated \
           --update-secrets=\
-          NEXT_PUBLIC_FIREBASE_API_KEY=NEXT_PUBLIC_FIREBASE_API_KEY:latest,\
-          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN:latest,\
-          NEXT_PUBLIC_FIREBASE_PROJECT_ID=NEXT_PUBLIC_FIREBASE_PROJECT_ID:latest,\
-          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:latest,\
-          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:latest,\
-          NEXT_PUBLIC_FIREBASE_APP_ID=NEXT_PUBLIC_FIREBASE_APP_ID:latest,\
-          NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID:latest,\
-          NEXT_PUBLIC_AMPLITUDE_API_KEY=NEXT_PUBLIC_AMPLITUDE_API_KEY:latest,\
-          NEXT_PUBLIC_POSTHOG_HOST=NEXT_PUBLIC_POSTHOG_HOST:latest,\
-          NEXT_PUBLIC_POSTHOG_KEY=NEXT_PUBLIC_POSTHOG_KEY:latest \
+          NEXT_PUBLIC_FIREBASE_API_KEY=NEXT_PUBLIC_FIREBASE_API_KEY_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID=NEXT_PUBLIC_FIREBASE_PROJECT_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_APP_ID=NEXT_PUBLIC_FIREBASE_APP_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_AMPLITUDE_API_KEY=NEXT_PUBLIC_AMPLITUDE_API_KEY_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_POSTHOG_HOST=NEXT_PUBLIC_POSTHOG_HOST_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_POSTHOG_KEY=NEXT_PUBLIC_POSTHOG_KEY_$BRANCH_NAME_UPPER:latest,\
+          NEXT_PUBLIC_API_URL=NEXT_PUBLIC_API_URL_$BRANCH_NAME_UPPER:latest \
           --quiet
 
       - uses: sarisia/actions-status-discord@v1

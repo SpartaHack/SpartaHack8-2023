@@ -1,7 +1,6 @@
 import React from "react";
 import { CustomButton } from "@/helpers/custom-btn";
 import { PriceCardProps } from "../../types";
-import { useRouter } from "next/navigation";
 
 const PriceCard = ({
   plan,
@@ -12,9 +11,8 @@ const PriceCard = ({
   buttonStyle,
   handleClick,
 }: PriceCardProps) => {
-  const router = useRouter();
   return (
-    <div className="rounded-xl justify-between bg-white w-[75%] lg:h-[470px] h-fit px-[60px] lg:w-[35%] border border-neutral-300 dark:border-neutral-600 dark:bg-neutral-900 p-3  text-left hover:shadow-xl hover:scale-105 transition duration-300">
+    <div className="rounded-xl justify-between bg-absolute_white w-[80%] lg:h-[470px] px-[60px] lg:w-[580px] border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 p-3  text-left shadow-sm">
       <h1 className="lg:text-md text-sm mt-5 lg:mt-7 font-semibold font-sans">
         {plan}
       </h1>

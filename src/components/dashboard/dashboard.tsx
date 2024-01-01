@@ -1,49 +1,51 @@
 "use client";
 import React, { useEffect } from "react";
 import ContentCard from "./content-card";
-import { useContentStore } from "@/context/content-store";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
-import SpaceHeader from "@/ui/header/space-header";
-import { getHistory } from "@/app/api/endpoints";
+import { getContentHistory } from "@/app/api/user";
 import { auth } from "../../../db/firebase";
+import NoHistoryContents from "./no-history-contents";
+import { useHistoryStore } from "@/context/history-store";
+import HistoryHeader from "./history-header";
+import NotSignedIn from "./not-signed-in";
 
 const Dashboard = () => {
-  const contents = useStore(useContentStore, (state) => state.contents);
-  const { setContents } = useContentStore();
+  const history = useStore(useHistoryStore, (state) => state.history);
+  const { setHistory } = useHistoryStore();
 
   useEffect(() => {
     const fetchHistory = async () => {
       const historyLoading = localStorage.getItem("historyLoading");
       if (auth.currentUser?.uid && historyLoading === "true") {
         localStorage.setItem("historyLoading", "false");
-        const response = await getHistory(auth.currentUser?.uid!);
-        setContents(response?.data);
+        const response = await getContentHistory(auth.currentUser?.uid!);
+        setHistory(response?.data);
       }
     };
 
     fetchHistory();
-  }, [setContents]);
+  }, [setHistory, auth.currentUser?.uid]);
 
   return (
     <div className="flex-grow">
-      <SpaceHeader />
-      <main className="lg:my-10 h-full lg:pb-10 md:my-5 lg:ml-6 md:pt-0 pt-10 pb-10 flex justify-center md:px-20 text-center">
-        <div className="grid gap-5 md:gap-10 lg:gap-15 2xl:grid-cols-4 md:grid-cols-3 md:w-full justify-center">
-          {contents &&
-            (contents.space ? (
-              <></>
-            ) : (
-              contents.map((content: History, key: number) => (
-                <ContentCard
-                  key={key}
-                  spaceId={content.space_id}
-                  type={content.content.type}
-                  contentID={content.content.content_id}
-                  title={content.content.title}
-                  thumbnail_url={content.content.thumbnail_url}
-                />
-              ))
+      <HistoryHeader />
+      <NoHistoryContents />
+      <NotSignedIn />
+      <main className="flex my-12 pb-2 justify-center w-full">
+        <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 sm:px-24 px-12 sm:grid-cols-2">
+          {history &&
+            history.map((history: History, key: number) => (
+              <ContentCard
+                key={key}
+                deleteFromHistory
+                spaceId={history.space_id}
+                type={history.content.type}
+                contentID={history.content.content_id}
+                contentURL={history.content.content_url}
+                title={history.content.title}
+                thumbnail_url={history.content.thumbnail_url}
+              />
             ))}
         </div>
       </main>

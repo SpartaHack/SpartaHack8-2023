@@ -9,6 +9,7 @@ const pusher = new Pusher("a41d49a2b329a6bb790f", {
   cluster: "us2",
 });
 
+//million-ignore
 const Notification = () => {
   const [notifications, setNotifications] = useState<NotificationProps[]>([]);
 
@@ -45,6 +46,15 @@ const Notification = () => {
       ],
     })),
   };
+
+  if (notifications.length == 0) {
+    setNotifications([
+      {
+        id: "-1",
+        message: "No new notifications",
+      },
+    ]);
+  }
 
   return (
     <div className="cursor-pointer mt-1 mr-5">

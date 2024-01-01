@@ -16,22 +16,32 @@ import { MoonIcon } from "@/icon/moon-icon";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/functions/auth";
+import useAuth from "@/hooks/use-auth";
+import useCheckPro from "@/hooks/use-check-pro";
 
+//million-ignore
 const Account = ({ name, description, picture }: AccountProps) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [isLightMode, setIsLightMode] = useState(
     theme == "light" ? true : false,
   );
+  const userId = useAuth();
 
   const handleThemeChange = () => {
     setIsLightMode(!isLightMode);
     setTheme(isLightMode ? "dark" : "light");
   };
+  const isPro = useCheckPro();
+
+  const handleLogOut = () => {
+    router.push("/");
+    logOut();
+  };
 
   return (
     <div className="cursor-pointer mt-1">
-      <Dropdown radius="sm">
+      <Dropdown radius="sm" closeOnSelect={false}>
         <DropdownTrigger>
           <div className="flex flex-row">
             <Icon
@@ -65,12 +75,9 @@ const Account = ({ name, description, picture }: AccountProps) => {
             </DropdownItem>
           </DropdownSection>
 
-          <DropdownSection aria-label="Preferences" showDivider>
-            <DropdownItem onClick={() => router.push("/signin")}>
-              Sign In
-            </DropdownItem>
+          <DropdownSection aria-label="Settings" showDivider>
             <DropdownItem onClick={() => router.push("/upgrade")}>
-              Upgrade
+              {isPro ? "Pro User" : "Upgrade"}
             </DropdownItem>
             <DropdownItem
               isReadOnly
@@ -92,10 +99,22 @@ const Account = ({ name, description, picture }: AccountProps) => {
             </DropdownItem>
           </DropdownSection>
 
-          <DropdownSection aria-label="Help & Feedback">
-            <DropdownItem key="logout" onClick={logOut}>
-              Log Out
+          <DropdownSection aria-label="Auth">
+            <DropdownItem
+              key="Contact us"
+              onClick={() => router.push("/feedback")}
+            >
+              Contact us
             </DropdownItem>
+            {userId ? (
+              <DropdownItem key="logout" onClick={handleLogOut}>
+                Sign out
+              </DropdownItem>
+            ) : (
+              <DropdownItem onClick={() => router.push("/signin")}>
+                Sign in
+              </DropdownItem>
+            )}
           </DropdownSection>
         </DropdownMenu>
       </Dropdown>

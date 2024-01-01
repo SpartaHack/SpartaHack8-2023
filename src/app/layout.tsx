@@ -1,18 +1,28 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProviders } from "@/providers/theme-providers";
 import { Toaster } from "sonner";
 import { Roboto } from "next/font/google";
+import { Metadata } from "next";
 
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],
 });
 
-const metadata: Metadata = {
-  title: "YouLearn - AI companion for learning",
+export const metadata: Metadata = {
+  title: {
+    default: "YouLearn - AI companion for learning",
+    template: "%s - Learn, Share, Collaborate.",
+  },
   description:
     "YouLearn is reimagining the future of learning by building AI software for students, teachers, and communities to democratize quality education worldwide.",
+  metadataBase: new URL("https://dev.youlearn.ai"),
+  twitter: {
+    card: "summary_large_image",
+  },
+  openGraph: {
+    images: "/opengraph-image.png",
+  },
 };
 
 export default function RootLayout({
@@ -22,9 +32,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-      </head>
       <body className={roboto.className}>
         <ThemeProviders>
           <Toaster richColors />

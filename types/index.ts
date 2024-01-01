@@ -1,4 +1,10 @@
-import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
+import { AxiosError } from "axios";
+import React, {
+  ChangeEvent,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactNode,
+} from "react";
 import { YouTubeProps } from "react-youtube";
 
 export type CustomButtonProps = {
@@ -11,6 +17,7 @@ export type CustomButtonProps = {
   popOverClickEvent?: () => void;
   popOverTitle?: string;
   popOverStyling?: string;
+  autoFocus?: boolean;
 };
 
 export type AccountProps = {
@@ -49,7 +56,7 @@ export type CustomModalProps = {
     | "full";
   btnStyling1?: string;
   btnStyling2?: string;
-  contentTitle?: string;
+  contentTitle?: string | JSX.Element;
   contentMain: ReactNode | JSX.Element;
   actionTitle?: string;
   actionEvent?: MouseEventHandler;
@@ -67,10 +74,14 @@ export type CustomModalProps = {
 export type CustomTextInputProps = {
   value: string | readonly string[] | undefined;
   type: string;
-  label: string;
+  label?: string;
+  placeholder?: string;
   isInvalid?: boolean;
   eventChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   styling?: string | undefined;
+  endContent?: JSX.Element;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  autoFocus?: boolean;
 };
 
 export type CustomTextAreaProps = {
@@ -81,6 +92,7 @@ export type CustomTextAreaProps = {
   eventChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   styling?: string | undefined;
   description: string;
+  maxLength?: number;
 };
 
 export type ChatSubmitProps = {
@@ -96,6 +108,7 @@ export type ContentCardProps = {
   title: string;
   spaceId?: string;
   thumbnail_url: string;
+  deleteFromHistory?: boolean;
 };
 
 export type Features = {
@@ -141,6 +154,7 @@ export type CustomAutocompleteProps = {
   datas: { value: string }[];
   isInvalid: boolean;
   label: string;
+  allowsCustomValue?: boolean;
   onValueChange: (value: string) => void;
   size: "sm" | "md" | "lg" | undefined;
   initValue?: string;
@@ -162,7 +176,6 @@ export type PlayerProps = YouTubeProps & {
 
 export type YouLearnLogoProps = {
   size: "sm" | "lg";
-  tier?: string;
   height?: number;
   width?: number;
 };
@@ -205,6 +218,8 @@ export type User = {
 
 export type UserProfile = {
   _id: string;
+  full_name: string;
+  username: string;
   user_id: string;
   education_level: string;
   last_login: string;
@@ -214,6 +229,13 @@ export type UserProfile = {
 };
 
 export type Subscription = {
+  _id: number;
+  created_at: string;
+  status: string;
+  tier: string;
+};
+
+export type Customer = {
   _id: string;
   user_id: string;
   customer_id: string;
@@ -223,12 +245,13 @@ export type Subscription = {
   current_period_end: string;
   renewal_date: string;
   amount_paid: number;
+  subscription: Subscription;
 };
 
 export type APIResponse = {
   user: User;
   user_profile: UserProfile;
-  subscription: Subscription;
+  customer: Customer;
 };
 
 export type userProps = {
@@ -243,13 +266,13 @@ export type UserState = {
   userData: APIResponse | undefined;
   setUserId: (userId: string | undefined) => void;
   setUserData: (data: APIResponse | undefined) => void;
-  updateUserData: (updatedData: Partial<UserProfile & Subscription>) => void;
+  updateUserData: (updatedData: Partial<UserProfile & Customer>) => void;
   logout: () => void;
 };
 
 export type getUserSpaceResponse = {
   _id: string;
-  space_name: string;
+  name: string;
   visibility: "public" | "private";
 };
 
@@ -264,7 +287,7 @@ export type SpaceStore = {
 
 export type SpaceResponse = {
   _id: string;
-  space_name: string;
+  name: string;
   visibility: "public" | "private";
 };
 
@@ -304,11 +327,12 @@ export type Content = {
   visibility: string;
   metadata: Metadata;
   created_at: string;
+  content_url?: string;
 };
 
 export type Space = {
   _id: string;
-  space_name: string;
+  name: string;
   visibility: string;
 };
 
@@ -350,6 +374,7 @@ export type ContentStore = {
 export type ChatQuestionProps = {
   questions: string[];
   chatQuestionClick: (question: string) => void;
+  loading: boolean;
 };
 
 export type LearnContent = {
@@ -399,4 +424,44 @@ export type SpaceIconProps = {
   height?: number;
   width?: number;
   clickEvent: () => void;
+};
+
+export type LoadingProps = {
+  styling?: string;
+  size?: "sm" | "md" | "lg" | undefined;
+};
+
+export type ErrorStoreProps = {
+  error: AxiosError | undefined;
+  setError: (error: AxiosError | undefined) => void;
+};
+
+export type HistoryStore = {
+  history: HistoryResponse;
+  setHistory: (history: HistoryResponse) => void;
+  deleteContentFromHistoryState: (id: string) => void;
+  logOut: () => void;
+};
+
+export type PopUpProps = {
+  title: string | number;
+  description: string;
+  isOpen: boolean;
+  closeModal: () => void;
+  titleStyles?: string;
+  buttonTitle?: string;
+  buttonClick?: MouseEventHandler<HTMLButtonElement>;
+};
+
+export type LinkCardProps = {
+  link: string;
+  handleDelete: () => void;
+};
+
+export type MarkdownElementProps = {
+  children?: ReactNode;
+};
+
+export type ContentUploaderProps = {
+  handleLinkUpload: (link: string) => void;
 };

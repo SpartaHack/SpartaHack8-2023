@@ -5,7 +5,7 @@ import { OrderSummaryProps } from "../../../types";
 const OrderSummary = ({ type }: OrderSummaryProps) => {
   const price = type === "monthly" ? PROMONTHLYPRICE : PROYEARLYPRICE;
   return (
-    <div className="flex flex-col mt-2 md:ml-5 md:w-3/5">
+    <div className="flex flex-col md:ml-5 md:w-3/5">
       <h1 className="font-semibold text-lg font-sans">Order Summary</h1>
       <div className="flex-row font-semibold justify-between flex mt-6">
         <span className="font-sans">YouLearn Pro</span>
@@ -15,13 +15,17 @@ const OrderSummary = ({ type }: OrderSummaryProps) => {
         <span>{`$${price} / month x 1 member`}</span>
         <span>{`Billed ${type === "yearly" ? "annually" : type}`}</span>
       </div>
+      <div className="flex-row text-neutral-400 space-y-1 flex text-sm justify-between">
+        <span className="mt-1">Free 14 day trial</span>
+        <span className="dark:text-white font-bold text-black">
+          -${type === "monthly" ? price : price * 12}
+        </span>
+      </div>
       <div className="border-t-[0.5px] my-2 text-primary" />
       <div className="text-neutral-400 flex-col flex space-y-1 text-sm">
         <div className="flex-row flex justify-between">
           <span>Subtotal</span>
-          <span className="dark:text-white font-bold text-black">
-            ${type === "monthly" ? price : price * 12}
-          </span>
+          <span className="dark:text-white font-bold text-black">$0</span>
         </div>
         <div className="flex-row flex justify-between">
           <span>Tax (if applicable)</span>
@@ -30,9 +34,7 @@ const OrderSummary = ({ type }: OrderSummaryProps) => {
       </div>
       <div className="flex-row flex font-semibold text-lg mt-5 justify-between">
         <span className="font-sans">Total for today</span>
-        <span className="dark:text-white font-semibold text-black">
-          ${type === "monthly" ? price : price * 12}
-        </span>
+        <span className="dark:text-white font-semibold text-black">$0</span>
       </div>
     </div>
   );

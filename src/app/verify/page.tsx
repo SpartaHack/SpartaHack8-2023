@@ -39,14 +39,23 @@ const Verify = () => {
   return (
     <>
       <SecondaryHeader />
-      <div className="h-screen w-full text-2xl flex flex-col items-center justify-center">
-        Email Verification sent! Check your mailbox
-        <CustomButton
-          btnStyling="w-[10%] bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px]"
-          title="Resend Email"
-          btnType={undefined}
-          clickEvent={resendEmail}
-        />
+      <div className="flex bg-absolute_white dark:bg-black flex-col h-screen items-center justify-center">
+        <div className="w-full flex p-8 space-y-4 max-w-lg items-center justify-center">
+          <div className="p-8 space-y-4 max-w-md w-full">
+            <h1 className="text-3xl md:text-left text-center font-black text-black dark:text-white">
+              Verify Your Account
+            </h1>
+            <p className="text-md md:text-left text-center font-thin text-neutral-500 dark:text-neutral-300">
+              Check your mailbox to verify your email.
+            </p>
+            <CustomButton
+              title={<h1 className="font-bold">Resend Email</h1>}
+              btnType="button"
+              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-bold flex items-center justify-center rounded-xl h-[50px] md:w-full mt-4"
+              clickEvent={resendEmail}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

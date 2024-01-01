@@ -5,6 +5,7 @@ import BetaLogo from "@/icon/beta-logo";
 import YouLearnLogo from "@/icon/youlearn-logo";
 import useClickOutside from "@/hooks/use-click-outside";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const SearchBar = () => {
   const router = useRouter();
@@ -16,8 +17,9 @@ const SearchBar = () => {
 
   const searchClick = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem("searchLoading", "true");
-    router.push(`/results?search_query=${encodeURIComponent(query)}`);
+    if (query) {
+      router.push(`/results?search_query=${encodeURIComponent(query)}`);
+    }
   };
 
   return (
@@ -28,7 +30,7 @@ const SearchBar = () => {
       </div>
       <div className="hidden lg:flex justify-center lg:mr-[180px] flex-1">
         <form
-          className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-xl bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+          className="flex items-center align-items:center hover:border-secondary rounded-xl bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
           onSubmit={searchClick}
         >
           <input
@@ -61,7 +63,7 @@ const SearchBar = () => {
       {smallSearch && (
         <div ref={searchBarRef} className="lg:hidden w-full">
           <form
-            className="flex items-center align-items:center hover:border-secondary drop-shadow-sm rounded-xl bg-absolute_white px-1 py-.5 flex-grow h-[42.5px] dark:bg-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+            className="flex items-center align-items:center hover:border-secondary rounded-xl bg-absolute_white px-1 py-.5 flex-grow h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
             onSubmit={searchClick}
           >
             <input
@@ -69,6 +71,7 @@ const SearchBar = () => {
               className="w-full bg-transparent outline-none pl-2"
               placeholder="Search..."
               onChange={(e) => setQuery(e.target.value)}
+              autoFocus
             />
             <button type="submit">
               <Icon icon="uil:search" className="w-6 h-6" />

@@ -1,10 +1,11 @@
+"use client";
 import React, { useState, FC } from "react";
 import { CustomButton } from "@/helpers/custom-btn";
 import { Tabs, Tab } from "@nextui-org/react";
 import { TabContent } from "./tab-content";
 import OrderSummary from "./order-summary";
 import { PROMONTHLYPRICE, PROYEARLYPRICE } from "../../../utils/constants";
-import { checkoutSession } from "@/app/api/endpoints";
+import { checkoutSession } from "@/app/api/payment";
 import { auth } from "../../../db/firebase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -19,10 +20,11 @@ const UpgradeModal: FC = () => {
 
   const handleClick = async () => {
     if (!auth.currentUser?.uid) {
-      toast.error("Please sign in to upgrade");
+      toast.error("Please sign in to upgrade.");
+      router.push("/signin");
     } else {
       const response = await checkoutSession(auth.currentUser?.uid, selected);
-      router.push(`${response?.data.url}`);
+      router.replace(`${response?.data.url}`);
     }
   };
 
@@ -33,7 +35,7 @@ const UpgradeModal: FC = () => {
           variant="light"
           color="primary"
           fullWidth
-          className="rounded-xl dark:border-neutral-700 dark:bg-black border "
+          className="rounded-xl dark:border-neutral-700 dark:bg-black border"
           selectedKey={selected}
           onSelectionChange={handleTabChange}
         >

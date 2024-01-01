@@ -5,6 +5,8 @@ import useCopyToClipboard from "@/hooks/use-copy-clipboard";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import useStore from "@/hooks/use-store";
 import { useLearnStore } from "@/context/learn-context";
+import Markdown from "react-markdown";
+import markdownComponents from "@/functions/markdown-components";
 
 const Summary = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -17,7 +19,11 @@ const Summary = () => {
   return (
     <div
       className="lg:h-full h-[70vh] flex-col flex"
-      style={{ maxHeight: `${height - 90}px` }}
+      style={
+        type === "youtube"
+          ? { maxHeight: `${height - 90}px` }
+          : { maxHeight: `${height - 100}px` }
+      }
     >
       <ScrollShadow
         size={5}
@@ -25,9 +31,12 @@ const Summary = () => {
         className="flex-grow overflow-hidden overflow-y-auto rounded-xl"
       >
         <div className="bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-xl p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full w-fit">
-          <div className="flex-grow leading-7">
+          <Markdown
+            components={markdownComponents}
+            className="flex-grow leading-7"
+          >
             {learnContent?.generations.summary}
-          </div>
+          </Markdown>
           <div className="flex justify-end p-2 cursor-pointer">
             {copiedStateTyped[0] ? (
               <Icon

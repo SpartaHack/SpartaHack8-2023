@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { auth } from "../../db/firebase";
-import { chatHistory } from "@/app/api/endpoints";
+import { chatHistory } from "@/app/api/generation";
 import { convertChatHistoryToChatLog } from "@/functions/chat-history-to-logs";
 import { replaceMessage } from "../../utils";
 import { MessageType } from "../../types";
@@ -18,8 +18,8 @@ const useChatHistory = () => {
         const response = await chatHistory(
           auth.currentUser?.uid!,
           "space",
-          [],
-          [contents?.space._id!],
+          "",
+          contents?.space._id!,
         );
         localStorage.setItem("chatHistoryLoading", "false");
         let fetchedHistoryChat: MessageType[] = convertChatHistoryToChatLog(

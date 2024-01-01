@@ -4,6 +4,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSignInEmail } from "@/functions/auth";
 
+// million-ignore
 const SignInForm = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");

@@ -10,24 +10,31 @@ import {
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { toast } from "sonner";
-import { handleFirebaseError, setUserLocalStorage } from "../../utils";
-import { getUserSpaces, userSignIn, userSignUp } from "@/app/api/endpoints";
+import { handleFirebaseError, setUserLocalStorage, getJWT } from "../../utils";
+import {
+  getUserSpaces,
+  userLogOut,
+  userSignIn,
+  userSignUp,
+} from "@/app/api/user";
 import { initFirebase } from "../../db/firebase";
 import { useUserStore } from "@/context/user-context";
 import { useSpaceStore } from "@/context/space-context";
 import { useContentStore } from "@/context/content-store";
+import { useHistoryStore } from "@/context/history-store";
+import { isAxiosError } from "axios";
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const signInEmail = async (email: string, password: string) => {
     try {
       const auth = getAuth();
       const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
+      await getJWT(result);
       setUserLocalStorage(user);
       const response = await userSignIn(user.uid);
       if (result) {
@@ -71,6 +78,7 @@ export const useSignUpEmailContinue = () => {
         password,
       );
       const user = userCredential.user;
+      await getJWT(userCredential);
       setUserLocalStorage(user);
       if (userCredential) {
         toast.success("Please verify your email");
@@ -91,7 +99,6 @@ export const useAuthGoogleSignIn = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const authGoogleSignIn = async () => {
     try {
@@ -99,6 +106,7 @@ export const useAuthGoogleSignIn = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      await getJWT(result);
       setUserLocalStorage(user);
       const response = await userSignIn(user.uid);
       if (response) {
@@ -132,6 +140,7 @@ export const useAuthGoogleSignUp = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      await getJWT(result);
       setUserLocalStorage(user);
       const response = await userSignIn(user.uid);
       if (response) {
@@ -160,10 +169,12 @@ export const logOut = async () => {
       toast.error("Please sign in");
       return;
     }
+    await userLogOut(userId);
     localStorage.clear();
     useUserStore.getState().logout();
     useSpaceStore.getState().logout();
     useContentStore.getState().logout();
+    useHistoryStore.getState().logOut();
     toast.success("Signed out successfully");
   } catch (err) {
     if (err instanceof Error) {
@@ -184,10 +195,10 @@ export const useHandleSignUpFinal = () => {
   );
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const handleSignUpFinal = async (
     userId: string,
+    username: string,
     email: string,
     photoURL: string,
     educationLevel: string,
@@ -200,18 +211,22 @@ export const useHandleSignUpFinal = () => {
         fullName,
         photoURL,
         educationLevel,
+        username,
       );
-      if (response) {
+
+      if (isAxiosError(response) && response.request.status === 404) {
+        toast.error("Username is not unique");
+      } else if (response) {
         toast.success("User signed up successfully");
         setUserId(userId);
-        const response = await userSignIn(userId);
-        setUserData(response!.data);
+        const signInResponse = await userSignIn(userId);
+        setUserData(signInResponse!.data);
         const spaces = await getUserSpaces(userId);
         setSpaces(spaces?.data);
         localStorage.setItem("historyLoading", "true");
         setSignUpFinalStatus("/");
       } else {
-        toast.error("Sign up failed, please sign up");
+        toast.error("Sign up failed, please try again");
         setSignUpFinalStatus("/signup");
       }
     } catch (err) {
@@ -220,6 +235,5 @@ export const useHandleSignUpFinal = () => {
       }
     }
   };
-
   return { handleSignUpFinal, signUpFinalStatus };
 };

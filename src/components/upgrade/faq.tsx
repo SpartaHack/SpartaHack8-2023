@@ -8,18 +8,19 @@ export const faqData = [
     content: (
       <h1>
         Choose the free plan if you&apos;re an occasional learner, offering 10
-        videos &amp; PDFs, and limited AI responses at no cost. Opt for the Pro
-        Plan at $10/month for unlimited access to content and AI responses,
-        ideal for daily learners. For personalized guidance, contact us and
-        we&apos;ll assist you in finding the perfect fit for your learning
-        needs.
+        videos &amp; PDFs, 10 AI generated responses for each upload, and one
+        dedicated space at no cost. Opt for the Pro Plan at $8 / month for
+        unlimited access to contents, AI responses, spaces, and an AI-space
+        chatbot, ideal for daily learners.
       </h1>
     ),
     subtitle: <h3>Plan</h3>,
   },
   {
     title: "What payment methods do you offer?",
-    content: <h1>We support payment through credit card.</h1>,
+    content: (
+      <h1>We support payment through credit card, Google Pay, and Link.</h1>
+    ),
     subtitle: <h3>Payments</h3>,
   },
   {
@@ -40,8 +41,8 @@ export const faqData = [
       <h1>
         The Pro plan on YouLearn offers unlimited access to videos, PDFs, and AI
         responses, along with the ability to create multiple personal spaces for
-        organized learning. Additionally, it includes an AI-space chatbot to ask about
-        anything and everything in each space.
+        organized learning resources. Additionally, it includes an AI-space
+        chatbot to ask about anything and everything in each space.
       </h1>
     ),
     subtitle: <h3>Features</h3>,
@@ -53,8 +54,8 @@ export const faqData = [
         If you&apos;re not satisfied with your YouLearn subscription, you can
         request a refund within the first 30 days of your purchase. Please
         contact our customer support to initiate the refund process, and
-        we&apos;ll guide you through the steps to ensure a smooth and
-        hassle-free experience.
+        we&apos;ll guide you through the steps to ensure a hassle-free
+        experience.
       </h1>
     ),
     subtitle: <h3>Refund</h3>,

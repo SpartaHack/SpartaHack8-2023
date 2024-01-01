@@ -5,15 +5,22 @@ import {
   generateContentQuestions,
   generateContentSummary,
   getContent,
-} from "@/app/api/endpoints";
+} from "@/app/api/generation";
 import { useLearnStore } from "@/context/learn-context";
 import { convertChatHistoryToChatLog } from "@/functions/chat-history-to-logs";
 import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
+import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
 
-export const useLearnContent = (contentId: string, spaceId?: string) => {
+export const useLearnContent = (
+  contentId: string,
+  contentURL: string,
+  spaceId?: string,
+) => {
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
+  const setError = useErrorStore((state) => state.setError);
   const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
 
   useEffect(() => {
@@ -30,11 +37,16 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
         try {
           let response;
           if (!spaceId) {
-            response = await getContent(auth.currentUser?.uid!, contentId);
+            response = await getContent(
+              auth.currentUser?.uid!,
+              contentId,
+              contentURL,
+            );
           } else {
             response = await getContent(
               auth.currentUser?.uid!,
               contentId,
+              contentURL,
               spaceId,
             );
             if (response && response.data) {
@@ -46,30 +58,35 @@ export const useLearnContent = (contentId: string, spaceId?: string) => {
             !response?.data?.generations?.questions ||
             !response?.data?.generations?.summary
           ) {
-            const summaryResponse = await generateContentSummary(
-              auth.currentUser?.uid!,
-              contentId,
-            );
-            const questionsResponse = await generateContentQuestions(
-              auth.currentUser?.uid!,
-              contentId,
-            );
+            try {
+              const summaryResponse = await generateContentSummary(
+                auth.currentUser?.uid!,
+                contentId,
+              );
+              const questionsResponse = await generateContentQuestions(
+                auth.currentUser?.uid!,
+                contentId,
+              );
+              const summary = summaryResponse?.data;
+              const questions = questionsResponse?.data;
 
-            const summary = summaryResponse?.data;
-            const questions = questionsResponse?.data;
-
-            updateLearnContent({
-              generations: {
-                summary,
-                questions,
-              },
-            });
+              updateLearnContent({
+                generations: {
+                  summary,
+                  questions,
+                },
+              });
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setError(err);
+              }
+            }
           }
           const historyResponse = await chatHistory(
             auth.currentUser.uid!,
             "content",
-            [contentId],
-            spaceId ? [spaceId!] : [],
+            contentId,
+            spaceId ? spaceId! : "",
           );
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(

@@ -1,5 +1,6 @@
 import { FirebaseError } from "firebase/app";
 import { User, UserCredential } from "firebase/auth";
+import { Metadata } from "next";
 import { toast } from "sonner";
 
 export const sideBarMotion = {
@@ -15,13 +16,7 @@ export const replaceMessage = (() => {
   return (type: string, message: string) => {
     let regex: RegExp;
 
-    if (type === "youtube") {
-      regex = /(\[\d+(\.\d+)?(,\s*\d+(\.\d+)?)*\])/g;
-    } else if (type === "space") {
-      regex = /(\[[^\]]+\])/g;
-    } else {
-      regex = /(\[[^\]]+\])/g;
-    }
+    regex = /(\[[^\],]+\])/g;
 
     const replacedMessage = message.replace(regex, (match) => {
       counter++;
@@ -80,12 +75,12 @@ export const setUserLocalStorage = (user: User) => {
     localStorage.setItem("email", user.email ?? "");
     localStorage.setItem("photoURL", user.photoURL ?? "");
   } catch (err) {
-    console.log(err);
+    toast.error("Something went wrong");
   }
 };
 
 export const getJWT = async (userCred: UserCredential) => {
-  const token = userCred.user?.getIdToken();
+  const token = await userCred.user?.getIdToken();
   localStorage.setItem("jwtToken", await token);
   return token;
 };

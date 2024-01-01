@@ -4,6 +4,7 @@ import { useStore } from "zustand";
 
 const PDF = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
+
   let source;
   if (learnContent?.source) {
     source = parseInt(learnContent?.source!);
@@ -19,8 +20,7 @@ const PDF = () => {
           key={pdfUrl}
           src={pdfUrl}
           width="100%"
-          height="100%"
-          className="rounded-xl border-none"
+          className="rounded-xl border-none h-full lg:h-[85%]"
         />
       </div>
     </div>

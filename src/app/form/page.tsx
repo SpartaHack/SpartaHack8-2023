@@ -8,10 +8,13 @@ import { educationOptions } from "../../../utils/constants";
 import { useRouter } from "next/navigation";
 import { useHandleSignUpFinal } from "@/functions/auth";
 
+// million-ignore
 const Form = () => {
   const { handleSignUpFinal, signUpFinalStatus } = useHandleSignUpFinal();
   const [name, setName] = useState("");
   const [educationLevel, setEducationLevel] = useState("");
+  const [customEducation, setCustomEducation] = useState("");
+  const [username, setUsername] = useState("");
   const router = useRouter();
 
   const handleContinue = async () => {
@@ -19,8 +22,16 @@ const Form = () => {
       const userId = localStorage.getItem("userId");
       const email = localStorage.getItem("email");
       const photoURL = localStorage.getItem("photoURL");
-
-      handleSignUpFinal(userId!, email!, photoURL!, educationLevel, name);
+      const finalEducationLevel =
+        educationLevel === "Other" ? customEducation : educationLevel;
+      handleSignUpFinal(
+        userId!,
+        username!,
+        email!,
+        photoURL!,
+        finalEducationLevel,
+        name,
+      );
     } else {
       toast.error("Error signing up, please try again.");
     }
@@ -33,7 +44,7 @@ const Form = () => {
   }, [signUpFinalStatus, router]);
 
   return (
-    <div className="flex bg-white dark:bg-neutral-900 flex-col h-screen items-center justify-center">
+    <div className="flex bg-absolute_white dark:bg-black flex-col h-screen items-center justify-center">
       <div className="w-full sm:w-3/5 flex p-8 space-y-4 max-w-lg items-center justify-center">
         <div className="p-8 space-y-4 max-w-md w-full">
           <h1 className="text-3xl text-left font-black">Sign up</h1>
@@ -46,20 +57,43 @@ const Form = () => {
               type="name"
               label="Name"
               isInvalid={name === ""}
-              styling="mb-4 mt-8 bg-transparent"
+              styling="bg-transparent"
               eventChange={(e) => setName(e.target.value)}
+              autoFocus
+            />
+            <CustomTextInput
+              startContent={<span className="text-neutral-400">@</span>}
+              value={username}
+              type="username"
+              label="Username"
+              isInvalid={username === ""}
+              styling="pt-4 bg-transparent"
+              eventChange={(e) => setUsername(e.target.value)}
             />
             <CustomAutocomplete
               size="lg"
               datas={educationOptions}
               isInvalid={educationLevel === ""}
-              label="Select education Level"
+              label="Select education level"
               onValueChange={setEducationLevel}
+              style={`pt-4 ${
+                educationLevel === "Other" ? "bg-transparent" : "pb-6"
+              }`}
             />
+            {educationLevel === "Other" && (
+              <CustomTextInput
+                value={customEducation}
+                type="customEducation"
+                label="Please specify"
+                isInvalid={customEducation === ""}
+                styling="pt-4 pb-6"
+                eventChange={(e) => setCustomEducation(e.target.value)}
+              />
+            )}
             <CustomButton
               title="Continue"
               btnType="button"
-              btnStyling="mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
+              btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
               clickEvent={handleContinue}
             />
           </div>

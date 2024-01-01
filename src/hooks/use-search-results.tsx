@@ -1,36 +1,33 @@
 import { useEffect, useState } from "react";
-import { searchAll } from "@/app/api/endpoints";
-import { auth } from "../../db/firebase";
+import { searchAll } from "@/app/api/search";
 import { SearchType } from "../../types";
+import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
+import useAuth from "./use-auth";
 
 const useSearchResults = (query: string) => {
-  const [searchResults, setSearchResults] = useState<undefined | SearchType[]>(
-    undefined,
-  );
+  const setError = useErrorStore((state) => state.setError);
+  const [searchResults, setSearchResults] = useState<SearchType[]>();
   const [isLoading, setIsLoading] = useState(false);
+  const userId = useAuth();
 
   useEffect(() => {
-    const repeat = localStorage.getItem("searchLoading");
-    const fetchData = async () => {
-      if (repeat == "true" && auth.currentUser?.uid) {
+    if (userId) {
+      const fetchData = async () => {
         setIsLoading(true);
         try {
-          const response = await searchAll(
-            1,
-            10,
-            query,
-            auth.currentUser?.uid!,
-          );
-          localStorage.setItem("searchLoading", "false");
+          const response = await searchAll(1, 10, query, userId);
           setSearchResults(response?.data);
         } catch (error) {
-          console.error(error);
+          if (isAxiosError(error)) {
+            setError(error);
+          }
         }
         setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, [query]);
+      };
+      fetchData();
+    }
+  }, [userId, query]);
 
   return { searchResults, isLoading };
 };

@@ -9,6 +9,7 @@ const CustomAutocomplete = ({
   isInvalid,
   label,
   onValueChange,
+  allowsCustomValue,
   size,
 }: CustomAutocompleteProps) => {
   const [value, setValue] = useState<string>(initValue ? initValue : "");
@@ -39,6 +40,7 @@ const CustomAutocomplete = ({
   return (
     <>
       <Autocomplete
+        allowsCustomValue={allowsCustomValue}
         labelPlacement="outside"
         defaultSelectedKey={initValue}
         variant="bordered"

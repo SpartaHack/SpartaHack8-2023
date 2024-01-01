@@ -13,7 +13,6 @@ import useStore from "@/hooks/use-store";
 import { useContentStore } from "@/context/content-store";
 import useFetchChatHistory from "@/hooks/use-chat-history";
 import useAutoScroll from "@/hooks/use-auto-scroll";
-import useFetchQuestions from "@/hooks/use-fetch-questions";
 
 const SpaceChatMain = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
@@ -26,19 +25,18 @@ const SpaceChatMain = () => {
     "space",
     historyChat!,
     auth.currentUser?.uid!,
-    [],
-    [contents?.space._id],
+    "",
+    contents?.space._id,
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];
   chatLog = removeUndefinedFromSources(chatLog);
   const { removeQuestions } = useChatlogLength(chatLog);
   const chatContainerRef = useAutoScroll(chatLog);
-  const questions = useFetchQuestions(
-    chatLog,
-    auth.currentUser?.uid!,
-    contents?.space._id,
-  );
+  const questions = [
+    "What topics will be covered in this space?",
+    "What are the learning objectives of this space?",
+  ];
 
   return (
     <>
@@ -68,6 +66,7 @@ const SpaceChatMain = () => {
         <ChatQuestions
           questions={questions}
           chatQuestionClick={(question) => handleChatSubmit(question)}
+          loading={false}
         />
       )}
       <div className="mt-3">
