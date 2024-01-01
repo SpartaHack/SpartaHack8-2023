@@ -11,7 +11,15 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
   if (isLoading) {
     return <Loading />;
   }
-
+  if (!searchResults || searchResults.length === 0) {
+    return (
+      <div className="flex-grow">
+        <div className="flex my-12 pb-2 justify-center w-full px-10">
+          <p>No results found.</p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="flex-grow">
       <main className="flex my-12 pb-2 justify-center w-full px-10">
