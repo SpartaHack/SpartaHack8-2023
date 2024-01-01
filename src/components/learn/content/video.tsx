@@ -16,12 +16,13 @@ const Video = () => {
   return (
     <div className="lg:w-[70%] w-full items-center justify-center">
       <div className="h-[75vh] lg:h-screen">
-        <iframe
-          key={videoUrl}
-          src={videoUrl}
-          width="100%"
-          className="rounded-xl border-none h-full lg:h-[85%]"
-        />
+        <div className="relative w-full overflow-hidden rounded-xl" style={{paddingTop: '53.5%'}}>
+          <iframe
+            key={videoUrl}
+            src={videoUrl}
+            className="absolute top-0 left-0 w-full h-full border-none"
+          />
+        </div>
       </div>
     </div>
   );
