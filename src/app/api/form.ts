@@ -13,7 +13,7 @@ export const formSubmit = async (
     email: email,
     form_type: "feedback",
     message: message,
-    metadata: { feedback_type: "feedback type" },
+    metadata: { feedback_type: feedback_type },
   };
 
   try {
