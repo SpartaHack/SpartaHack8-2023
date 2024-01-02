@@ -51,7 +51,7 @@ const Form = () => {
   const handleScheduleClick = () => {
     window.open(
       "https://app.cal.com/advait-paliwal-personal/youlearn",
-      "_blank"
+      "_blank",
     );
   };
 

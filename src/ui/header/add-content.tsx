@@ -89,7 +89,12 @@ const AddContent = () => {
   }, []);
 
   const [currentLinkIndex, setCurrentLinkIndex] = useState(0);
-  const rotationLinks = ["https://youtu.be/kqtD5dpn9C8", "https://youtube.com/playlist?list=PLZHQObO...", "https://arxiv.org/pdf/1706.03762.pdf", "https://mediaspace.stanford.edu/media/...i257wd8"]; // Add your links here
+  const rotationLinks = [
+    "https://youtu.be/kqtD5dpn9C8",
+    "https://youtube.com/playlist?list=PLZHQObO...",
+    "https://arxiv.org/pdf/1706.03762.pdf",
+    "https://mediaspace.stanford.edu/media/...i257wd8",
+  ];
 
   const updateLinkIndex = () => {
     setCurrentLinkIndex((prevIndex) => (prevIndex + 1) % rotationLinks.length);
@@ -107,7 +112,9 @@ const AddContent = () => {
         title={
           <div className="rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
-            <span className="text-sm truncate font-sans font-semibold">Add content</span>
+            <span className="text-sm truncate font-sans font-semibold">
+              Add content
+            </span>
           </div>
         }
         btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white font-sans font-semibold"
@@ -120,9 +127,7 @@ const AddContent = () => {
               <span className="text-sm">Add content</span>
             </div>
             <div className="flex flex-row items-baseline">
-              <span className="mt-4 text-3xl font-sans">
-                Upload contents
-              </span>
+              <span className="mt-4 text-3xl font-sans">Upload contents</span>
               <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans">
                 (YouTube videos, playlist, PDFs, & mediaspace)
               </span>
@@ -141,7 +146,7 @@ const AddContent = () => {
               isInvalid={contentURL === ""}
               endContent={
                 contentURL !== "" || links.length !== 0 ? (
-                  <Chip radius="sm" variant="bordered" >
+                  <Chip radius="sm" variant="bordered">
                     Press Enter to add more
                   </Chip>
                 ) : (

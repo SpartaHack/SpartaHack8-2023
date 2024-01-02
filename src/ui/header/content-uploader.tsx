@@ -5,6 +5,7 @@ import { uploadContent } from "@/app/api/content";
 import { toast } from "sonner";
 import { ContentUploaderProps } from "../../../types";
 import useAuth from "@/hooks/use-auth";
+import { isAxiosError } from "axios";
 
 const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
   const [file, setFile] = useState<File | null>(null);
@@ -28,9 +29,12 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
     if (file) {
       try {
         const response = await uploadContent(file, userId!);
-        handleLinkUpload(response.content_url);
-      } catch (error) {
-        toast.error("Error uploading file");
+        handleLinkUpload(response?.data.content_url);
+      } catch (err) {
+        if (isAxiosError(err)) {
+          const errorResponse = JSON.parse(err.request.response);
+          toast.error(errorResponse.message);
+        }
       }
     } else {
       toast.error("Upload failed: No file selected");
@@ -56,7 +60,9 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      <span className="text-sm text-neutral-600 dark:text-neutral-400">(max size 10MB)</span>
+      <span className="text-sm text-neutral-600 dark:text-neutral-400">
+        (max size 10MB)
+      </span>
     </label>
   );
 };
