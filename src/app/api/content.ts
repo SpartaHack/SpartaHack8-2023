@@ -33,7 +33,6 @@ export const addContent = async (
         if (done) break;
         partialData += new TextDecoder("utf-8").decode(value, { stream: true });
         try {
-          console.log(partialData);
           yield JSON.parse(partialData);
           partialData = "";
         } catch (error) {
