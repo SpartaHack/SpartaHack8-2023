@@ -11,12 +11,15 @@ import { addContent } from "@/app/api/content";
 import LinkCard from "./link-card";
 import ContentUploader from "./content-uploader";
 import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
 
 // million-ignore
 const AddContent = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [contentURL, setContentURL] = useState("");
   const [links, setLinks] = useState<string[]>([]);
+  const setError = useErrorStore((state) => state.setError);
+  const setToast = useErrorStore((state) => state.setToast);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setContentURL(e.target.value);
@@ -52,13 +55,8 @@ const AddContent = () => {
           console.log(err);
           toast.dismiss(addingToast);
           if (isAxiosError(err)) {
-            if (err.response?.status === 401) {
-              toast.error("Sign in to add a content");
-            } else if (err.response?.status === 402) {
-              toast.error(
-                "You have reached the maximum number of contents. Upgrade to add more.",
-              );
-            }
+            setToast!(true);
+            setError(err);
           }
         }
       }
