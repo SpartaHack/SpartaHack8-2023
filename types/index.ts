@@ -163,6 +163,7 @@ export type CustomAutocompleteProps = {
 export type ResponseProps = {
   message: string;
   source?: undefined | string[];
+  additionalMarkdown?: any;
 };
 
 export type TooltipContentProps = {
