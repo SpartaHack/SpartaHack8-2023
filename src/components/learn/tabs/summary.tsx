@@ -7,6 +7,7 @@ import useStore from "@/hooks/use-store";
 import { useLearnStore } from "@/context/learn-context";
 import { replaceMessage } from "../../../../utils";
 import Response from "./response";
+import markdownComponents from "@/functions/markdown-components";
 
 const Summary = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -36,6 +37,7 @@ const Summary = () => {
           <Response
             message={summary.replacedMessage}
             source={summary.sources}
+            additionalMarkdown={markdownComponents}
           />
           <div className="flex justify-end p-2 cursor-pointer">
             {copiedStateTyped[0] ? (
