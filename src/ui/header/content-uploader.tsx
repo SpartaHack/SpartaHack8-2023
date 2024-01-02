@@ -6,10 +6,13 @@ import { toast } from "sonner";
 import { ContentUploaderProps } from "../../../types";
 import useAuth from "@/hooks/use-auth";
 import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
 
 const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
   const [file, setFile] = useState<File | null>(null);
   const userId = useAuth();
+  const setError = useErrorStore((state) => state.setError);
+  const setToast = useErrorStore((state) => state.setToast);
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -32,8 +35,8 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
         handleLinkUpload(response?.data.content_url);
       } catch (err) {
         if (isAxiosError(err)) {
-          const errorResponse = JSON.parse(err.request.response);
-          toast.error(errorResponse.message);
+          setToast!(true);
+          setError(err);
         }
       }
     } else {

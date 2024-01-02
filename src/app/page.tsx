@@ -4,14 +4,14 @@ import Header from "../ui/header/header";
 import Dashboard from "@/components/dashboard/dashboard";
 import Loading from "./loading";
 import Footer from "@/ui/footer/footer";
-import ErrorModal from "@/helpers/error-modal";
+import ErrorMessage from "@/helpers/error-message";
 
 export default function App() {
   return (
     <main className="flex flex-col min-h-screen">
       <Suspense fallback={<Loading />}>
         <Header />
-        <ErrorModal />
+        <ErrorMessage />
         <Dashboard />
         <Footer />
       </Suspense>
