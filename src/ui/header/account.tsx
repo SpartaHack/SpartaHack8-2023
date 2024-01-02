@@ -76,8 +76,8 @@ const Account = ({ name, description, picture }: AccountProps) => {
           </DropdownSection>
 
           <DropdownSection aria-label="Settings" showDivider>
-            <DropdownItem onClick={() => router.push("/upgrade")}>
-              {isPro ? "Pro User" : "Upgrade"}
+            <DropdownItem onClick={() => router.push("/pricing")}>
+              {isPro ? "Pro User" : "Pricing"}
             </DropdownItem>
             <DropdownItem
               isReadOnly
