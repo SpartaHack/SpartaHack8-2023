@@ -144,7 +144,7 @@ export const useAuthGoogleSignUp = () => {
       setUserLocalStorage(user);
       const response = await userSignIn(user.uid);
       if (response) {
-        toast.error("User already exists!");
+        toast.error("User already exists. Please sign in.");
       } else {
         toast.success("User created, redirecting to profile creation");
         setSignUpStatus("/form");
