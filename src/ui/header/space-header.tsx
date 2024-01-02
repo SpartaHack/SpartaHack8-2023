@@ -27,7 +27,7 @@ const SpaceHeader = () => {
     return <Loading />;
   }
 
-  const spaceName = contents.space.name;
+  const spaceName = contents && contents.space.name;
 
   const handleIconClick = () => {
     setSpaceNameInput(spaceName);
