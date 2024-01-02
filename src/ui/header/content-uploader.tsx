@@ -56,7 +56,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      <span className="text-sm">(max size 10MB)</span>
+      <span className="text-sm text-neutral-600 dark:text-neutral-400">(max size 10MB)</span>
     </label>
   );
 };
