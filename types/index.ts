@@ -434,7 +434,9 @@ export type LoadingProps = {
 
 export type ErrorStoreProps = {
   error: AxiosError | undefined;
+  showToast?: boolean;
   setError: (error: AxiosError | undefined) => void;
+  setToast?: (showToast: boolean) => void;
 };
 
 export type HistoryStore = {
