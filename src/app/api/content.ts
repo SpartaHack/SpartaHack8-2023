@@ -72,18 +72,13 @@ export const uploadContent = async (file: Blob, userId: string) => {
   const formData = new FormData();
   formData.append("file", file);
   formData.append("user_id", userId);
-  try {
-    const response = await fetch(`${API_URL}/content/upload`, {
-      method: "POST",
-      body: formData,
-      credentials: "include",
-    });
 
-    if (response.ok) {
-      const data = await response.json();
-      return data;
-    }
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await axios({
+    method: "post",
+    url: `${API_URL}/content/upload`,
+    data: formData,
+    withCredentials: true,
+  });
+
+  return response;
 };

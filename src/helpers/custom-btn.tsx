@@ -30,7 +30,7 @@ export const CustomButton = ({
           size={size}
           type={btnType}
           className={`${btnStyling}`}
-        > 
+        >
           {title}
         </Button>
       </PopoverTrigger>
