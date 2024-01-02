@@ -41,11 +41,12 @@ export default function NotFound({}: {
         btnStyling="font-sans mt-10 h-[50.5px] dark:bg-white text-md font-semibold w-[60%] md:w-[20%] bg-black text-white dark:text-black mb-4"
         clickEvent={handleReset}
       />
-      <Link href="/contact">
-        <span className="text-black dark:text-white text-sm font-sans font-semibold mb-4 underline cursor-pointer">
-          Contact Us
-        </span>
-      </Link>
+      <h1 className="mt-2 lg:mb-12 mb-10 text-center">
+        Still having trouble? &nbsp;
+        <Link href="/contact" className="underline">
+          Contact Support
+        </Link>
+      </h1>
     </div>
   );
 }
