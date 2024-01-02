@@ -52,7 +52,6 @@ const AddContent = () => {
           }
           toast.dismiss(addingToast);
         } catch (err) {
-          console.log(err);
           toast.dismiss(addingToast);
           if (isAxiosError(err)) {
             setToast!(true);
