@@ -5,6 +5,7 @@ import React from "react";
 
 const Streaks = () => {
   const userData = useStore(useUserStore, (state) => state.userData);
+  console.log(userData)
   const data = [
     {
       icon: "akar-icons:fire",
@@ -18,7 +19,7 @@ const Streaks = () => {
     },
     {
       icon: "ph:person-simple-run",
-      value: userData?.user_profile.streak!,
+      value: userData?.user_profile.active_days!,
       label: "Total Active Days",
     },
   ];
