@@ -25,9 +25,6 @@ const useSearchResults = (query: string) => {
         setIsLoading(false);
       };
       fetchData();
-    } else {
-      toast.error("User not signed in. Redirecting to sign in");
-      router.push("/signin");
     }
   }, [userId, query]);
 
