@@ -9,9 +9,11 @@ const Message = ({
   copiedState,
   copyToClipboard,
 }: MessageProps) => {
-
   const renderLink = ({ ...props }) => (
-    <a className="text-neutral-500 dark:text-neutral-400 hover:underline" {...props} />
+    <a
+      className="text-neutral-500 dark:text-neutral-400 hover:underline"
+      {...props}
+    />
   );
 
   return (
@@ -23,12 +25,12 @@ const Message = ({
           : "bg-absolute-white dark:bg-secondary border dark:border-none text-black my-2 w-fit rounded-xl p-4 leading-relaxed ml-auto break-words"
       }
     >
-      <Response 
-          message={message.response} 
-          source={message.sources}
-          additionalMarkdown={{  
-              a: renderLink 
-          }} 
+      <Response
+        message={message.response}
+        source={message.sources}
+        additionalMarkdown={{
+          a: renderLink,
+        }}
       />
 
       {message.type === "bot" && (
