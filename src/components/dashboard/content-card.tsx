@@ -6,6 +6,7 @@ import { CustomDropdown } from "@/helpers/custom-dropdown";
 import { menuDropDown } from "@/functions/content-dropdown-constants";
 import { useContentStore } from "@/context/content-store";
 import { addContent, deleteContent } from "@/app/api/content";
+import { getContent } from "@/app/api/generation";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { useStore } from "zustand";
@@ -30,7 +31,10 @@ const ContentCard = ({
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
     if (contentAdd) {
-      await addContent(auth.currentUser?.uid!, undefined, [contentURL!]);
+      const userId = auth.currentUser?.uid ?? "anonymous";
+      const contentStream = await addContent(userId, undefined, [contentURL!]);
+      for await (const content of contentStream) {
+        }
     }
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);

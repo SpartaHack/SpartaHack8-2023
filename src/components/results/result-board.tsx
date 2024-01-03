@@ -7,8 +7,11 @@ import ContentCard from "../dashboard/content-card";
 import NoResultsFound from "./no-results-found";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
-  const { searchResults, isLoading } = useSearchResults(query);
+  const { userId, searchResults, isLoading } = useSearchResults(query);
 
+  if (!userId) {
+    return <NoResultsFound message="SignIn/SignUp to Search!" button_route="/signin" button_title="SignIn" />
+  }
   if (isLoading) {
     return <Loading />;
   }
