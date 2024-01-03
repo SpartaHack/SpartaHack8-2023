@@ -34,11 +34,9 @@ const ErrorMessage = () => {
   }, [error]);
 
   if (showToast) {
-    toast.error(error?.response?.status ? error?.response?.status : 500, {
-      description: response
-        ? response
-        : "Internal Server Error. Please try again later.",
-    });
+    toast.error(
+      response ? response : "Internal Server Error. Please try again later.",
+    );
     setToast!(false);
     setError(undefined);
   }
