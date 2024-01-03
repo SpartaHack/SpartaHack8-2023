@@ -9,16 +9,27 @@ const Message = ({
   copiedState,
   copyToClipboard,
 }: MessageProps) => {
+
+  const renderLink = ({ ...props }) => (
+    <a className="text-neutral-500 dark:text-neutral-400 hover:underline" {...props} />
+  );
+
   return (
     <div
       key={index}
       className={
         message.type === "bot"
           ? "bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-xl p-4 leading-relaxed mr-auto lg:max-w-full w-fit"
-          : "bg-absolute_white dark:bg-secondary border dark:border-none text-black my-2 w-fit rounded-xl p-4 leading-relaxed ml-auto break-words"
+          : "bg-absolute-white dark:bg-secondary border dark:border-none text-black my-2 w-fit rounded-xl p-4 leading-relaxed ml-auto break-words"
       }
     >
-      <Response message={message.response} source={message.sources} />
+      <Response 
+          message={message.response} 
+          source={message.sources}
+          additionalMarkdown={{  
+              a: renderLink 
+          }} 
+      />
 
       {message.type === "bot" && (
         <div className="flex mt-2 ml-auto space-x-2 w-fit">
