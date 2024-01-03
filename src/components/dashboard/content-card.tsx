@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { useStore } from "zustand";
 import { useSpaceStore } from "@/context/space-context";
 import { useHistoryStore } from "@/context/history-store";
-import { Image } from "@nextui-org/react";
+import Image from "next/image";
 
 const ContentCard = ({
   contentAdd,
@@ -107,8 +107,6 @@ const ContentCard = ({
       </div>
       <div className="rounded-t-xl overflow-hidden">
         <Image
-          radius="none"
-          loading="lazy"
           width-full="true"
           src={thumbnail_url!}
           width={360}
