@@ -470,3 +470,9 @@ export type MarkdownElementProps = {
 export type ContentUploaderProps = {
   handleLinkUpload: (link: string) => void;
 };
+
+export type NoResultsFoundProps = {
+  message?: string;
+  button_route?: string;
+  button_title?: string;
+};

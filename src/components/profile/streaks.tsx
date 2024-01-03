@@ -1,25 +1,26 @@
-import { useUserStore } from "@/context/user-context";
-import useStore from "@/hooks/use-store";
+import useAuth from "@/hooks/use-auth";
+import useUserProfile from "@/hooks/use-user-profile";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 
 const Streaks = () => {
-  const userData = useStore(useUserStore, (state) => state.userData);
-  console.log(userData);
+  const userId = useAuth();
+  const userData = useUserProfile(userId!);
+
   const data = [
     {
       icon: "akar-icons:fire",
-      value: userData?.user_profile.streak!,
+      value: userData?.streak ? userData.streak : 0,
       label: "Max Streak",
     },
     {
       icon: "heroicons:sparkles",
-      value: userData?.user_profile.content_added!,
+      value: userData?.content_added ? userData.content_added : 0,
       label: "Contents Created",
     },
     {
       icon: "ph:person-simple-run",
-      value: userData?.user_profile.active_days!,
+      value: userData?.active_days ? userData.active_days : 0,
       label: "Total Active Days",
     },
   ];

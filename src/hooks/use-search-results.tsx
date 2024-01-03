@@ -28,7 +28,7 @@ const useSearchResults = (query: string) => {
     }
   }, [userId, query]);
 
-  return { searchResults, isLoading };
+  return { userId, searchResults, isLoading };
 };
 
 export default useSearchResults;
