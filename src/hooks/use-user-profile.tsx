@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getUser } from "@/app/api/user";
 import { UserProfile } from "../../types";
 import { auth } from "../../db/firebase";
+import { getUserProfile } from "@/app/api/user";
 
 const useUserProfile = () => {
   const [userData, setUserData] = useState<UserProfile>();
@@ -9,7 +9,7 @@ const useUserProfile = () => {
   useEffect(() => {
     if (auth.currentUser?.uid) {
       const fetchData = async () => {
-        const response = await getUser(auth.currentUser?.uid!);
+        const response = await getUserProfile(auth.currentUser?.uid!);
         setUserData(response?.data);
       };
       fetchData();
