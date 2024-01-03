@@ -15,7 +15,7 @@ const useCopyToClipboard = () => {
         }, 2000);
       });
     } else {
-      console.error("Cannot access window object");
+      // console.error("Cannot access window object");
     }
   };
 

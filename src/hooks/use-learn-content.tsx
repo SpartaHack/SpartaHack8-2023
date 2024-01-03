@@ -109,7 +109,7 @@ export const useLearnContent = (
             });
           }
         } catch (error) {
-          console.error("An error occurred while fetching data:", error);
+          // console.error("An error occurred while fetching data:", error);
         } finally {
           setLoading(false);
           setFetched(true);

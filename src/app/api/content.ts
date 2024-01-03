@@ -36,12 +36,12 @@ export const addContent = async (
           yield JSON.parse(partialData);
           partialData = "";
         } catch (error) {
-          console.error("Error parsing JSON:", error);
+          // console.error("Error parsing JSON:", error);
         }
       }
     })();
   } catch (error) {
-    console.error("Error fetching or streaming data:", error);
+    // console.error("Error fetching or streaming data:", error);
     throw error;
   }
 };
