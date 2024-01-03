@@ -42,7 +42,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
   const handleProfile = () => {
     localStorage.setItem("profile", "true");
     router.push("/profile");
-  }
+  };
 
   return (
     <div className="cursor-pointer mt-1">
@@ -82,7 +82,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
 
           <DropdownSection aria-label="Settings" showDivider>
             <DropdownItem onClick={() => router.push("/pricing")}>
-              {isPro ? "Pro User" : "Pricing"}
+              {isPro ? "Pro user" : "Pricing"}
             </DropdownItem>
             <DropdownItem
               isReadOnly

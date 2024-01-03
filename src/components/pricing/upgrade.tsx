@@ -67,7 +67,7 @@ const Upgrade = () => {
                 &nbsp; / month
               </span>
               <span className="text-[11px] ml-2 font-light font-sans">
-                Billed annually*
+                Billed annually. Student discount added automatically*
               </span>
             </>
           }
