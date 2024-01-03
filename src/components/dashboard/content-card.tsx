@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { ContentCardProps } from "../../../types";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -12,6 +11,7 @@ import { toast } from "sonner";
 import { useStore } from "zustand";
 import { useSpaceStore } from "@/context/space-context";
 import { useHistoryStore } from "@/context/history-store";
+import { Image } from "@nextui-org/react";
 
 const ContentCard = ({
   contentAdd,
@@ -107,6 +107,8 @@ const ContentCard = ({
       </div>
       <div className="rounded-t-xl overflow-hidden">
         <Image
+          radius="none"
+          loading="lazy"
           width-full="true"
           src={thumbnail_url!}
           width={360}
