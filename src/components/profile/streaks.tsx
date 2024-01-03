@@ -1,9 +1,11 @@
+import useAuth from "@/hooks/use-auth";
 import useUserProfile from "@/hooks/use-user-profile";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 
 const Streaks = () => {
-  const userData = useUserProfile();
+  const userId = useAuth();
+  const userData = useUserProfile(userId!);
 
   const data = [
     {

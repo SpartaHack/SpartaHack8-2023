@@ -39,6 +39,11 @@ const Account = ({ name, description, picture }: AccountProps) => {
     logOut();
   };
 
+  const handleProfile = () => {
+    localStorage.setItem("profile", "true");
+    router.push("/profile");
+  }
+
   return (
     <div className="cursor-pointer mt-1">
       <Dropdown radius="sm" closeOnSelect={false}>
@@ -58,7 +63,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
             <DropdownItem
               key="profile"
               className="opacity-100 h-14 gap-2"
-              onClick={() => router.push("/profile")}
+              onClick={handleProfile}
             >
               <User
                 name={name}
