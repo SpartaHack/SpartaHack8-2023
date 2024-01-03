@@ -5,7 +5,6 @@ import React from "react";
 
 const Streaks = () => {
   const userData = useStore(useUserStore, (state) => state.userData);
-  console.log(userData)
   const data = [
     {
       icon: "akar-icons:fire",
