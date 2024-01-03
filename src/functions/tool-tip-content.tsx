@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { Tooltip } from "@nextui-org/react";
 import { TooltipContentProps } from "../../types";
 import { useLearnStore } from "@/context/learn-context";
-import React from 'react';
+import React from "react";
 
 const sourceMapping: { [key: string]: number } = {};
 let sup = 1;
@@ -13,7 +13,7 @@ export const TooltipContent = ({ source, children }: TooltipContentProps) => {
 
   useEffect(() => {
     if (source && typeof children === "string") {
-      const key = parseInt(children.replace(/\*/g, ""), 10)
+      const key = parseInt(children.replace(/\*/g, ""), 10);
       const sourceValue = source[key - 1] || "Source";
       if (!(sourceValue in sourceMapping)) {
         sourceMapping[sourceValue] = sup++;
@@ -31,9 +31,15 @@ export const TooltipContent = ({ source, children }: TooltipContentProps) => {
     }
   };
 
-  const key = typeof children === "string" ? parseInt(children.replace(/\*/g, ""), 10) : -1;
+  const key =
+    typeof children === "string"
+      ? parseInt(children.replace(/\*/g, ""), 10)
+      : -1;
   const sourceValue = key !== -1 ? source![key - 1] || "Source" : "Source";
-  const supValue = sourceValue in sourceMapping ? sourceMapping[sourceValue].toString() : "Source";
+  const supValue =
+    sourceValue in sourceMapping
+      ? sourceMapping[sourceValue].toString()
+      : "Source";
 
   return (
     <Tooltip className="border" content={sourceValue}>
