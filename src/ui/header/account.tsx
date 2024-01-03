@@ -82,7 +82,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
 
           <DropdownSection aria-label="Settings" showDivider>
             <DropdownItem onClick={() => router.push("/pricing")}>
-              {isPro ? "Pro User" : "Pricing"}
+              {isPro ? "Pro user" : "Pricing"}
             </DropdownItem>
             <DropdownItem
               isReadOnly
