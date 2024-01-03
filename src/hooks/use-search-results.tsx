@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { searchAll } from "@/app/api/search";
 import { SearchType } from "../../types";
-import { isAxiosError } from "axios";
-import { useErrorStore } from "@/context/error-context";
 import useAuth from "./use-auth";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const useSearchResults = (query: string) => {
-  const setError = useErrorStore((state) => state.setError);
+  const router = useRouter();
   const [searchResults, setSearchResults] = useState<SearchType[]>();
   const [isLoading, setIsLoading] = useState(false);
   const userId = useAuth();
@@ -19,13 +19,15 @@ const useSearchResults = (query: string) => {
           const response = await searchAll(1, 10, query, userId);
           setSearchResults(response?.data);
         } catch (error) {
-          if (isAxiosError(error)) {
-            setError(error);
-          }
+          toast.error("Something went wrong. Redirecting to home");
+          router.push("/");
         }
         setIsLoading(false);
       };
       fetchData();
+    } else {
+      toast.error("User not signed in. Redirecting to sign in");
+      router.push("/signin");
     }
   }, [userId, query]);
 
