@@ -17,7 +17,6 @@ const useSearchResults = (query: string) => {
         setIsLoading(true);
         try {
           const response = await searchAll(1, 10, query, userId);
-          console.log(response);
           setSearchResults(response?.data);
         } catch (error) {
           toast.error("Something went wrong. Redirecting to home");

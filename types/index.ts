@@ -475,4 +475,4 @@ export type NoResultsFoundProps = {
   message?: string;
   button_route?: string;
   button_title?: string;
-}
+};

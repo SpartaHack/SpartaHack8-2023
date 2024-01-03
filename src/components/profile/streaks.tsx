@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 
 const Streaks = () => {
-  const userData = useUserProfile(); 
+  const userData = useUserProfile();
 
   const data = [
     {
@@ -31,8 +31,8 @@ const Streaks = () => {
             <Icon icon={item.icon} className="h-[90px] w-[90px]" />
             <span className="text-[70px] mt-1 lg:mt-0">{item.value}</span>
           </div>
-        <h1 className="text-sm ml-4">{item.label}</h1>
-      </div>
+          <h1 className="text-sm ml-4">{item.label}</h1>
+        </div>
       ))}
     </div>
   );

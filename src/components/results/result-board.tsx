@@ -10,7 +10,13 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
   const { userId, searchResults, isLoading } = useSearchResults(query);
 
   if (!userId) {
-    return <NoResultsFound message="SignIn/SignUp to Search!" button_route="/signin" button_title="SignIn" />
+    return (
+      <NoResultsFound
+        message="SignIn/SignUp to Search!"
+        button_route="/signin"
+        button_title="SignIn"
+      />
+    );
   }
   if (isLoading) {
     return <Loading />;

@@ -34,7 +34,7 @@ const ContentCard = ({
       const userId = auth.currentUser?.uid ?? "anonymous";
       const contentStream = await addContent(userId, undefined, [contentURL!]);
       for await (const content of contentStream) {
-        }
+      }
     }
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);

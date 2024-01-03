@@ -48,8 +48,10 @@ const UserInformation = () => {
               src={selectedImage || userData?.user_profile.photo_url!}
             />
             <div className="flex flex-col ml-10">
-            <h1 className="text-xl">{userData?.user_profile.full_name}</h1>
-            <h1 className="text-sm my-2">@{userData?.user_profile.username}</h1>
+              <h1 className="text-xl">{userData?.user_profile.full_name}</h1>
+              <h1 className="text-sm my-2">
+                @{userData?.user_profile.username}
+              </h1>
               <h2 className="text-sm">
                 Joined {formatDate(userData?.user.created_at!)}
               </h2>

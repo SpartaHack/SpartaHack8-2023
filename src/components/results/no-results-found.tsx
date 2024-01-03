@@ -7,7 +7,7 @@ import { NoResultsFoundProps } from "../../../types";
 const NoResultsFound = ({
   message = "No results found",
   button_route = "/",
-  button_title = "Back to home"
+  button_title = "Back to home",
 }: NoResultsFoundProps) => {
   const router = useRouter();
   const handleReset = () => {
@@ -16,9 +16,7 @@ const NoResultsFound = ({
   };
   return (
     <div className="flex-col flex-grow flex items-center justify-center">
-      <h1 className="text-2xl font-sans font-semibold mr-1">
-        {message}
-      </h1>
+      <h1 className="text-2xl font-sans font-semibold mr-1">{message}</h1>
       <CustomButton
         title={button_title}
         btnType="button"
