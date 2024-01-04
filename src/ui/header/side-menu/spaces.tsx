@@ -72,7 +72,7 @@ const Spaces = () => {
                 title={
                   <Icon
                     icon="gg:trash"
-                    className="md:group-hover:opacity-50 ml-7 w-6 h-6 md:opacity-0 opacity-50"
+                    className="md:group-hover:opacity-50 md:ml-7 w-6 h-6 md:opacity-0 opacity-50"
                   />
                 }
                 btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
