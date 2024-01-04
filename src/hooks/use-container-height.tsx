@@ -29,7 +29,7 @@ export const useContainerHeight = ({ type }: useContainerHeightProps) => {
     elementWidth = containerWidth * 0.675;
   }
 
-  if (type === "youtube") {
+  if (type === "youtube" || type === "mediaspace") {
     elementHeight = (elementWidth * 9) / 16;
   } else {
     elementHeight = (containerHeight! * 1318) / 1500;

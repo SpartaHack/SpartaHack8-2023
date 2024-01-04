@@ -41,11 +41,25 @@ export const faqData = [
       <h1>
         The Pro plan on YouLearn offers unlimited access to videos, PDFs, and AI
         responses, along with the ability to create multiple personal spaces for
-        organized learning resources. Additionally, it includes an AI-space
-        chatbot to ask about anything and everything in each space.
+        organized learning resources. Additionally, you can upload your own PDFs
+        of upto 20 MB in size.
       </h1>
     ),
     subtitle: <h3>Features</h3>,
+  },
+  {
+    title: "Do you offer student discount?",
+    content: (
+      <h1>
+        Yes! If you have registered on the website with an email ending with
+        .edu we will automatically add add the student discount. If you opt for
+        the monthly plan, you will receive 20% off for 12 months and if you opt
+        for the yearly plan, you get a 20% off for the whole year. If your
+        student email does not end with a .edu please contact us and we will
+        arrange it for you.
+      </h1>
+    ),
+    subtitle: <h3>Student Discount</h3>,
   },
   {
     title: "What is your refund policy?",

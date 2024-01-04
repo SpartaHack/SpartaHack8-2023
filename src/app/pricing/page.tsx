@@ -1,7 +1,7 @@
 "use client";
-import FAQ from "@/components/upgrade/faq";
-import Upgrade from "@/components/upgrade/upgrade";
-import ErrorModal from "@/helpers/error-modal";
+import FAQ from "@/components/pricing/faq";
+import Upgrade from "@/components/pricing/upgrade";
+import ErrorMessage from "@/helpers/error-message";
 import Footer from "@/ui/footer/footer";
 import Header from "@/ui/header/header";
 
@@ -12,7 +12,7 @@ const UpgradePage = () => {
       <div className="z-10 mt-[60px] relative h-full pb-6">
         <Upgrade />
         <FAQ />
-        <ErrorModal />
+        <ErrorMessage />
       </div>
       <Footer />
     </div>

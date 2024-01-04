@@ -4,14 +4,26 @@ import useSearchResults from "@/hooks/use-search-results";
 import Loading from "@/app/loading";
 import { ResultBoardProps, SearchType } from "../../../types";
 import ContentCard from "../dashboard/content-card";
+import NoResultsFound from "./no-results-found";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
-  const { searchResults, isLoading } = useSearchResults(query);
+  const { userId, searchResults, isLoading } = useSearchResults(query);
 
+  if (!userId) {
+    return (
+      <NoResultsFound
+        message="SignIn/SignUp to Search!"
+        button_route="/signin"
+        button_title="SignIn"
+      />
+    );
+  }
   if (isLoading) {
     return <Loading />;
   }
-
+  if (!searchResults || searchResults.length === 0) {
+    return <NoResultsFound />;
+  }
   return (
     <div className="flex-grow">
       <main className="flex my-12 pb-2 justify-center w-full px-10">

@@ -9,7 +9,8 @@ import { useSearchParams } from "next/navigation";
 import { useLearnContent } from "@/hooks/use-learn-content";
 import Loading from "@/app/loading";
 import { useContainerHeight } from "@/hooks/use-container-height";
-import ErrorModal from "@/helpers/error-modal";
+import ErrorMessage from "@/helpers/error-message";
+import Video from "./video";
 
 const Content = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -26,13 +27,14 @@ const Content = () => {
 
   return (
     <main className="flex-grow min-h-screen">
-      <ErrorModal />
+      <ErrorMessage />
       {loading ? (
         <Loading />
       ) : (
         <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
           {type === "youtube" && <YoutubeVideo />}
           {(type === "pdf" || type === "arxiv") && <PDF />}
+          {type === "mediaspace" && <Video />}
           <div
             className="lg:tabs-lg tabs-sm"
             style={type == "youtube" ? {} : { height: `${height - 25}px` }}

@@ -12,9 +12,17 @@ export function convertSpace(
   const handleMove = async (spaceId: string) => {
     const movingToast = toast.loading("Moving", { duration: 90000 });
     try {
-      await addContent(auth.currentUser?.uid!, spaceId, [contentURL]);
+      const contentStream = await addContent(auth.currentUser?.uid!, spaceId, [
+        contentURL,
+      ]);
       toast.dismiss(movingToast);
-      toast.success("Moved successfully");
+      for await (const content of contentStream) {
+        if ("error" in content) {
+          toast.error(content.error);
+        } else {
+          toast.success("Moved successfully");
+        }
+      }
     } catch (err) {
       toast.error("Could not move content");
     }

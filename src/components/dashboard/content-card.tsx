@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { ContentCardProps } from "../../../types";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -7,11 +6,13 @@ import { CustomDropdown } from "@/helpers/custom-dropdown";
 import { menuDropDown } from "@/functions/content-dropdown-constants";
 import { useContentStore } from "@/context/content-store";
 import { addContent, deleteContent } from "@/app/api/content";
+import { getContent } from "@/app/api/generation";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { useStore } from "zustand";
 import { useSpaceStore } from "@/context/space-context";
 import { useHistoryStore } from "@/context/history-store";
+import Image from "next/image";
 
 const ContentCard = ({
   contentAdd,
@@ -30,7 +31,10 @@ const ContentCard = ({
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
     if (contentAdd) {
-      await addContent(auth.currentUser?.uid!, undefined, [contentURL!]);
+      const userId = auth.currentUser?.uid ?? "anonymous";
+      const contentStream = await addContent(userId, undefined, [contentURL!]);
+      for await (const content of contentStream) {
+      }
     }
     if (!spaceId) {
       router.push(`/learn?c=${contentID}`);
@@ -82,7 +86,7 @@ const ContentCard = ({
 
   return (
     <div
-      className="relative cursor-pointer flex-col justify-center items-center gap-20 drop-shadow-sm rounded-xl hover:shadow-xl hover:scale-105 transition duration-300 border dark:border-neutral-800 max-h-[270px] max-w-[360px] min-h-full min-w-[220px] group"
+      className="relative cursor-pointer flex-col justify-center items-center gap-20 drop-shadow-sm rounded-xl hover:shadow-xl hover:scale-105 transition duration-300 border dark:border-neutral-800 max-w-[360px] min-h-full min-w-[220px] group"
       onClick={() => clickCard()}
     >
       <div className="absolute top-2 right-2 p-1 hover:scale-125 duration-200 cursor-pointer rounded-full group-hover:bg-neutral-100 group-hover:dark:bg-neutral-800">
@@ -115,7 +119,7 @@ const ContentCard = ({
         />
       </div>
       <div className="w-full my-2">
-        <h5 className="font-semibold px-4 line-clamp-1">{title}</h5>
+        <h5 className="font-semibold px-4 line-clamp-2">{title}</h5>
       </div>
     </div>
   );

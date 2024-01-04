@@ -5,14 +5,17 @@ import useCopyToClipboard from "@/hooks/use-copy-clipboard";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import useStore from "@/hooks/use-store";
 import { useLearnStore } from "@/context/learn-context";
-import Markdown from "react-markdown";
+import { replaceMessage } from "../../../../utils";
+import Response from "./response";
 import markdownComponents from "@/functions/markdown-components";
 
 const Summary = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const type = learnContent?.type!;
   const height = useContainerHeight({ type: type });
-
+  const summary = learnContent
+    ? replaceMessage(type, learnContent?.generations.summary!)
+    : { replacedMessage: "", sources: [""] };
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   const copiedStateTyped: { [key: number]: boolean } = copiedState;
 
@@ -20,7 +23,7 @@ const Summary = () => {
     <div
       className="lg:h-full h-[70vh] flex-col flex"
       style={
-        type === "youtube"
+        type === "youtube" || type === "mediaspace"
           ? { maxHeight: `${height - 90}px` }
           : { maxHeight: `${height - 100}px` }
       }
@@ -31,12 +34,11 @@ const Summary = () => {
         className="flex-grow overflow-hidden overflow-y-auto rounded-xl"
       >
         <div className="bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-xl p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full w-fit">
-          <Markdown
-            components={markdownComponents}
-            className="flex-grow leading-7"
-          >
-            {learnContent?.generations.summary}
-          </Markdown>
+          <Response
+            message={summary.replacedMessage}
+            source={summary.sources}
+            additionalMarkdown={markdownComponents}
+          />
           <div className="flex justify-end p-2 cursor-pointer">
             {copiedStateTyped[0] ? (
               <Icon
@@ -46,9 +48,7 @@ const Summary = () => {
             ) : (
               <Icon
                 icon="ci:copy"
-                onClick={() =>
-                  copyToClipboard(learnContent?.generations.summary!, 0)
-                }
+                onClick={() => copyToClipboard(summary.replacedMessage, 0)}
                 className="text-xl cursor-pointer"
               />
             )}

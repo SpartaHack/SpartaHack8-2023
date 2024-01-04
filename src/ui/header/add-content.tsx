@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useState } from "react";
+import React, { ChangeEvent, useCallback, useState, useEffect } from "react";
 import { useContentStore } from "@/context/content-store";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -11,12 +11,15 @@ import { addContent } from "@/app/api/content";
 import LinkCard from "./link-card";
 import ContentUploader from "./content-uploader";
 import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
 
 // million-ignore
 const AddContent = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [contentURL, setContentURL] = useState("");
   const [links, setLinks] = useState<string[]>([]);
+  const setError = useErrorStore((state) => state.setError);
+  const setToast = useErrorStore((state) => state.setToast);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setContentURL(e.target.value);
@@ -49,16 +52,10 @@ const AddContent = () => {
           }
           toast.dismiss(addingToast);
         } catch (err) {
-          console.log(err);
           toast.dismiss(addingToast);
           if (isAxiosError(err)) {
-            if (err.response?.status === 401) {
-              toast.error("Sign in to add a content");
-            } else if (err.response?.status === 402) {
-              toast.error(
-                "You have reached the maximum number of contents. Upgrade to add more.",
-              );
-            }
+            setToast!(true);
+            setError(err);
           }
         }
       }
@@ -88,6 +85,23 @@ const AddContent = () => {
     );
   }, []);
 
+  const [currentLinkIndex, setCurrentLinkIndex] = useState(0);
+  const rotationLinks = [
+    "https://youtu.be/kqtD5dpn9C8",
+    "https://youtube.com/playlist?list=PLZHQObO...",
+    "https://arxiv.org/pdf/1706.03762.pdf",
+    "https://mediaspace.stanford.edu/media/...i257wd8",
+  ];
+
+  const updateLinkIndex = () => {
+    setCurrentLinkIndex((prevIndex) => (prevIndex + 1) % rotationLinks.length);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(updateLinkIndex, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <CustomModal
@@ -95,11 +109,13 @@ const AddContent = () => {
         title={
           <div className="rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
-            <span className="text-sm truncate">Add content</span>
+            <span className="text-sm truncate font-sans font-semibold">
+              Add content
+            </span>
           </div>
         }
-        btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
-        btnStyling2="bg-black text-white border dark:bg-white dark:text-black"
+        btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white font-sans font-semibold"
+        btnStyling2="bg-black text-white border dark:bg-white dark:text-black font-sans font-semibold"
         actionEvent={handleAdd}
         contentTitle={
           <div className="flex flex-col">
@@ -108,11 +124,9 @@ const AddContent = () => {
               <span className="text-sm">Add content</span>
             </div>
             <div className="flex flex-row items-baseline">
-              <span className="mt-4 text-3xl font-sans">
-                Upload videos or PDFs
-              </span>
-              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400">
-                Paste link and / or upload file (PDF & YouTube)
+              <span className="mt-4 text-3xl font-sans">Upload contents</span>
+              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans">
+                (YouTube videos, playlist, PDFs, & mediaspace)
               </span>
             </div>
           </div>
@@ -123,7 +137,7 @@ const AddContent = () => {
               autoFocus
               onKeyDown={handleKeyDown}
               value={contentURL}
-              placeholder="https://youtu.be/kqtD5dpn9C8"
+              placeholder={rotationLinks[currentLinkIndex]}
               type={"text"}
               eventChange={(e) => handleChange(e)}
               isInvalid={contentURL === ""}
@@ -149,7 +163,7 @@ const AddContent = () => {
           </>
         }
         footer
-        actionTitle="Add Content"
+        actionTitle="Add content"
       />
     </>
   );

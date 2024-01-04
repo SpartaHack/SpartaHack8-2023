@@ -163,6 +163,7 @@ export type CustomAutocompleteProps = {
 export type ResponseProps = {
   message: string;
   source?: undefined | string[];
+  additionalMarkdown?: any;
 };
 
 export type TooltipContentProps = {
@@ -226,6 +227,7 @@ export type UserProfile = {
   streak: number;
   content_added: number;
   photo_url: string;
+  active_days: number;
 };
 
 export type Subscription = {
@@ -304,6 +306,7 @@ export type Metadata = {
   length: number;
   content_id: string;
   content_url: string;
+  iframe_url: string;
   publish_date: string;
   thumbnail_url: string;
   source: number;
@@ -433,7 +436,9 @@ export type LoadingProps = {
 
 export type ErrorStoreProps = {
   error: AxiosError | undefined;
+  showToast?: boolean;
   setError: (error: AxiosError | undefined) => void;
+  setToast?: (showToast: boolean) => void;
 };
 
 export type HistoryStore = {
@@ -464,4 +469,10 @@ export type MarkdownElementProps = {
 
 export type ContentUploaderProps = {
   handleLinkUpload: (link: string) => void;
+};
+
+export type NoResultsFoundProps = {
+  message?: string;
+  button_route?: string;
+  button_title?: string;
 };

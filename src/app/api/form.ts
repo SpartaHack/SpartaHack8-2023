@@ -13,13 +13,13 @@ export const formSubmit = async (
     email: email,
     form_type: "feedback",
     message: message,
-    metadata: { feedback_type: "feedback type" },
+    metadata: { feedback_type: feedback_type },
   };
 
   try {
     const response = await axios.post(`${API_URL}/form/submit`, data);
     return response;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };

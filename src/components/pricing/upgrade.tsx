@@ -7,7 +7,7 @@ import {
 } from "@/functions/tier-constants";
 import { useRouter } from "next/navigation";
 import CustomModal from "@/helpers/custom-modal";
-import UpgradeModal from "@/components/upgrade/upgrade-modal";
+import UpgradeModal from "@/components/pricing/upgrade-modal";
 import { PROYEARLYPRICE } from "../../../utils/constants";
 import TrustedBy from "./trusted-by";
 import { auth } from "../../../db/firebase";
@@ -67,7 +67,7 @@ const Upgrade = () => {
                 &nbsp; / month
               </span>
               <span className="text-[11px] ml-2 font-light font-sans">
-                Billed annually*
+                Billed annually. Student discount added automatically*
               </span>
             </>
           }

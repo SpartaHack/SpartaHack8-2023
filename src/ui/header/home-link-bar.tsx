@@ -5,7 +5,6 @@ import BetaLogo from "@/icon/beta-logo";
 import YouLearnLogo from "@/icon/youlearn-logo";
 import useClickOutside from "@/hooks/use-click-outside";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 
 const SearchBar = () => {
   const router = useRouter();

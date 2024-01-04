@@ -4,14 +4,13 @@ import remarkGfm from "remark-gfm";
 import { ResponseProps } from "../../../../types";
 import { TooltipContent } from "@/functions/tool-tip-content";
 
-const Response = ({ message, source }: ResponseProps) => {
+const Response = ({ message, source, additionalMarkdown }: ResponseProps) => {
+  const combinedComponents = {
+    ...additionalMarkdown,
+    em: (props: any) => <TooltipContent source={source} {...props} />,
+  };
   return (
-    <Markdown
-      remarkPlugins={[remarkGfm]}
-      components={{
-        em: (props) => <TooltipContent source={source} {...props} />,
-      }}
-    >
+    <Markdown remarkPlugins={[remarkGfm]} components={combinedComponents}>
       {message}
     </Markdown>
   );

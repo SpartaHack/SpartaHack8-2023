@@ -39,6 +39,11 @@ const Account = ({ name, description, picture }: AccountProps) => {
     logOut();
   };
 
+  const handleProfile = () => {
+    localStorage.setItem("profile", "true");
+    router.push("/profile");
+  };
+
   return (
     <div className="cursor-pointer mt-1">
       <Dropdown radius="sm" closeOnSelect={false}>
@@ -58,7 +63,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
             <DropdownItem
               key="profile"
               className="opacity-100 h-14 gap-2"
-              onClick={() => router.push("/profile")}
+              onClick={handleProfile}
             >
               <User
                 name={name}
@@ -76,8 +81,8 @@ const Account = ({ name, description, picture }: AccountProps) => {
           </DropdownSection>
 
           <DropdownSection aria-label="Settings" showDivider>
-            <DropdownItem onClick={() => router.push("/upgrade")}>
-              {isPro ? "Pro User" : "Upgrade"}
+            <DropdownItem onClick={() => router.push("/pricing")}>
+              {isPro ? "Pro user" : "Pricing"}
             </DropdownItem>
             <DropdownItem
               isReadOnly
@@ -102,7 +107,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
           <DropdownSection aria-label="Auth">
             <DropdownItem
               key="Contact us"
-              onClick={() => router.push("/feedback")}
+              onClick={() => router.push("/contact")}
             >
               Contact us
             </DropdownItem>

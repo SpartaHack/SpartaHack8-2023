@@ -39,7 +39,7 @@ const Chat = () => {
     <div
       className="lg:h-full h-[70vh] flex-col flex"
       style={
-        type === "youtube"
+        type === "youtube" || type === "mediaspace"
           ? { maxHeight: `${height - 90}px` }
           : { maxHeight: `${height - 100}px` }
       }

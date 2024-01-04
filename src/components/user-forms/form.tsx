@@ -32,9 +32,12 @@ const Form = () => {
       !isInvalid(message, "message")
     ) {
       const response = await formSubmit(name, email, message, selectedFeedback);
-      console.log(response);
       if (response) {
         toast.success("Form submitted!");
+        setName("");
+        setEmail("");
+        setMessage("");
+        setSelectedFeedback("");
       } else {
         toast.error("Error submitting the form");
       }
