@@ -42,7 +42,7 @@ export const faqData = [
         The Pro plan on YouLearn offers unlimited access to videos, PDFs, and AI
         responses, along with the ability to create multiple personal spaces for
         organized learning resources. Additionally, you can upload your own PDFs
-        of upto 20 MB in size.
+        of up to 20 MB in size.
       </h1>
     ),
     subtitle: <h3>Features</h3>,

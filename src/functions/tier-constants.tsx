@@ -9,7 +9,7 @@ export const freePlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "Add upto 10 content links per space",
+    label: "Add up to 10 content links per space",
   },
   {
     icon: (
@@ -18,7 +18,7 @@ export const freePlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "Upto 1000 total messages with the AI co-pilot",
+    label: "Up to 1000 total messages with the AI co-pilot",
   },
   {
     icon: (
@@ -66,6 +66,6 @@ export const premiumMonthlyPlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "Unlimited PDF file uploads of upto 20 MB",
+    label: "Unlimited PDF file uploads of up to 20 MB",
   },
 ];
