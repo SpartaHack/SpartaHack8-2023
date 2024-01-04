@@ -18,7 +18,7 @@ export const freePlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "Upto 1000 total messages with the AI Tutor",
+    label: "Upto 1000 total messages with the AI co-pilot",
   },
   {
     icon: (
@@ -48,7 +48,7 @@ export const premiumMonthlyPlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "Unlimited messages with the AI Tutor",
+    label: "Unlimited messages with the AI co-pilot",
   },
   {
     icon: (
