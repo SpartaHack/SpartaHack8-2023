@@ -41,7 +41,7 @@ export default function Error({}: { error: Error & { digest?: string } }) {
       <h1 className="mt-2 lg:mb-12 mb-10 text-center">
         Still having trouble? &nbsp;
         <Link href="/contact" className="underline">
-          Contact Support
+          Contact Us
         </Link>
       </h1>
     </div>

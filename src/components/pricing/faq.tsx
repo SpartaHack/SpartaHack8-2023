@@ -88,7 +88,7 @@ const FAQ = () => {
       <h1 className="mt-6 lg:mb-12 mb-10 text-center">
         Can&apos;t find the answer here? &nbsp;
         <Link href="/contact" underline="always" color="foreground">
-          Contact Support
+          Contact Us
         </Link>
       </h1>
       <div className="px-12 lg:px-[190px]">
