@@ -16,6 +16,7 @@ export function convertSpace(
       toast.dismiss(movingToast);
       toast.success("Moved successfully");
     } catch (err) {
+      console.log(err)
       toast.error("Could not move content");
     }
   };

@@ -19,8 +19,8 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
   ) => {
     if (event.target.files) {
       const selectedFile = event.target.files[0];
-      if (selectedFile.size > 10000000) {
-        toast.error("File size exceeds 10MB");
+      if (selectedFile.size > 20000000) {
+        toast.error("File size exceeds 20 MB");
         return;
       }
       setFile(selectedFile);
@@ -64,7 +64,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
         style={{ display: "none" }}
       />
       <span className="text-sm text-neutral-600 dark:text-neutral-400">
-        (max size 10MB)
+        (max size 20 MB)
       </span>
     </label>
   );
