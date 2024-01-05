@@ -18,7 +18,7 @@ export const freePlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "100 total messages per day with the AI co-pilot",
+    label: "100 messages per day with the AI co-pilot",
   },
   {
     icon: (
