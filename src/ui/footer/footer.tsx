@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="flex justify-between items-center flex-wrap border-t border-neutral-300 dark:border-neutral-700 sm:px-6 py-3">
       <p className="md:block text-sm hidden text-neutral-500 dark:text-neutral-400">
-        @{(new Date().getFullYear())} YouLearn, Inc. All rights reserved
+        @{new Date().getFullYear()} YouLearn, Inc. All rights reserved
       </p>
 
       <div className="flex flex-grow justify-center md:justify-end">
