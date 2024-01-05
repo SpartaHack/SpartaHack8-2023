@@ -24,7 +24,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [isLightMode, setIsLightMode] = useState(
-    theme == "light" ? true : false,
+    theme == "light" ? true : false
   );
   const userId = useAuth();
 
@@ -82,7 +82,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
 
           <DropdownSection aria-label="Settings" showDivider>
             <DropdownItem onClick={() => router.push("/pricing")}>
-              {isPro ? "Pro user" : "Pricing"}
+              {isPro ? "Pro Learner" : "Upgrade"}
             </DropdownItem>
             <DropdownItem
               isReadOnly

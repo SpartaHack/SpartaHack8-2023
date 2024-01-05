@@ -42,7 +42,7 @@ export const faqData = [
         The Pro plan on YouLearn offers unlimited access to videos, PDFs, and AI
         responses, along with the ability to create multiple personal spaces for
         organized learning resources. Additionally, you can upload your own PDFs
-        of upto 20 MB in size.
+        of up to 20 MB in size.
       </h1>
     ),
     subtitle: <h3>Features</h3>,
@@ -88,7 +88,7 @@ const FAQ = () => {
       <h1 className="mt-6 lg:mb-12 mb-10 text-center">
         Can&apos;t find the answer here? &nbsp;
         <Link href="/contact" underline="always" color="foreground">
-          Contact Support
+          Contact Us
         </Link>
       </h1>
       <div className="px-12 lg:px-[190px]">
