@@ -109,6 +109,7 @@ export type ContentCardProps = {
   spaceId?: string;
   thumbnail_url: string;
   deleteFromHistory?: boolean;
+  showDelete?: boolean;
 };
 
 export type Features = {
