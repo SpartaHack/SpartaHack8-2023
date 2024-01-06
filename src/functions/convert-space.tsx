@@ -16,14 +16,15 @@ export function convertSpace(
         contentURL,
       ]);
       toast.dismiss(movingToast);
-      for await (const content of contentStream) {
+      for await (const content of contentStream!) {
         if ("error" in content) {
           toast.error(content.error);
         } else {
-          toast.success("Moved successfully");
+          toast.success("Content added");
         }
       }
     } catch (err) {
+      console.log(err);
       toast.error("Could not move content");
     }
   };

@@ -1,4 +1,3 @@
-import "./globals.css";
 import { ThemeProviders } from "@/providers/theme-providers";
 import { Toaster } from "sonner";
 import { Roboto } from "next/font/google";
@@ -11,7 +10,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: "YouLearn - AI companion for learning",
+    default: "YouLearn Pricing",
     template: "%s - Learn, Share, Collaborate.",
   },
   description:

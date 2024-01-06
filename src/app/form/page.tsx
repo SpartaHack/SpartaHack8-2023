@@ -68,7 +68,7 @@ const Form = () => {
               label="Username"
               isInvalid={username === ""}
               styling="pt-4 bg-transparent"
-              eventChange={(e) => setUsername(e.target.value)}
+              eventChange={(e) => setUsername(e.target.value.toLowerCase())}
             />
             <CustomAutocomplete
               size="lg"
