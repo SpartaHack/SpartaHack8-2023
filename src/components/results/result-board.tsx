@@ -38,6 +38,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
                 title={result.title}
                 contentURL={result.content_url}
                 thumbnail_url={result.thumbnail_url}
+                showDelete={false}
               />
             ))}
         </div>

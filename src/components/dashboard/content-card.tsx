@@ -6,7 +6,6 @@ import { CustomDropdown } from "@/helpers/custom-dropdown";
 import { menuDropDown } from "@/functions/content-dropdown-constants";
 import { useContentStore } from "@/context/content-store";
 import { addContent, deleteContent } from "@/app/api/content";
-import { getContent } from "@/app/api/generation";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { useStore } from "zustand";
@@ -22,6 +21,7 @@ const ContentCard = ({
   title,
   thumbnail_url,
   deleteFromHistory,
+  showDelete = true,
 }: ContentCardProps) => {
   const router = useRouter();
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
@@ -106,6 +106,7 @@ const ContentCard = ({
             handleDelete,
             handleCopy,
             spaces,
+            showDelete,
           )}
         />
       </div>
