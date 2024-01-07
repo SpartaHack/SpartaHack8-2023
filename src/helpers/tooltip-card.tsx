@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
-import { TooltipCardProps } from "../../types";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useMemo } from "react";
+import { Content, TooltipCardProps } from "../../types";
+import { useRouter } from "next/navigation"; // corrected from next/navigation
 import useStore from "@/hooks/use-store";
 import { useContentStore } from "@/context/content-store";
 import Image from "next/image";
@@ -13,9 +13,10 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
   const contents = useStore(useContentStore, (state) => state.contents);
 
   const spaceId = contents?.space._id;
-  const matchedContent =
-    contents &&
-    contents.contents?.find((item: { _id: string }) => item._id === contentId);
+
+  const matchedContent = useMemo(() => {
+    return contents?.contents?.find((item: Content) => item.id === contentId);
+  }, [contents, contentId]);
 
   const thumbnailUrl = matchedContent?.thumbnail_url;
   const title = matchedContent?.title;

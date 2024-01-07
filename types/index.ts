@@ -318,6 +318,7 @@ export type Metadata = {
 };
 
 export type Content = {
+  id: string;
   _id: string;
   user_id: string;
   type: string;
