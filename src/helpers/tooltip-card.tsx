@@ -24,6 +24,7 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
   const title = matchedContent?.title;
 
   const clickCard = () => {
+    localStorage.setItem("repeating", "false");
     router.push(`/learn?c=${contentId}&s=${spaceId}`);
   };
 
