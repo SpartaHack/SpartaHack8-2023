@@ -9,7 +9,7 @@ import Image from "next/image";
 const TooltipCard = ({ content }: TooltipCardProps) => {
   const router = useRouter();
   const contentId = content.replace(/^\[|\]$/g, "");
-  const regex = /\[[A-Za-z0-9_-]+\]/g;
+  const regex = /\[[a-zA-Z0-9]{1,11}\]/;
   const contents = useStore(useContentStore, (state) => state.contents);
 
   const spaceId = contents?.space._id;
