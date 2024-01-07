@@ -52,7 +52,7 @@ export const faqData = [
     content: (
       <h1>
         Yes! If you have registered on the website with an email ending with
-        .edu we will automatically add add the student discount. If you opt for
+        .edu we will automatically add the student discount. If you opt for
         the monthly plan, you will receive 20% off for 12 months and if you opt
         for the yearly plan, you get a 20% off for the whole year. If your
         student email does not end with a .edu please contact us and we will
