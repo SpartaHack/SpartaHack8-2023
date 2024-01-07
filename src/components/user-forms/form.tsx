@@ -7,9 +7,12 @@ import CustomTextArea from "@/helpers/custom-text-area";
 import CustomAutocomplete from "@/helpers/custom-autocomplete";
 import { feedbackOptions } from "../../../utils/constants";
 import { formSubmit } from "@/app/api/form";
+import { useRouter } from "next/navigation";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 // million-ignore
 const Form = () => {
+  const router = useRouter();
   const [selectedFeedback, setSelectedFeedback] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -104,6 +107,17 @@ const Form = () => {
           btnType="button"
           btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mt-4"
           clickEvent={handleScheduleClick}
+        />
+        <CustomButton
+          title={
+            <span className="flex flex-row">
+              <Icon icon="ic:baseline-discord" className="h-5 w-5 mr-1" />{" "}
+              Contact us on Discord
+            </span>
+          }
+          btnType="button"
+          btnStyling="bg-[#9B59B6] text-white font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mt-4"
+          clickEvent={() => router.push("/discord")}
         />
       </form>
     </>

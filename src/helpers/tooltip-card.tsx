@@ -16,7 +16,7 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
 
   const matchedContent = useMemo(() => {
     return contents?.contents?.find(
-      (item: Content) => item._id === contentId || item.id === contentId
+      (item: Content) => item._id === contentId || item.id === contentId,
     );
   }, [contents, contentId]);
 
