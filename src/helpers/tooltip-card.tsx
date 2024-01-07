@@ -15,7 +15,9 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
   const spaceId = contents?.space._id;
 
   const matchedContent = useMemo(() => {
-    return contents?.contents?.find((item: Content) => item.id === contentId);
+    return contents?.contents?.find(
+      (item: Content) => item._id === contentId || item.id === contentId
+    );
   }, [contents, contentId]);
 
   const thumbnailUrl = matchedContent?.thumbnail_url;
