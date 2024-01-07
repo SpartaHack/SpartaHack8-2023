@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useMemo } from "react";
 import { Content, TooltipCardProps } from "../../types";
-import { useRouter } from "next/navigation"; // corrected from next/navigation
+import { useRouter } from "next/navigation";
 import useStore from "@/hooks/use-store";
 import { useContentStore } from "@/context/content-store";
 import Image from "next/image";
