@@ -24,7 +24,7 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
     router.push(`/learn?c=${contentId}&s=${spaceId}`);
   };
 
-  if (regex.test(content)) {
+  if (regex.test(content) && thumbnailUrl && title) {
     return (
       <div
         className="w-[200px] space-y-2 p-3 drop-shadow-md cursor-pointer hover:scale-105 transition"
