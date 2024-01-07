@@ -477,3 +477,7 @@ export type NoResultsFoundProps = {
   button_route?: string;
   button_title?: string;
 };
+
+export type TooltipCardProps = {
+  content: string;
+};
