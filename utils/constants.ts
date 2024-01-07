@@ -21,7 +21,6 @@ export const languageOptions = [
 ];
 
 export const logos = [
-  { src: "/universities/stanford.svg", alt: "stanford" },
   { src: "/universities/msu.svg", alt: "msu" },
   { src: "/universities/mit.svg", alt: "mit" },
   { src: "/universities/harvard.svg", alt: "harvard" },
