@@ -169,12 +169,12 @@ export const logOut = async () => {
       toast.error("Please sign in");
       return;
     }
-    await userLogOut(userId);
     localStorage.clear();
     useUserStore.getState().logout();
     useSpaceStore.getState().logout();
     useContentStore.getState().logout();
     useHistoryStore.getState().logOut();
+    await userLogOut(userId);
     toast.success("Signed out successfully");
   } catch (err) {
     if (err instanceof Error) {
