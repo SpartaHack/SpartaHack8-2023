@@ -3,6 +3,7 @@ import { Tooltip } from "@nextui-org/react";
 import { TooltipContentProps } from "../../types";
 import { useLearnStore } from "@/context/learn-context";
 import React from "react";
+import TooltipCard from "@/helpers/tooltip-card";
 
 const sourceMapping: { [key: string]: number } = {};
 let sup = 1;
@@ -42,7 +43,7 @@ export const TooltipContent = ({ source, children }: TooltipContentProps) => {
       : "Source";
 
   return (
-    <Tooltip className="border" content={sourceValue}>
+    <Tooltip content={<TooltipCard content={sourceValue} />}>
       <sup
         className="text-[10px] px-[4px] py-[2px] rounded-full bg-neutral-300 hover:invert dark:bg-neutral-700 cursor-pointer"
         onClick={handleSource}

@@ -7,14 +7,13 @@ export const faqData = [
     title: "What YouLearn plan is right for me?",
     content: (
       <h1>
-        Choose the free plan if you&apos;re an occasional learner, offering 10
-        videos &amp; PDFs, 10 AI generated responses for each upload, and one
-        dedicated space at no cost. Opt for the Pro Plan at $8 / month for
-        unlimited access to contents, AI responses, spaces, and an AI-space
-        chatbot, ideal for daily learners.
+        Choose the free plan if you&apos;re an occasional learner, offering up to 100 messages / day with the AI co-pilot, and one
+        dedicated space with a maximum of 10 contents at no cost. <br />
+        Opt for the Pro Plan at $8 / month for
+        unlimited access to contents, PDF file uploads of up to 20 MB, AI co-pilot responses, spaces, ideal for daily learners.
       </h1>
     ),
-    subtitle: <h3>Plan</h3>,
+    subtitle: <h3>Plans</h3>,
   },
   {
     title: "What payment methods do you offer?",
@@ -49,16 +48,18 @@ export const faqData = [
   },
   {
     title: "Do you offer student discount?",
-    content: (
+    content: 
       <h1>
-        Yes! If you have registered on the website with an email ending with
-        .edu we will automatically add add the student discount. If you opt for
-        the monthly plan, you will receive 20% off for 12 months and if you opt
-        for the yearly plan, you get a 20% off for the whole year. If your
-        student email does not end with a .edu please contact us and we will
-        arrange it for you.
+        Yes! If you opt for the:
+        <ul>
+          <li>- <span className="font-bold">Monthly Plan</span>: 20% discount for the first 12 months</li>
+          <li>- <span className="font-bold">Yearly Plan</span>: 20% discount for the first year</li>
+        </ul>
+        Sign up with a .edu email and the discount will automatically be applied. If your student
+        email does not end with a .edu please contact us and we will arrange it
+        for you.
       </h1>
-    ),
+    ,
     subtitle: <h3>Student Discount</h3>,
   },
   {

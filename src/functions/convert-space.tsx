@@ -24,7 +24,6 @@ export function convertSpace(
         }
       }
     } catch (err) {
-      console.log(err);
       toast.error("Could not move content");
     }
   };
