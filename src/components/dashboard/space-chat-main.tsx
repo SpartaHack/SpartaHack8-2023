@@ -26,7 +26,7 @@ const SpaceChatMain = () => {
     historyChat!,
     auth.currentUser?.uid!,
     "",
-    contents?.space._id,
+    contents?.space._id
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];
@@ -34,7 +34,7 @@ const SpaceChatMain = () => {
   const { removeQuestions } = useChatlogLength(chatLog);
   const chatContainerRef = useAutoScroll(chatLog);
   const questions = [
-    "What topics will be covered in this space?",
+    "What topics are covered in this space?",
     "What are the learning objectives of this space?",
   ];
 
