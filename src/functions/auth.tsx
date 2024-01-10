@@ -50,7 +50,7 @@ export const useSignInEmail = () => {
           setSpaces(spaces?.data);
           toast.success("Successfully signed in");
           localStorage.setItem("historyLoading", "true");
-          setSignInStatus("/");
+          setSignInStatus(spaces?.data ? "/space?s="+spaces.data[0]._id : "/");
         } else {
           toast.error("Your account was not found, please sign up.");
           setSignInStatus("/form");
@@ -116,7 +116,7 @@ export const useAuthGoogleSignIn = () => {
         setSpaces(spaces?.data);
         toast.success("Successfully signed in with Google");
         localStorage.setItem("historyLoading", "true");
-        setSignInStatus("/");
+        setSignInStatus(spaces?.data ? "/space?s="+spaces.data[0]._id : "/");
       } else {
         toast.error("Your account was not found, please sign up.");
         setSignInStatus("/form");
@@ -222,9 +222,10 @@ export const useHandleSignUpFinal = () => {
         const signInResponse = await userSignIn(userId);
         setUserData(signInResponse!.data);
         const spaces = await getUserSpaces(userId);
+        console.log(spaces?.data)
         setSpaces(spaces?.data);
         localStorage.setItem("historyLoading", "true");
-        setSignUpFinalStatus("/");
+        setSignUpFinalStatus(spaces?.data ? "/space?s="+spaces.data[0]._id : "/");
       } else {
         toast.error("Sign up failed, please try again");
         setSignUpFinalStatus("/signup");
