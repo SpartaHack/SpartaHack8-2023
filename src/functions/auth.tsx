@@ -57,7 +57,7 @@ export const useSignInEmail = () => {
               const goToSpace = await getSpace(user.uid!, spaces?.data[0]._id);
               setContents(goToSpace?.data);
             }
-          } catch { }
+          } catch {}
           setSignInStatus(
             spaces?.data.lenth !== 0 ? "/space?s=" + spaces?.data[0]._id : "/",
           );
@@ -132,7 +132,7 @@ export const useAuthGoogleSignIn = () => {
             const goToSpace = await getSpace(user.uid!, spaces?.data[0]._id);
             setContents(goToSpace?.data);
           }
-        } catch { }
+        } catch {}
         setSignInStatus(
           spaces?.data.length !== 0 ? "/space?s=" + spaces?.data[0]._id : "/",
         );
@@ -235,7 +235,9 @@ export const useHandleSignUpFinal = () => {
       );
 
       if (isAxiosError(response) && response.request.status === 404) {
-        toast.error("Sorry, that username is not available, please choose a different one.");
+        toast.error(
+          "Sorry, that username is not available, please choose a different one.",
+        );
       } else if (response) {
         toast.success("Your account has been created!");
         setUserId(userId);
@@ -249,7 +251,7 @@ export const useHandleSignUpFinal = () => {
             const goToSpace = await getSpace(userId!, spaces?.data[0]._id);
             setContents(goToSpace?.data);
           }
-        } catch { }
+        } catch {}
         setSignUpFinalStatus(
           spaces?.data.length !== 0 ? "/space?s=" + spaces?.data[0]._id : "/",
         );
