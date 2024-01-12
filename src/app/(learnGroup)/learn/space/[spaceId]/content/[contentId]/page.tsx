@@ -6,9 +6,7 @@ const LearnPage = ({
 }: {
   params: { spaceId: string; contentId: string };
 }) => {
-  return (
-      <Content spaceId={params.spaceId} contentId={params.contentId} />
-  );
+  return <Content spaceId={params.spaceId} contentId={params.contentId} />;
 };
 
 export default LearnPage;
