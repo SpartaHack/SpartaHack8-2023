@@ -19,7 +19,7 @@ const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
       {size === "lg" && (
         <>
           <Image
-            src={isPro ? "youlearnProLight.svg" : "youlearn.svg"}
+            src={isPro ? "/youlearnProLight.svg" : "/youlearn.svg"}
             alt="YouLearn"
             className="dark:hidden cursor-pointer"
             width={width ? width : 110}
@@ -27,7 +27,7 @@ const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
             onClick={returnHome}
           />
           <Image
-            src={isPro ? "youlearnProDark.svg" : "youlearnDark.svg"}
+            src={isPro ? "/youlearnProDark.svg" : "/youlearnDark.svg"}
             alt="YouLearn"
             className="dark:block cursor-pointer hidden"
             width={width ? width : 110}
@@ -38,7 +38,7 @@ const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
       )}
       {size === "sm" && (
         <Image
-          src="youlearnMedia.svg"
+          src="/youlearnMedia.svg"
           alt="YouLearnMedia"
           className="cursor-pointer"
           width={width ? width : 35}

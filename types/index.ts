@@ -482,3 +482,8 @@ export type NoResultsFoundProps = {
 export type TooltipCardProps = {
   content: string;
 };
+
+export type ContentProps = {
+  contentId: string;
+  spaceId?: string;
+};

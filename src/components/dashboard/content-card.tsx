@@ -41,9 +41,9 @@ const ContentCard = ({
       }
     }
     if (!spaceId) {
-      router.push(`/learn?c=${contentID}`);
+      router.push(`/learn/content/${contentID}`);
     } else {
-      router.push(`/learn?c=${contentID}&s=${spaceId}`);
+      router.push(`/learn/space/${spaceId}/content/${contentID}`);
     }
   };
 
@@ -72,9 +72,9 @@ const ContentCard = ({
     try {
       let text;
       if (!spaceId) {
-        text = `/learn?c=${contentID}`;
+        text = `/learn/content/${contentID}`;
       } else {
-        text = `/learn?c=${contentID}&s=${spaceId}`;
+        text = `/learn/space/${spaceId}/content/${contentID}`;
       }
       if (typeof window !== "undefined") {
         const domainName = window.location.origin;

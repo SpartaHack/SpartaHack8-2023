@@ -71,6 +71,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
       toast.error("Invalid file type. Please drop a PDF file.");
     }
   };
+  const labelText = isDragOver ? "Drop PDF here" : "Upload PDFs";
 
   return (
     <label
@@ -87,10 +88,10 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
     >
       <Icon
         icon="ph:plus"
-        className=" text-neutral-600 dark:text-neutral-400 h-10 w-10 pb-2"
+        className="text-neutral-600 dark:text-neutral-400 h-10 w-10 pb-2"
       />
       <span className="text-sm text-neutral-600 dark:text-neutral-400">
-        {isDragOver ? "Drop PDF here" : "Upload PDFs"}
+        {labelText}
       </span>
       <input
         accept="application/pdf"
