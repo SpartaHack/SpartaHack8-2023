@@ -1,5 +1,4 @@
 import Header from "@/ui/header/header";
-import Content from "@/components/learn/content/content";
 import React from "react";
 
 const learnGroupLayout = ({ children }: { children: React.ReactNode }) => {
