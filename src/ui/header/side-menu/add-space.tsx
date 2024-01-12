@@ -29,7 +29,7 @@ const AddSpace = () => {
         router.push(`/space?s=${response.data._id}`);
       }
       toast.dismiss(addingSpace);
-      toast.success("Added space successfully");
+      toast.success("Space added");
     } catch (err) {
       toast.dismiss(addingSpace);
       if (isAxiosError(err)) {
