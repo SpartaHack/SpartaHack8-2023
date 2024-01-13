@@ -3,6 +3,8 @@ import { ThemeProviders } from "@/providers/theme-providers";
 import { Toaster } from "sonner";
 import { Roboto } from "next/font/google";
 import { Metadata } from "next";
+import PostHogPageView from "@/functions/posthog-page-view";
+import { PHProvider } from "@/providers/posthog-provider";
 
 const roboto = Roboto({
   weight: "400",
@@ -33,10 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>
-        <ThemeProviders>
-          <Toaster richColors />
-          {children}
-        </ThemeProviders>
+        <PHProvider>
+          <ThemeProviders>
+            <Toaster richColors />
+            <PostHogPageView />
+            {children}
+          </ThemeProviders>
+        </PHProvider>
       </body>
     </html>
   );
