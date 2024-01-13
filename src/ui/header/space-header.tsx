@@ -15,6 +15,7 @@ const SpaceHeader = () => {
     useContentStore,
     (state) => state.contents,
   );
+  const space = useStore(useSpaceStore, (state) => state.spaces);
   const [contents, setContents] = useState(contentsFromStore);
   const [editSpaceName, setEditSpaceName] = useState(false);
   const [spaceNameInput, setSpaceNameInput] = useState("");
@@ -27,7 +28,7 @@ const SpaceHeader = () => {
     return <Loading />;
   }
 
-  const spaceName = contents && contents.space.name;
+  const spaceName = space?.length !== 0 ? space![0].name : "Untitled Space";
 
   const handleIconClick = () => {
     setSpaceNameInput(spaceName);
@@ -60,7 +61,7 @@ const SpaceHeader = () => {
       if (response) {
         useSpaceStore.getState().updateSpaceData(updatedData);
         useContentStore.getState().updateContent(updatedDataSpace);
-        toast.success("Space updated successfully.");
+        toast.success("Space updated");
       } else {
         toast.error("Could not update space.");
       }

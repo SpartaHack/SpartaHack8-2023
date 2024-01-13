@@ -1,14 +1,13 @@
 import Header from "@/ui/header/header";
 import React from "react";
-import Content from "@/components/learn/content/content";
 
-const LearnPage = () => {
+const learnGroupLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="flex flex-col min-h-screen bg-neutral-100 dark:bg-neutral-900">
       <Header />
-      <Content />
+      {children}
     </main>
   );
 };
 
-export default LearnPage;
+export default learnGroupLayout;
