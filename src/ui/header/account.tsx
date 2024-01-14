@@ -53,7 +53,7 @@ const Account = ({ name, description, picture }: AccountProps) => {
               icon="bx:user"
               className="md:header-icons md:h-10 md:w-10 w-6 h-6"
             />
-            <div className="lg:hidden">
+            <div className="lg:hidden md:mt-2">
               <span className="ml-5">Account</span>
             </div>
           </div>
