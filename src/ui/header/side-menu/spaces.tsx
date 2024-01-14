@@ -69,6 +69,7 @@ const Spaces = () => {
                 <span className="ml-5 truncate">{space.name}</span>
               </div>
               <CustomModal
+                placement="center"
                 title={
                   <Icon
                     icon="gg:trash"

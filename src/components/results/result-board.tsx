@@ -12,7 +12,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
   if (!userId) {
     return (
       <NoResultsFound
-        message="SignIn/SignUp to Search!"
+        message="Sign in / Sign up to Search!"
         button_route="/signin"
         button_title="SignIn"
       />
