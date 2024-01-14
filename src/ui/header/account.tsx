@@ -51,9 +51,9 @@ const Account = ({ name, description, picture }: AccountProps) => {
           <div className="flex flex-row">
             <Icon
               icon="bx:user"
-              className="md:header-icons md:h-10 md:w-10 w-6 h-6"
+              className="lg:header-icons lg:h-10 lg:w-10 w-6 h-6"
             />
-            <div className="lg:hidden md:mt-2">
+            <div className="lg:hidden">
               <span className="ml-5">Account</span>
             </div>
           </div>
