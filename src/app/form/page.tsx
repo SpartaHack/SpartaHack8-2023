@@ -17,24 +17,42 @@ const Form = () => {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
-  const handleContinue = async () => {
-    if (name !== "" && educationLevel !== "") {
-      const userId = localStorage.getItem("userId");
-      const email = localStorage.getItem("email");
-      const photoURL = localStorage.getItem("photoURL");
-      const finalEducationLevel =
-        educationLevel === "Other" ? customEducation : educationLevel;
-      handleSignUpFinal(
-        userId!,
-        username!,
-        email!,
-        photoURL!,
-        finalEducationLevel,
-        name,
-      );
-    } else {
-      toast.error("Error signing up, please try again.");
+  const validateForm = () => {
+    const errors = [];
+  
+    if (!name) {
+      errors.push("Please enter your name.");
     }
+  
+    if (!educationLevel) {
+      errors.push("Please select your education level.");
+    } else if (educationLevel === "Other" && !customEducation) {
+      errors.push("Please specify your education level.");
+    }
+  
+    if (!(/^[a-zA-Z0-9_]{3,15}$/.test(username))) {
+      errors.push("Please choose a username between 3 and 15 characters, containing only letters, numbers, and underscores.");
+    }
+  
+    if (errors.length > 0) {
+      errors.forEach((error) => toast.error(error));
+      return false;
+    }
+  
+    return true;
+  };
+
+  const handleContinue = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
+    const userId = localStorage.getItem("userId")!;
+    const email = localStorage.getItem("email")!;
+    const photoURL = localStorage.getItem("photoURL")!;
+    const finalEducationLevel = educationLevel === "Other" ? customEducation : educationLevel;
+
+    handleSignUpFinal(userId, username.toLowerCase(), email, photoURL, finalEducationLevel, name);
   };
 
   useEffect(() => {
@@ -66,7 +84,7 @@ const Form = () => {
               value={username}
               type="username"
               label="Username"
-              isInvalid={username === ""}
+              isInvalid={!(/^[a-zA-Z0-9_]{3,15}$/.test(username))}
               styling="pt-4 bg-transparent"
               eventChange={(e) => setUsername(e.target.value.toLowerCase())}
             />
