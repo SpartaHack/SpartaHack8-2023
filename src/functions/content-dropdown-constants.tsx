@@ -60,6 +60,7 @@ export const menuDropDown = (
         {
           label: (
             <CustomModal
+              placement="center"
               title={
                 <div className="flex flex-row w-full cursor-pointer items-center">
                   <Icon icon="gg:trash" className="h-6 w-6" />
