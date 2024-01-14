@@ -222,7 +222,6 @@ export const useHandleSignUpFinal = () => {
         const signInResponse = await userSignIn(userId);
         setUserData(signInResponse!.data);
         const spaces = await getUserSpaces(userId);
-        console.log(spaces?.data);
         setSpaces(spaces?.data);
         localStorage.setItem("historyLoading", "true");
         setSignUpFinalStatus(
