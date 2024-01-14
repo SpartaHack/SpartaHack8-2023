@@ -23,13 +23,11 @@ import { useSpaceStore } from "@/context/space-context";
 import { useContentStore } from "@/context/content-store";
 import { useHistoryStore } from "@/context/history-store";
 import { isAxiosError } from "axios";
-import { getSpace } from "@/app/api/space";
 
 export const useSignInEmail = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const signInEmail = async (email: string, password: string) => {
     try {
@@ -52,15 +50,7 @@ export const useSignInEmail = () => {
           setSpaces(spaces?.data);
           toast.success("Successfully signed in");
           localStorage.setItem("historyLoading", "true");
-          try {
-            if (spaces?.data[0]._id) {
-              const goToSpace = await getSpace(user.uid!, spaces?.data[0]._id);
-              setContents(goToSpace?.data);
-            }
-          } catch {}
-          setSignInStatus(
-            spaces?.data.lenth !== 0 ? "/space?s=" + spaces?.data[0]._id : "/",
-          );
+          setSignInStatus("/");
         } else {
           toast.error("Your account was not found, please sign up.");
           setSignInStatus("/form");
@@ -109,7 +99,6 @@ export const useAuthGoogleSignIn = () => {
   const [signInStatus, setSignInStatus] = useState<string | null>(null);
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const authGoogleSignIn = async () => {
     try {
@@ -127,15 +116,7 @@ export const useAuthGoogleSignIn = () => {
         setSpaces(spaces?.data);
         toast.success("Successfully signed in with Google");
         localStorage.setItem("historyLoading", "true");
-        try {
-          if (spaces?.data[0]._id) {
-            const goToSpace = await getSpace(user.uid!, spaces?.data[0]._id);
-            setContents(goToSpace?.data);
-          }
-        } catch {}
-        setSignInStatus(
-          spaces?.data.length !== 0 ? "/space?s=" + spaces?.data[0]._id : "/",
-        );
+        setSignInStatus("/");
       } else {
         toast.error("Your account was not found, please sign up.");
         setSignInStatus("/form");
@@ -214,7 +195,6 @@ export const useHandleSignUpFinal = () => {
   );
   const { setUserId, setUserData } = useUserStore();
   const { setSpaces } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const handleSignUpFinal = async (
     userId: string,
@@ -235,25 +215,18 @@ export const useHandleSignUpFinal = () => {
       );
 
       if (isAxiosError(response) && response.request.status === 404) {
-        toast.error(
-          "Sorry, that username is not available, please choose a different one.",
-        );
+        toast.error("Username is not unique");
       } else if (response) {
-        toast.success("Your account has been created!");
+        toast.success("User signed up successfully");
         setUserId(userId);
         const signInResponse = await userSignIn(userId);
         setUserData(signInResponse!.data);
         const spaces = await getUserSpaces(userId);
+        console.log(spaces?.data);
         setSpaces(spaces?.data);
         localStorage.setItem("historyLoading", "true");
-        try {
-          if (spaces?.data[0]._id) {
-            const goToSpace = await getSpace(userId!, spaces?.data[0]._id);
-            setContents(goToSpace?.data);
-          }
-        } catch {}
         setSignUpFinalStatus(
-          spaces?.data.length !== 0 ? "/space?s=" + spaces?.data[0]._id : "/",
+          spaces?.data ? "/space?s=" + spaces.data[0]._id : "/",
         );
       } else {
         toast.error("Sign up failed, please try again");
