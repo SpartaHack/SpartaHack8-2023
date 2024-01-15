@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CustomButton } from "@/helpers/custom-btn";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/use-auth";
+import { auth } from "../../../db/firebase";
 
 const NotSignedIn = () => {
   const router = useRouter();
   const userId = useAuth();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [userId]);
+
   return (
     <>
-      {!userId && (
+      {!userId && !auth.currentUser?.uid && !loading && (
         <div className="flex w-full mt-6 px-10 flex-col items-center justify-center">
           <div className="flex w-[5rem] items-center justify-center">
             <CustomButton
