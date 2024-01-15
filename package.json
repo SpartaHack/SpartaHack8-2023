@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.3.8",
     "@headlessui/react": "^1.7.17",
     "@nextui-org/react": "^2.2.9",
     "axios": "^1.6.0",
