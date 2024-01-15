@@ -14,7 +14,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timeout);
   }, [userId]);
