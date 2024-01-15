@@ -1,21 +1,21 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-export let amplitude: any
-const AMPLITUDE_API_KEY = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY
+export let amplitude: any;
+const AMPLITUDE_API_KEY = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY;
 
 const useAmplitudeInit = () => {
   useEffect(() => {
     const initAmplitude = async () => {
-      amplitude = await import("@amplitude/analytics-browser")
+      amplitude = await import("@amplitude/analytics-browser");
       amplitude.init(AMPLITUDE_API_KEY, undefined, {
         logLevel: amplitude.Types.LogLevel.Warn,
         defaultTracking: {
           sessions: true,
         },
-      })
-    }
-    initAmplitude()
-  }, [])
-}
+      });
+    };
+    initAmplitude();
+  }, []);
+};
 
-export default useAmplitudeInit
+export default useAmplitudeInit;
