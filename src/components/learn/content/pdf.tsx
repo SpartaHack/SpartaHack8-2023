@@ -31,7 +31,7 @@ const PDF = () => {
         <div className="rounded-xl h-full lg:h-[85.3%] overflow-hidden">
           <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
             <Viewer
-              defaultScale={SpecialZoomLevel.PageFit}
+              defaultScale={SpecialZoomLevel.PageWidth}
               plugins={[pageNavigationPluginInstance]}
               fileUrl={pdfUrl!}
             />
