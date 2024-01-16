@@ -2,7 +2,6 @@
 import { useSpaceStore } from "@/context/space-context";
 import { ScrollShadow } from "@nextui-org/react";
 import { getUserSpaceResponse } from "../../../../types";
-import AddSpace from "./add-space";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import CustomModal from "@/helpers/custom-modal";
@@ -49,7 +48,6 @@ const Spaces = () => {
 
   return (
     <>
-      <AddSpace />
       <ScrollShadow
         hideScrollBar
         size={20}
