@@ -224,7 +224,9 @@ export const useHandleSignUpFinal = () => {
         const spaces = await getUserSpaces(userId);
         setSpaces(spaces?.data);
         localStorage.setItem("historyLoading", "true");
-        setSignUpFinalStatus("/");
+        setSignUpFinalStatus(
+          spaces?.data ? "/space?s=" + spaces.data[0]._id : "/",
+        );
       } else {
         toast.error("Sign up failed, please try again");
         setSignUpFinalStatus("/signup");

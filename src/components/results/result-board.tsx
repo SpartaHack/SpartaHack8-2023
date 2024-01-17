@@ -1,18 +1,28 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useSearchResults from "@/hooks/use-search-results";
 import Loading from "@/app/loading";
 import { ResultBoardProps, SearchType } from "../../../types";
 import ContentCard from "../dashboard/content-card";
 import NoResultsFound from "./no-results-found";
+import { auth } from "../../../db/firebase";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
   const { userId, searchResults, isLoading } = useSearchResults(query);
+  const [loading, setLoading] = useState(true);
 
-  if (!userId) {
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [userId]);
+
+  if (!userId && !auth.currentUser?.uid && !loading) {
     return (
       <NoResultsFound
-        message="SignIn/SignUp to Search!"
+        message="Sign in / Sign up to Search!"
         button_route="/signin"
         button_title="SignIn"
       />
@@ -20,9 +30,6 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
   }
   if (isLoading) {
     return <Loading />;
-  }
-  if (!searchResults || searchResults.length === 0) {
-    return <NoResultsFound />;
   }
   return (
     <div className="flex-grow">

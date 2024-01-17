@@ -5,8 +5,10 @@ import Dashboard from "@/components/dashboard/dashboard";
 import Loading from "./loading";
 import Footer from "@/ui/footer/footer";
 import ErrorMessage from "@/helpers/error-message";
+import useAmplitudeInit from "@/hooks/use-amplitude";
 
 export default function App() {
+  useAmplitudeInit();
   return (
     <main className="flex flex-col min-h-screen">
       <Suspense fallback={<Loading />}>

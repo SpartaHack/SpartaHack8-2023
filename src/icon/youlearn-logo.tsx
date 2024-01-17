@@ -2,16 +2,24 @@
 import React from "react";
 import Image from "next/image";
 import { YouLearnLogoProps } from "../../types";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useCheckPro from "@/hooks/use-check-pro";
+import useStore from "@/hooks/use-store";
+import { useLearnStore } from "@/context/learn-context";
 
 const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
   const router = useRouter();
+  const path = usePathname();
   const isPro = useCheckPro();
+  const learnContent = useStore(useLearnStore, (state) => state.learnContent);
 
   const returnHome = () => {
-    localStorage.setItem("historyLoading", "true");
-    router.push("/");
+    if (learnContent && path.includes("learn") && path.includes("space")) {
+      router.push(`/space?s=${learnContent.space_id}`);
+    } else {
+      localStorage.setItem("historyLoading", "true");
+      router.push("/");
+    }
   };
 
   return (
@@ -19,7 +27,7 @@ const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
       {size === "lg" && (
         <>
           <Image
-            src={isPro ? "youlearnProLight.svg" : "youlearn.svg"}
+            src={isPro ? "/youlearnProLight.svg" : "/youlearn.svg"}
             alt="YouLearn"
             className="dark:hidden cursor-pointer"
             width={width ? width : 110}
@@ -27,7 +35,7 @@ const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
             onClick={returnHome}
           />
           <Image
-            src={isPro ? "youlearnProDark.svg" : "youlearnDark.svg"}
+            src={isPro ? "/youlearnProDark.svg" : "/youlearnDark.svg"}
             alt="YouLearn"
             className="dark:block cursor-pointer hidden"
             width={width ? width : 110}
@@ -38,7 +46,7 @@ const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
       )}
       {size === "sm" && (
         <Image
-          src="youlearnMedia.svg"
+          src="/youlearnMedia.svg"
           alt="YouLearnMedia"
           className="cursor-pointer"
           width={width ? width : 35}

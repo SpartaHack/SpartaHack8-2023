@@ -23,6 +23,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
       <input
         type="text"
         className="w-full focus:outline-none bg-inherit h-auto mr-1"
+        autoFocus
         placeholder="Type your message here..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}

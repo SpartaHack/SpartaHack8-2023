@@ -106,6 +106,7 @@ const AddContent = () => {
     <>
       <CustomModal
         size="2xl"
+        placement="center"
         title={
           <div className="rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
@@ -125,7 +126,7 @@ const AddContent = () => {
             </div>
             <div className="flex flex-row items-baseline">
               <span className="mt-4 text-3xl font-sans">Upload contents</span>
-              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans">
+              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal hidden md:block">
                 (YouTube videos, playlist, PDFs, & mediaspace)
               </span>
             </div>

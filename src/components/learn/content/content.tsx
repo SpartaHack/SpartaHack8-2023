@@ -5,18 +5,15 @@ import PDF from "./pdf";
 import TabComponent from "../tabs/tab-component";
 import useStore from "@/hooks/use-store";
 import { useLearnStore } from "@/context/learn-context";
-import { useSearchParams } from "next/navigation";
 import { useLearnContent } from "@/hooks/use-learn-content";
 import Loading from "@/app/loading";
 import { useContainerHeight } from "@/hooks/use-container-height";
 import ErrorMessage from "@/helpers/error-message";
 import Video from "./video";
+import { ContentProps } from "../../../../types";
 
-const Content = () => {
+const Content = ({ contentId, spaceId }: ContentProps) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
-  const params = useSearchParams();
-  const contentId = params.get("c");
-  const spaceId = params.get("s");
   const { loading } = useLearnContent(
     contentId!,
     learnContent?.content_url!,

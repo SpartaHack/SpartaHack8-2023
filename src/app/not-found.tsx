@@ -19,14 +19,14 @@ export default function NotFound({}: {
     <div className="h-screen w-full flex flex-col justify-center items-center">
       <Image
         className="dark:hidden"
-        src="errorIcon.svg"
+        src="/errorIcon.svg"
         alt="errorIcon"
         width={300}
         height={300}
       />
       <Image
         className="hidden dark:block"
-        src="errorIconDark.svg"
+        src="/errorIconDark.svg"
         alt="errorIconDark"
         width={300}
         height={300}

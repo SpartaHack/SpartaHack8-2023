@@ -25,7 +25,7 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
 
   const clickCard = () => {
     localStorage.setItem("repeating", "false");
-    router.push(`/learn?c=${contentId}&s=${spaceId}`);
+    router.push(`/learn/space/${spaceId}/content/${contentId}`);
   };
 
   if (regex.test(content) && thumbnailUrl && title) {
