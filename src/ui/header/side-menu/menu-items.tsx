@@ -27,7 +27,7 @@ const MenuItems = () => {
         />
       </div>
       <div className="horizontal-line lg:hidden" />
-      <AddSpace/>
+      <AddSpace />
       <Spaces />
       <div className="horizontal-line" />
       <MenuFooter />
