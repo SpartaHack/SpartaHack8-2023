@@ -2,34 +2,34 @@ import { MarkdownElementProps } from "../../types";
 
 const markdownComponents = {
   h1: ({ ...props }: MarkdownElementProps) => (
-    <h1 className="text-xl text-center mb-6 font-extrabold" {...props} />
+    <h1 className="text-2xl text-center mb-6 font-extrabold" {...props} />
   ),
   h2: ({ ...props }: MarkdownElementProps) => (
-    <h2 className="text-lg text-center my-4 font-bold" {...props} />
+    <h2 className="text-xl text-center mb-4 font-bold" {...props} />
   ),
   h3: ({ ...props }: MarkdownElementProps) => (
-    <h3 className="text-[16px] mb-2 font-semibold" {...props} />
+    <h3 className="text-lg mb-2 font-semibold" {...props} />
   ),
   p: ({ ...props }: MarkdownElementProps) => (
-    <p className="text-base ml-1" {...props} />
+    <p className="text-base mb-4" {...props} />
   ),
   ul: ({ ...props }: MarkdownElementProps) => (
-    <ul className="list-disc list-inside" {...props} />
+    <ul className="list-disc list-inside mb-4" {...props} />
   ),
   ol: ({ ...props }: MarkdownElementProps) => (
-    <ol className="list-decimal list-inside" {...props} />
+    <ol className="list-decimal list-inside mb-4" {...props} />
   ),
   li: ({ ...props }: MarkdownElementProps) => (
-    <li className="mb-1 ml-1 mr-1" {...props} />
+    <li className="mb-1" {...props} />
   ),
   blockquote: ({ ...props }: MarkdownElementProps) => (
-    <blockquote className="pl-4 italic border-l-4" {...props} />
+    <blockquote className="pl-4 italic border-l-4 mb-4" {...props} />
   ),
   code: ({ ...props }: MarkdownElementProps) => (
-    <code className="p-1 text-sm bg-neutral-200 rounded" {...props} />
+    <code className="p-1 text-sm bg-gray-200 rounded" {...props} />
   ),
   a: ({ ...props }: MarkdownElementProps) => (
-    <a className="text-neutral-500 hover:underline" {...props} />
+    <a className="text-blue-500 hover:underline" {...props} />
   ),
 };
 

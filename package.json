@@ -9,14 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.3.8",
     "@headlessui/react": "^1.7.17",
     "@nextui-org/react": "^2.2.9",
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/page-navigation": "^3.12.0",
     "axios": "^1.6.0",
     "firebase": "^10.6.0",
     "framer-motion": "^10.16.4",
     "million": "^2.6.4",
     "next": "^14.0.4",
     "next-themes": "^0.2.1",
+    "pdfjs-dist": "^3.4.120",
     "posthog-js": "^1.98.2",
     "pusher-js": "^8.4.0-rc1",
     "react": "^18",

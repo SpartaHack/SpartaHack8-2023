@@ -5,6 +5,7 @@ import Spaces from "./spaces";
 import MenuFooter from "@/ui/footer/menu-footer";
 import useStore from "@/hooks/use-store";
 import { useUserStore } from "@/context/user-context";
+import AddSpace from "./add-space";
 
 //million-ignore
 const MenuItems = () => {
@@ -26,6 +27,7 @@ const MenuItems = () => {
         />
       </div>
       <div className="horizontal-line lg:hidden" />
+      <AddSpace />
       <Spaces />
       <div className="horizontal-line" />
       <MenuFooter />
