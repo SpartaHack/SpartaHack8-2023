@@ -487,3 +487,7 @@ export type ContentProps = {
   contentId: string;
   spaceId?: string;
 };
+
+export type ParamProps = {
+  params: { contentId: string; spaceId?: string };
+};
