@@ -1,28 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useSearchResults from "@/hooks/use-search-results";
 import Loading from "@/app/loading";
 import { ResultBoardProps, SearchType } from "../../../types";
 import ContentCard from "../dashboard/content-card";
-import NoResultsFound from "./no-results-found";
-import { auth } from "../../../db/firebase";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
   const { userId, searchResults, isLoading } = useSearchResults(query);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    const timeout = setTimeout(() => {}, 500);
 
     return () => clearTimeout(timeout);
   }, [userId]);
 
-
   if (isLoading) {
     return <Loading />;
   }
+
   return (
     <div className="flex-grow">
       <main className="flex my-12 pb-2 justify-center w-full px-10">
