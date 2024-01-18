@@ -16,7 +16,7 @@ const Dashboard = () => {
   const history = useStore(useHistoryStore, (state) => state.history);
   const { setHistory } = useHistoryStore();
   const { setUserData } = useUserStore();
-  const userId = useAuth()
+  const userId = useAuth();
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -27,7 +27,9 @@ const Dashboard = () => {
         setHistory(response?.data);
       }
       if (auth.currentUser?.uid || userId) {
-        const response = await getUser(auth.currentUser?.uid ? auth.currentUser.uid : userId!);
+        const response = await getUser(
+          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+        );
         setUserData(response?.data);
       }
     };
