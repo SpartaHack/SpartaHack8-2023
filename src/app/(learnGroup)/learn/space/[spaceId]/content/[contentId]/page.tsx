@@ -9,7 +9,6 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const response = await getContent("anonymous", params.contentId, "");
-  console.log(response?.data)
   return {
     title: response?.data.title,
     description:
