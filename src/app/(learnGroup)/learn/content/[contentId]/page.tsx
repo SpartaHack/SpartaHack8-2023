@@ -2,12 +2,11 @@ import React from "react";
 import Content from "@/components/learn/content/content";
 import { getContent } from "@/app/api/generation";
 import { Metadata } from "next";
+import { ParamProps } from "../../../../../../types";
 
-type Props = {
-  params: { contentId: string; spaceId?: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ParamProps): Promise<Metadata> {
   const response = await getContent("anonymous", params.contentId, "");
   return {
     title: response?.data.title,
