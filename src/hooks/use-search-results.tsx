@@ -12,20 +12,18 @@ const useSearchResults = (query: string) => {
   const userId = useAuth();
 
   useEffect(() => {
-    if (userId) {
-      const fetchData = async () => {
-        setIsLoading(true);
-        try {
-          const response = await searchAll(1, 10, query, userId);
-          setSearchResults(response?.data);
-        } catch (error) {
-          toast.error("Something went wrong. Redirecting to home");
-          router.push("/");
-        }
-        setIsLoading(false);
-      };
-      fetchData();
-    }
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await searchAll(1, 10, query, userId || "anonymous");
+        setSearchResults(response?.data);
+      } catch (error) {
+        toast.error("Something went wrong. Redirecting to home");
+        router.push("/");
+      }
+      setIsLoading(false);
+    };
+    fetchData();
   }, [userId, query]);
 
   return { userId, searchResults, isLoading };

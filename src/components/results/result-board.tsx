@@ -19,15 +19,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
     return () => clearTimeout(timeout);
   }, [userId]);
 
-  if (!userId && !auth.currentUser?.uid && !loading) {
-    return (
-      <NoResultsFound
-        message="Sign in / Sign up to Search!"
-        button_route="/signin"
-        button_title="SignIn"
-      />
-    );
-  }
+
   if (isLoading) {
     return <Loading />;
   }
