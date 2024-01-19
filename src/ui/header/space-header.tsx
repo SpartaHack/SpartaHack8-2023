@@ -9,6 +9,8 @@ import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import AddContent from "./add-content";
 import Loading from "@/app/loading";
+import ShareSpace from "./share-space";
+import SpaceDescription from "./space-description";
 
 const SpaceHeader = () => {
   const contentsFromStore = useStore(
@@ -77,7 +79,7 @@ const SpaceHeader = () => {
     <>
       <div className="sm:mx-24 md:mt-12 mt-8 mx-12">
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="text-4xl flex flex-row group font-sans w-full md:w-[80%] font-semibold md:mb-4">
+          <div className="text-4xl flex flex-row group font-sans w-full md:w-[70%] font-semibold md:mb-4">
             {editSpaceName ? (
               <input
                 maxLength={150}
@@ -98,8 +100,9 @@ const SpaceHeader = () => {
               onClick={handleIconClick}
             />
           </div>
-          <div className="flex flex-row my-6  md:my-0 space-between">
+          <div className="flex flex-row my-6 md:my-0 space-x-2">
             <AddContent />
+            <ShareSpace />
           </div>
         </div>
       </div>
