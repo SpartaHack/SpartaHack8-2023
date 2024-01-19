@@ -13,15 +13,18 @@ import { replaceMessage } from "../../utils";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
 import useAuth from "./use-auth";
+import { useRouter } from "next/navigation";
 
 export const useLearnContent = (
   contentId: string,
   contentURL: string,
   spaceId?: string,
 ) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
   const setError = useErrorStore((state) => state.setError);
+  const setToast = useErrorStore((store) => store.setToast)
   const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
   const userId = useAuth();
 
@@ -44,7 +47,9 @@ export const useLearnContent = (
               );
             } catch (err) {
               if (isAxiosError(err)) {
+                setToast!(true);
                 setError(err);
+                router.push("/");
               }
             }
           } else {
@@ -57,7 +62,9 @@ export const useLearnContent = (
               );
             } catch (err) {
               if (isAxiosError(err)) {
+                setToast!(true);
                 setError(err);
+                router.push("/");
               }
             }
             if (response && response.data) {
@@ -89,7 +96,9 @@ export const useLearnContent = (
               });
             } catch (err) {
               if (isAxiosError(err)) {
+                setToast!(true);
                 setError(err);
+                router.push("/");
               }
             }
           }
