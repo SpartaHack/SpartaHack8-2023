@@ -26,7 +26,7 @@ const AddSpace = () => {
         addSpaceToState(response.data);
         const goToSpace = await getSpace(userId!, response.data._id);
         setContents(goToSpace?.data);
-        router.push(`/space?s=${response.data._id}`);
+        router.push(`/space/${response.data._id}`);
       }
       toast.dismiss(addingSpace);
       toast.success("Space added");
