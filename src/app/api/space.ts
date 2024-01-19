@@ -3,12 +3,8 @@ axios.defaults.withCredentials = true;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const getSpace = async (userId: string, spaceId: string) => {
-  try {
-    const response = await axios.get(`${API_URL}/spaces/${userId}/${spaceId}`);
-    return response;
-  } catch (err) {
-    //console.log(err);
-  }
+  const response = await axios.get(`${API_URL}/spaces/${userId}/${spaceId}`);
+  return response;
 };
 
 export const addSpace = async (

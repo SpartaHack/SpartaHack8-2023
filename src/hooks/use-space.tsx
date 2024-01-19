@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { auth } from "../../db/firebase";
 import useAuth from "./use-auth";
 import { getSpace } from "@/app/api/space";
 import { useContentStore } from "@/context/content-store";
+import { useRouter } from "next/navigation";
+import { isAxiosError } from "axios";
+import { useErrorStore } from "@/context/error-context";
+import { auth } from "../../db/firebase";
 
 export const useSpace = (spaceId: string) => {
+  const router = useRouter();
   const { setContents } = useContentStore();
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
+  const setError = useErrorStore((state) => state.setError);
+  const setToast = useErrorStore((store) => store.setToast);
   const userId = useAuth();
 
   useEffect(() => {
@@ -24,9 +30,13 @@ export const useSpace = (spaceId: string) => {
             setContents(response.data);
             setLoading(false);
           }
-        } catch (error) {
-          console.error("Error fetching space data:", error);
-          setLoading(false);
+        } catch (err) {
+          if (isAxiosError(err)) {
+            setLoading(false);
+            setToast!(true);
+            setError(err);
+            router.push("/");
+          }
         }
       }
     };
