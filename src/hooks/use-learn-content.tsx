@@ -24,7 +24,7 @@ export const useLearnContent = (
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
   const setError = useErrorStore((state) => state.setError);
-  const setToast = useErrorStore((store) => store.setToast)
+  const setToast = useErrorStore((store) => store.setToast);
   const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
   const userId = useAuth();
 

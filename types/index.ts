@@ -428,6 +428,7 @@ export type OrderSummaryProps = {
 export type SpaceIconProps = {
   height?: number;
   width?: number;
+  isOpen: boolean;
   clickEvent: () => void;
 };
 
