@@ -36,18 +36,30 @@ export const useLearnContent = (
         try {
           let response;
           if (!spaceId) {
-            response = await getContent(
-              auth.currentUser?.uid ? auth.currentUser.uid : userId!,
-              contentId,
-              contentURL,
-            );
+            try {
+              response = await getContent(
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                contentId,
+                contentURL,
+              );
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setError(err);
+              }
+            }
           } else {
-            response = await getContent(
-              auth.currentUser?.uid ? auth.currentUser.uid : userId!,
-              contentId,
-              contentURL,
-              spaceId,
-            );
+            try {
+              response = await getContent(
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                contentId,
+                contentURL,
+                spaceId,
+              );
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setError(err);
+              }
+            }
             if (response && response.data) {
               response.data.space_id = spaceId;
             }

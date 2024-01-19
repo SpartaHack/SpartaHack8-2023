@@ -2,8 +2,10 @@ import { useErrorStore } from "@/context/error-context";
 import { useEffect, useState } from "react";
 import PopUp from "./custom-pop-up";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const ErrorMessage = () => {
+  const router = useRouter();
   const error = useErrorStore((state) => state.error);
   const showToast = useErrorStore((state) => state.showToast);
   const setError = useErrorStore((state) => state.setError);
@@ -53,6 +55,13 @@ const ErrorMessage = () => {
           }
           isOpen={showPopUp}
           closeModal={closeClick}
+          buttonClick={() => {
+            router.push("/");
+            setError(undefined);
+          }}
+          buttonTitle={`${
+            error?.response?.status === 403 ? "Back to home" : ""
+          }`}
         />
       )}
     </>
