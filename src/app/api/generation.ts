@@ -113,10 +113,6 @@ export const getContent = async (
     };
   }
 
-  try {
-    const response = await axios.post(`${API_URL}/content/get`, data);
-    return response;
-  } catch (err) {
-    //console.log(err);
-  }
+  const response = await axios.post(`${API_URL}/content/get`, data);
+  return response;
 };

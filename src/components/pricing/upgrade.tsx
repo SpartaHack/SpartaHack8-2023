@@ -18,7 +18,6 @@ const Upgrade = () => {
   const router = useRouter();
 
   const handleHomeClick = () => {
-    localStorage.setItem("historyLoading", "true");
     if (auth.currentUser?.uid) {
       router.push("/");
     } else {

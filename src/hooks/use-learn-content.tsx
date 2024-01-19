@@ -12,6 +12,7 @@ import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
+import useAuth from "./use-auth";
 
 export const useLearnContent = (
   contentId: string,
@@ -22,33 +23,43 @@ export const useLearnContent = (
   const [fetched, setFetched] = useState(false);
   const setError = useErrorStore((state) => state.setError);
   const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
+  const userId = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
-      const repeating = localStorage.getItem("repeating");
       if (
         contentId &&
-        auth.currentUser?.uid &&
-        !fetched &&
-        repeating == "false"
+        (auth.currentUser?.uid ? auth.currentUser.uid : userId!) &&
+        !fetched
       ) {
-        localStorage.setItem("repeating", "true");
         setLoading(true);
         try {
           let response;
           if (!spaceId) {
-            response = await getContent(
-              auth.currentUser?.uid!,
-              contentId,
-              contentURL,
-            );
+            try {
+              response = await getContent(
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                contentId,
+                contentURL,
+              );
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setError(err);
+              }
+            }
           } else {
-            response = await getContent(
-              auth.currentUser?.uid!,
-              contentId,
-              contentURL,
-              spaceId,
-            );
+            try {
+              response = await getContent(
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                contentId,
+                contentURL,
+                spaceId,
+              );
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setError(err);
+              }
+            }
             if (response && response.data) {
               response.data.space_id = spaceId;
             }
@@ -60,11 +71,11 @@ export const useLearnContent = (
           ) {
             try {
               const summaryResponse = await generateContentSummary(
-                auth.currentUser?.uid!,
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
                 contentId,
               );
               const questionsResponse = await generateContentQuestions(
-                auth.currentUser?.uid!,
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
                 contentId,
               );
               const summary = summaryResponse?.data;
@@ -83,7 +94,7 @@ export const useLearnContent = (
             }
           }
           const historyResponse = await chatHistory(
-            auth.currentUser.uid!,
+            auth?.currentUser?.uid ? auth.currentUser.uid : userId!,
             "content",
             contentId,
             spaceId ? spaceId! : "",
