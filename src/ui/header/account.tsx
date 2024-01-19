@@ -40,7 +40,6 @@ const Account = ({ name, description, picture }: AccountProps) => {
   };
 
   const handleProfile = () => {
-    localStorage.setItem("profile", "true");
     router.push("/profile");
   };
 

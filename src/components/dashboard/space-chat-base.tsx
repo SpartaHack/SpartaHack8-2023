@@ -15,7 +15,6 @@ const SpaceChatBase = () => {
       return;
     }
 
-    localStorage.setItem("chatHistoryLoading", "true");
     setIsOpen(true);
   };
 

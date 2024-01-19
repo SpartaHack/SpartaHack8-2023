@@ -20,10 +20,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const historyLoading = localStorage.getItem("historyLoading");
-      if (auth.currentUser?.uid && historyLoading === "true") {
-        localStorage.setItem("historyLoading", "false");
-        const response = await getContentHistory(auth.currentUser?.uid!);
+      if (auth.currentUser?.uid || userId) {
+        const response = await getContentHistory(auth.currentUser?.uid ? auth.currentUser.uid : userId!);
         setHistory(response?.data);
       }
       if (auth.currentUser?.uid || userId) {

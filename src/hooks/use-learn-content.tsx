@@ -25,14 +25,11 @@ export const useLearnContent = (
 
   useEffect(() => {
     const fetchData = async () => {
-      const repeating = localStorage.getItem("repeating");
       if (
         contentId &&
         auth.currentUser?.uid &&
-        !fetched &&
-        repeating == "false"
+        !fetched
       ) {
-        localStorage.setItem("repeating", "true");
         setLoading(true);
         try {
           let response;

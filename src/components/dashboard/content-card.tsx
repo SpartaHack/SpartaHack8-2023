@@ -30,7 +30,6 @@ const ContentCard = ({
   const { deleteContentFromHistoryState } = useHistoryStore();
 
   const clickCard = async () => {
-    localStorage.setItem("repeating", "false");
     if (contentAdd) {
       const loadContent = toast.loading(ToastLoadingMessages(), {
         duration: 9000,
