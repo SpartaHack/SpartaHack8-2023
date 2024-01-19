@@ -12,6 +12,7 @@ import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
+import useAuth from "./use-auth";
 
 export const useLearnContent = (
   contentId: string,
@@ -22,12 +23,13 @@ export const useLearnContent = (
   const [fetched, setFetched] = useState(false);
   const setError = useErrorStore((state) => state.setError);
   const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
+  const userId = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
       if (
         contentId &&
-        auth.currentUser?.uid &&
+        (auth.currentUser?.uid ? auth.currentUser.uid : userId!) &&
         !fetched
       ) {
         setLoading(true);
@@ -35,13 +37,13 @@ export const useLearnContent = (
           let response;
           if (!spaceId) {
             response = await getContent(
-              auth.currentUser?.uid!,
+              auth.currentUser?.uid ? auth.currentUser.uid : userId!,
               contentId,
               contentURL,
             );
           } else {
             response = await getContent(
-              auth.currentUser?.uid!,
+              auth.currentUser?.uid ? auth.currentUser.uid : userId!,
               contentId,
               contentURL,
               spaceId,
@@ -57,11 +59,11 @@ export const useLearnContent = (
           ) {
             try {
               const summaryResponse = await generateContentSummary(
-                auth.currentUser?.uid!,
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
                 contentId,
               );
               const questionsResponse = await generateContentQuestions(
-                auth.currentUser?.uid!,
+                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
                 contentId,
               );
               const summary = summaryResponse?.data;
@@ -80,7 +82,7 @@ export const useLearnContent = (
             }
           }
           const historyResponse = await chatHistory(
-            auth.currentUser.uid!,
+            auth?.currentUser?.uid ? auth.currentUser.uid : userId!,
             "content",
             contentId,
             spaceId ? spaceId! : "",

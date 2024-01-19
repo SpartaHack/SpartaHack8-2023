@@ -21,7 +21,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       if (auth.currentUser?.uid || userId) {
-        const response = await getContentHistory(auth.currentUser?.uid ? auth.currentUser.uid : userId!);
+        const response = await getContentHistory(
+          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+        );
         setHistory(response?.data);
       }
       if (auth.currentUser?.uid || userId) {
