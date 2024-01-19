@@ -473,12 +473,6 @@ export type ContentUploaderProps = {
   handleLinkUpload: (link: string) => void;
 };
 
-export type NoResultsFoundProps = {
-  message?: string;
-  button_route?: string;
-  button_title?: string;
-};
-
 export type TooltipCardProps = {
   content: string;
 };
@@ -486,4 +480,8 @@ export type TooltipCardProps = {
 export type ContentProps = {
   contentId: string;
   spaceId?: string;
+};
+
+export type ParamProps = {
+  params: { contentId: string; spaceId?: string };
 };

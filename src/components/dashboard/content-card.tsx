@@ -12,6 +12,7 @@ import { useStore } from "zustand";
 import { useSpaceStore } from "@/context/space-context";
 import { useHistoryStore } from "@/context/history-store";
 import Image from "next/image";
+import ToastLoadingMessages from "@/functions/toast-loading-messages";
 
 const ContentCard = ({
   contentAdd,
@@ -31,6 +32,9 @@ const ContentCard = ({
   const clickCard = async () => {
     localStorage.setItem("repeating", "false");
     if (contentAdd) {
+      const loadContent = toast.loading(ToastLoadingMessages(), {
+        duration: 9000,
+      });
       const userId = auth.currentUser?.uid ?? "anonymous";
       const contentStream = await addContent(userId, undefined, [contentURL!]);
       for await (const content of contentStream) {
@@ -39,6 +43,7 @@ const ContentCard = ({
           return;
         }
       }
+      toast.dismiss(loadContent);
     }
     if (!spaceId) {
       router.push(`/learn/content/${contentID}`);
