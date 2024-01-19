@@ -29,8 +29,8 @@ const SpaceIcon = ({ clickEvent, height, width, isOpen }: SpaceIconProps) => {
         </>
       ) : (
         <Icon
-          icon="gg:close"
-          className="rounded-full text-[55px] p-2 dark:bg-neutral-900 bg-white text-absolute_black dark:text-secondary border-absolute_black dark:border-secondary border-2 hover:scale-110 backdrop duration-100 cursor-pointer"
+          icon="iconamoon:close"
+          className="rounded-full text-[55px] p-2 dark:bg-neutral-900 bg-white text-white border-white border-2 hover:scale-110 backdrop duration-100 cursor-pointer"
         />
       )}
     </>
