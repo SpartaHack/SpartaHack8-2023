@@ -1,9 +1,24 @@
 import React from "react";
 import SpaceBoard from "@/components/space/space-board";
 import Header from "@/ui/header/header";
-import Footer from "@/ui/footer/footer";
+import { SpaceParamProps } from "../../../../types";
+import { Metadata } from "next";
+import { getSpace } from "@/app/api/space";
 
-const SpacePage = ({ params }: { params: { spaceId: string } }) => {
+export async function generateMetadata({
+  params,
+}: SpaceParamProps): Promise<Metadata> {
+  const response = await getSpace("anonymous", params.spaceId);
+  return {
+    title: response ? response?.data.space.name : "YouLearn",
+    description: response
+      ? response?.data.space.description
+      : "YouLearn is reimagining the future of learning by building AI software for students, teachers, and communities to democratize quality education worldwide.",
+    metadataBase: new URL("https://app.youlearn.ai"),
+  };
+}
+
+const SpacePage = ({ params }: SpaceParamProps) => {
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
