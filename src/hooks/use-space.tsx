@@ -8,6 +8,7 @@ import { useErrorStore } from "@/context/error-context";
 import { auth } from "../../db/firebase";
 
 export const useSpace = (spaceId: string) => {
+  console.log(spaceId)
   const router = useRouter();
   const { setContents } = useContentStore();
   const [loading, setLoading] = useState(false);
@@ -18,11 +19,11 @@ export const useSpace = (spaceId: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (spaceId && (auth.currentUser?.uid || userId) && !fetched) {
+      if (spaceId && !fetched) {
         setLoading(true);
         try {
           const response = await getSpace(
-            auth.currentUser?.uid || userId!,
+            auth.currentUser?.uid || userId! || "anonymous",
             spaceId,
           );
           setFetched(true);
