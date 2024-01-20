@@ -2,10 +2,10 @@ import React, { ChangeEvent, useCallback, useState, useEffect } from "react";
 import { useContentStore } from "@/context/content-store";
 import useStore from "@/hooks/use-store";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Chip } from "@nextui-org/react";
 import CustomModal from "@/helpers/custom-modal";
 import CustomTextInput from "@/helpers/custom-text-input";
 import { toast } from "sonner";
+import SpacePrivacy from "./space-privacy";
 
 // million-ignore
 const ShareSpace = () => {
@@ -74,7 +74,7 @@ const ShareSpace = () => {
           </div>
         }
         contentMain={
-          <>
+          <div className="flex flex-col">
             <CustomTextInput
               autoFocus
               value={email}
@@ -83,7 +83,8 @@ const ShareSpace = () => {
               eventChange={(e) => handleChange(e)}
               isInvalid={email === ""}
             />
-          </>
+            <SpacePrivacy />
+          </div>
         }
         footer
         actionTitle="Share"

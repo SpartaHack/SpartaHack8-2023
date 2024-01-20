@@ -29,7 +29,7 @@ const SpaceHeader = () => {
     return <Loading />;
   }
 
-  const spaceName = contents && contents.space.name;
+  const spaceName = contents && contents.space && contents.space.name;
 
   const handleIconClick = () => {
     setSpaceNameInput(spaceName);
@@ -113,8 +113,11 @@ const SpaceHeader = () => {
             <AddContent />
           </div>
         </div>
+        <div className="text-right text-sm w-full mt-0 md:mt-2 lg:mt-6 mb-2">
+          <span>{contents && contents.contents ? contents.contents.length : 0} content(s)</span>
+        </div>
       </div>
-      <div className="border-[.5px] sm:mx-24 mx-10 mt-8 dark:border-neutral-800" />
+      <div className="border-[.5px] sm:mx-24 mx-10 dark:border-neutral-800" />
     </>
   );
 };
