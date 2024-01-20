@@ -77,11 +77,11 @@ export const useLearnContent = (
           ) {
             try {
               const summaryResponse = await generateContentSummary(
-                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                auth.currentUser?.uid || userId! || "anonymous",
                 contentId,
               );
               const questionsResponse = await generateContentQuestions(
-                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                auth.currentUser?.uid || userId! || "anonymous",
                 contentId,
               );
               const summary = summaryResponse?.data;
@@ -102,7 +102,7 @@ export const useLearnContent = (
             }
           }
           const historyResponse = await chatHistory(
-            auth?.currentUser?.uid ? auth.currentUser.uid : userId!,
+            auth.currentUser?.uid || userId! || "anonymous",
             "content",
             contentId,
             spaceId ? spaceId! : "",
