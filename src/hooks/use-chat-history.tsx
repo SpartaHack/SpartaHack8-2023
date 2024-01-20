@@ -6,8 +6,10 @@ import { replaceMessage } from "../../utils";
 import { MessageType } from "../../types";
 import { useContentStore } from "@/context/content-store";
 import useStore from "@/hooks/use-store";
+import useAuth from "./use-auth";
 
 const useChatHistory = () => {
+  const userId = useAuth();
   const contents = useStore(useContentStore, (state) => state.contents);
   const [historyChat, setHistoryChat] = useState<MessageType[]>([]);
 
@@ -15,13 +17,13 @@ const useChatHistory = () => {
     if (contents) {
       const fetchChatHistory = async () => {
         const response = await chatHistory(
-          auth.currentUser?.uid!,
+          auth.currentUser?.uid! || userId!,
           "space",
           "",
           contents?.space._id!,
         );
         let fetchedHistoryChat: MessageType[] = convertChatHistoryToChatLog(
-          response?.data,
+          response?.data ? response.data : [],
         );
 
         fetchedHistoryChat.forEach((message) => {

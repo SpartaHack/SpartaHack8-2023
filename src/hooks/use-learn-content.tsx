@@ -102,14 +102,14 @@ export const useLearnContent = (
             }
           }
           const historyResponse = await chatHistory(
-            auth.currentUser?.uid || userId! || "anonymous",
+            auth.currentUser?.uid! || userId!,
             "content",
             contentId,
             spaceId ? spaceId! : "",
           );
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(
-              historyResponse.data,
+              historyResponse.data ? historyResponse.data : [],
             );
 
             chatLog.forEach((message) => {
