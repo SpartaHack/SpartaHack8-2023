@@ -79,26 +79,31 @@ const SpaceHeader = () => {
     <>
       <div className="sm:mx-24 md:mt-12 mt-8 mx-12">
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="text-4xl flex flex-row group font-sans w-full md:w-[70%] font-semibold md:mb-4">
-            {editSpaceName ? (
-              <input
-                maxLength={150}
-                className="outline-none font-sans text-neutral-400 w-full bg-transparent"
-                type="text"
-                value={spaceNameInput}
-                onChange={handleInputChange}
-                onBlur={handleInputBlur}
-                onKeyDown={handleKeyDown}
-                autoFocus
+          <div className="flex flex-col">
+            <div className="text-4xl flex flex-row group font-sans w-full font-semibold md:mb-4">
+              {editSpaceName ? (
+                <input
+                  maxLength={150}
+                  className="outline-none font-sans text-neutral-400 w-full bg-transparent"
+                  type="text"
+                  value={spaceNameInput}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
+                  onKeyDown={handleKeyDown}
+                  autoFocus
+                />
+              ) : (
+                spaceName
+              )}
+              <Icon
+                icon="lucide:pen"
+                className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
+                onClick={handleIconClick}
               />
-            ) : (
-              spaceName
-            )}
-            <Icon
-              icon="lucide:pen"
-              className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
-              onClick={handleIconClick}
-            />
+            </div>
+            <div className="w-full md:w-[60%] md:mt-0 mt-2">
+              <SpaceDescription />
+            </div>
           </div>
           <div className="flex flex-row my-6 md:my-0 space-x-2">
             <AddContent />

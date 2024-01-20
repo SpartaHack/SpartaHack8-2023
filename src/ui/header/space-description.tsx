@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SpaceDescription = () => {
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const description = "Space Description ";
 
-  const description = 'eDescription';
+  const maxLength = window.innerWidth <= 600 ? 80 : 200;
+  const isOverMaxLength = description.length > maxLength;
 
-  const toggleDescription = () => {
+  const displayText = showFullDescription
+    ? description
+    : `${description.slice(0, maxLength)}`;
+
+  const handleToggleDescription = () => {
     setShowFullDescription(!showFullDescription);
   };
 
   return (
     <>
-      <div className={`line-clamp-2 ${showFullDescription ? 'line-clamp-none' : ''} break-words`}>
-        {description}
+      <div
+        className={`line-clamp-2 flex break-words ${
+          isOverMaxLength && "cursor-pointer"
+        }`}
+        onClick={isOverMaxLength ? handleToggleDescription : undefined}
+      >
+        {displayText}
       </div>
-      <button onClick={toggleDescription}>
-        {showFullDescription ? 'See Less' : 'See More'}
-      </button>
+      {isOverMaxLength && (
+        <button onClick={handleToggleDescription}>
+          {showFullDescription ? "See Less" : "See More"}
+        </button>
+      )}
     </>
   );
 };
