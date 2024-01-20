@@ -32,7 +32,6 @@ export const useLearnContent = (
     const fetchData = async () => {
       if (
         contentId &&
-        (auth.currentUser?.uid ? auth.currentUser.uid : userId!) &&
         !fetched
       ) {
         setLoading(true);
@@ -41,7 +40,7 @@ export const useLearnContent = (
           if (!spaceId) {
             try {
               response = await getContent(
-                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                auth.currentUser?.uid || userId! || "anonymous",
                 contentId,
                 contentURL,
               );
@@ -55,7 +54,7 @@ export const useLearnContent = (
           } else {
             try {
               response = await getContent(
-                auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+                auth.currentUser?.uid || userId! || "anonymous",
                 contentId,
                 contentURL,
                 spaceId,
