@@ -11,7 +11,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (auth?.currentUser?.uid || userId!){
+    if (auth?.currentUser?.uid || userId!) {
       const trimmedMessage = message.trim();
       if (trimmedMessage !== "") {
         onMessageSubmit(trimmedMessage);
@@ -29,7 +29,11 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         type="text"
         className="w-full focus:outline-none bg-inherit h-auto mr-1"
         autoFocus
-        placeholder={(auth?.currentUser?.uid || userId!) ? "Type your message here..." : "Please sign in to chat..."}
+        placeholder={
+          auth?.currentUser?.uid || userId!
+            ? "Type your message here..."
+            : "Please sign in to chat..."
+        }
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
@@ -42,7 +46,11 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         ) : (
           <Icon
             icon="ph:paper-plane-fill"
-            className={`p-2 gradient text-[35px] rounded-xl dark:text-neutral-900 ${(auth?.currentUser?.uid || userId!) ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+            className={`p-2 gradient text-[35px] rounded-xl dark:text-neutral-900 ${
+              auth?.currentUser?.uid || userId!
+                ? "cursor-pointer"
+                : "cursor-not-allowed"
+            }`}
           />
         )}
       </button>
