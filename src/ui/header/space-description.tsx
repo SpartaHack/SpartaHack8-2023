@@ -29,7 +29,7 @@ const SpaceDescription = () => {
   const [spaceDescriptionInput, setSpaceDescriptionInput] =
     useState(description);
 
-  const maxLength = window.innerWidth <= 600 ? 70 : 260;
+  const maxLength = window.innerWidth <= 600 ? 60 : 230;
   const isOverMaxLength = description.length > maxLength;
 
   const displayText = showFullDescription
@@ -86,7 +86,7 @@ const SpaceDescription = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div
         className={`line-clamp-2 w-full text-neutral-500 dark:text-neutral-400 flex break-words ${
           isOverMaxLength && "cursor-pointer"
@@ -99,7 +99,7 @@ const SpaceDescription = () => {
           ) : (
             <input
               maxLength={300}
-              className="outline-none font-sans text-neutral-400 w-full bg-transparent"
+              className="outline-none flex font-sans text-neutral-400 w-full bg-transparent"
               type="text"
               value={spaceDescriptionInput}
               onChange={handleInputChange}
