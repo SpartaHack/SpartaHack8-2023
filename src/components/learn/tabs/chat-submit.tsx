@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import { ChatSubmitProps } from "../../../../types";
 import { Spinner } from "@nextui-org/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { auth } from "../../../../db/firebase";
+import useAuth from "@/hooks/use-auth";
 
 const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
+  const userId = useAuth();
   const [message, setMessage] = useState("");
+
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const trimmedMessage = message.trim();
-    if (trimmedMessage !== "") {
-      onMessageSubmit(trimmedMessage);
-      setMessage("");
-    } else {
+    if (auth?.currentUser?.uid || userId!) {
+      const trimmedMessage = message.trim();
+      if (trimmedMessage !== "") {
+        onMessageSubmit(trimmedMessage);
+        setMessage("");
+      }
     }
   };
 
@@ -24,7 +29,11 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         type="text"
         className="w-full focus:outline-none bg-inherit h-auto mr-1"
         autoFocus
-        placeholder="Type your message here..."
+        placeholder={
+          auth?.currentUser?.uid || userId!
+            ? "Type your message here..."
+            : "Please sign in to chat..."
+        }
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
@@ -37,7 +46,11 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         ) : (
           <Icon
             icon="ph:paper-plane-fill"
-            className="p-2 cursor-pointer gradient text-[35px] rounded-xl dark:text-neutral-900"
+            className={`p-2 gradient text-[35px] rounded-xl dark:text-neutral-900 ${
+              auth?.currentUser?.uid || userId!
+                ? "cursor-pointer"
+                : "cursor-not-allowed"
+            }`}
           />
         )}
       </button>

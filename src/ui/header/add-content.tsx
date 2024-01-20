@@ -106,7 +106,7 @@ const AddContent = () => {
     <>
       <CustomModal
         size="2xl"
-        placement="center"
+        placement="top-center"
         title={
           <div className="rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
@@ -121,7 +121,7 @@ const AddContent = () => {
         contentTitle={
           <div className="flex flex-col">
             <div className="mt-0.5 font-semibold flex flex-row">
-              <Icon icon="mi:add" className="w-4 h-4 mr-1" />
+              <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
               <span className="text-sm">Add content</span>
             </div>
             <div className="flex flex-row items-baseline">

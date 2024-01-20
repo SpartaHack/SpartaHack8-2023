@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import SpaceChatMain from "./space-chat-main";
 import { Fragment, useState, useRef } from "react";
 import SpaceIcon from "@/icon/space-icon";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const SpaceChatBase = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,10 @@ const SpaceChatBase = () => {
 
   return (
     <>
-      <SpaceIcon clickEvent={handleOpen} />
+      <SpaceIcon
+        clickEvent={isOpen ? handleClose : handleOpen}
+        isOpen={isOpen}
+      />
       {isOpen && (
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog as="div" className="absolute z-10" onClose={handleClose}>
