@@ -57,6 +57,7 @@ const SpaceHeader = () => {
         auth.currentUser?.uid!,
         contents.space._id,
         spaceNameInput,
+        contents.space.description,
         "private",
       );
       if (response) {
@@ -95,13 +96,15 @@ const SpaceHeader = () => {
               ) : (
                 spaceName
               )}
-              <Icon
-                icon="lucide:pen"
-                className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
-                onClick={handleIconClick}
-              />
+              {!editSpaceName &&
+                <Icon
+                  icon="lucide:pen"
+                  className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
+                  onClick={handleIconClick}
+                />
+              }
             </div>
-            <div className="w-full md:w-[70%] md:mt-0 mt-2">
+            <div className="w-full md:w-[70%] md:mt-0 mt-3">
               <SpaceDescription />
             </div>
           </div>
