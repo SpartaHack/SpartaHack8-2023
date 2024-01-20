@@ -29,7 +29,7 @@ const SpaceDescription = () => {
   const [spaceDescriptionInput, setSpaceDescriptionInput] =
     useState(description);
 
-  const maxLength = window.innerWidth <= 600 ? 80 : 160;
+  const maxLength = window.innerWidth <= 600 ? 70 : 260;
   const isOverMaxLength = description.length > maxLength;
 
   const displayText = showFullDescription
@@ -86,14 +86,14 @@ const SpaceDescription = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col">
       <div
-        className={`line-clamp-2 text-neutral-500 dark:text-neutral-400 flex break-words ${
+        className={`line-clamp-2 w-full text-neutral-500 dark:text-neutral-400 flex break-words ${
           isOverMaxLength && "cursor-pointer"
         }`}
         onClick={isOverMaxLength ? handleToggleDescription : undefined}
       >
-        <div className="group flex flex-row">
+        <div className="group w-full flex flex-row">
           {!editSpaceDescription ? (
             <>{displayText}</>
           ) : (
@@ -108,21 +108,24 @@ const SpaceDescription = () => {
               autoFocus
             />
           )}
-          {!editSpaceDescription && 
-          <Icon
-            icon="lucide:pen"
-            className="opacity-0 h-4 w-4 mt-1 ml-2 cursor-pointer group-hover:opacity-50"
-            onClick={handleIconClick}
-          />
-          }
+          {!editSpaceDescription && (
+            <Icon
+              icon="lucide:pen"
+              className="opacity-0 h-5 w-5 mt-1 ml-2 cursor-pointer group-hover:opacity-50"
+              onClick={handleIconClick}
+            />
+          )}
         </div>
       </div>
       {isOverMaxLength && (
-        <button onClick={handleToggleDescription} className="text-neutral-500">
+        <button
+          onClick={handleToggleDescription}
+          className="text-neutral-500 text-left"
+        >
           {showFullDescription ? "See Less" : "See More"}
         </button>
       )}
-    </>
+    </div>
   );
 };
 

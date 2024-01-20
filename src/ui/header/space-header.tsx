@@ -80,7 +80,7 @@ const SpaceHeader = () => {
     <>
       <div className="sm:mx-24 md:mt-12 mt-8 mx-12">
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full">
             <div className="text-4xl flex flex-row group font-sans w-full font-semibold md:mb-4">
               {editSpaceName ? (
                 <input
@@ -96,15 +96,15 @@ const SpaceHeader = () => {
               ) : (
                 spaceName
               )}
-              {!editSpaceName &&
+              {!editSpaceName && (
                 <Icon
                   icon="lucide:pen"
                   className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
                   onClick={handleIconClick}
                 />
-              }
+              )}
             </div>
-            <div className="w-full md:w-[70%] md:mt-0 mt-3">
+            <div className="w-full flex md:mt-0 mt-3">
               <SpaceDescription />
             </div>
           </div>
