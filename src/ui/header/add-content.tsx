@@ -121,7 +121,7 @@ const AddContent = () => {
         contentTitle={
           <div className="flex flex-col">
             <div className="mt-0.5 font-semibold flex flex-row">
-              <Icon icon="mi:add" className="w-4 h-4 mr-1" />
+              <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
               <span className="text-sm">Add content</span>
             </div>
             <div className="flex flex-row items-baseline">

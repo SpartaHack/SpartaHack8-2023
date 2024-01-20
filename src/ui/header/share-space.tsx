@@ -5,102 +5,34 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Chip } from "@nextui-org/react";
 import CustomModal from "@/helpers/custom-modal";
 import CustomTextInput from "@/helpers/custom-text-input";
-import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
-import { addContent } from "@/app/api/content";
-import LinkCard from "./link-card";
-import ContentUploader from "./content-uploader";
-import { isAxiosError } from "axios";
-import { useErrorStore } from "@/context/error-context";
 
 // million-ignore
 const ShareSpace = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
-  const [contentURL, setContentURL] = useState("");
-  const [links, setLinks] = useState<string[]>([]);
-  const setError = useErrorStore((state) => state.setError);
-  const setToast = useErrorStore((state) => state.setToast);
+  const [email, setEmail] = useState("");
+
+  const spaceName = contents && contents.space.name;
+  const spaceId = contents && contents.space._id;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setContentURL(e.target.value);
+    setEmail(e.target.value);
   };
 
-  const handleLinkUpload = (link: string) => {
-    const newLinks = [...links, link];
-    setLinks(newLinks);
-  };
-
-  const handleAdd = async () => {
-    const newLinks = contentURL === "" ? [...links] : [...links, contentURL];
-    setLinks(newLinks);
-    if (newLinks.length !== 0) {
-      for (let link of newLinks) {
-        const addingToast = toast.loading("Adding", { duration: 90000 });
-        try {
-          const contentStream = await addContent(
-            auth.currentUser?.uid!,
-            contents.space._id,
-            [link],
-          );
-          for await (const content of contentStream!) {
-            if ("error" in content) {
-              toast.error(content.error);
-            } else {
-              useContentStore.getState().addContent(content);
-              toast.success("Content added");
-            }
-          }
-          toast.dismiss(addingToast);
-        } catch (err) {
-          toast.dismiss(addingToast);
-          if (isAxiosError(err)) {
-            setToast!(true);
-            setError(err);
-          }
-        }
+  const handleCopy = async () => {
+    try {
+      const text = `/space/${spaceId}`;
+      if (typeof window !== "undefined") {
+        const domainName = window.location.origin;
+        await navigator.clipboard.writeText(domainName + text);
+        toast.success("Copied!");
+      } else {
+        throw new Error("Cannot access window object");
       }
-    } else {
-      toast.error("Content link cannot be empty.");
-    }
-    setContentURL("");
-    setLinks([]);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && contentURL) {
-      if (links.length < 5 && !links.includes(contentURL)) {
-        setLinks((prevLinks) => [...prevLinks, contentURL]);
-        setContentURL("");
-      } else if (links.includes(contentURL)) {
-        toast.warning("You have already added this content");
-      } else if (links.length >= 5) {
-        toast.warning("Only 5 contents can be added at once");
-      }
+    } catch (err) {
+      toast.error("Error. Cannot copy.");
     }
   };
-
-  const handleDelete = useCallback((indexToRemove: number) => {
-    setLinks((prevLinks) =>
-      prevLinks.filter((_, index) => index !== indexToRemove),
-    );
-  }, []);
-
-  const [currentLinkIndex, setCurrentLinkIndex] = useState(0);
-  const rotationLinks = [
-    "https://youtu.be/kqtD5dpn9C8",
-    "https://youtube.com/playlist?list=PLZHQObO...",
-    "https://arxiv.org/pdf/1706.03762.pdf",
-    "https://mediaspace.stanford.edu/media/...i257wd8",
-  ];
-
-  const updateLinkIndex = () => {
-    setCurrentLinkIndex((prevIndex) => (prevIndex + 1) % rotationLinks.length);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(updateLinkIndex, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
@@ -117,18 +49,27 @@ const ShareSpace = () => {
         }
         btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white font-sans font-semibold"
         btnStyling2="bg-black text-white border dark:bg-white dark:text-black font-sans font-semibold"
-        actionEvent={handleAdd}
+        actionEvent={() => console.log("share")}
         contentTitle={
           <div className="flex flex-col">
             <div className="mt-0.5 font-semibold flex flex-row">
-              <Icon icon="mi:add" className="w-4 h-4 mr-1" />
-              <span className="text-sm">Add content</span>
+              <Icon
+                icon="fluent:people-12-filled"
+                className="w-4 h-4 mr-1 mt-0.5"
+              />
+              <span className="text-sm">Share space</span>
             </div>
-            <div className="flex flex-row items-baseline">
-              <span className="mt-4 text-3xl font-sans">Upload contents</span>
-              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal hidden md:block">
-                (YouTube videos, playlist, PDFs, & mediaspace)
-              </span>
+            <div className="flex flex-row justify-between items-baseline">
+              <span className="mt-4 text-3xl font-sans">{spaceName}</span>
+              <div
+                className="flex-row flex cursor-pointer"
+                onClick={handleCopy}
+              >
+                <Icon icon="ph:link-bold" className="h-4 w-4 mt-0.5 mr-1" />
+                <div className="text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal hidden md:block">
+                  Copy link
+                </div>
+              </div>
             </div>
           </div>
         }
@@ -136,35 +77,16 @@ const ShareSpace = () => {
           <>
             <CustomTextInput
               autoFocus
-              onKeyDown={handleKeyDown}
-              value={contentURL}
-              placeholder={rotationLinks[currentLinkIndex]}
+              value={email}
+              placeholder="Email Address"
               type={"text"}
               eventChange={(e) => handleChange(e)}
-              isInvalid={contentURL === ""}
-              endContent={
-                contentURL !== "" || links.length !== 0 ? (
-                  <Chip radius="sm" variant="bordered">
-                    Press Enter to add more
-                  </Chip>
-                ) : (
-                  <></>
-                )
-              }
+              isInvalid={email === ""}
             />
-            <ContentUploader handleLinkUpload={handleLinkUpload} />
-            {links &&
-              links.map((link, index) => (
-                <LinkCard
-                  key={index}
-                  link={link}
-                  handleDelete={() => handleDelete(index)}
-                />
-              ))}
           </>
         }
         footer
-        actionTitle="Add content"
+        actionTitle="Share"
       />
     </>
   );
