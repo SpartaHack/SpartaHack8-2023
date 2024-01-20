@@ -8,7 +8,12 @@ import { getSpace } from "@/app/api/space";
 export async function generateMetadata({
   params,
 }: SpaceParamProps): Promise<Metadata> {
-  const response = await getSpace("anonymous", params.spaceId);
+  let response
+  try {
+    response = await getSpace("anonymous", params.spaceId);
+  } catch (err) {
+    // console.log(err)
+  }
   return {
     title: response ? response?.data.space.name : "YouLearn",
     description: response
