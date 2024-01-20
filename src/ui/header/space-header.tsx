@@ -101,7 +101,7 @@ const SpaceHeader = () => {
                 onClick={handleIconClick}
               />
             </div>
-            <div className="w-full md:w-[60%] md:mt-0 mt-2">
+            <div className="w-full md:w-[70%] md:mt-0 mt-2">
               <SpaceDescription />
             </div>
           </div>
