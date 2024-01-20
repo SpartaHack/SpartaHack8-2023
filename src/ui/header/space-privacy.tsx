@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SpacePrivacy = () => {
-  return (
-    <div>SpacePrivacy</div>
-  )
-}
+  return <div>SpacePrivacy</div>;
+};
 
-export default SpacePrivacy
+export default SpacePrivacy;
