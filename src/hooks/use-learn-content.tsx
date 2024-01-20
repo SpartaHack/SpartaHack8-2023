@@ -30,10 +30,7 @@ export const useLearnContent = (
 
   useEffect(() => {
     const fetchData = async () => {
-      if (
-        contentId &&
-        !fetched
-      ) {
+      if (contentId && !fetched) {
         setLoading(true);
         try {
           let response;

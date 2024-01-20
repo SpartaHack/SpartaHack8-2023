@@ -8,7 +8,6 @@ import { useErrorStore } from "@/context/error-context";
 import { auth } from "../../db/firebase";
 
 export const useSpace = (spaceId: string) => {
-  console.log(spaceId)
   const router = useRouter();
   const { setContents } = useContentStore();
   const [loading, setLoading] = useState(false);

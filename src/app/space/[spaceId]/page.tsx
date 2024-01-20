@@ -8,7 +8,7 @@ import { getSpace } from "@/app/api/space";
 export async function generateMetadata({
   params,
 }: SpaceParamProps): Promise<Metadata> {
-  let response
+  let response;
   try {
     response = await getSpace("anonymous", params.spaceId);
   } catch (err) {
