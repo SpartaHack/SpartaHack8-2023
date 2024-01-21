@@ -58,7 +58,7 @@ const SpaceHeader = () => {
         contents.space._id,
         spaceNameInput,
         contents.space.description,
-        contents.space.visibility
+        contents.space.visibility,
       );
       if (response) {
         useSpaceStore.getState().updateSpaceData(updatedData);

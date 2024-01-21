@@ -4,8 +4,13 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { privacyOptions } from "../../../utils/constants";
 import { useStore } from "zustand";
 import { useContentStore } from "@/context/content-store";
+import { updateSpace } from "@/app/api/space";
+import { auth } from "../../../db/firebase";
+import useAuth from "@/hooks/use-auth";
+import { toast } from "sonner";
 
 export default function SpacePrivacy() {
+  const userId = useAuth();
   const contentsFromStore = useStore(
     useContentStore,
     (state) => state.contents,
@@ -32,43 +37,66 @@ export default function SpacePrivacy() {
     }
   };
 
+  useEffect(() => {
+    const updateValue = async () => {
+      const visibility = Array.from(value).includes("Private")
+        ? `private`
+        : `public`;
+      const response = await updateSpace(
+        auth.currentUser?.uid || userId!,
+        contents.space._id,
+        contents.space.name,
+        contents.space.description,
+        visibility,
+      );
+      if (response) {
+        toast.success("Space updated successfully");
+      } else {
+        toast.error("Could not update space");
+      }
+    };
+    updateValue();
+  }, [value]);
+
   return (
-    <div className="flex w-full flex-row mt-4">
-      <Icon
-        icon={
-          Array.from(value).includes("Private")
-            ? `mingcute:lock-line`
-            : `mingcute:unlock-line`
-        }
-        className="h-10 w-10 mt-1.5"
-      />
-      <div className="flex flex-col ml-3">
-        <Select
-          variant="bordered"
-          selectedKeys={value}
-          required
-          onSelectionChange={handleSelectionChange}
-          className="w-[100px]"
-          size="sm"
-          classNames={{
-            base: "p-0 h-7",
-            trigger: "shadow-none p-0 border-none",
-            value: "text-extrabold text-md p-0 h-10",
-            selectorIcon: "flex mb-4 mr-5",
-          }}
-        >
-          {privacyOptions.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.value}
-            </SelectItem>
-          ))}
-        </Select>
-        <span className="text-sm">
-          {Array.from(value).includes("Private")
-            ? `Only people with access with space`
-            : `Accessible to the general public`}
-        </span>
-      </div>
-    </div>
+    <Select
+      items={privacyOptions}
+      className="max-w-xs"
+      variant="bordered"
+      selectedKeys={value}
+      onSelectionChange={handleSelectionChange}
+      classNames={{
+        base: "p-0 h-7",
+        trigger: "shadow-none p-0 border-none",
+        value: "text-extrabold p-0 h-10",
+      }}
+      renderValue={(privacyOptions) => {
+        return privacyOptions.map((privacyOption) => (
+          <div key={privacyOption.key} className="flex items-center gap-2">
+            <Icon className="h-8 w-8" icon={privacyOption.data?.icon!} />
+            <div className="flex flex-col ml-2">
+              <span>{privacyOption.data?.value}</span>
+              <span className="text-default-500 text-tiny mt-0.5">
+                {privacyOption.data?.description}
+              </span>
+            </div>
+          </div>
+        ));
+      }}
+    >
+      {(option) => (
+        <SelectItem key={option.value} textValue={option.value}>
+          <div className="flex gap-2 items-center">
+            <Icon className="h-8 w-8" icon={option.icon} />
+            <div className="flex flex-col ml-2">
+              <span className="text-small">{option.value}</span>
+              <span className="text-tiny text-default-400 mt-1">
+                {option.description}
+              </span>
+            </div>
+          </div>
+        </SelectItem>
+      )}
+    </Select>
   );
 }

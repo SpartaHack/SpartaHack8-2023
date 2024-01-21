@@ -83,7 +83,9 @@ const ShareSpace = () => {
               eventChange={(e) => handleChange(e)}
               isInvalid={email === ""}
             />
-            <SpacePrivacy />
+            <div className="my-2">
+              <SpacePrivacy />
+            </div>
           </div>
         }
         footer
