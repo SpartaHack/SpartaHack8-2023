@@ -111,7 +111,7 @@ const ShareSpace = () => {
                   autoFocus
                   value={email}
                   label={
-                    chips && <EmailChips chips={chips} setChips={setChips} />
+                    chips.length !== 0 ? <EmailChips chips={chips} setChips={setChips} /> : undefined
                   }
                   labelPlacement={chips.length > 0 ? "inside" : "outside"}
                   endContent={
