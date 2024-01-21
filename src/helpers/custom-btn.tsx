@@ -19,13 +19,14 @@ export const CustomButton = ({
   clickEvent,
   btnType,
   autoFocus,
+  fullWidth = true,
 }: CustomButtonProps) => {
   return popOver ? (
     <Popover placement="bottom">
       <PopoverTrigger>
         <Button
           autoFocus={autoFocus}
-          fullWidth
+          fullWidth={fullWidth}
           disableRipple
           size={size}
           type={btnType}

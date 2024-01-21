@@ -13,6 +13,7 @@ interface CustomTextInputProps {
   endContent?: React.ReactNode;
   autoFocus?: boolean;
   maxLength?: number;
+  classNames?: any;
   startContent?: JSX.Element;
 }
 
@@ -29,6 +30,7 @@ const CustomTextInput = ({
   autoFocus,
   maxLength,
   startContent,
+  classNames,
 }: CustomTextInputProps) => {
   return (
     <>
@@ -48,6 +50,7 @@ const CustomTextInput = ({
         className={`${styling}` || "max-w-xs"}
         endContent={endContent}
         maxLength={maxLength}
+        classNames={classNames}
       />
     </>
   );
