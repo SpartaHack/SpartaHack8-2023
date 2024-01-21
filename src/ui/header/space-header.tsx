@@ -116,7 +116,7 @@ const SpaceHeader = () => {
         <div className="text-right text-sm w-full mt-0 md:mt-2 lg:mt-6 mb-2">
           <span>
             {contents && contents.contents ? contents.contents.length : 0}{" "}
-            content(s)
+            {contents && contents.contents.length > 1 ? "contents" : "content"}
           </span>
         </div>
       </div>
