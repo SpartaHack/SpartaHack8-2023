@@ -30,6 +30,7 @@ export default function SpacePrivacy() {
     }
     return new Set();
   });
+  const [prevValue, setPrevValue] = useState<Selection>(value);
 
   const handleSelectionChange = (newValue: Selection) => {
     if (newValue === "all") {
@@ -62,8 +63,10 @@ export default function SpacePrivacy() {
           };
           useContentStore.getState().updateContent(updatedDataSpace);
           toast.success("Space updated successfully");
+          setPrevValue(value);
         } else {
           toast.error("Could not update space");
+          setValue(prevValue);
         }
       };
       updateValue();
