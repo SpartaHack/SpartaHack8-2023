@@ -1,11 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import HomeLinkBar from "./home-link-bar";
-import {
-  Navbar,
-  NavbarMenu,
-  NavbarMenuToggle,
-} from "@nextui-org/react";
+import { Navbar, NavbarMenu, NavbarMenuToggle } from "@nextui-org/react";
 import Account from "./account";
 import Notification from "./notification";
 import MenuItems from "./side-menu/menu-items";
