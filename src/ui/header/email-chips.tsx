@@ -13,7 +13,7 @@ const EmailChips = ({ chips, setChips }: EmailChipsProps) => {
 
   return (
     <ScrollShadow
-      className="flex flex-row gap-2 overflow-x-auto"
+      className="flex flex-row overflow-x-auto"
       hideScrollBar
       size={20}
       orientation="horizontal"

@@ -82,8 +82,8 @@ const ShareSpace = () => {
       >
         <ModalContent className="prevent-close">
           <>
-            <ModalHeader className="flex flex-col gap-1">
-              <div className="flex flex-col pt-3 px-3">
+            <ModalHeader className="flex flex-col">
+              <div className="flex flex-col px-3">
                 <div className="mt-0.5 font-semibold flex flex-row">
                   <Icon
                     icon="fluent:people-12-filled"
@@ -106,8 +106,8 @@ const ShareSpace = () => {
               </div>
             </ModalHeader>
             <ModalBody>
-              <div className="flex flex-col px-3">
-                <CustomTextInput
+              <div className="flex flex-col pl-3">
+                {/* <CustomTextInput
                   autoFocus
                   value={email}
                   label={
@@ -129,8 +129,8 @@ const ShareSpace = () => {
                   eventChange={(e) => handleChange(e)}
                   isInvalid={email === ""}
                   classNames={{ inputWrapper: "pr-0.5" }}
-                />
-                <div className="my-2">
+                /> */}
+                <div className="mb-2">
                   <SpacePrivacy />
                 </div>
               </div>
