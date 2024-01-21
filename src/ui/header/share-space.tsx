@@ -13,11 +13,13 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { CustomButton } from "@/helpers/custom-btn";
+import EmailChips from "./email-chips";
 
 // million-ignore
 const ShareSpace = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [email, setEmail] = useState("");
+  const [chips, setChips] = useState<string[]>([]);
 
   const spaceName = contents && contents.space.name;
   const spaceId = contents && contents.space._id;
@@ -42,6 +44,14 @@ const ShareSpace = () => {
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && email) {
+      if (!chips.includes(email))
+        setChips((prevChips) => [...prevChips, email]);
+      setEmail("");
+    }
+  };
 
   const handleIconClick = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -88,7 +98,7 @@ const ShareSpace = () => {
                     onClick={handleCopy}
                   >
                     <Icon icon="ph:link-bold" className="h-4 w-4 mt-0.5 mr-1" />
-                    <div className="text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal hidden md:block">
+                    <div className="text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal">
                       Copy link
                     </div>
                   </div>
@@ -100,6 +110,10 @@ const ShareSpace = () => {
                 <CustomTextInput
                   autoFocus
                   value={email}
+                  label={
+                    chips && <EmailChips chips={chips} setChips={setChips} />
+                  }
+                  labelPlacement={chips.length > 0 ? "inside" : "outside"}
                   endContent={
                     <CustomButton
                       btnType="button"
@@ -110,6 +124,7 @@ const ShareSpace = () => {
                     />
                   }
                   placeholder="Email Address"
+                  onKeyDown={handleKeyDown}
                   type={"text"}
                   eventChange={(e) => handleChange(e)}
                   isInvalid={email === ""}
