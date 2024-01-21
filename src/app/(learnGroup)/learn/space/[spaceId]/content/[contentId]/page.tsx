@@ -7,7 +7,6 @@ import { LearnParamProps } from "../../../../../../../../types";
 export async function generateMetadata({
   params,
 }: LearnParamProps): Promise<Metadata> {
-  
   let response;
   try {
     response = await getContent("anonymous", params.contentId, "");
