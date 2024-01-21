@@ -51,7 +51,7 @@ const ShareSpace = () => {
         btnStyling2="bg-black text-white border dark:bg-white dark:text-black font-sans font-semibold"
         actionEvent={() => console.log("share")}
         contentTitle={
-          <div className="flex flex-col">
+          <div className="flex flex-col pt-3 px-3">
             <div className="mt-0.5 font-semibold flex flex-row">
               <Icon
                 icon="fluent:people-12-filled"
@@ -74,7 +74,7 @@ const ShareSpace = () => {
           </div>
         }
         contentMain={
-          <div className="flex flex-col">
+          <div className="flex flex-col px-3">
             <CustomTextInput
               autoFocus
               value={email}

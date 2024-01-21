@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Select, SelectItem, Selection } from "@nextui-org/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { privacyOptions } from "../../../utils/constants";
+import { useStore } from "zustand";
+import { useContentStore } from "@/context/content-store";
 
 export default function SpacePrivacy() {
-  const [value, setValue] = React.useState<Selection>(new Set([]));
+  const contentsFromStore = useStore(
+    useContentStore,
+    (state) => state.contents,
+  );
+  const [contents, setContents] = useState(contentsFromStore);
+
+  useEffect(() => {
+    setContents(contentsFromStore);
+  }, [contentsFromStore]);
+
+  const [value, setValue] = useState<Selection>(
+    new Set([
+      contents && contents.space && contents.space.visibility === "public"
+        ? "Public"
+        : "Private",
+    ]),
+  );
+
+  const handleSelectionChange = (newValue: Selection) => {
+    if (newValue === "all") {
+      setValue(value);
+    } else {
+      setValue(newValue.size === 0 ? value : newValue);
+    }
+  };
 
   return (
     <div className="flex w-full flex-row mt-4">
@@ -14,13 +40,14 @@ export default function SpacePrivacy() {
             ? `mingcute:lock-line`
             : `mingcute:unlock-line`
         }
-        className="h-10 w-10 mt-1"
+        className="h-10 w-10 mt-1.5"
       />
       <div className="flex flex-col ml-3">
         <Select
           variant="bordered"
           selectedKeys={value}
-          onSelectionChange={setValue}
+          required
+          onSelectionChange={handleSelectionChange}
           className="w-[100px]"
           size="sm"
           classNames={{
