@@ -18,6 +18,7 @@ export type CustomButtonProps = {
   popOverTitle?: string;
   popOverStyling?: string;
   autoFocus?: boolean;
+  fullWidth?: boolean;
 };
 
 export type AccountProps = {

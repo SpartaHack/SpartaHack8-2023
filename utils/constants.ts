@@ -39,3 +39,16 @@ export const feedbackOptions = [
   { value: "🤔 My overall thoughts on YouLearn..." },
   { value: "💬 Something else..." },
 ];
+
+export const privacyOptions = [
+  {
+    value: "Private",
+    description: "Only people with access with space",
+    icon: "teenyicons:lock-circle-outline",
+  },
+  {
+    value: "Public",
+    description: "Accessible to the general public",
+    icon: "gis:earth-o",
+  },
+];

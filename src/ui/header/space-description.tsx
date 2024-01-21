@@ -67,7 +67,7 @@ const SpaceDescription = () => {
         contents.space._id,
         contents.space.name,
         spaceDescriptionInput,
-        "private",
+        contents.space.visibility,
       );
       if (response) {
         useSpaceStore.getState().updateSpaceData(updatedData);
