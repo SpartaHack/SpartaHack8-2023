@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Select, SelectItem, Selection } from "@nextui-org/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { privacyOptions } from "../../../utils/constants";
@@ -10,6 +10,7 @@ import useAuth from "@/hooks/use-auth";
 import { toast } from "sonner";
 
 export default function SpacePrivacy() {
+  const isMounted = useRef(false);
   const userId = useAuth();
   const contentsFromStore = useStore(
     useContentStore,
@@ -21,13 +22,14 @@ export default function SpacePrivacy() {
     setContents(contentsFromStore);
   }, [contentsFromStore]);
 
-  const [value, setValue] = useState<Selection>(
-    new Set([
-      contents && contents.space && contents.space.visibility === "public"
-        ? "Public"
-        : "Private",
-    ]),
-  );
+  const [value, setValue] = useState<Selection>(() => {
+    if (contents && contents.space) {
+      return new Set([
+        contents.space.visibility === "public" ? "Public" : "Private",
+      ]);
+    }
+    return new Set();
+  });
 
   const handleSelectionChange = (newValue: Selection) => {
     if (newValue === "all") {
@@ -38,24 +40,36 @@ export default function SpacePrivacy() {
   };
 
   useEffect(() => {
-    const updateValue = async () => {
-      const visibility = Array.from(value).includes("Private")
-        ? `private`
-        : `public`;
-      const response = await updateSpace(
-        auth.currentUser?.uid || userId!,
-        contents.space._id,
-        contents.space.name,
-        contents.space.description,
-        visibility,
-      );
-      if (response) {
-        toast.success("Space updated successfully");
-      } else {
-        toast.error("Could not update space");
-      }
-    };
-    updateValue();
+    const visibility = Array.from(value).includes("Private")
+      ? `private`
+      : `public`;
+    if (
+      isMounted.current &&
+      visibility !== (contents && contents.space.visibility)
+    ) {
+      const updateValue = async () => {
+        const response = await updateSpace(
+          auth.currentUser?.uid || userId!,
+          contents.space._id,
+          contents.space.name,
+          contents.space.description,
+          visibility,
+        );
+        if (response) {
+          const updatedDataSpace = {
+            _id: contents.space._id,
+            visibility: visibility,
+          };
+          useContentStore.getState().updateContent(updatedDataSpace);
+          toast.success("Space updated successfully");
+        } else {
+          toast.error("Could not update space");
+        }
+      };
+      updateValue();
+    } else {
+      isMounted.current = true;
+    }
   }, [value]);
 
   return (
