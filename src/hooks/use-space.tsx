@@ -49,7 +49,6 @@ export const useSpace = (spaceId: string) => {
       }
     } catch (err) {
       if (isAxiosError(err)) {
-        setLoading(false);
         setToast!(true);
         setError(err);
         router.push("/");
