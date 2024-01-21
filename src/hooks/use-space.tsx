@@ -21,15 +21,11 @@ export const useSpace = (spaceId: string) => {
       if (spaceId && !fetched) {
         setLoading(true);
         try {
-          const response = await getSpace(
-            auth.currentUser?.uid || userId! || "anonymous",
-            spaceId,
-          );
-          setFetched(true);
-          if (response && response.data) {
-            setContents(response.data);
-            setLoading(false);
-          }
+          const unsubscribe = auth.onAuthStateChanged((user) => {
+            const currentUserUid = user?.uid || userId || "anonymous";
+            getAndSetSpaceData(currentUserUid);
+            unsubscribe();
+          });
         } catch (err) {
           if (isAxiosError(err)) {
             setLoading(false);
@@ -40,9 +36,26 @@ export const useSpace = (spaceId: string) => {
         }
       }
     };
-
     fetchData();
-  }, [userId, auth.currentUser?.uid, spaceId]);
+  }, [userId, spaceId]);
+
+  const getAndSetSpaceData = async (uid: string) => {
+    try {
+      const response = await getSpace(uid, spaceId);
+      setFetched(true);
+      if (response && response.data) {
+        setContents(response.data);
+        setLoading(false);
+      }
+    } catch (err) {
+      if (isAxiosError(err)) {
+        setLoading(false);
+        setToast!(true);
+        setError(err);
+        router.push("/");
+      }
+    }
+  };
 
   return { loading };
 };

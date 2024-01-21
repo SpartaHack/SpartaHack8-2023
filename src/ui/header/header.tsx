@@ -1,7 +1,11 @@
 "use client";
 import React, { useRef, useState } from "react";
 import HomeLinkBar from "./home-link-bar";
-import { Navbar, NavbarMenu, NavbarMenuToggle, Switch } from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarMenu,
+  NavbarMenuToggle,
+} from "@nextui-org/react";
 import Account from "./account";
 import Notification from "./notification";
 import MenuItems from "./side-menu/menu-items";
@@ -54,7 +58,7 @@ export default function Header() {
             <NavbarMenuToggle className="prevent-close" />
           </div>
           <HomeLinkBar />
-          {(auth.currentUser?.uid || userId) ? (
+          {auth.currentUser?.uid || userId ? (
             <div className="hidden lg:flex">
               <Notification />
               <Account
@@ -77,7 +81,7 @@ export default function Header() {
               />
             </div>
           )}
-        </div> 
+        </div>
         <NavbarMenu
           onClick={handleClick}
           className="w-[50%] drop-shadow-sm md:w-[25%] overflow-hidden lg:w-[18%] bg-neutral-50 dark:bg-neutral-900 border-t dark:border-neutral-800 "
