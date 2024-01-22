@@ -108,7 +108,7 @@ const AddContent = () => {
     const interval = setInterval(updateLinkIndex, 3000);
     return () => clearInterval(interval);
   }, []);
-  
+
   return (
     <>
       <CustomModal

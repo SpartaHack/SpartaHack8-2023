@@ -115,7 +115,7 @@ const SpaceHeader = () => {
             {spacePersmission === "owner" && <AddContent />}
           </div>
           <div className=" md:hidden flex flex-row my-6 md:my-0 space-x-2 items-center">
-            <AddContent />
+            {spacePersmission === "owner" && <AddContent />}
             <ShareSpace />
           </div>
         </div>
