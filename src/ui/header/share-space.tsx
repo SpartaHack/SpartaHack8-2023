@@ -21,8 +21,8 @@ const ShareSpace = () => {
   const [email, setEmail] = useState("");
   const [chips, setChips] = useState<string[]>([]);
 
-  const spaceName = contents && contents.space.name;
-  const spaceId = contents && contents.space._id;
+  const spaceName = contents && contents.space && contents.space.name;
+  const spaceId = contents && contents.space && contents.space._id;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
