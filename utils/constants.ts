@@ -49,6 +49,6 @@ export const privacyOptions = [
   {
     value: "Public",
     description: "Accessible to the general public",
-    icon: "gis:earth-o",
+    icon: "material-symbols:public"
   },
 ];
