@@ -21,7 +21,7 @@ const ShareSpace = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [email, setEmail] = useState("");
   const [chips, setChips] = useState<string[]>([]);
-  const [copyButtonText, setCopyButtonText] = useState("Copy link to space");
+  const [copyButtonText, setCopyButtonText] = useState("Copy Link to Space");
 
   const spaceName = contents && contents.space && contents.space.name;
   const spaceId = contents && contents.space && contents.space._id;
@@ -38,7 +38,7 @@ const ShareSpace = () => {
         await navigator.clipboard.writeText(domainName + text);
         setCopyButtonText("Copied!");
         setTimeout(() => {
-          setCopyButtonText("Copy link");
+          setCopyButtonText("Copy Link to Space");
         }, 5000);
       } else {
         throw new Error("Cannot access window object");

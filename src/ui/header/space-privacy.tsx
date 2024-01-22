@@ -70,7 +70,7 @@ export default function SpacePrivacy() {
         }
       };
       updateValue();
-    } else {
+    } else {  
       isMounted.current = true;
     }
   }, [value]);
