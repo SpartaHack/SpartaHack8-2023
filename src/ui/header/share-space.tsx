@@ -21,7 +21,7 @@ const ShareSpace = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [email, setEmail] = useState("");
   const [chips, setChips] = useState<string[]>([]);
-  const [copyButtonText, setCopyButtonText] = useState("Copy link");
+  const [copyButtonText, setCopyButtonText] = useState("Copy link to space");
 
   const spaceName = contents && contents.space && contents.space.name;
   const spaceId = contents && contents.space && contents.space._id;
@@ -135,10 +135,8 @@ const ShareSpace = () => {
               clickEvent={handleCopy}
               title={
                 <div className="flex-row flex cursor-pointer">
-                  <Icon icon="ph:link-bold" className="h-4 w-4 mt-0.5 mr-1" />
-                  <div className="text-sm font-sans font-normal">
-                    {copyButtonText}
-                  </div>
+                  <Icon icon="ph:link-bold" className="h-5 w-5 mr-1" />
+                  <div className="text-sm font-sans">{copyButtonText}</div>
                 </div>
               }
               btnType="button"

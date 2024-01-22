@@ -111,7 +111,7 @@ const SpaceDescription = () => {
           {!editSpaceDescription && (
             <Icon
               icon="lucide:pen"
-              className="opacity-0 h-5 w-5 mt-1 ml-2 cursor-pointer group-hover:opacity-50"
+              className="opacity-0 h-4 w-4 mt-1 ml-2 cursor-pointer group-hover:opacity-50"
               onClick={handleIconClick}
             />
           )}
