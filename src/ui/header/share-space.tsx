@@ -102,7 +102,7 @@ const ShareSpace = () => {
               </div>
             </ModalHeader>
             <ModalBody>
-              <div className="flex flex-col pl-3">
+              <div className="flex flex-col">
                 {/* <CustomTextInput
                   autoFocus
                   value={email}
