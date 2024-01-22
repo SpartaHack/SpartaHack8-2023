@@ -43,12 +43,12 @@ export const feedbackOptions = [
 export const privacyOptions = [
   {
     value: "Private",
-    description: "Only people with access with space",
+    description: "Only people with access can open the space",
     icon: "teenyicons:lock-circle-outline",
   },
   {
     value: "Public",
-    description: "Accessible to the general public",
-    icon: "gis:earth-o",
+    description: "Anyone on the internet can view this space",
+    icon: "material-symbols:public",
   },
 ];

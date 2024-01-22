@@ -78,14 +78,13 @@ export default function SpacePrivacy() {
   return (
     <Select
       items={privacyOptions}
-      className="max-w-xs"
       variant="bordered"
       selectedKeys={value}
       onSelectionChange={handleSelectionChange}
+      className="rounded-xl dark:hover:bg-neutral-800 hover:bg-neutral-200"
       classNames={{
-        base: "p-0 h-7",
-        trigger: "shadow-none p-0 border-none",
-        value: "text-extrabold p-0 h-10",
+        trigger: "shadow-none border-none",
+        value: "text-extrabold p-0",
       }}
       renderValue={(privacyOptions) => {
         return privacyOptions.map((privacyOption) => (
@@ -93,7 +92,7 @@ export default function SpacePrivacy() {
             <Icon className="h-8 w-8" icon={privacyOption.data?.icon!} />
             <div className="flex flex-col ml-2">
               <span>{privacyOption.data?.value}</span>
-              <span className="text-default-500 text-tiny mt-0.5">
+              <span className="text-default-400 text-tiny mt-0.5">
                 {privacyOption.data?.description}
               </span>
             </div>
