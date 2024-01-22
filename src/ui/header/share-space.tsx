@@ -69,8 +69,8 @@ const ShareSpace = () => {
 
   return (
     <>
-      <div className="bg-transparent" onClick={handleIconClick}>
-        <div className="rounded-2xl px-4 py-2 bg-absolute_white border dark:border-white border-absolute_black cursor-pointer dark:bg-black text-black dark:text-white dark:white font-semibold font-sans flex flex-row">
+      <div className="bg-transparent " onClick={handleIconClick}>
+        <div className="rounded-2xl shadow px-4 py-2 bg-absolute_white border dark:border-white border-absolute_black cursor-pointer dark:bg-black text-black dark:text-white dark:white font-semibold font-sans flex flex-row">
           <Icon icon="fluent:people-12-filled" className="w-6 h-6 md:mr-1" />
           <span className="text-sm hidden mt-0.5 md:block truncate font-sans font-semibold">
             Share space
@@ -139,6 +139,7 @@ const ShareSpace = () => {
                   <div className="text-sm font-sans">{copyButtonText}</div>
                 </div>
               }
+              size="lg"
               btnType="button"
               btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-xl"
             />

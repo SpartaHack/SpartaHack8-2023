@@ -108,7 +108,7 @@ const SpaceHeader = () => {
               <SpaceDescription />
             </div>
           </div>
-          <div className="flex flex-row my-6 md:my-0 space-x-2">
+          <div className="flex flex-row my-6 md:my-0 space-x-2 items-center">
             <ShareSpace />
             <AddContent />
           </div>

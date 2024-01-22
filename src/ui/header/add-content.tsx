@@ -115,7 +115,7 @@ const AddContent = () => {
         size="2xl"
         placement="top-center"
         title={
-          <div className="rounded-2xl px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
+          <div className="rounded-2xl shadow-lg px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
             <Icon icon="mi:add" className="w-4 h-4 mt-0.5 mr-1" />
             <span className="text-sm truncate font-sans font-semibold">
               Add content

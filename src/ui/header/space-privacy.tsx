@@ -81,7 +81,7 @@ export default function SpacePrivacy() {
       variant="bordered"
       selectedKeys={value}
       onSelectionChange={handleSelectionChange}
-      className="rounded-xl dark:hover:bg-neutral-800 hover:bg-neutral-100"
+      className="rounded-xl dark:hover:bg-neutral-800 hover:bg-neutral-200"
       classNames={{
         trigger: "shadow-none border-none",
         value: "text-extrabold p-0",
