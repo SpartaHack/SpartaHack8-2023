@@ -12,43 +12,57 @@ import { MessageType } from "../../types";
 import { replaceMessage } from "../../utils";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
+import useAuth from "./use-auth";
+import { useRouter } from "next/navigation";
 
 export const useLearnContent = (
   contentId: string,
   contentURL: string,
   spaceId?: string,
 ) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
   const setError = useErrorStore((state) => state.setError);
+  const setToast = useErrorStore((store) => store.setToast);
   const { updateLearnContent, setLearnContent, learnContent } = useLearnStore();
+  const userId = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
-      const repeating = localStorage.getItem("repeating");
-      if (
-        contentId &&
-        auth.currentUser?.uid &&
-        !fetched &&
-        repeating == "false"
-      ) {
-        localStorage.setItem("repeating", "true");
+      if (contentId && !fetched) {
         setLoading(true);
         try {
           let response;
           if (!spaceId) {
-            response = await getContent(
-              auth.currentUser?.uid!,
-              contentId,
-              contentURL,
-            );
+            try {
+              response = await getContent(
+                auth.currentUser?.uid || userId! || "anonymous",
+                contentId,
+                contentURL,
+              );
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setToast!(true);
+                setError(err);
+                router.push("/");
+              }
+            }
           } else {
-            response = await getContent(
-              auth.currentUser?.uid!,
-              contentId,
-              contentURL,
-              spaceId,
-            );
+            try {
+              response = await getContent(
+                auth.currentUser?.uid || userId! || "anonymous",
+                contentId,
+                contentURL,
+                spaceId,
+              );
+            } catch (err) {
+              if (isAxiosError(err)) {
+                setToast!(true);
+                setError(err);
+                router.push("/");
+              }
+            }
             if (response && response.data) {
               response.data.space_id = spaceId;
             }
@@ -60,11 +74,11 @@ export const useLearnContent = (
           ) {
             try {
               const summaryResponse = await generateContentSummary(
-                auth.currentUser?.uid!,
+                auth.currentUser?.uid || userId! || "anonymous",
                 contentId,
               );
               const questionsResponse = await generateContentQuestions(
-                auth.currentUser?.uid!,
+                auth.currentUser?.uid || userId! || "anonymous",
                 contentId,
               );
               const summary = summaryResponse?.data;
@@ -78,19 +92,21 @@ export const useLearnContent = (
               });
             } catch (err) {
               if (isAxiosError(err)) {
+                setToast!(true);
                 setError(err);
+                router.push("/");
               }
             }
           }
           const historyResponse = await chatHistory(
-            auth.currentUser.uid!,
+            auth.currentUser?.uid! || userId!,
             "content",
             contentId,
             spaceId ? spaceId! : "",
           );
           if (historyResponse) {
             let chatLog: MessageType[] = convertChatHistoryToChatLog(
-              historyResponse.data,
+              historyResponse.data ? historyResponse.data : [],
             );
 
             chatLog.forEach((message) => {

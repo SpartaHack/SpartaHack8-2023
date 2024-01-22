@@ -1,5 +1,4 @@
 import { addSpace, getSpace } from "@/app/api/space";
-import { useContentStore } from "@/context/content-store";
 import { useErrorStore } from "@/context/error-context";
 import { useSpaceStore } from "@/context/space-context";
 import { useUserStore } from "@/context/user-context";
@@ -14,7 +13,6 @@ const AddSpace = () => {
   const router = useRouter();
   const userId = useStore(useUserStore, (state) => state.userId);
   const { addSpaceToState } = useSpaceStore();
-  const { setContents } = useContentStore();
   const setError = useErrorStore((state) => state.setError);
   const setToast = useErrorStore((state) => state.setToast);
 
@@ -24,9 +22,7 @@ const AddSpace = () => {
       const response = await addSpace(userId!, "Untitled Space", "private");
       if (response?.data) {
         addSpaceToState(response.data);
-        const goToSpace = await getSpace(userId!, response.data._id);
-        setContents(goToSpace?.data);
-        router.push(`/space?s=${response.data._id}`);
+        router.push(`/space/${response.data._id}`);
       }
       toast.dismiss(addingSpace);
       toast.success("Space added");

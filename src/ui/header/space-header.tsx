@@ -9,6 +9,8 @@ import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import AddContent from "./add-content";
 import Loading from "@/app/loading";
+import ShareSpace from "./share-space";
+import SpaceDescription from "./space-description";
 
 const SpaceHeader = () => {
   const contentsFromStore = useStore(
@@ -27,7 +29,7 @@ const SpaceHeader = () => {
     return <Loading />;
   }
 
-  const spaceName = contents && contents.space.name;
+  const spaceName = contents && contents.space && contents.space.name;
 
   const handleIconClick = () => {
     setSpaceNameInput(spaceName);
@@ -55,7 +57,8 @@ const SpaceHeader = () => {
         auth.currentUser?.uid!,
         contents.space._id,
         spaceNameInput,
-        "private",
+        contents.space.description,
+        contents.space.visibility,
       );
       if (response) {
         useSpaceStore.getState().updateSpaceData(updatedData);
@@ -77,33 +80,51 @@ const SpaceHeader = () => {
     <>
       <div className="sm:mx-24 md:mt-12 mt-8 mx-12">
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="text-4xl flex flex-row group font-sans w-full md:w-[80%] font-semibold md:mb-4">
-            {editSpaceName ? (
-              <input
-                maxLength={150}
-                className="outline-none font-sans text-neutral-400 w-full bg-transparent"
-                type="text"
-                value={spaceNameInput}
-                onChange={handleInputChange}
-                onBlur={handleInputBlur}
-                onKeyDown={handleKeyDown}
-                autoFocus
-              />
-            ) : (
-              spaceName
-            )}
-            <Icon
-              icon="lucide:pen"
-              className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
-              onClick={handleIconClick}
-            />
+          <div className="flex flex-col w-full">
+            <div className="text-4xl flex flex-row group font-sans w-full font-semibold md:mb-4">
+              {editSpaceName ? (
+                <input
+                  maxLength={150}
+                  className="outline-none font-sans text-neutral-400 w-full bg-transparent"
+                  type="text"
+                  value={spaceNameInput}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
+                  onKeyDown={handleKeyDown}
+                  autoFocus
+                />
+              ) : (
+                spaceName
+              )}
+              {!editSpaceName && (
+                <Icon
+                  icon="lucide:pen"
+                  className="opacity-0 h-4 w-4 mt-5 ml-2 cursor-pointer group-hover:opacity-50"
+                  onClick={handleIconClick}
+                />
+              )}
+            </div>
+            <div className="w-full flex md:mt-0 mt-3">
+              <SpaceDescription />
+            </div>
           </div>
-          <div className="flex flex-row my-6  md:my-0 space-between">
+          <div className="flex flex-row my-6 md:my-0 space-x-2">
+            <ShareSpace />
             <AddContent />
           </div>
         </div>
+        <div className="text-right text-sm w-full mt-0 md:mt-2 lg:mt-6 mb-2">
+          <span>
+            {contents && contents.contents && contents.contents
+              ? contents.contents.length
+              : 0}{" "}
+            {contents && contents.contents && contents.contents.length > 1
+              ? "contents"
+              : "content"}
+          </span>
+        </div>
       </div>
-      <div className="border-[.5px] sm:mx-24 mx-10 mt-8 dark:border-neutral-800" />
+      <div className="border-[.5px] sm:mx-24 mx-10 dark:border-neutral-800" />
     </>
   );
 };

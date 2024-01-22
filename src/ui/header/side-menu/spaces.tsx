@@ -8,7 +8,6 @@ import CustomModal from "@/helpers/custom-modal";
 import { useUserStore } from "@/context/user-context";
 import { deleteSpace, getSpace } from "@/app/api/space";
 import { toast } from "sonner";
-import { useContentStore } from "@/context/content-store";
 import { useRouter } from "next/navigation";
 
 const Spaces = () => {
@@ -16,14 +15,12 @@ const Spaces = () => {
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
   const userId = useStore(useUserStore, (state) => state.userId);
   const { deleteSpaceFromState } = useSpaceStore();
-  const { setContents } = useContentStore();
 
   const handleDelete = async (spaceId: string) => {
     const deletingSpace = toast.loading("Deleting space");
     const response = await deleteSpace(userId!, spaceId);
     if (response) {
       deleteSpaceFromState(spaceId);
-      localStorage.setItem("historyLoading", "true");
       router.push("/");
       toast.dismiss(deletingSpace);
       toast.success("Space deleted successfully.");
@@ -37,11 +34,8 @@ const Spaces = () => {
     spaceId?: string,
   ) => {
     if (type === "space") {
-      const contents = await getSpace(userId!, spaceId!);
-      router.push(`/space?s=${spaceId}`);
-      setContents(contents?.data);
+      router.push(`/space/${spaceId}`);
     } else {
-      localStorage.setItem("historyLoading", "true");
       router.push("/");
     }
   };

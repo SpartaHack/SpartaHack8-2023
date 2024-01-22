@@ -1,10 +1,10 @@
 import { Input } from "@nextui-org/react";
 import React from "react";
 
-interface CustomTextInputProps {
+export type CustomTextInputProps = {
   value: unknown;
   type?: string;
-  label?: string;
+  label?: string | JSX.Element;
   isInvalid?: boolean;
   eventChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
@@ -13,8 +13,10 @@ interface CustomTextInputProps {
   endContent?: React.ReactNode;
   autoFocus?: boolean;
   maxLength?: number;
+  classNames?: any;
   startContent?: JSX.Element;
-}
+  labelPlacement?: "outside" | "outside-left" | "inside" | undefined;
+};
 
 const CustomTextInput = ({
   value,
@@ -29,6 +31,8 @@ const CustomTextInput = ({
   autoFocus,
   maxLength,
   startContent,
+  classNames,
+  labelPlacement = "outside",
 }: CustomTextInputProps) => {
   return (
     <>
@@ -41,13 +45,14 @@ const CustomTextInput = ({
         label={label}
         variant="bordered"
         onKeyDown={onKeyDown}
-        labelPlacement="outside"
+        labelPlacement={labelPlacement}
         color={isInvalid ? "danger" : "success"}
         onChange={eventChange}
         size="lg"
         className={`${styling}` || "max-w-xs"}
         endContent={endContent}
         maxLength={maxLength}
+        classNames={classNames}
       />
     </>
   );

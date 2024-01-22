@@ -15,9 +15,8 @@ const YouLearnLogo = ({ size, height, width }: YouLearnLogoProps) => {
 
   const returnHome = () => {
     if (learnContent && path.includes("learn") && path.includes("space")) {
-      router.push(`/space?s=${learnContent.space_id}`);
+      router.push(`/space/${learnContent.space_id}`);
     } else {
-      localStorage.setItem("historyLoading", "true");
       router.push("/");
     }
   };

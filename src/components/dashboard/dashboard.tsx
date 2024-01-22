@@ -10,22 +10,26 @@ import { useHistoryStore } from "@/context/history-store";
 import HistoryHeader from "./history-header";
 import NotSignedIn from "./not-signed-in";
 import { useUserStore } from "@/context/user-context";
+import useAuth from "@/hooks/use-auth";
 
 const Dashboard = () => {
   const history = useStore(useHistoryStore, (state) => state.history);
   const { setHistory } = useHistoryStore();
   const { setUserData } = useUserStore();
+  const userId = useAuth();
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const historyLoading = localStorage.getItem("historyLoading");
-      if (auth.currentUser?.uid && historyLoading === "true") {
-        localStorage.setItem("historyLoading", "false");
-        const response = await getContentHistory(auth.currentUser?.uid!);
+      if (auth.currentUser?.uid || userId) {
+        const response = await getContentHistory(
+          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+        );
         setHistory(response?.data);
       }
-      if (auth.currentUser?.uid) {
-        const response = await getUser(auth.currentUser?.uid!);
+      if (auth.currentUser?.uid || userId) {
+        const response = await getUser(
+          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+        );
         setUserData(response?.data);
       }
     };
