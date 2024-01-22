@@ -32,109 +32,101 @@ export const useLearnContent = (
     const fetchData = async () => {
       if (contentId && !fetched) {
         setLoading(true);
-        try {
-          let response;
-          if (!spaceId) {
-            try {
+
+        const unsubscribe = auth.onAuthStateChanged(async (user) => {
+          try {
+            let response;
+            if (!spaceId) {
               response = await getContent(
-                auth.currentUser?.uid || userId! || "anonymous",
+                user?.uid || userId || "anonymous",
                 contentId,
                 contentURL,
               );
-            } catch (err) {
-              if (isAxiosError(err)) {
-                setToast!(true);
-                setError(err);
-                router.push("/");
-              }
-            }
-          } else {
-            try {
+            } else {
               response = await getContent(
-                auth.currentUser?.uid || userId! || "anonymous",
+                user?.uid || userId || "anonymous",
                 contentId,
                 contentURL,
                 spaceId,
               );
-            } catch (err) {
-              if (isAxiosError(err)) {
-                setToast!(true);
-                setError(err);
-                router.push("/");
+              if (response && response.data) {
+                response.data.space_id = spaceId;
               }
             }
-            if (response && response.data) {
-              response.data.space_id = spaceId;
+            setLearnContent!(response?.data);
+            if (
+              !response?.data?.generations?.questions ||
+              !response?.data?.generations?.summary
+            ) {
+              try {
+                const summaryResponse = await generateContentSummary(
+                  auth.currentUser?.uid || userId! || "anonymous",
+                  contentId,
+                );
+                const questionsResponse = await generateContentQuestions(
+                  auth.currentUser?.uid || userId! || "anonymous",
+                  contentId,
+                );
+                const summary = summaryResponse?.data;
+                const questions = questionsResponse?.data;
+
+                updateLearnContent({
+                  generations: {
+                    summary,
+                    questions,
+                  },
+                });
+              } catch (err) {
+                if (isAxiosError(err)) {
+                  setToast!(true);
+                  setError(err);
+                  router.push("/");
+                }
+              }
             }
-          }
-          setLearnContent!(response?.data);
-          if (
-            !response?.data?.generations?.questions ||
-            !response?.data?.generations?.summary
-          ) {
-            try {
-              const summaryResponse = await generateContentSummary(
-                auth.currentUser?.uid || userId! || "anonymous",
-                contentId,
+            const historyResponse = await chatHistory(
+              auth.currentUser?.uid! || userId!,
+              "content",
+              contentId,
+              spaceId ? spaceId! : "",
+            );
+            if (historyResponse) {
+              let chatLog: MessageType[] = convertChatHistoryToChatLog(
+                historyResponse.data ? historyResponse.data : [],
               );
-              const questionsResponse = await generateContentQuestions(
-                auth.currentUser?.uid || userId! || "anonymous",
-                contentId,
-              );
-              const summary = summaryResponse?.data;
-              const questions = questionsResponse?.data;
+
+              chatLog.forEach((message) => {
+                if (message.type === "bot") {
+                  const replacedResult = replaceMessage(
+                    learnContent?.type!,
+                    message.response,
+                  );
+                  message.response = replacedResult.replacedMessage;
+                  message.sources = replacedResult.sources;
+                }
+              });
 
               updateLearnContent({
-                generations: {
-                  summary,
-                  questions,
-                },
+                chatLog: chatLog,
               });
-            } catch (err) {
-              if (isAxiosError(err)) {
-                setToast!(true);
-                setError(err);
-                router.push("/");
-              }
             }
+          } catch (err) {
+            if (isAxiosError(err)) {
+              setToast!(true);
+              setError(err);
+              router.push("/");
+            }
+          } finally {
+            setLoading(false);
+            setFetched(true);
+            unsubscribe();
           }
-          const historyResponse = await chatHistory(
-            auth.currentUser?.uid! || userId!,
-            "content",
-            contentId,
-            spaceId ? spaceId! : "",
-          );
-          if (historyResponse) {
-            let chatLog: MessageType[] = convertChatHistoryToChatLog(
-              historyResponse.data ? historyResponse.data : [],
-            );
-
-            chatLog.forEach((message) => {
-              if (message.type === "bot") {
-                const replacedResult = replaceMessage(
-                  learnContent?.type!,
-                  message.response,
-                );
-                message.response = replacedResult.replacedMessage;
-                message.sources = replacedResult.sources;
-              }
-            });
-
-            updateLearnContent({
-              chatLog: chatLog,
-            });
-          }
-        } catch (error) {
-          // console.error("An error occurred while fetching data:", error);
-        } finally {
-          setLoading(false);
-          setFetched(true);
-        }
+        });
       }
     };
 
     fetchData();
-  }, [contentId, auth.currentUser?.uid, spaceId]);
+  }, [contentId, userId, spaceId]);
 
   return { loading };
 };
