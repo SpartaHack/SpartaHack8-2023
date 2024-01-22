@@ -9,6 +9,7 @@ import {
   Modal,
   ModalBody,
   ModalContent,
+  ModalFooter,
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
@@ -20,6 +21,7 @@ const ShareSpace = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [email, setEmail] = useState("");
   const [chips, setChips] = useState<string[]>([]);
+  const [copyButtonText, setCopyButtonText] = useState("Copy link");
 
   const spaceName = contents && contents.space && contents.space.name;
   const spaceId = contents && contents.space && contents.space._id;
@@ -34,7 +36,10 @@ const ShareSpace = () => {
       if (typeof window !== "undefined") {
         const domainName = window.location.origin;
         await navigator.clipboard.writeText(domainName + text);
-        toast.success("Copied!");
+        setCopyButtonText("Copied!");
+        setTimeout(() => {
+          setCopyButtonText("Copy link");
+        }, 5000);
       } else {
         throw new Error("Cannot access window object");
       }
@@ -93,15 +98,6 @@ const ShareSpace = () => {
                 </div>
                 <div className="flex flex-row justify-between items-baseline">
                   <span className="mt-4 text-3xl font-sans">{spaceName}</span>
-                  <div
-                    className="flex-row flex cursor-pointer"
-                    onClick={handleCopy}
-                  >
-                    <Icon icon="ph:link-bold" className="h-4 w-4 mt-0.5 mr-1" />
-                    <div className="text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal">
-                      Copy link
-                    </div>
-                  </div>
                 </div>
               </div>
             </ModalHeader>
@@ -130,12 +126,25 @@ const ShareSpace = () => {
                   isInvalid={email === ""}
                   classNames={{ inputWrapper: "pr-0.5" }}
                 /> */}
-                <div className="mb-2">
-                  <SpacePrivacy />
-                </div>
+                <SpacePrivacy />
               </div>
             </ModalBody>
           </>
+          <ModalFooter>
+            <CustomButton
+              clickEvent={handleCopy}
+              title={
+                <div className="flex-row flex cursor-pointer">
+                  <Icon icon="ph:link-bold" className="h-4 w-4 mt-0.5 mr-1" />
+                  <div className="text-sm font-sans font-normal">
+                    {copyButtonText}
+                  </div>
+                </div>
+              }
+              btnType="button"
+              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-xl"
+            />
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </>

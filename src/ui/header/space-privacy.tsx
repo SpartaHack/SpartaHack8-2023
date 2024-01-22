@@ -78,14 +78,13 @@ export default function SpacePrivacy() {
   return (
     <Select
       items={privacyOptions}
-      className="max-w-xs"
       variant="bordered"
       selectedKeys={value}
       onSelectionChange={handleSelectionChange}
       classNames={{
-        base: "p-0 h-7",
+        base: "p-0",
         trigger: "shadow-none p-0 border-none",
-        value: "text-extrabold p-0 h-10",
+        value: "text-extrabold p-0",
       }}
       renderValue={(privacyOptions) => {
         return privacyOptions.map((privacyOption) => (

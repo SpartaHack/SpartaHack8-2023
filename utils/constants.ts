@@ -49,6 +49,6 @@ export const privacyOptions = [
   {
     value: "Public",
     description: "Accessible to the general public",
-    icon: "material-symbols:public"
+    icon: "material-symbols:public",
   },
 ];
