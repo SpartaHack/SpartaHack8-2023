@@ -26,10 +26,6 @@ const SpaceHeader = () => {
     setContents(contentsFromStore);
   }, [contentsFromStore]);
 
-  if (!contents) {
-    return <Loading />;
-  }
-
   const spaceName = contents && contents.space && contents.space.name;
   const spacePersmission = useSpacePermission(contents && contents);
 
@@ -77,6 +73,10 @@ const SpaceHeader = () => {
       handleInputBlur();
     }
   };
+
+  if (!contents) {
+    return <Loading />;
+  }
 
   return (
     <>
