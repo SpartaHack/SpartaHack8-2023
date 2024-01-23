@@ -11,6 +11,7 @@ import AddContent from "./add-content";
 import Loading from "@/app/loading";
 import ShareSpace from "./share-space";
 import SpaceDescription from "./space-description";
+import useSpacePermission from "@/hooks/use-space-permissions";
 
 const SpaceHeader = () => {
   const contentsFromStore = useStore(
@@ -25,11 +26,8 @@ const SpaceHeader = () => {
     setContents(contentsFromStore);
   }, [contentsFromStore]);
 
-  if (!contents) {
-    return <Loading />;
-  }
-
   const spaceName = contents && contents.space && contents.space.name;
+  const spacePersmission = useSpacePermission(contents && contents);
 
   const handleIconClick = () => {
     setSpaceNameInput(spaceName);
@@ -76,6 +74,10 @@ const SpaceHeader = () => {
     }
   };
 
+  if (!contents) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div className="sm:mx-24 md:mt-12 mt-8 mx-12">
@@ -108,9 +110,13 @@ const SpaceHeader = () => {
               <SpaceDescription />
             </div>
           </div>
-          <div className="flex flex-row my-6 md:my-0 space-x-2">
+          <div className="hidden md:flex flex-row my-6 md:my-0 space-x-2 items-center">
             <ShareSpace />
-            <AddContent />
+            {spacePersmission === "owner" && <AddContent />}
+          </div>
+          <div className=" md:hidden flex flex-row my-6 md:my-0 space-x-2 items-center">
+            {spacePersmission === "owner" && <AddContent />}
+            <ShareSpace />
           </div>
         </div>
         <div className="text-right text-sm w-full mt-0 md:mt-2 lg:mt-6 mb-2">

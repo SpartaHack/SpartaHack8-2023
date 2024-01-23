@@ -9,6 +9,7 @@ import {
   Modal,
   ModalBody,
   ModalContent,
+  ModalFooter,
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
@@ -20,6 +21,7 @@ const ShareSpace = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const [email, setEmail] = useState("");
   const [chips, setChips] = useState<string[]>([]);
+  const [copyButtonText, setCopyButtonText] = useState("Copy Link to Space");
 
   const spaceName = contents && contents.space && contents.space.name;
   const spaceId = contents && contents.space && contents.space._id;
@@ -34,7 +36,10 @@ const ShareSpace = () => {
       if (typeof window !== "undefined") {
         const domainName = window.location.origin;
         await navigator.clipboard.writeText(domainName + text);
-        toast.success("Copied!");
+        setCopyButtonText("Copied!");
+        setTimeout(() => {
+          setCopyButtonText("Copy Link to Space");
+        }, 5000);
       } else {
         throw new Error("Cannot access window object");
       }
@@ -64,8 +69,8 @@ const ShareSpace = () => {
 
   return (
     <>
-      <div className="bg-transparent" onClick={handleIconClick}>
-        <div className="rounded-2xl px-4 py-2 bg-white border-2 dark:border-white border-absolute_black cursor-pointer dark:bg-black text-black dark:text-white dark:white font-semibold font-sans flex flex-row">
+      <div className="bg-transparent " onClick={handleIconClick}>
+        <div className="rounded-2xl shadow px-4 py-2 bg-absolute_white border dark:border-white border-absolute_black cursor-pointer dark:bg-black text-black dark:text-white dark:white font-semibold font-sans flex flex-row">
           <Icon icon="fluent:people-12-filled" className="w-6 h-6 md:mr-1" />
           <span className="text-sm hidden mt-0.5 md:block truncate font-sans font-semibold">
             Share space
@@ -93,20 +98,11 @@ const ShareSpace = () => {
                 </div>
                 <div className="flex flex-row justify-between items-baseline">
                   <span className="mt-4 text-3xl font-sans">{spaceName}</span>
-                  <div
-                    className="flex-row flex cursor-pointer"
-                    onClick={handleCopy}
-                  >
-                    <Icon icon="ph:link-bold" className="h-4 w-4 mt-0.5 mr-1" />
-                    <div className="text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal">
-                      Copy link
-                    </div>
-                  </div>
                 </div>
               </div>
             </ModalHeader>
             <ModalBody>
-              <div className="flex flex-col pl-3">
+              <div className="flex flex-col">
                 {/* <CustomTextInput
                   autoFocus
                   value={email}
@@ -130,12 +126,24 @@ const ShareSpace = () => {
                   isInvalid={email === ""}
                   classNames={{ inputWrapper: "pr-0.5" }}
                 /> */}
-                <div className="mb-2">
-                  <SpacePrivacy />
-                </div>
+                <SpacePrivacy />
               </div>
             </ModalBody>
           </>
+          <ModalFooter>
+            <CustomButton
+              clickEvent={handleCopy}
+              title={
+                <div className="flex-row flex cursor-pointer">
+                  <Icon icon="ph:link-bold" className="h-5 w-5 mr-1" />
+                  <div className="text-sm font-sans">{copyButtonText}</div>
+                </div>
+              }
+              size="lg"
+              btnType="button"
+              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-xl"
+            />
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </>

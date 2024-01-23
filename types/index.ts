@@ -342,14 +342,6 @@ export type Space = {
   visibility: string;
 };
 
-export type AccessControl = {
-  _id: string;
-  space_id: string;
-  user_id: string;
-  role: string;
-  created_at: string;
-};
-
 export type SpaceContentResponse = {
   space: Space;
   contents: Content[];
@@ -490,4 +482,18 @@ export type LearnParamProps = {
 
 export type SpaceParamProps = {
   params: { spaceId: string };
+};
+
+export type AccessControl = {
+  _id: string;
+  created_at: string;
+  space: {
+    id: string;
+    collection: string;
+  };
+  user: {
+    id: string;
+    collection: string;
+  };
+  role: string;
 };

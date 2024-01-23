@@ -2,6 +2,7 @@ import React from "react";
 import Response from "./response";
 import { MessageProps } from "../../../../types";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import markdownComponents from "@/functions/markdown-components";
 
 const Message = ({
   message,
@@ -9,13 +10,6 @@ const Message = ({
   copiedState,
   copyToClipboard,
 }: MessageProps) => {
-  const renderLink = ({ ...props }) => (
-    <a
-      className="text-neutral-500 dark:text-neutral-400 hover:underline"
-      {...props}
-    />
-  );
-
   return (
     <div
       key={index}
@@ -28,9 +22,7 @@ const Message = ({
       <Response
         message={message.response}
         source={message.sources}
-        additionalMarkdown={{
-          a: renderLink,
-        }}
+        additionalMarkdown={markdownComponents}
       />
 
       {message.type === "bot" && (
