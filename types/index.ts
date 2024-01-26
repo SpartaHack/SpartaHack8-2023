@@ -497,3 +497,7 @@ export type AccessControl = {
   };
   role: string;
 };
+
+export type LearnContentProps = {
+  type: string;
+};

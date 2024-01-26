@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import YoutubeVideo from "./youtube-video";
-import PDF from "./pdf";
 import TabComponent from "../tabs/tab-component";
 import useStore from "@/hooks/use-store";
 import { useLearnStore } from "@/context/learn-context";
@@ -9,8 +7,8 @@ import { useLearnContent } from "@/hooks/use-learn-content";
 import Loading from "@/app/loading";
 import { useContainerHeight } from "@/hooks/use-container-height";
 import ErrorMessage from "@/helpers/error-message";
-import Video from "./video";
 import { ContentProps } from "../../../../types";
+import LearnContent from "./learn-content";
 
 const Content = ({ contentId, spaceId }: ContentProps) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -29,9 +27,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
         <Loading />
       ) : (
         <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
-          {type === "youtube" && <YoutubeVideo />}
-          {(type === "pdf" || type === "arxiv") && <PDF />}
-          {type === "mediaspace" && <Video />}
+          <LearnContent type={type} />
           <div
             className="lg:tabs-lg tabs-sm"
             style={type == "youtube" ? {} : { height: `${height - 25}px` }}
