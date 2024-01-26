@@ -9,6 +9,7 @@ import { useContainerHeight } from "@/hooks/use-container-height";
 import ErrorMessage from "@/helpers/error-message";
 import { ContentProps } from "../../../../types";
 import LearnContent from "./learn-content";
+import Chapters from "./chapters";
 
 const Content = ({ contentId, spaceId }: ContentProps) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
@@ -18,7 +19,10 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
     spaceId!,
   );
   const type = learnContent?.type!;
-  const { elementHeight, elementWidth } = useContainerHeight({ type: type });
+  const { elementHeight, elementWidth } = useContainerHeight({
+    type: type,
+    chapters: true,
+  });
 
   return (
     <main className="flex-grow min-h-screen">
@@ -27,17 +31,24 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
         <Loading />
       ) : (
         <div className="flex flex-col">
-          <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
+          <div className="flex flex-col w-full pt-2 px-2 sm:p-4 lg:flex-row">
             <LearnContent type={type} />
             <div
               className="lg:tabs-lg tabs-sm"
-              style={type == "youtube" ? {} : { height: `${elementHeight - 25}px` }}
+              style={
+                type == "youtube" ? {} : { height: `${elementHeight - 25}px` }
+              }
             >
               <TabComponent />
             </div>
           </div>
-          <div style={{width: `${elementWidth}px`}}>
-            
+          <div
+            className=" px-2 md:px-0 mt-4 md:mt-0"
+            style={{ width: `${elementWidth}px` }}
+          >
+            <div className="md:ml-4 min-h-24 flex flex-col rounded-lg bg-absolute_white dark:bg-absolute_black">
+              <Chapters />
+            </div>
           </div>
         </div>
       )}

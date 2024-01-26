@@ -136,6 +136,7 @@ export type DashboardProps = {
 
 export type useContainerHeightProps = {
   type: string;
+  chapters?: boolean;
 };
 
 export type MessageType = {
