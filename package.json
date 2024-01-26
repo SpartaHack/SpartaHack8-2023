@@ -21,7 +21,7 @@
     "next": "^14.0.4",
     "next-themes": "^0.2.1",
     "pdfjs-dist": "^3.4.120",
-    "posthog-js": "^1.98.2",
+    "posthog-js": "^1.103.0",
     "pusher-js": "^8.4.0-rc1",
     "react": "^18",
     "react-dom": "^18",

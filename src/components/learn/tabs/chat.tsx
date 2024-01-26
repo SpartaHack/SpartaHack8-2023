@@ -17,7 +17,7 @@ import useAutoScroll from "@/hooks/use-auto-scroll";
 const Chat = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const type = learnContent?.type!;
-  const height = useContainerHeight({ type: type });
+  const dimensions = useContainerHeight({ type: type });
   const {
     handleChatSubmit,
     chatLog: chatSubmitLog,
@@ -40,8 +40,8 @@ const Chat = () => {
       className="lg:h-full h-[70vh] flex-col flex"
       style={
         type === "youtube" || type === "mediaspace"
-          ? { maxHeight: `${height - 90}px` }
-          : { maxHeight: `${height - 100}px` }
+          ? { maxHeight: `${dimensions.elementHeight - 90}px` }
+          : { maxHeight: `${dimensions.elementHeight - 100}px` }
       }
     >
       <ScrollShadow

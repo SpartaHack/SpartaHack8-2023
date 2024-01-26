@@ -8,12 +8,12 @@ import { useLearnStore } from "@/context/learn-context";
 const Quiz = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const type = learnContent?.type!;
-  const height = useContainerHeight({ type: type });
+  const dimensions = useContainerHeight({ type: type });
 
   return (
     <div
       className="lg:h-full h-[70vh] flex-col flex"
-      style={{ maxHeight: `${height - 90}px` }}
+      style={{ maxHeight: `${dimensions.elementHeight - 90}px` }}
     >
       <ScrollShadow
         size={5}
