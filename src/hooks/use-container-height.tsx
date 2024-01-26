@@ -35,5 +35,5 @@ export const useContainerHeight = ({ type }: useContainerHeightProps) => {
     elementHeight = (containerHeight! * 1318) / 1500;
   }
 
-  return elementHeight;
+  return { elementHeight, elementWidth};
 };

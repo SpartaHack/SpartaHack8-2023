@@ -12,7 +12,7 @@ import markdownComponents from "@/functions/markdown-components";
 const Summary = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const type = learnContent?.type!;
-  const height = useContainerHeight({ type: type });
+  const dimensions = useContainerHeight({ type: type });
   const summary = learnContent
     ? replaceMessage(type, learnContent?.generations.summary!)
     : { replacedMessage: "", sources: [""] };
@@ -24,8 +24,8 @@ const Summary = () => {
       className="lg:h-full h-[70vh] flex-col flex"
       style={
         type === "youtube" || type === "mediaspace"
-          ? { maxHeight: `${height - 90}px` }
-          : { maxHeight: `${height - 100}px` }
+          ? { maxHeight: `${dimensions.elementHeight - 90}px` }
+          : { maxHeight: `${dimensions.elementHeight - 100}px` }
       }
     >
       <ScrollShadow

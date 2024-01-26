@@ -18,7 +18,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
     spaceId!,
   );
   const type = learnContent?.type!;
-  const height = useContainerHeight({ type: type });
+  const { elementHeight, elementWidth } = useContainerHeight({ type: type });
 
   return (
     <main className="flex-grow min-h-screen">
@@ -26,13 +26,18 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
-          <LearnContent type={type} />
-          <div
-            className="lg:tabs-lg tabs-sm"
-            style={type == "youtube" ? {} : { height: `${height - 25}px` }}
-          >
-            <TabComponent />
+        <div className="flex flex-col">
+          <div className="flex flex-col w-full pt-2 pl-2 pr-2 sm:p-4 lg:flex-row">
+            <LearnContent type={type} />
+            <div
+              className="lg:tabs-lg tabs-sm"
+              style={type == "youtube" ? {} : { height: `${elementHeight - 25}px` }}
+            >
+              <TabComponent />
+            </div>
+          </div>
+          <div style={{width: `${elementWidth}px`}}>
+            
           </div>
         </div>
       )}
