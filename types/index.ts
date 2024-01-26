@@ -136,6 +136,7 @@ export type DashboardProps = {
 
 export type useContainerHeightProps = {
   type: string;
+  chapters?: boolean;
 };
 
 export type MessageType = {
@@ -496,4 +497,8 @@ export type AccessControl = {
     collection: string;
   };
   role: string;
+};
+
+export type LearnContentProps = {
+  type: string;
 };

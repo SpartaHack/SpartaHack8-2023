@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useContainerHeightProps } from "../../types";
 
-export const useContainerHeight = ({ type }: useContainerHeightProps) => {
+export const useContainerHeight = ({
+  type,
+  chapters,
+}: useContainerHeightProps) => {
   const [containerWidth, setContainerWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0,
   );
@@ -35,5 +38,15 @@ export const useContainerHeight = ({ type }: useContainerHeightProps) => {
     elementHeight = (containerHeight! * 1318) / 1500;
   }
 
-  return elementHeight;
+  if (chapters) {
+    if (containerWidth <= 768) {
+      elementWidth = containerWidth;
+    } else if (containerWidth <= 1024) {
+      elementWidth = containerWidth * 0.98;
+    } else {
+      elementWidth = containerWidth * 0.685;
+    }
+  }
+
+  return { elementHeight, elementWidth };
 };
