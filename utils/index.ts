@@ -16,7 +16,7 @@ export const replaceMessage = (() => {
   return (type: string, message: string) => {
     let regex: RegExp;
 
-    regex = /(\[[^\],]+\])/g;
+    regex = /(【[^\]】,]+】)/g;
 
     const replacedMessage = message.replace(regex, (match) => {
       counter++;
