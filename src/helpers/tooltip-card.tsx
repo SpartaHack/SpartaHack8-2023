@@ -12,11 +12,11 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
   const regex = /\[[a-zA-Z0-9_-]+\]/;
   const contents = useStore(useContentStore, (state) => state.contents);
 
-  const spaceId = contents?.space._id;
+  const spaceId = contents && contents.space ? contents.space._id : null;
 
   const matchedContent = useMemo(() => {
     return contents?.contents?.find(
-      (item: Content) => item._id === contentId || item.id === contentId,
+      (item: Content) => item._id === contentId || item.id === contentId
     );
   }, [contents, contentId]);
 
