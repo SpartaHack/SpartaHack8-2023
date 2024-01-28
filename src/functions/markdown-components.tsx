@@ -11,7 +11,7 @@ const markdownComponents = {
     <h3 className="text-lg mb-2 font-semibold" {...props} />
   ),
   p: ({ ...props }: MarkdownElementProps) => (
-    <p className="text-base" {...props} />
+    <p className="text-base mb-4" {...props} />
   ),
   ul: ({ ...props }: MarkdownElementProps) => (
     <ul className="list-disc list-inside mb-4" {...props} />
