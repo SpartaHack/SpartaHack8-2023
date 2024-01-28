@@ -9,10 +9,12 @@ import { checkoutSession } from "@/app/api/payment";
 import { auth } from "../../../db/firebase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const UpgradeModal: FC = () => {
   const router = useRouter();
   const [selected, setSelected] = useState<string>("yearly");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleTabChange = (key: string | number) => {
     setSelected(String(key));
@@ -23,8 +25,10 @@ const UpgradeModal: FC = () => {
       toast.error("Please sign in to upgrade.");
       router.push("/signin");
     } else {
+      setLoading(true);
       const response = await checkoutSession(auth.currentUser?.uid, selected);
       router.replace(`${response?.data.url}`);
+      setLoading(false);
     }
   };
 
@@ -62,6 +66,7 @@ const UpgradeModal: FC = () => {
           btnStyling="bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-xl w-full"
           btnType="button"
           clickEvent={handleClick}
+          isLoading={loading}
         />
         <div className="border-t-[0.5px] md:hidden md:mt-6 text-primary" />
       </div>
