@@ -26,7 +26,7 @@ export default function Header() {
   const ref = useRef<HTMLDivElement>(null);
   const { theme, setTheme } = useTheme();
   const [isLightMode, setIsLightMode] = useState(
-    theme == "light" ? true : false
+    theme == "light" ? true : false,
   );
 
   const handleThemeChange = () => {

@@ -8,15 +8,15 @@ import Image from "next/image";
 
 const TooltipCard = ({ content }: TooltipCardProps) => {
   const router = useRouter();
-  const contentId = content.replace(/^\[|\]$/g, "");
-  const regex = /\[[a-zA-Z0-9_-]+\]/;
+  const contentId = content.replace(/^\【|\】$/g, "");
+  const regex = /\【[a-zA-Z0-9_-]+\】/;
   const contents = useStore(useContentStore, (state) => state.contents);
 
   const spaceId = contents && contents.space ? contents.space._id : null;
 
   const matchedContent = useMemo(() => {
     return contents?.contents?.find(
-      (item: Content) => item._id === contentId || item.id === contentId
+      (item: Content) => item._id === contentId || item.id === contentId,
     );
   }, [contents, contentId]);
 
@@ -26,6 +26,12 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
   const clickCard = () => {
     router.push(`/learn/space/${spaceId}/content/${contentId}`);
   };
+
+  console.log(content);
+  console.log(contents && contents.contents);
+  console.log(thumbnailUrl);
+  console.log(title);
+  console.log(regex.test(content));
 
   if (regex.test(content) && thumbnailUrl && title) {
     return (
