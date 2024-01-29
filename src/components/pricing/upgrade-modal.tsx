@@ -9,7 +9,6 @@ import { checkoutSession } from "@/app/api/payment";
 import { auth } from "../../../db/firebase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
 
 const UpgradeModal: FC = () => {
   const router = useRouter();

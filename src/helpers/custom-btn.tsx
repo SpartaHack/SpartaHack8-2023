@@ -5,9 +5,9 @@ import {
   PopoverTrigger,
   PopoverContent,
   Button,
+  Spinner,
 } from "@nextui-org/react";
 import { CustomButtonProps } from "../../types";
-import { Loader2 } from "lucide-react";
 
 export const CustomButton = ({
   title,
@@ -34,7 +34,7 @@ export const CustomButton = ({
           type={btnType}
           className={`${btnStyling}`}
         >
-          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {isLoading && <Spinner size="sm" />}
           {title}
         </Button>
       </PopoverTrigger>
@@ -53,7 +53,7 @@ export const CustomButton = ({
       className={`${btnStyling}`}
       onClick={clickEvent}
     >
-      {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+      {isLoading && <Spinner size="sm" />}
       {title}
     </Button>
   );
