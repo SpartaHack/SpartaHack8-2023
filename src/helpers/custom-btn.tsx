@@ -5,6 +5,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   Button,
+  Spinner,
 } from "@nextui-org/react";
 import { CustomButtonProps } from "../../types";
 
@@ -20,6 +21,7 @@ export const CustomButton = ({
   btnType,
   autoFocus,
   fullWidth = true,
+  isLoading,
 }: CustomButtonProps) => {
   return popOver ? (
     <Popover placement="bottom">
@@ -32,6 +34,7 @@ export const CustomButton = ({
           type={btnType}
           className={`${btnStyling}`}
         >
+          {isLoading && <Spinner size="sm" />}
           {title}
         </Button>
       </PopoverTrigger>
@@ -50,6 +53,7 @@ export const CustomButton = ({
       className={`${btnStyling}`}
       onClick={clickEvent}
     >
+      {isLoading && <Spinner size="sm" />}
       {title}
     </Button>
   );
