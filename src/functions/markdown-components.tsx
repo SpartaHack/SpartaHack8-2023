@@ -26,7 +26,10 @@ const markdownComponents = {
     <blockquote className="pl-4 italic border-l-4 mb-4" {...props} />
   ),
   pre: ({ ...props }: MarkdownElementProps) => (
-    <pre className="p-1 dark:bg-absolute_black my-1 rounded-lg bg-neutral-200 overflow-x-auto" {...props} />
+    <pre
+      className="p-1 dark:bg-absolute_black my-1 rounded-lg bg-neutral-200 overflow-x-auto"
+      {...props}
+    />
   ),
   table: ({ ...props }: MarkdownElementProps) => (
     <table className="min-w-full" {...props} />
