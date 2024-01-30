@@ -13,6 +13,7 @@ import ShareSpace from "./share-space";
 import SpaceDescription from "./space-description";
 import useSpacePermission from "@/hooks/use-space-permissions";
 import CloneSpace from "./clone-space";
+import useAuth from "@/hooks/use-auth";
 
 const SpaceHeader = () => {
   const contentsFromStore = useStore(
@@ -22,6 +23,7 @@ const SpaceHeader = () => {
   const [contents, setContents] = useState(contentsFromStore);
   const [editSpaceName, setEditSpaceName] = useState(false);
   const [spaceNameInput, setSpaceNameInput] = useState("");
+  const userId = useAuth();
 
   useEffect(() => {
     setContents(contentsFromStore);
@@ -113,10 +115,10 @@ const SpaceHeader = () => {
           </div>
           <div className="hidden md:flex flex-row my-6 md:my-0 space-x-2 items-center">
             <ShareSpace />
-            {spacePersmission === "owner" ? <AddContent /> : <CloneSpace />}
+            {(userId! || auth?.currentUser?.uid!) && (spacePersmission === "owner" ? <AddContent /> : <CloneSpace />)}
           </div>
           <div className=" md:hidden flex flex-row my-6 md:my-0 space-x-2 items-center">
-            {spacePersmission === "owner" ? <AddContent /> : <CloneSpace />}
+            {(userId! || auth?.currentUser?.uid!) && (spacePersmission === "owner" ? <AddContent /> : <CloneSpace />)}
             <ShareSpace />
           </div>
         </div>
