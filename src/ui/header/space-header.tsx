@@ -12,6 +12,7 @@ import Loading from "@/app/loading";
 import ShareSpace from "./share-space";
 import SpaceDescription from "./space-description";
 import useSpacePermission from "@/hooks/use-space-permissions";
+import CloneSpace from "./clone-space";
 
 const SpaceHeader = () => {
   const contentsFromStore = useStore(
@@ -112,10 +113,10 @@ const SpaceHeader = () => {
           </div>
           <div className="hidden md:flex flex-row my-6 md:my-0 space-x-2 items-center">
             <ShareSpace />
-            {spacePersmission === "owner" && <AddContent />}
+            {spacePersmission === "owner" ? <AddContent /> : <CloneSpace />}
           </div>
           <div className=" md:hidden flex flex-row my-6 md:my-0 space-x-2 items-center">
-            {spacePersmission === "owner" && <AddContent />}
+            {spacePersmission === "owner" ? <AddContent /> : <CloneSpace />}
             <ShareSpace />
           </div>
         </div>
