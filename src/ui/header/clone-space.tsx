@@ -30,20 +30,15 @@ const CloneSpace = () => {
     } catch (err) {
       toast.dismiss(cloningSpace);
       if (isAxiosError(err)) {
+        let data;
         try {
-          const data = JSON.parse(err?.request?.response);
-          const formattedMessageString = data.message.replace(/'/g, '"');
-          const spaceDetails = JSON.parse(formattedMessageString).space_details;
-          const { id, name, visibility } = spaceDetails;
-          addSpaceToState({
-            _id: id,
-            name: name,
-            visibility: visibility,
-          });
-          router.push(`/space/${id}`);
+          data = JSON.parse(err?.request?.response);
+          const spaceDetails = data.space_details;
+          addSpaceToState(spaceDetails);
+          router.push(`/space/${spaceDetails.id}`);
           toast.success("Space cloned");
         } catch {}
-        toast.error("Could not clone all contents in space");
+        toast.error(data.message);
       }
     }
   };
