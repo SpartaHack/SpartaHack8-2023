@@ -43,7 +43,7 @@ export const feedbackOptions = [
 export const privacyOptions = [
   {
     value: "Private",
-    description: "Only people with access can open the space",
+    description: "Only you can access this space",
     icon: "teenyicons:lock-circle-outline",
   },
   {

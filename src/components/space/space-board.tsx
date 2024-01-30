@@ -10,6 +10,7 @@ import NoSpaceContent from "./no-space-content";
 import { useSpace } from "@/hooks/use-space";
 import Loading from "@/app/loading";
 import Footer from "@/ui/footer/footer";
+import ErrorMessage from "@/helpers/error-message";
 
 const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
   const { loading } = useSpace(spaceId);
@@ -20,6 +21,7 @@ const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
   ) : (
     <>
       <div className="flex-grow">
+        <ErrorMessage />
         <SpaceHeader />
         <NoSpaceContent />
         <main className="flex my-12 pb-2 justify-center w-full">

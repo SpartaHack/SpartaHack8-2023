@@ -27,12 +27,6 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
     router.push(`/learn/space/${spaceId}/content/${contentId}`);
   };
 
-  console.log(content);
-  console.log(contents && contents.contents);
-  console.log(thumbnailUrl);
-  console.log(title);
-  console.log(regex.test(content));
-
   if (regex.test(content) && thumbnailUrl && title) {
     return (
       <div
