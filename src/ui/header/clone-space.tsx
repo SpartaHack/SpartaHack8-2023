@@ -2,10 +2,9 @@ import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { CustomButton } from "@/helpers/custom-btn";
 import { useErrorStore } from "@/context/error-context";
 import { useSpaceStore } from "@/context/space-context";
-import { addSpace } from "@/app/api/space";
+import { cloneSpace } from "@/app/api/space";
 import useAuth from "@/hooks/use-auth";
 import { isAxiosError } from "axios";
 import useStore from "@/hooks/use-store";
@@ -17,11 +16,36 @@ const CloneSpace = () => {
   const userId = useAuth();
   const { addSpaceToState } = useSpaceStore();
   const contents = useStore(useContentStore, (state) => state.contents);
-  const setError = useErrorStore((state) => state.setError);
-  const setToast = useErrorStore((state) => state.setToast);
 
   const handleClone = async () => {
-
+    const cloningSpace = toast.loading("Cloning space", { duration: 9000 });
+    try {
+      const response = await cloneSpace(userId!, contents.space._id);
+      if (response?.data) {
+        addSpaceToState(response.data);
+        router.push(`/space/${response.data._id}`);
+      }
+      toast.dismiss(cloningSpace);
+      toast.success("Space cloned");
+    } catch (err) {
+      toast.dismiss(cloningSpace);
+      if (isAxiosError(err)) {
+        try {
+          const data = JSON.parse(err?.request?.response);
+          const formattedMessageString = data.message.replace(/'/g, '"');
+          const spaceDetails = JSON.parse(formattedMessageString).space_details;
+          const { id, name, visibility } = spaceDetails;
+          addSpaceToState({
+            _id: id,
+            name: name,
+            visibility: visibility,
+          });
+          router.push(`/space/${id}`);
+          toast.success("Space cloned");
+        } catch {}
+        toast.error("Could not clone all contents in space");
+      }
+    }
   };
 
   return (

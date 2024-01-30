@@ -115,10 +115,12 @@ const SpaceHeader = () => {
           </div>
           <div className="hidden md:flex flex-row my-6 md:my-0 space-x-2 items-center">
             <ShareSpace />
-            {(userId! || auth?.currentUser?.uid!) && (spacePersmission === "owner" ? <AddContent /> : <CloneSpace />)}
+            {(userId! || auth?.currentUser?.uid!) &&
+              (spacePersmission === "owner" ? <AddContent /> : <CloneSpace />)}
           </div>
           <div className=" md:hidden flex flex-row my-6 md:my-0 space-x-2 items-center">
-            {(userId! || auth?.currentUser?.uid!) && (spacePersmission === "owner" ? <AddContent /> : <CloneSpace />)}
+            {(userId! || auth?.currentUser?.uid!) &&
+              (spacePersmission === "owner" ? <AddContent /> : <CloneSpace />)}
             <ShareSpace />
           </div>
         </div>
