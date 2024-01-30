@@ -21,27 +21,7 @@ const CloneSpace = () => {
   const setToast = useErrorStore((state) => state.setToast);
 
   const handleClone = async () => {
-    const cloningSpace = toast.loading("Cloning space");
-    try {
-      const response = await addSpace(
-        userId!,
-        undefined,
-        undefined,
-        contents.space._id!,
-      );
-      if (response?.data) {
-        addSpaceToState(response.data);
-        router.push(`/space/${response.data._id}`);
-      }
-      toast.dismiss(cloningSpace);
-      toast.success("Space cloned");
-    } catch (err) {
-      toast.dismiss(cloningSpace);
-      if (isAxiosError(err)) {
-        setToast!(true);
-        setError(err);
-      }
-    }
+
   };
 
   return (

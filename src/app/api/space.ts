@@ -9,23 +9,14 @@ export const getSpace = async (userId: string, spaceId: string) => {
 
 export const addSpace = async (
   userId: string,
-  spaceName?: string,
-  visibility?: "private" | "public",
-  spaceId?: boolean,
+  spaceName: string,
+  visibility: "private" | "public",
 ) => {
-  let data;
-  if (spaceId) {
-    data = {
-      user_id: userId,
-      space_id: spaceId,
-    };
-  } else {
-    data = {
-      user_id: userId,
-      space_name: spaceName,
-      visibility: visibility,
-    };
-  }
+  const data = {
+    user_id: userId,
+    space_name: spaceName,
+    visibility: visibility,
+  };
   const response = await axios.post(`${API_URL}/spaces/add`, data);
   return response;
 };
