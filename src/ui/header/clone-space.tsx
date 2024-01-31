@@ -34,7 +34,6 @@ const CloneSpace = () => {
         try {
           data = JSON.parse(err?.request?.response);
           const spaceDetails = data.space_details;
-          console.log(spaceDetails);
           addSpaceToState({
             _id: spaceDetails.id,
             name: spaceDetails.name,
