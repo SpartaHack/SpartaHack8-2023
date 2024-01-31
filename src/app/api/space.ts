@@ -57,3 +57,12 @@ export const deleteSpace = async (userId: string, spaceId: string) => {
     //console.log(err);
   }
 };
+
+export const cloneSpace = async (userId: string, spaceId: string) => {
+  const data = {
+    user_id: userId,
+    space_id: spaceId,
+  };
+  const response = await axios.post(`${API_URL}/spaces/clone`, data);
+  return response;
+};

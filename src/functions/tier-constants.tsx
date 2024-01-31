@@ -9,7 +9,7 @@ export const freePlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "Add up to 10 content links per space",
+    label: "Add up to 3 content links per space and 1 PDF Upload",
   },
   {
     icon: (
@@ -18,7 +18,7 @@ export const freePlanBenefits: Features[] = [
         className="w-4 h-4 lg:w-5 lg:h-5 mt-0.5 text-black dark:text-white mr-4"
       />
     ),
-    label: "100 messages per day with the AI co-pilot",
+    label: "10 messages per day with the AI co-pilot",
   },
   {
     icon: (
