@@ -34,7 +34,12 @@ const CloneSpace = () => {
         try {
           data = JSON.parse(err?.request?.response);
           const spaceDetails = data.space_details;
-          addSpaceToState(spaceDetails);
+          console.log(spaceDetails);
+          addSpaceToState({
+            _id: spaceDetails.id,
+            name: spaceDetails.name,
+            visibility: spaceDetails.visibility,
+          });
           router.push(`/space/${spaceDetails.id}`);
           toast.success("Space cloned");
         } catch {}
