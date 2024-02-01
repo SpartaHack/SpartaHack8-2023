@@ -36,7 +36,7 @@ const Spaces = () => {
     if (type === "space") {
       router.push(`/space/${spaceId}`);
     } else {
-      router.push("/");
+      router.push("/history");
     }
   };
 
