@@ -25,7 +25,7 @@ const NotSignedIn = () => {
             <CustomButton
               title={<h1 className="font-sans text-sm">Sign In</h1>}
               btnType="button"
-              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-xl h-[40px]"
+              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-md h-[40px]"
               clickEvent={() => router.push("/signin")}
             />
           </div>

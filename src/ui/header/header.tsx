@@ -72,7 +72,7 @@ export default function Header() {
               <CustomButton
                 title={<h1 className="font-sans text-sm">Sign In</h1>}
                 btnType="button"
-                btnStyling="bg-transparent text-white py-2 dark:text-white border-2 border-black dark:border-white text-black font-semibold flex items-center justify-center rounded-xl h-[40px]"
+                btnStyling="bg-transparent text-white py-2 dark:text-white border-2 border-black dark:border-white text-black font-semibold flex items-center justify-center rounded-md h-[40px]"
                 clickEvent={() => router.push("/signin")}
               />
             </div>

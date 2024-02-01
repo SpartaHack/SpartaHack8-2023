@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Content, TooltipCardProps } from "../../types";
 import { useRouter } from "next/navigation";
 import useStore from "@/hooks/use-store";
@@ -38,9 +38,9 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
           alt={content}
           width={360}
           height={200}
-          className="rounded-lg"
+          className="rounded-md"
         />
-        <h2 className="rounded-lg">{title}</h2>
+        <h2 className="rounded-sm">{title}</h2>
       </div>
     );
   } else {

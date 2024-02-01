@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const ImageUpload = ({ onChange, src }: ImageUploadProps) => (
   <label className="cursor-pointer rounded-full">
-    <div className="relative w-[100px] h-[100px] flex items-center border border-neutral-200 dark:border-neutral-700 justify-center overflow-hidden rounded-xl bg-transparent">
+    <div className="relative w-[100px] h-[100px] flex items-center border border-neutral-200 dark:border-neutral-700 justify-center overflow-hidden rounded-md bg-transparent">
       {src && (
         <Image
           src={src!}

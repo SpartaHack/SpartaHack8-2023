@@ -36,9 +36,9 @@ const PDF = () => {
 
   return (
     <div className="lg:w-[70%] w-full items-center justify-center">
-      <div className="h-[75vh] lg:h-screen rounded-xl overflow-hidden">
+      <div className="h-[75vh] lg:h-screen rounded-md overflow-hidden">
         {!showIframe ? (
-          <div className="rounded-xl h-full lg:h-[85.3%] overflow-hidden">
+          <div className="rounded-md h-full lg:h-[85.3%] overflow-hidden">
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
               <Viewer
                 renderError={renderErrorComponent}
@@ -54,7 +54,7 @@ const PDF = () => {
             src={pdfUrl}
             width="100%"
             height={window.innerWidth >= 1024 ? "85%" : "100%"}
-            className="rounded-xl border-none"
+            className="rounded-md border-none"
           />
         )}
       </div>

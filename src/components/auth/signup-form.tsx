@@ -82,7 +82,7 @@ const SignUpForm = () => {
       <CustomButton
         title="Create an account"
         btnType="button"
-        btnStyling="mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
+        btnStyling="mt-12 mt-8 bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-md h-[50.5px] w-full"
         clickEvent={() => handleCreation(email, password)}
       />
     </div>

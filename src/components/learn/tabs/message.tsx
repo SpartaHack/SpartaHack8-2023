@@ -15,8 +15,8 @@ const Message = ({
       key={index}
       className={
         message.type === "bot"
-          ? "bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-xl p-4 leading-relaxed mr-auto lg:max-w-full w-fit"
-          : "bg-absolute-white dark:bg-secondary border dark:border-none text-black my-2 w-fit rounded-xl p-4 leading-relaxed ml-auto break-words"
+          ? "bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-md p-4 leading-relaxed mr-auto lg:max-w-full w-fit"
+          : "bg-absolute-white dark:bg-secondary border dark:border-none text-black my-2 w-fit rounded-md p-4 leading-relaxed ml-auto break-words"
       }
     >
       <Response

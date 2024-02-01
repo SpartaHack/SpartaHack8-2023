@@ -12,10 +12,10 @@ const MenuItems = () => {
   const userData = useStore(useUserStore, (state) => state.userData);
   return (
     <div className="flex flex-col h-[90vh] space-y-4">
-      <div className="flex flex-row w-full lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl">
+      <div className="flex flex-row w-full lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-md">
         <Notification />
       </div>
-      <div className="flex flex-row w-full lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl">
+      <div className="flex flex-row w-full lg:hidden cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-md">
         <Account
           name={userData?.user_profile.full_name!}
           picture={userData?.user_profile.photo_url}

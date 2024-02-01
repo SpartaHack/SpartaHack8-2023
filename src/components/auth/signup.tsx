@@ -32,7 +32,7 @@ const SignUp = () => {
               </div>
             }
             btnType="button"
-            btnStyling="border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
+            btnStyling="border-2 bg-transparent dark:border-neutral-500 dark:text-white border-neutral-300 py-6 text-black font-bold flex items-center justify-center rounded-md h-[50.5px] w-full"
             clickEvent={() => authGoogleSignUp()}
           />
           <div className="flex items-center justify-center pt-8 ">
@@ -48,7 +48,7 @@ const SignUp = () => {
               Already have an account?
             </p>
             <button
-              className="dark:text-secondary text-[#3dce5a] font-thin rounded-xl text-sm"
+              className="dark:text-secondary text-[#3dce5a] font-thin rounded-md text-sm"
               onClick={() => router.push("/signin")}
             >
               Sign in here.

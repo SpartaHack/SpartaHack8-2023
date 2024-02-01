@@ -53,7 +53,7 @@ const Upgrade = () => {
           subTitle="Start your learning journey here."
           planBenefits={freePlanBenefits}
           buttonText={"Get Started"}
-          buttonStyle=" bg-absolute_white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full border-1 border-black dark:border-white"
+          buttonStyle=" bg-absolute_white dark:bg-neutral-900 lg:mt-16 mt-5 mb-7 text-black dark:text-white font-semibold font-sans flex items-center justify-center rounded-md h-[50.5px] w-full border-1 border-black dark:border-white"
           handleClick={handleHomeClick}
         />
 
@@ -87,7 +87,7 @@ const Upgrade = () => {
               contentMain={<UpgradeModal />}
             />
           }
-          buttonStyle="bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-xl h-[50.5px] w-full"
+          buttonStyle="bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-md h-[50.5px] w-full"
         />
       </div>
     </>

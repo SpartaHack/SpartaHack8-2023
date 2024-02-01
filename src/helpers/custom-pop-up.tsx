@@ -23,7 +23,7 @@ const CustomPopUp: React.FC<PopUpProps> = ({
         onClose={closeModal}
       >
         <div className="fixed inset-0 backdrop-blur-sm" />
-        <Dialog.Panel className="bg-white dark:bg-neutral-900 rounded-xl px-4 pt-5 pb-4 overflow-auto shadow-xl transform transition-all max-w-sm md:max-w-lg w-full p-6 z-50">
+        <Dialog.Panel className="bg-white dark:bg-neutral-900 rounded-md px-4 pt-5 pb-4 overflow-auto shadow-xl transform transition-all max-w-sm md:max-w-lg w-full p-6 z-50">
           <Icon
             onClick={closeModal}
             icon="basil:cross-solid"
@@ -39,13 +39,13 @@ const CustomPopUp: React.FC<PopUpProps> = ({
           </div>
           {buttonTitle && (
             <div className="py-3 px-2 flex flex-row-reverse">
-              <span className="flex rounded-xl shadow-sm ml-3">
+              <span className="flex rounded-md shadow-sm ml-3">
                 <CustomButton
                   title={buttonTitle}
                   btnType="button"
                   clickEvent={buttonClick}
                   autoFocus={false}
-                  btnStyling="text-white outline-none dark:text-black rounded-xl bg-black dark:bg-secondary shadow-sm"
+                  btnStyling="text-white outline-none dark:text-black rounded-md bg-black dark:bg-secondary shadow-sm"
                 />
               </span>
             </div>

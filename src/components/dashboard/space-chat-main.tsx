@@ -44,11 +44,11 @@ const SpaceChatMain = () => {
         size={5}
         hideScrollBar
         ref={chatContainerRef}
-        className="flex-grow rounded-xl"
+        className="flex-grow rounded-md"
       >
         <div
           id="chat-container"
-          className="flex-grow overflow-hidden overflow-y-auto rounded-xl "
+          className="flex-grow overflow-hidden overflow-y-auto rounded-md "
         >
           {chatLog.map((message, index) => (
             <Message

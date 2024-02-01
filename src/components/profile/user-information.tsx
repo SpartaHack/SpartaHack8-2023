@@ -41,7 +41,7 @@ const UserInformation = () => {
   return (
     <div className="md:ml-10 md:mt-6 md:mr-10 lg:ml-20 lg:mt-12 lg:mr-20 ml-5 mr-5 mt-5">
       <div className="flex flex-col lg:flex-row">
-        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-xl px-3 pt-5 pb-1 lg:w-[65%]">
+        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-md px-3 pt-5 pb-1 lg:w-[65%]">
           <div className="flex flex-row ml-2 mr-2">
             <ImageUpload
               onChange={handleImageChange}
@@ -60,13 +60,13 @@ const UserInformation = () => {
           <EditAccordion
             photo={selectedImage || userData?.user_profile.photo_url!}
             title={
-              <h1 className="text-center text-[15px] p-2 rounded-xl border border-neutral-200 dark:border-neutral-700">
+              <h1 className="text-center text-[15px] p-2 rounded-md border border-neutral-200 dark:border-neutral-700">
                 Edit Profile
               </h1>
             }
           />
         </div>
-        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-xl p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5">
+        <div className="flex flex-col justify-between bg-absolute_white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-md p-5 w-full lg:h-[230px] mt-5 lg:mt-0 lg:ml-5">
           <Streaks />
         </div>
       </div>
