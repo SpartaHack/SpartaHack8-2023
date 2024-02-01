@@ -18,7 +18,7 @@ const Quiz = () => {
       <ScrollShadow
         size={5}
         hideScrollBar
-        className="flex-grow overflow-hidden overflow-y-auto rounded-md"
+        className="flex-grow overflow-hidden overflow-y-auto rounded-lg"
       >
         TEXT FOR DUMMIES sadad TEXT FOR DUMMIES TEXT FOR DUMMIES TEXT FOR
         DUMMIES TEXT FOR DUMMIES

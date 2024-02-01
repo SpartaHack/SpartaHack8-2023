@@ -31,9 +31,9 @@ const Summary = () => {
       <ScrollShadow
         size={5}
         hideScrollBar
-        className="flex-grow overflow-hidden overflow-y-auto rounded-md"
+        className="flex-grow overflow-hidden overflow-y-auto rounded-lg"
       >
-        <div className="bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-md p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full w-fit">
+        <div className="bg-white dark:bg-neutral-900 dark:text-white text-black my-2 rounded-lg p-4 leading-relaxed drop-shadow-sm mr-auto lg:max-w-full w-fit">
           <Response
             message={summary.replacedMessage}
             source={summary.sources}

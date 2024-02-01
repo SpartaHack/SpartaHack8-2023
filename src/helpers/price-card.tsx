@@ -12,7 +12,7 @@ const PriceCard = ({
   handleClick,
 }: PriceCardProps) => {
   return (
-    <div className="rounded-md justify-between bg-absolute_white w-[80%] lg:h-[470px] px-[60px] lg:w-[580px] border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 p-3  text-left shadow-sm">
+    <div className="rounded-lg justify-between bg-absolute_white w-[80%] lg:h-[470px] px-[60px] lg:w-[580px] border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 p-3  text-left shadow-sm">
       <h1 className="lg:text-md text-sm mt-5 lg:mt-7 font-semibold font-sans">
         {plan}
       </h1>

@@ -76,7 +76,7 @@ const ContentUploader = ({ handleLinkUpload }: ContentUploaderProps) => {
   return (
     <label
       htmlFor="file-upload"
-      className={`flex flex-col h-40 cursor-pointer rounded-md border-[2px] ${
+      className={`flex flex-col h-40 cursor-pointer rounded-lg border-[2px] ${
         isDragOver
           ? "border-black dark:border-white"
           : "border-[#E4E4E7] dark:border-[#3F3F45]"

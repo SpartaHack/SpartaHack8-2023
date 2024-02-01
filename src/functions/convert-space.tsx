@@ -34,7 +34,7 @@ export function convertSpace(
       {
         label: (
           <div
-            className="flex flex-row w-full cursor-pointer rounded-md items-center"
+            className="flex flex-row w-full cursor-pointer rounded-lg items-center"
             onClick={() => handleMove(space._id)}
           >
             <Icon icon="bxs:cube" className="h-6 w-6" />

@@ -17,7 +17,7 @@ const LinkCard = ({ link, handleDelete }: LinkCardProps) => {
   }
 
   return (
-    <div className="flex flex-row p-2 rounded-md border-[0.5px] border-neutral-500 justify-between">
+    <div className="flex flex-row p-2 rounded-lg border-[0.5px] border-neutral-500 justify-between">
       <div className="flex flex-row">
         <Icon icon={iconType} className="ml-1 mt-0.5 text-xl mr-5" />
         {link.includes("amazonaws.com/") ? "Document" : link}

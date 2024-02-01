@@ -54,7 +54,7 @@ const SignInForm = () => {
       <CustomButton
         title="Sign In"
         btnType="submit"
-        btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-md h-[50.5px] w-full"
+        btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-lg h-[50.5px] w-full"
         clickEvent={() => signInEmail(email, password)}
       />
     </div>

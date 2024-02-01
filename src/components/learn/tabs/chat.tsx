@@ -48,11 +48,11 @@ const Chat = () => {
         size={5}
         hideScrollBar
         ref={chatContainerRef}
-        className="flex-grow rounded-md"
+        className="flex-grow rounded-lg"
       >
         <div
           id="chat-container"
-          className="flex-grow overflow-hidden overflow-y-auto rounded-md"
+          className="flex-grow overflow-hidden overflow-y-auto rounded-lg"
         >
           {chatLog.map((message, index) => (
             <Message

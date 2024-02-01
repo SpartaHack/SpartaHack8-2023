@@ -38,7 +38,7 @@ const UpgradeModal: FC = () => {
           variant="light"
           color="primary"
           fullWidth
-          className="rounded-md dark:border-neutral-700 dark:bg-black border"
+          className="rounded-lg dark:border-neutral-700 dark:bg-black border"
           selectedKey={selected}
           onSelectionChange={handleTabChange}
         >
@@ -62,7 +62,7 @@ const UpgradeModal: FC = () => {
         </Tabs>
         <CustomButton
           title="Continue"
-          btnStyling="bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-md w-full"
+          btnStyling="bg-black dark:bg-white mt-5 lg:mb-0 mb-7 text-white dark:text-black dark:white font-semibold font-sans flex items-center justify-center rounded-lg w-full"
           btnType="button"
           clickEvent={handleClick}
           isLoading={loading}

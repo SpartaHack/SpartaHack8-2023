@@ -6,12 +6,12 @@ import Quiz from "./quiz";
 
 const TabComponent = () => {
   return (
-    <div className="flex flex-col w-full h-full p-3 overflow-hidden dark:bg-black rounded-md">
+    <div className="flex flex-col w-full h-full p-3 overflow-hidden dark:bg-black rounded-lg">
       <Tabs
         variant="light"
         color="primary"
         fullWidth
-        className="border rounded-md dark:border-neutral-700 bg-absolute_white dark:bg-black"
+        className="border rounded-lg dark:border-neutral-700 bg-absolute_white dark:bg-black"
       >
         <Tab title="Chat" className="h-full">
           <Chat />

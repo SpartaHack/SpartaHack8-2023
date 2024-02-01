@@ -38,9 +38,9 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
           alt={content}
           width={360}
           height={200}
-          className="rounded-md"
+          className="rounded-lg"
         />
-        <h2 className="rounded-sm">{title}</h2>
+        <h2 className="rounded-md">{title}</h2>
       </div>
     );
   } else {

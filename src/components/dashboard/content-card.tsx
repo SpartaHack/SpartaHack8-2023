@@ -96,7 +96,7 @@ const ContentCard = ({
 
   return (
     <div
-      className="relative cursor-pointer flex-col justify-center items-center gap-20 drop-shadow-sm rounded-md hover:shadow-xl hover:scale-105 transition duration-300 border dark:border-neutral-800 max-w-[360px] min-h-full min-w-[220px] group"
+      className="relative cursor-pointer flex-col justify-center items-center gap-20 drop-shadow-sm rounded-lg hover:shadow-xl hover:scale-105 transition duration-300 border dark:border-neutral-800 max-w-[360px] min-h-full min-w-[220px] group"
       onClick={() => clickCard()}
     >
       <div className="absolute top-4 right-4 p-1 hover:scale-110 duration-200 cursor-pointer rounded-full group-hover:bg-neutral-100 group-hover:dark:bg-neutral-800">
@@ -120,9 +120,9 @@ const ContentCard = ({
           )}
         />
       </div>
-      <div className="px-2.5 pt-2.5 prounded-md overflow-hidden">
+      <div className="px-2.5 pt-2.5 prounded-lg overflow-hidden">
         <Image
-          className="rounded-md border"
+          className="rounded-lg border"
           width-full="true"
           src={thumbnail_url!}
           width={360}

@@ -14,7 +14,7 @@ const YoutubeVideo = () => {
   }
 
   return (
-    <div className="rounded-md overflow-hidden">
+    <div className="rounded-lg overflow-hidden">
       <YouTube
         videoId={learnContent?._id ? learnContent._id : learnContent?.id!}
         opts={videoOpts}
