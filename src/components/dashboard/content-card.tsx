@@ -120,9 +120,8 @@ const ContentCard = ({
           )}
         />
       </div>
-      <div className="px-2.5 pt-2.5 prounded-lg overflow-hidden">
+      <div className="rounded-t-lg overflow-hidden">
         <Image
-          className="rounded-lg border"
           width-full="true"
           src={thumbnail_url!}
           width={360}

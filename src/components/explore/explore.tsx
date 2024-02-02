@@ -7,6 +7,7 @@ import { getUser } from "@/app/api/user";
 const Explore = () => {
   const userId = useAuth();
   const { setUserData } = useUserStore();
+  
   useEffect(() => {
     const fetchUser = async () => {
       if (auth.currentUser?.uid || userId) {
@@ -19,7 +20,7 @@ const Explore = () => {
 
     fetchUser();
   }, [userId]);
-  
+
   return <div className="flex-grow">Explore</div>;
 };
 
