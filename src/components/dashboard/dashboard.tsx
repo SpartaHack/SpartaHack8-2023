@@ -3,19 +3,17 @@ import React, { useEffect } from "react";
 import ContentCard from "./content-card";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
-import { getContentHistory, getUser } from "@/app/api/user";
+import { getContentHistory } from "@/app/api/user";
 import { auth } from "../../../db/firebase";
 import NoHistoryContents from "./no-history-contents";
 import { useHistoryStore } from "@/context/history-store";
 import HistoryHeader from "./history-header";
 import NotSignedIn from "./not-signed-in";
-import { useUserStore } from "@/context/user-context";
 import useAuth from "@/hooks/use-auth";
 
 const Dashboard = () => {
   const history = useStore(useHistoryStore, (state) => state.history);
   const { setHistory } = useHistoryStore();
-  const { setUserData } = useUserStore();
   const userId = useAuth();
 
   useEffect(() => {
@@ -26,16 +24,10 @@ const Dashboard = () => {
         );
         setHistory(response?.data);
       }
-      if (auth.currentUser?.uid || userId) {
-        const response = await getUser(
-          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
-        );
-        setUserData(response?.data);
-      }
     };
 
     fetchHistory();
-  }, [setHistory, auth.currentUser?.uid]);
+  }, [userId]);
 
   return (
     <div className="flex-grow">
