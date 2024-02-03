@@ -58,7 +58,7 @@ const ExploreCarousel = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselNext className="z-12" />
+      <CarouselNext className="z-12 mr-2 hover:bg-transparent" />
       <div className="absolute top-0 right-0 bottom-0 z-1 w-1/5 bg-gradient-to-r from-transparent via-neutral-900/80 to-neutral-900" />
       <div className="flex mt-6 text-white text-sm justify-center">
         <CarouselScrollNavigation
