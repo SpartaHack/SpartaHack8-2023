@@ -80,7 +80,7 @@ const Upgrade = () => {
               title={
                 <div className="w-screen">
                   <h1 className="h-[50.5px] border text-center flex items-center justify-center">
-                    Start your 14 day free trial
+                    Start your 7 day free trial
                   </h1>
                 </div>
               }

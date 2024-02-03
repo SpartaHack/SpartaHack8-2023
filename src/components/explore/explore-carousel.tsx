@@ -8,6 +8,7 @@ import {
 } from "@/ui/shadcn/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import ExploreSpaceCard from "./explore-space-card";
+import CarouselScrollNavigation from "./carousel-scroll-navigation";
 
 const ExploreCarousel = () => {
   const [api, setApi] = React.useState<CarouselApi>();
@@ -21,7 +22,6 @@ const ExploreCarousel = () => {
     if (!api) {
       return;
     }
-
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
@@ -29,6 +29,13 @@ const ExploreCarousel = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
+
+  const handleScroll = (number: number) => {
+    if (!api) {
+      return;
+    }
+    api.scrollTo(number);
+  };
 
   return (
     <Carousel
@@ -54,7 +61,11 @@ const ExploreCarousel = () => {
       <CarouselNext className="z-12" />
       <div className="absolute top-0 right-0 bottom-0 z-1 w-1/5 bg-gradient-to-r from-transparent via-neutral-900/80 to-neutral-900" />
       <div className="flex mt-6 text-white text-sm justify-center">
-        Slide {current} of {count}
+        <CarouselScrollNavigation
+          current={current}
+          count={count}
+          handleScroll={handleScroll}
+        />
       </div>
     </Carousel>
   );

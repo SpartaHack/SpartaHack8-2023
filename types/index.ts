@@ -1,10 +1,5 @@
 import { AxiosError } from "axios";
-import React, {
-  ChangeEvent,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  ReactNode,
-} from "react";
+import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
 import { YouTubeProps } from "react-youtube";
 
 export type CustomButtonProps = {
@@ -502,4 +497,10 @@ export type AccessControl = {
 
 export type LearnContentProps = {
   type: string;
+};
+
+export type CarouselScrollNavigationProps = {
+  current: number;
+  count: number;
+  handleScroll: (number: number) => void;
 };
