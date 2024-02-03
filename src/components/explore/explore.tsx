@@ -3,11 +3,12 @@ import { auth } from "../../../db/firebase";
 import useAuth from "@/hooks/use-auth";
 import { useUserStore } from "@/context/user-context";
 import { getUser } from "@/app/api/user";
+import ExploreHero from "./explore-hero";
 
 const Explore = () => {
   const userId = useAuth();
   const { setUserData } = useUserStore();
-  
+
   useEffect(() => {
     const fetchUser = async () => {
       if (auth.currentUser?.uid || userId) {
@@ -21,7 +22,11 @@ const Explore = () => {
     fetchUser();
   }, [userId]);
 
-  return <div className="flex-grow">Explore</div>;
+  return (
+    <div className="flex-grow">
+      <ExploreHero />
+    </div>
+  );
 };
 
 export default Explore;

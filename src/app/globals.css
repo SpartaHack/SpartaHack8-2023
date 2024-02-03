@@ -20,15 +20,19 @@ body {
   .header-icons {
     @apply bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700 text-[40px] p-2 rounded-full cursor-pointer;
   }
+
   .tabs-sm {
     @apply flex bg-absolute_white w-full rounded-lg lg:ml-4 drop-shadow-sm dark:bg-neutral-800 mt-[20px] lg:mt-0;
   }
+
   .tabs-lg {
     @apply bg-absolute_white rounded-lg w-[30%] lg:ml-4 drop-shadow-sm dark:bg-neutral-800 mt-[20px] lg:mt-0;
   }
+
   .gradient {
     @apply bg-gradient-to-r from-[#00FFF0] to-secondary;
   }
+
   .horizontal-line {
     @apply border-b border-neutral-300 dark:border-neutral-800 w-full;
   }

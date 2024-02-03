@@ -1,6 +1,7 @@
 import { FirebaseError } from "firebase/app";
 import { User, UserCredential } from "firebase/auth";
-import { Metadata } from "next";
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 import { toast } from "sonner";
 
 export const sideBarMotion = {
@@ -84,3 +85,7 @@ export const getJWT = async (userCred: UserCredential) => {
   localStorage.setItem("jwtToken", await token);
   return token;
 };
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
