@@ -5,7 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-} from "@/ui/shadcn/carousel";
+} from "@/helpers/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import ExploreSpaceCard from "./explore-space-card";
 import CarouselScrollNavigation from "./carousel-scroll-navigation";
