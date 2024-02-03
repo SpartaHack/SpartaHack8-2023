@@ -13,11 +13,10 @@ const CarouselScrollNavigation = ({
   });
 
   return (
-    <div className="flex flex-col gap-2">
       <ul className="flex gap-2 items-center">
         {range.map((index) => {
           return (
-            <li key={index} className="w-2 h-2">
+            <li key={index} className="w-1.5 h-1.5">
               <button
                 className={cn(
                   "w-full h-full bg-default-300 rounded-full",
@@ -29,7 +28,6 @@ const CarouselScrollNavigation = ({
           );
         })}
       </ul>
-    </div>
   );
 };
 
