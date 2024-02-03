@@ -30,7 +30,7 @@ const Message = ({
           {copiedState[`${index}`] ? (
             <Icon
               icon="charm:tick"
-              className="text-xl text-tertiary dark:text-secondary"
+              className="text-xl text-[#04E762] dark:text-secondary"
             />
           ) : (
             <Icon

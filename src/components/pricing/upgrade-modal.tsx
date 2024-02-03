@@ -47,7 +47,7 @@ const UpgradeModal: FC = () => {
             title={
               <h1>
                 Yearly
-                <span className="font-sans text-tertiary font-semibold">
+                <span className="font-sans text-[#04E762] font-semibold">
                   {" "}
                   20% off
                 </span>

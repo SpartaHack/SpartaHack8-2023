@@ -71,7 +71,7 @@ const nextUiConfig: Config = {
             black: "#0F0F0F",
             primary: "#f3f4f6",
             secondary: "#7DFF97",
-            tertiary: "#04E762",
+            tertiary: "#6FFF8B",
           } as any,
         },
         dark: {
@@ -83,7 +83,7 @@ const nextUiConfig: Config = {
             black: "#0F0F0F",
             primary: "#171717",
             secondary: "#7DFF97",
-            tertiary: "#04E762",
+            tertiary: "#6FFF8B",
           } as any,
         },
       },

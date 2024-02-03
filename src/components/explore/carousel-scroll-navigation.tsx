@@ -21,7 +21,7 @@ const CarouselScrollNavigation = ({
               <button
                 className={cn(
                   "w-full h-full bg-default-300 rounded-full",
-                  index === current && "bg-secondary",
+                  index === current && "bg-tertiary",
                 )}
                 onClick={() => handleScroll(parseInt(index.toString()) - 1)}
               />
