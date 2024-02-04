@@ -40,9 +40,9 @@ export const useContainerHeight = ({
 
   if (chapters) {
     if (containerWidth <= 1024) {
-      elementWidth = 18 + (containerWidth * 0.95);
+      elementWidth = 18 + containerWidth * 0.95;
     } else {
-      elementWidth = 18 + (containerWidth * 0.675);
+      elementWidth = 18 + containerWidth * 0.675;
     }
   }
 

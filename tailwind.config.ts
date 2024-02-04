@@ -45,10 +45,11 @@ const nextUiConfig: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/helpers/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/functions/**/*.{js,ts,jsx,tsx,mdx}",
+    "./utils/*.{ts,tsx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    "node_modules/flowbite-react/lib/esm/**/*.js"
+    "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   theme: {
     extend: {

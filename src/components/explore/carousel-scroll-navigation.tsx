@@ -13,21 +13,21 @@ const CarouselScrollNavigation = ({
   });
 
   return (
-      <ul className="flex gap-2 items-center">
-        {range.map((index) => {
-          return (
-            <li key={index} className="w-1.5 h-1.5">
-              <button
-                className={cn(
-                  "w-full h-full bg-default-300 rounded-full",
-                  index === current && "bg-tertiary",
-                )}
-                onClick={() => handleScroll(parseInt(index.toString()) - 1)}
-              />
-            </li>
-          );
-        })}
-      </ul>
+    <ul className="flex gap-2 items-center">
+      {range.map((index) => {
+        return (
+          <li key={index} className="w-1.5 h-1.5">
+            <button
+              className={cn(
+                "w-full h-full bg-default-300 rounded-full",
+                index === current && "bg-tertiary",
+              )}
+              onClick={() => handleScroll(parseInt(index.toString()) - 1)}
+            />
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
