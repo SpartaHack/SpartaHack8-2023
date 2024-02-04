@@ -3,11 +3,11 @@ import React from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { CustomAccordionProps } from "../../types";
 
-const CustomAccordion = ({ accordionData }: CustomAccordionProps) => {
+const CustomAccordion = ({ accordionData, indicator }: CustomAccordionProps) => {
   return (
     <Accordion selectionMode="multiple">
       {accordionData.map((data, index) => (
-        <AccordionItem key={index} title={data.title} subtitle={data.subtitle}>
+        <AccordionItem key={index} title={data.title} subtitle={data.subtitle} indicator={indicator}>
           {data.content}
         </AccordionItem>
       ))}

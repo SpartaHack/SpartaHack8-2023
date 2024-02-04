@@ -43,12 +43,12 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
             </div>
           </div>
           <div
-            className=" px-2 md:px-0 mt-4 md:mt-0"
+            className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-4 md:mt-0"
             style={{ width: `${elementWidth}px` }}
           >
-            {/* <div className="md:ml-4 min-h-24 flex flex-col rounded-md bg-absolute_white dark:bg-absolute_black">
+            <div className="md:ml-4 min-h-24 flex flex-col rounded-md bg-absolute_white dark:bg-absolute_black">
               <Chapters />
-            </div> */}
+            </div>
           </div>
         </div>
       )}
