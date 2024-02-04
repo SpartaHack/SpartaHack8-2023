@@ -13,6 +13,7 @@ const CustomAccordion = ({
       {accordionData.map((data, index) => (
         <AccordionItem
           key={index}
+          textValue={index.toString()}
           title={data.title}
           subtitle={data.subtitle}
           indicator={indicator}

@@ -82,7 +82,7 @@ const itemClasses = {
   base: "p-0",
   title: "py-1",
   trigger: "px-1 py-0",
-  content: "text-small border pl-1 pb-2 pt-0",
+  content: "text-small pl-1 pb-2 pt-0",
 };
 
 const ChapterTimeline = () => {
