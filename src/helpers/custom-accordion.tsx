@@ -9,7 +9,11 @@ const CustomAccordion = ({
   styling,
 }: CustomAccordionProps) => {
   return (
-    <Accordion defaultExpandedKeys="all" selectionMode="multiple" itemClasses={styling}>
+    <Accordion
+      defaultExpandedKeys="all"
+      selectionMode="multiple"
+      itemClasses={styling}
+    >
       {accordionData.map((data, index) => (
         <AccordionItem
           key={index}
