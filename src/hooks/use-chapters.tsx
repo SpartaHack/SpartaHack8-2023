@@ -7,7 +7,10 @@ import useAuth from "./use-auth";
 import { Chapter } from "../../types";
 import { formatTime } from "@/functions/date-time-formatter";
 
-const useChapters = (handleSourcing: (source: string) => void) => {
+const useChapters = (
+  handleSourcing: (source: string) => void,
+  contentId: string,
+) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const { updateLearnContent } = useLearnStore();
   const [chapters, setChapter] = useState<Chapter[]>([]);
@@ -15,14 +18,11 @@ const useChapters = (handleSourcing: (source: string) => void) => {
 
   useEffect(() => {
     const fetchChapters = async () => {
-      if (
-        learnContent &&
-        learnContent.generations &&
-        !learnContent?.generations.chapters
-      ) {
+      if (learnContent && learnContent.content_url != contentId) {
+        setChapter([]);
         const responseStream = await generateChapters(
           auth.currentUser?.uid! || userId! || "anonymous",
-          learnContent?.content_id!,
+          contentId,
         );
         const chaptersArray: Chapter[] = [];
         for await (const content of responseStream) {
@@ -56,7 +56,7 @@ const useChapters = (handleSourcing: (source: string) => void) => {
       }
     };
     fetchChapters();
-  }, [userId]);
+  }, [contentId, userId]);
 
   return { chapters };
 };

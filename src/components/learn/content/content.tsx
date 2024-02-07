@@ -42,7 +42,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
             style={{ width: `${elementWidth}px` }}
           >
             <div className="md:ml-4 min-h-24 flex flex-col rounded-md bg-absolute_white dark:bg-black">
-              <Chapters />
+              <Chapters contentId={contentId} />
             </div>
           </div>
         )}

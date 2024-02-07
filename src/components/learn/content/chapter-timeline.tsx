@@ -1,10 +1,9 @@
 "use client";
 import { Timeline } from "flowbite-react";
 import { timelineTheme } from "../../../../utils";
-import { useLearnStore } from "@/context/learn-context";
-import useChapters from "@/hooks/use-chapters";
 import { Skeleton } from "@nextui-org/react";
 import CustomAccordion from "@/helpers/custom-accordion";
+import { ChapterTimelineProps } from "../../../../types";
 
 const itemClasses = {
   base: "p-0",
@@ -13,15 +12,7 @@ const itemClasses = {
   content: "text-small pl-1 pb-2 pt-0",
 };
 
-const ChapterTimeline = () => {
-  const { updateLearnContent } = useLearnStore();
-
-  const handleSourcing = (source: string) => {
-    updateLearnContent({ source: source });
-  };
-
-  const { chapters } = useChapters(handleSourcing);
-
+const ChapterTimeline = ({ chapters }: ChapterTimelineProps) => {
   return (
     <Timeline className="border-l-2" theme={timelineTheme}>
       {chapters && chapters.length !== 0 ? (

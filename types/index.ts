@@ -523,3 +523,11 @@ export type TabProps = {
   spaceId?: string;
   contentURL?: string;
 };
+
+export type ChapersProps = {
+  contentId: string;
+};
+
+export type ChapterTimelineProps = {
+  chapters: Chapter[];
+};
