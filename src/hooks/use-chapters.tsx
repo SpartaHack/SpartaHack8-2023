@@ -16,7 +16,7 @@ const useChapters = (handleSourcing: (source: string) => void) => {
     const fetchChapters = async () => {
       if (learnContent) {
         const responseStream = await generateChapters(
-          auth.currentUser?.uid! || userId!,
+          auth.currentUser?.uid! || userId! || "anonymous",
           learnContent?.content_id!,
         );
         const chaptersArray: Chapter[] = [];
