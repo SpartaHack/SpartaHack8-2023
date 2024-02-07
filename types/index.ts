@@ -517,3 +517,9 @@ export type Chapter = {
   title: JSX.Element;
   content: JSX.Element;
 };
+
+export type TabProps = {
+  contentId: string;
+  spaceId?: string;
+  contentURL?: string;
+};
