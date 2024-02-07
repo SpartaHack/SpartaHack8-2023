@@ -36,6 +36,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
             />
           </div>
         </div>
+        {type === "youtube" && (
           <div
             className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-2 md:mt-0"
             style={{ width: `${elementWidth}px` }}
@@ -44,6 +45,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
               <Chapters contentId={contentId} />
             </div>
           </div>
+        )}
       </div>
     </main>
   );
