@@ -6,6 +6,7 @@ import Footer from "@/ui/footer/footer";
 import ErrorMessage from "@/helpers/error-message";
 import Explore from "@/components/explore/explore";
 import useAmplitudeInit from "@/hooks/use-amplitude";
+import Dashboard from "@/components/dashboard/dashboard";
 
 export default function App() {
   useAmplitudeInit();
@@ -14,7 +15,7 @@ export default function App() {
       <Suspense fallback={<Loading />}>
         <Header />
         <ErrorMessage />
-        <Explore />
+        <Dashboard />
         <Footer />
       </Suspense>
     </main>

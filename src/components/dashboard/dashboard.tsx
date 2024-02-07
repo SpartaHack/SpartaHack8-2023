@@ -3,13 +3,14 @@ import React, { useEffect } from "react";
 import ContentCard from "./content-card";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
-import { getContentHistory } from "@/app/api/user";
+import { getContentHistory, getUser } from "@/app/api/user";
 import { auth } from "../../../db/firebase";
 import NoHistoryContents from "./no-history-contents";
 import { useHistoryStore } from "@/context/history-store";
 import HistoryHeader from "./history-header";
 import NotSignedIn from "./not-signed-in";
 import useAuth from "@/hooks/use-auth";
+import { useUserStore } from "@/context/user-context";
 
 const Dashboard = () => {
   const history = useStore(useHistoryStore, (state) => state.history);
@@ -27,6 +28,21 @@ const Dashboard = () => {
     };
 
     fetchHistory();
+  }, [userId]);
+
+  const { setUserData } = useUserStore();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (auth.currentUser?.uid || userId) {
+        const response = await getUser(
+          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+        );
+        setUserData(response?.data);
+      }
+    };
+
+    fetchUser();
   }, [userId]);
 
   return (
