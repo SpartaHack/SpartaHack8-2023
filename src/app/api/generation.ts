@@ -116,3 +116,38 @@ export const getContent = async (
   const response = await axios.post(`${API_URL}/content/get`, data);
   return response;
 };
+
+export const generateChapters = async (userId: string, contentId: string) => {
+  const data = {
+    user_id: userId,
+    content_id: contentId,
+  }
+
+  const response = await fetch(`${API_URL}/generation/content/chapters`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+    credentials: "include",
+  });
+
+  if (!response.body) throw new Error("No response body");
+
+  const reader = response.body.getReader();
+  return (async function* () {
+    let partialData = "";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      partialData += new TextDecoder("utf-8").decode(value, { stream: true });
+      try {
+        yield JSON.parse(partialData);
+        partialData = "";
+      } catch (error) {
+        // console.error("Error parsing JSON:", error);
+      }
+    }
+  })();
+
+}

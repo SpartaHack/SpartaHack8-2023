@@ -10,7 +10,7 @@ import useStore from "@/hooks/use-store";
 import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { getPortalLink } from "@/app/api/payment";
-import formatDate from "@/functions/date-formatter";
+import formatDate from "@/functions/date-time-formatter";
 
 const UserInformation = () => {
   const userData = useStore(useUserStore, (state) => state.userData);
