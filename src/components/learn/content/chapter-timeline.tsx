@@ -28,7 +28,7 @@ const ChapterTimeline = () => {
         chapters.map((chapter, index) => (
           <Timeline.Item
             key={index}
-            className="hover:dark:bg-neutral-800 hover:bg-neutral-200 rounded-lg"
+            className="hover:dark:bg-neutral-900 hover:bg-white rounded-lg"
           >
             <Timeline.Point />
             <CustomAccordion
