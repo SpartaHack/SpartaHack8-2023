@@ -24,7 +24,7 @@ const ChapterTimeline = () => {
 
   return (
     <Timeline className="border-l-2" theme={timelineTheme}>
-      {chapters.length !== 0 ? (
+      {chapters && chapters.length !== 0 ? (
         chapters.map((chapter, index) => (
           <Timeline.Item
             key={index}

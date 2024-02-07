@@ -9,12 +9,13 @@ import { formatTime } from "@/functions/date-time-formatter";
 
 const useChapters = (handleSourcing: (source: string) => void) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
+  const { updateLearnContent } = useLearnStore()
   const [chapters, setChapter] = useState<Chapter[]>([]);
   const userId = useAuth();
 
   useEffect(() => {
     const fetchChapters = async () => {
-      if (learnContent) {
+      if (learnContent && learnContent.generations && !learnContent?.generations.chapters) {
         const responseStream = await generateChapters(
           auth.currentUser?.uid! || userId! || "anonymous",
           learnContent?.content_id!,
@@ -40,11 +41,18 @@ const useChapters = (handleSourcing: (source: string) => void) => {
             });
           }
           setChapter(chaptersArray);
+          updateLearnContent({
+            generations: {
+              chapters: chaptersArray
+            },
+          });
         }
+      } else {
+        setChapter(learnContent?.generations.chapters!)
       }
     };
     fetchChapters();
-  }, [learnContent]);
+  }, [userId]);
 
   return { chapters };
 };
