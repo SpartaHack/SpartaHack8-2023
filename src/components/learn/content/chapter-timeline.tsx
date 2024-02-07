@@ -12,16 +12,15 @@ const itemClasses = {
   content: "text-small pl-1 pb-2 pt-0",
 };
 
-
 const ChapterTimeline = () => {
-  const { updateLearnContent } = useLearnStore()
-  
+  const { updateLearnContent } = useLearnStore();
+
   const handleSourcing = (source: string) => {
-    updateLearnContent({ source: source })
-  }
-  
-  const { chapters } = useChapters(handleSourcing)
-  
+    updateLearnContent({ source: source });
+  };
+
+  const { chapters } = useChapters(handleSourcing);
+
   return (
     <Timeline className="border-l-2" theme={timelineTheme}>
       {chapters.map((chapter, index) => (

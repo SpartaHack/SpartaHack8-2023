@@ -15,7 +15,8 @@ export function formatTime(seconds: number) {
 
   const formattedHours = hours < 10 ? `0${hours}` : hours;
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+  const formattedSeconds =
+    remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
 
   if (hours > 0) {
     return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;

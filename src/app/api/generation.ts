@@ -121,7 +121,7 @@ export const generateChapters = async (userId: string, contentId: string) => {
   const data = {
     user_id: userId,
     content_id: contentId,
-  }
+  };
 
   const response = await fetch(`${API_URL}/generation/content/chapters`, {
     method: "POST",
@@ -149,5 +149,4 @@ export const generateChapters = async (userId: string, contentId: string) => {
       }
     }
   })();
-
-}
+};
