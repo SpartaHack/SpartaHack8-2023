@@ -14,7 +14,10 @@ const Chapters = ({ contentId }: ChapersProps) => {
   return (
     <div className="mx-5 pb-3">
       <h3 className="font-extrabold my-5 mb-6 text-xl">Chapters</h3>
-      <ScrollShadow className="pl-1 max-h-[50vh] md:max-h-[40vh] overflow-y-auto" hideScrollBar>
+      <ScrollShadow
+        className="pl-1 max-h-[50vh] md:max-h-[40vh] overflow-y-auto"
+        hideScrollBar
+      >
         <ChapterTimeline chapters={chapters} />
       </ScrollShadow>
     </div>

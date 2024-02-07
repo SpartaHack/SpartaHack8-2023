@@ -34,7 +34,9 @@ const useChapters = (
                     className="text-sm font-extrabold hover:underline"
                     onClick={() => handleSourcing(data.source)}
                   >
-                    {learnContent.type === "youtube" ? formatTime(data.source) : data.source}
+                    {learnContent.type === "youtube"
+                      ? formatTime(data.source)
+                      : data.source}
                   </span>
                   <h3>{data && data?.response?.heading}</h3>
                 </div>

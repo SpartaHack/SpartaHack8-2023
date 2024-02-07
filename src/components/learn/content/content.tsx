@@ -22,7 +22,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
       <ErrorMessage />
       <div className="flex flex-col">
         <div className="flex flex-col w-full pt-2 px-2 sm:p-4 lg:flex-row">
-          <LearnContent type={type} />
+          <LearnContent type={type} contentId={contentId} />
           <div
             className="lg:tabs-lg tabs-sm"
             style={

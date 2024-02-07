@@ -505,6 +505,7 @@ export type AccessControl = {
 
 export type LearnContentProps = {
   type: string;
+  contentId?: string;
 };
 
 export type CarouselScrollNavigationProps = {
@@ -530,4 +531,8 @@ export type ChapersProps = {
 
 export type ChapterTimelineProps = {
   chapters: Chapter[];
+};
+
+export type YoutubeVideoProps = {
+  contentId: string;
 };

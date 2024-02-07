@@ -4,10 +4,10 @@ import PDF from "./pdf";
 import Video from "./video";
 import { LearnContentProps } from "../../../../types";
 
-const LearnContent = ({ type }: LearnContentProps) => {
+const LearnContent = ({ type, contentId }: LearnContentProps) => {
   return (
     <>
-      {type === "youtube" && <YoutubeVideo />}
+      {type === "youtube" && <YoutubeVideo contentId={contentId!} />}
       {(type === "pdf" || type === "arxiv") && <PDF />}
       {type === "mediaspace" && <Video />}
     </>
