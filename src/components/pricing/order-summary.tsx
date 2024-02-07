@@ -16,7 +16,7 @@ const OrderSummary = ({ type }: OrderSummaryProps) => {
         <span>{`Billed ${type === "yearly" ? "annually" : type}`}</span>
       </div>
       <div className="flex-row text-neutral-400 space-y-1 flex text-sm justify-between">
-        <span className="mt-1">Free 14 day trial</span>
+        <span className="mt-1">Free 7 day trial</span>
         <span className="dark:text-white font-bold text-black">
           -${type === "monthly" ? price : price * 12}
         </span>

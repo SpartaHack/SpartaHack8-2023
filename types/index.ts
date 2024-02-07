@@ -1,10 +1,5 @@
 import { AxiosError } from "axios";
-import React, {
-  ChangeEvent,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  ReactNode,
-} from "react";
+import React, { ChangeEvent, MouseEventHandler, ReactNode } from "react";
 import { YouTubeProps } from "react-youtube";
 
 export type CustomButtonProps = {
@@ -201,8 +196,15 @@ export type CustomAccordionProps = {
   accordionData: {
     title: JSX.Element | string;
     content: JSX.Element | string;
-    subtitle: JSX.Element | string;
+    subtitle?: JSX.Element | string;
   }[];
+  indicator?: JSX.Element;
+  styling?: {
+    base?: string;
+    title?: string;
+    trigger?: string;
+    content?: string;
+  };
 };
 
 export type SignUpFormProps = {
@@ -298,8 +300,9 @@ export type SpaceResponse = {
 };
 
 export type Generations = {
-  summary: string;
-  questions: string[];
+  summary?: string;
+  questions?: string[];
+  chapters?: Chapter[];
 };
 
 export type Metadata = {
@@ -502,4 +505,29 @@ export type AccessControl = {
 
 export type LearnContentProps = {
   type: string;
+};
+
+export type CarouselScrollNavigationProps = {
+  current: number;
+  count: number;
+  handleScroll: (number: number) => void;
+};
+
+export type Chapter = {
+  title: JSX.Element;
+  content: JSX.Element;
+};
+
+export type TabProps = {
+  contentId: string;
+  spaceId?: string;
+  contentURL?: string;
+};
+
+export type ChapersProps = {
+  contentId: string;
+};
+
+export type ChapterTimelineProps = {
+  chapters: Chapter[];
 };

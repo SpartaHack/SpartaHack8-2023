@@ -100,12 +100,12 @@ const Form = () => {
           title="Send"
           btnType="submit"
           clickEvent={handleSubmit}
-          btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full"
+          btnStyling="bg-secondary py-6 text-black font-bold flex items-center justify-center rounded-lg h-[50.5px] w-full"
         />
         <CustomButton
           title="👋 Schedule a 20 min meeting with the founders"
           btnType="button"
-          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mt-4"
+          btnStyling="bg-black dark:bg-white text-white dark:text-black font-bold flex items-center justify-center rounded-lg h-[50.5px] w-full mt-4"
           clickEvent={handleScheduleClick}
         />
         <CustomButton
@@ -116,7 +116,7 @@ const Form = () => {
             </span>
           }
           btnType="button"
-          btnStyling="bg-[#9B59B6] text-white font-bold flex items-center justify-center rounded-xl h-[50.5px] w-full mt-4"
+          btnStyling="bg-[#9B59B6] text-white font-bold flex items-center justify-center rounded-lg h-[50.5px] w-full mt-4"
           clickEvent={() => router.push("/discord")}
         />
       </form>

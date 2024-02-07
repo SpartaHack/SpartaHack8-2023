@@ -96,10 +96,10 @@ const ContentCard = ({
 
   return (
     <div
-      className="relative cursor-pointer flex-col justify-center items-center gap-20 drop-shadow-sm rounded-xl hover:shadow-xl hover:scale-105 transition duration-300 border dark:border-neutral-800 max-w-[360px] min-h-full min-w-[220px] group"
+      className="relative cursor-pointer flex-col justify-center items-center gap-20 drop-shadow-sm rounded-lg hover:shadow-xl hover:scale-105 transition duration-300 border dark:border-neutral-800 max-w-[360px] min-h-full min-w-[220px] group"
       onClick={() => clickCard()}
     >
-      <div className="absolute top-2 right-2 p-1 hover:scale-125 duration-200 cursor-pointer rounded-full group-hover:bg-neutral-100 group-hover:dark:bg-neutral-800">
+      <div className="absolute top-4 right-4 p-1 hover:scale-110 duration-200 cursor-pointer rounded-full group-hover:bg-neutral-100 group-hover:dark:bg-neutral-800">
         <CustomDropdown
           closeOnSelect={false}
           title={
@@ -120,7 +120,7 @@ const ContentCard = ({
           )}
         />
       </div>
-      <div className="rounded-t-xl overflow-hidden">
+      <div className="rounded-t-lg overflow-hidden">
         <Image
           width-full="true"
           src={thumbnail_url!}

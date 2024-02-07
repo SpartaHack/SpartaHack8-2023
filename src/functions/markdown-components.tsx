@@ -27,7 +27,7 @@ const markdownComponents = {
   ),
   pre: ({ ...props }: MarkdownElementProps) => (
     <pre
-      className="p-1 dark:bg-absolute_black my-1 rounded-lg bg-neutral-200 overflow-x-auto"
+      className="p-1 dark:bg-absolute_black my-1 rounded-md bg-neutral-200 overflow-x-auto"
       {...props}
     />
   ),

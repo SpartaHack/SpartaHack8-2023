@@ -9,13 +9,12 @@ import NoHistoryContents from "./no-history-contents";
 import { useHistoryStore } from "@/context/history-store";
 import HistoryHeader from "./history-header";
 import NotSignedIn from "./not-signed-in";
-import { useUserStore } from "@/context/user-context";
 import useAuth from "@/hooks/use-auth";
+import { useUserStore } from "@/context/user-context";
 
 const Dashboard = () => {
   const history = useStore(useHistoryStore, (state) => state.history);
   const { setHistory } = useHistoryStore();
-  const { setUserData } = useUserStore();
   const userId = useAuth();
 
   useEffect(() => {
@@ -26,6 +25,15 @@ const Dashboard = () => {
         );
         setHistory(response?.data);
       }
+    };
+
+    fetchHistory();
+  }, [userId]);
+
+  const { setUserData } = useUserStore();
+
+  useEffect(() => {
+    const fetchUser = async () => {
       if (auth.currentUser?.uid || userId) {
         const response = await getUser(
           auth.currentUser?.uid ? auth.currentUser.uid : userId!,
@@ -34,8 +42,8 @@ const Dashboard = () => {
       }
     };
 
-    fetchHistory();
-  }, [setHistory, auth.currentUser?.uid]);
+    fetchUser();
+  }, [userId]);
 
   return (
     <div className="flex-grow">

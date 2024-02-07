@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownItem,
-  User,
 } from "@nextui-org/react";
 import { CustomDropdownProps } from "../../types";
 

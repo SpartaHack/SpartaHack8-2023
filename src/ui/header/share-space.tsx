@@ -116,7 +116,7 @@ const ShareSpace = () => {
                       clickEvent={handleShare}
                       fullWidth={false}
                       title="Share"
-                      btnStyling="w-3 dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-xl"
+                      btnStyling="w-3 dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-lg"
                     />
                   }
                   placeholder="Email Address"
@@ -141,7 +141,7 @@ const ShareSpace = () => {
               }
               size="lg"
               btnType="button"
-              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-xl"
+              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-semibold flex items-center justify-center rounded-lg"
             />
           </ModalFooter>
         </ModalContent>

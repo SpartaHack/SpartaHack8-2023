@@ -51,7 +51,7 @@ const Spaces = () => {
           spaces.filter(Boolean).map((space: getUserSpaceResponse) => (
             <div
               key={space._id}
-              className="flex justify-between flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl"
+              className="flex justify-between flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg"
               onClick={() => handleContentChange("space", space._id)}
             >
               <div className="flex flex-row w-[70%]">
@@ -85,7 +85,7 @@ const Spaces = () => {
           <></>
         )}
         <div
-          className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-xl"
+          className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg"
           onClick={() => handleContentChange("history")}
         >
           <Icon icon="ic:round-history" className="h-6 w-6" />
