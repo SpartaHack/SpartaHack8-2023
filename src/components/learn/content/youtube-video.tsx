@@ -3,8 +3,9 @@ import YouTube from "react-youtube";
 import { useVideoOptions } from "@/hooks/use-video-options";
 import useSeekToSource from "@/hooks/use-seek-to-source";
 import { useLearnStore } from "@/context/learn-context";
+import { YoutubeVideoProps } from "../../../../types";
 
-const YoutubeVideo = () => {
+const YoutubeVideo = ({ contentId }: YoutubeVideoProps) => {
   const { learnContent } = useLearnStore();
   const videoOpts = useVideoOptions();
   const { onReady, seekToSource } = useSeekToSource("youtube");
@@ -17,11 +18,7 @@ const YoutubeVideo = () => {
 
   return (
     <div className="rounded-lg overflow-hidden">
-      <YouTube
-        videoId={learnContent?._id ? learnContent._id : learnContent?.id!}
-        opts={videoOpts}
-        onReady={onReady}
-      />
+      <YouTube videoId={contentId && contentId} opts={videoOpts} onReady={onReady} />
     </div>
   );
 };

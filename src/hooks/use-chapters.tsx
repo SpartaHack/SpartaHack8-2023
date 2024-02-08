@@ -10,16 +10,20 @@ import { formatTime } from "@/functions/date-time-formatter";
 const useChapters = (
   handleSourcing: (source: string) => void,
   contentId: string,
+  loading: boolean,
 ) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const { updateLearnContent } = useLearnStore();
-  const [chapters, setChapter] = useState<Chapter[]>([]);
+  const [chapters, setChapter] = useState<Chapter[] | undefined>([]);
   const userId = useAuth();
 
   useEffect(() => {
     const fetchChapters = async () => {
       if (learnContent && learnContent.content_url != contentId) {
         setChapter([]);
+        if (loading) {
+          return;
+        }
         const responseStream = await generateChapters(
           auth.currentUser?.uid! || userId! || "anonymous",
           contentId,
@@ -30,12 +34,16 @@ const useChapters = (
             chaptersArray.push({
               title: (
                 <div className="flex flex-col">
-                  <span
-                    className="text-sm font-extrabold hover:underline"
-                    onClick={() => handleSourcing(data.source)}
-                  >
-                    {formatTime(data.source)}
-                  </span>
+                  <div className="text-sm font-extrabold">
+                    <span
+                      className="w-fit hover:underline"
+                      onClick={() => handleSourcing(data.source)}
+                    >
+                      {learnContent.type === "youtube"
+                        ? formatTime(data.source)
+                        : data.source}
+                    </span>
+                  </div>
                   <h3>{data && data?.response?.heading}</h3>
                 </div>
               ),
@@ -56,7 +64,7 @@ const useChapters = (
       }
     };
     fetchChapters();
-  }, [contentId, userId]);
+  }, [contentId, userId, loading]);
 
   return { chapters };
 };

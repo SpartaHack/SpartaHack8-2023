@@ -8,9 +8,15 @@ import ErrorMessage from "@/helpers/error-message";
 import { ContentProps } from "../../../../types";
 import LearnContent from "./learn-content";
 import Chapters from "./chapters";
+import { useLearnContent } from "@/hooks/use-learn-content";
 
 const Content = ({ contentId, spaceId }: ContentProps) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
+  const { loading } = useLearnContent(
+    contentId!,
+    learnContent?.content_url!,
+    spaceId!,
+  );
   const type = learnContent?.type!;
   const { elementHeight, elementWidth } = useContainerHeight({
     type: type,
@@ -22,27 +28,23 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
       <ErrorMessage />
       <div className="flex flex-col">
         <div className="flex flex-col w-full pt-2 px-2 sm:p-4 lg:flex-row">
-          <LearnContent type={type} />
+          <LearnContent type={type} contentId={contentId} />
           <div
             className="lg:tabs-lg tabs-sm"
             style={
               type == "youtube" ? {} : { height: `${elementHeight - 25}px` }
             }
           >
-            <TabComponent
-              contentId={contentId}
-              spaceId={spaceId}
-              contentURL={learnContent && learnContent.content_url!}
-            />
+            <TabComponent loading={loading} />
           </div>
         </div>
-        {type === "youtube" && (
+        {(type === "youtube" || type === "arxiv" || type === "pdf") && (
           <div
-            className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-4 md:mt-0"
+            className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-2 md:mt-0"
             style={{ width: `${elementWidth}px` }}
           >
             <div className="md:ml-4 min-h-24 flex flex-col rounded-md bg-absolute_white dark:bg-black">
-              <Chapters contentId={contentId} />
+              <Chapters contentId={contentId} loading={loading} />
             </div>
           </div>
         )}
