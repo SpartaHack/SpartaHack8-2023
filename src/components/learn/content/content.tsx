@@ -38,7 +38,10 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
             <TabComponent loading={loading} />
           </div>
         </div>
-        {(type === "youtube" || type === "arxiv" || type === "pdf" || type == "mediaspace") && (
+        {(type === "youtube" ||
+          type === "arxiv" ||
+          type === "pdf" ||
+          type == "mediaspace") && (
           <div
             className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-2 md:mt-0"
             style={{ width: `${elementWidth}px` }}
