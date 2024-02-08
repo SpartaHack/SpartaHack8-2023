@@ -18,7 +18,7 @@ const YoutubeVideo = ({ contentId }: YoutubeVideoProps) => {
 
   return (
     <div className="rounded-lg overflow-hidden">
-      <YouTube videoId={contentId} opts={videoOpts} onReady={onReady} />
+      <YouTube videoId={contentId && contentId} opts={videoOpts} onReady={onReady} />
     </div>
   );
 };
