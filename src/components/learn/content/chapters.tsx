@@ -3,9 +3,9 @@ import ChapterTimeline from "./chapter-timeline";
 import { ScrollShadow } from "@nextui-org/react";
 import { useLearnStore } from "@/context/learn-context";
 import useChapters from "@/hooks/use-chapters";
-import { ChapersProps } from "../../../../types";
+import { ChaptersProps } from "../../../../types";
 
-const Chapters = ({ contentId }: ChapersProps) => {
+const Chapters = ({ contentId }: ChaptersProps) => {
   const { updateLearnContent } = useLearnStore();
   const handleSourcing = (source: string) => {
     updateLearnContent({ source: source });
