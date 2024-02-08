@@ -52,7 +52,7 @@ const Verify = () => {
             <CustomButton
               title={<h1 className="font-bold">Resend Email</h1>}
               btnType="button"
-              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-bold flex items-center justify-center rounded-xl h-[50px] md:w-full mt-8"
+              btnStyling="dark:bg-white bg-black text-white py-2 dark:text-black font-bold flex items-center justify-center rounded-lg h-[50px] md:w-full mt-8"
               clickEvent={resendEmail}
             />
           </div>

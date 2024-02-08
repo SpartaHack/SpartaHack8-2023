@@ -9,11 +9,19 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/page-navigation/lib/styles/index.css";
 import { SpecialZoomLevel } from "@react-pdf-viewer/core";
 import Loading from "@/app/loading";
+import { Skeleton } from "@nextui-org/react";
 
 const PDF = () => {
   const [showIframe, setShowIframe] = useState(false);
   const pageNavigationPluginInstance = pageNavigationPlugin();
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   let source: number;
   if (learnContent?.source) {
@@ -35,27 +43,33 @@ const PDF = () => {
   }, [source]);
 
   return (
-    <div className="lg:w-[70%] w-full items-center justify-center">
-      <div className="h-[75vh] lg:h-screen rounded-xl overflow-hidden">
-        {!showIframe ? (
-          <div className="rounded-xl h-full lg:h-[85.3%] overflow-hidden">
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-              <Viewer
-                renderError={renderErrorComponent}
-                defaultScale={SpecialZoomLevel.PageWidth}
-                plugins={[pageNavigationPluginInstance]}
-                fileUrl={pdfUrl!}
-              />
-            </Worker>
-          </div>
+    <div className="lg:w-[70%] w-full rounded-lg items-center justify-center">
+      <div className="h-[75vh] lg:h-[85.5vh] overflow-hidden">
+        {loading ? (
+          <Skeleton className="h-full rounded-lg" />
         ) : (
-          <iframe
-            key={pdfUrl}
-            src={pdfUrl}
-            width="100%"
-            height={window.innerWidth >= 1024 ? "85%" : "100%"}
-            className="rounded-xl border-none"
-          />
+          <>
+            {!showIframe ? (
+              <div className="rounded-lg h-full overflow-hidden">
+                <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+                  <Viewer
+                    renderError={renderErrorComponent}
+                    defaultScale={SpecialZoomLevel.PageWidth}
+                    plugins={[pageNavigationPluginInstance]}
+                    fileUrl={pdfUrl!}
+                  />
+                </Worker>
+              </div>
+            ) : (
+              <iframe
+                key={pdfUrl}
+                src={pdfUrl}
+                width="100%"
+                height="100%"
+                className="rounded-lg border-none"
+              />
+            )}
+          </>
         )}
       </div>
     </div>

@@ -29,7 +29,7 @@ const SearchBar = () => {
       </div>
       <div className="hidden lg:flex justify-center lg:mr-[180px] flex-1">
         <form
-          className="flex items-center align-items:center hover:border-secondary rounded-xl bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+          className="flex items-center align-items:center hover:border-secondary rounded-lg bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
           onSubmit={searchClick}
         >
           <input
@@ -62,7 +62,7 @@ const SearchBar = () => {
       {smallSearch && (
         <div ref={searchBarRef} className="lg:hidden w-full">
           <form
-            className="flex items-center align-items:center hover:border-secondary rounded-xl bg-absolute_white px-1 py-.5 flex-grow h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+            className="flex items-center align-items:center hover:border-secondary rounded-lg bg-absolute_white px-1 py-.5 flex-grow h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
             onSubmit={searchClick}
           >
             <input

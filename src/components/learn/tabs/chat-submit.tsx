@@ -22,7 +22,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
 
   return (
     <form
-      className="flex w-full bg-absolute_white dark:bg-black items-center align-items:center border border-neutral-200 dark:border-neutral-700 rounded-xl pl-3 flex-grow h-[42.5px]"
+      className="flex w-full bg-absolute_white dark:bg-black items-center align-items:center border border-neutral-200 dark:border-neutral-700 rounded-lg pl-3 flex-grow h-[42.5px]"
       onSubmit={handleSubmit}
     >
       <input
@@ -46,7 +46,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         ) : (
           <Icon
             icon="ph:paper-plane-fill"
-            className={`p-2 gradient text-[35px] rounded-xl dark:text-neutral-900 ${
+            className={`p-2 gradient text-[35px] rounded-lg dark:text-neutral-900 ${
               auth?.currentUser?.uid || userId!
                 ? "cursor-pointer"
                 : "cursor-not-allowed"

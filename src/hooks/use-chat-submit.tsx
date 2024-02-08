@@ -27,7 +27,7 @@ const useChatSubmit = (
     initialChatLog && initialChatLog.length == 0
       ? [...welcomeChat, ...initialChatLog]
       : initialChatLog
-        ? [...initialChatLog]
+        ? [...welcomeChat, ...initialChatLog]
         : [],
   );
 
