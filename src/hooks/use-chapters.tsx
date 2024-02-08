@@ -30,14 +30,16 @@ const useChapters = (
             chaptersArray.push({
               title: (
                 <div className="flex flex-col">
-                  <span
-                    className="text-sm font-extrabold hover:underline"
-                    onClick={() => handleSourcing(data.source)}
-                  >
-                    {learnContent.type === "youtube"
-                      ? formatTime(data.source)
-                      : data.source}
-                  </span>
+                  <div className="text-sm font-extrabold">
+                    <span
+                      className="w-fit hover:underline"
+                      onClick={() => handleSourcing(data.source)}
+                    >
+                      {learnContent.type === "youtube"
+                        ? formatTime(data.source)
+                        : data.source}
+                    </span>
+                  </div>
                   <h3>{data && data?.response?.heading}</h3>
                 </div>
               ),
