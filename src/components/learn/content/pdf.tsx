@@ -46,7 +46,7 @@ const PDF = () => {
     <div className="lg:w-[70%] w-full rounded-lg items-center justify-center">
       <div className="h-[75vh] lg:h-[85.5vh] overflow-hidden">
         {loading ? (
-          <Skeleton className="border h-full rounded-lg" />
+          <Skeleton className="h-full rounded-lg" />
         ) : (
           <>
             {!showIframe ? (
