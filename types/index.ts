@@ -520,13 +520,12 @@ export type Chapter = {
 };
 
 export type TabProps = {
-  contentId: string;
-  spaceId?: string;
-  contentURL?: string;
+  loading: boolean;
 };
 
 export type ChaptersProps = {
   contentId: string;
+  loading: boolean
 };
 
 export type ChapterTimelineProps = {
