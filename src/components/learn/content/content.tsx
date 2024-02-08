@@ -28,7 +28,9 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
       <ErrorMessage />
       <div className="flex flex-col">
         <div className="flex flex-col w-full pt-2 px-2 sm:p-4 lg:flex-row">
-          <LearnContent type={type} contentId={contentId} />
+          {type && (
+            <LearnContent type={type} contentId={contentId} />
+          )}
           <div
             className="lg:tabs-lg tabs-sm"
             style={
@@ -38,10 +40,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
             <TabComponent loading={loading} />
           </div>
         </div>
-        {(type === "youtube" ||
-          type === "arxiv" ||
-          type === "pdf" ||
-          type == "mediaspace") && (
+        {type && (
           <div
             className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-2 md:mt-0"
             style={{ width: `${elementWidth}px` }}
