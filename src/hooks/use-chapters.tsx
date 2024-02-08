@@ -10,7 +10,7 @@ import { formatTime } from "@/functions/date-time-formatter";
 const useChapters = (
   handleSourcing: (source: string) => void,
   contentId: string,
-  loading: boolean
+  loading: boolean,
 ) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const { updateLearnContent } = useLearnStore();
@@ -22,7 +22,7 @@ const useChapters = (
       if (learnContent && learnContent.content_url != contentId) {
         setChapter([]);
         if (loading) {
-          return
+          return;
         }
         const responseStream = await generateChapters(
           auth.currentUser?.uid! || userId! || "anonymous",

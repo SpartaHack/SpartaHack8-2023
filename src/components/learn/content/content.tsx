@@ -12,7 +12,11 @@ import { useLearnContent } from "@/hooks/use-learn-content";
 
 const Content = ({ contentId, spaceId }: ContentProps) => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
-  const { loading } = useLearnContent(contentId!, learnContent?.content_url!, spaceId!);
+  const { loading } = useLearnContent(
+    contentId!,
+    learnContent?.content_url!,
+    spaceId!,
+  );
   const type = learnContent?.type!;
   const { elementHeight, elementWidth } = useContainerHeight({
     type: type,
@@ -31,9 +35,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
               type == "youtube" ? {} : { height: `${elementHeight - 25}px` }
             }
           >
-            <TabComponent
-              loading={loading}
-            />
+            <TabComponent loading={loading} />
           </div>
         </div>
         {(type === "youtube" || type === "arxiv" || type === "pdf") && (
@@ -42,7 +44,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
             style={{ width: `${elementWidth}px` }}
           >
             <div className="md:ml-4 min-h-24 flex flex-col rounded-md bg-absolute_white dark:bg-black">
-              <Chapters contentId={contentId} loading={loading}/>
+              <Chapters contentId={contentId} loading={loading} />
             </div>
           </div>
         )}
