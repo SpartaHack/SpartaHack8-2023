@@ -41,21 +41,18 @@ export const useGenerations = (contentId: string, spaceId?: string) => {
         contentId,
         spaceId || "",
       );
-      if (historyResponse) {
-        let chatLog: MessageType[] = convertChatHistoryToChatLog(
-          historyResponse.data || [],
-        );
-        chatLog.forEach((message) => {
-          if (message.type === "bot") {
-            const replacedResult = replaceMessage("", message.response);
-            message.response = replacedResult.replacedMessage;
-            message.sources = replacedResult.sources;
-          }
-        });
-        updateLearnContent({ chatLog: chatLog });
-      }
-    } catch (error) {
-      console.error("Failed to fetch generation data:", error);
+      let chatLog: MessageType[] = convertChatHistoryToChatLog(
+        historyResponse ? historyResponse?.data : [],
+      );
+
+      chatLog.forEach((message) => {
+        if (message.type === "bot") {
+          const replacedResult = replaceMessage("", message.response);
+          message.response = replacedResult.replacedMessage;
+          message.sources = replacedResult.sources;
+        }
+      });
+      updateLearnContent({ chatLog: chatLog });
     } finally {
       setLoading(false);
     }

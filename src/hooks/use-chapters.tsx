@@ -60,7 +60,7 @@ const useChapters = (
       }
     };
     fetchChapters();
-  }, [contentId, userId]);
+  }, [contentId, userId, learnContent?._id]);
 
   return { chapters };
 };
