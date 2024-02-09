@@ -44,16 +44,19 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
             )}
           </div>
         </div>
-        {type && (
-          <div
-            className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-2 md:mt-0"
-            style={{ width: `${elementWidth}px` }}
-          >
+        <div
+          className="pb-4 px-2 lg:pr-2 2xl:px-0 md:pr-2 mt-2 md:mt-0"
+          style={{ width: `${elementWidth}px` }}
+        >
+          {loading && (
+            <Skeleton className="md:ml-4 border h-64 md:h-96 w-full rounded-md" />
+          )}
+          {!loading && (
             <div className="md:ml-4 min-h-24 flex flex-col rounded-md bg-absolute_white dark:bg-black">
-              <Chapters contentId={contentId} loading={loading} />
+              <Chapters contentId={contentId} />
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </main>
   );

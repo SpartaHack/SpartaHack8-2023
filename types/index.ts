@@ -527,7 +527,6 @@ export type TabProps = {
 
 export type ChaptersProps = {
   contentId: string;
-  loading: boolean;
 };
 
 export type ChapterTimelineProps = {
