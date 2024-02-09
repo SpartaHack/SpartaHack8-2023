@@ -5,12 +5,12 @@ import { useLearnStore } from "@/context/learn-context";
 import useChapters from "@/hooks/use-chapters";
 import { ChaptersProps } from "../../../../types";
 
-const Chapters = ({ contentId, loading }: ChaptersProps) => {
+const Chapters = ({ contentId }: ChaptersProps) => {
   const { updateLearnContent } = useLearnStore();
   const handleSourcing = (source: string) => {
     updateLearnContent({ source: source });
   };
-  const { chapters } = useChapters(handleSourcing, contentId, loading);
+  const { chapters } = useChapters(handleSourcing, contentId);
   return (
     <div className="mx-5 pb-3">
       <h3 className="font-extrabold my-5 mb-6 text-xl">Chapters</h3>

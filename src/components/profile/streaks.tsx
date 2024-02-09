@@ -11,7 +11,7 @@ const Streaks = () => {
     {
       icon: "akar-icons:fire",
       value: userData?.streak ? userData.streak : 0,
-      label: "Max Streak",
+      label: "Streak",
     },
     {
       icon: "heroicons:sparkles",

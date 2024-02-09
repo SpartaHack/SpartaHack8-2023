@@ -37,7 +37,7 @@ const Chat = () => {
 
   return (
     <div
-      className="lg:h-full h-[70vh] flex-col flex"
+      className="lg:h-full h-[90vh] flex-col flex"
       style={
         type === "youtube" || type === "mediaspace"
           ? { maxHeight: `${dimensions.elementHeight - 90}px` }
@@ -68,7 +68,7 @@ const Chat = () => {
       </ScrollShadow>
       {removeQuestions && (
         <ChatQuestions
-          questions={learnContent?.generations.questions!}
+          questions={learnContent?.generations.chat_prompts!}
           chatQuestionClick={(question) => handleChatSubmit(question)}
           loading={false}
         />

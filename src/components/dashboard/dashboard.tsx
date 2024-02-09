@@ -51,7 +51,7 @@ const Dashboard = () => {
       <NoHistoryContents />
       <NotSignedIn />
       <main className="flex my-12 pb-2 justify-center w-full">
-        <div className="grid gap-6 md:gap-12 lg:gap-20 2xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 sm:px-24 px-12 sm:grid-cols-2">
+        <div className="grid gap-6 md:gap-12 2xl:grid-cols-4 lg:gap-20 md:grid-cols-2 lg:grid-cols-3 sm:px-24 px-12 sm:grid-cols-2">
           {history &&
             history.map((history: History, key: number) => (
               <ContentCard
