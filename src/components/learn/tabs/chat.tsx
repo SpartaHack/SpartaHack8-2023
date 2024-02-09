@@ -9,16 +9,15 @@ import TypingIndicator from "../../../helpers/typing-indicator";
 import { removeUndefinedFromSources } from "@/functions/remove-undefined-sources";
 import ChatQuestions from "./chat-questions";
 import useChatlogLength from "@/hooks/use-chatlog-length";
+import { auth } from "../../../../db/firebase";
 import { useStore } from "zustand";
 import { useLearnStore } from "@/context/learn-context";
 import useAutoScroll from "@/hooks/use-auto-scroll";
-import useAuth from "@/hooks/use-auth";
 
 const Chat = () => {
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
   const type = learnContent?.type!;
   const dimensions = useContainerHeight({ type: type });
-  const userId = useAuth();
   const {
     handleChatSubmit,
     chatLog: chatSubmitLog,
@@ -26,7 +25,7 @@ const Chat = () => {
   } = useChatSubmit(
     "content",
     learnContent?.chatLog!,
-    userId!,
+    auth.currentUser?.uid!,
     learnContent?.content_id!,
     learnContent?.space_id ? learnContent?.space_id! : "",
   );

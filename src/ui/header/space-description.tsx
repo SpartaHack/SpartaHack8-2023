@@ -7,20 +7,16 @@ import { updateSpace } from "@/app/api/space";
 import { auth } from "../../../db/firebase";
 import { useSpaceStore } from "@/context/space-context";
 import { toast } from "sonner";
-import useAuth from "@/hooks/use-auth";
 
 const SpaceDescription = () => {
-  const userId = useAuth();
   const contentsFromStore = useStore(
     useContentStore,
     (state) => state.contents,
   );
   const [contents, setContents] = useState(contentsFromStore);
-  
   useEffect(() => {
     setContents(contentsFromStore);
   }, [contentsFromStore]);
-
   const description =
     contents &&
     contents.space &&
@@ -67,7 +63,7 @@ const SpaceDescription = () => {
       };
 
       const response = await updateSpace(
-        auth.currentUser?.uid! || userId!,
+        auth.currentUser?.uid!,
         contents.space._id,
         contents.space.name,
         spaceDescriptionInput,

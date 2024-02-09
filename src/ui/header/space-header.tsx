@@ -55,7 +55,7 @@ const SpaceHeader = () => {
       };
 
       const response = await updateSpace(
-        auth.currentUser?.uid! || userId!,
+        auth.currentUser?.uid!,
         contents.space._id,
         spaceNameInput,
         contents.space.description,

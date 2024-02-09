@@ -8,16 +8,15 @@ import TypingIndicator from "@/helpers/typing-indicator";
 import { removeUndefinedFromSources } from "@/functions/remove-undefined-sources";
 import ChatQuestions from "../learn/tabs/chat-questions";
 import useChatlogLength from "@/hooks/use-chatlog-length";
+import { auth } from "../../../db/firebase";
 import useStore from "@/hooks/use-store";
 import { useContentStore } from "@/context/content-store";
 import useFetchChatHistory from "@/hooks/use-chat-history";
 import useAutoScroll from "@/hooks/use-auto-scroll";
-import useAuth from "@/hooks/use-auth";
 
 const SpaceChatMain = () => {
   const contents = useStore(useContentStore, (state) => state.contents);
   const historyChat = useFetchChatHistory();
-  const userId = useAuth();
   const {
     handleChatSubmit,
     chatLog: chatSubmitLog,
@@ -25,7 +24,7 @@ const SpaceChatMain = () => {
   } = useChatSubmit(
     "space",
     historyChat!,
-    userId!,
+    auth.currentUser?.uid!,
     "",
     contents?.space._id,
   );

@@ -10,16 +10,15 @@ import CustomModal from "@/helpers/custom-modal";
 import UpgradeModal from "@/components/pricing/upgrade-modal";
 import { PROYEARLYPRICE } from "../../../utils/constants";
 import TrustedBy from "./trusted-by";
+import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
-import useAuth from "@/hooks/use-auth";
 
 // million-ignore
 const Upgrade = () => {
   const router = useRouter();
-  const userId = useAuth();
-  
+
   const handleHomeClick = () => {
-    if (userId) {
+    if (auth.currentUser?.uid) {
       router.push("/");
     } else {
       toast.error("Please sign in to continue.");

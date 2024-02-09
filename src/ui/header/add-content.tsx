@@ -12,7 +12,6 @@ import LinkCard from "./link-card";
 import ContentUploader from "./content-uploader";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
-import useAuth from "@/hooks/use-auth";
 
 // million-ignore
 const AddContent = () => {
@@ -21,7 +20,6 @@ const AddContent = () => {
   const [links, setLinks] = useState<string[]>([]);
   const setError = useErrorStore((state) => state.setError);
   const setToast = useErrorStore((state) => state.setToast);
-  const userId = useAuth();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setContentURL(e.target.value);
@@ -39,10 +37,10 @@ const AddContent = () => {
       for (let link of newLinks) {
         let addingToast;
         try {
-          if (auth.currentUser?.uid || userId) {
+          if (auth.currentUser?.uid) {
             addingToast = toast.loading("Adding", { duration: 90000 });
             const contentStream = await addContent(
-              auth.currentUser?.uid || userId!,
+              auth.currentUser?.uid,
               contents.space._id,
               [link],
             );

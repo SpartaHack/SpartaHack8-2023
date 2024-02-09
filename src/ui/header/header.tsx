@@ -10,15 +10,29 @@ import useClickOutside from "@/hooks/use-click-outside";
 import useStore from "@/hooks/use-store";
 import { useUserStore } from "@/context/user-context";
 import useAuth from "@/hooks/use-auth";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { CustomButton } from "@/helpers/custom-btn";
+import { auth } from "../../../db/firebase";
+import { useTheme } from "next-themes";
+import { MoonIcon } from "@/icon/moon-icon";
+import { SunIcon } from "@/icon/sun-icon";
 
 export default function Header() {
   const userId = useAuth();
   const router = useRouter();
+  const path = usePathname();
   const userData = useStore(useUserStore, (state) => state.userData);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { theme, setTheme } = useTheme();
+  const [isLightMode, setIsLightMode] = useState(
+    theme == "light" ? true : false,
+  );
+
+  const handleThemeChange = () => {
+    setIsLightMode(!isLightMode);
+    setTheme(isLightMode ? "dark" : "light");
+  };
 
   useClickOutside(ref, () => setIsMenuOpen(false));
 
@@ -40,7 +54,7 @@ export default function Header() {
             <NavbarMenuToggle className="prevent-close" />
           </div>
           <HomeLinkBar />
-          {userId ? (
+          {auth.currentUser?.uid || userId ? (
             <div className="hidden lg:flex">
               <Notification />
               <Account

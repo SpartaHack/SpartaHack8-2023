@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CustomButton } from "@/helpers/custom-btn";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/use-auth";
+import { auth } from "../../../db/firebase";
 
 const NotSignedIn = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const NotSignedIn = () => {
 
   return (
     <>
-      {!userId && !loading && (
+      {!userId && !auth.currentUser?.uid && !loading && (
         <div className="flex w-full mt-6 px-10 flex-col items-center justify-center">
           <div className="flex w-[5rem] items-center justify-center">
             <CustomButton

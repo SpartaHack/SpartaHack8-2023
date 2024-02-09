@@ -6,27 +6,26 @@ import { TabContent } from "./tab-content";
 import OrderSummary from "./order-summary";
 import { PROMONTHLYPRICE, PROYEARLYPRICE } from "../../../utils/constants";
 import { checkoutSession } from "@/app/api/payment";
+import { auth } from "../../../db/firebase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import useAuth from "@/hooks/use-auth";
 
 const UpgradeModal: FC = () => {
   const router = useRouter();
   const [selected, setSelected] = useState<string>("yearly");
   const [loading, setLoading] = useState<boolean>(false);
-  const userId = useAuth();
 
   const handleTabChange = (key: string | number) => {
     setSelected(String(key));
   };
 
   const handleClick = async () => {
-    if (!userId) {
+    if (!auth.currentUser?.uid) {
       toast.error("Please sign in to upgrade.");
       router.push("/signin");
     } else {
       setLoading(true);
-      const response = await checkoutSession(userId, selected);
+      const response = await checkoutSession(auth.currentUser?.uid, selected);
       router.replace(`${response?.data.url}`);
       setLoading(false);
     }

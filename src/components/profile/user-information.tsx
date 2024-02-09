@@ -11,13 +11,11 @@ import { auth } from "../../../db/firebase";
 import { toast } from "sonner";
 import { getPortalLink } from "@/app/api/payment";
 import formatDate from "@/functions/date-time-formatter";
-import useAuth from "@/hooks/use-auth";
 
 const UserInformation = () => {
   const userData = useStore(useUserStore, (state) => state.userData);
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const userId = useAuth();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
@@ -32,10 +30,10 @@ const UserInformation = () => {
   };
 
   const handleSubscriptions = async () => {
-    if (!userId) {
+    if (!auth.currentUser?.uid) {
       toast.error("Please sign in to handle subscriptions");
     } else {
-      const response = await getPortalLink(userId);
+      const response = await getPortalLink(auth.currentUser?.uid);
       router.push(`${response?.data.url}`);
     }
   };
