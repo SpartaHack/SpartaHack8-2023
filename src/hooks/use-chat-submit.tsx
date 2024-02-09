@@ -6,6 +6,7 @@ import { auth } from "../../db/firebase";
 import { useLearnStore } from "@/context/learn-context";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
+import useAuth from "./use-auth";
 
 const useChatSubmit = (
   type: "space" | "content",
@@ -14,6 +15,7 @@ const useChatSubmit = (
   contentId: string,
   spaceId: string,
 ) => {
+  const userID = useAuth();
   const setError = useErrorStore((state) => state.setError);
   const welcomeChat = [
     {
@@ -54,7 +56,7 @@ const useChatSubmit = (
     let response;
 
     if (!userId) {
-      userId = auth.currentUser?.uid!;
+      userId = userID || auth.currentUser?.uid!;
     }
 
     try {

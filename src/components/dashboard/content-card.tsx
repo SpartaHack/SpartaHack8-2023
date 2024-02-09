@@ -58,7 +58,7 @@ const ContentCard = ({
     deleteContentFromHistory: boolean = deleteFromHistory!,
   ) => {
     const response = await deleteContent(
-      auth.currentUser?.uid!,
+      auth.currentUser?.uid! || userID!,
       contents.space._id,
       [contentID],
       deleteContentFromHistory,

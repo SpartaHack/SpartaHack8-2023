@@ -2,17 +2,18 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { getUserSpaceResponse } from "../../types";
 import { addContent } from "@/app/api/content";
-import { auth } from "../../db/firebase";
 import { toast } from "sonner";
+import useAuth from "@/hooks/use-auth";
 
 export function convertSpace(
   spaces: getUserSpaceResponse[],
   contentURL: string,
 ) {
+  const userId = useAuth();
   const handleMove = async (spaceId: string) => {
     const movingToast = toast.loading("Moving", { duration: 90000 });
     try {
-      const contentStream = await addContent(auth.currentUser?.uid!, spaceId, [
+      const contentStream = await addContent(userId!, spaceId, [
         contentURL,
       ]);
       for await (const content of contentStream!) {
