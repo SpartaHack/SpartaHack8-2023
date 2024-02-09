@@ -49,7 +49,7 @@ const Content = ({ contentId, spaceId }: ContentProps) => {
           style={{ width: `${elementWidth}px` }}
         >
           {loading && (
-            <Skeleton className="md:ml-4 border h-64 md:h-96 w-full rounded-md" />
+            <Skeleton className="md:ml-4 h-64 md:h-96 w-full rounded-md" />
           )}
           {!loading && (
             <div className="md:ml-4 min-h-24 flex flex-col rounded-md bg-absolute_white dark:bg-black">
