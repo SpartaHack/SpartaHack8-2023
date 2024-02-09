@@ -68,7 +68,7 @@ const Chat = () => {
       </ScrollShadow>
       {removeQuestions && (
         <ChatQuestions
-          questions={learnContent?.generations.questions!}
+          questions={learnContent?.generations.chat_prompts!}
           chatQuestionClick={(question) => handleChatSubmit(question)}
           loading={false}
         />

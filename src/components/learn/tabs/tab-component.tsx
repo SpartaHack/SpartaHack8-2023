@@ -3,11 +3,13 @@ import { Tabs, Tab } from "@nextui-org/react";
 import Chat from "./chat";
 import Summary from "./summary";
 import Quiz from "./quiz";
-import { TabProps } from "../../../../types";
 import ChatSkeleton from "./chat-skeleton";
 import SummarySkeleton from "./summary-skeleton";
+import { TabProps } from "../../../../types";
+import { useGenerations } from "@/hooks/use-generations";
 
-const TabComponent = ({ loading }: TabProps) => {
+const TabComponent = ({ contentId, spaceId }: TabProps) => {
+  const { loading } = useGenerations(contentId, spaceId);
   return (
     <div className="flex flex-col w-full h-full p-3 overflow-hidden dark:bg-black rounded-lg">
       <Tabs

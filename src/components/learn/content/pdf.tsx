@@ -10,18 +10,12 @@ import "@react-pdf-viewer/page-navigation/lib/styles/index.css";
 import { SpecialZoomLevel } from "@react-pdf-viewer/core";
 import Loading from "@/app/loading";
 import { Skeleton } from "@nextui-org/react";
+import { PDFProps } from "../../../../types";
 
-const PDF = () => {
+const PDF = ({ loading }: PDFProps) => {
   const [showIframe, setShowIframe] = useState(false);
   const pageNavigationPluginInstance = pageNavigationPlugin();
   const learnContent = useStore(useLearnStore, (state) => state.learnContent);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
 
   let source: number;
   if (learnContent?.source) {
