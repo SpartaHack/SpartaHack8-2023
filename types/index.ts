@@ -107,6 +107,7 @@ export type ContentCardProps = {
   thumbnail_url: string;
   deleteFromHistory?: boolean;
   showDelete?: boolean;
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type Features = {

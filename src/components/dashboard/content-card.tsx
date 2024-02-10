@@ -12,7 +12,6 @@ import { useStore } from "zustand";
 import { useSpaceStore } from "@/context/space-context";
 import { useHistoryStore } from "@/context/history-store";
 import Image from "next/image";
-import ToastLoadingMessages from "@/functions/toast-loading-messages";
 import useAuth from "@/hooks/use-auth";
 
 const ContentCard = ({
@@ -24,6 +23,7 @@ const ContentCard = ({
   thumbnail_url,
   deleteFromHistory,
   showDelete = true,
+  setLoading,
 }: ContentCardProps) => {
   const router = useRouter();
   const spaces = useStore(useSpaceStore, (state) => state.spaces);
@@ -32,24 +32,26 @@ const ContentCard = ({
   const userID = useAuth();
 
   const clickCard = async () => {
-    if (contentAdd) {
-      const loadContent = toast.loading(ToastLoadingMessages(), {
-        duration: 9000,
-      });
-      const userId = auth.currentUser?.uid || userID || "anonymous";
-      const contentStream = await addContent(userId, undefined, [contentURL!]);
-      for await (const content of contentStream) {
-        if ("error" in content) {
-          toast.error(content.error);
-          return;
+    setLoading && setLoading!(true);
+    try {
+      if (contentAdd) {
+        const userId = auth.currentUser?.uid || userID || "anonymous";
+        const contentStream = await addContent(userId, undefined, [
+          contentURL!,
+        ]);
+        for await (const content of contentStream) {
+          if ("error" in content) {
+            toast.error(content.error);
+            return;
+          }
         }
       }
-      toast.dismiss(loadContent);
-    }
-    if (!spaceId) {
-      router.push(`/learn/content/${contentID}`);
-    } else {
-      router.push(`/learn/space/${spaceId}/content/${contentID}`);
+      const navigatePath = !spaceId
+        ? `/learn/content/${contentID}`
+        : `/learn/space/${spaceId}/content/${contentID}`;
+      router.push(navigatePath);
+    } catch (error) {
+      setLoading && setLoading!(false);
     }
   };
 
