@@ -42,6 +42,7 @@ const ContentCard = ({
         for await (const content of contentStream) {
           if ("error" in content) {
             toast.error(content.error);
+            setLoading && setLoading!(false);
             return;
           }
         }
