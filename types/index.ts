@@ -301,7 +301,7 @@ export type SpaceResponse = {
 
 export type Generations = {
   summary?: string;
-  questions?: string[];
+  chat_prompts?: string[];
   chapters?: Chapter[];
 };
 
@@ -506,6 +506,7 @@ export type AccessControl = {
 export type LearnContentProps = {
   type: string;
   contentId?: string;
+  loading?: boolean;
 };
 
 export type CarouselScrollNavigationProps = {
@@ -520,12 +521,12 @@ export type Chapter = {
 };
 
 export type TabProps = {
-  loading: boolean;
+  contentId: string;
+  spaceId?: string;
 };
 
 export type ChaptersProps = {
   contentId: string;
-  loading: boolean;
 };
 
 export type ChapterTimelineProps = {
@@ -534,4 +535,9 @@ export type ChapterTimelineProps = {
 
 export type YoutubeVideoProps = {
   contentId: string;
+  loading: boolean;
+};
+
+export type PDFProps = {
+  loading: boolean;
 };

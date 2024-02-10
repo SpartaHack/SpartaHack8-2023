@@ -6,23 +6,16 @@ import { useLearnStore } from "@/context/learn-context";
 import { YoutubeVideoProps } from "../../../../types";
 import { Skeleton } from "@nextui-org/react";
 
-const YoutubeVideo = ({ contentId }: YoutubeVideoProps) => {
+const YoutubeVideo = ({ contentId, loading }: YoutubeVideoProps) => {
   const { learnContent } = useLearnStore();
   const videoOpts = useVideoOptions();
   const { onReady, seekToSource } = useSeekToSource("youtube");
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (learnContent?.source) {
       seekToSource(parseFloat(learnContent.source));
     }
   }, [learnContent?.source]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
 
   return (
     <div className="rounded-lg overflow-hidden">

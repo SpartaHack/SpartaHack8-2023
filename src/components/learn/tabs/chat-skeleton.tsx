@@ -20,10 +20,10 @@ const ChatSkeleton = () => {
           <div className="h-10" />
         </Skeleton>
       </div>
-      <Skeleton className="flex w-3/5 mt-2 rounded-lg text-right">
+      <Skeleton className="md:flex hidden w-3/5 mt-2 rounded-lg text-right">
         <div className="h-24" />
       </Skeleton>
-      <div className="md:flex hidden flex-row mt-2 justify-end text-right">
+      <div className="2xl:flex hidden flex-row mt-2 justify-end text-right">
         <Skeleton className="flex w-4/6 rounded-lg text-right">
           <div className="h-16" />
         </Skeleton>
