@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useSearchResults from "@/hooks/use-search-results";
 import Loading from "@/app/loading";
 import { ResultBoardProps, SearchType } from "../../../types";
@@ -7,6 +7,7 @@ import ContentCard from "../dashboard/content-card";
 
 const ResultsBoard = ({ query }: ResultBoardProps) => {
   const { userId, searchResults, isLoading } = useSearchResults(query);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => {}, 500);
@@ -14,7 +15,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
     return () => clearTimeout(timeout);
   }, [userId]);
 
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loading />;
   }
 
@@ -33,6 +34,7 @@ const ResultsBoard = ({ query }: ResultBoardProps) => {
                 contentURL={result.content_url}
                 thumbnail_url={result.thumbnail_url}
                 showDelete={false}
+                setLoading={setLoading}
               />
             ))}
         </div>
