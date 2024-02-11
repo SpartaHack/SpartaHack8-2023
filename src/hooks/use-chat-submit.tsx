@@ -41,7 +41,9 @@ const useChatSubmit = (
     );
   }, [initialChatLog]);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [chatSubmitting, setChatSubmitting] = useState<boolean>(false);
+  const [chatLoading, setChatLoading] = useState<boolean>(false);
+
   const { updateLearnContent } = useLearnStore();
 
   const handleChatSubmit = async (query: string) => {
@@ -50,7 +52,9 @@ const useChatSubmit = (
       { type: "user", response: query, sources: [] },
     ]);
 
-    setIsLoading(true);
+    setChatSubmitting(true);
+    setChatLoading(true);
+
     let response;
 
     if (!userId) {
@@ -76,7 +80,6 @@ const useChatSubmit = (
     const reader = response!.body.getReader();
     const decoder = new TextDecoder();
     let message = "";
-    setIsLoading(false);
 
     new ReadableStream({
       start(controller) {
@@ -84,9 +87,10 @@ const useChatSubmit = (
           reader.read().then(({ done, value }) => {
             if (done) {
               controller.close();
-              setIsLoading(false);
+              setChatLoading(false);
               return;
             }
+            setChatSubmitting(false);
             const chunk = decoder.decode(value, { stream: true });
             message += chunk;
             const replacedResult = replaceMessage(type, message);
@@ -122,7 +126,7 @@ const useChatSubmit = (
     });
   };
 
-  return { handleChatSubmit, chatLog, isLoading };
+  return { handleChatSubmit, chatLog, chatSubmitting, chatLoading };
 };
 
 export default useChatSubmit;

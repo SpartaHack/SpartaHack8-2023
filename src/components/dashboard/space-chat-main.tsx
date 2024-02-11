@@ -20,13 +20,14 @@ const SpaceChatMain = () => {
   const {
     handleChatSubmit,
     chatLog: chatSubmitLog,
-    isLoading: isChatSubmitting,
+    chatSubmitting: isChatSubmitting,
+    chatLoading: isChatLoading,
   } = useChatSubmit(
     "space",
     historyChat!,
     auth.currentUser?.uid!,
     "",
-    contents?.space._id,
+    contents?.space._id
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];
@@ -72,7 +73,7 @@ const SpaceChatMain = () => {
       <div className="mt-3">
         <ChatSubmit
           onMessageSubmit={handleChatSubmit}
-          isLoading={isChatSubmitting}
+          isLoading={isChatLoading}
         />
       </div>
     </>
