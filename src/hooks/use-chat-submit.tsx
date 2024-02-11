@@ -12,7 +12,7 @@ const useChatSubmit = (
   initialChatLog: MessageType[],
   userId: string,
   contentId: string,
-  spaceId: string,
+  spaceId: string
 ) => {
   const setError = useErrorStore((state) => state.setError);
   const welcomeChat = [
@@ -27,8 +27,8 @@ const useChatSubmit = (
     initialChatLog && initialChatLog.length <= 1
       ? [...welcomeChat, ...initialChatLog]
       : initialChatLog
-        ? [...initialChatLog]
-        : [],
+      ? [...initialChatLog]
+      : []
   );
 
   useEffect(() => {
@@ -36,8 +36,8 @@ const useChatSubmit = (
       initialChatLog && initialChatLog.length <= 1
         ? [...welcomeChat, ...initialChatLog]
         : initialChatLog
-          ? [...initialChatLog]
-          : [],
+        ? [...initialChatLog]
+        : []
     );
   }, [initialChatLog]);
 
