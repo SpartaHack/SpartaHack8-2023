@@ -47,10 +47,11 @@ const ContentCard = ({
           }
         }
       }
-      const navigatePath = !spaceId
-        ? `/learn/content/${contentID}`
-        : `/learn/space/${spaceId}/content/${contentID}`;
-      router.push(navigatePath);
+      if (!spaceId) {
+        router.push(`/learn/content/${contentID}`);
+      } else {
+        router.push(`/learn/space/${spaceId}/content/${contentID}`);
+      }
     } catch (error) {
       setLoading && setLoading!(false);
     }
