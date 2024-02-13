@@ -21,13 +21,14 @@ const Chat = () => {
   const {
     handleChatSubmit,
     chatLog: chatSubmitLog,
-    isLoading: isChatSubmitting,
+    chatSubmitting: isChatSubmitting,
+    chatLoading: isChatLoading,
   } = useChatSubmit(
     "content",
     learnContent?.chatLog!,
     auth.currentUser?.uid!,
     learnContent?.content_id!,
-    learnContent?.space_id ? learnContent?.space_id! : "",
+    learnContent?.space_id ? learnContent?.space_id! : ""
   );
   const { copiedState, copyToClipboard } = useCopyToClipboard();
   let chatLog = [...chatSubmitLog];
@@ -76,7 +77,7 @@ const Chat = () => {
       <div className="mt-3">
         <ChatSubmit
           onMessageSubmit={handleChatSubmit}
-          isLoading={isChatSubmitting}
+          isLoading={isChatLoading}
         />
       </div>
     </div>

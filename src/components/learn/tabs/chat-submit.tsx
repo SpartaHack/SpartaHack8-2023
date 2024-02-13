@@ -36,6 +36,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         }
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        disabled={isLoading}
       />
       <button
         type="submit"

@@ -15,34 +15,24 @@ import { useUserStore } from "@/context/user-context";
 const Dashboard = () => {
   const history = useStore(useHistoryStore, (state) => state.history);
   const { setHistory } = useHistoryStore();
+  const { setUserData } = useUserStore();
   const userId = useAuth();
 
   useEffect(() => {
     const fetchHistory = async () => {
       if (auth.currentUser?.uid || userId) {
-        const response = await getContentHistory(
+        const history = await getContentHistory(
           auth.currentUser?.uid ? auth.currentUser.uid : userId!,
         );
-        setHistory(response?.data);
+        setHistory(history?.data);
+        const user = await getUser(
+          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
+        );
+        setUserData(user?.data);
       }
     };
 
     fetchHistory();
-  }, [userId]);
-
-  const { setUserData } = useUserStore();
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      if (auth.currentUser?.uid || userId) {
-        const response = await getUser(
-          auth.currentUser?.uid ? auth.currentUser.uid : userId!,
-        );
-        setUserData(response?.data);
-      }
-    };
-
-    fetchUser();
   }, [userId]);
 
   return (
