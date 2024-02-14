@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ContentCard from "./content-card";
 import { History } from "../../../types";
 import useStore from "@/hooks/use-store";
@@ -11,12 +11,18 @@ import HistoryHeader from "./history-header";
 import NotSignedIn from "./not-signed-in";
 import useAuth from "@/hooks/use-auth";
 import { useUserStore } from "@/context/user-context";
+import Loading from "@/app/loading";
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(false);
   const history = useStore(useHistoryStore, (state) => state.history);
   const { setHistory } = useHistoryStore();
   const { setUserData } = useUserStore();
   const userId = useAuth();
+
+  if (loading) {
+    <Loading />;
+  }
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -53,6 +59,7 @@ const Dashboard = () => {
                 contentURL={history.content.content_url}
                 title={history.content.title}
                 thumbnail_url={history.content.thumbnail_url}
+                setLoading={setLoading}
               />
             ))}
         </div>
