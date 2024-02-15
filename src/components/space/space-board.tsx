@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useContentStore } from "@/context/content-store";
 import { Content, SpaceBoardProps } from "../../../types";
 import useStore from "@/hooks/use-store";
@@ -15,6 +15,11 @@ import ErrorMessage from "@/helpers/error-message";
 const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
   const { loading } = useSpace(spaceId);
   const contents = useStore(useContentStore, (state) => state.contents);
+  const [isLoading, setLoading] = useState(false);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return loading ? (
     <Loading />
@@ -39,6 +44,7 @@ const SpaceBoard = ({ spaceId }: SpaceBoardProps) => {
                     contentID={content.content_id}
                     title={content.title}
                     thumbnail_url={content.thumbnail_url}
+                    setLoading={setLoading}
                   />
                 ))
               ))}

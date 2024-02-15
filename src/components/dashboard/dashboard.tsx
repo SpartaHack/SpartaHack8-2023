@@ -20,10 +20,6 @@ const Dashboard = () => {
   const { setUserData } = useUserStore();
   const userId = useAuth();
 
-  if (loading) {
-    <Loading />;
-  }
-
   useEffect(() => {
     const fetchHistory = async () => {
       if (auth.currentUser?.uid || userId) {
@@ -40,6 +36,10 @@ const Dashboard = () => {
 
     fetchHistory();
   }, [userId]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex-grow">
