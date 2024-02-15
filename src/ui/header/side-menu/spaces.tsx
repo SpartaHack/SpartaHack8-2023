@@ -51,7 +51,7 @@ const Spaces = () => {
           spaces.filter(Boolean).map((space: getUserSpaceResponse) => (
             <div
               key={space._id}
-              className="flex justify-between flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg"
+              className="flex justify-between flex-row group w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg transition-all duration-150"
               onClick={() => handleContentChange("space", space._id)}
             >
               <div className="flex flex-row w-[70%]">
@@ -65,7 +65,7 @@ const Spaces = () => {
                 title={
                   <Icon
                     icon="gg:trash"
-                    className="md:group-hover:opacity-50 md:ml-7 w-6 h-6 md:opacity-0 opacity-50"
+                    className="md:group-hover:opacity-50 md:ml-7 w-6 h-6 md:opacity-0 opacity-50 hover:text-danger hover:scale-110 transition-all duration-150"
                   />
                 }
                 btnStyling1="bg-white text-black border dark:border-black dark:bg-black dark:text-white"
@@ -85,7 +85,7 @@ const Spaces = () => {
           <></>
         )}
         <div
-          className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg"
+          className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg transition-all duration-150"
           onClick={() => handleContentChange("history")}
         >
           <Icon icon="ic:round-history" className="h-6 w-6" />
