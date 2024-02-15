@@ -221,7 +221,11 @@ export const useHandleSignUpFinal = () => {
         setUserData(signInResponse!.data);
         const spaces = await getUserSpaces(userId);
         setSpaces(spaces?.data);
-        setSignUpFinalStatus("/");
+        setSignUpFinalStatus(
+          spaces?.data && spaces.data.length > 0
+            ? `/space/${spaces.data[0]._id}`
+            : "/",
+        );
       } else {
         toast.error("Sign up failed, please try again");
         setSignUpFinalStatus("/signup");

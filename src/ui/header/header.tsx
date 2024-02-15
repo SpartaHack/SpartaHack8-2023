@@ -13,9 +13,7 @@ import useAuth from "@/hooks/use-auth";
 import { usePathname, useRouter } from "next/navigation";
 import { CustomButton } from "@/helpers/custom-btn";
 import { auth } from "../../../db/firebase";
-import { useTheme } from "next-themes";
-import { MoonIcon } from "@/icon/moon-icon";
-import { SunIcon } from "@/icon/sun-icon";
+import AddToSpace from "./add-to-space";
 
 export default function Header() {
   const userId = useAuth();
@@ -24,15 +22,6 @@ export default function Header() {
   const userData = useStore(useUserStore, (state) => state.userData);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const { theme, setTheme } = useTheme();
-  const [isLightMode, setIsLightMode] = useState(
-    theme == "light" ? true : false
-  );
-
-  const handleThemeChange = () => {
-    setIsLightMode(!isLightMode);
-    setTheme(isLightMode ? "dark" : "light");
-  };
 
   useClickOutside(ref, () => setIsMenuOpen(false));
 
@@ -56,6 +45,7 @@ export default function Header() {
           <HomeLinkBar />
           {auth.currentUser?.uid || userId ? (
             <div className="hidden lg:flex">
+              {path.includes("learn") && <AddToSpace />}
               <Notification />
               <Account
                 name={userData?.user_profile.full_name!}

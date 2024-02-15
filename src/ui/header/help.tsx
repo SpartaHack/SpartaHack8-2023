@@ -7,7 +7,7 @@ const Help = () => {
   const router = useRouter();
   return (
     <div
-      className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg"
+      className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg transition-all duration-150"
       onClick={() => router.push("/contact")}
     >
       <Icon icon="material-symbols:help-outline" className="h-6 w-6" />
