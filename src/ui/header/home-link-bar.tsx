@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import BetaLogo from "@/icon/beta-logo";
 import YouLearnLogo from "@/icon/youlearn-logo";
 import useClickOutside from "@/hooks/use-click-outside";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const SearchBar = () => {
@@ -23,13 +24,17 @@ const SearchBar = () => {
 
   return (
     <>
-      <div className="hidden lg:flex">
+      <motion.div
+        className="hidden lg:flex"
+        initial={{ opacity: 0, scale: 1 }}
+        animate={{ opacity: 1, scale: 1 }}
+      >
         <YouLearnLogo size="lg" />
         <BetaLogo />
-      </div>
+      </motion.div>
       <div className="hidden lg:flex justify-center lg:mr-[180px] flex-1">
         <form
-          className="flex items-center align-items:center hover:border-secondary rounded-lg bg-absolute_white px-1 py-.5  ml-5 flex-grow max-w-xl h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+          className="flex items-center align-items:center hover:border-secondary rounded-lg bg-absolute_white px-1 py-.5 ml-5 flex-grow max-w-xl h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary transition-all duration-150"
           onSubmit={searchClick}
         >
           <input
@@ -48,9 +53,13 @@ const SearchBar = () => {
       </div>
       {!smallSearch && (
         <>
-          <div className="lg:hidden mr-2">
+          <motion.div
+            className="lg:hidden mr-2"
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
             <YouLearnLogo size="lg" />
-          </div>
+          </motion.div>
           <div
             className="lg:hidden flex mr-1 justify-between"
             onClick={() => setSmallSearch(true)}
@@ -62,7 +71,7 @@ const SearchBar = () => {
       {smallSearch && (
         <div ref={searchBarRef} className="lg:hidden w-full">
           <form
-            className="flex items-center align-items:center hover:border-secondary rounded-lg bg-absolute_white px-1 py-.5 flex-grow h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary"
+            className="flex items-center align-items:center hover:border-secondary hover:bg-white rounded-lg bg-absolute_white px-1 py-.5 flex-grow h-[42.5px] border border-neutral-200 dark:bg-black dark:border-neutral-800 focus-within:ring-2 focus-within:ring-secondary transition-all duration-150"
             onSubmit={searchClick}
           >
             <input
