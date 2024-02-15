@@ -38,7 +38,7 @@ const AddSpace = () => {
   return (
     <div className="w-full">
       <div
-        className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg"
+        className="flex flex-row w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 p-2 rounded-lg transition-all duration-150"
         onClick={() => handleSpaceCreation()}
       >
         <Icon
