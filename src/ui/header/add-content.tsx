@@ -113,6 +113,7 @@ const AddContent = () => {
     <>
       <CustomModal
         size="2xl"
+        isModalDefaultOpen
         placement="top-center"
         title={
           <div className="rounded-2xl shadow-lg px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
