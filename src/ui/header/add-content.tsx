@@ -146,13 +146,17 @@ const AddContent = () => {
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>
                     <TooltipTrigger className="group">
-                      <span className="font-semibold underline cursor-pointer">
+                      <span className="font-semibold flex flex-row text-[#9B59B6] cursor-pointer">
                         search using AI
+                          <Icon
+                            icon="ph:question-bold"
+                            className="ml-1 mt-0.5 h-4 w-4"
+                          />
                       </span>
                     </TooltipTrigger>
                     <TooltipContent
                       sideOffset={2}
-                      className="mr-12 p-1.5 px-2 bg-neutral-900 text-white rounded-xl"
+                      className="mr-12 p-1.5 px-2 duration-150 bg-neutral-900 text-white rounded-xl"
                     >
                       <p className="text-sm">
                         Type your query and let AI search the content
