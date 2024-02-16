@@ -30,7 +30,7 @@ const CustomModal = ({
   useEffect(() => {
     if (isModalDefaultOpen) {
       const modalOpen = localStorage.getItem("modalOpen");
-      if (modalOpen !== "false") {
+      if (modalOpen === "true") {
         onOpen();
         localStorage.setItem("modalOpen", "false");
       }
