@@ -65,6 +65,7 @@ export type CustomModalProps = {
     | "bottom"
     | "bottom-center"
     | undefined;
+  isModalDefaultOpen?: boolean;
   footer: boolean;
 };
 
