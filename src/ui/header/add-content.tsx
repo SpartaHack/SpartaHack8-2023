@@ -97,7 +97,6 @@ const AddContent = () => {
     "https://youtu.be/kqtD5dpn9C8",
     "https://youtube.com/playlist?list=PLZHQObO...",
     "https://arxiv.org/pdf/1706.03762.pdf",
-    "What are black holes?",
     "https://mediaspace.stanford.edu/media/...i257wd8",
   ];
 
