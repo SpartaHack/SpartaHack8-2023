@@ -12,6 +12,12 @@ import LinkCard from "./link-card";
 import ContentUploader from "./content-uploader";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@radix-ui/react-tooltip";
 
 // million-ignore
 const AddContent = () => {
@@ -94,6 +100,7 @@ const AddContent = () => {
 
   const [currentLinkIndex, setCurrentLinkIndex] = useState(0);
   const rotationLinks = [
+    "What are black holes?",
     "https://youtu.be/kqtD5dpn9C8",
     "https://youtube.com/playlist?list=PLZHQObO...",
     "https://arxiv.org/pdf/1706.03762.pdf",
@@ -112,7 +119,7 @@ const AddContent = () => {
   return (
     <>
       <CustomModal
-        size="2xl"
+        size="3xl"
         isModalDefaultOpen
         placement="top-center"
         title={
@@ -134,8 +141,25 @@ const AddContent = () => {
             </div>
             <div className="flex flex-row items-baseline">
               <span className="mt-4 text-3xl font-sans">Upload contents</span>
-              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal hidden md:block">
-                (YouTube videos, playlist, PDFs, & mediaspace)
+              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal md:block">
+                YouTube videos, playlist, PDFs, mediaspace or &nbsp;
+                <TooltipProvider>
+                  <Tooltip delayDuration={0}>
+                    <TooltipTrigger className="group">
+                      <span className="font-semibold underline cursor-pointer">
+                        search using AI
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      sideOffset={2}
+                      className="mr-12 p-1.5 px-2 bg-neutral-900 text-white rounded-xl"
+                    >
+                      <p className="text-sm">
+                        Type your query and let AI search the content
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </span>
             </div>
           </div>
