@@ -146,7 +146,7 @@ const AddContent = () => {
                 <TooltipProvider>
                   <Tooltip delayDuration={0}>
                     <TooltipTrigger className="group">
-                      <span className="font-semibold flex flex-row text-[#9B59B6] cursor-pointer">
+                      <span className="font-semibold flex flex-row dark:text-secondary text-green-600 cursor-pointer">
                         search using AI
                           <Icon
                             icon="ph:question-bold"
