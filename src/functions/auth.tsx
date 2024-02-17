@@ -221,6 +221,7 @@ export const useHandleSignUpFinal = () => {
         setUserData(signInResponse!.data);
         const spaces = await getUserSpaces(userId);
         setSpaces(spaces?.data);
+        localStorage.setItem("modalOpen", "true");
         setSignUpFinalStatus(
           spaces?.data && spaces.data.length > 0
             ? `/space/${spaces.data[0]._id}`

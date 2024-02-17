@@ -117,6 +117,26 @@ export const getContent = async (
   return response;
 };
 
+export const getContentSeo = async (
+  contentId: string,
+) => {
+  const data = {
+    content_id: contentId
+  };
+  const response = await axios.post(`${API_URL}/content/seo`, data);
+  return response;
+};
+
+export const getSpaceSeo = async (
+  spaceId: string,
+) => {
+  const data = {
+    space_id: spaceId
+  };
+  const response = await axios.post(`${API_URL}/spaces/seo`, data);
+  return response;
+};
+
 export const generateChapters = async (userId: string, contentId: string) => {
   const data = {
     user_id: userId,

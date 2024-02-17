@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Button,
   useDisclosure,
 } from "@nextui-org/react";
 import { CustomButton } from "./custom-btn";
@@ -22,17 +21,37 @@ const CustomModal = ({
   actionEvent,
   placement,
   footer,
+  isModalDefaultOpen,
 }: CustomModalProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [hasBeenClosed, setHasBeenClosed] = useState(false);
+
+  useEffect(() => {
+    if (isModalDefaultOpen) {
+      const modalOpen = localStorage.getItem("modalOpen");
+      if (modalOpen === "true") {
+        onOpen();
+        localStorage.setItem("modalOpen", "false");
+      }
+    }
+  }, [isModalDefaultOpen, onOpen]);
+
+  const handleClose = (event: React.MouseEvent) => {
+    actionEvent && actionEvent(event);
+    setHasBeenClosed(true);
+    onClose();
+  };
+
+  useEffect(() => {
+    if (hasBeenClosed) {
+      localStorage.setItem("modalOpen", "false");
+    }
+  }, [hasBeenClosed]);
 
   const handleIconClick = (event: React.MouseEvent) => {
     event.stopPropagation();
     onOpen();
-  };
-
-  const handleClose = (event: React.MouseEvent) => {
-    actionEvent && actionEvent(event);
-    onClose();
   };
 
   return (
@@ -45,33 +64,37 @@ const CustomModal = ({
         backdrop="blur"
         placement={placement}
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={() => {
+          setHasBeenClosed(true);
+          onClose();
+        }}
       >
         <ModalContent className="prevent-close">
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                {contentTitle}
-              </ModalHeader>
-              <ModalBody>{contentMain}</ModalBody>
-              {footer && (
-                <ModalFooter>
-                  <CustomButton
-                    title="Close"
-                    btnType="button"
-                    clickEvent={onClose}
-                    btnStyling={btnStyling1}
-                  />
-                  <CustomButton
-                    title={actionTitle!}
-                    btnType="submit"
-                    clickEvent={handleClose}
-                    btnStyling={btnStyling2}
-                  />
-                </ModalFooter>
-              )}
-            </>
-          )}
+          <>
+            <ModalHeader className="flex flex-col gap-1">
+              {contentTitle}
+            </ModalHeader>
+            <ModalBody>{contentMain}</ModalBody>
+            {footer && (
+              <ModalFooter>
+                <CustomButton
+                  title="Close"
+                  btnType="button"
+                  clickEvent={() => {
+                    setHasBeenClosed(true);
+                    onClose();
+                  }}
+                  btnStyling={btnStyling1}
+                />
+                <CustomButton
+                  title={actionTitle!}
+                  btnType="submit"
+                  clickEvent={handleClose}
+                  btnStyling={btnStyling2}
+                />
+              </ModalFooter>
+            )}
+          </>
         </ModalContent>
       </Modal>
     </>

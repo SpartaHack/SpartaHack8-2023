@@ -12,6 +12,12 @@ import LinkCard from "./link-card";
 import ContentUploader from "./content-uploader";
 import { isAxiosError } from "axios";
 import { useErrorStore } from "@/context/error-context";
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@radix-ui/react-tooltip";
 
 // million-ignore
 const AddContent = () => {
@@ -94,6 +100,7 @@ const AddContent = () => {
 
   const [currentLinkIndex, setCurrentLinkIndex] = useState(0);
   const rotationLinks = [
+    "What are black holes?",
     "https://youtu.be/kqtD5dpn9C8",
     "https://youtube.com/playlist?list=PLZHQObO...",
     "https://arxiv.org/pdf/1706.03762.pdf",
@@ -112,7 +119,8 @@ const AddContent = () => {
   return (
     <>
       <CustomModal
-        size="2xl"
+        size="3xl"
+        isModalDefaultOpen
         placement="top-center"
         title={
           <div className="rounded-2xl shadow-lg px-4 py-3 bg-black cursor-pointer dark:bg-white text-white dark:text-black dark:white font-semibold font-sans flex flex-row">
@@ -133,8 +141,29 @@ const AddContent = () => {
             </div>
             <div className="flex flex-row items-baseline">
               <span className="mt-4 text-3xl font-sans">Upload contents</span>
-              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal hidden md:block">
-                (YouTube videos, playlist, PDFs, & mediaspace)
+              <span className="ml-3 text-sm text-neutral-600 dark:text-neutral-400 font-sans font-normal md:block">
+                YouTube videos, playlist, PDFs, mediaspace or &nbsp;
+                <TooltipProvider>
+                  <Tooltip delayDuration={0}>
+                    <TooltipTrigger className="group">
+                      <span className="font-semibold flex flex-row dark:text-secondary text-green-600 cursor-pointer">
+                        search using AI
+                        <Icon
+                          icon="ph:question-bold"
+                          className="ml-1 mt-0.5 h-4 w-4"
+                        />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      sideOffset={2}
+                      className="mr-12 p-1.5 px-2 duration-150 bg-neutral-900 text-white rounded-xl"
+                    >
+                      <p className="text-sm">
+                        Type anything and let AI find the content for you
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </span>
             </div>
           </div>
