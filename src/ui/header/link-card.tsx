@@ -30,10 +30,10 @@ const LinkCard = ({ link, handleDelete }: LinkCardProps) => {
             variant="bordered"
             classNames={{
               content: "text-black dark:text-white",
-              base: "dark:border-secondary border-green-500",
+              base: "dark:border-secondary border-neutral-300",
             }}
           >
-            Search with AI
+            Searched with AI
           </Chip>
         )}
         <Icon
