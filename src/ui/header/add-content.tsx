@@ -148,10 +148,10 @@ const AddContent = () => {
                     <TooltipTrigger className="group">
                       <span className="font-semibold flex flex-row dark:text-secondary text-green-600 cursor-pointer">
                         search using AI
-                          <Icon
-                            icon="ph:question-bold"
-                            className="ml-1 mt-0.5 h-4 w-4"
-                          />
+                        <Icon
+                          icon="ph:question-bold"
+                          className="ml-1 mt-0.5 h-4 w-4"
+                        />
                       </span>
                     </TooltipTrigger>
                     <TooltipContent
