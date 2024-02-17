@@ -159,7 +159,7 @@ const AddContent = () => {
                       className="mr-12 p-1.5 px-2 duration-150 bg-neutral-900 text-white rounded-xl"
                     >
                       <p className="text-sm">
-                        Type your query and let AI search the content
+                        Type anything and let AI find the content for you
                       </p>
                     </TooltipContent>
                   </Tooltip>
