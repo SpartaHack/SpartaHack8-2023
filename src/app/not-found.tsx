@@ -17,6 +17,7 @@ export default function NotFound({}: {
   return (
     <div className="h-screen w-full flex flex-col justify-center items-center">
       <Image
+        unoptimized
         className="dark:hidden"
         src="/errorIcon.svg"
         alt="errorIcon"
@@ -24,6 +25,7 @@ export default function NotFound({}: {
         height={300}
       />
       <Image
+        unoptimized
         className="hidden dark:block"
         src="/errorIconDark.svg"
         alt="errorIconDark"

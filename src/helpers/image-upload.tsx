@@ -7,6 +7,7 @@ export const ImageUpload = ({ onChange, src }: ImageUploadProps) => (
     <div className="relative w-[100px] h-[100px] flex items-center border border-neutral-200 dark:border-neutral-700 justify-center overflow-hidden rounded-lg bg-transparent">
       {src && (
         <Image
+          unoptimized
           src={src!}
           alt="Upload"
           className="w-auto h-full duration-200 hover:opacity-50"

@@ -12,7 +12,7 @@ const TrustedBy = () => {
         <div className="flex">
           {logos.map((logo, index) => (
             <div key={index} className="flex-none mx-4">
-              <Image src={logo.src} alt={logo.alt} width={40} height={40} />
+              <Image unoptimized src={logo.src} alt={logo.alt} width={40} height={40} />
             </div>
           ))}
         </div>

@@ -126,6 +126,7 @@ const ContentCard = ({
       </div>
       <div className="rounded-t-lg overflow-hidden">
         <Image
+          unoptimized
           width-full="true"
           src={thumbnail_url!}
           width={360}

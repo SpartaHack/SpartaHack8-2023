@@ -34,6 +34,7 @@ const TooltipCard = ({ content }: TooltipCardProps) => {
         onClick={clickCard}
       >
         <Image
+          unoptimized
           src={thumbnailUrl}
           alt={content}
           width={360}
