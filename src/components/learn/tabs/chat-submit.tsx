@@ -29,7 +29,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
         variant="bordered"
         minRows={0}
         maxRows={5}
-        className="w-full outline-none bg-absolute_black focus:outline-none h-full mr-1"
+        className="w-full outline-none bg-transparent focus:outline-none h-full mr-1"
         classNames={{ inputWrapper: "border-none px-0 ml-0" }}
         autoFocus
         placeholder={
