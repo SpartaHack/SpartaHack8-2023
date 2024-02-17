@@ -3,21 +3,21 @@ import SpaceBoard from "@/components/space/space-board";
 import Header from "@/ui/header/header";
 import { SpaceParamProps } from "../../../../types";
 import { Metadata } from "next";
-import { getSpace } from "@/app/api/space";
+import { getSpaceSeo } from "@/app/api/generation";
 
 export async function generateMetadata({
   params,
 }: SpaceParamProps): Promise<Metadata> {
   let response;
   try {
-    response = await getSpace("anonymous", params.spaceId);
+    response = await getSpaceSeo(params.spaceId);
   } catch (err) {
     // console.log(err)
   }
   return {
-    title: response ? response?.data.space.name : "YouLearn",
+    title: response ? response?.data.title : "YouLearn",
     description: response
-      ? response?.data.space.description
+      ? response?.data.description
       : "YouLearn is reimagining the future of learning by building AI software for students, teachers, and communities to democratize quality education worldwide.",
     metadataBase: new URL("https://app.youlearn.ai"),
   };

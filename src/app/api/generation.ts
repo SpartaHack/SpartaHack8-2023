@@ -133,7 +133,7 @@ export const getSpaceSeo = async (
   const data = {
     space_id: spaceId
   };
-  const response = await axios.post(`${API_URL}/space/seo`, data);
+  const response = await axios.post(`${API_URL}/spaces/seo`, data);
   return response;
 };
 
