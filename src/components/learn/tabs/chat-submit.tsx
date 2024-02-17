@@ -22,7 +22,7 @@ const ChatSubmit = ({ onMessageSubmit, isLoading }: ChatSubmitProps) => {
 
   return (
     <form
-      className="flex w-full bg-absolute_white dark:bg-absolute_black items-center align-items:center border border-neutral-200 dark:border-neutral-700 rounded-lg pl-3 flex-grow min-h-[42.5px] focus-within:ring-1 focus-within:shadow-neutral-400 transition-all duration-150"
+      className="flex w-full bg-absolute_white dark:bg-absolute_black items-center outline-none align-items:center border border-neutral-200 dark:border-neutral-700 rounded-lg pl-3 flex-grow min-h-[42.5px] focus-within:ring-1 focus-within:shadow-neutral-200 focus-within:ring-neutral-300 dark:focus-within:shadow-neutral-600 dark:focus-within:ring-neutral-700 transition-all duration-150"
       onSubmit={handleSubmit}
     >
       <Textarea
