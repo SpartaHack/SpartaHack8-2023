@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+/* 
+.font-serif-200 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 200;
+	font-style: normal;
+}
+.font-serif-300 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
+.font-serif-400 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+.font-serif-500 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+.font-serif-600 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+.font-serif-700 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+.font-serif-800 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 800;
+	font-style: normal;
+}
+.font-serif-900 {
+	font-family: 'new-kansas', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+} */
